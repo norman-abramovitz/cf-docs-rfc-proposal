@@ -133,23 +133,24 @@ To view request time in access logs:
     <br /><br />
     To narrow down the cause of latency, see the following table for information about the output
     that you see after running `cf logs APP-NAME`:
-:::list-table{widths="25 25 50" header-rows="1" roles="key prose prose" wrap="normal"}
-- - Result
-  - Explanation
-  - Action
-- - The output shows latency within `gorouter_time`.
-  - Gorouter
-  - Investigate gorouter logs as to why the latency is high. Investigate gorouter capacity metrics + possibly scale up
-- - The output shows latency within `response_time` but not in `gorouter_time`.
-  - The network between Gorouter and the app, or the app itself, is causing latency. If the requests are uploading data to the app, latency between the client and gorouter may appear here as well
-  - If the issue is not related to uploads, jump to experiment 5, and continue with the rest of the experiments to try to narrow down which component is causing latency. Otherwise continue with experiment 3.
-- - The output does not show latency within `response_time`.
-  - A component before Gorouter is causing latency to the request before it reaches Gorouter.
-  - Continue with the rest of the experiments to try to narrow down which component is causing latency.
-- - The output does not show a log line.
-  - Every incoming request should generate an access log message. If a request does not generate an access log message, it means Gorouter did not receive the request.
-  - Troubleshoot your Gorouter configuration.
-:::
+
+    :::list-table{widths="25 25 50" header-rows="1" roles="key prose prose" wrap="normal"}
+    - - Result
+      - Explanation
+      - Action
+    - - The output shows latency within `gorouter_time`.
+      - Gorouter
+      - Investigate gorouter logs as to why the latency is high. Investigate gorouter capacity metrics + possibly scale up
+    - - The output shows latency within `response_time` but not in `gorouter_time`.
+      - The network between Gorouter and the app, or the app itself, is causing latency. If the requests are uploading data to the app, latency between the client and gorouter may appear here as well
+      - If the issue is not related to uploads, jump to experiment 5, and continue with the rest of the experiments to try to narrow down which component is causing latency. Otherwise continue with experiment 3.
+    - - The output does not show latency within `response_time`.
+      - A component before Gorouter is causing latency to the request before it reaches Gorouter.
+      - Continue with the rest of the experiments to try to narrow down which component is causing latency.
+    - - The output does not show a log line.
+      - Every incoming request should generate an access log message. If a request does not generate an access log message, it means Gorouter did not receive the request.
+      - Troubleshoot your Gorouter configuration.
+    :::
 
 ### <a id="duplicate-latency"></a> Experiment 3: Duplicate latency on another endpoint
 
