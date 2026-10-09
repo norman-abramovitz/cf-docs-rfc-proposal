@@ -76,7 +76,12 @@ is a list item inside it, so a cell can hold lists and paragraphs.
 header style; the rest of the look comes from the theme. A `wrap: avoid` cell
 holds a box that keeps its text on one line up to `--table-nowrap-max`
 (default `16em`) and wraps between words past it; a cell's own width cannot
-set that cap. Row headers (`th[scope=row]`) take
+set that cap. Every table also takes `--table-font-size` and
+`--table-line-height` (defaults: the body text), and the last paragraph or
+list in a cell loses its bottom margin, so the gap below the text matches the
+gap above it. Padding, borders, and header and stripe colors are the theme's
+own variables (`--ifm-table-cell-padding`, `--ifm-table-border-color`,
+`--ifm-table-head-background`, `--ifm-table-stripe-background`). Row headers (`th[scope=row]`) take
 `--table-row-header-weight` and `--table-row-header-align`, so a theme styles
 them apart from column headers and body cells.
 

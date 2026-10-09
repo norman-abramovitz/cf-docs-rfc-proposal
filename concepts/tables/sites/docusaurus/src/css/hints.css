@@ -2,7 +2,20 @@
    A theme adjusts the hints through these variables:
      --table-nowrap-max         widest a wrap: avoid column grows before it wraps between words
      --table-row-header-weight  font weight of row headers (stub columns)
-     --table-row-header-align   horizontal alignment of row headers */
+     --table-row-header-align   horizontal alignment of row headers
+     --table-font-size          text size in every table (default: the body text size)
+     --table-line-height        line height in every table (default: the body line height)
+   Cell padding, borders, and header and stripe colors are the theme's own variables
+   (--ifm-table-cell-padding, --ifm-table-border-color, --ifm-table-head-background,
+   --ifm-table-stripe-background, ...). */
+.markdown table {
+  font-size: var(--table-font-size, 1em);
+  line-height: var(--table-line-height, var(--ifm-line-height-base));
+}
+/* A paragraph or list at the end of a cell keeps its bottom margin, which leaves a
+   larger gap below the text than above it; the cell's padding is enough. */
+.markdown table td > :last-child,
+.markdown table th > :last-child { margin-bottom: 0; }
 .hinted-table th,
 .hinted-table td { vertical-align: top; }
 /* wrap: avoid keeps the cell on one line, up to the cap; longer text wraps between words. */

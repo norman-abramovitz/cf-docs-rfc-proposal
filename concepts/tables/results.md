@@ -160,6 +160,18 @@ paragraphs.
   `<pre class="terminal">` on every page anyway; the tables round keeps the
   finding.
 
+9. **Cells are roomier than on the published page.** Measured on the
+  `uaa-concepts` table at a 1280-pixel window: cell padding 12 pixels on
+  every side (published: 4.8 by 8), line height 26.4 pixels (published:
+  23.2), code 14.4 pixels (published: 13). The same table is about 20%
+  taller. A paragraph or list at the end of a cell also kept its bottom
+  margin, so cells had about 30 pixels below the text and 12 above. The
+  site now removes that last margin (13 above and 13 below), and adds
+  `--table-font-size` and `--table-line-height` for the template; their
+  defaults keep the theme's look. Padding, borders, and header and stripe
+  colors are the theme's own variables (`--ifm-table-cell-padding` and
+  others). There is no theme variable for the font size of tables.
+
 ### Text compared with the published page
 
 Apart from finding 8 and the decided backslash fix, the main text of each page
