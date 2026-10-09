@@ -1,0 +1,40 @@
+[project]
+site_name = "Tables round — Zensical"
+docs_dir = "docs"
+site_dir = "site"
+
+# Defaults from a new project, plus `tables` for pipe tables.
+[project.markdown_extensions]
+abbr = {}
+admonition = {}
+attr_list = {}
+def_list = {}
+footnotes = {}
+md_in_html = {}
+tables = {}
+toc.permalink = true
+pymdownx.betterem = {}
+pymdownx.caret = {}
+pymdownx.details = {}
+pymdownx.highlight = { anchor_linenums = true, line_spans = "__span", pygments_lang_class = true }
+pymdownx.inlinehilite = {}
+pymdownx.keys = {}
+pymdownx.magiclink = {}
+pymdownx.mark = {}
+pymdownx.smartsymbols = {}
+pymdownx.superfences = {}
+pymdownx.tilde = {}
+
+# Variables keep their ERB form: <%= vars.name %>. Partials live outside
+# docs/ so they never become pages; a host page includes one with
+# <% include "<mode>/_name.md" %>.
+[project.plugins.macros]
+include_yaml = ["vars.yml"]
+include_dir = "partials"
+on_undefined = "silent"
+j2_variable_start_string = "<%="
+j2_variable_end_string = "%>"
+j2_block_start_string = "<%"
+j2_block_end_string = "%>"
+j2_comment_start_string = "<%#"
+j2_comment_end_string = "%>"
