@@ -1,0 +1,17 @@
+{
+  "name": "tables-docusaurus",
+  "private": true,
+  "scripts": {
+    "build": "docusaurus build",
+    "serve": "docusaurus serve --no-open",
+    "clear": "docusaurus clear"
+  },
+  "dependencies": {
+    "@docusaurus/core": "3.10.2",
+    "@docusaurus/preset-classic": "3.10.2",
+    "@mdx-js/react": "3.1.1",
+    "js-yaml": "4.1.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  }
+}
