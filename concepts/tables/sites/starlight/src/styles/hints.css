@@ -1,1 +1,28 @@
-/* What the table hints mean on this site. */
+/* What the table hints mean on this site. Appearance otherwise comes from the theme.
+   A theme adjusts the hints through these variables:
+     --table-nowrap-max         widest a wrap: avoid column grows before it wraps between words
+     --table-row-header-weight  font weight of row headers (stub columns)
+     --table-row-header-align   horizontal alignment of row headers
+     --table-font-size          text size in every table (default: the body text size)
+     --table-line-height        line height in every table (default: the body line height)
+   Starlight has no table variables of its own: its table rules use fixed padding
+   (0.5rem 1rem) and its color variables (--sl-color-gray-5 for borders,
+   --sl-color-white for header text). Its styles sit in cascade layers, so these
+   unlayered rules win without extra specificity. */
+.sl-markdown-content table {
+  font-size: var(--table-font-size, 1em);
+  line-height: var(--table-line-height, var(--sl-line-height));
+}
+/* The theme spaces blocks with top margins; this keeps any bottom margin out of cells too. */
+.sl-markdown-content table :is(td, th) > :last-child { margin-bottom: 0; }
+.hinted-table th,
+.hinted-table td { vertical-align: top; }
+/* wrap: avoid keeps the cell on one line, up to the cap; longer text wraps between words. */
+.hinted-table .wrap-avoid-box { width: max-content; max-width: var(--table-nowrap-max, 16em); }
+/* Row headers are styled apart from column headers and body cells; the defaults keep the theme's header look. */
+.hinted-table th[scope='row'] {
+  font-weight: var(--table-row-header-weight, 600);
+  text-align: var(--table-row-header-align, start);
+}
+/* The title row spans the table, centered as on the published page. */
+.hinted-table th[scope='colgroup'] { text-align: center; }
