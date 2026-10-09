@@ -1,0 +1,35 @@
+/* What the table hints mean on this site, on top of the default UI. The UI's
+   stylesheet is built with its variables resolved, so it exposes none; these
+   rules set the look directly. A theme adjusts the hints through these
+   variables:
+     --table-nowrap-max         widest a wrap: avoid column grows before it wraps between words
+     --table-row-header-weight  font weight of row headers (stub columns)
+     --table-row-header-align   horizontal alignment of row headers
+     --table-font-size          text size in tables (default: the UI's table text)
+     --table-line-height        line height in tables (default: the UI's) */
+
+/* Asciidoctor writes each cell's alignment from the table's specs as a class;
+   the default UI has no rules for them, so the specs would have no effect. */
+.doc .tableblock.halign-left { text-align: left; }
+.doc .tableblock.halign-center { text-align: center; }
+.doc .tableblock.halign-right { text-align: right; }
+.doc .tableblock.valign-top { vertical-align: top; }
+.doc .tableblock.valign-middle { vertical-align: middle; }
+.doc .tableblock.valign-bottom { vertical-align: bottom; }
+
+.doc table.tableblock {
+  font-size: var(--table-font-size, .83333rem);
+  line-height: var(--table-line-height, inherit);
+}
+
+/* The UI styles only AsciiDoc tables (class tableblock). An HTML table that
+   keeps class="table" gets the same look, so the class is a hook the template
+   can format; an HTML table without a class stays unstyled. */
+.doc table.table {
+  font-size: var(--table-font-size, .83333rem);
+  line-height: var(--table-line-height, inherit);
+  margin-top: 1.5rem;
+}
+.doc table.table td,
+.doc table.table th { border: 1px solid #e1e1e1; padding: .5rem; }
+.doc table.table thead th { border-bottom-width: 2.5px; }

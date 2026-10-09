@@ -11,10 +11,12 @@ content:
     branches: HEAD
     start_paths:
     - concepts/tables/sites/antora/home
+    - concepts/tables/sites/antora/passthrough
 ui:
   bundle:
     # The default UI, pinned: `make` downloads one build and checks its hash
     url: ./.cache/ui-bundle.zip
+  supplemental_files: ./supplemental-ui
 urls:
   html_extension_style: indexify
 asciidoc:
