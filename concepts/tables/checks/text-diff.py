@@ -13,7 +13,7 @@ class X(html.parser.HTMLParser):
         if t in VOID: return
         s.d += 1; a = dict(a); cls = a.get('class') or ''
         if s.depth is None and s.start(t, a): s.depth = s.d
-        if s.depth is not None and s.skip_at is None and (t in ('script','style','nav','button') or 'hash-link' in cls or 'theme-doc-toc' in cls or 'breadcrumbs' in cls or 'theme-doc-version' in cls):
+        if s.depth is not None and s.skip_at is None and (t in ('script','style','nav','button') or 'hash-link' in cls or 'headerlink' in cls or 'theme-doc-toc' in cls or 'breadcrumbs' in cls or 'theme-doc-version' in cls):
             s.skip_at = s.d
     def handle_endtag(s, t):
         if t in BLOCK: s.out.append(' ')

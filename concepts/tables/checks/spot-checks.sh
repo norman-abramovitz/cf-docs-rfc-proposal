@@ -10,7 +10,7 @@ chk() { if grep -q -- "$2" "$B/$1.html"; then echo "ok    $1: $3"; else echo "FA
 nchk() { if grep -q -- "$2" "$B/$1.html"; then echo "FAIL  $1: $3"; fail=1; else echo "ok    $1: $3"; fi; }
 cnt() { n=$(grep -o -- "$2" "$B/$1.html" | wc -l | tr -d ' '); [ "$n" = "$3" ] && echo "ok    $1: $4 ($n)" || { echo "FAIL  $1: $4 (got $n, want $3)"; fail=1; }; }
 # _oss_scale_table (host page)
-cnt scale-table-host '≥ [12]' 12 '≥ rendered'
+cnt scale-table-host '\(≥\|&ge;\) [12]' 12 '≥ rendered'
 nchk scale-table-host '&amp;ge;' 'no literal &ge;'
 chk scale-table-host '<code>0</code> if Postgres' 'code 0 in PostgreSQL row'
 chk scale-table-host 'Cloud Foundry recommends scaling NATS VMs' 'recommended_by var'
