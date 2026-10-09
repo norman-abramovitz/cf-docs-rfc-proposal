@@ -12,6 +12,7 @@ content:
     start_paths:
     - concepts/tables/sites/antora/home
     - concepts/tables/sites/antora/passthrough
+    - concepts/tables/sites/antora/extension
 ui:
   bundle:
     # The default UI, pinned: `make` downloads one build and checks its hash
@@ -20,6 +21,9 @@ ui:
 urls:
   html_extension_style: indexify
 asciidoc:
+  # header-rows=N on a table puts its first N rows in the table head
+  extensions:
+  - ./extensions/header-rows.js
   attributes:
     # An undefined attribute renders as nothing, as an undefined ERB variable does
     attribute-missing: drop

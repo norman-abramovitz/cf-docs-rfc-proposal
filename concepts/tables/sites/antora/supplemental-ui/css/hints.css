@@ -33,3 +33,18 @@
 .doc table.table td,
 .doc table.table th { border: 1px solid #e1e1e1; padding: .5rem; }
 .doc table.table thead th { border-bottom-width: 2.5px; }
+
+/* Extension: the hints as roles on the table (.hinted.col1-key.col1-nowrap ...). */
+/* wrap: avoid keeps a body cell on one line, up to the cap; longer text wraps
+   between words. The cell's paragraph or content box is the inner box. */
+.doc table.hinted.col1-nowrap > tbody > tr > :nth-child(1) > *,
+.doc table.hinted.col2-nowrap > tbody > tr > :nth-child(2) > *,
+.doc table.hinted.col3-nowrap > tbody > tr > :nth-child(3) > * {
+  width: max-content;
+  max-width: var(--table-nowrap-max, 16em);
+}
+/* Row headers are styled apart from column headers and body cells. */
+.doc table.hinted > tbody th.tableblock {
+  font-weight: var(--table-row-header-weight, 600);
+  text-align: var(--table-row-header-align, left);
+}
