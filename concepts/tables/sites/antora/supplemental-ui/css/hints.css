@@ -8,15 +8,6 @@
      --table-font-size          text size in tables (default: the UI's table text)
      --table-line-height        line height in tables (default: the UI's) */
 
-/* Asciidoctor writes each cell's alignment from the table's specs as a class;
-   the default UI has no rules for them, so the specs would have no effect. */
-.doc .tableblock.halign-left { text-align: left; }
-.doc .tableblock.halign-center { text-align: center; }
-.doc .tableblock.halign-right { text-align: right; }
-.doc .tableblock.valign-top { vertical-align: top; }
-.doc .tableblock.valign-middle { vertical-align: middle; }
-.doc .tableblock.valign-bottom { vertical-align: bottom; }
-
 .doc table.tableblock {
   font-size: var(--table-font-size, .83333rem);
   line-height: var(--table-line-height, inherit);

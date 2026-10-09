@@ -622,11 +622,9 @@ table of contents beside it).
   roles and the no-wrap columns (`[.hinted.col1-key.col1-nowrap]`), and a
   stylesheet in a supplemental UI gives them their meaning. What #1642 §5
   says about plugins is quoted in the Docusaurus summary.
-- **The default UI ignores part of what AsciiDoc writes.** It has no rules
-  for the alignment classes Asciidoctor puts on each cell, styles only
-  AsciiDoc tables (an HTML table gets no borders), and exposes no variables
-  (findings 2 and 3). The site's stylesheet adds the alignment rules and
-  styles HTML tables that keep `class="table"`.
+- **The default UI styles only AsciiDoc tables.** An HTML table gets no
+  borders, and the UI exposes no variables (findings 3 and 4). The site's
+  stylesheet styles HTML tables that keep `class="table"`.
 - **Variables become attributes.** `<%= vars.name %>` is `{name}`. An
   undefined attribute renders as nothing only with `attribute-missing: drop`;
   by default the page shows `{metadata_ref}` as text. An HTML-valued
@@ -707,11 +705,13 @@ passthrough included.
   The spot checks and the text comparison would not have caught the last
   three; they were found by reading the output and by a scan of the built
   pages for in-page links without a target.
-2. **The default UI has no rules for Asciidoctor's alignment classes.**
-  Asciidoctor writes each cell's alignment as a class (`halign-center`,
-  `valign-top`), and the UI's stylesheet never uses them, so `.<` and `^` in a
-  table's specs change nothing. The site's stylesheet adds the six rules
-  (Asciidoctor's own stylesheet has them).
+2. **The default UI applies AsciiDoc's alignment specs.** Asciidoctor writes
+  each cell's alignment as a class (`halign-center`, `valign-top`), and the
+  UI's stylesheet has a rule for each, so `.<` and `^` in a table's specs work
+  on the bare UI. Native is measured on the bare UI (decided). *Corrected:* an
+  earlier version of this finding said the UI had no such rules, and the
+  site's stylesheet repeated them; they are removed, and the tables render
+  the same (checked in the browser).
 3. **The default UI styles only AsciiDoc tables.** Its rules are written for
   `table.tableblock`, so every HTML table in passthrough renders without
   borders, at the body text size, with centered header cells

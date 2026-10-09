@@ -104,8 +104,8 @@ table (`*Label requirements*`). The capped no-wrap and the column roles
 cannot be carried.
 
 Asciidoctor writes the alignment specs as classes (`halign-left`,
-`valign-top`), and the default UI has no rules for those classes; `hints.css`
-adds the six rules, without which `.<` and `^` change nothing.
+`valign-top`), and the default UI has a rule for each, so native tables need
+no stylesheet for alignment.
 
 `native-plain` is the same tables with no `cols` at all. AsciiDoc then gives
 every column the same width, where a Markdown pipe table sizes columns by
