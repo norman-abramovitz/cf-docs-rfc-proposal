@@ -61,8 +61,8 @@ What has been done in this round, newest last. Each line links to the work.
   blocks. AsciiDoc's own table carries widths, row headers, top alignment and
   lists in cells; the extension needs no code, only roles and a stylesheet.
   The default UI styles only AsciiDoc tables and hyphenates words in cells,
-  so the site's stylesheet styles HTML tables that keep `class="table"` and
-  turns hyphenation off. Results and findings:
+  so the site's stylesheet styles HTML tables with `class="table"` and turns
+  hyphenation off. Results and findings:
   [results.md](results.md#antora-321).
 - [ ] Probes: Eleventy, Sphinx/MyST, Middleman without Bookbinder.
 - [ ] Results summary.
@@ -157,6 +157,12 @@ Conversions drop that markup and rely on the template instead:
   a cap the template sets, the text wraps between words after all.
 - **Row headers are styled on their own.** The template can set their look
   apart from column headers and body cells.
+- **Every HTML table names its style with a class.** `class="table"` is the
+  standard style, the one most tables use; a conversion adds it to a table
+  that has no class. Further styles (candidates: compact, boxed, plain,
+  striped) are named after the tables in all the docs repos, the tutorial
+  repos included, have been looked at. A Markdown table cannot carry a
+  class, so it gets the standard style; another style needs the extension.
 
 ## Method
 

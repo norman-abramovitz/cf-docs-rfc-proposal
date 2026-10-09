@@ -28,7 +28,8 @@ HTML; the width hint carries the intent instead.
 **Deviations:** the header cells wrap their text in `<strong>`. It is
 dropped: bold header cells are a convention the template provides (see
 [Template conventions](../README.md#template-conventions)). The header text is
-unchanged.
+unchanged. The table has no class; it gets `class="table"`, the standard
+style, as every HTML table names its style.
 
 ### Spot checks
 

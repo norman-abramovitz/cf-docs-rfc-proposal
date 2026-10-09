@@ -137,4 +137,6 @@ columns sized by their content.
 The theme styles only tables without a `class`. A table that keeps
 `class="table"` gets the theme's look from rules in `hints.css` that repeat
 the theme's table rules for `table.table`, so the class is a hook the
-template can format. To see the theme's own default, drop the class.
+template can format. To see the theme's own default, drop the class. Every
+HTML table names its style with a class; a table without one gets
+`class="table"`.

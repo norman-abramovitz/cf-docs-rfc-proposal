@@ -171,7 +171,7 @@ For increased security, use only the grant types your app requires. However, you
 To help you choose a grant type for your use case, see the following table:
 
 ++++
-<table>
+<table class="table">
 <thead>
   <tr>
     <th width="30%">Grant type</th>
@@ -292,7 +292,7 @@ The following table describes these custom attributes:
 
 [subs=attributes+]
 ++++
-<table>
+<table class="table">
 <thead>
   <tr>
     <th width="25%">Key</th>

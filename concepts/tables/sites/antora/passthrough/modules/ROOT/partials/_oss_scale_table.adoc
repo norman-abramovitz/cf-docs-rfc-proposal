@@ -4,7 +4,7 @@ single VM.
 
 [subs=attributes+]
 ++++
-<table>
+<table class="table">
 <col width="25%" />
 <col width="25%" />
 <col width="50%" />

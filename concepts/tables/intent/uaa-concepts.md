@@ -21,7 +21,9 @@ Source: lines 174–220, under "Selecting the client grant type". Five rows.
 `</tr>`. Browsers ignore the stray end tag and close the row at the next
 `<tr>`; strict parsers fail.
 
-**Deviations:** none.
+**Deviations:** the table has no class; it gets `class="table"`, the
+standard style, as every HTML table names its style (see
+[Template conventions](../README.md#template-conventions)).
 
 ### Spot checks
 
@@ -54,6 +56,7 @@ comparing renderings: the double break is the end of a paragraph, with
 paragraph spacing below it, so the cell holds two paragraphs. Passthrough
 keeps the `<br/><br/>` (it applies cleanup only). Native pipe tables cannot
 hold paragraphs, so native keeps `<br /><br />`.
+The table also gets `class="table"`, as the first one does.
 
 ### Spot checks
 

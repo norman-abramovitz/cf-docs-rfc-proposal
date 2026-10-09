@@ -2,7 +2,7 @@ The following table provides recommended instance counts for a high-availability
 decrease the footprint of your deployment by specifying fewer instances and combining multiple components onto a
 single VM.
 
-<table>
+<table class="table">
 <col width="25%" />
 <col width="25%" />
 <col width="50%" />

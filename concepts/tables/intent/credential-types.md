@@ -19,7 +19,10 @@ Source: lines 17–46. Seven rows, one per credential type.
 **Cleanup needed:** `class=“table”` uses typographic quotes, so it is not a
 valid attribute value. Browsers read the class as `“table”` (quotes
 included), so on the published page the `table` class was never applied.
-The class is dropped: appearance belongs to the template.
+The quotes are made straight: `class="table"` names the standard table style
+(see [Template conventions](../README.md#template-conventions)). *Changed:*
+the class was dropped at first; it stays now that every HTML table names its
+style.
 
 **Deviations:** none. The body rows sit directly in `<table>` with no
 `<tbody>`; adding one changes no content.

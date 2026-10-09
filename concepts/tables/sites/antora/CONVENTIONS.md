@@ -66,10 +66,10 @@ repairs it as on the published page. Only the intent files' cleanup applies.
 variable; without it `{app_runtime_abbr}` shows as text.
 
 The default UI styles only AsciiDoc tables (`table.tableblock`). An HTML
-table that keeps `class="table"` gets the same look from
+table with `class="table"` gets the same look from
 [supplemental-ui/css/hints.css](supplemental-ui/css/hints.css), so the class
-is a hook the template can format; an HTML table without a class stays
-unstyled.
+is a hook the template can format. Every HTML table names its style with a
+class; a table without one gets `class="table"`.
 
 ## Native
 

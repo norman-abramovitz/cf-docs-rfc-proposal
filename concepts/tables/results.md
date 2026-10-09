@@ -64,7 +64,7 @@ Site: [sites/docusaurus/](sites/docusaurus/) — conventions:
 | `_oss_scale_table` | passthrough | after cleanup: `<col />`, `<colgroup>` | preserved | widths 25/25/50 exactly | HTML as before |
 | | extension | yes | preserved | key column does not wrap; widths 30/24/46 because "Cloud Controller Worker" does not fit in 25% without wrapping | Markdown list-table; long cells on one line |
 | | native | yes | preserved | none (widths 18/15/67 by content) | pipe table, very long rows |
-| `credential-types` | passthrough | after cleanup: straight quotes (class dropped), `style` object, `<tbody>` | preserved | width 20% | HTML |
+| `credential-types` | passthrough | after cleanup: straight quotes, `style` object, `<tbody>` | preserved | width 20% | HTML |
 | | extension | yes | preserved | width 20%, row headers, no wrap | list-table |
 | | native | yes | preserved | none (18/82) | pipe table, readable |
 | `metadata` | passthrough | after cleanup: two unclosed `<td>`, headers moved into `<thead>`, `style` objects, plus braces in a `<pre>` block and one `<br>` outside the tables | preserved; stray backslashes removed (decided fix) | spanning title row centered | HTML |
@@ -243,7 +243,7 @@ Site: [sites/zensical/](sites/zensical/) — conventions:
 | `_oss_scale_table` | passthrough | yes; `<col />` closed (intent cleanup, not forced) | preserved | widths 25/25/50 exactly | HTML as before |
 | | extension | yes | preserved; the empty Notes cell is written `- <!-- -->` (finding 5) | widths, row headers, key column on one line (26/25/49) | list-table, four-space indents; long cells on one line |
 | | native | yes | preserved | widths 25/25/50 through header-cell attributes; no row headers | pipe table, very long rows |
-| `credential-types` | passthrough | yes; class with typographic quotes dropped (intent cleanup) | preserved | width 20% | HTML |
+| `credential-types` | passthrough | yes; class quotes made straight (intent cleanup) | preserved | width 20% | HTML |
 | | extension | yes | preserved | width 20%, row headers, no wrap | list-table |
 | | native | yes | preserved | width 20% through a header-cell attribute | pipe table, readable |
 | `metadata` | passthrough | yes; two unclosed `<td>`, headers moved into `<thead>` (intent cleanup) | preserved; stray backslashes removed (decided fix) | spanning title row; no theme table style (finding 1) | HTML |
@@ -312,7 +312,10 @@ differ (percent of the table, first body row):
   class and style it. [hints.css](sites/zensical/docs/stylesheets/hints.css)
   repeats the theme's table rules for `table.table`, so those tables now
   have borders and bold headers; a template can format them differently
-  through the same class.
+  through the same class. *Later decision:* every HTML table names its
+  style with a class, so the four tables without one now get
+  `class="table"` too, and `credential-types` keeps it with straight quotes
+  (see [Template conventions](README.md#template-conventions)).
 2. **The theme's header rule outranks plain hint CSS.** The theme sets header
   cells with `.md-typeset table:not([class]) th:not([align])`. A rule such as
   `.hinted-table th[scope='row']` loses to it, so the title row was not
@@ -453,7 +456,7 @@ wide.
 | | extension | yes | preserved | widths, row headers, key column on one line (31/24/45) | Markdoc table; long cells on one line |
 | | native | yes | preserved | widths 25/25/50 through `width` on header cells; no row headers | Markdoc table |
 | | native-plain | yes | preserved | none (18/17/65) | pipe table, very long rows |
-| `credential-types` | passthrough | yes; class with typographic quotes dropped (intent cleanup) | preserved | width 20% | HTML |
+| `credential-types` | passthrough | yes; class quotes made straight (intent cleanup) | preserved | width 20% | HTML |
 | | extension | yes | preserved | width 20%, row headers, no wrap | Markdoc table |
 | | native | yes | preserved | width 20% through `width` on a header cell | Markdoc table, readable |
 | | native-plain | yes | preserved | none (18/82) | pipe table, readable |
@@ -638,11 +641,11 @@ table of contents beside it).
 
 | Page | Mode | Builds | Content and outline | Hints honored | Source readability |
 |------|------|--------|---------------------|---------------|--------------------|
-| `_oss_scale_table` | passthrough | yes | preserved | widths 25/25/50; no UI table style (no class) | HTML in a passthrough block |
+| `_oss_scale_table` | passthrough | yes | preserved | widths 25/25/50; `class="table"` added | HTML in a passthrough block |
 | | extension | yes | preserved | widths, row headers, key column on one line | AsciiDoc table |
 | | native | yes | preserved | widths 25/25/50, row headers, top alignment | AsciiDoc table |
 | | native-plain | yes | preserved | none; equal columns (33/33/33) | AsciiDoc table |
-| `credential-types` | passthrough | yes; class with typographic quotes dropped (intent cleanup) | preserved | width 20%; no UI table style (no class) | HTML |
+| `credential-types` | passthrough | yes; class quotes made straight (intent cleanup) | preserved | width 20%; `class="table"` added | HTML |
 | | extension | yes | preserved | width 20%, row headers, no wrap | AsciiDoc table, readable |
 | | native | yes | preserved | width 20%, row headers | AsciiDoc table, readable |
 | | native-plain | yes | preserved | none; equal columns (50/50) | AsciiDoc table, readable |
@@ -654,7 +657,7 @@ table of contents beside it).
 | | extension | yes | preserved | variant C: no widths, columns sized by content | AsciiDoc table |
 | | native | yes | preserved | variant C (same as extension) | AsciiDoc table |
 | | native-plain | yes | preserved | equal columns (33/33/33), not variant C | AsciiDoc table |
-| `uaa-concepts` | passthrough | yes; `</td>` → `</tr>` (intent cleanup) | preserved | widths 30% and 25%; no UI table style (no class) | HTML |
+| `uaa-concepts` | passthrough | yes; `</td>` → `</tr>` (intent cleanup) | preserved | widths 30% and 25%; `class="table"` added | HTML |
 | | extension | yes | preserved; `<br/><br/>` became two paragraphs (decided) | widths, row headers, no wrap | AsciiDoc table |
 | | native | yes | preserved; two paragraphs (decided) | widths, row headers | AsciiDoc table |
 | | native-plain | yes | preserved; two paragraphs | none; equal columns | AsciiDoc table |
@@ -717,9 +720,9 @@ passthrough included.
   `table.tableblock`, so every HTML table in passthrough renders without
   borders, at the body text size, with centered header cells
   ([screenshot](results/antora-credential-types-t1-passthrough-unstyled.png)).
-  The site's stylesheet styles `table.table` like the UI's tables, so the
-  eight tables that keep `class="table"` look like the others; the four
-  without a class stay unstyled.
+  The site's stylesheet styles `table.table` like the UI's tables. Every
+  HTML table names its style with a class (decided), so the four tables
+  that had none get `class="table"` and all twelve look like the others.
 4. **The default UI exposes no variables.** It is built with its variables
   resolved, so a site cannot change table padding, borders, or text size
   through settings; it overrides rules instead. The site's stylesheet adds
