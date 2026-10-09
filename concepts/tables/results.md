@@ -407,8 +407,18 @@ wide.
   the space next to an inline tag disappears when the text around it spans
   lines (`<code>password</code> refers` renders as "passwordrefers", 19 places
   in `uaa-concepts`). The build reports nothing (findings 1 and 2).
-  Passthrough therefore needs changes the other tools do not: an entity for
-  the dash, and each table cell on one line.
+  **Markdoc cannot take the HTML as is.** These are the changes it needed,
+  which the other tools did not:
+
+  | In the source | Written for Markdoc | Without the change |
+  |---------------|---------------------|--------------------|
+  | `<li><code>-</code></li>` | `<li><code>&#45;</code></li>` | an empty bulleted list; the dash is gone |
+  | `The name <code>password</code> refers to …` with the cell text over two lines | the whole cell on one line | "The name passwordrefers to …" |
+  | `… creates clients with generated` at a line end, `<code>Client.client_id</code>` on the next, in a cell with a variable | `generated&#32;<code>Client.client_id</code>` | "generatedClient.client_id" |
+  | a blank line inside `<pre>` in a list item | the line break written `&#10;` (`$ cf logs app1&#10;`) | the whole site fails to build |
+
+  Joining cells onto one line is not adopted as a conversion rule: it makes
+  the source harder to read.
 - **With those changes every table renders correctly in every mode.** All 36
   spot checks pass in every mode.
   `make check` in the site reruns them.
@@ -447,15 +457,15 @@ wide.
 | | extension | yes | preserved | width 20%, row headers, no wrap | Markdoc table |
 | | native | yes | preserved | width 20% through `width` on a header cell | Markdoc table, readable |
 | | native-plain | yes | preserved | none (18/82) | pipe table, readable |
-| `metadata` | passthrough | yes; intent cleanup, plus `&#45;` for five lone dashes and cells joined onto one line (forced) | preserved; stray backslashes removed (decided fix) | spanning title row | HTML |
+| `metadata` | passthrough | yes; intent cleanup, plus `&#45;` for five lone dashes and cells joined onto one line (Markdoc cannot take the HTML as is) | preserved; stray backslashes removed (decided fix) | spanning title row | HTML |
 | | extension | yes | preserved; title is a bold line above the table | row headers, no wrap on key column (27%) | Markdoc table with nested lists: readable |
 | | native | yes | preserved; title is a bold line above the table | lists in cells without HTML | Markdoc table with nested lists: readable |
 | | native-plain | yes, lists as inline HTML in cells | preserved; title is a bold line above the table | none | pipe table with inline `<ul>`: hard to edit |
-| `troubleshooting_slow_requests` | passthrough | yes; one blank line in an indented terminal block written `&#10;`, cells joined (forced) | preserved after indenting the Experiment 2 table under its list step | variant A, as written | HTML |
+| `troubleshooting_slow_requests` | passthrough | yes; one blank line in an indented terminal block written `&#10;`, cells joined (Markdoc cannot take the HTML as is) | preserved after indenting the Experiment 2 table under its list step | variant A, as written | HTML |
 | | extension | yes | preserved | variant C: no widths, columns sized by content | Markdoc table |
 | | native | yes | preserved | variant C (same as extension) | Markdoc table |
 | | native-plain | yes | preserved | variant C (same as extension) | pipe table |
-| `uaa-concepts` | passthrough | yes; `</td>` → `</tr>` (intent cleanup), cells joined and one `&#32;` (forced) | preserved | widths 30% and 25% | HTML |
+| `uaa-concepts` | passthrough | yes; `</td>` → `</tr>` (intent cleanup), cells joined and one `&#32;` (Markdoc cannot take the HTML as is) | preserved | widths 30% and 25% | HTML |
 | | extension | yes | preserved; `<br/><br/>` became two paragraphs (decided) | widths, row headers, no wrap | Markdoc table; paragraphs as in Markdown |
 | | native | yes | preserved; two paragraphs (decided) | widths through `width` on header cells | Markdoc table |
 | | native-plain | yes | preserved, `<br /><br />` kept | none (27/32/41, 25/75) | pipe table |
@@ -574,8 +584,8 @@ raw build leaves it out. 28 of 36 spot checks pass on the four raw pages:
 | Page | Fails raw | Fixed by |
 |------|-----------|----------|
 | `credential-types` | class with typographic quotes | intent cleanup |
-| `metadata` | the lone `-` code spans (finding 1) | `&#45;` (forced) |
-| `troubleshooting_slow_requests` | does not parse (six checks) | `&#10;` (forced) and the indent |
+| `metadata` | the lone `-` code spans (finding 1) | `&#45;` (Markdoc cannot take the HTML as is) |
+| `troubleshooting_slow_requests` | does not parse (six checks) | `&#10;` (Markdoc cannot take the HTML as is) and the indent |
 
 The raw pages also lose the spaces next to inline tags (finding 2); the spot
 checks do not cover that. The backslash checks pass raw, because Markdoc

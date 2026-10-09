@@ -50,6 +50,11 @@ What has been done in this round, newest last. Each line links to the work.
   widths on header cells without custom code; row headers and a title row
   above the column headers need the extension. Results and findings:
   [results.md](results.md#starlight-0426).
+- [x] **Starlight reviewed.** The `metadata` title moves to a bold line above
+  the table in every converted mode of every tool, because Markdown tables
+  have one header row. Markdoc's changes to passthrough HTML are recorded as
+  "Markdoc cannot take the HTML as is", with examples. Joining table cells
+  onto one line is not adopted as a conversion rule, for source readability.
 - [ ] Antora site.
 - [ ] Probes: Eleventy, Sphinx/MyST, Middleman without Bookbinder.
 - [ ] Results summary.
