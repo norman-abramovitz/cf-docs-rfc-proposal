@@ -25,7 +25,7 @@ check-raw: vars.json
 	node markdoc-check.mjs src/content/docs/passthrough-raw/*.mdoc
 
 PAGES = scale-table-host credential-types metadata troubleshooting_slow_requests uaa-concepts
-MODES ?= passthrough extension native
+MODES ?= passthrough extension native native-plain
 
 # Spot checks from the intent files, per mode; prints only failures. A page
 # that was not built (raw troubleshooting) is checked as an empty file.
