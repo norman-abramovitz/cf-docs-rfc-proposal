@@ -35,7 +35,13 @@ What has been done in this round, newest last. Each line links to the work.
   past which the text wraps between words. Row headers get their own
   styling. The `*/*` lost in terminal output (results finding 8) is left to
   the code blocks concept.
-- [ ] Zensical site.
+- [x] **Zensical done.** All five pages build with their HTML unchanged, and
+  the variables keep their `<%= vars.name %>` form. With the intent files'
+  cleanup every table renders correctly in all three modes. The default theme
+  styles only tables without a `class`, so tables that keep `class="table"`
+  lose the theme's table style. Native pipe tables can carry widths on header
+  cells; row headers and the title row need HTML or a custom extension.
+  Results and findings: [results.md](results.md#zensical-0069).
 - [ ] Astro/Starlight site.
 - [ ] Antora site.
 - [ ] Probes: Eleventy, Sphinx/MyST, Middleman without Bookbinder.

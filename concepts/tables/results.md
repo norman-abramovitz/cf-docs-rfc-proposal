@@ -182,3 +182,166 @@ in the grid above.
 | `metadata` | `{` in JSON inside `<pre>` parsed as an expression | no |
 | `troubleshooting_slow_requests` | `<br>` is not closed | no |
 | `uaa-concepts` | `{OIDC provider alias}` in a list parsed as an expression | no |
+
+## Zensical 0.0.69
+
+Site: [sites/zensical/](sites/zensical/) — conventions:
+[CONVENTIONS.md](sites/zensical/CONVENTIONS.md). Measured at the same
+1280-pixel window; the content column is 688 pixels wide.
+
+### Summary
+
+- **The HTML builds unchanged.** All five pages build as they are, with no
+  change to the page source: Python-Markdown passes HTML blocks through, and
+  the variables keep their ERB form. Only the host page's partial line
+  changes. The intent files' cleanup and one indent (finding 4) make every
+  spot check pass.
+- **Every table renders correctly in all three modes.** All 36 spot checks
+  pass in passthrough and extension. Native passes 35: it cannot draw the
+  `metadata` title as a spanning row. `make check` in the site reruns them.
+- **Variables work without touching the pages.** The built-in macros support
+  takes ERB delimiters, so `<%= vars.name %>` renders as written. An undefined
+  variable renders empty and an HTML-valued variable renders as markup, as on
+  the published pages. There is no generated page description, so the
+  description problem Docusaurus has (its finding 7) does not occur.
+- **The default theme styles only tables without a `class`.** Eight of the
+  thirteen tables keep `class="table"` in passthrough and render without the
+  theme's table style (finding 1).
+- **Zensical has no table hints of its own.** Native pipe tables can carry
+  widths through attributes on header cells; row headers, the title row and
+  the capped no-wrap need HTML (passthrough) or custom code (extension). The
+  extension is a Python-Markdown block, which is custom code like the
+  Docusaurus remark plugin.
+- **No browser errors** on any page in any mode.
+
+### Grid
+
+| Page | Mode | Builds | Content and outline | Hints honored | Source readability |
+|------|------|--------|---------------------|---------------|--------------------|
+| `_oss_scale_table` | passthrough | yes; `<col />` closed (intent cleanup, not forced) | preserved | widths 25/25/50 exactly | HTML as before |
+| | extension | yes | preserved; the empty Notes cell is written `- <!-- -->` (finding 5) | widths, row headers, key column on one line (26/25/49) | list-table, four-space indents; long cells on one line |
+| | native | yes | preserved | widths 25/25/50 through header-cell attributes; no row headers | pipe table, very long rows |
+| `credential-types` | passthrough | yes; class with typographic quotes dropped (intent cleanup) | preserved | width 20% | HTML |
+| | extension | yes | preserved | width 20%, row headers, no wrap | list-table |
+| | native | yes | preserved | width 20% through a header-cell attribute | pipe table, readable |
+| `metadata` | passthrough | yes; two unclosed `<td>`, headers moved into `<thead>` (intent cleanup) | preserved; stray backslashes removed (decided fix) | spanning title row; no theme table style (finding 1) | HTML |
+| | extension | yes | preserved | title row spanning all columns, row headers, no wrap on key column (23%) | list-table with nested lists: readable |
+| | native | yes, lists as inline HTML in cells | preserved; title is a bold line above the table | none; top alignment from the theme | pipe table with inline `<ul>`: hard to edit |
+| `troubleshooting_slow_requests` | passthrough | yes | preserved after indenting the Experiment 2 table under its list step | variant A, as written; no theme table style (finding 1) | HTML |
+| | extension | yes | preserved | variant C: no widths, columns sized by content | list-table |
+| | native | yes | preserved after indenting the Experiment 2 table under its list step | variant C (same as extension) | pipe table |
+| `uaa-concepts` | passthrough | yes; `</td>` → `</tr>` (intent cleanup) | preserved | widths 30% and 25% | HTML |
+| | extension | yes | preserved; `<br/><br/>` became two paragraphs (decided) | widths, row headers, no wrap | list-table; paragraphs as in Markdown |
+| | native | yes | preserved, `<br /><br />` kept | widths through header-cell attributes | pipe table |
+
+### Column widths
+
+Percent of the table, first body row. Table 2 of `troubleshooting_slow_requests`
+sits inside a numbered list, so it is narrower (660 pixels).
+
+| Table | Passthrough | Extension | Native |
+|-------|-------------|-----------|--------|
+| `_oss_scale_table` | 25/25/50 | 26/25/49 | 25/25/50 |
+| `credential-types` | 20/80 | 20/80 | 20/80 |
+| `metadata` T1 | 16/17/27/40 | 23/18/25/33 | 18/19/27/36 |
+| `metadata` T2 | 17/17/28/38 | 23/18/26/32 | 19/19/27/35 |
+| `metadata` T3 | 16/27/57 | 16/26/57 | 16/27/57 |
+| `troubleshooting` T1 | 26/25/49 | 28/25/46 | 28/25/46 |
+| `troubleshooting` T2 | 25/36/39 | 23/37/40 | 23/37/40 |
+| `troubleshooting` T3 | 25/30/45 | 21/31/47 | 21/31/47 |
+| `troubleshooting` T4 | 25/20/55 | 19/23/58 | 19/23/58 |
+| `troubleshooting` T5 | 25/25/50 | 22/22/56 | 22/22/56 |
+| `troubleshooting` T6 | 25/25/50 | 19/24/57 | 19/24/57 |
+| `uaa-concepts` T1 | 30/26/43 | 30/26/43 | 30/26/43 |
+| `uaa-concepts` T2 | 25/75 | 25/75 | 25/75 |
+
+The scale table's key column stays on one line at 26%: "Cloud Controller
+Worker" fits the 16em cap here, so the no-wrap wins over the 25% width by one
+point.
+
+### Findings
+
+1. **The default theme styles only tables without a `class`.** Its rules are
+  written for `table:not([class])`. Passthrough keeps `class="table"` on the
+  two `metadata` tables and the six `troubleshooting_slow_requests` tables, so
+  they render with no border, and their header cells are in normal weight,
+  not bold as the template convention says
+  ([passthrough](results/zensical-metadata-t1-passthrough-class-unstyled.png),
+  [extension](results/zensical-metadata-t1-extension-theme-styled.png)). The
+  class only restates what the template should do; `credential-types` already
+  drops it (its quotes were broken). The extension puts its hook on a
+  wrapper `div` so the table itself stays classless.
+2. **The theme's header rule outranks plain hint CSS.** The theme sets header
+  cells with `.md-typeset table:not([class]) th:not([align])`. A rule such as
+  `.hinted-table th[scope='row']` loses to it, so the title row was not
+  centered and the row-header variables had no effect. Written to outrank it,
+  both work (checked: setting the row-header variables to right and normal
+  weight changes only the row headers).
+3. **Template errors replace the page unless the build is told to fail.**
+  Every `<%= … %>` on a page goes through the template engine, including ERB
+  tags shown as examples in prose or code. A tag that is not a valid
+  expression (the host page's first draft mentioned `partial 'oss_scale_table'`
+  inside one) produced a page that said "Macro Syntax Error", and the build
+  still reported success. `on_error_fail = true` makes it fail. Pages that
+  document ERB will need escaping.
+4. **Placement changes the outline, as in Docusaurus.** A table that follows
+  a list item without indentation ends the list (Docusaurus finding 3).
+  Indented, an HTML table becomes inline HTML inside the item's paragraph
+  (`<p>…<table>…</table></p>`); browsers close the paragraph at the table,
+  so the table stays in the step.
+5. **Python-Markdown's list rules can drop a cell silently.** In a
+  list-table, a bare `-` for an empty cell turns the cell above it into a
+  heading (Markdown reads `-` under a line as a heading underline), so the
+  row loses a cell and the build reports nothing. The spot checks caught it
+  as missing `≥` cells. An empty cell is written `- <!-- -->`. Rows also need
+  a blank line between them, and nesting needs four-space indents.
+6. **Attribute lists work on cells, not on tables.** `{: .class }` on the
+  line after a pipe table becomes an extra row showing that text. On a single
+  cell it works, which is how native carries widths
+  (`| Type {: style="width:20%" } |`). Per-column hints such as no-wrap would
+  need an attribute on every body cell.
+7. **Partials need the template engine's include, not snippets.** A
+  `--8<--` snippet is inserted after variables are rendered, so a partial
+  included that way shows `<%= vars.recommended_by %>` literally. The
+  template engine's `include` renders the partial's variables. Partials sit
+  outside `docs/` so they do not become pages.
+8. **The anchor check found a real broken link and no false ones.**
+  `uaa-concepts` links to `#shadow`, but the heading's anchor is
+  `<a id="#shadow">` (with the `#`), so the link is broken on the published
+  page too. The `<a id>` heading anchors that Docusaurus reported as broken
+  are recognized here, and they cause no browser errors.
+
+### Text compared with the published page
+
+[checks/text-diff.py](checks/text-diff.py), run for every mode. Apart from the
+decided backslash fix, the main text matches the published page except:
+
+- **Three literal asterisks** in `troubleshooting_slow_requests`, every mode:
+  a bulleted list that follows a paragraph line with no blank line between is
+  a list on the published page and plain text here. Lists are their own
+  concept.
+- **Terminal output inside a list item** (`<pre class="terminal">`) is split
+  into paragraphs inside the `<pre>` when it contains a blank line (one block,
+  in `troubleshooting_slow_requests`); no characters are lost. `Accept: */*`
+  comes through intact: the block that holds it is not in a list. Code blocks
+  are their own concept.
+- **Not reproduced, moved, quotes:** the same as Docusaurus — no *Page last
+  updated* line or GitHub link, the section links are the theme's table of
+  contents, and quotes stay straight (Python-Markdown's `smarty` extension
+  would make them typographic; it is not on).
+
+### Raw passthrough
+
+The five pages built unchanged (only the host page's include line is
+translated). 32 of 36 spot checks pass; the four that fail are exactly what
+the intent files' cleanup and the indent fix:
+
+| Page | Fails raw | Fixed by |
+|------|-----------|----------|
+| `credential-types` | class with typographic quotes | intent cleanup |
+| `metadata` | backslashes in `\[a-z0-9A-Z\]` (two checks) | decided fix |
+| `troubleshooting_slow_requests` | Experiment 2 table outside its list step | indent |
+
+The unclosed `<td>` cells in `metadata` and the stray `</td>` in
+`uaa-concepts` build and render as on the published page: the browser repairs
+them, as it does for the published site.
