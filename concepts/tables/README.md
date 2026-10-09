@@ -1,6 +1,22 @@
 # Concept: Tables
 
-Status: **Designing** — no conversions yet.
+Status: **In progress**.
+
+## Progress
+
+What has been done in this round, newest last. Each line links to the work.
+
+- [x] **Sources copied.** The five test pages and the variables they use, verbatim
+  from upstream, with commits and licenses: [source/SOURCES.md](source/SOURCES.md).
+  Two variables the pages use (`metadata_ref`, `bosh_cli_link`) are not defined
+  anywhere in the book, so the published pages show them as empty text.
+- [ ] Intent: hints per table, recorded deviations, cleanup needed.
+- [ ] Docusaurus site: passthrough, extension, native.
+- [ ] Zensical site.
+- [ ] Astro/Starlight site.
+- [ ] Antora site.
+- [ ] Probes: Eleventy, Sphinx/MyST, Middleman without Bookbinder.
+- [ ] Results summary.
 
 ## Why tables first
 
