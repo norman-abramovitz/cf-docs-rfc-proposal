@@ -55,7 +55,14 @@ What has been done in this round, newest last. Each line links to the work.
   have one header row. Markdoc's changes to passthrough HTML are recorded as
   "Markdoc cannot take the HTML as is", with examples. Joining table cells
   onto one line is not adopted as a conversion rule, for source readability.
-- [ ] Antora site.
+- [x] **Antora done.** Antora reads AsciiDoc, so every page is rewritten
+  from Markdown in every mode; that conversion has failures of its own, which
+  a converter must handle. HTML tables build unchanged inside passthrough
+  blocks. AsciiDoc's own table carries widths, row headers, top alignment and
+  lists in cells; the extension needs no code, only roles and a stylesheet.
+  The default UI ignores AsciiDoc's alignment classes and styles only
+  AsciiDoc tables, so the site's stylesheet adds both. Results and findings:
+  [results.md](results.md#antora-321).
 - [ ] Probes: Eleventy, Sphinx/MyST, Middleman without Bookbinder.
 - [ ] Results summary.
 

@@ -590,3 +590,192 @@ raw build leaves it out. 28 of 36 spot checks pass on the four raw pages:
 The raw pages also lose the spaces next to inline tags (finding 2); the spot
 checks do not cover that. The backslash checks pass raw, because Markdoc
 reads `\[` as a Markdown escape (finding 1).
+
+## Antora 3.2.1
+
+Site: [sites/antora/](sites/antora/) — conventions:
+[CONVENTIONS.md](sites/antora/CONVENTIONS.md). The default UI, pinned to one
+build (it has no version numbers). Measured at the same 1280-pixel window;
+tables are 686 pixels wide (792 on the scale table's host page, which has no
+table of contents beside it).
+
+### Summary
+
+- **Every page is rewritten, in every mode.** Antora reads AsciiDoc, so the
+  Markdown around the tables becomes AsciiDoc even in passthrough. Here that
+  was done with pandoc 3.12 plus a script; the conversion itself went wrong
+  in four ways that a converter has to handle (finding 1).
+- **The HTML builds unchanged.** An HTML table inside a passthrough block
+  (`++++`) is not parsed: the browser gets it exactly as written and repairs
+  it as on the published page. Raw, 32 of 36 spot checks pass; the intent
+  files' cleanup fixes the other four (raw passthrough below). The only
+  addition is `[subs=attributes+]` on a table that holds a variable.
+- **With that, every table renders correctly in every mode.** All 36 spot
+  checks pass in passthrough, extension, native, and native-plain.
+  `make check` in the site reruns them.
+- **AsciiDoc's own table carries most of the hints.** Widths, content-sized
+  columns, a header row, row headers, top alignment, a cell spanning columns,
+  and lists and paragraphs in cells are all table specs. What it cannot
+  carry: the capped no-wrap, the column roles, and a second header row (so
+  the `metadata` title is a bold line above the table, as decided).
+- **The extension needs no code.** Roles on the native table name the column
+  roles and the no-wrap columns (`[.hinted.col1-key.col1-nowrap]`), and a
+  stylesheet in a supplemental UI gives them their meaning. What #1642 §5
+  says about plugins is quoted in the Docusaurus summary.
+- **The default UI ignores part of what AsciiDoc writes.** It has no rules
+  for the alignment classes Asciidoctor puts on each cell, styles only
+  AsciiDoc tables (an HTML table gets no borders), and exposes no variables
+  (findings 2 and 3). The site's stylesheet adds the alignment rules and
+  styles HTML tables that keep `class="table"`.
+- **Variables become attributes.** `<%= vars.name %>` is `{name}`. An
+  undefined attribute renders as nothing only with `attribute-missing: drop`;
+  by default the page shows `{metadata_ref}` as text. An HTML-valued
+  attribute renders as markup. Antora writes no page description unless the
+  page sets one, so the description problem Docusaurus has (its finding 7)
+  does not occur.
+- **No browser errors** and no failed requests on any page.
+
+### Grid
+
+| Page | Mode | Builds | Content and outline | Hints honored | Source readability |
+|------|------|--------|---------------------|---------------|--------------------|
+| `_oss_scale_table` | passthrough | yes | preserved | widths 25/25/50; no UI table style (no class) | HTML in a passthrough block |
+| | extension | yes | preserved | widths, row headers, key column on one line | AsciiDoc table |
+| | native | yes | preserved | widths 25/25/50, row headers, top alignment | AsciiDoc table |
+| | native-plain | yes | preserved | none; equal columns (33/33/33) | AsciiDoc table |
+| `credential-types` | passthrough | yes; class with typographic quotes dropped (intent cleanup) | preserved | width 20%; no UI table style (no class) | HTML |
+| | extension | yes | preserved | width 20%, row headers, no wrap | AsciiDoc table, readable |
+| | native | yes | preserved | width 20%, row headers | AsciiDoc table, readable |
+| | native-plain | yes | preserved | none; equal columns (50/50) | AsciiDoc table, readable |
+| `metadata` | passthrough | yes; intent cleanup | preserved; stray backslashes removed (decided fix) | spanning title row | HTML |
+| | extension | yes | preserved; title is a bold line above the table | row headers, no wrap on key column (23%) | AsciiDoc table with lists in `a\|` cells: readable |
+| | native | yes | preserved; title is a bold line above the table | row headers, top alignment | AsciiDoc table with lists: readable |
+| | native-plain | yes | preserved; title is a bold line above the table | none; equal columns | AsciiDoc table with lists: readable |
+| `troubleshooting_slow_requests` | passthrough | yes | preserved after nesting the Experiment 2 table in its list step | variant A, as written | HTML |
+| | extension | yes | preserved | variant C: no widths, columns sized by content | AsciiDoc table |
+| | native | yes | preserved | variant C (same as extension) | AsciiDoc table |
+| | native-plain | yes | preserved | equal columns (33/33/33), not variant C | AsciiDoc table |
+| `uaa-concepts` | passthrough | yes; `</td>` → `</tr>` (intent cleanup) | preserved | widths 30% and 25%; no UI table style (no class) | HTML |
+| | extension | yes | preserved; `<br/><br/>` became two paragraphs (decided) | widths, row headers, no wrap | AsciiDoc table |
+| | native | yes | preserved; two paragraphs (decided) | widths, row headers | AsciiDoc table |
+| | native-plain | yes | preserved; two paragraphs | none; equal columns | AsciiDoc table |
+
+### Column widths
+
+Percent of the table, first body row. Table 2 of `troubleshooting_slow_requests`
+sits inside a numbered list, so it is narrower (650 pixels).
+
+| Table | Passthrough | Extension | Native | Native-plain |
+|-------|-------------|-----------|--------|--------------|
+| `_oss_scale_table` | 25/25/50 | 25/25/50 | 25/25/50 | 33/33/33 |
+| `credential-types` | 20/80 | 20/80 | 20/80 | 50/50 |
+| `metadata` T1 | 16/17/29/39 | 23/16/23/38 | 17/17/25/41 | 25/25/25/25 |
+| `metadata` T2 | 18/17/29/36 | 23/17/24/36 | 19/17/25/38 | 25/25/25/25 |
+| `metadata` T3 | 15/33/52 | 16/33/51 | 15/33/52 | 33/33/33 |
+| `troubleshooting` T1 | 34/23/43 | 34/23/43 | 34/23/43 | 33/33/33 |
+| `troubleshooting` T2 | 25/36/39 | 28/34/37 | 28/34/37 | 33/33/33 |
+| `troubleshooting` T3 | 25/30/45 | 18/32/49 | 18/32/49 | 33/33/33 |
+| `troubleshooting` T4 | 25/21/54 | 15/23/62 | 15/23/62 | 33/33/33 |
+| `troubleshooting` T5 | 25/25/50 | 19/22/59 | 19/22/59 | 33/33/33 |
+| `troubleshooting` T6 | 25/25/50 | 15/24/61 | 15/24/61 | 33/33/33 |
+| `uaa-concepts` T1 | 30/29/41 | 30/29/41 | 30/29/41 | 33/33/34 |
+| `uaa-concepts` T2 | 26/74 | 25/75 | 25/75 | 50/50 |
+
+The scale table's key column fits its 25% here: tables are wider than in the
+other tools, so "Cloud Controller Worker" stays on one line without the
+no-wrap pushing the column wider. In `metadata` the no-wrap key column
+("(Optional) Key Prefix") takes 23% in the extension. `metadata` T3 is a
+Markdown table in the source, so it is an AsciiDoc table in every mode,
+passthrough included.
+
+### Findings
+
+1. **Converting the Markdown to AsciiDoc is its own step, with its own
+  failures.** pandoc 3.12 converted the prose; a script around it handled
+  what pandoc got wrong, and each of these silently changes a page:
+  - pandoc drops raw HTML from AsciiDoc output, tables and `<pre>` blocks
+    included, so HTML blocks must be set aside and put back as passthrough
+    blocks;
+  - in a list step that holds a nested list and then more paragraphs, it
+    attaches the later paragraphs to the nested list's last bullet (two
+    places; an open block around the step's content fixes it);
+  - it leaves out a heading's id when the id matches the one pandoc would
+    generate, but Asciidoctor generates a different one (`_subdomains`), so
+    five in-page links went nowhere until every anchor was written out;
+  - an image's alt text with commas must be quoted, or the commas start the
+    width and height attributes (the alt text was cut at the first comma).
+  The spot checks and the text comparison would not have caught the last
+  three; they were found by reading the output and by a scan of the built
+  pages for in-page links without a target.
+2. **The default UI has no rules for Asciidoctor's alignment classes.**
+  Asciidoctor writes each cell's alignment as a class (`halign-center`,
+  `valign-top`), and the UI's stylesheet never uses them, so `.<` and `^` in a
+  table's specs change nothing. The site's stylesheet adds the six rules
+  (Asciidoctor's own stylesheet has them).
+3. **The default UI styles only AsciiDoc tables.** Its rules are written for
+  `table.tableblock`, so every HTML table in passthrough renders without
+  borders, at the body text size, with centered header cells
+  ([screenshot](results/antora-credential-types-t1-passthrough-unstyled.png)).
+  The site's stylesheet styles `table.table` like the UI's tables, so the
+  eight tables that keep `class="table"` look like the others; the four
+  without a class stay unstyled.
+4. **The default UI exposes no variables.** It is built with its variables
+  resolved, so a site cannot change table padding, borders, or text size
+  through settings; it overrides rules instead. The site's stylesheet adds
+  `--table-font-size`, `--table-line-height`, `--table-nowrap-max`, and the
+  two row-header variables (checked in the browser: each changes only what
+  it names). Table text is smaller than the page's (15 pixels against 17),
+  and the font-size default keeps it so. The UI spaces blocks with top margins
+  only, so cells have no extra gap below their last paragraph (10 pixels
+  above and below the text in the two-paragraph `uaa-concepts` cell).
+5. **The default UI hyphenates.** It sets `hyphens: auto` on the page, so
+  table cells break words with a hyphen ("al-phanumeric", "certifi-cate"),
+  which the published page does not
+  ([screenshot](results/antora-troubleshooting-t2-native-hyphenation.png)).
+6. **An AsciiDoc table without column specs has equal columns.**
+  `native-plain` shows every table at 50/50, 33/33/33, or 25/25/25/25,
+  whatever the content
+  ([screenshot](results/antora-credential-types-t1-native-plain-equal-widths.png)).
+  A column sized by its content has to be written `~`.
+7. **Code spans need the literal form.** In a table cell, plain backticks
+  still apply AsciiDoc's replacements, so `KEY in (VALUE1,VALUE2...)` showed
+  `…`. Code that holds `...`, `_`, quotes, and the like is written
+  `` `+…+` ``.
+8. **No link check.** Neither Antora nor Asciidoctor reported a link to a
+  missing anchor. A scan of the built pages found `#shadow` and
+  `#user-groups` broken in `uaa-concepts`, as in Starlight (its finding 7);
+  both are broken on the published page too.
+9. **Typography comes from AsciiDoc's replacements.** Apostrophes in prose and
+  in AsciiDoc table cells become typographic (`app’s`), as on the published
+  site, but not in HTML passthrough blocks, and double quotes (`"sub"`) stay
+  straight everywhere.
+10. **The default UI is not versioned.** Its bundle is a build artifact at a
+  moving URL; the site pins one build by its job URL and checks the file's
+  hash.
+
+### Text compared with the published page
+
+[checks/text-diff.py](checks/text-diff.py), run for every mode. Apart from the
+decided backslash fix, the main text matches the published page except:
+
+- **Quotes inside tables:** in passthrough the HTML tables keep straight
+  apostrophes (`organization's`), and in every mode `"sub"` keeps straight
+  double quotes (finding 9).
+- **`Accept: */*` is kept.** The terminal blocks stay HTML in passthrough
+  blocks, so nothing in them is read as markup, unlike Docusaurus (its
+  finding 8) and Starlight.
+- **Not reproduced, moved:** the same as Docusaurus — no *Page last updated*
+  line or GitHub link, and the section links are the UI's table of contents.
+
+### Raw passthrough
+
+`make build-raw` builds the five pages with their tables' HTML unchanged
+(only the variables and the partial line translated, and the prose converted
+to AsciiDoc as in every mode). All five build without a message, and 32 of
+36 spot checks pass:
+
+| Page | Fails raw | Fixed by |
+|------|-----------|----------|
+| `credential-types` | class with typographic quotes | intent cleanup |
+| `metadata` | two backslash checks | intent cleanup (decided fix) |
+| `troubleshooting_slow_requests` | the Experiment 2 table follows its list instead of sitting in step 4 | indenting it under the step |
