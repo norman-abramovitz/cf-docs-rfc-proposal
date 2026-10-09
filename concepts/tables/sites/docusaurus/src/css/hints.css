@@ -1,0 +1,4 @@
+/* What the table hints mean on this site. Appearance otherwise comes from the theme. */
+.hinted-table th,
+.hinted-table td { vertical-align: top; }
+.hinted-table .wrap-avoid { white-space: nowrap; }

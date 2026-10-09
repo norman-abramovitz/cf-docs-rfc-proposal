@@ -11,6 +11,7 @@ module.exports = {
     ['classic', {
       docs: {
         routeBasePath: '/',
+        beforeDefaultRemarkPlugins: [require('./plugins/list-table')],
         // Raw passthrough pages are kept as evidence; build them with RAW=1.
         exclude: [
           '**/_*.{js,jsx,ts,tsx,md,mdx}', '**/_*/**', '**/*.test.{js,jsx,ts,tsx}', '**/__tests__/**',
@@ -18,6 +19,7 @@ module.exports = {
         ],
       },
       blog: false,
+      theme: {customCss: [require.resolve('./src/css/hints.css')]},
       pages: false,
     }],
   ],
