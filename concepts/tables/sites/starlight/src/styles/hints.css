@@ -15,6 +15,9 @@
 }
 /* The theme spaces blocks with top margins; this keeps any bottom margin out of cells too. */
 .sl-markdown-content table :is(td, th) > :last-child { margin-bottom: 0; }
+/* The theme lets list items break anywhere, so a list in a narrow cell splits words
+   ("Alphanumeri" / "c"). In tables, a word breaks only when it cannot fit at all. */
+.sl-markdown-content table li { overflow-wrap: break-word; }
 .hinted-table th,
 .hinted-table td { vertical-align: top; }
 /* wrap: avoid keeps the cell on one line, up to the cap; longer text wraps between words. */
