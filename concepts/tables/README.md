@@ -111,6 +111,12 @@ What has been done in this round, newest last. Each line links to the work.
   `table`; the closest thing to a second style is a compact one for
   comparison grids and long reference tables. Which styles to support is
   still open (see [Open questions](#open-questions)).
+- [x] **Example style: `table-media`.** To show how a style beyond `table`
+  is added, the survey's image-grid family got one: no cell borders, a rule
+  under the header, centered cells, images filling their cells. The first
+  section of `uaa-performance` is the test page, in every mode of all four
+  tools; all spot checks pass. Each site's `CONVENTIONS.md` has an "Adding
+  a style" section: where the CSS lives and how a table names its style.
 
 ## What we learned
 
@@ -132,7 +138,9 @@ What has been done in this round, newest last. Each line links to the work.
 - **The template sets the look, through a class.** Themes disagree on which
   tables they style, so every HTML table names its style with a class;
   `table` is the standard style. Themes that hyphenate get it turned off in
-  tables.
+  tables. A further style is one more class and a few CSS rules
+  (`table-media`); Starlight's and Antora's own table syntax can name it,
+  while a Markdown pipe table needs the extension.
 - **Some changes sit outside the tables and still block a page:** heading
   anchors written as `<a id>` (MDX), terminal blocks (MDX, Markdoc), the `*`
   in `Accept: */*` (MDX, Markdoc), and variable escaping (MDX, Markdoc,
@@ -154,6 +162,11 @@ not address that concern.
 | `troubleshooting_slow_requests.html.md.erb` | cloudfoundry/docs-cf-admin | 6 |
 | `uaa-concepts.html.md.erb` | cloudfoundry/docs-uaa | 2 |
 | `credential-types.html.md.erb` | cloudfoundry/docs-credhub | 1 |
+| `uaa-performance.html.md.erb` (first section) | cloudfoundry/docs-running-cf | 1 of 12 |
+
+`uaa-performance` was added after the round, as the example for a second
+table style (see [Template conventions](#template-conventions)). The traits
+below are the first five pages'.
 
 ### What the pages have in common
 
@@ -217,7 +230,7 @@ centered vertically and horizontally.
 | Table | title | text | Shown as a bold line above the table, not a row or caption: Markdown tables have one header row |
 | Table | header row | yes / no | Unchanged; every table in the docs repos has one |
 | Table | row-header column | yes / no | Unchanged; row headers are styled apart from column headers and body cells |
-| Table | style | `table`; further names to be picked | New. HTML tables carry it as a class; a Markdown table gets the standard style |
+| Table | style | `table` (standard), `table-media` (example); further names to be picked | New. HTML tables carry it as a class; a Markdown table gets the standard style |
 | Table | pattern | — | Dropped: the Result / Explanation / Action tables set no widths, and the roles decide |
 | Column | role | `key`, `value`, `prose` | Unchanged; carried as classes |
 | Column | width | relative weight | Kept where the source sets one; roles decide otherwise |
@@ -247,7 +260,9 @@ Conversions drop that markup and rely on the template instead:
 - **Every HTML table names its style with a class.** `class="table"` is the
   standard style, the one most tables use; a conversion adds it to a table
   that has no class. A Markdown table cannot carry a class, so it gets the
-  standard style; another style needs the extension. Which further styles to
+  standard style; another style needs the extension. `table-media`, an
+  image grid, is the example of a second style; each site's
+  `CONVENTIONS.md` shows how it is added. Which further styles to
   support (candidates: compact, boxed, plain, striped) is decided from the
   survey of every table in the docs and tutorial repos; it is still open.
 
@@ -333,6 +348,7 @@ Left open by this round:
 
 - **Table styles.** Which styles beyond `table` the template supports. The
   survey found only `table` in use; a compact style has the most evidence.
+  `table-media` exists as the example of how a style is added.
 - **Deferred to other concepts:** the `*` lost in `Accept: */*` (MDX,
   Markdoc), terminal blocks (MDX, Markdoc), heading anchors written as
   `<a id>` (MDX), page descriptions that contain variables (Docusaurus), a

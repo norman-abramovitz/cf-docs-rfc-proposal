@@ -26,9 +26,10 @@ table syntax carries, and how much the rest of the page has to change.
 |---|---|---|---|---|
 | **HTML builds as written** | no: MDX fails on all five pages | yes, all five | four of five; Markdoc changes text inside HTML silently | yes, inside passthrough blocks, but the page around it is rewritten as AsciiDoc |
 | **Cleanup beyond the intent files** | close void elements, `style` as an object, `<tbody>` and `<colgroup>`, closing tags off the line start | one indent | entities and one-line cells where Markdoc would drop a dash or a space | the AsciiDoc rewrite, with four kinds of silent failure |
-| **Spot checks after cleanup** | 34/36 in every mode (the two misses are page descriptions, not tables) | 36/36 in every mode | 36/36 in every mode | 36/36 in every mode |
+| **Spot checks after cleanup** (six pages; 36 before `uaa-performance`) | 40/42 in every mode (the two misses are page descriptions, not tables) | 42/42 in every mode | 42/42 in every mode | 42/42 in every mode |
 | **Own table syntax carries** | nothing beyond a header row (pipe tables) | widths on header cells | widths, lists and paragraphs in cells, spanning cells | widths, row headers, top alignment, lists and paragraphs in cells, spanning cells |
 | **Extension for the rest** | remark plugin | Python-Markdown block | attributes on Markdoc's table tag (76 lines) | none: roles on the table plus CSS |
+| **A second style** (`table-media`) | a class on the list-table directive, `{.table-media}`; a pipe table cannot take one | the list-table block's `style` option; a pipe table cannot take one | Markdoc's class shorthand, `{% table .table-media %}`, which the native table tag takes too | a role, `[.table-media]`: plain AsciiDoc |
 | **Variables** | one import per page; HTML values escaped | ERB form kept as written | `{% $vars.name %}`; HTML values escaped | `{name}` attributes |
 
 - **Two hints need CSS everywhere.** No tool's table syntax carries the
@@ -50,6 +51,13 @@ table syntax carries, and how much the rest of the page has to change.
   look (Template conventions in the [README](README.md#template-conventions)).
   The Antora and Sphinx themes hyphenate words in cells; the template turns
   that off.
+- **A second style is a class and a few CSS rules.** `table-media`, the
+  example, was added to all four tools after the round. Passthrough names it
+  as the HTML table's class everywhere. In Starlight and Antora the tool's
+  own table syntax can name it too; in Docusaurus and Zensical a Markdown
+  table cannot, so it takes the extension. The native pages keep the
+  standard style in every tool, as decided. Each site's `CONVENTIONS.md`
+  has an "Adding a style" section.
 
 **Probes** (one page each):
 
