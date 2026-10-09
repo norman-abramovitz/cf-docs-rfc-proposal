@@ -29,6 +29,7 @@ An identity zone is a logical boundary around the entities UAA manages. The enti
 Having two identity zones is equivalent to standing up two separate UAA deployments, but using fewer resources. This type of resource
 management can reduce operational and maintenance overhead.
 
+[[subdomains]]
 == Subdomains
 
 An identity zone is uniquely identified by a subdomain identifier in UAA. If a UAA deployment is hosted on the URL `https://login.EXAMPLE-CF-DOMAIN.com`, identity zones are hosted as _subdomains_ of that same deployment.
@@ -38,11 +39,13 @@ For example:
 * `zone1`: `https://ZONE1.login.EXAMPLE-CF-DOMAIN.com`
 * `zone2`: `https://ZONE2.login.EXAMPLE-CF-DOMAIN.com`
 
+[[default-zones]]
 === Default zones
 
 A UAA deployment always has one zone referred to as the _default zone_. You configure and bootstrap a default zone using a YAML
 configuration file.
 
+[[users]]
 == Users
 
 A _user_ is the central domain object of the UAA server. Because UAA acts as both an account store and an authorization server, many different types of information are linked to users and can be accessed through user-centric API calls.
@@ -134,6 +137,7 @@ Shadow users have a different type of group membership. A shadow user can be ass
 
 A shadow user can also have a group membership defined using `group_membership.origin='uaa'`. These are memberships that remain persistent and do not change when assertions report a change in external group memberships. It also allows UAA operators to assign privileges to users that are not known by external providers or cannot be mapped to external groups.
 
+[[client]]
 == Client
 
 UAA is an OAuth2 authorization server. Before apps can obtain access tokens, developers must perform a one-time registration process to create a _client_ in the UAA.

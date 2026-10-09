@@ -182,6 +182,7 @@ You can ensure that a label or annotation key is easily differentiated from othe
 
 Consider an example in which you have two scanner tools: one for security and one for compliance. Both tools use a `scanned` label or annotation. You can disambiguate between the two tools using a prefix. The security tool can prefix a label or annotation with `security.example.com/scanned` and the compliance tool can prefix a label or annotation with `compliance.example.com/scanned`.
 
+[[cf-cli-procedures]]
 == cf CLI procedures
 
 The following sections describe how to add, update, view, and list metadata using the cf CLI.
@@ -287,6 +288,7 @@ To select resources by labels:
 cf apps --labels 'environment in (production,staging),tier in (backend)'
 ....
 
+[[api-procedures]]
 == API procedures
 
 The following sections describe how to add, update, remove, list, and query metadata using CAPI.
