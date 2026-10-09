@@ -36,7 +36,8 @@ make check  # build, then run the spot checks for each mode
   under it.
 - **The theme styles only tables without a `class`** (`table:not([class])`).
   A table that keeps `class="table"` gets no border and no header style
-  from the theme: its header cells are not bold.
+  from the theme: its header cells are not bold. The site's CSS gives
+  `table.table` the theme's look (see Classes on tables below).
 - **Table titles.** In extension and native a table's title is a bold line
   above the table (`**Label requirements**`); the column headers stay the
   header row. Passthrough keeps the source's spanning row. The extension's

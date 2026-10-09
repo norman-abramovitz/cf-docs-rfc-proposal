@@ -16,6 +16,13 @@ proposes moving this content to Markdown on a modern static site generator,
 hosted on GitHub Pages. This repository holds the evidence gathered to inform
 that proposal.
 
+## Contents
+
+- [Concepts](concepts/README.md): the migration worked one documentation
+  concept at a time, each converted by hand into the candidate tools.
+- [Tables](concepts/tables/README.md): the first concept, done; results across
+  the tools in [concepts/tables/results.md](concepts/tables/results.md#summary).
+
 ## Related
 
 - [Docs Working Group charter](https://github.com/cloudfoundry/community/blob/main/toc/working-groups/docs.md)

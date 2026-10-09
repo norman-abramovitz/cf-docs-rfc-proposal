@@ -1,6 +1,22 @@
 # Concept: Tables
 
-Status: **Done**. Results: [results.md](results.md).
+Status: **Done, with open items** (listed under
+[Open questions](#open-questions)). Results: [results.md](results.md).
+
+Terms used below:
+
+- **Modes.** Each page is converted three ways: *passthrough* (the HTML as
+  written), *extension* (the tool's extension point carrying the hints), and
+  *native* (the tool's own table syntax). *native-plain* is native without
+  width or alignment specs. See [Method](#method).
+- **Hints.** What a table asks for, independent of any tool: a column's
+  *role* (`key`, `value`, `prose`), its width, whether it avoids wrapping
+  (*no-wrap*, up to a *cap*), row headers, a title. See
+  [Hints for tables](#hints-for-tables).
+- **Spot checks.** Per-table checks every converted page must pass, listed
+  in each [intent](intent/) file and run by [checks/](checks/).
+- **Variants A, B, C.** Three ways of setting widths on the
+  `troubleshooting_slow_requests` tables: as written, uniform, roles only.
 
 ## Progress
 
@@ -39,8 +55,10 @@ What has been done in this round, newest last. Each line links to the work.
   the variables keep their `<%= vars.name %>` form. With the intent files'
   cleanup every table renders correctly in all three modes. The default theme
   styles only tables without a `class`, so tables that keep `class="table"`
-  lose the theme's table style. Native pipe tables can carry widths on header
-  cells; row headers and the title row need HTML or a custom extension.
+  lose the theme's table style (later styled through the class; see
+  [Template conventions](#template-conventions)). Native pipe tables can
+  carry widths on header cells; row headers and the title row need HTML or
+  a custom extension.
   Results and findings: [results.md](results.md#zensical-0069).
 - [x] **Starlight done.** Pages are Markdoc with HTML allowed. Four of the
   five pages parse with their HTML unchanged, but Markdoc reads the text inside
@@ -84,13 +102,15 @@ What has been done in this round, newest last. Each line links to the work.
   table matches the published page cell for cell, and variables and the
   partial behave as in the book. Ruby 4.0 needs one extra gem (`ostruct`).
   Details: [probes/middleman](probes/middleman/README.md).
-- [x] Probes: Eleventy, Sphinx/MyST, Middleman without Bookbinder.
 - [x] **Results summarized.** [results.md](results.md#summary) opens with
   a summary across the four tools and the three probes; what the round
   taught is under [What we learned](#what-we-learned) below.
 - [x] **Table styles surveyed.** Every table in the docs repos and the
-  tutorial repos was counted to find which table styles the template needs
-  beyond the standard one. The styles to support are still to be picked.
+  tutorial repos (241) was counted to find which table styles the template
+  needs beyond the standard one. The only class any source uses is
+  `table`; the closest thing to a second style is a compact one for
+  comparison grids and long reference tables. Which styles to support is
+  still open (see [Open questions](#open-questions)).
 
 ## What we learned
 
@@ -163,7 +183,7 @@ tables, on 4 of 5 pages, are not well-formed:
 
 Browsers repair these silently. Tools that parse HTML as JSX (MDX) or as XML
 need well-formed markup, so cleanup is a likely first step of any conversion.
-Exact behavior per tool is to be confirmed in this round, not assumed.
+What each tool did with them: [results.md](results.md#summary).
 
 ## Hints for tables
 
@@ -202,7 +222,7 @@ centered vertically and horizontally.
 | Column | role | `key`, `value`, `prose` | Unchanged; carried as classes |
 | Column | width | relative weight | Kept where the source sets one; roles decide otherwise |
 | Column | wrap | `avoid`, `normal` | `avoid` wins over a width, up to a cap the template sets |
-| Column | align | horizontal, vertical | No test table needed it beyond the theme default (top, left) |
+| Column | align | horizontal, vertical | Defaults differ by theme (Docusaurus pipe tables center cells vertically); Antora's specs carry top alignment natively; elsewhere the extensions set it |
 | Cell | block content | lists, paragraphs | `<br/><br/>` between two blocks of text is a paragraph break |
 
 ### Template conventions
@@ -226,10 +246,10 @@ Conversions drop that markup and rely on the template instead:
   apart from column headers and body cells.
 - **Every HTML table names its style with a class.** `class="table"` is the
   standard style, the one most tables use; a conversion adds it to a table
-  that has no class. Further styles (candidates: compact, boxed, plain,
-  striped) are named after the tables in all the docs repos, the tutorial
-  repos included, have been looked at. A Markdown table cannot carry a
-  class, so it gets the standard style; another style needs the extension.
+  that has no class. A Markdown table cannot carry a class, so it gets the
+  standard style; another style needs the extension. Which further styles to
+  support (candidates: compact, boxed, plain, striped) is decided from the
+  survey of every table in the docs and tutorial repos; it is still open.
 
 ## Method
 
@@ -274,6 +294,7 @@ concepts/tables/
 │   ├── docusaurus/    │ each page in passthrough/, extension/, native/,
 │   ├── starlight/     │ and native-plain/ where it differs, with
 │   └── antora/        ┘ `make build`, `make serve` and `make check`
+├── checks/            spot checks and text comparison shared by every site
 ├── probes/            eleventy/, sphinx-myst/, middleman/
 └── results.md         comparison grid; screenshots in results/
 ```
@@ -307,6 +328,20 @@ site pins its tool versions so results can be reproduced. Nothing is installed
 globally.
 
 ## Open questions
+
+Left open by this round:
+
+- **Table styles.** Which styles beyond `table` the template supports. The
+  survey found only `table` in use; a compact style has the most evidence.
+- **Deferred to other concepts:** the `*` lost in `Accept: */*` (MDX,
+  Markdoc), terminal blocks (MDX, Markdoc), heading anchors written as
+  `<a id>` (MDX), page descriptions that contain variables (Docusaurus), a
+  list right after a text line (Zensical), and HTML-valued variables that
+  are escaped (MDX, Markdoc, EJS).
+- **On-paper tools.** Hugo and VitePress (see [Concepts](../README.md)) were
+  not part of this round.
+
+From before the round:
 
 - Does the open-source requirement cover services (search, hosting, analytics)
   as well as code? Algolia DocSearch's index and GitHub Pages are proprietary

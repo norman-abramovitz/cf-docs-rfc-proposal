@@ -27,7 +27,7 @@ table syntax carries, and how much the rest of the page has to change.
 | **HTML builds as written** | no: MDX fails on all five pages | yes, all five | four of five; Markdoc changes text inside HTML silently | yes, inside passthrough blocks, but the page around it is rewritten as AsciiDoc |
 | **Cleanup beyond the intent files** | close void elements, `style` as an object, `<tbody>` and `<colgroup>`, closing tags off the line start | one indent | entities and one-line cells where Markdoc would drop a dash or a space | the AsciiDoc rewrite, with four kinds of silent failure |
 | **Spot checks after cleanup** | 34/36 in every mode (the two misses are page descriptions, not tables) | 36/36 in every mode | 36/36 in every mode | 36/36 in every mode |
-| **Own table syntax carries** | nothing beyond a header row (pipe tables) | widths on header cells | widths, lists and paragraphs in cells, spanning cells | widths, row headers, lists and paragraphs in cells, spanning cells |
+| **Own table syntax carries** | nothing beyond a header row (pipe tables) | widths on header cells | widths, lists and paragraphs in cells, spanning cells | widths, row headers, top alignment, lists and paragraphs in cells, spanning cells |
 | **Extension for the rest** | remark plugin | Python-Markdown block | attributes on Markdoc's table tag (76 lines) | none: roles on the table plus CSS |
 | **Variables** | one import per page; HTML values escaped | ERB form kept as written | `{% $vars.name %}`; HTML values escaped | `{name}` attributes |
 
@@ -267,8 +267,8 @@ Site: [sites/zensical/](sites/zensical/) — conventions:
   the published pages. There is no generated page description, so the
   description problem Docusaurus has (its finding 7) does not occur.
 - **The default theme styles only tables without a `class`.** Eight of the
-  thirteen tables keep `class="table"` in passthrough and render without the
-  theme's table style (finding 1). **Decided:** the class stays as a hook the
+  thirteen tables kept `class="table"` in passthrough and rendered without
+  the theme's table style (finding 1). **Decided:** the class stays as a hook the
   template can format; the site's CSS now gives `table.table` the theme's
   table look. Dropping the class is how to see the theme's own default.
 - **Zensical has no table hints of its own.** Native pipe tables can carry
@@ -338,7 +338,7 @@ differ (percent of the table, first body row):
 | `uaa-concepts` table 1 | 30/26/43 | 16/31/53 |
 | `uaa-concepts` table 2 | 25/75 | 16/84 |
 
-`native-plain` passes the same 35 of 36 spot checks as `native`.
+`native-plain` passes all 36 spot checks, as `native` does.
 
 ### Findings
 
@@ -670,8 +670,8 @@ table of contents beside it).
   says about plugins is quoted in the Docusaurus summary.
 - **The default UI styles only AsciiDoc tables.** An HTML table gets no
   borders, and the UI exposes no variables (findings 3 and 4). The site's
-  stylesheet styles HTML tables that keep `class="table"` and turns off the
-  UI's hyphenation in tables (finding 5).
+  stylesheet styles `table.table` (every HTML table) and turns off the UI's
+  hyphenation in tables (finding 5).
 - **Variables become attributes.** `<%= vars.name %>` is `{name}`. An
   undefined attribute renders as nothing only with `attribute-missing: drop`;
   by default the page shows `{metadata_ref}` as text. An HTML-valued
