@@ -60,8 +60,9 @@ What has been done in this round, newest last. Each line links to the work.
   a converter must handle. HTML tables build unchanged inside passthrough
   blocks. AsciiDoc's own table carries widths, row headers, top alignment and
   lists in cells; the extension needs no code, only roles and a stylesheet.
-  The default UI styles only AsciiDoc tables, so the site's stylesheet
-  styles HTML tables that keep `class="table"`. Results and findings:
+  The default UI styles only AsciiDoc tables and hyphenates words in cells,
+  so the site's stylesheet styles HTML tables that keep `class="table"` and
+  turns hyphenation off. Results and findings:
   [results.md](results.md#antora-321).
 - [ ] Probes: Eleventy, Sphinx/MyST, Middleman without Bookbinder.
 - [ ] Results summary.

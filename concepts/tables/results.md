@@ -624,7 +624,8 @@ table of contents beside it).
   says about plugins is quoted in the Docusaurus summary.
 - **The default UI styles only AsciiDoc tables.** An HTML table gets no
   borders, and the UI exposes no variables (findings 3 and 4). The site's
-  stylesheet styles HTML tables that keep `class="table"`.
+  stylesheet styles HTML tables that keep `class="table"` and turns off the
+  UI's hyphenation in tables (finding 5).
 - **Variables become attributes.** `<%= vars.name %>` is `{name}`. An
   undefined attribute renders as nothing only with `attribute-missing: drop`;
   by default the page shows `{metadata_ref}` as text. An HTML-valued
@@ -732,6 +733,8 @@ passthrough included.
   table cells break words with a hyphen ("al-phanumeric", "certifi-cate"),
   which the published page does not
   ([screenshot](results/antora-troubleshooting-t2-native-hyphenation.png)).
+  Decided: no hyphenation in tables. The site's stylesheet sets
+  `hyphens: none` on tables, in every mode.
 6. **An AsciiDoc table without column specs has equal columns.**
   `native-plain` shows every table at 50/50, 33/33/33, or 25/25/25/25,
   whatever the content

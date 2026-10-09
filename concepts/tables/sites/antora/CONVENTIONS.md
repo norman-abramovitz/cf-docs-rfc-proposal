@@ -105,7 +105,8 @@ cannot be carried.
 
 Asciidoctor writes the alignment specs as classes (`halign-left`,
 `valign-top`), and the default UI has a rule for each, so native tables need
-no stylesheet for alignment.
+no stylesheet for alignment. `hints.css` turns off the UI's hyphenation in
+tables.
 
 `native-plain` is the same tables with no `cols` at all. AsciiDoc then gives
 every column the same width, where a Markdown pipe table sizes columns by

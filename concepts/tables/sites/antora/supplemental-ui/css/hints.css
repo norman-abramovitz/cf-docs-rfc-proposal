@@ -12,6 +12,8 @@
   font-size: var(--table-font-size, .83333rem);
   line-height: var(--table-line-height, inherit);
 }
+/* The UI hyphenates body text; words in table cells are not split. */
+.doc table { hyphens: none; }
 
 /* The UI styles only AsciiDoc tables (class tableblock). An HTML table that
    keeps class="table" gets the same look, so the class is a hook the template
