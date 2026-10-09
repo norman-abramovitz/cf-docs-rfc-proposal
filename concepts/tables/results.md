@@ -224,7 +224,9 @@ Site: [sites/zensical/](sites/zensical/) — conventions:
   description problem Docusaurus has (its finding 7) does not occur.
 - **The default theme styles only tables without a `class`.** Eight of the
   thirteen tables keep `class="table"` in passthrough and render without the
-  theme's table style (finding 1).
+  theme's table style (finding 1). **Decided:** the class stays as a hook the
+  template can format; the site's CSS now gives `table.table` the theme's
+  table look. Dropping the class is how to see the theme's own default.
 - **Zensical has no table hints of its own.** Native pipe tables can carry
   widths through attributes on header cells; row headers, the title row and
   the capped no-wrap need HTML (passthrough) or a plugin (extension). The
@@ -278,6 +280,22 @@ The scale table's key column stays on one line at 26%: "Cloud Controller
 Worker" fits the 16em cap here, so the no-wrap wins over the 25% width by one
 point.
 
+### Native with and without widths
+
+Native mode is built twice: `native` carries widths through attributes on
+header cells, `native-plain` is pipe tables with no attributes, as most
+Markdown tools would have them. Only the pages whose source sets widths
+differ (percent of the table, first body row):
+
+| Page | native | native-plain |
+|------|--------|--------------|
+| `_oss_scale_table` | 25/25/50 | 17/15/68 |
+| `credential-types` | 20/80 | 15/84 |
+| `uaa-concepts` table 1 | 30/26/43 | 16/31/53 |
+| `uaa-concepts` table 2 | 25/75 | 16/84 |
+
+`native-plain` passes the same 35 of 36 spot checks as `native`.
+
 ### Findings
 
 1. **The default theme styles only tables without a `class`.** Its rules are
@@ -289,7 +307,11 @@ point.
   [extension](results/zensical-metadata-t1-extension-theme-styled.png)). The
   class only restates what the template should do; `credential-types` already
   drops it (its quotes were broken). The extension puts its hook on a
-  wrapper `div` so the table itself stays classless.
+  wrapper `div` so the table itself stays classless. **Decided:** keep the
+  class and style it. [hints.css](sites/zensical/docs/stylesheets/hints.css)
+  repeats the theme's table rules for `table.table`, so those tables now
+  have borders and bold headers; a template can format them differently
+  through the same class.
 2. **The theme's header rule outranks plain hint CSS.** The theme sets header
   cells with `.md-typeset table:not([class]) th:not([align])`. A rule such as
   `.hinted-table th[scope='row']` loses to it, so the title row was not

@@ -15,3 +15,13 @@
 }
 /* The title row spans the table, centered as on the published page. */
 .md-typeset .hinted-table th[scope='colgroup']:not([align]) { text-align: center; }
+/* The theme styles only tables without a class. Passthrough tables keep the source's
+   class="table"; these rules give them the theme's table look, so the class is a hook
+   the template can format. Dropping the class shows the theme's own default instead. */
+.md-typeset table.table { display: inline-block; max-width: 100%; overflow: auto; font-size: .64rem; background-color: var(--md-default-bg-color); border: .05rem solid var(--md-typeset-table-color); border-radius: .1rem; }
+.md-typeset table.table + * { margin-top: 1.5em; }
+.md-typeset table.table td > :first-child, .md-typeset table.table th > :first-child { margin-top: 0; }
+.md-typeset table.table td > :last-child, .md-typeset table.table th > :last-child { margin-bottom: 0; }
+.md-typeset table.table td:not([align]), .md-typeset table.table th:not([align]) { text-align: left; }
+.md-typeset table.table th { min-width: 5rem; padding: .9375em 1.25em; font-weight: 700; vertical-align: top; }
+.md-typeset table.table td { padding: .9375em 1.25em; vertical-align: top; border-top: .05rem solid var(--md-typeset-table-color); }

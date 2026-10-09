@@ -7,7 +7,7 @@ The patterns that worked in this round, per mode. Results and measurements:
 make build  # install, generate vars.yml, build the site
 make serve  # serve site/ at http://localhost:8001
 make check  # build, then run the spot checks for each mode
-            # (MODES="passthrough-raw passthrough extension native" for all four)
+            # (MODES="passthrough-raw passthrough extension native native-plain" for all)
 ```
 
 ## Every mode
@@ -124,3 +124,13 @@ line after a table is not attached to the table: it becomes an extra row with
 that text. Row headers, the spanning title row, and the capped no-wrap cannot
 be carried; the title is a bold line above the table. Classless pipe tables
 get the theme's top alignment.
+
+`native-plain` is the same pages without the attributes: pipe tables only,
+columns sized by their content.
+
+## Classes on tables
+
+The theme styles only tables without a `class`. A table that keeps
+`class="table"` gets the theme's look from rules in `hints.css` that repeat
+the theme's table rules for `table.table`, so the class is a hook the
+template can format. To see the theme's own default, drop the class.
