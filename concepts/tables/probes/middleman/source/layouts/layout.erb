@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title><%= current_page.data.title %></title>
+</head>
+<body>
+  <main id="js-content">
+    <article>
+      <h1 class="title-container"><%= current_page.data.title %></h1>
+      <%= yield %>
+    </article>
+  </main>
+</body>
+</html>

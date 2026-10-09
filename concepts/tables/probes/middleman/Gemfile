@@ -1,0 +1,7 @@
+source 'https://rubygems.org'
+
+gem 'middleman', '4.6.3'
+# The Markdown engine the published book uses
+gem 'redcarpet'
+# The book's vars helper is an OpenStruct; since Ruby 4.0 that is a gem
+gem 'ostruct'

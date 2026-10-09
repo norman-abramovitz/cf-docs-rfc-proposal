@@ -78,7 +78,13 @@ What has been done in this round, newest last. Each line links to the work.
   `<%-` for any HTML-valued variable or helper, and for includes. An include
   needs the full file name where ERB's `partial` does not. Details:
   [probes/eleventy](probes/eleventy/README.md).
-- [ ] Probes: Eleventy, Sphinx/MyST, Middleman without Bookbinder.
+- [x] **Middleman probe done.** Middleman 4.6.3 without Bookbinder builds
+  all five pages unchanged on Ruby 4.0.7, with a short config file (the
+  book's Markdown settings and its `vars` helper) and a small layout. Every
+  table matches the published page cell for cell, and variables and the
+  partial behave as in the book. Ruby 4.0 needs one extra gem (`ostruct`).
+  Details: [probes/middleman](probes/middleman/README.md).
+- [x] Probes: Eleventy, Sphinx/MyST, Middleman without Bookbinder.
 - [ ] Results summary.
 
 ## Why tables first
