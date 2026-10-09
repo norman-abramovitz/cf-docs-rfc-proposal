@@ -1,0 +1,8 @@
+{
+  "name": "tables-round-antora",
+  "private": true,
+  "description": "Tables round: the five test pages built with Antora",
+  "devDependencies": {
+    "antora": "3.2.1"
+  }
+}

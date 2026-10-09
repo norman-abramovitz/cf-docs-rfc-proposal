@@ -1,0 +1,2 @@
+[#partial-start]
+Partial included: {platform_name}

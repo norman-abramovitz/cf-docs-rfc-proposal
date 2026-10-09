@@ -1,0 +1,28 @@
+# Antora playbook for the tables round. `make build` adds the variables from
+# source/template_variables.yml as AsciiDoc attributes (playbook.js) and builds
+# from site-playbook.yml; this file holds everything else.
+site:
+  title: Tables round — Antora
+  start_page: ROOT::index.adoc
+content:
+  sources:
+  # This repository, read from its worktree, so pages need not be committed
+  - url: ./../../../..
+    branches: HEAD
+    start_paths:
+    - concepts/tables/sites/antora/home
+ui:
+  bundle:
+    # The default UI, pinned: `make` downloads one build and checks its hash
+    url: ./.cache/ui-bundle.zip
+urls:
+  html_extension_style: indexify
+asciidoc:
+  attributes:
+    # An undefined attribute renders as nothing, as an undefined ERB variable does
+    attribute-missing: drop
+output:
+  dir: ./site
+runtime:
+  cache_dir: ./.cache/antora
+  fetch: false

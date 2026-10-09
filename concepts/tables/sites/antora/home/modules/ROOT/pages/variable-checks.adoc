@@ -1,0 +1,21 @@
+= Variable checks
+
+How this site handles the variable and partial cases the test pages need.
+
+[#defined]
+Defined: {platform_name}
+
+[#undefined]
+Undefined: {metadata_ref}
+
+[#html-in-paragraph]
+{route_services}
+
+[subs=attributes+]
+++++
+<p><span id="defined-pass">Defined in HTML: {platform_name}</span></p>
+<p><span id="undefined-pass">Undefined in HTML: {metadata_ref}</span></p>
+<div id="html-pass">{route_services}</div>
+++++
+
+include::partial$_check_partial.adoc[]
