@@ -25,3 +25,13 @@
   font-weight: var(--table-row-header-weight, 700);
   text-align: var(--table-row-header-align, center);
 }
+/* table-media: a grid of images. No cell borders, a rule under the header row and a thin
+   line between body rows, no header shading, cells centered; an image fills its cell. */
+.markdown table.table-media { display: table; width: 100%; }
+.markdown table.table-media thead,
+.markdown table.table-media tr { background-color: transparent; border: 0; }
+.markdown table.table-media th,
+.markdown table.table-media td { border: 0; background-color: transparent; text-align: center; vertical-align: middle; }
+.markdown table.table-media thead tr { border-bottom: 2px solid var(--ifm-table-border-color); }
+.markdown table.table-media tbody tr + tr { border-top: var(--ifm-table-border-width) solid var(--ifm-table-border-color); }
+.markdown table.table-media img { display: block; width: 100%; }

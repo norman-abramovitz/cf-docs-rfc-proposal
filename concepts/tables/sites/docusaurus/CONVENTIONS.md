@@ -44,6 +44,7 @@ The HTML stays, with the changes MDX and React need:
 | `style="width:20%"` | `style={{width: '20%'}}` |
 | rows directly in `<table>` | rows inside `<tbody>` |
 | `<td>text` … newline … `</td>` on its own line | `</td>` at the end of the text line |
+| `<img src="images/x.png">` | `<img src={require('./images/x.png').default} />` |
 
 A missing `<tbody>` or `<colgroup>` builds without error but makes React
 report a hydration error in the browser.
@@ -72,6 +73,7 @@ is a list item inside it, so a cell can hold lists and paragraphs.
 | `stub-columns` | leading columns that are row headers | row-header column |
 | `roles` | `key`, `value`, or `prose` per column | column role |
 | `wrap` | `avoid` or `normal` per column; `key` defaults to `avoid` | column wrap |
+| `{.name}` | the table's style, as a class (`{.table-media}`); none means the standard style | style |
 | `caption` | caption text | caption |
 | `title` | title text, shown as a header row spanning every column | title |
 
@@ -89,6 +91,24 @@ own variables (`--ifm-table-cell-padding`, `--ifm-table-border-color`,
 `--table-row-header-weight` and `--table-row-header-align`, so a theme styles
 them apart from column headers and body cells.
 
+## Adding a style
+
+A style is a class on the table and a set of rules in
+[src/css/hints.css](src/css/hints.css) under `.markdown table.<class>`.
+`table-media`, the grid of chart images in `uaa-performance`, is the example.
+
+- **Passthrough:** the HTML table names the style: `<table class="table-media">`.
+- **Extension:** the directive names it with the class shorthand:
+  `:::list-table{.table-media header-rows="1"}`.
+- **Native:** a pipe table has no place for a class, so it gets the standard
+  style.
+
+The theme styles every table, so a style's rules undo what it does not want
+(here: cell borders, header shading, stripes) and use the theme's variables
+for what it keeps (`--ifm-table-border-color`, `--ifm-table-border-width`).
+The theme also shows tables as blocks that scroll sideways; `table-media`
+sets `display: table` and full width so the image columns share the width.
+
 ## Native
 
 GFM pipe tables. In `.mdx`, a cell can hold an inline HTML list
@@ -96,3 +116,6 @@ GFM pipe tables. In `.mdx`, a cell can hold an inline HTML list
 other than left/center/right per column, row headers, captions, or spanning
 rows. A title row becomes a bold line above the table. A pipe table needs a blank
 line before it.
+
+A cell can hold a linked image, `[![alt](./images/x.png)](./images/x.png)`;
+the build copies both targets into its assets.
