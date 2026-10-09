@@ -12,7 +12,7 @@ App requests typically transit the following components. Only the Gorouter and t
 
 See the following diagram:
 
-image:request_lifecycle.png[There are four boxes from left to right: Client, Load Balancer, Router, and Backend. A larger box labeled CF encompasses the Router and Backend boxes.]
+image:request_lifecycle.png["There are four boxes from left to right: Client, Load Balancer, Router, and Backend. A larger box labeled CF encompasses the Router and Backend boxes."]
 
 Any of the components in the diagram above can cause latency. Delays can also come from the network
 itself.
