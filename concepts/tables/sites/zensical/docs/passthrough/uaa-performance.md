@@ -1,0 +1,31 @@
+---
+title: UAA performance
+owner: UAA
+---
+
+### <a id='client-credentials'></a> Client credentials grant type
+
+**Endpoint**: /oauth/token?grant_type=client_credentials
+
+<table class="table-media">
+  <thead><tr>
+    <th>Instances</th>
+    <th>Threads</th>
+    <th>Throughput</th>
+  </tr></thead>
+  <tr>
+    <td>1</td>
+    <td><a href="images/client-creds-threads-1.png"><img src="images/client-creds-threads-1.png" alt="Threads Level 1"></a></td>
+    <td><a href="images/client-creds-throughput-1.png"><img src="images/client-creds-throughput-1.png" alt="Throughput Level 1"></a></td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td><a href="images/client-creds-threads-2.png"><img src="images/client-creds-threads-2.png" alt="Threads Level 2"></a></td>
+    <td><a href="images/client-creds-throughput-2.png"><img src="images/client-creds-throughput-2.png" alt="Throughput Level 2"></a></td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td><a href="images/client-creds-threads-4.png"><img src="images/client-creds-threads-4.png" alt="Threads Level 4"></a></td>
+    <td><a href="images/client-creds-throughput-4.png"><img src="images/client-creds-throughput-4.png" alt="Throughput Level 4"></a></td>
+  </tr>
+</table>

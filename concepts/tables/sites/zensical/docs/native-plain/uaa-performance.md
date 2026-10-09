@@ -1,0 +1,14 @@
+---
+title: UAA performance
+owner: UAA
+---
+
+### <a id='client-credentials'></a> Client credentials grant type
+
+**Endpoint**: /oauth/token?grant_type=client_credentials
+
+| Instances | Threads | Throughput |
+| --- | --- | --- |
+| 1 | [![Threads Level 1](images/client-creds-threads-1.png)](images/client-creds-threads-1.png) | [![Throughput Level 1](images/client-creds-throughput-1.png)](images/client-creds-throughput-1.png) |
+| 2 | [![Threads Level 2](images/client-creds-threads-2.png)](images/client-creds-threads-2.png) | [![Throughput Level 2](images/client-creds-throughput-2.png)](images/client-creds-throughput-2.png) |
+| 4 | [![Threads Level 4](images/client-creds-threads-4.png)](images/client-creds-threads-4.png) | [![Throughput Level 4](images/client-creds-throughput-4.png)](images/client-creds-throughput-4.png) |

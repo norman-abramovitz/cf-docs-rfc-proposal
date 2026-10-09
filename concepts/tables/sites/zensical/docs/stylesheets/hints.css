@@ -25,3 +25,13 @@
 .md-typeset table.table td:not([align]), .md-typeset table.table th:not([align]) { text-align: left; }
 .md-typeset table.table th { min-width: 5rem; padding: .9375em 1.25em; font-weight: 700; vertical-align: top; }
 .md-typeset table.table td { padding: .9375em 1.25em; vertical-align: top; border-top: .05rem solid var(--md-typeset-table-color); }
+/* table-media: a grid of figures. No cell borders: a rule under the header row and a thin
+   line between body rows; the header is not shaded; cells are centered both ways. An image
+   fills its cell, and the image columns share the width equally (their content is equally
+   wide); a column of short text takes only the width it needs. */
+.md-typeset table.table-media { display: table; width: 100%; border-collapse: collapse; font-size: .64rem; }
+.md-typeset table.table-media th,
+.md-typeset table.table-media td { padding: .5em 1em; text-align: center; vertical-align: middle; border: 0; background: none; }
+.md-typeset table.table-media th { font-weight: 700; border-bottom: .1rem solid var(--md-default-fg-color--lighter); }
+.md-typeset table.table-media tr + tr td { border-top: .05rem solid var(--md-typeset-table-color); }
+.md-typeset table.table-media img { display: block; width: 100%; height: auto; }

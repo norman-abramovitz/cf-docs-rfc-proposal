@@ -10,6 +10,7 @@ row spanning every column, above the column headers.
         stub-columns: 1
         roles: key prose
         title: ...
+        style: table-media
 
     -   - Key
         - Value
@@ -18,7 +19,9 @@ row spanning every column, above the column headers.
     ///
 
 The table sits in a `div.hinted-table`: the theme styles only tables without
-a class, so the hook goes on the wrapper.
+a class, so the hook goes on the wrapper. `style` names a table style other
+than the standard one; it becomes the table's class, and the site's CSS gives
+that class its whole look.
 """
 import xml.etree.ElementTree as etree
 
@@ -40,6 +43,7 @@ class ListTable(Block):
         'roles': ('', type_string),
         'wrap': ('', type_string),
         'title': ('', type_string),
+        'style': ('', type_string),
     }
 
     def on_create(self, parent):
@@ -89,7 +93,7 @@ class ListTable(Block):
             table_rows.append(tr)
 
         block.remove(rows)
-        table = etree.SubElement(block, 'table')
+        table = etree.SubElement(block, 'table', {'class': self.options['style']} if self.options['style'] else {})
         widths = words(self.options['widths'])
         if widths:
             colgroup = etree.SubElement(table, 'colgroup')

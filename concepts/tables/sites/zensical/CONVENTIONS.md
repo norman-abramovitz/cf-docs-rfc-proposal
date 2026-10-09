@@ -90,6 +90,7 @@ only tables without a class.
 | `roles` | `key`, `value`, or `prose` per column | column role |
 | `wrap` | `avoid` or `normal` per column; `key` defaults to `avoid` | column wrap |
 | `title` | title text, shown as a header row spanning every column | title |
+| `style` | a style other than the standard one; becomes the table's class | style |
 
 The options are the same as the Docusaurus plugin's. Python-Markdown's list
 rules set the layout:
@@ -141,3 +142,29 @@ the theme's table rules for `table.table`, so the class is a hook the
 template can format. To see the theme's own default, drop the class. Every
 HTML table names its style with a class; a table without one gets
 `class="table"`.
+
+## Adding a style
+
+A style is a class name and the CSS that gives it its look.
+`table-media`, used on `uaa-performance`, is the example: a grid of charts
+with no cell borders, a rule under the header, and centered cells.
+
+- **The CSS lives in [docs/stylesheets/hints.css](docs/stylesheets/hints.css).**
+  The theme styles only tables without a class, so a styled table gets its
+  whole look from these rules, not only the parts that differ. Theme
+  variables (`--md-typeset-table-color`, `--md-default-fg-color--lighter`)
+  keep its colors in step with the theme, dark mode included.
+- **Passthrough** names the style as the table's class:
+  `<table class="table-media">`.
+- **Extension** names it with the `style` option of the `list-table` block;
+  the option becomes the table's class:
+
+  ```markdown
+  /// list-table
+      header-rows: 1
+      style: table-media
+  ```
+
+- **Native cannot name a style.** A pipe table takes no class: the attribute
+  lists extension works on single cells, and `{: .class }` after a table
+  becomes an extra row. A native table gets the standard style.
