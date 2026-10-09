@@ -54,9 +54,10 @@ The following tables describe requirements for creating metadata.
 
 The following table describes the requirements for creating labels:
 
-[.hinted.col1-key.col2-value.col3-prose.col4-prose.col1-nowrap%header,cols=".<~h,.<~,.<~,.<~",header-rows=2]
+*Label requirements*
+
+[.hinted.col1-key.col2-value.col3-prose.col4-prose.col1-nowrap%header,cols=".<~h,.<~,.<~,.<~"]
 |===
-4+^|Label requirements
 |Part of Label |Length in characters |Allowed characters |Other Requirements
 
 |(Optional) Key Prefix
@@ -90,9 +91,10 @@ a|* Must begin and end with an alphanumeric character
 
 The following table describes the requirements for creating annotations:
 
-[.hinted.col1-key.col2-value.col3-prose.col4-prose.col1-nowrap%header,cols=".<~h,.<~,.<~,.<~",header-rows=2]
+*Annotation Requirements*
+
+[.hinted.col1-key.col2-value.col3-prose.col4-prose.col1-nowrap%header,cols=".<~h,.<~,.<~,.<~"]
 |===
-4+^|Annotation Requirements
 |Part of Annotation |Length in characters |Allowed characters |Other Requirements
 
 |(Optional) Key Prefix

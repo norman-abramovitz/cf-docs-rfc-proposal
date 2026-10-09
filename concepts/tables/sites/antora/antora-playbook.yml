@@ -21,9 +21,6 @@ ui:
 urls:
   html_extension_style: indexify
 asciidoc:
-  # header-rows=N on a table puts its first N rows in the table head
-  extensions:
-  - ./extensions/header-rows.js
   attributes:
     # An undefined attribute renders as nothing, as an undefined ERB variable does
     attribute-missing: drop
