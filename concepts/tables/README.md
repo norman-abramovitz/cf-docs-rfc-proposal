@@ -71,6 +71,13 @@ What has been done in this round, newest last. Each line links to the work.
   Variables come from the shared file as substitutions. The default theme
   hyphenates words in cells, so the stylesheet turns that off. All five spot
   checks pass. Details: [probes/sphinx-myst](probes/sphinx-myst/README.md).
+- [x] **Eleventy probe done.** `uaa-concepts` builds with its
+  `<%= vars.name %>` tags left as they are and read as EJS, and its tables
+  come out exactly as written. EJS is a plugin since Eleventy 3. EJS's `<%=`
+  escapes HTML, where Middleman's ERB does not, so a conversion must write
+  `<%-` for any HTML-valued variable or helper, and for includes. An include
+  needs the full file name where ERB's `partial` does not. Details:
+  [probes/eleventy](probes/eleventy/README.md).
 - [ ] Probes: Eleventy, Sphinx/MyST, Middleman without Bookbinder.
 - [ ] Results summary.
 

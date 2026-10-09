@@ -1,0 +1,5 @@
+node_modules/
+_site/
+.check/
+src/uaa-concepts.md
+src/_includes/_oss_scale_table.md

@@ -1,0 +1,10 @@
+{
+  "name": "tables-probe-eleventy",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "@11ty/eleventy": "3.1.6",
+    "@11ty/eleventy-plugin-ejs": "1.0.0",
+    "js-yaml": "4.1.1"
+  }
+}
