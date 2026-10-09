@@ -1,6 +1,6 @@
 # Concept: Tables
 
-Status: **In progress**.
+Status: **Done**. Results: [results.md](results.md).
 
 ## Progress
 
@@ -85,7 +85,38 @@ What has been done in this round, newest last. Each line links to the work.
   partial behave as in the book. Ruby 4.0 needs one extra gem (`ostruct`).
   Details: [probes/middleman](probes/middleman/README.md).
 - [x] Probes: Eleventy, Sphinx/MyST, Middleman without Bookbinder.
-- [ ] Results summary.
+- [x] **Results summarized.** [results.md](results.md#summary) opens with
+  a summary across the four tools and the three probes; what the round
+  taught is under [What we learned](#what-we-learned) below.
+- [x] **Table styles surveyed.** Every table in the docs repos and the
+  tutorial repos was counted to find which table styles the template needs
+  beyond the standard one. The styles to support are still to be picked.
+
+## What we learned
+
+- **Every tool can render these tables.** After cleanup, every test table
+  renders correctly in every tool and every mode. The tools differ in the
+  cost of getting there, not in the result.
+- **The HTML needs cleanup before any strict tool reads it.** The defects
+  browsers tolerate ([below](#markup-that-only-browsers-tolerate)) break MDX
+  and change content in Markdoc. Zensical, Eleventy and Middleman take the
+  HTML as written; Antora takes it inside passthrough blocks but needs every
+  page rewritten as AsciiDoc around it.
+- **List-table syntaxes carry most hints; pipe tables carry few.** Markdoc's
+  table tag, AsciiDoc tables and MyST's `list-table` hold lists, paragraphs,
+  widths and spans. Markdown pipe tables hold one line per cell and no
+  widths (Zensical adds widths on header cells), so lists stay inline HTML.
+- **Two hints need CSS in every tool:** the column roles and the capped
+  no-wrap. Where a table takes classes (Antora, Sphinx), that is CSS only;
+  Docusaurus, Zensical and Starlight need a small extension.
+- **The template sets the look, through a class.** Themes disagree on which
+  tables they style, so every HTML table names its style with a class;
+  `table` is the standard style. Themes that hyphenate get it turned off in
+  tables.
+- **Some changes sit outside the tables and still block a page:** heading
+  anchors written as `<a id>` (MDX), terminal blocks (MDX, Markdoc), the `*`
+  in `Accept: */*` (MDX, Markdoc), and variable escaping (MDX, Markdoc,
+  EJS). They belong to their own concepts.
 
 ## Why tables first
 
@@ -137,7 +168,8 @@ Exact behavior per tool is to be confirmed in this round, not assumed.
 ## Hints for tables
 
 First draft, taken from what the test pages do. Hints are written once per
-table, independent of any tool.
+table, independent of any tool. *Superseded* by
+[Hints after the round](#hints-after-the-round); kept as the record.
 
 | Level | Hint | Values | Seen in |
 |-------|------|--------|---------|
@@ -157,6 +189,21 @@ so most tables need only one or two hints.
 Example: a five-column table with widths 10–15% / 10–15% / 40% / 10–15% /
 10–15%, where column 1 avoids wrapping and is top-aligned, and column 4 is
 centered vertically and horizontally.
+
+### Hints after the round
+
+| Level | Hint | Values | Change from the first draft |
+|-------|------|--------|-----------------------------|
+| Table | title | text | Shown as a bold line above the table, not a row or caption: Markdown tables have one header row |
+| Table | header row | yes / no | Unchanged; every table in the docs repos has one |
+| Table | row-header column | yes / no | Unchanged; row headers are styled apart from column headers and body cells |
+| Table | style | `table`; further names to be picked | New. HTML tables carry it as a class; a Markdown table gets the standard style |
+| Table | pattern | — | Dropped: the Result / Explanation / Action tables set no widths, and the roles decide |
+| Column | role | `key`, `value`, `prose` | Unchanged; carried as classes |
+| Column | width | relative weight | Kept where the source sets one; roles decide otherwise |
+| Column | wrap | `avoid`, `normal` | `avoid` wins over a width, up to a cap the template sets |
+| Column | align | horizontal, vertical | No test table needed it beyond the theme default (top, left) |
+| Cell | block content | lists, paragraphs | `<br/><br/>` between two blocks of text is a paragraph break |
 
 ### Template conventions
 
@@ -225,9 +272,9 @@ concepts/tables/
 ├── sites/
 │   ├── zensical/      ┐ one minimal site per hands-on tool, versions pinned,
 │   ├── docusaurus/    │ each page in passthrough/, extension/, native/,
-│   ├── starlight/     │ with `make build` and `make serve`
-│   └── antora/        ┘
-├── probes/            eleventy/, sphinx/, middleman/
+│   ├── starlight/     │ and native-plain/ where it differs, with
+│   └── antora/        ┘ `make build`, `make serve` and `make check`
+├── probes/            eleventy/, sphinx-myst/, middleman/
 └── results.md         comparison grid; screenshots in results/
 ```
 
@@ -265,7 +312,9 @@ globally.
   as well as code? Algolia DocSearch's index and GitHub Pages are proprietary
   services.
 - Is a `pattern` hint (a named table shape) a table hint or a template
-  feature?
+  feature? *Answered by this round:* neither is needed for the test pages.
+  The Result / Explanation / Action tables set no widths, and the column
+  roles decide.
 - Should the copyright year follow content changes rather than the build date?
   A format-only conversion may not warrant a new year. See
   [Concepts](../README.md).

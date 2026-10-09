@@ -38,7 +38,7 @@ work are recorded, and those conventions later drive the `cf-docs-migrate`
 
 | Concept | Status | Why it matters |
 |---------|--------|----------------|
-| [Tables](tables/) | In progress | Complex HTML tables (widths, spans, lists and paragraphs in cells, variables in cells) are the main reason the content is not plain Markdown today |
+| [Tables](tables/) | Done: [results](tables/results.md#summary) | Complex HTML tables (widths, spans, lists and paragraphs in cells, variables in cells) are the main reason the content is not plain Markdown today |
 | Copyright and build-time values | Proposed | The published footer renders `&copy; <%= Time.now.year %> Cloud Foundry Foundation` from `docs-book-cloudfoundry/master_middleman/source/layouts/_book-footer.erb`, so the year changes on every build whether or not any content changed. Conversion is mostly a formatting change, which may not warrant a new copyright year. Open question for the RFC: should the year follow content changes (for example, the last commit that changed a page's content) rather than the build date? Either way, page comparisons must treat build-time values as expected differences. |
 | Headings | Proposed | Simplest concept; establishes the outline check |
 | Variables | Proposed | `<%= vars.* %>` from `template_variables.yml`; some values contain HTML or Markdown |

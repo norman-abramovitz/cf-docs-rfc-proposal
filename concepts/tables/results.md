@@ -1,10 +1,10 @@
 # Tables round — results
 
-What each tool did with the five test pages. One section per tool, newest
-last. Each starts with a short summary, then the grid, then what the
-measurements and screenshots show. How the pages were chosen and what the
-hints mean: [README](README.md). Per-table intent and spot checks:
-[intent/](intent/).
+What each tool did with the five test pages. A summary across tools comes
+first, then one section per tool, newest last. Each starts with a short
+summary, then the grid, then what the measurements and screenshots show. How
+the pages were chosen and what the hints mean: [README](README.md). Per-table
+intent and spot checks: [intent/](intent/).
 
 How to read the grid:
 
@@ -15,6 +15,49 @@ How to read the grid:
 - **Hints honored:** measured in a browser at a 1280-pixel window (the content
   column is 703 pixels wide).
 - **Source readability:** a short judgment from an author's point of view.
+
+## Summary
+
+Every tool renders every test table correctly once the source is cleaned
+up. They differ in how much cleanup the HTML needs, which hints their own
+table syntax carries, and how much the rest of the page has to change.
+
+| | Docusaurus | Zensical | Starlight | Antora |
+|---|---|---|---|---|
+| **HTML builds as written** | no: MDX fails on all five pages | yes, all five | four of five; Markdoc changes text inside HTML silently | yes, inside passthrough blocks, but the page around it is rewritten as AsciiDoc |
+| **Cleanup beyond the intent files** | close void elements, `style` as an object, `<tbody>` and `<colgroup>`, closing tags off the line start | one indent | entities and one-line cells where Markdoc would drop a dash or a space | the AsciiDoc rewrite, with four kinds of silent failure |
+| **Spot checks after cleanup** | 34/36 in every mode (the two misses are page descriptions, not tables) | 36/36 in every mode | 36/36 in every mode | 36/36 in every mode |
+| **Own table syntax carries** | nothing beyond a header row (pipe tables) | widths on header cells | widths, lists and paragraphs in cells, spanning cells | widths, row headers, lists and paragraphs in cells, spanning cells |
+| **Extension for the rest** | remark plugin | Python-Markdown block | attributes on Markdoc's table tag (76 lines) | none: roles on the table plus CSS |
+| **Variables** | one import per page; HTML values escaped | ERB form kept as written | `{% $vars.name %}`; HTML values escaped | `{name}` attributes |
+
+- **Two hints need CSS everywhere.** No tool's table syntax carries the
+  column roles or the capped no-wrap. Antora and the Sphinx probe carry them
+  as classes on the table, with no code; the other three use a small
+  extension. What #1642 §5 says about extensions is quoted in the Docusaurus
+  summary.
+- **Migration cost outside the tables.** Antora's AsciiDoc rewrite is a
+  separate cost of its own: every page changes, not only the tables, and the
+  conversion failed silently in four ways (Antora finding 1). In MDX, three
+  of the five first build errors are outside the tables. Markdoc changes
+  terminal blocks, and MDX and Markdoc both lose the `*` in `Accept: */*`.
+  Zensical shows three `*` as text where a list follows a line with no blank
+  line between them.
+- **Themes style tables differently.** Docusaurus and Starlight style every
+  table; Zensical only tables without a class; Antora only its own tables;
+  Sphinx's theme through its own class. Every HTML table now names its style
+  with `class="table"`, and each site's CSS gives that class its standard
+  look (Template conventions in the [README](README.md#template-conventions)).
+  The Antora and Sphinx themes hyphenate words in cells; the template turns
+  that off.
+
+**Probes** (one page each):
+
+| Probe | Question | Answer |
+|---|---|---|
+| [Eleventy 3.1.6](probes/eleventy/README.md) | Do `<%= vars.* %>` tags render unchanged as EJS? | Yes for the tables, byte for byte. EJS's `<%=` escapes HTML, so HTML-valued variables, helpers and includes need `<%-`. |
+| [Sphinx 9.1.0 + MyST 5.1.0](probes/sphinx-myst/README.md) | Can `list-table` directive options carry the hints? | Header row, row headers and widths, yes; roles and the capped no-wrap through classes and CSS. No second header row. |
+| [Middleman 4.6.3](probes/middleman/README.md) | Smallest change that removes Bookbinder? | A short config and a layout; all five pages build unchanged on Ruby 4.0.7 (plus the `ostruct` gem) and every table matches the published page. |
 
 ## Docusaurus 3.10.2
 
@@ -246,10 +289,10 @@ Site: [sites/zensical/](sites/zensical/) — conventions:
 | `credential-types` | passthrough | yes; class quotes made straight (intent cleanup) | preserved | width 20% | HTML |
 | | extension | yes | preserved | width 20%, row headers, no wrap | list-table |
 | | native | yes | preserved | width 20% through a header-cell attribute | pipe table, readable |
-| `metadata` | passthrough | yes; two unclosed `<td>`, headers moved into `<thead>` (intent cleanup) | preserved; stray backslashes removed (decided fix) | spanning title row; no theme table style (finding 1) | HTML |
+| `metadata` | passthrough | yes; two unclosed `<td>`, headers moved into `<thead>` (intent cleanup) | preserved; stray backslashes removed (decided fix) | spanning title row; theme look through `table.table` in the site CSS (finding 1) | HTML |
 | | extension | yes | preserved; title is a bold line above the table | row headers, no wrap on key column (23%) | list-table with nested lists: readable |
 | | native | yes, lists as inline HTML in cells | preserved; title is a bold line above the table | none; top alignment from the theme | pipe table with inline `<ul>`: hard to edit |
-| `troubleshooting_slow_requests` | passthrough | yes | preserved after indenting the Experiment 2 table under its list step | variant A, as written; no theme table style (finding 1) | HTML |
+| `troubleshooting_slow_requests` | passthrough | yes | preserved after indenting the Experiment 2 table under its list step | variant A, as written; theme look through `table.table` in the site CSS (finding 1) | HTML |
 | | extension | yes | preserved | variant C: no widths, columns sized by content | list-table |
 | | native | yes | preserved after indenting the Experiment 2 table under its list step | variant C (same as extension) | pipe table |
 | `uaa-concepts` | passthrough | yes; `</td>` → `</tr>` (intent cleanup) | preserved | widths 30% and 25% | HTML |
