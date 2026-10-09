@@ -1,0 +1,27 @@
+/* What the table hints mean on this site, on top of the default theme.
+   A theme adjusts the hints through these variables:
+     --table-nowrap-max         widest a wrap: avoid column grows before it wraps between words
+     --table-row-header-weight  font weight of row headers (stub columns)
+     --table-row-header-align   horizontal alignment of row headers */
+
+/* The theme hyphenates body text (div.body p, li); words in table cells are
+   not split. */
+div.body table p,
+div.body table li { hyphens: none; }
+
+/* Roles on the table (:class: hinted col1-key col1-nowrap ...). */
+table.hinted th,
+table.hinted td { vertical-align: top; }
+/* wrap: avoid keeps a body cell on one line, up to the cap; longer text wraps
+   between words. The cell's paragraph is the inner box. */
+table.hinted.col1-nowrap > tbody > tr > :nth-child(1) > *,
+table.hinted.col2-nowrap > tbody > tr > :nth-child(2) > *,
+table.hinted.col3-nowrap > tbody > tr > :nth-child(3) > * {
+  width: max-content;
+  max-width: var(--table-nowrap-max, 16em);
+}
+/* Row headers (stub columns) are styled apart from column headers and body cells. */
+table.hinted > tbody > tr > th.stub {
+  font-weight: var(--table-row-header-weight, 700);
+  text-align: var(--table-row-header-align, left);
+}

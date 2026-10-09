@@ -64,6 +64,13 @@ What has been done in this round, newest last. Each line links to the work.
   so the site's stylesheet styles HTML tables with `class="table"` and turns
   hyphenation off. Results and findings:
   [results.md](results.md#antora-321).
+- [x] **Sphinx/MyST probe done.** The scale table is a MyST `list-table`.
+  Its directive options carry the header row, row headers and widths;
+  classes on the table carry the column roles, the capped no-wrap and
+  `class="table"`, given meaning by a small stylesheet, with no code.
+  Variables come from the shared file as substitutions. The default theme
+  hyphenates words in cells, so the stylesheet turns that off. All five spot
+  checks pass. Details: [probes/sphinx-myst](probes/sphinx-myst/README.md).
 - [ ] Probes: Eleventy, Sphinx/MyST, Middleman without Bookbinder.
 - [ ] Results summary.
 
