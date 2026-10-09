@@ -10,7 +10,13 @@ What has been done in this round, newest last. Each line links to the work.
   from upstream, with commits and licenses: [source/SOURCES.md](source/SOURCES.md).
   Two variables the pages use (`metadata_ref`, `bosh_cli_link`) are not defined
   anywhere in the book, so the published pages show them as empty text.
-- [ ] Intent: hints per table, recorded deviations, cleanup needed.
+- [x] **Intent written.** For every table, the hints that express what the
+  source asks for, the markup cleanup it needs, the deviations from the
+  published page, and a list of spot checks every converted version must pass:
+  [intent/](intent/). Two proposed deviations await review: rendering
+  `[a-z0-9A-Z]` without the stray backslashes the published `metadata` page
+  shows, and giving all six `troubleshooting_slow_requests` tables the same
+  column widths.
 - [ ] Docusaurus site: passthrough, extension, native.
 - [ ] Zensical site.
 - [ ] Astro/Starlight site.
