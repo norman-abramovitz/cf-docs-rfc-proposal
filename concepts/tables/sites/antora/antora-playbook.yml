@@ -13,6 +13,8 @@ content:
     - concepts/tables/sites/antora/home
     - concepts/tables/sites/antora/passthrough
     - concepts/tables/sites/antora/extension
+    - concepts/tables/sites/antora/native
+    - concepts/tables/sites/antora/native-plain
 ui:
   bundle:
     # The default UI, pinned: `make` downloads one build and checks its hash
