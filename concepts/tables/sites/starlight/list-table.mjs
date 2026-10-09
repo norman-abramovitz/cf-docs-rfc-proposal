@@ -13,10 +13,15 @@
 // header-rows, stub-columns) and add the hints from the tables concept
 // (roles, wrap, title), as in the other sites. A table without hints renders
 // as Markdoc renders it.
+//
+// A style other than the standard one is a class, written with Markdoc's
+// class shorthand: {% table .table-media %}.
 import Markdoc from '@markdoc/markdoc';
 
 const {Tag} = Markdoc;
 const words = (v) => (v ? String(v).trim().split(/\s+/) : []);
+// Markdoc keeps the class shorthand as an object ({'table-media': true}).
+const className = (v) => (v && typeof v === 'object' ? Object.keys(v).filter((k) => v[k]).join(' ') : v || '');
 const hints = ['widths', 'header-rows', 'stub-columns', 'roles', 'wrap', 'title'];
 
 export const table = {
@@ -32,7 +37,9 @@ export const table = {
   transform(node, config) {
     const a = node.attributes;
     const [thead, tbody] = node.transformChildren(config);
-    if (!hints.some((h) => h in a)) return new Tag('table', {}, [thead, tbody]);
+    const cls = className(a.class);
+    const style = cls ? {class: cls} : {};
+    if (!hints.some((h) => h in a)) return new Tag('table', style, [thead, tbody]);
 
     const widths = words(a.widths);
     const roles = words(a.roles);
@@ -71,6 +78,6 @@ export const table = {
       const cols = widths.map((w) => new Tag('col', w === 'auto' ? {} : {style: `width:${w}%`}));
       children.unshift(new Tag('colgroup', {}, cols));
     }
-    return new Tag('table', {class: 'hinted-table'}, children);
+    return new Tag('table', {class: ['hinted-table', cls].filter(Boolean).join(' ')}, children);
   },
 };

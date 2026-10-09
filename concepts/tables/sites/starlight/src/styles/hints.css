@@ -29,3 +29,17 @@
 }
 /* The title row spans the table, centered as on the published page. */
 .hinted-table th[scope='colgroup'] { text-align: center; }
+/* Style table-media: a grid of images. No cell borders: a rule under the header
+   and a thin line between body rows; no header shading; cells centered both ways;
+   an image fills its cell, so the image columns share the width equally. */
+.sl-markdown-content table.table-media { display: table; width: 100%; }
+.sl-markdown-content table.table-media :is(th, td) {
+  border: 0;
+  border-bottom: 1px solid var(--sl-color-gray-5);
+  background: none;
+  padding: 0.5rem;
+  text-align: center;
+  vertical-align: middle;
+}
+.sl-markdown-content table.table-media th { border-bottom: 2px solid var(--sl-color-gray-4); }
+.sl-markdown-content table.table-media img { display: block; width: 100%; height: auto; margin: 0; }

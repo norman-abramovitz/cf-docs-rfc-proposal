@@ -27,7 +27,12 @@ make check-raw  # Markdoc errors on each unchanged-HTML page
   `{% partial file="./_oss_scale_table.mdoc" /%}`, and the partial's
   variables render. Markdoc wraps the partial in its own `<article>`.
 - **Images.** Relative paths stay as written; `images/` in each mode holds a
-  symbolic link to the file in `source/images/`.
+  symbolic link to the file in `source/images/`. The site optimizes those
+  images and renames them, and it leaves an `<img>` inside HTML alone. An
+  image that a link opens at full size, or that sits in an HTML table, goes
+  in `public/images/` instead (a symbolic link again) and is written with an
+  absolute path, `/images/client-creds-threads-1.png`; the site serves it as
+  is (`uaa-performance`).
 - **Indentation matters.** A table that belongs to a list item is indented
   under it.
 - **The theme styles every table**, whatever its class, and its styles sit in
@@ -101,6 +106,25 @@ Starlight has no table variables of its own. Its table rules use fixed
 padding (`0.5rem 1rem`) and its color variables (`--sl-color-gray-5` for
 borders, `--sl-color-white` for header text); its text variables
 (`--sl-text-body`, `--sl-line-height`, `--sl-font`) apply to the whole page.
+
+## Adding a style
+
+A style beyond the standard one is a class on the table, and its rules live
+in [src/styles/hints.css](src/styles/hints.css). `table-media` is the
+example: a grid of images with no cell borders, a rule under the header, a
+thin line between rows, and centered cells.
+
+- Passthrough names the style in the HTML: `<table class="table-media">`.
+- Extension names it with Markdoc's class shorthand on the table tag:
+  `{% table .table-media %}`. [list-table.mjs](list-table.mjs) passes the
+  class to the table, with or without hints.
+- Native and native-plain leave it out, following the rule that native
+  tables get the standard style. Markdoc's own table tag takes the same
+  shorthand, though, so on this site naming a style needs no extension.
+
+The theme's table rules sit in cascade layers, so the style's rules need no
+extra specificity to win; they do need `display: table` and `width: 100%`,
+because the theme shows every table as a block that scrolls sideways.
 
 ## Native
 
