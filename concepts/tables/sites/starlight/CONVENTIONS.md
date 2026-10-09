@@ -34,6 +34,10 @@ make check-raw  # Markdoc errors on each unchanged-HTML page
   cascade layers: any rule in the site's own CSS wins without extra
   specificity. `class="table"` changes nothing; a template can still use it
   as a hook.
+- **Table titles.** In extension and native a table's title is a bold line
+  above the table (`**Label requirements**`); the column headers stay the
+  header row. Passthrough keeps the source's spanning row. The extension's
+  `title` option (a spanning row) still works but the pages no longer use it.
 
 ## Passthrough
 

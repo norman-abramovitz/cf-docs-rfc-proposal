@@ -131,9 +131,10 @@ Some source markup only restates what the site template should do anyway.
 Conversions drop that markup and rely on the template instead:
 
 - **Header cells are bold.** `<th><strong>…</strong></th>` becomes `<th>…</th>`.
-- **A table title is a spanning row.** It sits above the column headers and
-  spans every column, as on the published `metadata` page, rather than
-  becoming a caption.
+- **A table title is a line above the table.** It is a bold line before the
+  table, not a caption and not a row: Markdown tables have one header row,
+  which stays for the column headers. (Decided first as a spanning row;
+  changed after the Starlight round.)
 - **A paragraph break in a cell is a paragraph.** `<br/><br/>` between two
   blocks of text becomes two paragraphs.
 - **Widths follow the column roles.** A table with the Result / Explanation /

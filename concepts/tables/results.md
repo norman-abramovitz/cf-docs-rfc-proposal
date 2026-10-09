@@ -28,9 +28,8 @@ Site: [sites/docusaurus/](sites/docusaurus/) — conventions:
   `{…}` placeholders in prose, an unclosed `<br>`), so table cleanup alone is
   not enough to migrate a page to MDX.
 - **With cleanup, every table renders correctly in all three modes.** 34 of
-  36 spot checks pass in passthrough and extension; the two that fail are the
-  page descriptions (finding 7). Native passes 33: it also cannot draw the
-  `metadata` title as a spanning row. `make check` in the site reruns them with
+  36 spot checks pass in every mode; the two that fail are the page
+  descriptions (finding 7). `make check` in the site reruns them with
   [checks/spot-checks.sh](checks/spot-checks.sh).
 - **Cleanup the tables needed:** close void elements (`<col />`, `<br />`),
   fix the malformed markup the intent files list, write `style` as a JSX
@@ -69,7 +68,7 @@ Site: [sites/docusaurus/](sites/docusaurus/) — conventions:
 | | extension | yes | preserved | width 20%, row headers, no wrap | list-table |
 | | native | yes | preserved | none (18/82) | pipe table, readable |
 | `metadata` | passthrough | after cleanup: two unclosed `<td>`, headers moved into `<thead>`, `style` objects, plus braces in a `<pre>` block and one `<br>` outside the tables | preserved; stray backslashes removed (decided fix) | spanning title row centered | HTML |
-| | extension | yes | preserved | title row spanning all columns, row headers, no wrap on key column (26%) | list-table with nested lists: readable |
+| | extension | yes | preserved; title is a bold line above the table | row headers, no wrap on key column (26%) | list-table with nested lists: readable |
 | | native | yes, lists as inline HTML in cells | preserved; title is a bold line above the table, not part of it | none; cells vertically centered | pipe table with inline `<ul>`: hard to edit |
 | `troubleshooting_slow_requests` | passthrough | after cleanup: `<tbody>`, one multi-line cell, plus `<br />` outside the tables | preserved after nesting the Experiment 2 table in its list step | variant A, as written | HTML |
 | | extension | yes | preserved | variant C (decided): no widths, columns sized by content | list-table |
@@ -101,7 +100,10 @@ Table 2 in each variant: [A](results/docusaurus-troubleshooting-t2-A-as-written.
 Both were decided after this comparison: the `metadata` title stays a
 spanning row (the extension draws it with a `title` option), and the
 `uaa-concepts` break is a paragraph break, so the extension keeps two
-paragraphs.
+paragraphs. **Changed after the Starlight round:** the title is a bold line
+above the table in every converted mode of every tool, because Markdown
+tables have one header row (Starlight finding 4). Passthrough keeps the
+source's spanning row.
 
 - `metadata` title row: [spanning row](results/docusaurus-metadata-t1-passthrough-spanning-row.png),
   [caption](results/docusaurus-metadata-t1-extension-caption.png),
@@ -215,8 +217,7 @@ Site: [sites/zensical/](sites/zensical/) — conventions:
   changes. The intent files' cleanup and one indent (finding 4) make every
   spot check pass.
 - **Every table renders correctly in all three modes.** All 36 spot checks
-  pass in passthrough and extension. Native passes 35: it cannot draw the
-  `metadata` title as a spanning row. `make check` in the site reruns them.
+  pass in every mode. `make check` in the site reruns them.
 - **Variables work without touching the pages.** The built-in macros support
   takes ERB delimiters, so `<%= vars.name %>` renders as written. An undefined
   variable renders empty and an HTML-valued variable renders as markup, as on
@@ -246,7 +247,7 @@ Site: [sites/zensical/](sites/zensical/) — conventions:
 | | extension | yes | preserved | width 20%, row headers, no wrap | list-table |
 | | native | yes | preserved | width 20% through a header-cell attribute | pipe table, readable |
 | `metadata` | passthrough | yes; two unclosed `<td>`, headers moved into `<thead>` (intent cleanup) | preserved; stray backslashes removed (decided fix) | spanning title row; no theme table style (finding 1) | HTML |
-| | extension | yes | preserved | title row spanning all columns, row headers, no wrap on key column (23%) | list-table with nested lists: readable |
+| | extension | yes | preserved; title is a bold line above the table | row headers, no wrap on key column (23%) | list-table with nested lists: readable |
 | | native | yes, lists as inline HTML in cells | preserved; title is a bold line above the table | none; top alignment from the theme | pipe table with inline `<ul>`: hard to edit |
 | `troubleshooting_slow_requests` | passthrough | yes | preserved after indenting the Experiment 2 table under its list step | variant A, as written; no theme table style (finding 1) | HTML |
 | | extension | yes | preserved | variant C: no widths, columns sized by content | list-table |
@@ -409,8 +410,7 @@ wide.
   Passthrough therefore needs changes the other tools do not: an entity for
   the dash, and each table cell on one line.
 - **With those changes every table renders correctly in every mode.** All 36
-  spot checks pass in passthrough, extension, and native. `native-plain`
-  passes 35: pipe tables cannot draw the `metadata` title as a spanning row.
+  spot checks pass in every mode.
   `make check` in the site reruns them.
 - **Markdoc's own table tag is a native list-table.** Without any custom code
   its cells hold lists and paragraphs, header cells take a `width`, and a
@@ -448,8 +448,8 @@ wide.
 | | native | yes | preserved | width 20% through `width` on a header cell | Markdoc table, readable |
 | | native-plain | yes | preserved | none (18/82) | pipe table, readable |
 | `metadata` | passthrough | yes; intent cleanup, plus `&#45;` for five lone dashes and cells joined onto one line (forced) | preserved; stray backslashes removed (decided fix) | spanning title row | HTML |
-| | extension | yes | preserved | title row spanning all columns, row headers, no wrap on key column (27%) | Markdoc table with nested lists: readable |
-| | native | yes | preserved; the column headers are an ordinary bold row under the title row | spanning title row; lists in cells without HTML | Markdoc table with nested lists: readable |
+| | extension | yes | preserved; title is a bold line above the table | row headers, no wrap on key column (27%) | Markdoc table with nested lists: readable |
+| | native | yes | preserved; title is a bold line above the table | lists in cells without HTML | Markdoc table with nested lists: readable |
 | | native-plain | yes, lists as inline HTML in cells | preserved; title is a bold line above the table | none | pipe table with inline `<ul>`: hard to edit |
 | `troubleshooting_slow_requests` | passthrough | yes; one blank line in an indented terminal block written `&#10;`, cells joined (forced) | preserved after indenting the Experiment 2 table under its list step | variant A, as written | HTML |
 | | extension | yes | preserved | variant C: no widths, columns sized by content | Markdoc table |
@@ -517,6 +517,8 @@ takes 27% in the extension.
   native, the spanning title row takes the head and the column headers
   become an ordinary row, written bold so they still read as headers
   ([screenshot](results/starlight-metadata-t1-native-title-row.png)).
+  **Decided:** the title is a bold line above the table in every converted
+  mode of every tool, so the column headers stay real header cells.
 5. **The theme lets list items break inside words.** Starlight sets
   `overflow-wrap: anywhere` on list items, so in a narrow table column
   "Alphanumeric" broke as "Alphanumeri" / "c" and "[a-z0-9A-Z]" across

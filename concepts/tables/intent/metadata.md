@@ -36,13 +36,17 @@ removed: `Alphanumeric ( [a-z0-9A-Z] )`.
 **Deviations:** none. The spanning, centered first row is a title for the
 table, not a column header, and stays a row spanning every column.
 **Decided** after comparing renderings: a spanning row, not a caption.
+**Changed after the Starlight round:** Markdown tables have one header row,
+so in every converted mode of every tool the title is a bold line above the
+table and the column headers stay the header row. Passthrough keeps the
+source's spanning row.
 Native pipe tables cannot span columns, so native shows the title as a bold
 line above the table.
 
 ### Spot checks
 
-- [ ] Title row "Label requirements" spans all four columns, above the
-      column headers.
+- [ ] Title "Label requirements" shown above the column headers: a bold
+      line above the table (a spanning row in passthrough).
 - [ ] 3 body rows, each with 4 cells; in row 1, the "DNS subdomain format"
       list is in column 4, not nested inside column 3.
 - [ ] Column 3 lists have 3, 4, and 4 items; column 4 lists have 2 and 2
@@ -70,11 +74,11 @@ Source: lines 121–168. Same shape as Table 1, same hints.
 Column headers move into `<thead>`. Backslashes removed from the bracket text
 at lines 138 and 154, as in Table 1.
 
-**Deviations:** none; the title row stays a spanning row, as in Table 1.
+**Deviations:** the title is a bold line above the table, as in Table 1.
 
 ### Spot checks
 
-- [ ] Title row "Annotation Requirements" spans all four columns.
+- [ ] Title "Annotation Requirements" shown above the column headers.
 - [ ] 3 body rows, each with 4 cells; row 3 is plain text in every cell
       ("Any unicode character", "n/a").
 - [ ] Row 1 "DNS subdomain format" list is in column 4.

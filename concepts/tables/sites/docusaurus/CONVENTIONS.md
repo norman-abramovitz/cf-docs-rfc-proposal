@@ -28,6 +28,10 @@ make check-raw  # first MDX error on each unchanged-HTML page
   under it, with a blank line before it.
 - **Braces in text** are expressions in MDX. Literal braces in prose or in
   `<pre>` are escaped: `\{OIDC provider alias\}`.
+- **Table titles.** In extension and native a table's title is a bold line
+  above the table (`**Label requirements**`); the column headers stay the
+  header row. Passthrough keeps the source's spanning row. The extension's
+  `title` option (a spanning row) still works but the pages no longer use it.
 
 ## Passthrough
 

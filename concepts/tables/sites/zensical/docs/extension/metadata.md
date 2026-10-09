@@ -53,11 +53,12 @@ The following tables describe requirements for creating metadata.
 
 The following table describes the requirements for creating labels:
 
+**Label requirements**
+
 /// list-table
     header-rows: 1
     stub-columns: 1
     roles: key value prose prose
-    title: Label requirements
 
 -   - Part of Label
     - Length in characters
@@ -94,11 +95,12 @@ The following table describes the requirements for creating labels:
 
 The following table describes the requirements for creating annotations:
 
+**Annotation Requirements**
+
 /// list-table
     header-rows: 1
     stub-columns: 1
     roles: key value prose prose
-    title: Annotation Requirements
 
 -   - Part of Annotation
     - Length in characters
