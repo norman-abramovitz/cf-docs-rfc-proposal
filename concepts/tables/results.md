@@ -720,7 +720,8 @@ passthrough included.
   `table.tableblock`, so every HTML table in passthrough renders without
   borders, at the body text size, with centered header cells
   ([screenshot](results/antora-credential-types-t1-passthrough-unstyled.png)).
-  The site's stylesheet styles `table.table` like the UI's tables. Every
+  The site's stylesheet styles `table.table` like the UI's tables, header
+  cells on the left included (a `style` on a cell still wins). Every
   HTML table names its style with a class (decided), so the four tables
   that had none get `class="table"` and all twelve look like the others.
 4. **The default UI exposes no variables.** It is built with its variables

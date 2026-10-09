@@ -25,6 +25,7 @@
 }
 .doc table.table td,
 .doc table.table th { border: 1px solid #e1e1e1; padding: .5rem; }
+.doc table.table th { text-align: left; }
 .doc table.table thead th { border-bottom-width: 2.5px; }
 
 /* Extension: the hints as roles on the table (.hinted.col1-key.col1-nowrap ...). */
