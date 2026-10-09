@@ -21,7 +21,11 @@ What has been done in this round, newest last. Each line links to the work.
   provisional until the renderings are compared: a caption instead of the
   spanning title row in `metadata`, and real paragraphs instead of
   `<br/><br/>` in `uaa-concepts`.
-- [ ] Docusaurus site: passthrough, extension, native.
+- [x] **Docusaurus done.** None of the five pages builds with its HTML
+  unchanged; three of the five first errors are outside the tables. After
+  cleanup every table renders correctly in all three modes. Docusaurus has no
+  native table hints: widths and captions need HTML or a custom plugin. Results,
+  width variants, and side-by-side screenshots: [results.md](results.md#docusaurus-3102).
 - [ ] Zensical site.
 - [ ] Astro/Starlight site.
 - [ ] Antora site.
