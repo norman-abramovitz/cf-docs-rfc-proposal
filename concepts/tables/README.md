@@ -31,6 +31,10 @@ What has been done in this round, newest last. Each line links to the work.
   cell holds two paragraphs. The `troubleshooting_slow_requests` tables use
   variant C, no widths: the column roles decide. These are now
   [template conventions](#template-conventions).
+- [x] **Hint rules decided.** "Don't wrap" wins over a width, up to a cap
+  past which the text wraps between words. Row headers get their own
+  styling. The `*/*` lost in terminal output (results finding 8) is left to
+  the code blocks concept.
 - [ ] Zensical site.
 - [ ] Astro/Starlight site.
 - [ ] Antora site.
@@ -121,6 +125,11 @@ Conversions drop that markup and rely on the template instead:
   blocks of text becomes two paragraphs.
 - **Widths follow the column roles.** A table with the Result / Explanation /
   Action pattern sets no widths; `key` and `prose` decide.
+- **"Don't wrap" beats a width.** A `wrap: avoid` column grows past its width
+  to keep its text on one line, so column widths vary with the content. Past
+  a cap the template sets, the text wraps between words after all.
+- **Row headers are styled on their own.** The template can set their look
+  apart from column headers and body cells.
 
 ## Method
 

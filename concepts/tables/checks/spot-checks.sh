@@ -16,7 +16,7 @@ chk scale-table-host '<code>0</code> if Postgres' 'code 0 in PostgreSQL row'
 chk scale-table-host 'Cloud Foundry recommends scaling NATS VMs' 'recommended_by var'
 chk scale-table-host 'The following table provides recommended instance counts' 'partial inside host'
 # credential-types
-for c in value json user password certificate rsa ssh; do chk credential-types "<t[dh][^>]*><code>$c</code></t[dh]>" "code $c"; done
+for c in value json user password certificate rsa ssh; do chk credential-types "<t[dh][^>]*>\(<div[^>]*>\)\?<code>$c</code>\(</div>\)\?</t[dh]>" "code $c"; done
 nchk credential-types '[“”]' 'no curly quotes'
 # metadata
 cnt metadata 'Alphanumeric  *( \[a-z0-9A-Z\] )' 4 'brackets without backslashes'
@@ -45,7 +45,7 @@ chk uaa-concepts 'in the Cloud Foundry ecosystem' 'platform_name 2'
 chk uaa-concepts 'href="#clientid"' 'clientid link'
 chk uaa-concepts '<code>allowed providers=&quot;ldap&quot;</code>\|<code>allowed providers="ldap"</code>' 'straight quotes in code'
 chk uaa-concepts '{OIDC provider alias}' 'literal braces in prose'
-chk uaa-concepts "<t[dh][^>]*><code>client_credentials</code></t[dh]>" "implicit row closed before client_credentials"
+chk uaa-concepts "<t[dh][^>]*>\(<div[^>]*>\)\?<code>client_credentials</code>\(</div>\)\?</t[dh]>" "implicit row closed before client_credentials"
 nest=$(python3 -I - "$B/troubleshooting_slow_requests.html" <<'PY'
 import sys,re; s=open(sys.argv[1]).read()
 a=s.find('id="within-cf"'); b=s.find('id="duplicate-latency"', a); d=0; out=[]

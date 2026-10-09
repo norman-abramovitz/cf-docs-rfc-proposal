@@ -110,12 +110,17 @@ paragraphs.
 1. **Hints can conflict.** `wrap: avoid` on a key column wins over its width
   when the longest key does not fit
   ([screenshot](results/docusaurus-oss-extension-nowrap-beats-width.png)).
-  The hints need a stated precedence; this site lets wrapping lose to the
-  content and width lose to wrapping.
+  **Decided:** "don't wrap" wins, so a column's width varies with its
+  content, but only up to a cap (`--table-nowrap-max`, 16em here); past it
+  the text wraps between words. No key column on the test pages reaches the
+  cap at a 1280-pixel window.
 2. **Row headers take the header style.** With `stub-columns`, the key column
   becomes `<th scope="row">`, which the default theme draws bold and
-  centered. Whether row headers look like column headers is a template
-  decision.
+  centered. **Decided:** row headers are styled on their own. The site's CSS
+  gives them their own variables (weight, alignment), so a theme can change
+  them without touching column headers or body cells (checked: setting them
+  to left and normal weight changes only the row headers). Native pipe
+  tables have no row headers to style.
 3. **Placement changes the outline.** A table that follows a list item without
   indentation belongs to the item on the published page (Bookbinder's parser
   continues the item) but ends the list in Docusaurus. A pipe table also needs
@@ -145,7 +150,9 @@ paragraphs.
   `*/*` as emphasis. The block is also split into paragraphs inside the
   `<pre>`. Five such blocks are on the test pages; they belong to the code
   blocks concept. The spot checks did not catch it because they cover the
-  tables.
+  tables. **Decided:** left to the code blocks concept, which has to handle
+  `<pre class="terminal">` on every page anyway; the tables round keeps the
+  finding.
 
 ### Text compared with the published page
 

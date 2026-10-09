@@ -72,8 +72,13 @@ is a list item inside it, so a cell can hold lists and paragraphs.
 | `title` | title text, shown as a header row spanning every column | title |
 
 `widths`, `header-rows`, and `stub-columns` use MyST's `list-table` names.
-[src/css/hints.css](src/css/hints.css) sets top alignment and no-wrap; the
-rest of the look comes from the theme.
+[src/css/hints.css](src/css/hints.css) sets top alignment, no-wrap, and row
+header style; the rest of the look comes from the theme. A `wrap: avoid` cell
+holds a box that keeps its text on one line up to `--table-nowrap-max`
+(default `16em`) and wraps between words past it; a cell's own width cannot
+set that cap. Row headers (`th[scope=row]`) take
+`--table-row-header-weight` and `--table-row-header-align`, so a theme styles
+them apart from column headers and body cells.
 
 ## Native
 

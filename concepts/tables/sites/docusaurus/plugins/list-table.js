@@ -18,6 +18,8 @@ function cellNode(item, tag, classes, scope) {
   let children = item.children;
   // A cell holding a single paragraph renders its text directly, as an HTML cell would.
   if (children.length === 1 && children[0].type === 'paragraph') children = children[0].children;
+  // wrap: avoid needs a box inside the cell: a cell's own width cannot cap its no-wrap width.
+  if (classes.includes('wrap-avoid')) children = [{type: 'listTableBox', data: {hName: 'div', hProperties: {className: ['wrap-avoid-box']}}, children}];
   const hProperties = {};
   if (scope) hProperties.scope = scope;
   if (classes.length) hProperties.className = classes;
