@@ -3,3 +3,4 @@ site/
 vars.yml
 .check/
 .cache/
+__pycache__/
