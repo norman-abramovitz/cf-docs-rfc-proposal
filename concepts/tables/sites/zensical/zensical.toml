@@ -2,6 +2,7 @@
 site_name = "Tables round — Zensical"
 docs_dir = "docs"
 site_dir = "site"
+extra_css = ["stylesheets/hints.css"]
 
 # Defaults from a new project, plus `tables` for pipe tables.
 [project.markdown_extensions]
@@ -24,6 +25,8 @@ pymdownx.mark = {}
 pymdownx.smartsymbols = {}
 pymdownx.superfences = {}
 pymdownx.tilde = {}
+# The list-table block for extension mode (list_table.py, next to this file)
+list_table = {}
 
 # Variables keep their ERB form: <%= vars.name %>. Partials live outside
 # docs/ so they never become pages; a host page includes one with
