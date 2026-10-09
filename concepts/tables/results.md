@@ -386,3 +386,195 @@ the intent files' cleanup and the indent fix:
 The unclosed `<td>` cells in `metadata` and the stray `</td>` in
 `uaa-concepts` build and render as on the published page: the browser repairs
 them, as it does for the published site.
+
+## Starlight 0.42.6
+
+Site: [sites/starlight/](sites/starlight/) — conventions:
+[CONVENTIONS.md](sites/starlight/CONVENTIONS.md). Astro 7.3.8 with the
+Markdoc integration 2.0.11; pages are Markdoc (`.mdoc`) with HTML allowed.
+Measured at the same 1280-pixel window; the content column is 632 pixels
+wide.
+
+### Summary
+
+- **Four of the five pages parse with their HTML unchanged.** Only the
+  variables and the partial line are translated. The fifth,
+  `troubleshooting_slow_requests`, stops the build at a terminal block outside
+  the tables (raw passthrough below).
+- **Markdoc reads the text inside HTML as Markdown, and that changes content
+  silently.** A lone `-` in a code span becomes an empty bulleted list, and
+  the space next to an inline tag disappears when the text around it spans
+  lines (`<code>password</code> refers` renders as "passwordrefers", 19 places
+  in `uaa-concepts`). The build reports nothing (findings 1 and 2).
+  Passthrough therefore needs changes the other tools do not: an entity for
+  the dash, and each table cell on one line.
+- **With those changes every table renders correctly in every mode.** All 36
+  spot checks pass in passthrough, extension, and native. `native-plain`
+  passes 35: pipe tables cannot draw the `metadata` title as a spanning row.
+  `make check` in the site reruns them.
+- **Markdoc's own table tag is a native list-table.** Without any custom code
+  its cells hold lists and paragraphs, header cells take a `width`, and a
+  cell can span columns. That carries the widths, the lists in `metadata`,
+  the two paragraphs in `uaa-concepts`, and a spanning title row. What it
+  cannot carry: row headers, top alignment, the capped no-wrap, and a title
+  row above the column headers (Markdoc has one header row, so the column
+  headers become an ordinary row).
+- **The extension adds the hints as attributes on that same tag.**
+  [list-table.mjs](sites/starlight/list-table.mjs) declares them on Markdoc's
+  table node, 76 lines, the counterpart of the Docusaurus and Zensical
+  extensions; what #1642 §5 says about plugins is quoted in the Docusaurus
+  summary. Authors write Markdoc's table syntax; only the attributes are new.
+- **Variables need one translation.** `<%= vars.name %>` becomes
+  `{% $vars.name %}`. An undefined variable renders empty. An HTML-valued
+  variable renders as escaped text unless a small tag renders it as markup.
+  Starlight writes no page description unless the front matter has one, so
+  the description problem Docusaurus has (its finding 7) does not occur.
+- **The theme styles every table, whatever its class**, so `class="table"`
+  makes no difference here. Its styles sit in cascade layers, so the site's
+  hint CSS wins without the specificity work Zensical needed.
+- **No browser errors.** The only console message is a 404 for the default
+  favicon, which this site does not provide.
+
+### Grid
+
+| Page | Mode | Builds | Content and outline | Hints honored | Source readability |
+|------|------|--------|---------------------|---------------|--------------------|
+| `_oss_scale_table` | passthrough | yes | preserved | widths 25/25/50 exactly | HTML as before |
+| | extension | yes | preserved | widths, row headers, key column on one line (31/24/45) | Markdoc table; long cells on one line |
+| | native | yes | preserved | widths 25/25/50 through `width` on header cells; no row headers | Markdoc table |
+| | native-plain | yes | preserved | none (18/17/65) | pipe table, very long rows |
+| `credential-types` | passthrough | yes; class with typographic quotes dropped (intent cleanup) | preserved | width 20% | HTML |
+| | extension | yes | preserved | width 20%, row headers, no wrap | Markdoc table |
+| | native | yes | preserved | width 20% through `width` on a header cell | Markdoc table, readable |
+| | native-plain | yes | preserved | none (18/82) | pipe table, readable |
+| `metadata` | passthrough | yes; intent cleanup, plus `&#45;` for five lone dashes and cells joined onto one line (forced) | preserved; stray backslashes removed (decided fix) | spanning title row | HTML |
+| | extension | yes | preserved | title row spanning all columns, row headers, no wrap on key column (27%) | Markdoc table with nested lists: readable |
+| | native | yes | preserved; the column headers are an ordinary bold row under the title row | spanning title row; lists in cells without HTML | Markdoc table with nested lists: readable |
+| | native-plain | yes, lists as inline HTML in cells | preserved; title is a bold line above the table | none | pipe table with inline `<ul>`: hard to edit |
+| `troubleshooting_slow_requests` | passthrough | yes; one blank line in an indented terminal block written `&#10;`, cells joined (forced) | preserved after indenting the Experiment 2 table under its list step | variant A, as written | HTML |
+| | extension | yes | preserved | variant C: no widths, columns sized by content | Markdoc table |
+| | native | yes | preserved | variant C (same as extension) | Markdoc table |
+| | native-plain | yes | preserved | variant C (same as extension) | pipe table |
+| `uaa-concepts` | passthrough | yes; `</td>` → `</tr>` (intent cleanup), cells joined and one `&#32;` (forced) | preserved | widths 30% and 25% | HTML |
+| | extension | yes | preserved; `<br/><br/>` became two paragraphs (decided) | widths, row headers, no wrap | Markdoc table; paragraphs as in Markdown |
+| | native | yes | preserved; two paragraphs (decided) | widths through `width` on header cells | Markdoc table |
+| | native-plain | yes | preserved, `<br /><br />` kept | none (27/32/41, 25/75) | pipe table |
+
+### Column widths
+
+Percent of the table, first body row. Table 2 of `troubleshooting_slow_requests`
+sits inside a numbered list, so it is narrower (592 pixels).
+
+| Table | Passthrough | Extension | Native | Native-plain |
+|-------|-------------|-----------|--------|--------------|
+| `_oss_scale_table` | 25/25/50 | 31/24/45 | 25/25/50 | 18/17/65 |
+| `credential-types` | 20/80 | 20/80 | 20/80 | 18/82 |
+| `metadata` T1 | 16/20/31/33 | 27/18/28/26 | 16/21/31/33 | 16/20/31/33 |
+| `metadata` T2 | 18/21/31/30 | 27/19/29/25 | 18/21/31/30 | 18/21/31/30 |
+| `metadata` T3 | 18/34/49 | 18/34/48 | 18/34/49 | 18/34/49 |
+| `troubleshooting` T1 | 32/27/41 | 32/27/41 | 32/27/41 | 32/27/41 |
+| `troubleshooting` T2 | 25/38/37 | 31/35/34 | 31/35/34 | 31/35/34 |
+| `troubleshooting` T3 | 25/33/42 | 19/35/47 | 19/35/47 | 19/35/47 |
+| `troubleshooting` T4 | 25/25/50 | 17/26/57 | 17/26/57 | 17/26/57 |
+| `troubleshooting` T5 | 25/25/50 | 20/25/55 | 20/25/55 | 20/25/55 |
+| `troubleshooting` T6 | 25/25/50 | 16/27/56 | 16/27/56 | 16/27/56 |
+| `uaa-concepts` T1 | 30/31/39 | 30/31/39 | 30/31/39 | 27/32/41 |
+| `uaa-concepts` T2 | 25/75 | 25/75 | 25/75 | 25/75 |
+
+The scale table's key column stays on one line at 31%: "Cloud Controller
+Worker" fits the 16em cap, so the no-wrap wins over the 25% width, as in
+Docusaurus. In `metadata` the no-wrap key column ("(Optional) Key Prefix")
+takes 27% in the extension.
+
+### Findings
+
+1. **Text inside HTML is Markdown.** With HTML allowed, the Markdoc
+  integration parses each run of text between HTML tags as Markdown. In
+  `metadata`, `<li><code>-</code></li>` renders as a code span holding an
+  empty bulleted list, so the dash is gone
+  ([screenshot](results/starlight-metadata-t1-passthrough-raw-dash-list.png));
+  `&#45;` or `\-` keeps it. The same rule removes the `\[` escapes (here the
+  decided fix), and `*`, `_`, and backticks inside HTML cells act as
+  Markdown. No error is reported.
+2. **Spaces next to inline tags disappear.** When the text between two tags
+  spans lines or holds a variable, the space at its edge is dropped:
+  `<code>password</code> refers` renders as "passwordrefers", and
+  `the steps in <a …>Experiment 1 …</a>` as "the steps inExperiment 1". 19
+  places in `uaa-concepts` and one in `troubleshooting_slow_requests`, all
+  inside table cells ([screenshot](results/starlight-uaa-t1-passthrough-raw-spaces-lost.png)).
+  Putting each cell on one line keeps the spaces (HTML renders the joined
+  cell the same), and a space right after a variable is written `&#32;`.
+  [checks/text-diff.py](checks/text-diff.py) found these; the spot checks
+  did not.
+3. **A blank line inside `<pre>` inside a list item stops the build.** The
+  terminal block in step 4 of Experiment 2 has a blank line; Markdoc reports
+  the list item and the `<pre>` as unclosed and the whole site fails to
+  build. Writing that line break as `&#10;` lets it parse. The block also
+  loses its blank line and indentation on screen. Code blocks are their own
+  concept.
+4. **Markdoc's table has one header row.** The first row goes in the table
+  head; there is no way to put a second row there without the extension. In
+  native, the spanning title row takes the head and the column headers
+  become an ordinary row, written bold so they still read as headers
+  ([screenshot](results/starlight-metadata-t1-native-title-row.png)).
+5. **The theme lets list items break inside words.** Starlight sets
+  `overflow-wrap: anywhere` on list items, so in a narrow table column
+  "Alphanumeric" broke as "Alphanumeri" / "c" and "[a-z0-9A-Z]" across
+  lines, in every mode
+  ([screenshot](results/starlight-metadata-t1-extension-word-break.png)).
+  The site's CSS now limits that to words that cannot fit at all, which also
+  widens those columns.
+6. **Starlight has no table variables.** Its table rules use fixed padding
+  (`0.5rem 1rem`), color variables for borders and header text, and the page
+  text size and line height. The site's CSS adds `--table-font-size`,
+  `--table-line-height`, and the row-header variables (checked: setting them
+  changes only the tables, and only the row headers for the row-header
+  variables). The theme spaces blocks with top margins only, so cells have no
+  extra gap below their last paragraph (8 pixels above, 9 below in the
+  two-paragraph `uaa-concepts` cell).
+7. **No link check.** Astro does not check in-page links. A scan of the
+  built pages found two broken ones in `uaa-concepts`, `#shadow` and
+  `#user-groups`; both headings write their anchor as `<a id="#…">`, so the
+  links are broken on the published page too. Zensical reported only
+  `#shadow` because its generated heading id happens to be `user-groups`.
+8. **Heading ids start with a dash.** A heading written
+  `## <a id="about"></a> About metadata` gets the id `-about-metadata`; the
+  `<a id="about">` inside it still works for links, and the table of
+  contents shows the heading text with no browser error.
+9. **Typographic quotes are an option, but not a usable one.** The Markdoc
+  integration's `typographer` setting turns straight quotes into typographic
+  ones in prose, as the published site does, but also inside `<pre>` blocks
+  (JSON, terminal output) and inside HTML `<code>`, where they change
+  content. It stays off.
+
+### Text compared with the published page
+
+[checks/text-diff.py](checks/text-diff.py), run for every mode after the
+passthrough fixes above. Apart from the decided backslash fix, the main text
+matches the published page except:
+
+- **`Accept: */*` shows as `Accept: /`** in `troubleshooting_slow_requests`,
+  every mode, as in Docusaurus (its finding 8): the terminal block holding it
+  is HTML, and its text is read as Markdown (finding 1). The block is also
+  split into paragraphs. Code blocks are their own concept.
+- **Not reproduced, moved, quotes:** the same as Docusaurus — no *Page last
+  updated* line or GitHub link, the section links are the theme's table of
+  contents, and quotes stay straight (finding 9). The page title is in the
+  page header, outside the compared text.
+
+### Raw passthrough
+
+`make check-raw` in the site prints the Markdoc errors per page. Four pages
+parse with their HTML unchanged; `troubleshooting_slow_requests` does not
+(finding 3), and one page that does not parse stops the whole build, so the
+raw build leaves it out. 28 of 36 spot checks pass on the four raw pages:
+
+| Page | Fails raw | Fixed by |
+|------|-----------|----------|
+| `credential-types` | class with typographic quotes | intent cleanup |
+| `metadata` | the lone `-` code spans (finding 1) | `&#45;` (forced) |
+| `troubleshooting_slow_requests` | does not parse (six checks) | `&#10;` (forced) and the indent |
+
+The raw pages also lose the spaces next to inline tags (finding 2); the spot
+checks do not cover that. The backslash checks pass raw, because Markdoc
+reads `\[` as a Markdown escape (finding 1).

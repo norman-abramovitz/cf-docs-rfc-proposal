@@ -42,7 +42,14 @@ What has been done in this round, newest last. Each line links to the work.
   lose the theme's table style. Native pipe tables can carry widths on header
   cells; row headers and the title row need HTML or a custom extension.
   Results and findings: [results.md](results.md#zensical-0069).
-- [ ] Astro/Starlight site.
+- [x] **Starlight done.** Pages are Markdoc with HTML allowed. Four of the
+  five pages parse with their HTML unchanged, but Markdoc reads the text inside
+  HTML as Markdown: a lone `-` in code becomes a list and spaces next to
+  inline tags disappear, with no error, so passthrough needs a few forced
+  changes. Markdoc's own table tag holds lists and paragraphs in cells and
+  widths on header cells without custom code; row headers and a title row
+  above the column headers need the extension. Results and findings:
+  [results.md](results.md#starlight-0426).
 - [ ] Antora site.
 - [ ] Probes: Eleventy, Sphinx/MyST, Middleman without Bookbinder.
 - [ ] Results summary.
