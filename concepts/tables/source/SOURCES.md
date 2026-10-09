@@ -11,6 +11,7 @@ in `../sites/` and `../probes/`.
 | `troubleshooting_slow_requests.html.md.erb` | [cloudfoundry/docs-cf-admin](https://github.com/cloudfoundry/docs-cf-admin) | `troubleshooting_slow_requests.html.md.erb` | `19b0c9c5fabd93b33ba184c6eb541f3cafd3a1b9` | Apache-2.0 |
 | `uaa-concepts.html.md.erb` | [cloudfoundry/docs-uaa](https://github.com/cloudfoundry/docs-uaa) | `uaa-concepts.html.md.erb` | `0f43fb93af5aa378f940dd19fec7ee54c2c01ccd` | Apache-2.0 (stated in the repository's `NOTICE` file; no `LICENSE` file) |
 | `credential-types.html.md.erb` | [cloudfoundry/docs-credhub](https://github.com/cloudfoundry/docs-credhub) | `credential-types.html.md.erb` | `e074f74717422c0082ca24a2a6da7fbbf8114999` | Apache-2.0 |
+| `images/request_lifecycle.png` | [cloudfoundry/docs-cf-admin](https://github.com/cloudfoundry/docs-cf-admin) | `images/request_lifecycle.png` | `45ab3458ddb3e06bd85f948c88c1f7675ee0ecba` | Apache-2.0 |
 | `template_variables.yml` | [cloudfoundry/docs-book-cloudfoundry](https://github.com/cloudfoundry/docs-book-cloudfoundry) | `config/template_variables.yml` (excerpt) | `0f2d16e419498c84f304da96f3afc8fd9c689975` | Apache-2.0 |
 
 ## Notes
@@ -21,6 +22,8 @@ in `../sites/` and `../probes/`.
   `scale_table: "oss_scale_table"` as a variable. Each site in this round
   includes the partial from a small host page instead of copying the whole
   host page.
+- **Image.** `troubleshooting_slow_requests` shows one image, copied to
+  `images/` so pages can keep its relative path `./images/request_lifecycle.png`.
 - **Variables excerpt.** `template_variables.yml` keeps only the
   `template_variables:` key and the variables the test pages use, in their
   original order, plus `route_services` (a value that is HTML, used to check
@@ -46,6 +49,7 @@ git -C $R/docs-cf-admin show 19b0c9c5fabd93b33ba184c6eb541f3cafd3a1b9:metadata.h
 git -C $R/docs-cf-admin show 19b0c9c5fabd93b33ba184c6eb541f3cafd3a1b9:troubleshooting_slow_requests.html.md.erb | diff - troubleshooting_slow_requests.html.md.erb
 git -C $R/docs-uaa show 0f43fb93af5aa378f940dd19fec7ee54c2c01ccd:uaa-concepts.html.md.erb | diff - uaa-concepts.html.md.erb
 git -C $R/docs-credhub show e074f74717422c0082ca24a2a6da7fbbf8114999:credential-types.html.md.erb | diff - credential-types.html.md.erb
+git -C $R/docs-cf-admin show 45ab3458ddb3e06bd85f948c88c1f7675ee0ecba:images/request_lifecycle.png | cmp - images/request_lifecycle.png
 git -C $R/docs-book-cloudfoundry show 0f2d16e419498c84f304da96f3afc8fd9c689975:config/template_variables.yml | grep -xF -f <(grep -v '^#' template_variables.yml) | diff - <(grep -v '^#' template_variables.yml)
 ```
 

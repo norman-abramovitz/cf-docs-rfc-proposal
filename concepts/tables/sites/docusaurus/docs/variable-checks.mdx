@@ -1,0 +1,18 @@
+---
+title: Variable checks
+---
+
+import vars from '@site/vars.json';
+import CheckPartial from './_check_partial.mdx';
+
+How this site handles the variable and partial cases the test pages need.
+
+<p><span id="defined">Defined: {vars.platform_name}</span></p>
+
+<p><span id="undefined">Undefined: {vars.metadata_ref}</span></p>
+
+<p><span id="html-escaped">HTML as text: {vars.route_services}</span></p>
+
+<div id="html-raw" dangerouslySetInnerHTML={{__html: vars.route_services}} />
+
+<CheckPartial />

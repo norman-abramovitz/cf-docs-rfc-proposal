@@ -1,4 +1,4 @@
-.PHONY: install build serve clean
+.PHONY: install build serve clean check-raw
 
 install: node_modules
 node_modules: package.json
@@ -13,6 +13,10 @@ build: vars.json
 
 serve: build
 	npm run serve
+
+# First MDX error on each unchanged-HTML page
+check-raw: node_modules
+	node mdx-check.mjs docs/passthrough-raw/*.mdx
 
 clean:
 	rm -rf build .docusaurus vars.json
