@@ -26,6 +26,11 @@ What has been done in this round, newest last. Each line links to the work.
   cleanup every table renders correctly in all three modes. Docusaurus has no
   native table hints: widths and captions need HTML or a custom plugin. Results,
   width variants, and side-by-side screenshots: [results.md](results.md#docusaurus-3102).
+- [x] **Renderings reviewed.** The `metadata` title stays a spanning row, not a
+  caption. The `<br/><br/>` in `uaa-concepts` is a paragraph break, so the
+  cell holds two paragraphs. The `troubleshooting_slow_requests` tables use
+  variant C, no widths: the column roles decide. These are now
+  [template conventions](#template-conventions).
 - [ ] Zensical site.
 - [ ] Astro/Starlight site.
 - [ ] Antora site.
@@ -86,7 +91,7 @@ table, independent of any tool.
 
 | Level | Hint | Values | Seen in |
 |-------|------|--------|---------|
-| Table | caption | text | `metadata`: a centered row spanning all four columns is really a caption |
+| Table | title | text | `metadata`: a centered row spanning all four columns, above the column headers |
 | Table | header row | yes / no | all |
 | Table | row-header column | yes / no | first column acting as row labels |
 | Table | pattern | name | `troubleshooting_slow_requests`: Result / Explanation / Action, six times |
@@ -109,6 +114,13 @@ Some source markup only restates what the site template should do anyway.
 Conversions drop that markup and rely on the template instead:
 
 - **Header cells are bold.** `<th><strong>…</strong></th>` becomes `<th>…</th>`.
+- **A table title is a spanning row.** It sits above the column headers and
+  spans every column, as on the published `metadata` page, rather than
+  becoming a caption.
+- **A paragraph break in a cell is a paragraph.** `<br/><br/>` between two
+  blocks of text becomes two paragraphs.
+- **Widths follow the column roles.** A table with the Result / Explanation /
+  Action pattern sets no widths; `key` and `prose` decide.
 
 ## Method
 

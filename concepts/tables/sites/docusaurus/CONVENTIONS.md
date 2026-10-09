@@ -69,6 +69,7 @@ is a list item inside it, so a cell can hold lists and paragraphs.
 | `roles` | `key`, `value`, or `prose` per column | column role |
 | `wrap` | `avoid` or `normal` per column; `key` defaults to `avoid` | column wrap |
 | `caption` | caption text | caption |
+| `title` | title text, shown as a header row spanning every column | title |
 
 `widths`, `header-rows`, and `stub-columns` use MyST's `list-table` names.
 [src/css/hints.css](src/css/hints.css) sets top alignment and no-wrap; the
@@ -78,6 +79,6 @@ rest of the look comes from the theme.
 
 GFM pipe tables. In `.mdx`, a cell can hold an inline HTML list
 (`<ul><li>…</li></ul>` on one line) and `<br /><br />`. No widths, alignment
-other than left/center/right per column, row headers, or captions. A spanning
-title row becomes a bold line above the table. A pipe table needs a blank
+other than left/center/right per column, row headers, captions, or spanning
+rows. A title row becomes a bold line above the table. A pipe table needs a blank
 line before it.

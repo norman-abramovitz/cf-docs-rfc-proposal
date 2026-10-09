@@ -32,6 +32,10 @@ and compared before choosing:
 | B — uniform | about 25% / 25% / 50% in all six tables | extension |
 | C — roles only | no width hints; the `key` and `prose` defaults decide | extension |
 
+**Decided** after comparing renderings: variant C. The width rows in the
+hints table above no longer apply; the roles decide. Passthrough still
+carries each table's widths as written (it applies cleanup only).
+
 **Cleanup needed (all tables):** none for well-formedness. Body rows sit
 directly in `<table>` with no `<tbody>`; browsers insert one. Adding
 `<tbody>` changes no content.

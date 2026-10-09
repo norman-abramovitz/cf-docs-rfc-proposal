@@ -27,9 +27,10 @@ Site: [sites/docusaurus/](sites/docusaurus/) — conventions:
   as they are. Three of the five first errors are outside the tables (literal
   `{…}` placeholders in prose, an unclosed `<br>`), so table cleanup alone is
   not enough to migrate a page to MDX.
-- **With cleanup, every table renders correctly in all three modes.** 33 of
-  35 spot checks pass in each mode; the two that fail are the page
-  descriptions (finding 7). `make check` in the site reruns them with
+- **With cleanup, every table renders correctly in all three modes.** 34 of
+  36 spot checks pass in passthrough and extension; the two that fail are the
+  page descriptions (finding 7). Native passes 33: it also cannot draw the
+  `metadata` title as a spanning row. `make check` in the site reruns them with
   [checks/spot-checks.sh](checks/spot-checks.sh).
 - **Cleanup the tables needed:** close void elements (`<col />`, `<br />`),
   fix the malformed markup the intent files list, write `style` as a JSX
@@ -62,13 +63,13 @@ Site: [sites/docusaurus/](sites/docusaurus/) — conventions:
 | | extension | yes | preserved | width 20%, row headers, no wrap | list-table |
 | | native | yes | preserved | none (18/82) | pipe table, readable |
 | `metadata` | passthrough | after cleanup: two unclosed `<td>`, headers moved into `<thead>`, `style` objects, plus braces in a `<pre>` block and one `<br>` outside the tables | preserved; stray backslashes removed (decided fix) | spanning title row centered | HTML |
-| | extension | yes | preserved; title row is a caption (provisional) | caption, row headers, no wrap on key column (26%) | list-table with nested lists: readable |
+| | extension | yes | preserved | title row spanning all columns, row headers, no wrap on key column (26%) | list-table with nested lists: readable |
 | | native | yes, lists as inline HTML in cells | preserved; title is a bold line above the table, not part of it | none; cells vertically centered | pipe table with inline `<ul>`: hard to edit |
 | `troubleshooting_slow_requests` | passthrough | after cleanup: `<tbody>`, one multi-line cell, plus `<br />` outside the tables | preserved after nesting the Experiment 2 table in its list step | variant A, as written | HTML |
-| | extension | yes | preserved | variant B 25/25/50 in all six; variant C by content | list-table |
+| | extension | yes | preserved | variant C (decided): no widths, columns sized by content | list-table |
 | | native | yes | preserved after adding a blank line before each table | none (same as variant C) | pipe table |
 | `uaa-concepts` | passthrough | after cleanup: `</td>` → `</tr>`, plus `{…}` placeholders escaped in prose | preserved | widths 30% and 25% | HTML |
-| | extension | yes | preserved; `<br/><br/>` became two paragraphs (provisional) | widths, row headers, no wrap | list-table; paragraphs as in Markdown |
+| | extension | yes | preserved; `<br/><br/>` became two paragraphs (decided) | widths, row headers, no wrap | list-table; paragraphs as in Markdown |
 | | native | yes | preserved, `<br /><br />` kept | none (27/30/43, 25/74) | pipe table |
 
 ### Width variants for `troubleshooting_slow_requests`
@@ -82,11 +83,19 @@ sits inside a numbered list, so it is narrower (671 pixels).
 | B — uniform 25/25/50 (extension) | 25/25/50 | 25/25/50 | 25/25/50 | 25/25/50 | 25/25/50 | 25/25/50 |
 | C — roles only (extension; native is the same) | 33/25/42 | 28/35/37 | 19/33/48 | 17/24/59 | 20/23/57 | 17/25/58 |
 
+**Decided:** variant C. The extension page now uses it; variant B was
+measured on an earlier version of that page.
+
 Table 2 in each variant: [A](results/docusaurus-troubleshooting-t2-A-as-written.png),
 [B](results/docusaurus-troubleshooting-t2-B-uniform.png),
 [C](results/docusaurus-troubleshooting-t2-C-roles-only.png).
 
 ### Provisional changes, side by side
+
+Both were decided after this comparison: the `metadata` title stays a
+spanning row (the extension draws it with a `title` option), and the
+`uaa-concepts` break is a paragraph break, so the extension keeps two
+paragraphs.
 
 - `metadata` title row: [spanning row](results/docusaurus-metadata-t1-passthrough-spanning-row.png),
   [caption](results/docusaurus-metadata-t1-extension-caption.png),

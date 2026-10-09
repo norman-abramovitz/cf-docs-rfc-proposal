@@ -49,9 +49,11 @@ Source: lines 285–328. Five rows.
 
 **Deviations:** in the `allowed providers` row, the two paragraphs separated
 by `<br/><br/>` become two paragraphs. The text is unchanged; the line breaks
-are a workaround standing in for a paragraph break. **Provisional:** decided
-after comparing renderings. Passthrough keeps the `<br/><br/>`; extension and
-native use two paragraphs.
+are a workaround standing in for a paragraph break. **Decided** after
+comparing renderings: the double break is the end of a paragraph, with
+paragraph spacing below it, so the cell holds two paragraphs. Passthrough
+keeps the `<br/><br/>` (it applies cleanup only). Native pipe tables cannot
+hold paragraphs, so native keeps `<br /><br />`.
 
 ### Spot checks
 

@@ -22,6 +22,7 @@ nchk credential-types '[“”]' 'no curly quotes'
 cnt metadata 'Alphanumeric  *( \[a-z0-9A-Z\] )' 4 'brackets without backslashes'
 nchk metadata '\\\[a-z' 'no backslash escapes'
 chk metadata '<li><code>-</code></li>' 'one-char code spans'
+chk metadata '<th colspan="4"[^>]*>Label requirements</th>' 'title row spans the table'
 body() { sed -n '/<article/,/<\/article>/p' "$B/$1.html" > "$B/$1.body"; }
 body metadata; body troubleshooting_slow_requests
 nchkb() { if grep -q -- "$2" "$B/$1.body"; then echo "FAIL  $1: $3"; fail=1; else echo "ok    $1: $3"; fi; }
