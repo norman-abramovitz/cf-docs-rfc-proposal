@@ -42,3 +42,25 @@
   font-weight: var(--table-row-header-weight, 600);
   text-align: var(--table-row-header-align, left);
 }
+
+/* Style table-media: a grid of images (passthrough class="table-media",
+   extension role .table-media). No cell borders; a rule under the header
+   row and a thin line between body rows; cells centered both ways. An image
+   fills its cell; image columns share the width by the images' size, so
+   columns of same-size images are equal. */
+.doc table.table-media {
+  width: 100%;
+  margin-top: 1.5rem;
+  border: 0;
+  font-size: var(--table-font-size, .83333rem);
+  line-height: var(--table-line-height, inherit);
+}
+.doc table.table-media > * > tr > * {
+  border: 0;
+  padding: .5rem;
+  text-align: center;
+  vertical-align: middle;
+}
+.doc table.table-media > thead > tr > th { border-bottom: 2.5px solid #e1e1e1; }
+.doc table.table-media > tbody > tr + tr > * { border-top: 1px solid #e1e1e1; }
+.doc table.table-media img { width: 100%; height: auto; }

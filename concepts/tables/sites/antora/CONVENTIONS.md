@@ -147,3 +147,27 @@ The default UI's stylesheet is built with its variables resolved, so it
 exposes no variables a site can set; `hints.css` sets the look with plain
 rules. The UI spaces blocks with top margins only, so cells have no extra gap
 below their last paragraph or list.
+
+## Adding a style
+
+A style is a class name and a few rules in
+[supplemental-ui/css/hints.css](supplemental-ui/css/hints.css). The example
+is `table-media`, the image grid on the `uaa-performance` page.
+
+- **Passthrough** names the style as the HTML table's class:
+  `<table class="table-media">`. Its rules replace the standard look, so
+  they set the borders, padding and alignment themselves.
+- **Extension** names it as a role on the AsciiDoc table:
+  `[.table-media%header%autowidth]`. Asciidoctor adds the role to the
+  table's classes (`tableblock frame-all grid-all fit-content table-media`).
+  The style's rules come after the UI's frame and grid rules and are as
+  specific, so they win. `%autowidth` leaves out the equal column widths
+  Asciidoctor writes by default; the style sets the table to full width and
+  lets the images share it.
+- **Native** has no class: a table without a role gets the standard look.
+  Naming a style is what the extension adds.
+
+The images link to themselves with `link=self` in the image macro
+(`image:client-creds-threads-1.png["Threads Level 1",link=self]`). Antora
+publishes module images to `_images/`, so a passthrough page links them as
+`../_images/<file>`.

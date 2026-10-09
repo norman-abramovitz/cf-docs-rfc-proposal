@@ -1,0 +1,26 @@
+= UAA performance
+
+[[results]]
+== Performance results
+
+[[client-credentials]]
+=== Client credentials grant type
+
+*Endpoint*: /oauth/token?grant_type=client_credentials
+
+[.table-media%header%autowidth]
+|===
+|Instances |Threads |Throughput
+
+|1
+|image:client-creds-threads-1.png["Threads Level 1",link=self]
+|image:client-creds-throughput-1.png["Throughput Level 1",link=self]
+
+|2
+|image:client-creds-threads-2.png["Threads Level 2",link=self]
+|image:client-creds-throughput-2.png["Throughput Level 2",link=self]
+
+|4
+|image:client-creds-threads-4.png["Threads Level 4",link=self]
+|image:client-creds-throughput-4.png["Throughput Level 4",link=self]
+|===
