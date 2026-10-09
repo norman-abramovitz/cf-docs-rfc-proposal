@@ -128,6 +128,31 @@ Table 2 in each variant: [A](results/docusaurus-troubleshooting-t2-A-as-written.
   `{vars.appruntimeabbr}` in their description. Setting `description:` in the
   front matter avoids it.
 
+8. **Text inside `<pre class="terminal">` is parsed as Markdown.** A
+  word-by-word comparison with the published pages
+  ([checks/text-diff.py](checks/text-diff.py)) found one content change in
+  every mode: `Accept: */*` in the terminal output on
+  `troubleshooting_slow_requests` shows as `Accept: /`, because MDX reads
+  `*/*` as emphasis. The block is also split into paragraphs inside the
+  `<pre>`. Five such blocks are on the test pages; they belong to the code
+  blocks concept. The spot checks did not catch it because they cover the
+  tables.
+
+### Text compared with the published page
+
+Apart from finding 8 and the decided backslash fix, the main text of each page
+matches the published page in all three modes. The other differences:
+
+- **Not reproduced:** the *Page last updated* line and the *Create a pull
+  request or raise an issue on the source for this page in GitHub* link.
+  Docusaurus offers both (`showLastUpdateTime`, `editUrl`); this site does not
+  enable them.
+- **Moved:** the list of section links at the top of each published page is
+  Docusaurus's *On this page* list beside the article.
+- **Quotes:** the published build turns straight quotes into typographic ones
+  (`user’s`, `“sub”`); Docusaurus keeps them straight (ten words on two
+  pages).
+
 ### Raw passthrough errors
 
 `make check-raw` in the site prints the first MDX error per page. MDX stops at
