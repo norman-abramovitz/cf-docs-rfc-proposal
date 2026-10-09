@@ -41,9 +41,15 @@ Site: [sites/docusaurus/](sites/docusaurus/) — conventions:
   renders empty, as on the published pages. An HTML-valued variable renders
   as escaped text unless the author uses `dangerouslySetInnerHTML`.
 - **Docusaurus has no native table hints.** Widths, top alignment, row
-  headers, and captions need either HTML (passthrough) or custom code
-  (extension). #1642 §5 rules out custom React; the extension here is a
-  remark plugin, which is also custom code.
+  headers, and captions need either HTML (passthrough) or a plugin
+  (extension); the extension here is a remark plugin.
+  [#1642 §5](https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L98-L104)
+  says: "Working Groups MUST NOT need custom extensions, plugins, or
+  JavaScript code to author documentation" (line 100), and "The PoC MUST
+  validate that the most complex existing pages (HTML tables, CSS layouts)
+  can be represented with MDX alone. Any gap found MUST be reported as a PoC
+  finding" (line 104). Extension mode shows what a single extension,
+  maintained once for all documentation, closes.
 - **Findings outside tables** (recorded here because they block a page, to be
   worked in their own concepts): heading anchors written as
   `<a id="…"></a>` break the page's table of contents (React hydration error
@@ -209,9 +215,10 @@ Site: [sites/zensical/](sites/zensical/) — conventions:
   theme's table style (finding 1).
 - **Zensical has no table hints of its own.** Native pipe tables can carry
   widths through attributes on header cells; row headers, the title row and
-  the capped no-wrap need HTML (passthrough) or custom code (extension). The
-  extension is a Python-Markdown block, which is custom code like the
-  Docusaurus remark plugin.
+  the capped no-wrap need HTML (passthrough) or a plugin (extension). The
+  extension is a Python-Markdown block, the counterpart of the Docusaurus
+  remark plugin; what #1642 §5 says about plugins is quoted in the
+  Docusaurus summary.
 - **No browser errors** on any page in any mode.
 
 ### Grid
