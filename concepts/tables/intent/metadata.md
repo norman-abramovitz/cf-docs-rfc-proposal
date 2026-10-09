@@ -28,18 +28,16 @@ No widths in the source; the role defaults apply.
 opens the next `<td>` directly after `</ul>`. Browsers close the open cell
 when they see a new `<td>`, so the published page is correct; strict parsers
 fail or nest the cell. The column headers sit in a plain `<tr>` after
-`</thead>`; they move into `<thead>`.
+`</thead>`; they move into `<thead>`. `Alphanumeric ( \[a-z0-9A-Z\] )`
+(lines 73 and 89): the backslashes are Markdown escapes, but Markdown is not
+processed inside this HTML, so the published page shows them. They are
+removed: `Alphanumeric ( [a-z0-9A-Z] )`.
 
-**Deviations:**
-
-- The spanning, centered first row becomes a table caption. The text is the
-  same and still appears above the column headers; it is a title for the
-  table, not a column header.
-- `Alphanumeric ( \[a-z0-9A-Z\] )` (lines 73 and 89): the backslashes are
-  Markdown escapes, but Markdown is not processed inside this HTML, so the
-  published page shows the backslashes. **Proposed:** render
-  `Alphanumeric ( [a-z0-9A-Z] )`, recorded as a correction of a source
-  defect. The alternative is to keep the backslashes as published.
+**Deviations:** the spanning, centered first row becomes a table caption.
+The text is the same and still appears above the column headers; it is a
+title for the table, not a column header. **Provisional:** decided after
+comparing renderings. Passthrough keeps the spanning row (it applies cleanup
+only); extension and native use the caption.
 
 ### Spot checks
 
@@ -49,7 +47,7 @@ fail or nest the cell. The column headers sit in a plain `<tr>` after
 - [ ] Column 3 lists have 3, 4, and 4 items; column 4 lists have 2 and 2
       items; row 2 column 4 is a plain sentence.
 - [ ] One-character code spans `-`, `.`, `_`, `/` render as visible code.
-- [ ] Bracket text as decided under Deviations.
+- [ ] `Alphanumeric ( [a-z0-9A-Z] )` with no backslashes.
 
 ## Table 2 — Annotation requirements
 
@@ -68,10 +66,10 @@ Source: lines 121–168. Same shape as Table 1, same hints.
 | Cell | block content | lists | column 3 in rows 1 and 2; column 4 in row 1 |
 
 **Cleanup needed:** the same unclosed `<td>` as Table 1, at line 142 in row 1.
-Column headers move into `<thead>`.
+Column headers move into `<thead>`. Backslashes removed from the bracket text
+at lines 138 and 154, as in Table 1.
 
-**Deviations:** the same two as Table 1: caption for the spanning row, and the
-bracket text at lines 138 and 154.
+**Deviations:** caption for the spanning row, as in Table 1 (provisional).
 
 ### Spot checks
 

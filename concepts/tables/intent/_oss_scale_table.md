@@ -25,9 +25,10 @@ self-closed (`<col>` is a void element). Browsers accept this; XML and JSX
 parsers do not. The `width` attribute on `<col>` is also obsolete in current
 HTML; the width hint carries the intent instead.
 
-**Deviations:** the header cells wrap their text in `<strong>`. Header cells
-are bold in every template, so the `<strong>` is presentation and is dropped.
-The header text is unchanged.
+**Deviations:** the header cells wrap their text in `<strong>`. It is
+dropped: bold header cells are a convention the template provides (see
+[Template conventions](../README.md#template-conventions)). The header text is
+unchanged.
 
 ### Spot checks
 

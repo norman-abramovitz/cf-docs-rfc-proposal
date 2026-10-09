@@ -49,13 +49,16 @@ Source: lines 285–328. Five rows.
 
 **Deviations:** in the `allowed providers` row, the two paragraphs separated
 by `<br/><br/>` become two paragraphs. The text is unchanged; the line breaks
-were standing in for a paragraph break.
+are a workaround standing in for a paragraph break. **Provisional:** decided
+after comparing renderings. Passthrough keeps the `<br/><br/>`; extension and
+native use two paragraphs.
 
 ### Spot checks
 
 - [ ] 5 body rows, each with 2 cells.
-- [ ] `allowed providers` row: two paragraphs, the second starting "You can
-      limit UAA to only issue …".
+- [ ] `allowed providers` row: the second paragraph starts "You can limit UAA
+      to only issue …", separated from the first by a visible paragraph gap
+      (two `<p>` in extension and native; `<br/><br/>` in passthrough).
 - [ ] "in a Cloud Foundry deployment" and "in the Cloud Foundry ecosystem"
       (`vars.platform_name`, twice).
 - [ ] The `client.client_id` link in the `name` row goes to the `#clientid`

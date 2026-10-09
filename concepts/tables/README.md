@@ -13,10 +13,14 @@ What has been done in this round, newest last. Each line links to the work.
 - [x] **Intent written.** For every table, the hints that express what the
   source asks for, the markup cleanup it needs, the deviations from the
   published page, and a list of spot checks every converted version must pass:
-  [intent/](intent/). Two proposed deviations await review: rendering
-  `[a-z0-9A-Z]` without the stray backslashes the published `metadata` page
-  shows, and giving all six `troubleshooting_slow_requests` tables the same
-  column widths.
+  [intent/](intent/).
+- [x] **Intent reviewed.** The stray backslashes the published `metadata`
+  page shows (`\[a-z0-9A-Z\]`) are treated as a source defect and removed.
+  The six `troubleshooting_slow_requests` tables are rendered with three width
+  variants (as written, uniform, roles only) to compare. Two changes stay
+  provisional until the renderings are compared: a caption instead of the
+  spanning title row in `metadata`, and real paragraphs instead of
+  `<br/><br/>` in `uaa-concepts`.
 - [ ] Docusaurus site: passthrough, extension, native.
 - [ ] Zensical site.
 - [ ] Astro/Starlight site.
@@ -94,6 +98,13 @@ so most tables need only one or two hints.
 Example: a five-column table with widths 10–15% / 10–15% / 40% / 10–15% /
 10–15%, where column 1 avoids wrapping and is top-aligned, and column 4 is
 centered vertically and horizontally.
+
+### Template conventions
+
+Some source markup only restates what the site template should do anyway.
+Conversions drop that markup and rely on the template instead:
+
+- **Header cells are bold.** `<th><strong>…</strong></th>` becomes `<th>…</th>`.
 
 ## Method
 

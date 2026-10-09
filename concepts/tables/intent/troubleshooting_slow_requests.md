@@ -20,12 +20,17 @@ share one set of hints:
 | Column 3 | role | prose | "Action" |
 | Column 3 | width | the rest (about 50%) | |
 
-**Deviations:** the source sets widths inconsistently. Table 1 sets none,
-Tables 2–4 set column 1 only, and Tables 5 and 6 set columns 1 and 2. The
-widths are set on one body cell, so they apply to the whole column only
-because browsers size a column from its widest request. **Proposed:** apply
-the pattern's widths to all six tables. The alternative is to carry each
-table's widths as written, which keeps the differences.
+**Width variants.** The source sets widths inconsistently: Table 1 sets
+none, Tables 2–4 set column 1 only, and Tables 5 and 6 set columns 1 and 2.
+The widths sit on one body cell and apply to the whole column only because
+browsers size a column from its widest request. Three variants are rendered
+and compared before choosing:
+
+| Variant | Widths | Where |
+|---------|--------|-------|
+| A — as written | each table's own widths | passthrough |
+| B — uniform | about 25% / 25% / 50% in all six tables | extension |
+| C — roles only | no width hints; the `key` and `prose` defaults decide | extension |
 
 **Cleanup needed (all tables):** none for well-formedness. Body rows sit
 directly in `<table>` with no `<tbody>`; browsers insert one. Adding
