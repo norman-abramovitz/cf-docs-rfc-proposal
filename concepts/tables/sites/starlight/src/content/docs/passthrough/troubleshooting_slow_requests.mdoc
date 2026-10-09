@@ -77,14 +77,12 @@ you see after running `time curl -v APP-ENDPOINT`:
   <tr>
     <td>The output shows latency.</td>
     <td>A component of your app request flow is causing a delay.</td>
-    <td>Continue with the rest of the experiments to try to narrow down which component is causing
-        latency.</td>
+    <td>Continue with the rest of the experiments to try to narrow down which component is causing latency.</td>
   </tr>
   <tr>
     <td>The output does not show latency.</td>
     <td>Your app experiences inconsistent delays.</td>
-    <td>Try to find an endpoint that is consistently experiencing latency. If that is not possible,
-        then continue with the following experiments, running each of them multiple times.</td>
+    <td>Try to find an endpoint that is consistently experiencing latency. If that is not possible, then continue with the following experiments, running each of them multiple times.</td>
   </tr>
   <tr>
     <td>The output shows the error: <code>Could not resolve host: NONEXISTENT.com</code></td>
@@ -92,8 +90,7 @@ you see after running `time curl -v APP-ENDPOINT`:
     <td>Troubleshoot your DNS configuration.</td>
   </tr>
   <tr>
-    <td>The output of <code>curl</code> returns normally, but there is no value for
-        <code>X-Vcap-Request-Id</code>.</td>
+    <td>The output of <code>curl</code> returns normally, but there is no value for <code>X-Vcap-Request-Id</code>.</td>
     <td>The request from the load balancer did not reach {% $vars.app_runtime_abbr %}.</td>
     <td>Troubleshoot your load balancer configuration.</td>
   </tr>
@@ -159,24 +156,18 @@ To view request time in access logs:
             <td>Investigate gorouter logs as to why the latency is high. Investigate gorouter capacity metrics + possibly scale up</td>
           </tr>
           <tr>
-            <td width="25%">The output shows latency within <code>response_time</code> but not in
-                <code>gorouter_time</code>.</td>
-            <td>The network between Gorouter and the app, or the app itself, is causing latency. If the requests are uploading data
-              to the app, latency between the client and gorouter may appear here as well
-            </td>
-            <td>If the issue is not related to uploads, jump to experiment 5, and continue with the rest of the experiments to try to narrow
-                down which component is causing latency. Otherwise continue with experiment 3.</td>
+            <td width="25%">The output shows latency within <code>response_time</code> but not in <code>gorouter_time</code>.</td>
+            <td>The network between Gorouter and the app, or the app itself, is causing latency. If the requests are uploading data to the app, latency between the client and gorouter may appear here as well </td>
+            <td>If the issue is not related to uploads, jump to experiment 5, and continue with the rest of the experiments to try to narrow down which component is causing latency. Otherwise continue with experiment 3.</td>
           </tr>
           <tr>
             <td>The output does not show latency within <code>response_time</code>.</td>
             <td>A component before Gorouter is causing latency to the request before it reaches Gorouter.</td>
-            <td>Continue with the rest of the experiments to try to narrow down which component is
-                causing latency.</td>
+            <td>Continue with the rest of the experiments to try to narrow down which component is causing latency.</td>
           </tr>
           <tr>
             <td>The output does not show a log line.</td>
-            <td>Every incoming request should generate an access log message. If a request does not
-                generate an access log message, it means Gorouter did not receive the request.</td>
+            <td>Every incoming request should generate an access log message. If a request does not generate an access log message, it means Gorouter did not receive the request.</td>
             <td>Troubleshoot your Gorouter configuration.</td>
           </tr>
         </table>
@@ -217,8 +208,7 @@ See the following table for information about the output that you see after runn
   <tr>
     <td width="25%">The output shows latency.</td>
     <td>One of the components in the app request path is causing latency.</td>
-    <td>Continue with the rest of the experiments, using the test app, to try to narrow down which
-        component is causing latency.</td>
+    <td>Continue with the rest of the experiments, using the test app, to try to narrow down which component is causing latency.</td>
   </tr>
   <tr>
     <td>The output does not show latency.</td>
@@ -282,15 +272,12 @@ balancer from the app request path:
   <tr>
     <td width="25%">The output shows latency.</td>
     <td>The load balancer is not causing latency.</td>
-    <td>Continue with the rest of the experiments, using the test app, to try to narrow down which
-        component is causing latency.</td>
+    <td>Continue with the rest of the experiments, using the test app, to try to narrow down which component is causing latency.</td>
   </tr>
   <tr>
     <td>The output does not show latency.</td>
     <td>A component before Gorouter is causing latency.</td>
-    <td>Look at your load balancer logs and logs for any other components that exist between the
-        end client and Gorouter. Additionally, run these experiments with clients in different networks
-        to help isolate where issues occur.</td>
+    <td>Look at your load balancer logs and logs for any other components that exist between the end client and Gorouter. Additionally, run these experiments with clients in different networks to help isolate where issues occur.</td>
   </tr>
 </table>
 
@@ -337,14 +324,12 @@ the app request path:
   <tr>
     <td width="25%">The output shows latency.</td>
     <td width="25%">Gorouter is not causing latency.</td>
-    <td>Continue with the rest of the experiments, using the test app, to try to narrow down which
-        component is causing latency.</td>
+    <td>Continue with the rest of the experiments, using the test app, to try to narrow down which component is causing latency.</td>
   </tr>
   <tr>
     <td>The output does not show latency.</td>
     <td>Gorouter is causing latency.</td>
-    <td>See <a href="#gorouter-latency">Causes for Gorouter Latency</a> and
-        <a href="#ops-recommendations">Operations Recommendations</a>.</td>
+    <td>See <a href="#gorouter-latency">Causes for Gorouter Latency</a> and <a href="#ops-recommendations">Operations Recommendations</a>.</td>
   </tr>
 </table>
 
@@ -407,9 +392,7 @@ between the router and the app:
   <tr>
     <td>The output does not show latency.</td>
     <td>A component in your app request path is causing latency.</td>
-    <td>Repeat the diagnostic experiments to narrow down which component is causing latency. Follow
-    the steps in <a href="#total-latency">Experiment 1: Measure Total Round-Trip App Requests</a>
-	 and ensure that you are consistently experiencing latency.</td>
+    <td>Repeat the diagnostic experiments to narrow down which component is causing latency. Follow the steps in <a href="#total-latency">Experiment 1: Measure Total Round-Trip App Requests</a> and ensure that you are consistently experiencing latency.</td>
   </tr>
 </table>
 
