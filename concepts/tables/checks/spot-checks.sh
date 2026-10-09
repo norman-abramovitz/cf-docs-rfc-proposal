@@ -2,7 +2,7 @@
 # Spot checks from the intent files, run against built pages.
 # Usage: spot-checks.sh DIR — DIR holds one built page per test page, named
 # <page>.html (scale-table-host, credential-types, metadata,
-# troubleshooting_slow_requests, uaa-concepts), with React's <!-- --> text
+# troubleshooting_slow_requests, uaa-concepts, uaa-performance), with React's <!-- --> text
 # markers and empty class attributes removed:
 #   sed 's/<!-- -->//g; s/ class=""//g' build/<mode>/<page>/index.html > DIR/<page>.html
 B=$1; fail=0
@@ -56,4 +56,25 @@ print(out)
 PY
 )
 [ "$nest" = "[1]" ] && echo "ok    troubleshooting_slow_requests: table 2 inside its list step" || { echo "FAIL  troubleshooting_slow_requests: table 2 nesting $nest"; fail=1; }
+# uaa-performance: the table-media style (passthrough and extension only)
+media=$(python3 -I - "$B/uaa-performance.html" "$(basename "$B")" <<'PY2'
+import sys, re
+s = open(sys.argv[1]).read(); mode = sys.argv[2]
+t = next((m.group(0) for m in re.finditer(r'<table\b.*?</table>', s, re.S) if 'client-creds' in m.group(0)), '')
+rows = [r for r in re.findall(r'<tr\b.*?</tr>', t, re.S) if '<td' in r]
+cells = [len(re.findall(r'<td\b', r)) for r in rows]
+alts = re.findall(r'<img\b[^>]*alt="(Th[a-z]+ Level [124])"', t)
+linked = re.findall(r'<a\b[^>]*href="[^"]*client-creds-(\w+-\d)[^"]*\.png"[^>]*>\s*(?:<[^>]*>\s*)*?<img\b[^>]*src="[^"]*client-creds-\1[^"]*\.png"', t, re.S)
+cls = re.search(r'<table\b[^>]*class="[^"]*\btable-media\b', t) is not None
+want = mode in ('passthrough', 'extension')
+print('ok' if cells == [3, 3, 3] else 'FAIL', 'uaa-performance: 3 body rows of 3 cells', cells)
+print('ok' if len(alts) == 6 else 'FAIL', 'uaa-performance: 6 images with alt text', len(alts))
+print('ok' if len(linked) == 6 else 'FAIL', 'uaa-performance: each image inside a link to it', len(linked))
+print('ok' if cls == want else 'FAIL', 'uaa-performance: table-media style' if want else 'uaa-performance: standard style (no table-media)')
+PY2
+)
+echo "$media" | sed 's/^ok /ok    /; s/^FAIL /FAIL  /'
+echo "$media" | grep -q '^FAIL' && fail=1
+chk uaa-performance "id=[\"']client-credentials[\"']" 'client-credentials anchor'
+chk uaa-performance '<h3[^>]*>.*Client credentials grant type' 'heading h3'
 exit $fail
