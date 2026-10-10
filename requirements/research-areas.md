@@ -10,8 +10,8 @@ refer to the [requirement list](README.md#requirements).
 
 ### Which repositories feed the docs, and who owns each?
 
-- **Why it matters:** every area needs an owner before it migrates (R-17),
-  and the URL mapping depends on the repository list (R-15).
+- **Why it matters:** every area needs an owner before it migrates ([R-17](README.md#r-17)),
+  and the URL mapping depends on the repository list ([R-15](README.md#r-15)).
 - **Known:** the book's
   [`config.yml`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/master/config.yml)
   (the settings file that tells Bookbinder, today's build tool, which
@@ -26,8 +26,8 @@ refer to the [requirement list](README.md#requirements).
 ### Is bosh.io in scope?
 
 - **Why it matters:** the RFC does not mention it, yet it is Cloud Foundry
-  documentation with its own tables and notes (R-07, R-09), and the book
-  already sends all of `/bosh/` to `bosh.io/docs` (R-16).
+  documentation with its own tables and notes ([R-07](README.md#r-07), [R-09](README.md#r-09)), and the book
+  already sends all of `/bosh/` to `bosh.io/docs` ([R-16](README.md#r-16)).
 - **Known:** `bosh.io/docs` is built from
   [docs-bosh](https://github.com/cloudfoundry/docs-bosh) with MkDocs and its
   Material theme ([glossary](../glossary.md#mkdocs-material)), and is owned by
@@ -43,7 +43,7 @@ refer to the [requirement list](README.md#requirements).
 
 ### How do the UAA and CredHub API references fit?
 
-- **Why it matters:** R-29 API docs in the same pipeline.
+- **Why it matters:** [R-29](README.md#r-29) API docs in the same pipeline.
 - **Known:** the UAA API reference is built with Slate (a generator for
   one-page API references; [glossary](../glossary.md#slate)) from examples
   that Spring REST Docs writes during the API tests
@@ -58,7 +58,7 @@ refer to the [requirement list](README.md#requirements).
 ### What do downstream consumers reuse?
 
 - **Why it matters:** if anyone copies raw source, the source format and
-  partials matter to them (R-05); if they link to the site, URLs do (R-16).
+  partials matter to them ([R-05](README.md#r-05)); if they link to the site, URLs do ([R-16](README.md#r-16)).
 - **Known:** the RFC names SAP BTP and anynines as examples and says VMware
   Tanzu "works from its own branches and is not affected" ([L113]), but its
   open questions still name Tanzu ([L168]). In the RFC's pre-review (comments
@@ -70,7 +70,7 @@ refer to the [requirement list](README.md#requirements).
 
 ### Are partial names in variables still needed?
 
-- **Why it matters:** R-05 partials and reuse. A partial is a file of content
+- **Why it matters:** [R-05](README.md#r-05) partials and reuse. A partial is a file of content
   included in other pages. Here the partial's name comes from a variable (a
   named value defined once and inserted at build time), so the include is
   decided at build time. No tool has been tested with that yet.
@@ -85,7 +85,7 @@ refer to the [requirement list](README.md#requirements).
 
 ### What should undefined variables show?
 
-- **Why it matters:** R-04 variables everywhere asks that an undefined
+- **Why it matters:** [R-04](README.md#r-04) variables everywhere asks that an undefined
   variable be reported, not shown as empty text.
 - **Known:** `metadata_ref` (in `metadata`) and `bosh_cli_link` (three times
   in `troubleshooting_slow_requests`) are defined nowhere in the book; the
@@ -97,7 +97,7 @@ refer to the [requirement list](README.md#requirements).
 
 ### Which table styles beyond the standard one?
 
-- **Why it matters:** R-09 table styles by class. A style class is a name the
+- **Why it matters:** [R-09](README.md#r-09) table styles by class. A style class is a name the
   site's stylesheet gives a look to ([glossary](../glossary.md#style-class)).
 - **Known:** a survey of all 241 tables in the docs and tutorial repositories
   found one class in use, `table`. The closest thing to a second style is a
@@ -108,7 +108,7 @@ refer to the [requirement list](README.md#requirements).
 
 ### What do the concepts not yet worked require?
 
-- **Why it matters:** R-01, R-04 to R-08 and R-25 are stated from the tables
+- **Why it matters:** [R-01](README.md#r-01), [R-04](README.md#r-04) to [R-08](README.md#r-08) and [R-25](README.md#r-25) are stated from the tables
   round and from reading the source. Each concept (one documentation feature,
   worked through every candidate tool) can change them.
 - **Known:** tables are done; headings, variables, partials, notes and
@@ -122,7 +122,7 @@ refer to the [requirement list](README.md#requirements).
 
 ### Should the copyright year follow content changes?
 
-- **Why it matters:** R-25 build-time values are expected differences.
+- **Why it matters:** [R-25](README.md#r-25) build-time values are expected differences.
 - **Known:** the footer prints the build year (`<%= Time.now.year %>`), so
   the year changes on every build. A conversion that only changes the format
   may not warrant a new year.
@@ -133,7 +133,7 @@ refer to the [requirement list](README.md#requirements).
 
 ### Does "open source only" cover services?
 
-- **Why it matters:** R-19 open source only, R-18 full-text search.
+- **Why it matters:** [R-19](README.md#r-19) open source only, [R-18](README.md#r-18) full-text search.
 - **Known:** every tool evaluated so far is open source. Algolia DocSearch
   (a hosted search service, free for open-source projects;
   [glossary](../glossary.md#algolia-docsearch)) and GitHub Pages (GitHub's
@@ -145,7 +145,7 @@ refer to the [requirement list](README.md#requirements).
 
 ### What does search do today?
 
-- **Why it matters:** R-18 full-text search. The RFC says "Search is broken
+- **Why it matters:** [R-18](README.md#r-18) full-text search. The RFC says "Search is broken
   or disabled" ([L21]).
 - **Known:** nothing recorded here yet.
 - **What answers it:** a check of `docs.cloudfoundry.org` and the book's
@@ -153,7 +153,7 @@ refer to the [requirement list](README.md#requirements).
 
 ### How should versions work?
 
-- **Why it matters:** R-21 versioning.
+- **Why it matters:** [R-21](README.md#r-21) versioning.
 - **Known:** the RFC starts with one version, `v1.0`, and leaves the model to
   a later Version 2 ([L92], [L94]). In the pre-review the Docs WG lead noted
   that there is one current version of Cloud Foundry and of its docs, with
@@ -163,7 +163,7 @@ refer to the [requirement list](README.md#requirements).
 
 ### Should the site publish an `llms.txt` file?
 
-- **Why it matters:** R-20 search-engine and AI-friendly output.
+- **Why it matters:** [R-20](README.md#r-20) search-engine and AI-friendly output.
   [`llms.txt`](https://llmstxt.org/) is a plain-text index of a site's pages
   for AI-based tools.
 - **Known:** the RFC lists it as optional ([L41]) and as an open question
@@ -172,8 +172,8 @@ refer to the [requirement list](README.md#requirements).
 
 ### Who controls hosting and the domain today?
 
-- **Why it matters:** R-16 old URLs keep working depends on whoever can
-  change DNS at cutover; R-27 a named owner for every task.
+- **Why it matters:** [R-16](README.md#r-16) old URLs keep working depends on whoever can
+  change DNS at cutover; [R-27](README.md#r-27) a named owner for every task.
 - **Known:** the RFC says the current hosting is "managed outside the
   community GitHub organization" ([L24]) and asks who owns the domain
   ([L178]).
@@ -184,7 +184,7 @@ refer to the [requirement list](README.md#requirements).
 
 ### Who maintains shared extensions, and how does a working group ask for one?
 
-- **Why it matters:** R-13 no per-WG extensions. An extension is code added
+- **Why it matters:** [R-13](README.md#r-13) no per-WG extensions. An extension is code added
   to the build tool so it handles markup it lacks
   ([glossary](../glossary.md#extension)).
 - **Known:** in the tables round, Docusaurus, Zensical and Starlight each
@@ -197,7 +197,7 @@ refer to the [requirement list](README.md#requirements).
 
 ### Who staffs the central migration team?
 
-- **Why it matters:** R-23 one central conversion, R-27 a named owner for
+- **Why it matters:** [R-23](README.md#r-23) one central conversion, [R-27](README.md#r-27) a named owner for
   every task.
 - **Known:** the RFC asks this itself ([L174]).
 - **What answers it:** the RFC authors and the Docs WG.

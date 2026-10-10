@@ -4,7 +4,7 @@ Status: draft Docs WG position, incomplete — covers what is known as of 2026-1
 
 Who changes the Cloud Foundry docs, who else depends on them, and what each
 group needs. Needs are given as requirement IDs from the
-[requirement list](README.md#requirements), such as "R-15 URL identifies the
+[requirement list](README.md#requirements), such as "[R-15](README.md#r-15) URL identifies the
 source".
 
 This page does not say which working group owns which part of the docs. A
@@ -16,15 +16,15 @@ its first phase ([L112], [L114]), and is not done yet.
 
 | Audience | Changes the docs? | Main needs |
 |---|---|---|
-| [Docs WG lead and approvers](#docs-wg-lead-and-approvers) | yes, and publishes them | R-14, R-09, R-11, R-12, R-22, R-27, R-28 |
-| [Working-group content owners](#working-group-content-owners) | yes, in their areas | R-17, R-26, R-13, R-11, R-12 |
-| [Occasional contributors](#occasional-contributors) | yes, small fixes | R-15, R-12, R-10, R-11 |
-| [UAA and CredHub API doc maintainers](#uaa-and-credhub-api-doc-maintainers) | yes, from code | R-29, R-08, R-16 |
-| [bosh.io maintainers](#boshio-maintainers) | yes, on a separate site | R-09, R-07 (scope open) |
-| [Central migration team](#central-migration-team) | once, all of it | R-23, R-24, R-01, R-25, R-04, R-05, R-08 |
-| [Downstream consumers](#downstream-consumers) | no, they reuse it | R-16, R-15 |
-| [Readers](#readers) | no | R-18, R-16, R-02, R-06, R-07 |
-| [Search engines and AI-based tools](#search-engines-and-ai-based-tools) | no | R-20, R-16 |
+| [Docs WG lead and approvers](#docs-wg-lead-and-approvers) | yes, and publishes them | [R-14](README.md#r-14), [R-09](README.md#r-09), [R-11](README.md#r-11), [R-12](README.md#r-12), [R-22](README.md#r-22), [R-27](README.md#r-27), [R-28](README.md#r-28) |
+| [Working-group content owners](#working-group-content-owners) | yes, in their areas | [R-17](README.md#r-17), [R-26](README.md#r-26), [R-13](README.md#r-13), [R-11](README.md#r-11), [R-12](README.md#r-12) |
+| [Occasional contributors](#occasional-contributors) | yes, small fixes | [R-15](README.md#r-15), [R-12](README.md#r-12), [R-10](README.md#r-10), [R-11](README.md#r-11) |
+| [UAA and CredHub API doc maintainers](#uaa-and-credhub-api-doc-maintainers) | yes, from code | [R-29](README.md#r-29), [R-08](README.md#r-08), [R-16](README.md#r-16) |
+| [bosh.io maintainers](#boshio-maintainers) | yes, on a separate site | [R-09](README.md#r-09), [R-07](README.md#r-07) (scope open) |
+| [Central migration team](#central-migration-team) | once, all of it | [R-23](README.md#r-23), [R-24](README.md#r-24), [R-01](README.md#r-01), [R-25](README.md#r-25), [R-04](README.md#r-04), [R-05](README.md#r-05), [R-08](README.md#r-08) |
+| [Downstream consumers](#downstream-consumers) | no, they reuse it | [R-16](README.md#r-16), [R-15](README.md#r-15) |
+| [Readers](#readers) | no | [R-18](README.md#r-18), [R-16](README.md#r-16), [R-02](README.md#r-02), [R-06](README.md#r-06), [R-07](README.md#r-07) |
+| [Search engines and AI-based tools](#search-engines-and-ai-based-tools) | no | [R-20](README.md#r-20), [R-16](README.md#r-16) |
 
 ## Who changes the docs
 
@@ -42,18 +42,18 @@ repositories into one site.)
 
 Needs:
 
-- R-14 Docs WG approves and publishes: merging and publishing stay with the
+- [R-14](README.md#r-14) Docs WG approves and publishes: merging and publishing stay with the
   Docs WG ([L54]).
-- R-09 table styles by class, R-07 notes and admonitions: the consistent
+- [R-09](README.md#r-09) table styles by class, [R-07](README.md#r-07) notes and admonitions: the consistent
   style the charter asks for has to be something the site's template
   (the shared layout and stylesheet every page uses) can apply.
-- R-11 readable source and R-12 one-command local preview: the lead reviews
+- [R-11](README.md#r-11) readable source and [R-12](README.md#r-12) one-command local preview: the lead reviews
   every pull request ([L82]) and needs to read the source and see the result.
-- R-22 spellcheck with a shared dictionary: the Docs WG maintains the
+- [R-22](README.md#r-22) spellcheck with a shared dictionary: the Docs WG maintains the
   dictionary ([L96]).
-- R-28 onboarding before cutover: current maintainers learn the new
+- [R-28](README.md#r-28) onboarding before cutover: current maintainers learn the new
   toolchain before it replaces the old one ([L115]).
-- R-27 a named owner for every task: the Docs WG lead asked in the RFC's
+- [R-27](README.md#r-27) a named owner for every task: the Docs WG lead asked in the RFC's
   pre-review (comments on an earlier draft) that every task and maintenance
   aspect have a specific assignment. The RFC still lists these as open
   questions ([L172], [L174], [L176]).
@@ -74,13 +74,13 @@ to the teams that build the components.
 
 Needs:
 
-- R-17 an owner for every area, before the area migrates ([L114]).
-- R-26 owner review of migrated pages ([L131]).
-- R-13 no per-WG extensions: a working group can author its pages with the
+- [R-17](README.md#r-17) an owner for every area, before the area migrates ([L114]).
+- [R-26](README.md#r-26) owner review of migrated pages ([L131]).
+- [R-13](README.md#r-13) no per-WG extensions: a working group can author its pages with the
   shared extensions (code the Docs WG adds to the build tool so it handles
   markup it lacks), and asks the Docs WG for a new one rather than writing
   its own.
-- R-11 readable source and R-12 one-command local preview.
+- [R-11](README.md#r-11) readable source and [R-12](README.md#r-12) one-command local preview.
 
 ### Occasional contributors
 
@@ -89,13 +89,13 @@ outdated step.
 
 Needs:
 
-- R-15 URL identifies the source: today `docs.cloudfoundry.org/adminguide/metadata.html`
+- [R-15](README.md#r-15) URL identifies the source: today `docs.cloudfoundry.org/adminguide/metadata.html`
   is `metadata.html.md.erb` in `docs-cf-admin`, because the book's
   `config.yml` maps the `adminguide` directory to that repository. A
   contributor finds the file from the address bar.
-- R-12 one-command local preview, without installing a language toolchain
+- [R-12](README.md#r-12) one-command local preview, without installing a language toolchain
   by hand.
-- R-10 simple text plus HTML where needed, and R-11 readable source: the
+- [R-10](README.md#r-10) simple text plus HTML where needed, and [R-11](README.md#r-11) readable source: the
   page source should look like the page.
 
 ### UAA and CredHub API doc maintainers
@@ -119,10 +119,10 @@ proposal for the UAA API docs and the CredHub API docs?" ([L177]).
 
 Needs:
 
-- R-29 API docs in the same pipeline: the Docs WG lead asked in the
+- [R-29](README.md#r-29) API docs in the same pipeline: the Docs WG lead asked in the
   pre-review that the UAA API docs go through the same pipeline as the CF
   docs.
-- R-08 cross-repository links and R-16 old URLs keep working: book pages
+- [R-08](README.md#r-08) cross-repository links and [R-16](README.md#r-16) old URLs keep working: book pages
   link into the API references, including versioned UAA addresses.
 
 **Not yet written:** where the CredHub API docs are built and published
@@ -142,7 +142,7 @@ headed Note, Warning, and so on). The RFC does
 not mention bosh.io.
 
 Draft position: bosh.io follows the Docs WG's table and note conventions
-(R-09, R-07). Whether bosh.io moves to a new tool or into the new site is the
+([R-09](README.md#r-09), [R-07](README.md#r-07)). Whether bosh.io moves to a new tool or into the new site is the
 FI WG's decision; the Docs WG can advise. See
 [Research areas](research-areas.md#is-boshio-in-scope).
 
@@ -154,13 +154,13 @@ Who staffs it is an open question in the RFC ([L174]).
 
 Needs:
 
-- R-23 one central conversion: one set of rules, applied the same way to
+- [R-23](README.md#r-23) one central conversion: one set of rules, applied the same way to
   every repository.
-- R-24 markup cleanup before conversion: the source has HTML that browsers
+- [R-24](README.md#r-24) markup cleanup before conversion: the source has HTML that browsers
   accept and strict parsers reject.
-- R-01 content and outline survive, checked automatically against the
-  published pages, with R-25 build-time values are expected differences.
-- R-04 variables everywhere, R-05 partials and reuse, R-08 cross-repository
+- [R-01](README.md#r-01) content and outline survive, checked automatically against the
+  published pages, with [R-25](README.md#r-25) build-time values are expected differences.
+- [R-04](README.md#r-04) variables everywhere, [R-05](README.md#r-05) partials and reuse, [R-08](README.md#r-08) cross-repository
   links: the parts of a page that a conversion most often breaks.
 
 How the team converts: [Migration](migration.md).
@@ -177,8 +177,8 @@ a downstream distribution ([L168]), which does not match [L113].
 
 Needs:
 
-- R-16 old URLs keep working, for anyone who links to the docs.
-- R-15 URL identifies the source, for anyone who copies pages.
+- [R-16](README.md#r-16) old URLs keep working, for anyone who links to the docs.
+- [R-15](README.md#r-15) URL identifies the source, for anyone who copies pages.
 
 **Not yet written:** what each downstream consumer reuses (raw source or
 published HTML). That comes from the survey at [L113].
@@ -189,8 +189,8 @@ published HTML). That comes from the survey at [L113].
 
 People who use Cloud Foundry and read the docs to do so.
 
-Needs: R-18 full-text search, R-16 old URLs keep working (bookmarks and links
-from other sites), R-02 rich tables, R-06 typed code blocks, R-07 notes and
+Needs: [R-18](README.md#r-18) full-text search, [R-16](README.md#r-16) old URLs keep working (bookmarks and links
+from other sites), [R-02](README.md#r-02) rich tables, [R-06](README.md#r-06) typed code blocks, [R-07](README.md#r-07) notes and
 admonitions.
 
 ### Search engines and AI-based tools
@@ -198,7 +198,7 @@ admonitions.
 Search engines, and what the RFC calls "AI-based developer tools" ([L22]):
 programs that read the published docs to answer developers' questions.
 
-Needs: R-20 search-engine and AI-friendly output, R-16 old URLs keep working.
+Needs: [R-20](README.md#r-20) search-engine and AI-friendly output, [R-16](README.md#r-16) old URLs keep working.
 
 [L13]: https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L13
 [L22]: https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L22

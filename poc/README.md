@@ -69,9 +69,9 @@ test page:
 
 1. **Intent.** An *intent file* translates what each table asks for into
    *hints*: tool-neutral statements such as "column 1 is a key column, about
-   20% wide, does not wrap" (R-03 column widths as hints; requirement IDs
+   20% wide, does not wrap" ([R-03](../requirements/README.md#r-03) column widths as hints; requirement IDs
    are listed in [requirements](../requirements/README.md)). It also lists
-   the markup cleanup the page needs (R-24 markup cleanup before conversion)
+   the markup cleanup the page needs ([R-24](../requirements/README.md#r-24) markup cleanup before conversion)
    and any deliberate change from the published page.
    Files: [intent/](../concepts/tables/intent/).
 2. **Convert by hand, in each mode.** A *mode* is one way of writing the
@@ -91,7 +91,7 @@ test page:
 4. **Spot checks.** Per-table checks every converted page must pass (row
    counts, cells present, code kept, no stray characters), listed in the
    intent file and run by [spot-checks.sh](../concepts/tables/checks/spot-checks.sh)
-   (R-01 content and outline survive).
+   ([R-01](../requirements/README.md#r-01) content and outline survive).
 5. **Text comparison.** A word-by-word comparison of each page's main text
    against the published page, in every mode
    ([text-diff.py](../concepts/tables/checks/text-diff.py)). It finds changes

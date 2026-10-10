@@ -36,7 +36,7 @@ intent, from its
 
 The source has one defect: `class=“table”` is written with typographic
 quotes, so browsers never apply the class. Every converted version makes
-the quotes straight (R-24 markup cleanup before conversion). Requirement
+the quotes straight ([R-24](../requirements/README.md#r-24) markup cleanup before conversion). Requirement
 IDs are listed in [requirements/](../requirements/README.md).
 
 The modes named below are defined in the [Tooling README](README.md#modes):

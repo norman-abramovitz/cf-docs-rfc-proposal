@@ -18,7 +18,7 @@ Parts:
 - [poc-scope.md](poc-scope.md): what RFC #1642 asks its proof of concept to
   cover, and what these findings add.
 
-Requirements are cited by ID and a short phrase, for example "R-03 column
+Requirements are cited by ID and a short phrase, for example "[R-03](../requirements/README.md#r-03) column
 widths as hints". The IDs and their full statements are in
 [requirements/](../requirements/README.md). Terms are defined where they
 are first used; the [glossary](../glossary.md) has more on each.
@@ -42,7 +42,7 @@ authoring and, in the same list, for the
 
 The working framing for this evaluation is that the input needs **simple
 text formatting and HTML injection**: plain text for most of a page, and
-HTML where plain text cannot say what the page needs (R-10 simple text plus
+HTML where plain text cannot say what the page needs ([R-10](../requirements/README.md#r-10) simple text plus
 HTML where needed). Whether a tool can do that is a property of the tool and
 of the format it reads, so the tools have to be looked at before the
 content can be planned. The format is open: Markdown is one candidate, not
@@ -92,7 +92,7 @@ A hint is what a table asks for, written once and independent of any tool:
 a column's role (`key` for a short label, `value`, or `prose` for
 sentences), a width, whether a column avoids wrapping, whether the first
 column holds row headers, a title. Hints express intent, not exact values;
-each tool honors them as well as it can (R-03 column widths as hints). The
+each tool honors them as well as it can ([R-03](../requirements/README.md#r-03) column widths as hints). The
 full list: [Hints after the round](../concepts/tables/README.md#hints-after-the-round).
 
 What every mode looks like for one table: [formats.md](formats.md).
@@ -113,7 +113,7 @@ RFC #1642 asks for one conversion done centrally
 The plan is to record, concept by concept, the conversion rules that worked
 when pages were converted by hand, and later build them into a migration
 tool, `cf-docs-migrate`, with a `scan` command (find every instance of a
-concept across the docs) and a `convert` command (apply the rules) (R-23
+concept across the docs) and a `convert` command (apply the rules) ([R-23](../requirements/README.md#r-23)
 one central conversion). The tool is not yet written. A concept is one kind
 of thing the pages contain, such as tables, variables or code blocks; the
 list is in [concepts/README.md](../concepts/README.md#concepts).
@@ -123,12 +123,12 @@ The steps seen in the tables round, in order:
 1. **Clean up the markup.** Five of the twelve HTML tables on the test pages
    are not well-formed (an unclosed cell, a class written with typographic
    quotes, a row closed with `</td>`). Browsers repair this silently;
-   tools that read HTML strictly do not (R-24 markup cleanup before
+   tools that read HTML strictly do not ([R-24](../requirements/README.md#r-24) markup cleanup before
    conversion). The defects are listed in
    [Markup that only browsers tolerate](../concepts/tables/README.md#markup-that-only-browsers-tolerate).
 2. **Translate variables and includes.** `<%= vars.name %>` and
-   `<%= partial '…' %>` become each tool's syntax (R-04 variables everywhere,
-   R-05 partials and reuse). The forms are listed per tool in
+   `<%= partial '…' %>` become each tool's syntax ([R-04](../requirements/README.md#r-04) variables everywhere,
+   [R-05](../requirements/README.md#r-05) partials and reuse). The forms are listed per tool in
    [tools.md](tools.md).
 3. **Write each table in the chosen mode,** keeping the hints the intent
    file for the page records. The intent files are in
@@ -147,9 +147,9 @@ The steps seen in the tables round, in order:
    not appear), a word-by-word comparison with the published page, and a
    browser check that a wide table scrolls in its own box. The text
    comparison found content changes the spot checks missed. Build-time
-   values such as the copyright year are expected differences (R-25
+   values such as the copyright year are expected differences ([R-25](../requirements/README.md#r-25)
    build-time values are expected differences).
-6. **Owner review.** Each converted area is reviewed by its owner (R-26
+6. **Owner review.** Each converted area is reviewed by its owner ([R-26](../requirements/README.md#r-26)
    owner review of migrated pages). Not part of the tables round.
 
 **Not yet written:** the conversion steps for the other concepts (headings,
@@ -187,7 +187,7 @@ says:
 > code to author documentation.
 
 Whether one shared extension, maintained once for all documentation,
-meets that line is a requirements question (R-13 no per-WG extensions),
+meets that line is a requirements question ([R-13](../requirements/README.md#r-13) no per-WG extensions),
 not a tooling one. The table above shows what each tool needed for the
 test pages.
 
@@ -199,17 +199,17 @@ here because they stop a page from building or change its content.
 
 | Problem | Tools affected | Requirement | Evidence |
 |---------|----------------|-------------|----------|
-| Markup that only browsers tolerate breaks the build or changes content | Docusaurus (MDX), Starlight (Markdoc) | R-24 markup cleanup before conversion | [summary](../concepts/tables/results.md#summary) |
-| Text inside HTML is read as Markdown: a lone `-` becomes a list, spaces next to tags disappear, `*/*` loses its `*` — with no error | Starlight (Markdoc); Docusaurus (MDX) for `*/*` | R-01 content and outline survive | [Starlight findings](../concepts/tables/results.md#findings-2) |
-| Braces `{…}` in prose are code in MDX | Docusaurus | R-01 content and outline survive | [raw passthrough errors](../concepts/tables/results.md#raw-passthrough-errors) |
-| HTML-valued variables are escaped | Docusaurus, Starlight, Eleventy | R-04 variables everywhere | [Eleventy probe](../concepts/tables/probes/eleventy/README.md) |
-| Every page rewritten in another format, with silent failures | Antora | R-01 content and outline survive | [Antora finding 1](../concepts/tables/results.md#findings-3) |
-| Themes style different tables: all, only classless ones, only their own | all four | R-09 table styles by class | [summary](../concepts/tables/results.md#summary) |
-| Heading anchors written `<a id>` break the table of contents | Docusaurus | R-16 old URLs keep working | [Docusaurus finding 6](../concepts/tables/results.md#findings) |
-| A page description shows raw variable code | Docusaurus | R-20 search-engine and AI-friendly output | [Docusaurus finding 7](../concepts/tables/results.md#findings) |
-| No check for links to missing anchors | Starlight, Antora | R-08 cross-repository links (a link checker is how broken links are found) | [Starlight finding 7](../concepts/tables/results.md#findings-2) |
-| ERB tags shown as examples in prose are run as code | Zensical (its template engine reads every `<%= … %>`) | R-01 content and outline survive | [Zensical finding 3](../concepts/tables/results.md#findings-1) |
-| A table after a list step leaves the list unless indented | Docusaurus, Zensical, Starlight | R-01 content and outline survive | [Docusaurus finding 3](../concepts/tables/results.md#findings) |
+| Markup that only browsers tolerate breaks the build or changes content | Docusaurus (MDX), Starlight (Markdoc) | [R-24](../requirements/README.md#r-24) markup cleanup before conversion | [summary](../concepts/tables/results.md#summary) |
+| Text inside HTML is read as Markdown: a lone `-` becomes a list, spaces next to tags disappear, `*/*` loses its `*` — with no error | Starlight (Markdoc); Docusaurus (MDX) for `*/*` | [R-01](../requirements/README.md#r-01) content and outline survive | [Starlight findings](../concepts/tables/results.md#findings-2) |
+| Braces `{…}` in prose are code in MDX | Docusaurus | [R-01](../requirements/README.md#r-01) content and outline survive | [raw passthrough errors](../concepts/tables/results.md#raw-passthrough-errors) |
+| HTML-valued variables are escaped | Docusaurus, Starlight, Eleventy | [R-04](../requirements/README.md#r-04) variables everywhere | [Eleventy probe](../concepts/tables/probes/eleventy/README.md) |
+| Every page rewritten in another format, with silent failures | Antora | [R-01](../requirements/README.md#r-01) content and outline survive | [Antora finding 1](../concepts/tables/results.md#findings-3) |
+| Themes style different tables: all, only classless ones, only their own | all four | [R-09](../requirements/README.md#r-09) table styles by class | [summary](../concepts/tables/results.md#summary) |
+| Heading anchors written `<a id>` break the table of contents | Docusaurus | [R-16](../requirements/README.md#r-16) old URLs keep working | [Docusaurus finding 6](../concepts/tables/results.md#findings) |
+| A page description shows raw variable code | Docusaurus | [R-20](../requirements/README.md#r-20) search-engine and AI-friendly output | [Docusaurus finding 7](../concepts/tables/results.md#findings) |
+| No check for links to missing anchors | Starlight, Antora | [R-08](../requirements/README.md#r-08) cross-repository links (a link checker is how broken links are found) | [Starlight finding 7](../concepts/tables/results.md#findings-2) |
+| ERB tags shown as examples in prose are run as code | Zensical (its template engine reads every `<%= … %>`) | [R-01](../requirements/README.md#r-01) content and outline survive | [Zensical finding 3](../concepts/tables/results.md#findings-1) |
+| A table after a list step leaves the list unless indented | Docusaurus, Zensical, Starlight | [R-01](../requirements/README.md#r-01) content and outline survive | [Docusaurus finding 3](../concepts/tables/results.md#findings) |
 | Default themes hyphenate words in cells | Antora, Sphinx | none yet (a template choice) | [Antora finding 5](../concepts/tables/results.md#findings-3) |
 
 **Not yet written:** problem areas for the concepts not yet worked (code

@@ -444,7 +444,7 @@ What a table asks for, written once and independent of any tool: a column's
 role, a width, "don't wrap", row headers, a title, a style. A hint expresses
 the author's intent, not an exact value, and each tool and template honors
 it as well as it can ("Everything else is a hint",
-[concepts/README.md](concepts/README.md)). Column widths as hints are R-03
+[concepts/README.md](concepts/README.md)). Column widths as hints are [R-03](requirements/README.md#r-03)
 ([requirements/README.md](requirements/README.md)).
 
 Learn more: [Hints after the round](concepts/tables/README.md#hints-after-the-round).
@@ -486,7 +486,7 @@ Learn more: [Method](concepts/tables/README.md#method).
 The mode that keeps each table's HTML as written, translating only variables
 and partials to the tool's syntax, plus the cleanup the intent files list and
 whatever the tool forces. It answers how much must change if authors keep
-writing HTML tables (R-10 simple text plus HTML where needed,
+writing HTML tables ([R-10](requirements/README.md#r-10) simple text plus HTML where needed,
 [requirements/README.md](requirements/README.md)). The forced changes are in
 each site's `CONVENTIONS.md`; Antora keeps the HTML inside an AsciiDoc
 passthrough block (`++++`), which it does not parse
@@ -513,7 +513,7 @@ attributes on Markdoc's table tag in Starlight (76 lines), and in Antora and
 the Sphinx probe only classes and a stylesheet, no code. RFC #1642 says
 "Working Groups MUST NOT need custom extensions, plugins, or JavaScript code
 to author documentation" ([RFC L100][L100]). Extension mode shows what one
-extension, maintained once for all documentation, closes (R-13 no per-WG
+extension, maintained once for all documentation, closes ([R-13](requirements/README.md#r-13) no per-WG
 extensions, [requirements/README.md](requirements/README.md)).
 
 Learn more: [results.md](concepts/tables/results.md#summary),
@@ -547,7 +547,7 @@ rows, each with 2 cells" for `credential-types`. Each intent file lists them
 per table, and `make check` in each site runs them against the built pages
 with [checks/spot-checks.sh](concepts/tables/checks/spot-checks.sh). They are
 this round's content check; an automated comparison of text and headings with
-the published page belongs to cf-docs-migrate (R-01 content and outline
+the published page belongs to cf-docs-migrate ([R-01](requirements/README.md#r-01) content and outline
 survive, [requirements/README.md](requirements/README.md)).
 
 Learn more: [intent/credential-types.md](concepts/tables/intent/credential-types.md).
@@ -581,7 +581,7 @@ Learn more: [results.md](concepts/tables/results.md#summary).
 A class name on a table that names its look: `class="table"` for the
 standard style, `table-media` for the image-grid example. Every HTML table
 names its style with a class and each site's CSS gives the class its look; a
-pipe table cannot carry a class, so it gets the standard style (R-09 table
+pipe table cannot carry a class, so it gets the standard style ([R-09](requirements/README.md#r-09) table
 styles by class, [requirements/README.md](requirements/README.md)). Which
 further styles to support is open
 ([concepts/tables/README.md](concepts/tables/README.md#open-questions)); how
@@ -612,7 +612,7 @@ into their calling topics." ([RFC L179][L179]) In this round every tool
 included the `_oss_scale_table` partial, Docusaurus as an imported MDX
 component
 ([sites/docusaurus/CONVENTIONS.md](concepts/tables/sites/docusaurus/CONVENTIONS.md);
-R-05 partials and reuse).
+[R-05](requirements/README.md#r-05) partials and reuse).
 
 Learn more: [Importing Markdown in Docusaurus](https://docusaurus.io/docs/markdown-features/react#importing-markdown).
 
@@ -626,7 +626,7 @@ that the test pages use are not defined anywhere, so they render empty
 RFC #1642 asks for the "Ability to handle variables in a way that's easy and
 transparent for contributers" ([RFC L43][L43]); each tool's syntax and how it
 handles HTML values are in
-[results.md](concepts/tables/results.md#summary) (R-04 variables
+[results.md](concepts/tables/results.md#summary) ([R-04](requirements/README.md#r-04) variables
 everywhere).
 
 Learn more: [concepts/README.md](concepts/README.md).
@@ -640,7 +640,7 @@ Most candidate tools have admonition syntax of their own, such as `:::note`
 in Docusaurus. RFC #1642 says customization "is handled by MDX 3 features of
 the current Docusaurus version, such as admonitions" ([RFC L100][L100]). Notes and admonitions are
 a proposed concept, not yet worked ([concepts/README.md](concepts/README.md);
-R-07 notes and admonitions).
+[R-07](requirements/README.md#r-07) notes and admonitions).
 
 Learn more: [Admonitions in Docusaurus](https://docusaurus.io/docs/markdown-features/admonitions).
 
@@ -653,7 +653,7 @@ strict parse found 5 of 12 tables, on 4 of 5 test pages, not well-formed: an
 unclosed `<col>`, unclosed `<td>` cells, curly quotes around a class, a row
 ended with `</td>`
 ([concepts/tables/README.md](concepts/tables/README.md#markup-that-only-browsers-tolerate)).
-Cleaning this up before conversion is R-24 markup cleanup before conversion
+Cleaning this up before conversion is [R-24](requirements/README.md#r-24) markup cleanup before conversion
 ([requirements/README.md](requirements/README.md)).
 
 Learn more: [HTML standard](https://html.spec.whatwg.org/).
@@ -667,7 +667,7 @@ document the Cloud Foundry user experience", and its scope starts with
 "Merge and edit all doc changes". RFC #1642 keeps publishing with it: "Only
 Docs WG approvers can merge into the central repository and trigger
 deployments." ([RFC L54][L54]) The requirements in this repository are a
-draft Docs WG position (R-14 Docs WG approves and publishes,
+draft Docs WG position ([R-14](requirements/README.md#r-14) Docs WG approves and publishes,
 [requirements/README.md](requirements/README.md)).
 
 Learn more: [Docs WG charter](https://github.com/cloudfoundry/community/blob/main/toc/working-groups/docs.md).
@@ -728,7 +728,7 @@ them; GitHub then asks those owners to review every pull request that
 touches their paths. RFC #1642: "The docs repository contains a `CODEOWNERS`
 file that assigns each documentation area to the GitHub team of the
 responsible Working Group" ([RFC L74][L74]). Today's source pages already
-name an owner in their front matter (`owner: CredHub`) (R-17 an owner for
+name an owner in their front matter (`owner: CredHub`) ([R-17](requirements/README.md#r-17) an owner for
 every area,
 [requirements/README.md](requirements/README.md)).
 
@@ -757,8 +757,8 @@ option (e.g., Pagefind, lunr.js) be used?" ([RFC L170][L170]). Pagefind
 builds the index into the site at build time and needs no service. Because
 the index is a proprietary service, the choice touches the open question on
 open source
-([concepts/tables/README.md](concepts/tables/README.md#open-questions); R-18,
-R-19).
+([concepts/tables/README.md](concepts/tables/README.md#open-questions); [R-18](requirements/README.md#r-18),
+[R-19](requirements/README.md#r-19)).
 
 Learn more: [Algolia DocSearch](https://docsearch.algolia.com/),
 [Pagefind](https://pagefind.app/).
@@ -770,7 +770,7 @@ lists and summarizes the site's main pages so that tools built on large
 language models can find them. RFC #1642 lists "optionally an LLM-friendly
 `/llms.txt` index" among the capabilities the framework must provide
 ([RFC L41][L41]) and asks whether one should be published ([RFC L173][L173]).
-Related: R-20 search-engine and AI-friendly output
+Related: [R-20](requirements/README.md#r-20) search-engine and AI-friendly output
 ([requirements/README.md](requirements/README.md)).
 
 Learn more: [llms.txt](https://llmstxt.org/).

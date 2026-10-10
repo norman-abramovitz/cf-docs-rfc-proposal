@@ -29,7 +29,7 @@ maps the `adminguide` directory to that repository, and the file name follows
 the page name. The Docs WG lead asked on the RFC pull request that this
 mapping be kept.
 
-Leads to: R-15 URL identifies the source.
+Leads to: [R-15](README.md#r-15) URL identifies the source.
 
 ### HTML where Markdown falls short
 
@@ -39,7 +39,7 @@ written as a Markdown pipe table (one row per line, `|` between cells), and
 two HTML tables with a spanning title row and bulleted lists in cells. Across
 the book's repositories, 123 of 198 tables are HTML.
 
-Leads to: R-10 simple text plus HTML where needed, R-02 rich tables.
+Leads to: [R-10](README.md#r-10) simple text plus HTML where needed, [R-02](README.md#r-02) rich tables.
 
 ### Variables and partials
 
@@ -50,7 +50,7 @@ content included in other pages: `<%= partial 'oss_scale_table' %>`. Four of
 the five test pages put variables inside table cells; one test page is a
 partial ([test pages](../concepts/tables/README.md#what-the-pages-have-in-common)).
 
-Leads to: R-04 variables everywhere, R-05 partials and reuse.
+Leads to: [R-04](README.md#r-04) variables everywhere, [R-05](README.md#r-05) partials and reuse.
 
 ### Local preview
 
@@ -60,7 +60,7 @@ checked out. Point your browser at `localhost:4567` to preview your changes.
 On save, your browser reloads with any additional changes." A container setup
 for the same preview is in the book's `docker/` folder.
 
-Leads to: R-12 one-command local preview. The RFC's Problem list says the
+Leads to: [R-12](README.md#r-12) one-command local preview. The RFC's Problem list says the
 opposite ([L20]); see the
 [requirements page](README.md#also-incomplete).
 
@@ -69,14 +69,14 @@ opposite ([L20]); see the
 "Only the CFF Docs WG lead can merge pull requests, build to staging, and
 publish the documentation." (book README). The RFC keeps this ([L54]).
 
-Leads to: R-14 Docs WG approves and publishes.
+Leads to: [R-14](README.md#r-14) Docs WG approves and publishes.
 
 ### Redirects for moved pages
 
 The book has a redirect file, `redirects.rb`, with about 85 redirect rules for
 pages that moved, including all of `/bosh/` to `bosh.io/docs`.
 
-Leads to: R-16 old URLs keep working. These redirects must be carried over,
+Leads to: [R-16](README.md#r-16) old URLs keep working. These redirects must be carried over,
 not only new ones for the migration.
 
 ## What causes problems
@@ -96,14 +96,14 @@ file and a small layout; every table matched the published page cell for
 cell ([Middleman probe](../concepts/tables/probes/middleman/README.md)). So
 the problem is Bookbinder and the old Ruby setup, not the page format.
 
-Leads to: R-12 one-command local preview. More broadly, this is the reason
+Leads to: [R-12](README.md#r-12) one-command local preview. More broadly, this is the reason
 to move at all, so it does not map to one requirement.
 
 ### Search
 
 The RFC states "Search is broken or disabled" ([L21]).
 
-Leads to: R-18 full-text search.
+Leads to: [R-18](README.md#r-18) full-text search.
 
 **Not yet written:** what search does on `docs.cloudfoundry.org` today, and
 since when.
@@ -127,7 +127,7 @@ without an error (Markdoc). MDX is Markdown that can also hold JSX, the
 HTML-like syntax of the React library ([glossary](../glossary.md#mdx));
 Markdoc is Markdown with `{% %}` tags ([glossary](../glossary.md#markdoc)).
 
-Leads to: R-24 markup cleanup before conversion.
+Leads to: [R-24](README.md#r-24) markup cleanup before conversion.
 
 ### Column widths written four ways
 
@@ -138,7 +138,7 @@ widths on some rows and not others. The tables round (the first concept,
 converted by hand in four candidate tools) found that a column's role (a
 short key, a value, or prose) gives a better result than the written numbers.
 
-Leads to: R-03 column widths as hints, R-09 table styles by class.
+Leads to: [R-03](README.md#r-03) column widths as hints, [R-09](README.md#r-09) table styles by class.
 
 ### HTML-valued and undefined variables
 
@@ -153,7 +153,7 @@ times), are defined nowhere in the book, so the published pages show empty
 text in their place and nobody is told
 ([sources](../concepts/tables/source/SOURCES.md)).
 
-Leads to: R-04 variables everywhere.
+Leads to: [R-04](README.md#r-04) variables everywhere.
 
 ### The copyright year changes on every build
 
@@ -163,7 +163,7 @@ not any content changed. A comparison of converted and published pages has
 to allow for this. Whether the year should follow content changes instead is
 an [open question](research-areas.md#should-the-copyright-year-follow-content-changes).
 
-Leads to: R-25 build-time values are expected differences.
+Leads to: [R-25](README.md#r-25) build-time values are expected differences.
 
 ### Hosting outside the community's GitHub organization
 
@@ -171,7 +171,7 @@ The RFC states: "The current hosting solution involves infrastructure managed
 outside the community GitHub organization, leading to cost, access, and
 governance concerns" ([L24]).
 
-Leads to: R-14 Docs WG approves and publishes, R-27 a named owner for every
+Leads to: [R-14](README.md#r-14) Docs WG approves and publishes, [R-27](README.md#r-27) a named owner for every
 task.
 
 **Not yet written:** where the site is hosted today, who pays for it, and who

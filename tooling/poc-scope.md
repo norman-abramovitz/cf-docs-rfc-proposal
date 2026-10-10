@@ -58,16 +58,16 @@ there ([results summary](../concepts/tables/results.md#summary)).
   five first MDX errors are outside the tables (`{…}` in prose, an unclosed
   `<br>`), so a subset of simple pages would not show them
   ([raw passthrough errors](../concepts/tables/results.md#raw-passthrough-errors)).
-  R-02 rich tables.
+  [R-02](../requirements/README.md#r-02) rich tables.
 - **"Migrated to Markdown" depends on the tool.** Markdoc and MDX are
   Markdown dialects that read HTML differently, and Antora reads AsciiDoc,
   not Markdown. The source format is open in this evaluation
-  ([principles](../concepts/README.md#principles)). R-10 simple text plus
+  ([principles](../concepts/README.md#principles)). [R-10](../requirements/README.md#r-10) simple text plus
   HTML where needed.
 - **The source needs cleanup first.** Five of the twelve HTML tables on the
   test pages are not well-formed; strict readers fail or change content
   ([defects](../concepts/tables/README.md#markup-that-only-browsers-tolerate)).
-  A PoC that starts from cleaned pages should say so. R-24 markup cleanup
+  A PoC that starts from cleaned pages should say so. [R-24](../requirements/README.md#r-24) markup cleanup
   before conversion.
 
 ### MDX alone (L104)
@@ -78,7 +78,7 @@ remark plugin (extension). With Docusaurus's own Markdown table (native),
 the content survives but widths, row headers, top alignment and titles do
 not: the `credential-types` table comes out 18/82 where the source asks for
 20% ([grid](../concepts/tables/results.md#grid)). These are the gaps L104
-asks to be reported. R-03 column widths as hints, R-13 no per-WG
+asks to be reported. [R-03](../requirements/README.md#r-03) column widths as hints, [R-13](../requirements/README.md#r-13) no per-WG
 extensions.
 
 How the same table looks in every tool and mode:
@@ -92,21 +92,21 @@ How the same table looks in every tool and mode:
   The Middleman probe shows today's pages previewed without Bookbinder.
   What a contributor has to install differs: Node.js for Docusaurus,
   Starlight, Antora and Eleventy; Python (through `uv`) for Zensical and
-  Sphinx; Ruby for Middleman. R-12 one-command local preview.
+  Sphinx; Ruby for Middleman. [R-12](../requirements/README.md#r-12) one-command local preview.
 - **Search.** **Not yet tested** in any tool. RFC
   [L170](https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L170)
   asks whether Algolia DocSearch or a self-hosted option such as Pagefind
   is preferred. Algolia DocSearch's index is a hosted service that is not
-  open source, which bears on R-19 open source only (an open question:
-  [tables README](../concepts/tables/README.md#open-questions)). R-18
+  open source, which bears on [R-19](../requirements/README.md#r-19) open source only (an open question:
+  [tables README](../concepts/tables/README.md#open-questions)). [R-18](../requirements/README.md#r-18)
   full-text search.
-- **Versioning.** **Not yet tested** in any tool. R-21 versioning.
+- **Versioning.** **Not yet tested** in any tool. [R-21](../requirements/README.md#r-21) versioning.
 
 ### GitHub Pages deployment
 
 **Not yet tested** for any candidate tool. (This repository's own pages are
 published to GitHub Pages with Jekyll; that is not a candidate build.)
-R-14 Docs WG approves and publishes.
+[R-14](../requirements/README.md#r-14) Docs WG approves and publishes.
 
 ### The domain redirect strategy
 
@@ -117,7 +117,7 @@ and shows a browser error; Antora needs each one rewritten as `[[id]]`;
 Starlight generates ids that start with a dash but keeps the `<a id>`
 working ([Docusaurus finding 6](../concepts/tables/results.md#findings),
 [Antora conventions](../concepts/tables/sites/antora/CONVENTIONS.md#every-mode),
-[Starlight finding 8](../concepts/tables/results.md#findings-2)). R-16 old
+[Starlight finding 8](../concepts/tables/results.md#findings-2)). [R-16](../requirements/README.md#r-16) old
 URLs keep working.
 
 ### Feedback from contributors
@@ -125,7 +125,7 @@ URLs keep working.
 **Not yet done.** The "source readability" judgments in the results are the
 evaluators' own, not contributors'
 ([how to read the grid](../concepts/tables/results.md)). One table written
-in every format is in [formats.md](formats.md). R-11 readable source.
+in every format is in [formats.md](formats.md). [R-11](../requirements/README.md#r-11) readable source.
 
 ## What else the PoC needs to cover
 
@@ -133,15 +133,15 @@ Found in the tables round and not in the RFC's list:
 
 | Area | Why | Requirement | Evidence |
 |------|-----|-------------|----------|
-| A word-by-word comparison with the published page | It found content changes the per-table checks missed (`*/*`, dropped spaces) | R-01 content and outline survive | [checks/](../concepts/tables/checks/), [Starlight finding 2](../concepts/tables/results.md#findings-2) |
-| HTML-valued and undefined variables | MDX, Markdoc and EJS escape HTML values; two variables the pages use are defined nowhere and show as empty text today | R-04 variables everywhere | [progress](../concepts/tables/README.md#progress), [Eleventy probe](../concepts/tables/probes/eleventy/README.md) |
-| Partials | Each tool includes files differently; RFC L179 asks whether Docusaurus supports them | R-05 partials and reuse | [tools.md](tools.md#docusaurus) |
-| Code blocks in HTML (`<pre class="terminal">`) | MDX and Markdoc read their text as Markdown | R-06 typed code blocks | [Docusaurus finding 8](../concepts/tables/results.md#findings) |
-| Table styles named by a class | Themes disagree on which tables they style | R-09 table styles by class | [template conventions](../concepts/tables/README.md#template-conventions) |
-| Wide tables | A table wider than the column must scroll in its own box, not widen the page | R-02 rich tables | [results summary](../concepts/tables/results.md#summary) |
-| Link checking | Two tools do not check links to missing anchors; one does not check links inside HTML | R-08 cross-repository links | [Starlight finding 7](../concepts/tables/results.md#findings-2), [Docusaurus finding 4](../concepts/tables/results.md#findings) |
-| Page descriptions | Docusaurus publishes raw variable code in the description search engines show | R-20 search-engine and AI-friendly output | [Docusaurus finding 7](../concepts/tables/results.md#findings) |
-| Build-time values | The copyright year changes on every build; comparisons must expect it | R-25 build-time values are expected differences | [concepts README](../concepts/README.md#concepts) |
+| A word-by-word comparison with the published page | It found content changes the per-table checks missed (`*/*`, dropped spaces) | [R-01](../requirements/README.md#r-01) content and outline survive | [checks/](../concepts/tables/checks/), [Starlight finding 2](../concepts/tables/results.md#findings-2) |
+| HTML-valued and undefined variables | MDX, Markdoc and EJS escape HTML values; two variables the pages use are defined nowhere and show as empty text today | [R-04](../requirements/README.md#r-04) variables everywhere | [progress](../concepts/tables/README.md#progress), [Eleventy probe](../concepts/tables/probes/eleventy/README.md) |
+| Partials | Each tool includes files differently; RFC L179 asks whether Docusaurus supports them | [R-05](../requirements/README.md#r-05) partials and reuse | [tools.md](tools.md#docusaurus) |
+| Code blocks in HTML (`<pre class="terminal">`) | MDX and Markdoc read their text as Markdown | [R-06](../requirements/README.md#r-06) typed code blocks | [Docusaurus finding 8](../concepts/tables/results.md#findings) |
+| Table styles named by a class | Themes disagree on which tables they style | [R-09](../requirements/README.md#r-09) table styles by class | [template conventions](../concepts/tables/README.md#template-conventions) |
+| Wide tables | A table wider than the column must scroll in its own box, not widen the page | [R-02](../requirements/README.md#r-02) rich tables | [results summary](../concepts/tables/results.md#summary) |
+| Link checking | Two tools do not check links to missing anchors; one does not check links inside HTML | [R-08](../requirements/README.md#r-08) cross-repository links | [Starlight finding 7](../concepts/tables/results.md#findings-2), [Docusaurus finding 4](../concepts/tables/results.md#findings) |
+| Page descriptions | Docusaurus publishes raw variable code in the description search engines show | [R-20](../requirements/README.md#r-20) search-engine and AI-friendly output | [Docusaurus finding 7](../concepts/tables/results.md#findings) |
+| Build-time values | The copyright year changes on every build; comparisons must expect it | [R-25](../requirements/README.md#r-25) build-time values are expected differences | [concepts README](../concepts/README.md#concepts) |
 
 **Not yet written:** PoC scope for the concepts not yet worked (headings,
 notes and admonitions, code blocks, cross-repository links), and for Hugo

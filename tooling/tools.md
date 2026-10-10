@@ -31,7 +31,7 @@ written in it, is in [formats.md](formats.md).
 | [Hugo](#hugo) | Markdown, Go templates | on paper | — | Apache-2.0 | not yet assessed |
 | [VitePress](#vitepress) | Markdown, Vue components | on paper | — | MIT | not yet assessed |
 
-Licenses were read from each project's repository on 2026-10-08 (R-19 open
+Licenses were read from each project's repository on 2026-10-08 ([R-19](../requirements/README.md#r-19) open
 source only). Tiers are explained in the [Tooling README](README.md#tiers).
 
 Across the four hands-on tools, the round found that every test table
@@ -49,7 +49,7 @@ syntax carries, and how much of the rest of the page must change
 [docs-book-cloudfoundry](https://github.com/cloudfoundry/docs-book-cloudfoundry),
 collects the `docs-*` content repositories it names, and builds them into
 one site with Middleman. Each repository maps to a fixed URL directory, so
-a page's URL names the repository and file to edit (R-15 URL identifies the
+a page's URL names the repository and file to edit ([R-15](../requirements/README.md#r-15) URL identifies the
 source). Learn more: [Bookbinder](https://github.com/pivotal-cf/bookbinder);
 see also the [glossary](../glossary.md#bookbinder).
 
@@ -101,32 +101,32 @@ table, which carries no widths, row headers or titles.
   `style` as a JavaScript object, add `<tbody>` and `<colgroup>`, escape
   `{…}` in prose. Some of these only show as browser errors
   ([conventions](../concepts/tables/sites/docusaurus/CONVENTIONS.md#passthrough)).
-  R-24 markup cleanup before conversion, R-11 readable source.
+  [R-24](../requirements/README.md#r-24) markup cleanup before conversion, [R-11](../requirements/README.md#r-11) readable source.
 - **No native table hints.** Widths, row headers, top alignment and titles
   need HTML or a plugin; the extension here is a remark plugin
   ([plugins/list-table.js](../concepts/tables/sites/docusaurus/plugins/list-table.js)).
   RFC [L104](https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L104)
   asks the PoC to validate "that the most complex existing pages (HTML
   tables, CSS layouts) can be represented with MDX alone"; this is that
-  evidence. R-02 rich tables, R-03 column widths as hints, R-13 no per-WG
+  evidence. [R-02](../requirements/README.md#r-02) rich tables, [R-03](../requirements/README.md#r-03) column widths as hints, [R-13](../requirements/README.md#r-13) no per-WG
   extensions.
 - **HTML-valued variables are escaped.** They need
   `<div dangerouslySetInnerHTML={{__html: vars.name}} />` to render as
   markup ([conventions](../concepts/tables/sites/docusaurus/CONVENTIONS.md#every-mode)).
-  R-04 variables everywhere.
+  [R-04](../requirements/README.md#r-04) variables everywhere.
 - **Text in terminal blocks is read as Markdown:** `Accept: */*` shows as
-  `Accept: /` ([finding 8](../concepts/tables/results.md#findings)). R-01
-  content and outline survive, R-06 typed code blocks.
+  `Accept: /` ([finding 8](../concepts/tables/results.md#findings)). [R-01](../requirements/README.md#r-01)
+  content and outline survive, [R-06](../requirements/README.md#r-06) typed code blocks.
 - **Heading anchors written `<a id>`** cause a browser error on every page
   that has them and fail the anchor check; Docusaurus's own `{#id}` form
-  avoids both ([finding 6](../concepts/tables/results.md#findings)). R-16
+  avoids both ([finding 6](../concepts/tables/results.md#findings)). [R-16](../requirements/README.md#r-16)
   old URLs keep working.
 - **Page descriptions** (the summary search engines show) contain raw
   variable code when the first paragraph has a variable
-  ([finding 7](../concepts/tables/results.md#findings)). R-20 search-engine
+  ([finding 7](../concepts/tables/results.md#findings)). [R-20](../requirements/README.md#r-20) search-engine
   and AI-friendly output.
 - **Links inside HTML are not link-checked**; Markdown links are
-  ([finding 4](../concepts/tables/results.md#findings)). R-08
+  ([finding 4](../concepts/tables/results.md#findings)). [R-08](../requirements/README.md#r-08)
   cross-repository links.
 
 **Variables and partials.** One `import vars` line per page, then
@@ -134,7 +134,7 @@ table, which carries no widths, row headers or titles.
 used as a component, which answers RFC
 [L179](https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L179)
 ("Are partials supported by Docusaurus?") for the scale table: yes, as an
-MDX import. R-05 partials and reuse.
+MDX import. [R-05](../requirements/README.md#r-05) partials and reuse.
 
 **Status:** under evaluation.
 
@@ -160,25 +160,25 @@ capped no-wrap need HTML or the extension, a Python-Markdown block
 
 - **The default theme styles only tables without a `class`.** Tables that
   keep `class="table"` lose the theme's look until the site's CSS repeats
-  it ([finding 1](../concepts/tables/results.md#findings-1)). R-09 table
+  it ([finding 1](../concepts/tables/results.md#findings-1)). [R-09](../requirements/README.md#r-09) table
   styles by class.
 - **Every `<%= … %>` on a page is run**, including ERB shown as an example
   in prose or code. A bad one replaced the page with an error message while
   the build reported success, until `on_error_fail = true` was set
   ([finding 3](../concepts/tables/results.md#findings-1)). Pages that
-  document ERB need escaping. R-01 content and outline survive.
+  document ERB need escaping. [R-01](../requirements/README.md#r-01) content and outline survive.
 - **A bare `-` for an empty list-table cell drops a cell** with no error;
   it is written `- <!-- -->`
-  ([finding 5](../concepts/tables/results.md#findings-1)). R-01 content and
-  outline survive, R-11 readable source.
+  ([finding 5](../concepts/tables/results.md#findings-1)). [R-01](../requirements/README.md#r-01) content and
+  outline survive, [R-11](../requirements/README.md#r-11) readable source.
 - **A list that follows a text line with no blank line** is plain text, not
   a list: three literal `*` on one page
   ([text compared](../concepts/tables/results.md#text-compared-with-the-published-page-1)).
-  R-01 content and outline survive.
+  [R-01](../requirements/README.md#r-01) content and outline survive.
 - **Paid offerings.** Zensical is MIT-licensed. The project also sells a
   Studio editor and a Spark membership that gives early access to new
   features (read 2026-10-08). Whether features stay behind it is to be
-  watched. R-19 open source only.
+  watched. [R-19](../requirements/README.md#r-19) open source only.
 
 **Variables and partials.** Variables as written, through Zensical's
 template engine set to ERB-style tags; HTML values render as markup.
@@ -219,16 +219,16 @@ work.
   in a list item stops the whole site from building
   ([findings 1–3](../concepts/tables/results.md#findings-2)). The fixes
   are character entities (`&#45;`, `&#32;`, `&#10;`) or one-line cells.
-  R-01 content and outline survive, R-24 markup cleanup before conversion.
+  [R-01](../requirements/README.md#r-01) content and outline survive, [R-24](../requirements/README.md#r-24) markup cleanup before conversion.
 - **HTML-valued variables are escaped.** A two-line component renders them
-  as markup (`{% rawhtml value=$vars.name /%}`). R-04 variables everywhere.
+  as markup (`{% rawhtml value=$vars.name /%}`). [R-04](../requirements/README.md#r-04) variables everywhere.
 - **No link check.** Astro does not check in-page links; a scan of the
   built pages found two broken ones, also broken on the published page
-  ([finding 7](../concepts/tables/results.md#findings-2)). R-08
+  ([finding 7](../concepts/tables/results.md#findings-2)). [R-08](../requirements/README.md#r-08)
   cross-repository links.
 - **Typographic quotes** can be turned on, but they then change quotes
   inside code and `<pre>` blocks too, so the option stays off
-  ([finding 9](../concepts/tables/results.md#findings-2)). R-01 content and
+  ([finding 9](../concepts/tables/results.md#findings-2)). [R-01](../requirements/README.md#r-01) content and
   outline survive.
 
 **Variables and partials.** `{% $vars.name %}`; partials with
@@ -262,19 +262,19 @@ stylesheet. Every spot check passes in every mode.
   The conversion (pandoc plus a script) went wrong in four ways that each
   changed a page silently; three would not have been caught by the spot
   checks or the text comparison
-  ([finding 1](../concepts/tables/results.md#findings-3)). R-01 content and
-  outline survive, R-23 one central conversion.
+  ([finding 1](../concepts/tables/results.md#findings-3)). [R-01](../requirements/README.md#r-01) content and
+  outline survive, [R-23](../requirements/README.md#r-23) one central conversion.
 - **The default UI styles only AsciiDoc tables, hyphenates words in cells,
   and exposes no settings** a site can change; the site's stylesheet
   overrides rules instead
-  ([findings 3–5](../concepts/tables/results.md#findings-3)). R-09 table
+  ([findings 3–5](../concepts/tables/results.md#findings-3)). [R-09](../requirements/README.md#r-09) table
   styles by class.
 - **Wide tables widened the page** until an 8-line script put each table in
   a scrolling box
   ([table-scroll.js](../concepts/tables/sites/antora/supplemental-ui/js/table-scroll.js)).
   It is part of the site's UI, not of any page.
 - **No link check** for links to missing anchors
-  ([finding 8](../concepts/tables/results.md#findings-3)). R-08
+  ([finding 8](../concepts/tables/results.md#findings-3)). [R-08](../requirements/README.md#r-08)
   cross-repository links.
 - **The default UI is not versioned.** Its bundle is a build file at a
   moving URL; the site pins one build and checks its hash
@@ -311,7 +311,7 @@ Details: [probes/eleventy](../concepts/tables/probes/eleventy/README.md).
 
 **Concerns.** The Middleman helpers other than `partial` (`image_tag`,
 `link_to`) have no EJS counterpart; not covered. A literal `<%` in prose
-must be written `<%%`, as in ERB. R-04 variables everywhere, R-05 partials
+must be written `<%%`, as in ERB. [R-04](../requirements/README.md#r-04) variables everywhere, [R-05](../requirements/README.md#r-05) partials
 and reuse.
 
 **Status:** under evaluation.
@@ -446,7 +446,7 @@ built three ways in Docusaurus: A as written, B with uniform widths
 **Why:** C was chosen after the renderings were compared. The six tables
 share one Result / Explanation / Action shape, and the template convention
 that came out of the round is that widths follow the column roles (`key`,
-`prose`) where a table's widths carry no other intent (R-03 column widths
+`prose`) where a table's widths carry no other intent ([R-03](../requirements/README.md#r-03) column widths
 as hints).
 
 **Evidence:** [width variants](../concepts/tables/results.md#width-variants-for-troubleshooting_slow_requests),
@@ -462,7 +462,7 @@ the column headers, as a caption, and as a bold line above the table.
 
 **Why:** a bold line above the table. Markdown and Markdoc tables have one
 header row, so a spanning title row pushes the column headers into the body
-(R-02 rich tables). Passthrough keeps the source's spanning row.
+([R-02](../requirements/README.md#r-02) rich tables). Passthrough keeps the source's spanning row.
 
 **Evidence:** [side by side](../concepts/tables/results.md#provisional-changes-side-by-side);
 [Starlight finding 4](../concepts/tables/results.md#findings-2).
@@ -476,7 +476,7 @@ header rows, or owners who need the title inside the table.
 otherwise drops next to inline tags; tried in Starlight passthrough.
 
 **Why:** not adopted as a general conversion rule, because it makes the
-source harder to read (R-11 readable source). It is used only where Markdoc
+source harder to read ([R-11](../requirements/README.md#r-11) readable source). It is used only where Markdoc
 would change the text.
 
 **Evidence:** [Starlight summary](../concepts/tables/results.md#starlight-0426).
@@ -491,7 +491,7 @@ rule.
 turned on.
 
 **Why:** off. It also changes quotes inside `<pre>` blocks and HTML
-`<code>`, which changes content (R-01 content and outline survive).
+`<code>`, which changes content ([R-01](../requirements/README.md#r-01) content and outline survive).
 
 **Evidence:** [Starlight finding 9](../concepts/tables/results.md#findings-2).
 
@@ -504,7 +504,7 @@ snippet.
 
 **Why:** the template engine's `include` is used instead. A snippet is
 inserted after variables are filled in, so the partial's
-`<%= vars.recommended_by %>` showed as text (R-05 partials and reuse).
+`<%= vars.recommended_by %>` showed as text ([R-05](../requirements/README.md#r-05) partials and reuse).
 
 **Evidence:** [Zensical finding 7](../concepts/tables/results.md#findings-1).
 

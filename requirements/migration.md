@@ -22,13 +22,13 @@ footer and about 85 redirect rules.
 **The new shape, as far as it is known.**
 
 - One repository holds all content ([L69]), with directories that keep
-  today's URL mapping (R-15 URL identifies the source).
+  today's URL mapping ([R-15](README.md#r-15) URL identifies the source).
 - A `CODEOWNERS` file (a GitHub file naming who must review changes to which
-  paths) assigns each directory to its working group (R-17 an owner for
+  paths) assigns each directory to its working group ([R-17](README.md#r-17) an owner for
   every area).
-- Pages are in a simple text format, with HTML where it falls short (R-10).
+- Pages are in a simple text format, with HTML where it falls short ([R-10](README.md#r-10)).
   Which format and which tool is open.
-- The Docs WG reviews and publishes (R-14).
+- The Docs WG reviews and publishes ([R-14](README.md#r-14)).
 
 ## Steps
 
@@ -37,9 +37,9 @@ footer and about 85 redirect rules.
 List every repository, page, partial, variable and redirect that feeds the
 site, with the working group that owns each area. The RFC makes this the
 first phase ([L112], [L114]). The inventory also records where each page's
-URL comes from, so R-15 and R-16 can be checked later.
+URL comes from, so [R-15](README.md#r-15) and [R-16](README.md#r-16) can be checked later.
 
-Serves: R-17 an owner for every area, R-15 URL identifies the source, R-16
+Serves: [R-17](README.md#r-17) an owner for every area, [R-15](README.md#r-15) URL identifies the source, [R-16](README.md#r-16)
 old URLs keep working.
 
 Done so far: a survey of every table in the docs and tutorial repositories
@@ -56,7 +56,7 @@ wrong tag. Strict tools either stop the build or change the text without an
 error ([details](../concepts/tables/README.md#markup-that-only-browsers-tolerate)).
 Each fix is recorded, so the owner review in step 5 can see it.
 
-Serves: R-24 markup cleanup before conversion.
+Serves: [R-24](README.md#r-24) markup cleanup before conversion.
 
 **Not yet written:** whether fixes go to today's repositories first (which
 also fixes the published site) or are made only during conversion.
@@ -77,9 +77,9 @@ One central team runs the conversion the same way for every repository
 ([L131]). Where the source structure was chosen only for formatting, a
 conversion may restructure it, and records the change as a deviation.
 
-Serves: R-23 one central conversion, R-01 content and outline survive, R-04
-variables everywhere, R-05 partials and reuse, R-07 notes and admonitions,
-R-08 cross-repository links.
+Serves: [R-23](README.md#r-23) one central conversion, [R-01](README.md#r-01) content and outline survive, [R-04](README.md#r-04)
+variables everywhere, [R-05](README.md#r-05) partials and reuse, [R-07](README.md#r-07) notes and admonitions,
+[R-08](README.md#r-08) cross-repository links.
 
 Done so far: tables, for the test pages
 ([tables concept](../concepts/tables/README.md)).
@@ -91,7 +91,7 @@ lists, tables and links. Differences that come from build time, such as the
 copyright year in the footer and "Page last updated", are expected and not
 reported. Recorded deviations from step 3 are listed apart.
 
-Serves: R-01 content and outline survive, R-25 build-time values are
+Serves: [R-01](README.md#r-01) content and outline survive, [R-25](README.md#r-25) build-time values are
 expected differences.
 
 Done so far: per-page spot checks (checks every converted page must pass,
@@ -103,7 +103,7 @@ tables round ([checks](../concepts/tables/checks/)).
 The owning working group reviews each migrated section, with the report from
 step 4 and the list of deviations and cleanup fixes.
 
-Serves: R-26 owner review of migrated pages.
+Serves: [R-26](README.md#r-26) owner review of migrated pages.
 
 **Not yet written:** what the owner signs off, and what happens when an owner
 does not respond.
@@ -114,7 +114,7 @@ Every published URL keeps working: today's redirect rules are carried over,
 and every page whose address changes gets a new one. Heading anchors keep
 their ids where the conversion can keep them.
 
-Serves: R-16 old URLs keep working ([L46], [L61], [L137]).
+Serves: [R-16](README.md#r-16) old URLs keep working ([L46], [L61], [L137]).
 
 ### 7. Cutover
 
@@ -123,8 +123,8 @@ archived, not deleted; the old hosting is shut down after a stabilization
 window, which the RFC suggests is 90 days ([L135]–[L138]). Current
 maintainers have had time to learn the new toolchain before this step.
 
-Serves: R-28 onboarding before cutover, R-14 Docs WG approves and publishes,
-R-16 old URLs keep working.
+Serves: [R-28](README.md#r-28) onboarding before cutover, [R-14](README.md#r-14) Docs WG approves and publishes,
+[R-16](README.md#r-16) old URLs keep working.
 
 ## Not covered yet
 

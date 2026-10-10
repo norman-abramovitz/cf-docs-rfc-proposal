@@ -27,7 +27,7 @@ How to read the comparisons:
 - **Hints.** What a table asks for, independent of any tool: a column's
   width, whether it should avoid wrapping, whether the first column labels
   its row (a *row header*), and so on. Widths are hints, not exact values
-  (R-03 column widths as hints; requirement IDs are listed in
+  ([R-03](../requirements/README.md#r-03) column widths as hints; requirement IDs are listed in
   [requirements](../requirements/README.md)).
 - **Screenshots.** Taken in a browser with a 1280-pixel window, each tool
   using its default *theme* (the fonts, colors, borders and spacing a tool
@@ -71,7 +71,7 @@ passthrough input, the output screenshots, and the differences seen, as in
 From docs-credhub, one table: Type / Description, seven rows, one per CredHub
 credential type ([intent](../concepts/tables/intent/credential-types.md)).
 
-What the table asks for (R-02 rich tables):
+What the table asks for ([R-02](../requirements/README.md#r-02) rich tables):
 
 - Column 1 about 20% wide. The source writes it as `<th style="width:20%">`.
 - Column 1 names the type, so it is a *key* column (short identifiers that
@@ -79,8 +79,8 @@ What the table asks for (R-02 rich tables):
 - The source writes the class with typographic quotes, `class=“table”`.
   Browsers read that as a class named `“table”`, quotes included, so the
   published page never applied the `table` class. Every conversion makes the
-  quotes straight first (R-24 markup cleanup before conversion), so
-  `class="table"` names the standard table style (R-09 table styles by
+  quotes straight first ([R-24](../requirements/README.md#r-24) markup cleanup before conversion), so
+  `class="table"` names the standard table style ([R-09](../requirements/README.md#r-09) table styles by
   class).
 
 At a glance, from the screenshots below. Column 1 widths are the measured
@@ -235,7 +235,7 @@ Differences seen:
 - **The page does not build with the HTML as written.** MDX stops at the
   `“` before the class value. Passthrough also needed `style` written as a
   JSX object (`style={{width: '20%'}}`) and the rows wrapped in `<tbody>`
-  (R-24 markup cleanup before conversion;
+  ([R-24](../requirements/README.md#r-24) markup cleanup before conversion;
   [raw passthrough errors](../concepts/tables/results.md#raw-passthrough-errors)).
 - **Native has no column width.** A pipe table (a Markdown table written with
   `|` between cells; see the [glossary](../glossary.md#pipe-table)) carries
@@ -707,7 +707,7 @@ Differences seen:
   would have no borders and centered headers
   ([screenshot](../concepts/tables/results/antora-credential-types-t1-passthrough-unstyled.png));
   the site's stylesheet gives `table.table` the same look as the native
-  table (R-09 table styles by class).
+  table ([R-09](../requirements/README.md#r-09) table styles by class).
 - **The source around the table changes.** The page's prose and code
   blocks are AsciiDoc in every mode, not only the table
   ([Antora finding 1](../concepts/tables/results.md#antora-321)).
@@ -777,8 +777,8 @@ Differences seen:
   tool, along with top alignment and a key column that does not wrap. In
   Zensical and Starlight the bold row headers are the only visible change
   from native; in Antora nothing visible changes. Each extension is written once for the whole site, not per
-  working group (see R-13 no per-WG extensions).
-- Source readability (R-11 readable source): results.md rates every native
+  working group (see [R-13](../requirements/README.md#r-13) no per-WG extensions).
+- Source readability ([R-11](../requirements/README.md#r-11) readable source): results.md rates every native
   form of this table readable. Passthrough is HTML in every tool.
 
 ## `metadata`
