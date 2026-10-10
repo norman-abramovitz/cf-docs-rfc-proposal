@@ -248,6 +248,13 @@ bosh.io/docs is built from `docs-bosh` with MkDocs and Material for MkDocs
 [`mkdocs.yml`](https://github.com/cloudfoundry/docs-bosh/blob/20a41223a7ba87700424634c42e94a22a669b45e/mkdocs.yml#L319-L321)).
 Everything below was read at commit `20a4122`, not built.
 
+Last checked 2026-10-10: repository `cloudfoundry/docs-bosh`, branch
+`master`, commit `20a41223a7ba87700424634c42e94a22a669b45e`. The 40 tables
+and their families, the absence of alignment colons and `\|` escapes, and
+the 302 admonitions, 809 heading ids and 221 indented code blocks all match.
+The indented code blocks are on 48 pages, not 49 as first counted: one page
+closes an unindented block with an indented fence.
+
 **The 40 tables.** All are pipe tables with a header row, in families
 key-value 21, reference-3-4 14, wide 3 and matrix 2 (from
 [tables.csv](tables.csv)). [bosh_tables.py](bosh_tables.py) `tables` found
@@ -261,7 +268,7 @@ provider pages `aws`, `azure`, `google`, `openstack` and `vsphere`.
 headed Note, Warning, and so on, written `!!! note`;
 [glossary](../../../glossary.md#admonition)) on 128 pages, 809 heading ids
 written `{: #id }` on 114 pages, and 221 fenced code blocks indented inside
-a list or an admonition on 49 pages. The `content/bpm` folder is a link into
+a list or an admonition on 48 pages. The `content/bpm` folder is a link into
 another repository and was not counted.
 
 <details><summary>All 40 tables (T1–T40)</summary>
@@ -346,7 +353,12 @@ pipe tables in
 (one YAML schema, one table per object, columns Property / Type / Required /
 Description; reference-3-4) and one in
 [`docs/runtime.md`](https://github.com/cloudfoundry/bpm-release/blob/6b9988a0271aefc2e0cd6444ad4f8d562f46b06e/docs/runtime.md#L46)
-(key-value). On the [live page](https://bosh.io/docs/bpm/config/)
+(key-value). Last checked 2026-10-10: repository `cloudfoundry/bpm-release`
+(the submodule URL, `cloudfoundry-incubator/bpm-release`, redirects there),
+branch `master`, commit `6b9988a0271aefc2e0cd6444ad4f8d562f46b06e`, the
+commit `docs-bosh` pins at `20a4122`; it is an ancestor of `master`, which
+has moved on since. The seven tables and their families match. On the
+[live page](https://bosh.io/docs/bpm/config/)
 (checked 2026-10-09), eight Property names break in the middle of
 the identifier, because Material lets code text break anywhere; this is the
 strongest case so far for the "don't wrap" hint.

@@ -178,13 +178,15 @@ def cmd_constructs(clone):
                     rx = rx[3:]; text = open(p, encoding='utf-8').read().split('\n')[n - 1]
                 hits = len(re.findall(rx, text))
                 if hits: counts[name] += hits; pages[name].add(rel)
+        opening = True
         for l in open(p, encoding='utf-8'):
             m = FENCE.match(l)
             if m:
                 fences += 1
-                if l.startswith(' ') or l.startswith('\t'):
+                if opening and (l.startswith(' ') or l.startswith('\t')):  # a block counts by its opening fence
                     indented += 1; pages['indented code fence (superfences in list/admonition)'].add(rel)
-    counts['indented code fence (superfences in list/admonition)'] = indented // 2
+                opening = not opening
+    counts['indented code fence (superfences in list/admonition)'] = indented
     print(f'{len(files)} Markdown files under content/ (bpm/ not followed); {fences // 2} fenced code blocks')
     print('| Construct | Needs | Count | Pages |')
     print('|---|---|---|---|')
