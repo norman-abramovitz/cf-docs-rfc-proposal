@@ -3,6 +3,11 @@
 Findings, proofs of concept, and working drafts for modernizing the Cloud
 Foundry documentation stack.
 
+This repository is published with GitHub Pages. Read it at
+<https://norman-abramovitz.github.io/cf-docs-rfc-proposal/>, where links
+between documents, screenshots and code samples render as a site. The same
+files also read as written here on GitHub.
+
 ## Background
 
 The CF docs at `docs.cloudfoundry.org` are built by Bookbinder from
