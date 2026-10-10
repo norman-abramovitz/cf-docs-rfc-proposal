@@ -96,7 +96,8 @@ not only new ones for the migration.
 
 ### Bookbinder is no longer maintained
 
-The pre-review of the RFC (comments on an earlier draft) agreed that
+The pre-review of the RFC (comments on an earlier draft, in a document
+that is not public; a [pull request comment](https://github.com/cloudfoundry/community/pull/1642#issuecomment-6039481863) records it) agreed that
 unmaintained dependencies are the main reason to move. Bookbinder's
 [repository](https://github.com/pivotal-cf/bookbinder) has its
 [last commit](https://github.com/pivotal-cf/bookbinder/commit/83bd2a57a8ba3d04c58a5be67607b243bdea0c64)

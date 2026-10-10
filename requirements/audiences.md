@@ -94,7 +94,8 @@ Needs:
 - [R-28](README.md#r-28) onboarding before cutover: current maintainers learn the new
   toolchain before it replaces the old one ([L115]).
 - [R-27](README.md#r-27) a named owner for every task: the Docs WG lead asked in the RFC's
-  pre-review (comments on an earlier draft) that every task and maintenance
+  pre-review (comments on an earlier draft, in a document that is not public;
+  a [pull request comment](https://github.com/cloudfoundry/community/pull/1642#issuecomment-6039481863) records it) that every task and maintenance
   aspect have a specific assignment. The RFC still lists these as open
   questions ([L172], [L174], [L176]).
 
@@ -185,8 +186,9 @@ proposal for the UAA API docs and the CredHub API docs?" ([L177]).
 Needs:
 
 - [R-29](README.md#r-29) API docs in the same pipeline: the Docs WG lead asked in the
-  pre-review that the UAA API docs go through the same pipeline as the CF
-  docs.
+  non-public pre-review that the UAA API docs go through the same pipeline as
+  the CF docs. Today they have their own build
+  ([build.gradle.kts](https://github.com/cloudfoundry/uaa/blob/f09cae02367b333bc17d58997c1ba8bf336b3fae/uaa/build.gradle.kts#L150-L193)).
 - [R-08](README.md#r-08) cross-repository links and [R-16](README.md#r-16) old URLs keep working: book pages
   link into the API references, including versioned UAA addresses.
 
@@ -238,8 +240,8 @@ How the team converts: [Migration](migration.md).
 The RFC asks that "Working Group leads and known downstream consumers (e.g.,
 SAP BTP, anynines, …; VMware Tanzu works from its own branches and is not
 affected) SHOULD be asked whether they consume the CF docs as-is or maintain
-their own derivative documentation" ([L113]). In the pre-review the Docs WG
-lead added that Broadcom's docs are written fully in-house and do not rely on
+their own derivative documentation" ([L113]). In the non-public pre-review the
+Docs WG lead added that Broadcom's docs are written fully in-house and do not rely on
 the CF doc repositories (see commits
 [docs-book-cloudfoundry `bdb9de7`](https://github.com/cloudfoundry/docs-book-cloudfoundry/commit/bdb9de7cca8bda0c1ed2e8930090019cc4927269)
 and

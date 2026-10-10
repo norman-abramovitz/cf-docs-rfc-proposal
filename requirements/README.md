@@ -45,6 +45,13 @@ each quote links to its line, as in [L42]. Where this document disagrees with
 the RFC, it quotes the RFC and states the position next to the quote
 ([below](#where-the-rfc-is-wrong-or-incomplete)).
 
+Some points come from the RFC's pre-review: comments on an earlier draft,
+made in a shared document before the pull request opened. That document is
+not public, so these points are labelled "non-public pre-review"; a
+[comment on the pull request](https://github.com/cloudfoundry/community/pull/1642#issuecomment-6039481863) records that the pre-review took place
+and what it was for. Where code or a repository shows the same thing, it is
+cited as well.
+
 The RFC writes MUST, SHOULD and MAY in capitals. These are RFC 2119 keywords:
 a requirement, a recommendation and an option
 ([glossary](../glossary.md#rfc-2119-keywords)). The requirements below use a
@@ -124,7 +131,7 @@ Terms used in the table:
 | <a id="r-18"></a>R-18 | full-text search | The site has working full-text search across all its pages. | [L21]; [L36] | proposed |
 | <a id="r-20"></a>R-20 | search-engine and AI-friendly output | The site is plain, crawlable HTML with page titles, descriptions, canonical URLs (the one address search engines should use for a page) and a sitemap, so search engines and AI-based developer tools can read it. Whether to publish an `llms.txt` file (a plain-text index of the site's pages for such tools; [glossary](../glossary.md#llmstxt)) is open. | [L22]; [L40]; [L41] | proposed |
 | <a id="r-21"></a>R-21 | versioning | Version 1 publishes one version of the docs. How versions follow CF releases is decided later, from experience with Version 1. | [L37]; [L92]; [L94] | open |
-| <a id="r-29"></a>R-29 | API docs in the same pipeline | The UAA API docs, and the CredHub API docs if they are in scope, are built and published by the same pipeline as the rest of the docs. | [L13]; [L177]; Docs WG lead's pre-review comment | proposed |
+| <a id="r-29"></a>R-29 | API docs in the same pipeline | The UAA API docs, and the CredHub API docs if they are in scope, are built and published by the same pipeline as the rest of the docs. | [L13]; [L177]; Docs WG lead, non-public pre-review; today the UAA API reference has its own build ([build.gradle.kts](https://github.com/cloudfoundry/uaa/blob/f09cae02367b333bc17d58997c1ba8bf336b3fae/uaa/build.gradle.kts#L150-L193)) | proposed |
 
 ### Migration
 
@@ -184,9 +191,8 @@ Commit `3dbd2c3` (2026-10-06) replaced it with the "MUST NOT" wording quoted abo
 
 ([L131])
 
-**Position.** [L131] is right, and matches what the Docs WG lead asked for in
-the RFC's pre-review (comments on an earlier draft, made in a shared document
-before the pull request opened): all conversion done by the migration team, the same way
+**Position.** [L131] is right, and matches what the Docs WG lead asked for
+(non-public pre-review): all conversion done by the migration team, the same way
 for every repository. [L160] should describe the central team's workload. The
 working groups' share is reviewing their migrated pages ([R-23](#r-23) one
 central conversion, [R-26](#r-26) owner review of migrated pages).
@@ -199,8 +205,10 @@ central conversion, [R-26](#r-26) owner review of migrated pages).
 
 **Position.** Contributing does not need a proprietary toolchain today. Pages
 are Markdown with HTML and ERB tags (ERB is Ruby's templating syntax,
-`<%= … %>`; [glossary](../glossary.md#erb)) and can be edited on GitHub; the
-Docs WG lead made this point in the pre-review. Bookbinder, the tool that
+`<%= … %>`; [glossary](../glossary.md#erb)) and can be edited on GitHub, as
+any source file shows, for example
+[`uaa-concepts.html.md.erb`](https://github.com/cloudfoundry/docs-uaa/blob/0f43fb93af5aa378f940dd19fec7ee54c2c01ccd/uaa-concepts.html.md.erb)
+(Docs WG lead, non-public pre-review). Bookbinder, the tool that
 assembles the book, is open source: its repository's
 [LICENSE](https://github.com/pivotal-cf/bookbinder/blob/83bd2a57a8ba3d04c58a5be67607b243bdea0c64/LICENSE) is Apache-2.0, while its
 [gemspec](https://github.com/pivotal-cf/bookbinder/blob/83bd2a57a8ba3d04c58a5be67607b243bdea0c64/bookbinder.gemspec#L13) declares MIT. The real costs
@@ -211,15 +219,20 @@ are elsewhere: see [Keep and pain](keep-and-pain.md#what-causes-problems).
 ([L154]; [L54] also says "removing any dependency on CFF staff")
 
 **Position.** Nobody depends on Cloud Foundry Foundation (CFF) staff for the
-docs work today: it is done in the working groups (Docs WG lead,
-pre-review). What is outside the community's control is the hosting ([L24]),
+docs work today: it is done in the working groups (Docs WG lead, non-public
+pre-review). The Docs WG charter's scope is to
+["Merge and edit all doc changes"](https://github.com/cloudfoundry/community/blob/9f189bfa613bb7a9c2da6616666661790d4410eb/toc/working-groups/docs.md#L17),
+and the book's
+[`CODEOWNERS`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/CODEOWNERS#L1)
+names a working-group approvers' team. What is outside the community's control is the hosting ([L24]),
 which is a separate point. These two sentences should be removed or
 restated as a hosting benefit.
 
 ### Also incomplete
 
 - **Unmaintained dependencies are not in the Problem list** ([L17]–[L25]).
-  The pre-review agreed this is the main reason to migrate. Bookbinder's
+  The non-public pre-review agreed this is the main reason to migrate.
+  Bookbinder's
   repository has its
   [last commit](https://github.com/pivotal-cf/bookbinder/commit/83bd2a57a8ba3d04c58a5be67607b243bdea0c64)
   on 2024-10-17 (checked 2026-10-10).

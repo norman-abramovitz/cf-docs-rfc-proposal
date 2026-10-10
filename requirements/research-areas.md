@@ -78,7 +78,8 @@ refer to the [requirement list](README.md#requirements).
 - **Known:** the RFC names SAP BTP and anynines as examples and says VMware
   Tanzu "works from its own branches and is not affected" ([L113]), but its
   open questions still name Tanzu ([L168]). In the RFC's pre-review (comments
-  on an earlier draft) the Docs WG lead stated that Broadcom's docs are
+  on an earlier draft, in a document that is not public; a
+  [pull request comment](https://github.com/cloudfoundry/community/pull/1642#issuecomment-6039481863) records it) the Docs WG lead stated that Broadcom's docs are
   written fully in-house (see commits
   [docs-book-cloudfoundry `bdb9de7`](https://github.com/cloudfoundry/docs-book-cloudfoundry/commit/bdb9de7cca8bda0c1ed2e8930090019cc4927269)
   and
@@ -194,9 +195,10 @@ refer to the [requirement list](README.md#requirements).
 
 - **Why it matters:** [R-21](README.md#r-21) versioning.
 - **Known:** the RFC starts with one version, `v1.0`, and leaves the model to
-  a later Version 2 ([L92], [L94]). In the pre-review the Docs WG lead noted
-  that there is one current version of Cloud Foundry and of its docs, with
-  history kept in GitHub. The UAA API reference already publishes versioned
+  a later Version 2 ([L92], [L94]). In the non-public pre-review the Docs
+  WG lead noted that there is one current version of Cloud Foundry and of its
+  docs, with history kept in GitHub. The book builds each of its 12 sections
+  from one branch, `master` ([config.yml](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/config.yml#L12)). The UAA API reference already publishes versioned
   pages ([build](https://github.com/cloudfoundry/uaa/blob/f09cae02367b333bc17d58997c1ba8bf336b3fae/uaa/build.gradle.kts#L189)).
 - **What answers it:** experience with Version 1, as the RFC proposes.
 
