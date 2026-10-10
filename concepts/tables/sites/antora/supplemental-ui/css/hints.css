@@ -15,6 +15,10 @@
 /* The UI hyphenates body text; words in table cells are not split. */
 .doc table { hyphens: none; }
 
+/* Wide tables: js/table-scroll.js puts each table in a box that scrolls
+   sideways, so a table wider than the article never widens the page. */
+.doc .table-scroll { overflow-x: auto; }
+
 /* The UI styles only AsciiDoc tables (class tableblock). An HTML table that
    keeps class="table" gets the same look, so the class is a hook the template
    can format; an HTML table without a class stays unstyled. */
