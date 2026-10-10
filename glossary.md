@@ -141,7 +141,9 @@ start an expression. MDX reads a page's HTML as JSX, which is where most of
 Docusaurus's passthrough cleanup comes from
 ([sites/docusaurus/CONVENTIONS.md](concepts/tables/sites/docusaurus/CONVENTIONS.md)).
 
-Learn more: [Writing markup with JSX](https://react.dev/learn/writing-markup-with-jsx).
+Learn more: [JSX in MDX](https://mdxjs.com/docs/what-is-mdx/#jsx);
+[Writing markup with JSX](https://react.dev/learn/writing-markup-with-jsx)
+(React).
 
 ### Markdoc
 

@@ -56,7 +56,7 @@ cleanup), extension (the tool's extension point carries the hints), native
 | [HTML](#html) | The markup language of web pages | today's site; passthrough in every tool | [WHATWG HTML](https://html.spec.whatwg.org/), [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML) |
 | [ERB](#erb) | Ruby code in `<% %>` tags inside a text file | today's site; Middleman probe | [ERB](https://github.com/ruby/erb) |
 | [EJS](#ejs) | JavaScript code in `<% %>` tags, the same tag shapes as ERB | Eleventy probe | [EJS](https://ejs.co/) |
-| [MDX](#mdx) | Markdown in which HTML is read as JSX | Docusaurus (passthrough, extension) | [MDX](https://mdxjs.com/), [JSX](https://react.dev/learn/writing-markup-with-jsx) |
+| [MDX](#mdx) | Markdown in which HTML is read as JSX | Docusaurus (passthrough, extension) | [MDX](https://mdxjs.com/), [JSX](https://mdxjs.com/docs/what-is-mdx/#jsx) |
 | [Pipe table](#pipe-table) | The Markdown table written with `\|` and `---` | Docusaurus native; Zensical and Starlight native-plain | [GFM](https://github.github.com/gfm/) |
 | [Python-Markdown](#python-markdown) | The Markdown dialect Zensical reads; its attribute lists add widths to cells | Zensical native | [Python-Markdown](https://python-markdown.github.io/) |
 | [Markdoc](#markdoc) | Markdown with `{% %}` tags | Starlight (all modes) | [Markdoc](https://markdoc.dev/) |
@@ -237,7 +237,7 @@ MDX project's own documentation says so
 [a `style` object](https://github.com/mdx-js/mdx/blob/52285a6758fa078ec57f3d4bd8803d9cbfb12065/docs/docs/what-is-mdx.mdx#L250)).
 Docusaurus reads `.md` and `.mdx` files
 ([default `include`](https://github.com/facebook/docusaurus/blob/c245217563f6491fdb79bf5ac91bfa16536e5de9/packages/docusaurus-plugin-content-docs/src/options.ts#L31)). Learn more: [MDX](https://mdxjs.com/),
-[JSX](https://react.dev/learn/writing-markup-with-jsx); see also the
+[JSX](https://mdxjs.com/docs/what-is-mdx/#jsx); see also the
 glossary entries for [MDX](../glossary.md#mdx) and [JSX](../glossary.md#jsx).
 
 **Raw passthrough does not build.** MDX stops at the first error: the
