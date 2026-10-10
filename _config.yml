@@ -22,6 +22,9 @@ exclude:
   - concepts/tables/probes
   - concepts/tables/checks
   - concepts/tables/source
+  - concepts/tables/survey/*.csv
+  - concepts/tables/survey/*.py
+  - concepts/tables/survey/*.txt
   - Gemfile
   - Gemfile.lock
   - vendor

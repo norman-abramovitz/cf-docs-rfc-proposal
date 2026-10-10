@@ -117,6 +117,10 @@ What has been done in this round, newest last. Each line links to the work.
   section of `uaa-performance` is the test page, in every mode of all four
   tools; all spot checks pass. Each site's `CONVENTIONS.md` has an "Adding
   a style" section: where the CSS lives and how a table names its style.
+- [x] **Survey data added.** The table style survey's data (one row per
+  table, with links at the surveyed commits), its scripts, and a write-up
+  of the scope, method, totals, families and the 40 bosh.io tables:
+  [survey/](survey/README.md).
 
 ## What we learned
 
@@ -316,6 +320,7 @@ concepts/tables/
 │   └── antora/        ┘ `make build`, `make serve` and `make check`
 ├── checks/            spot checks and text comparison shared by every site
 ├── probes/            eleventy/, sphinx-myst/, middleman/
+├── survey/            table style survey: tables.csv, scripts, README
 └── results.md         comparison grid; screenshots in results/
 ```
 
