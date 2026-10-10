@@ -50,8 +50,8 @@ text formatting and HTML injection**: plain text for most of a page, and
 HTML where plain text cannot say what the page needs ([R-10](../requirements/README.md#r-10) simple text plus
 HTML where needed). Whether a tool can do that is a property of the tool and
 of the format it reads, so the tools have to be looked at before the
-content can be planned. The format is open: Markdown is one candidate, not
-a requirement.
+content can be planned. Decision (evaluation framing): the format is open;
+Markdown is one candidate, not a requirement.
 
 The first test was tables, because complex HTML tables are the main reason
 the content is not plain Markdown today. The Docs WG lead picked five pages

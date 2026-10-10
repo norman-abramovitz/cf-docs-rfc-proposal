@@ -62,8 +62,8 @@ there ([results summary](../concepts/tables/results.md#summary)).
   [R-02](../requirements/README.md#r-02) rich tables.
 - **"Migrated to Markdown" depends on the tool.** Markdoc and MDX are
   Markdown dialects that read HTML differently, and Antora reads AsciiDoc,
-  not Markdown. The source format is open in this evaluation
-  ([principles](../concepts/README.md#principles)). [R-10](../requirements/README.md#r-10) simple text plus
+  not Markdown. Decision (evaluation framing): the source format
+  is open ([principles](../concepts/README.md#principles)). [R-10](../requirements/README.md#r-10) simple text plus
   HTML where needed.
 - **The source needs cleanup first.** Five of the twelve HTML tables on the
   test pages are not well-formed; strict readers fail or change content
