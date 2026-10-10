@@ -166,7 +166,13 @@ one-page Sphinx test carry them as classes with no code
 who writes extensions, not whether any exist: working groups do not write
 their own, the Docs WG maintains shared extensions that apply across all
 documentation, and another working group adds one only with Docs WG approval
-([R-13](#r-13) no per-WG extensions). Suggested wording for both lines has been posted on the pull request.
+([R-13](#r-13) no per-WG extensions). Suggested wording for both lines was posted on the pull request on 2026-10-09 ([L100 suggestion](https://github.com/cloudfoundry/community/pull/1642#discussion_r4228197509), [L104 suggestion](https://github.com/cloudfoundry/community/pull/1642#discussion_r4228197535)); as of 2026-10-10 neither has been applied.
+
+**History.** The rule at [L100] is recent. The RFC's first version (commit `4dbccd9`, 2025-06-30) said at [L77](https://github.com/cloudfoundry/community/blob/4dbccd9eba2cb1857f11a24b963f91ae24f56373/toc/rfc/rfc-draft-new-cf-docs-stack.md#L77):
+
+> The chosen framework SHOULD support a plugin or extension mechanism so that Working Groups can add custom components (e.g., interactive CLI examples, version-specific callouts) without forking the core tooling. Docusaurus MDX support covers this use case. Custom extensions MUST be documented and reviewed to avoid introducing new maintenance burdens.
+
+Commit `3dbd2c3` (2026-10-06) replaced it with the "MUST NOT" wording quoted above ([L97 at that commit](https://github.com/cloudfoundry/community/blob/3dbd2c3c3c149cae36bd059b7677a0b5295f3bda/toc/rfc/rfc-draft-new-cf-docs-stack.md#L97)). The position above is closer to the first version: extensions are allowed and reviewed, and the Docs WG owns them.
 
 ### Who does the conversion work (L160 vs L131)
 
