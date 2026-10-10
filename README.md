@@ -36,11 +36,11 @@ pull request adds. Read it at:
 Three draft documents, each readable on its own. They cover what is known
 as of 2026-10-10 and mark what is not yet written.
 
-1. [Requirements](requirements/README.md): what the Docs WG is looking for
-   in a new documentation stack. Each requirement has an ID and a short
-   phrase that says what it is about, such as
+1. [Requirements](requirements/README.md): the Docs WG's draft position on
+   what it is looking for in a new documentation stack. Each requirement has
+   an ID and a short phrase that says what it is about, such as
    "[R-03](requirements/README.md#r-03) column widths as hints"; the other
-   documents cite them that way. A draft Docs WG position; it may be wrong.
+   documents cite them that way.
 2. [Tooling](tooling/README.md): the tools evaluated, the input formats they
    read, how today's pages convert into them, and the extensions each needs.
    Neutral evidence; it makes no choice.
