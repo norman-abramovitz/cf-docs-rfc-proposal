@@ -153,6 +153,21 @@ prose pages in its own
 [`docs/`](https://github.com/cloudfoundry/credhub/tree/c28c27a454a259f7506498390928713c9fd7f493/docs)
 folder are separate from the book's `docs-credhub` repository.
 
+The CredHub API reference site is built in its own repository,
+[`credhub-api-site`](https://github.com/cloudfoundry/credhub-api-site),
+which the FI WG owns
+([charter L80](https://github.com/cloudfoundry/community/blob/9f189bfa613bb7a9c2da6616666661790d4410eb/toc/working-groups/foundational-infrastructure.md#L80)).
+Its [build script](https://github.com/cloudfoundry/credhub-api-site/blob/83a509e99d2eb79350189ea99bda6bc3b41391ef/scripts/build#L32-L37)
+combines two sources: hand-written docs for the CLI and older server
+versions, kept as branches of `cloudfoundry-incubator/credhub-api-docs`
+([charter L77](https://github.com/cloudfoundry/community/blob/9f189bfa613bb7a9c2da6616666661790d4410eb/toc/working-groups/foundational-infrastructure.md#L77);
+last pushed in 2021), and docs generated from the `credhub` code for the
+current version. It builds the site with
+[Middleman 4.4](https://github.com/cloudfoundry/credhub-api-site/blob/83a509e99d2eb79350189ea99bda6bc3b41391ef/Gemfile#L4)
+([build step](https://github.com/cloudfoundry/credhub-api-site/blob/83a509e99d2eb79350189ea99bda6bc3b41391ef/scripts/build#L56))
+and runs it as a Cloud Foundry app served by the nginx buildpack
+([manifest](https://github.com/cloudfoundry/credhub-api-site/blob/83a509e99d2eb79350189ea99bda6bc3b41391ef/manifest.yml)).
+
 Book pages link to both references under `docs.cloudfoundry.org/api/uaa/`
 and `docs.cloudfoundry.org/api/credhub/`
 ([book navigation](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/master_middleman/source/subnavs/_cf-subnav.erb#L425-L431)),
@@ -172,9 +187,8 @@ Needs:
 - [R-08](README.md#r-08) cross-repository links and [R-16](README.md#r-16) old URLs keep working: book pages
   link into the API references, including versioned UAA addresses.
 
-**Not yet written:** where the CredHub API docs are built and published
-today, and whether either API reference must change format to join the
-pipeline.
+**Not yet written:** whether either API reference must change format to
+join the pipeline.
 
 ### bosh.io maintainers
 
@@ -223,7 +237,11 @@ SAP BTP, anynines, …; VMware Tanzu works from its own branches and is not
 affected) SHOULD be asked whether they consume the CF docs as-is or maintain
 their own derivative documentation" ([L113]). In the pre-review the Docs WG
 lead added that Broadcom's docs are written fully in-house and do not rely on
-the CF doc repositories (unverified: no public source found). The RFC's open questions still name VMware Tanzu as
+the CF doc repositories (see commits
+[docs-book-cloudfoundry `bdb9de7`](https://github.com/cloudfoundry/docs-book-cloudfoundry/commit/bdb9de7cca8bda0c1ed2e8930090019cc4927269)
+and
+[docs-dev-guide `689faba`](https://github.com/cloudfoundry/docs-dev-guide/commit/689faba303969899f0a18aa56f499c2956c70dc0)).
+The RFC's open questions still name VMware Tanzu as
 a downstream distribution ([L168]), which does not match [L113].
 
 Needs:

@@ -79,7 +79,10 @@ refer to the [requirement list](README.md#requirements).
   Tanzu "works from its own branches and is not affected" ([L113]), but its
   open questions still name Tanzu ([L168]). In the RFC's pre-review (comments
   on an earlier draft) the Docs WG lead stated that Broadcom's docs are
-  written fully in-house (unverified: no public source found).
+  written fully in-house (see commits
+  [docs-book-cloudfoundry `bdb9de7`](https://github.com/cloudfoundry/docs-book-cloudfoundry/commit/bdb9de7cca8bda0c1ed2e8930090019cc4927269)
+  and
+  [docs-dev-guide `689faba`](https://github.com/cloudfoundry/docs-dev-guide/commit/689faba303969899f0a18aa56f499c2956c70dc0)).
 - **What answers it:** the consumer survey in the RFC's first phase ([L113]).
 
 ## Content
