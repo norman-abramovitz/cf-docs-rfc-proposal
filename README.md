@@ -16,6 +16,16 @@ proposes moving this content to Markdown on a modern static site generator,
 hosted on GitHub Pages. This repository holds the evidence gathered to inform
 that proposal.
 
+The RFC text is not the pull request's description; it is the one file the
+pull request adds. Read it at:
+
+- [the latest version](https://github.com/ZPascal/community/blob/cf-docs-rfc/toc/rfc/rfc-draft-new-cf-docs-stack.md)
+  on the pull request's branch, or its
+  [Files changed](https://github.com/cloudfoundry/community/pull/1642/files)
+  tab, where comments and suggestions are made;
+- [commit `c737539`](https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md),
+  the version these documents quote, line by line.
+
 ## Start here
 
 Three draft documents, each readable on its own. They cover what is known
@@ -45,4 +55,5 @@ defines its terms where it first uses them, so the glossary is optional.
 
 - [Docs Working Group charter](https://github.com/cloudfoundry/community/blob/main/toc/working-groups/docs.md)
 - [RFC: Cloud Foundry documentation modernization (#1642)](https://github.com/cloudfoundry/community/pull/1642)
+  (pull request); [RFC text](https://github.com/ZPascal/community/blob/cf-docs-rfc/toc/rfc/rfc-draft-new-cf-docs-stack.md)
 - [docs-book-cloudfoundry](https://github.com/cloudfoundry/docs-book-cloudfoundry)
