@@ -91,10 +91,14 @@ of table:
 - **Pipe tables:** the Markdown table syntax, a header line followed by a
   delimiter line such as `---|---`, one row per line, `|` between cells
   ([glossary](../../../glossary.md#pipe-table)). Lines inside fenced code
-  blocks are skipped. The script also looks next to each pipe table for a
-  kramdown attribute list (`{: .class }`, the way kramdown, the book's
-  Markdown parser, attaches a class to a block;
-  [glossary](../../../glossary.md#kramdown)).
+  blocks are skipped. The script also looks next to each pipe table for an
+  attribute list (`{: .class }`), the syntax kramdown
+  ([glossary](../../../glossary.md#kramdown)) and Python-Markdown's
+  `attr_list` use to attach a class to a block. bosh.io turns `attr_list` on
+  ([mkdocs.yml](https://github.com/cloudfoundry/docs-bosh/blob/20a41223a7ba87700424634c42e94a22a669b45e/mkdocs.yml#L370));
+  the book's Markdown engine is Redcarpet
+  ([Bookbinder's gemspec](https://github.com/pivotal-cf/bookbinder/blob/83bd2a57a8ba3d04c58a5be67607b243bdea0c64/bookbinder.gemspec#L24)),
+  which has no such syntax. The survey found none.
 
 For each table it records, among other things: the `class` exactly as
 written, column widths from `<col>`, width, style or alignment set on cells,
