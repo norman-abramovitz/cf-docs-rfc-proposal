@@ -96,8 +96,14 @@ How the same table looks in every tool and mode:
 - **Search.** **Not yet tested** in any tool. RFC
   [L170](https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L170)
   asks whether Algolia DocSearch or a self-hosted option such as Pagefind
-  is preferred. Algolia DocSearch's index is a hosted service that is not
-  open source, which bears on [R-19](../requirements/README.md#r-19) open source only (an open question:
+  is preferred. Algolia DocSearch's search client is open source
+  ([MIT](https://github.com/algolia/docsearch/blob/e387920e842c1f2fdb69bbdfff4c2d4d7754ce29/LICENSE)),
+  but it queries an index hosted by Algolia and needs an Algolia
+  application ID and API key
+  ([code](https://github.com/algolia/docsearch/blob/e387920e842c1f2fdb69bbdfff4c2d4d7754ce29/packages/docsearch-react/src/DocSearch.tsx#L57-L59)).
+  Pagefind builds its index from the built site
+  ([options](https://github.com/Pagefind/pagefind/blob/b6185b2ec6f43c198299eccde2c4b05ffc0ec1e5/pagefind/src/options.rs#L34-L37)).
+  The hosted index bears on [R-19](../requirements/README.md#r-19) open source only (an open question:
   [tables README](../concepts/tables/README.md#open-questions)). [R-18](../requirements/README.md#r-18)
   full-text search.
 - **Versioning.** **Not yet tested** in any tool. [R-21](../requirements/README.md#r-21) versioning.

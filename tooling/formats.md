@@ -15,7 +15,9 @@ What these snippets look like once built, tool by tool, with screenshots:
 ## The sample table
 
 The table is the only table on `credential-types.html.md.erb` from the
-`cloudfoundry/docs-credhub` repository, published at
+`cloudfoundry/docs-credhub` repository
+([lines 17–46 at commit `e074f74`](https://github.com/cloudfoundry/docs-credhub/blob/e074f74717422c0082ca24a2a6da7fbbf8114999/credential-types.html.md.erb#L17-L46)),
+published at
 <https://docs.cloudfoundry.org/credhub/credential-types.html>. It has a
 header row, seven body rows and two columns. The first column names a
 credential type, written as code, and its header cell asks for 20% of the
@@ -35,7 +37,10 @@ intent, from its
 | column 2 role | `prose` (sentences) | one or two sentences per cell |
 
 The source has one defect: `class=“table”` is written with typographic
-quotes, so browsers never apply the class. Every converted version makes
+quotes, so browsers never apply the class: a typographic quote is not an
+attribute quote, so the value is read as an
+[unquoted attribute value](https://html.spec.whatwg.org/multipage/syntax.html#unquoted),
+`“table”` with the quotes in it. Every converted version makes
 the quotes straight ([R-24](../requirements/README.md#r-24) markup cleanup before conversion). Requirement
 IDs are listed in [requirements/](../requirements/README.md).
 
@@ -63,8 +68,10 @@ cleanup), extension (the tool's extension point carries the hints), native
 
 HTML (HyperText Markup Language) is the markup language browsers read:
 `<table>`, `<tr>` (row), `<th>` (header cell), `<td>` (cell). Browsers
-repair broken HTML without saying so, which is why defects in today's
-source never showed. Learn more: [WHATWG HTML](https://html.spec.whatwg.org/),
+repair broken HTML without saying so: the HTML standard defines how a
+browser recovers from each
+[parse error](https://html.spec.whatwg.org/multipage/parsing.html#parse-errors).
+That is why defects in today's source never showed. Learn more: [WHATWG HTML](https://html.spec.whatwg.org/),
 [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML); see also the
 [glossary](../glossary.md#html).
 
@@ -122,7 +129,9 @@ Files: [Zensical](../concepts/tables/sites/zensical/docs/passthrough/credential-
 
 **Antora** reads AsciiDoc, not Markdown, so the HTML goes inside an AsciiDoc
 passthrough block, `++++` above and below, which hands the HTML to the
-browser unread
+browser unread: Asciidoctor treats `++++` as a
+[raw block](https://github.com/asciidoctor/asciidoctor/blob/30fb8cd5f7145c57274b04524ceaa99812f830e0/lib/asciidoctor/block.rb#L21)
+with [no substitutions](https://github.com/asciidoctor/asciidoctor/blob/30fb8cd5f7145c57274b04524ceaa99812f830e0/lib/asciidoctor/substitutors.rb#L1294-L1296)
 ([file](../concepts/tables/sites/antora/passthrough/modules/ROOT/pages/credential-types.adoc)):
 
 <details><summary>Antora passthrough (first and last lines)</summary>
@@ -144,13 +153,18 @@ browser unread
 </details>
 
 A table that holds a variable also needs `[subs=attributes+]` on the line
-above `++++`, so the variable is filled in; this table has none.
+above `++++`, so the variable is filled in
+([custom `subs` on a block](https://github.com/asciidoctor/asciidoctor/blob/30fb8cd5f7145c57274b04524ceaa99812f830e0/lib/asciidoctor/substitutors.rb#L1302-L1303));
+this table has none.
 
 ## ERB
 
 ERB (Embedded Ruby) puts Ruby code in a text file between `<%` and `%>`;
-`<%= … %>` inserts the result into the page. Today's pages use it for
-variables and for including one file in another. Learn more:
+`<%= … %>` inserts the result into the page
+([ERB's tag kinds, in `lib/erb.rb`](https://github.com/ruby/erb/blob/934d51e24b1553d3fe6c92afea3751defd99038b/lib/erb.rb#L60-L85)).
+Today's pages use it for variables (defined in the book's
+[`template_variables.yml`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/config/template_variables.yml))
+and for including one file in another. Learn more:
 [ERB](https://github.com/ruby/erb); see also the
 [glossary](../glossary.md#erb).
 
@@ -178,8 +192,11 @@ the published page cell for cell. ERB as it appears in other test pages:
 
 EJS (Embedded JavaScript templates) uses the same tag shapes as ERB, with
 JavaScript inside. One difference matters: EJS's `<%=` escapes HTML (shows
-`<p>` as text), and `<%-` inserts it as markup. In Middleman, ERB's `<%=`
-does not escape. Learn more: [EJS](https://ejs.co/); see also the
+`<p>` as text), and `<%-` inserts it as markup
+([tag modes](https://github.com/mde/ejs/blob/ebba1b9d5b5e38239b52a968ba04479ce378ee00/lib/esm/ejs.js#L805-L810)
+and [what each outputs](https://github.com/mde/ejs/blob/ebba1b9d5b5e38239b52a968ba04479ce378ee00/lib/esm/ejs.js#L850-L855)
+in EJS's source). In Middleman, ERB's `<%=` does not escape
+([Middleman probe](../concepts/tables/probes/middleman/README.md#results)). Learn more: [EJS](https://ejs.co/); see also the
 [glossary](../glossary.md#ejs).
 
 **No EJS copy of `credential-types` exists in this repository.** The
@@ -214,8 +231,12 @@ built. EJS from the probe's files:
 
 MDX is Markdown in which HTML is read as JSX. JSX is the HTML-like syntax
 of React, a JavaScript library: it requires every tag to be closed, writes
-a `style` as a JavaScript object, and treats `{…}` as JavaScript code.
-Docusaurus reads `.mdx` files. Learn more: [MDX](https://mdxjs.com/),
+a `style` as a JavaScript object, and treats `{…}` as JavaScript code. The
+MDX project's own documentation says so
+([HTML replaced by JSX, `{` must be escaped](https://github.com/mdx-js/mdx/blob/52285a6758fa078ec57f3d4bd8803d9cbfb12065/docs/docs/what-is-mdx.mdx#L165-L171);
+[a `style` object](https://github.com/mdx-js/mdx/blob/52285a6758fa078ec57f3d4bd8803d9cbfb12065/docs/docs/what-is-mdx.mdx#L250)).
+Docusaurus reads `.md` and `.mdx` files
+([default `include`](https://github.com/facebook/docusaurus/blob/c245217563f6491fdb79bf5ac91bfa16536e5de9/packages/docusaurus-plugin-content-docs/src/options.ts#L31)). Learn more: [MDX](https://mdxjs.com/),
 [JSX](https://react.dev/learn/writing-markup-with-jsx); see also the
 glossary entries for [MDX](../glossary.md#mdx) and [JSX](../glossary.md#jsx).
 
@@ -280,9 +301,13 @@ Docusaurus is a [pipe table](#pipe-table); extension mode is a
 
 A pipe table is the table syntax most Markdown tools share, from GFM
 (GitHub Flavored Markdown, GitHub's dialect of CommonMark, the common
-Markdown specification). Each row is one line; `|` separates cells; a line
+Markdown specification;
+[GFM spec](https://github.com/github/cmark-gfm/blob/27d942c8b0a62d192f616e5bf3578f4b6a89e180/test/spec.txt#L12-L19)).
+Each row is one line; `|` separates cells; a line
 of `---` ends the header row. A cell holds one line of text: no lists or
-paragraphs unless written as inline HTML, and no widths. Learn more:
+paragraphs unless written as inline HTML, and no widths; the delimiter row
+carries only alignment
+([GFM spec, tables](https://github.com/github/cmark-gfm/blob/27d942c8b0a62d192f616e5bf3578f4b6a89e180/test/spec.txt#L3307-L3324)). Learn more:
 [GFM](https://github.github.com/gfm/), [CommonMark](https://commonmark.org/); see also the
 [glossary](../glossary.md#pipe-table).
 
@@ -306,14 +331,20 @@ Zensical native-plain and Starlight native-plain are the same table
 
 The 20% width and the row headers are gone; the columns are sized by their
 content. A pipe table also needs a blank line before it, where an HTML
-table does not.
+table does not
+([Docusaurus finding 3](../concepts/tables/results.md#findings),
+[Zensical conventions](../concepts/tables/sites/zensical/CONVENTIONS.md#native)).
 
 ## Python-Markdown
 
-Python-Markdown is the Markdown dialect Zensical reads. Its attribute lists
+Python-Markdown is the Markdown dialect Zensical reads (Zensical
+[depends on `markdown`](https://github.com/zensical/zensical/blob/de3702c2df5257c42501163af0afbd765714824a/pyproject.toml#L58),
+the Python-Markdown package). Its attribute lists
 extension (`attr_list`) lets an author attach HTML attributes to an element
-by writing `{: … }` after it. It works on a single table cell, not on a
-whole table. Learn more: [Python-Markdown](https://python-markdown.github.io/);
+by writing `{: … }` after it, including at the end of a table cell
+([`attr_list.py`](https://github.com/Python-Markdown/markdown/blob/0bf535bc406c95dad66050f07c8402af03fe07d5/markdown/extensions/attr_list.py#L104-L110)).
+It works on a single table cell, not on a whole table
+([Zensical conventions](../concepts/tables/sites/zensical/CONVENTIONS.md#native)). Learn more: [Python-Markdown](https://python-markdown.github.io/);
 see also the [glossary](../glossary.md#python-markdown).
 
 Zensical native is the pipe table with one attribute list on the first
@@ -342,16 +373,24 @@ written: its template engine is set to read ERB-style tags
 
 ## Markdoc
 
-Markdoc is Markdown with tags written `{% name %}` … `{% /name %}`. Its
+Markdoc is Markdown with tags written `{% name %}` … `{% /name %}`
+([tag delimiters](https://github.com/markdoc/markdoc/blob/df5ac9aae57505eae5e7572aab3dda50d61f434c/src/utils.ts#L13-L14)). Its
 own `{% table %}` tag writes a table as a list: `*` starts a cell and `---`
-starts a new row, so a cell can hold lists and paragraphs. Starlight, a
-documentation theme for the Astro site builder, reads Markdoc pages
-(`.mdoc`) in this evaluation. Learn more: [Markdoc](https://markdoc.dev/),
+starts a new row
+([table transform](https://github.com/markdoc/markdoc/blob/df5ac9aae57505eae5e7572aab3dda50d61f434c/src/transforms/table.ts#L41-L86)),
+so a cell can hold lists and paragraphs
+([cell schema](https://github.com/markdoc/markdoc/blob/df5ac9aae57505eae5e7572aab3dda50d61f434c/src/schema.ts#L124-L143)).
+Starlight, a documentation theme for the Astro site builder
+([depends on `astro`](https://github.com/withastro/starlight/blob/67de74077524001c79ec233e1b113e86b2b800b0/packages/starlight/package.json#L51)),
+reads Markdoc pages (`.mdoc`) in this evaluation, through Astro's Markdoc
+integration
+([`@astrojs/markdoc`](https://github.com/withastro/astro/blob/9050e3819c51b0383cced278c278bc6f45c63468/packages/integrations/markdoc/package.json#L44)). Learn more: [Markdoc](https://markdoc.dev/),
 [Starlight](https://starlight.astro.build/); see also the
 [glossary](../glossary.md#markdoc).
 
 Starlight native, Markdoc's table tag with only what Markdoc defines, here
-`width` on a header cell
+`width` on a header cell (Markdoc defines `width` for `th` only:
+[schema](https://github.com/markdoc/markdoc/blob/df5ac9aae57505eae5e7572aab3dda50d61f434c/src/schema.ts#L145-L153))
 ([file](../concepts/tables/sites/starlight/src/content/docs/native/credential-types.mdoc)):
 
 ```markdoc
@@ -412,8 +451,11 @@ A variable is written `{% $vars.recommended_by %}`.
 
 AsciiDoc is a plain-text format with its own syntax for headings, lists
 and tables; Asciidoctor is the program that reads it, and Antora builds
-sites from it. A table is written between `|===` lines; settings in
-`[ ]` above it describe the columns. Learn more:
+sites from it
+([Antora depends on `@asciidoctor/core`](https://gitlab.com/antora/antora/-/blob/87797da7a7f337301ec9b1ad26aa291a28342d56/packages/asciidoc-loader/package.json#L33)).
+A table is written between `|===` lines
+([delimiters](https://github.com/asciidoctor/asciidoctor/blob/30fb8cd5f7145c57274b04524ceaa99812f830e0/lib/asciidoctor.rb#L284-L285));
+settings in `[ ]` above it describe the columns. Learn more:
 [AsciiDoc](https://asciidoc.org/), [Asciidoctor](https://asciidoctor.org/);
 see also the [glossary](../glossary.md#asciidoc).
 
@@ -452,7 +494,11 @@ The settings line, read left to right: `%header` makes the first row the
 header row; `cols` describes each column. `.<` is top alignment, `20%` the
 width, `h` makes the column's cells row headers, and `~` sizes the second
 column by its content
-([Antora conventions](../concepts/tables/sites/antora/CONVENTIONS.md)).
+([Antora conventions](../concepts/tables/sites/antora/CONVENTIONS.md);
+in Asciidoctor's source:
+[`cols` parsing](https://github.com/asciidoctor/asciidoctor/blob/30fb8cd5f7145c57274b04524ceaa99812f830e0/lib/asciidoctor/parser.rb#L2469-L2513),
+[`<` is top, `h` is header](https://github.com/asciidoctor/asciidoctor/blob/30fb8cd5f7145c57274b04524ceaa99812f830e0/lib/asciidoctor/parser.rb#L63-L79),
+[`%header`](https://github.com/asciidoctor/asciidoctor/blob/30fb8cd5f7145c57274b04524ceaa99812f830e0/lib/asciidoctor/parser.rb#L2337-L2338)).
 
 The other Antora modes change only the settings line:
 
@@ -460,7 +506,8 @@ The other Antora modes change only the settings line:
 
 Native-plain
 ([file](../concepts/tables/sites/antora/native-plain/modules/ROOT/pages/credential-types.adoc)).
-With no `cols`, AsciiDoc gives both columns the same width:
+With no `cols`, Asciidoctor gives both columns the same width
+([`assign_column_widths`](https://github.com/asciidoctor/asciidoctor/blob/30fb8cd5f7145c57274b04524ceaa99812f830e0/lib/asciidoctor/table.rb#L142-L145)):
 
 ```asciidoc
 [%header]
@@ -468,8 +515,9 @@ With no `cols`, AsciiDoc gives both columns the same width:
 
 Extension
 ([file](../concepts/tables/sites/antora/extension/modules/ROOT/pages/credential-types.adoc)).
-The words after each `.` are roles (class names) that a stylesheet gives
-meaning to: column 1 is a key that does not wrap, column 2 is prose:
+The words after each `.` are roles (class names;
+[shorthand parsing](https://github.com/asciidoctor/asciidoctor/blob/30fb8cd5f7145c57274b04524ceaa99812f830e0/lib/asciidoctor/parser.rb#L2605-L2616))
+that a stylesheet gives meaning to: column 1 is a key that does not wrap, column 2 is prose:
 
 ```asciidoc
 [.hinted.col1-key.col2-prose.col1-nowrap%header,cols=".<20%h,.<~"]
@@ -484,10 +532,13 @@ written `{recommended_by}`, an AsciiDoc attribute.
 
 A list table writes a table as a nested list: each row is a list item, and
 each cell is an item inside it. Because a cell is a list item, it can hold
-lists and paragraphs. The form comes from MyST's `list-table` (see
-[MyST](#myst)); the Docusaurus and Zensical extensions built for this
-evaluation use the same option names (`widths`, `header-rows`,
-`stub-columns`) plus the hint options (`roles`, `wrap`, `title`). Learn
+lists and paragraphs. The form is the `list-table` directive of
+reStructuredText, defined in docutils
+([`ListTable`, in the GitHub mirror of docutils](https://github.com/docutils/docutils/blob/f8602b0fc745405a2262872bebae9f343940adef/docutils/docutils/parsers/rst/directives/tables.py#L368-L381)),
+which MyST also reads (see [MyST](#myst)). The Docusaurus and Zensical
+extensions built for this evaluation use the same option names (`widths`,
+`header-rows`, `stub-columns`) plus the hint options (`roles`, `wrap`,
+`title`). Learn
 more: [MyST parser](https://myst-parser.readthedocs.io/); see also the
 [glossary](../glossary.md#list-table).
 
@@ -564,8 +615,13 @@ own table tag (see [Markdoc](#markdoc)), so it needs no new block syntax.
 
 MyST (Markedly Structured Text) is Markdown with directives: named blocks,
 written as a fenced code block whose first line names the directive in
-braces (`{list-table}`), with options on `:name: value` lines. Sphinx, a documentation generator from the Python
-world, reads it through the MyST parser. Learn more:
+braces (`{list-table}`), with options on `:name: value` lines (MyST
+parser source:
+[fence with `{name}`](https://github.com/executablebooks/MyST-Parser/blob/723cffcf84213f0cb58695b27eec9ad72052b53a/myst_parser/mdit_to_docutils/base.py#L774-L785),
+[option lines](https://github.com/executablebooks/MyST-Parser/blob/723cffcf84213f0cb58695b27eec9ad72052b53a/myst_parser/parsers/directives.py#L222-L230)).
+Sphinx, a documentation generator from the Python world, reads it through
+the MyST parser
+([which depends on Sphinx](https://github.com/executablebooks/MyST-Parser/blob/723cffcf84213f0cb58695b27eec9ad72052b53a/pyproject.toml#L33)). Learn more:
 [MyST](https://mystmd.org/), [MyST parser](https://myst-parser.readthedocs.io/);
 see also the [glossary](../glossary.md#myst).
 
@@ -591,8 +647,10 @@ scale table (`_oss_scale_table`) instead. Its opening lines, from
 ```
 ~~~
 
-`:header-rows:`, `:stub-columns:` (row headers) and `:widths:` are MyST's
-own options. `:class:` puts classes on the table, and a stylesheet gives
+`:header-rows:`, `:stub-columns:` (row headers), `:widths:` and `:class:`
+are the options of docutils' `list-table`
+([option list](https://github.com/docutils/docutils/blob/f8602b0fc745405a2262872bebae9f343940adef/docutils/docutils/parsers/rst/directives/tables.py#L376-L381)),
+which MyST passes through. `:class:` puts classes on the table, and a stylesheet gives
 the role and no-wrap classes their meaning, with no code. A variable is
 written `{{recommended_by}}`.
 
@@ -631,9 +689,12 @@ this page.
 
 ## Formats not yet written
 
-**Not yet written:** Hugo's input (Markdown read by goldmark, with
-shortcodes) and VitePress's input (Markdown read by markdown-it, with Vue
-components). Neither tool has been assessed; no page source exists for
+**Not yet written:** Hugo's input (Markdown read by goldmark,
+[a Hugo dependency](https://github.com/gohugoio/hugo/blob/0732eadd5aead94d4bd4674d87e9bfc79aaf10a7/go.mod#L72),
+with [shortcodes](https://github.com/gohugoio/hugo/blob/0732eadd5aead94d4bd4674d87e9bfc79aaf10a7/hugolib/shortcode.go))
+and VitePress's input (Markdown read by markdown-it, with Vue components;
+[VitePress dependencies](https://github.com/vuejs/vitepress/blob/633e48af9ec25a9cc28fc3ebf1e9063b359adb2e/package.json#L111-L112),
+[markdown-it](https://github.com/vuejs/vitepress/blob/633e48af9ec25a9cc28fc3ebf1e9063b359adb2e/package.json#L150)). Neither tool has been assessed; no page source exists for
 either.
 
 **Not yet written:** the other test pages in every format. Their sources

@@ -37,7 +37,8 @@ The RFC also says what its PoC must check for complex pages:
 
 The Docusaurus results here bear on that line. MDX is Markdown that also
 accepts JSX, the HTML-like syntax of React components (see the
-[glossary](../glossary.md#mdx)). Docusaurus's native and passthrough modes
+[glossary](../glossary.md#mdx); the MDX project's own
+[description](https://github.com/mdx-js/mdx/blob/52285a6758fa078ec57f3d4bd8803d9cbfb12065/docs/docs/what-is-mdx.mdx#L165-L171)). Docusaurus's native and passthrough modes
 (defined below) both use MDX with no plugin.
 
 ## Tools
@@ -48,7 +49,11 @@ narrow question instead of the full round.
 ERB (Embedded Ruby) is the `<%= … %>` tag syntax today's pages use for
 variables and partials (shared files included into a page). Middleman is the
 site builder under Bookbinder, the tool that builds docs.cloudfoundry.org
-today; the Middleman probe is the smallest-change baseline. Hugo and
+today: the book
+[sets `public_host: docs.cloudfoundry.org`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/config.yml#L7)
+and [pins `bookbindery` 9.12.1](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/Gemfile#L3),
+which [requires `middleman` ~> 3.4.0](https://rubygems.org/gems/bookbindery/versions/9.12.1).
+The Middleman probe is the smallest-change baseline. Hugo and
 VitePress are assessed on paper only and have no results here.
 
 | Tool | Version | Input format | How far |

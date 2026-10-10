@@ -77,8 +77,10 @@ What the table asks for ([R-02](../requirements/README.md#r-02) rich tables):
 - Column 1 names the type, so it is a *key* column (short identifiers that
   should not wrap) and could be row headers. Column 2 is *prose*.
 - The source writes the class with typographic quotes, `class=“table”`.
-  Browsers read that as a class named `“table”`, quotes included, so the
-  published page never applied the `table` class. Every conversion makes the
+  Browsers read that as a class named `“table”`, quotes included (a
+  typographic quote is not an attribute quote, so the value is an
+  [unquoted attribute value](https://html.spec.whatwg.org/multipage/syntax.html#unquoted)),
+  so the published page never applied the `table` class. Every conversion makes the
   quotes straight first ([R-24](../requirements/README.md#r-24) markup cleanup before conversion), so
   `class="table"` names the standard table style ([R-09](../requirements/README.md#r-09) table styles by
   class).
@@ -157,7 +159,8 @@ partials. This table uses neither.
 
 Pages are MDX: Markdown that also accepts JSX, the HTML-like syntax of
 React components (see the [glossary](../glossary.md#mdx)). MDX parses HTML
-as JSX, which is stricter than a browser.
+as JSX, which is stricter than a browser (the MDX project's own
+[documentation](https://github.com/mdx-js/mdx/blob/52285a6758fa078ec57f3d4bd8803d9cbfb12065/docs/docs/what-is-mdx.mdx#L165-L171)).
 
 <details><summary>Native input: a pipe table in MDX</summary>
 
@@ -252,7 +255,8 @@ Both modes use no plugin: native is MDX's own pipe table, passthrough is
 HTML written as JSX inside MDX.
 
 **Extension mode.** A `:::list-table` block, read by a remark plugin
-(remark is the Markdown parser under MDX) added to the site:
+(remark is the Markdown parser under MDX:
+[`@mdx-js/mdx` dependencies](https://github.com/mdx-js/mdx/blob/52285a6758fa078ec57f3d4bd8803d9cbfb12065/packages/mdx/package.json#L62-L64)) added to the site:
 [plugins/list-table.js](../concepts/tables/sites/docusaurus/plugins/list-table.js),
 with [hints.css](../concepts/tables/sites/docusaurus/src/css/hints.css).
 
@@ -303,9 +307,12 @@ Differences seen, against the published page and the other two modes:
 ### Zensical 0.0.69
 
 Pages are Markdown read by Python-Markdown, which passes HTML blocks through
-unchanged (see the [glossary](../glossary.md#python-markdown)). An
+unchanged (see the [glossary](../glossary.md#python-markdown);
+[HTML block stash](https://github.com/Python-Markdown/markdown/blob/0bf535bc406c95dad66050f07c8402af03fe07d5/markdown/preprocessors.py#L78-L84)
+in Python-Markdown's source). An
 *attribute list*, `{: … }` after a cell's text, sets HTML attributes on that
-cell.
+cell
+([`attr_list.py`](https://github.com/Python-Markdown/markdown/blob/0bf535bc406c95dad66050f07c8402af03fe07d5/markdown/extensions/attr_list.py#L104-L110)).
 
 <details><summary>Native input: a pipe table with a width on the header cell</summary>
 
@@ -443,10 +450,12 @@ Differences seen, against native and passthrough:
 
 ### Starlight 0.42.6
 
-Starlight is a documentation theme for the Astro site builder. These pages
-are Markdoc, Markdown with `{% %}` tags, with HTML allowed (see the
+Starlight is a documentation theme for the Astro site builder
+([depends on `astro`](https://github.com/withastro/starlight/blob/67de74077524001c79ec233e1b113e86b2b800b0/packages/starlight/package.json#L51)).
+These pages are Markdoc, Markdown with `{% %}` tags, with HTML allowed (see the
 [glossary](../glossary.md#markdoc)). Markdoc's `{% table %}` tag writes each
-cell as a list item and each row break as `---`.
+cell as a list item and each row break as `---`
+([table transform](https://github.com/markdoc/markdoc/blob/df5ac9aae57505eae5e7572aab3dda50d61f434c/src/transforms/table.ts#L41-L86)).
 
 <details><summary>Native input: Markdoc's table tag with a width on the header cell</summary>
 
@@ -601,7 +610,9 @@ Antora builds sites from AsciiDoc, a plain-text markup with its own table
 syntax (see the [glossary](../glossary.md#asciidoc)). The whole page is
 rewritten from Markdown to AsciiDoc in every mode, including passthrough. In
 passthrough the HTML sits unchanged inside a passthrough block (`++++`),
-which AsciiDoc hands to the browser without reading it.
+which AsciiDoc hands to the browser without reading it (Asciidoctor:
+[raw block](https://github.com/asciidoctor/asciidoctor/blob/30fb8cd5f7145c57274b04524ceaa99812f830e0/lib/asciidoctor/block.rb#L21),
+[no substitutions](https://github.com/asciidoctor/asciidoctor/blob/30fb8cd5f7145c57274b04524ceaa99812f830e0/lib/asciidoctor/substitutors.rb#L1294-L1296)).
 
 <details><summary>Native input: an AsciiDoc table with column specs</summary>
 
@@ -635,7 +646,10 @@ which AsciiDoc hands to the browser without reading it.
 
 `%header` makes the first row the header row. In `cols`, each column gets a
 spec: `.<` aligns it to the top, `20%` is the width, `h` styles its cells as
-headers (row headers), and `~` sizes the second column by its content.
+headers (row headers), and `~` sizes the second column by its content
+(Asciidoctor:
+[`cols` parsing](https://github.com/asciidoctor/asciidoctor/blob/30fb8cd5f7145c57274b04524ceaa99812f830e0/lib/asciidoctor/parser.rb#L2469-L2513),
+[`<` and `h`](https://github.com/asciidoctor/asciidoctor/blob/30fb8cd5f7145c57274b04524ceaa99812f830e0/lib/asciidoctor/parser.rb#L63-L79)).
 
 </details>
 
@@ -696,7 +710,8 @@ Differences seen:
 
 - **Column 1 is 20% in both modes.** Native gets it from `cols`. An AsciiDoc
   table with no `cols` (native-plain) splits the columns equally, 50/50
-  ([screenshot](../concepts/tables/results/antora-credential-types-t1-native-plain-equal-widths.png)).
+  ([`assign_column_widths`](https://github.com/asciidoctor/asciidoctor/blob/30fb8cd5f7145c57274b04524ceaa99812f830e0/lib/asciidoctor/table.rb#L142-L145);
+  [screenshot](../concepts/tables/results/antora-credential-types-t1-native-plain-equal-widths.png)).
 - **Native makes the type cells row headers**, drawn in bold, from the `h`
   in `cols`. It is the only native syntax here that does so without an
   extension. Passthrough keeps them ordinary cells.
@@ -713,7 +728,9 @@ Differences seen:
   ([Antora finding 1](../concepts/tables/results.md#antora-321)).
 
 **Extension mode.** The native AsciiDoc table with *roles* (AsciiDoc's
-names for classes, written `[.name]`) added before it. No code: the roles
+names for classes, written `[.name]`;
+[shorthand parsing](https://github.com/asciidoctor/asciidoctor/blob/30fb8cd5f7145c57274b04524ceaa99812f830e0/lib/asciidoctor/parser.rb#L2605-L2616))
+added before it. No code: the roles
 get their meaning from the site's stylesheet,
 [hints.css](../concepts/tables/sites/antora/supplemental-ui/css/hints.css).
 

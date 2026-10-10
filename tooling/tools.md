@@ -21,18 +21,18 @@ written in it, is in [formats.md](formats.md).
 
 | Tool | Reads | Tier | Version tested | License | Status |
 |------|-------|------|----------------|---------|--------|
-| [Docusaurus](#docusaurus) | MDX, Markdown | hands-on | 3.10.2 | MIT | under evaluation |
-| [Zensical](#zensical) | Markdown (Python-Markdown) | hands-on | 0.0.69 | MIT | under evaluation |
-| [Starlight](#starlight) | Markdoc (as set up here), Markdown, MDX | hands-on | 0.42.6 on Astro 7.3.8 | MIT | under evaluation |
-| [Antora](#antora) | AsciiDoc | hands-on | 3.2.1 | MPL-2.0 | under evaluation |
-| [Eleventy](#eleventy) | Markdown run through a template language (EJS here) | probe | 3.1.6 | MIT | under evaluation |
-| [Sphinx with MyST](#sphinx-with-myst) | MyST, reStructuredText | probe | Sphinx 9.1.0, MyST parser 5.1.0 | BSD-2-Clause; MyST parser MIT | under evaluation |
-| [Middleman](#middleman) | ERB, Markdown, HTML | probe (without Bookbinder) | 4.6.3 on Ruby 4.0.7 | MIT | under evaluation |
-| [Hugo](#hugo) | Markdown, Go templates | on paper | — | Apache-2.0 | not yet assessed |
-| [VitePress](#vitepress) | Markdown, Vue components | on paper | — | MIT | not yet assessed |
+| [Docusaurus](#docusaurus) | MDX, Markdown | hands-on | 3.10.2 | [MIT](https://github.com/facebook/docusaurus/blob/c245217563f6491fdb79bf5ac91bfa16536e5de9/LICENSE) | under evaluation |
+| [Zensical](#zensical) | Markdown (Python-Markdown) | hands-on | 0.0.69 | [MIT](https://github.com/zensical/zensical/blob/de3702c2df5257c42501163af0afbd765714824a/LICENSE.md) | under evaluation |
+| [Starlight](#starlight) | Markdoc (as set up here), Markdown, MDX | hands-on | 0.42.6 on Astro 7.3.8 | [MIT](https://github.com/withastro/starlight/blob/67de74077524001c79ec233e1b113e86b2b800b0/LICENSE) | under evaluation |
+| [Antora](#antora) | AsciiDoc | hands-on | 3.2.1 | [MPL-2.0](https://gitlab.com/antora/antora/-/blob/87797da7a7f337301ec9b1ad26aa291a28342d56/LICENSE) | under evaluation |
+| [Eleventy](#eleventy) | Markdown run through a template language (EJS here) | probe | 3.1.6 | [MIT](https://github.com/11ty/eleventy/blob/c0bb3f4219e00629f4f58a771c1783c898b9bdab/LICENSE) | under evaluation |
+| [Sphinx with MyST](#sphinx-with-myst) | MyST, reStructuredText | probe | Sphinx 9.1.0, MyST parser 5.1.0 | [BSD-2-Clause](https://github.com/sphinx-doc/sphinx/blob/b04a2101295ac3fb725b16111eda0284b6da4cca/LICENSE.rst); MyST parser [MIT](https://github.com/executablebooks/MyST-Parser/blob/723cffcf84213f0cb58695b27eec9ad72052b53a/LICENSE) | under evaluation |
+| [Middleman](#middleman) | ERB, Markdown, HTML | probe (without Bookbinder) | 4.6.3 on Ruby 4.0.7 | [MIT](https://github.com/middleman/middleman/blob/ec3eab8d7540ec474a8ae187bd466fafe8e147ad/LICENSE.md) | under evaluation |
+| [Hugo](#hugo) | Markdown, Go templates | on paper | — | [Apache-2.0](https://github.com/gohugoio/hugo/blob/0732eadd5aead94d4bd4674d87e9bfc79aaf10a7/LICENSE) | not yet assessed |
+| [VitePress](#vitepress) | Markdown, Vue components | on paper | — | [MIT](https://github.com/vuejs/vitepress/blob/633e48af9ec25a9cc28fc3ebf1e9063b359adb2e/LICENSE) | not yet assessed |
 
-Licenses were read from each project's repository on 2026-10-08 ([R-19](../requirements/README.md#r-19) open
-source only). Tiers are explained in the [Tooling README](README.md#tiers).
+Each license links to the project's license file at the commit checked
+on 2026-10-10 ([R-19](../requirements/README.md#r-19) open source only). Tiers are explained in the [Tooling README](README.md#tiers).
 
 Across the four hands-on tools, the round found that every test table
 renders correctly in every mode once the source is cleaned up. The tools
@@ -45,16 +45,20 @@ syntax carries, and how much of the rest of the page must change
 ### Bookbinder
 
 **What it is.** A Ruby tool written for the CF docs. It reads the book's
-`config.yml` in
-[docs-book-cloudfoundry](https://github.com/cloudfoundry/docs-book-cloudfoundry),
-collects the `docs-*` content repositories it names, and builds them into
-one site with Middleman. Each repository maps to a fixed URL directory, so
-a page's URL names the repository and file to edit ([R-15](../requirements/README.md#r-15) URL identifies the
+[`config.yml`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/config.yml)
+in docs-book-cloudfoundry, collects the `docs-*` content repositories it
+names, and builds them into one site with Middleman (a runtime dependency
+in its
+[gemspec](https://github.com/pivotal-cf/bookbinder/blob/83bd2a57a8ba3d04c58a5be67607b243bdea0c64/bookbinder.gemspec#L20)).
+Each repository maps to a fixed URL directory (the `directory:` of its
+section in `config.yml`), so a page's URL names the repository and file to
+edit ([R-15](../requirements/README.md#r-15) URL identifies the
 source). Learn more: [Bookbinder](https://github.com/pivotal-cf/bookbinder);
 see also the [glossary](../glossary.md#bookbinder).
 
-**What was seen.** Its repository's last push was 2024-10-17 (checked
-2026-10-08). The [Middleman probe](#middleman) built all five test pages
+**What was seen.** Its repository's
+[last commit](https://github.com/pivotal-cf/bookbinder/commit/83bd2a57a8ba3d04c58a5be67607b243bdea0c64)
+is dated 2024-10-17 (checked 2026-10-10). The [Middleman probe](#middleman) built all five test pages
 without it, and every table matched the published page: Bookbinder adds
 nothing the tables need. What else the book's build does (collecting
 repositories, navigation, the "Page last updated" line) was not tested
@@ -74,7 +78,9 @@ with the patterns that worked.
 ### Docusaurus
 
 **What it is.** A static site generator for documentation, built on
-React (a JavaScript library for building pages). Pages are Markdown or MDX:
+React (a JavaScript library for building pages; React and MDX are
+[dependencies of its core package](https://github.com/facebook/docusaurus/blob/c245217563f6491fdb79bf5ac91bfa16536e5de9/packages/docusaurus/package.json#L92-L94)).
+Pages are Markdown or MDX:
 Markdown in which HTML is read as JSX, React's stricter HTML-like syntax.
 Learn more: [Docusaurus](https://docusaurus.io/); see also the
 [glossary](../glossary.md#docusaurus).
@@ -141,7 +147,10 @@ MDX import. [R-05](../requirements/README.md#r-05) partials and reuse.
 ### Zensical
 
 **What it is.** A static site generator for documentation from the team
-behind Material for MkDocs. Pages are Markdown read by Python-Markdown.
+behind Material for MkDocs (the project's own description:
+[README](https://github.com/zensical/zensical/blob/de3702c2df5257c42501163af0afbd765714824a/README.md#L11-L12)).
+Pages are Markdown read by Python-Markdown (the `markdown` package is a
+[dependency](https://github.com/zensical/zensical/blob/de3702c2df5257c42501163af0afbd765714824a/pyproject.toml#L58)).
 Learn more: [Zensical](https://zensical.org/); see also the
 [glossary](../glossary.md#zensical).
 
@@ -175,9 +184,14 @@ capped no-wrap need HTML or the extension, a Python-Markdown block
   a list: three literal `*` on one page
   ([text compared](../concepts/tables/results.md#text-compared-with-the-published-page-1)).
   [R-01](../requirements/README.md#r-01) content and outline survive.
-- **Paid offerings.** Zensical is MIT-licensed. The project also sells a
-  Studio editor and a Spark membership that gives early access to new
-  features (read 2026-10-08). Whether features stay behind it is to be
+- **Paid offerings.** Zensical is
+  [MIT-licensed](https://github.com/zensical/zensical/blob/de3702c2df5257c42501163af0afbd765714824a/LICENSE.md).
+  The project also sells an authoring environment,
+  [Zensical Studio](https://zensical.org/studio/)
+  ([pricing](https://zensical.org/studio/pricing/)), and a membership,
+  [Zensical Spark](https://zensical.org/spark/)
+  ([pricing](https://zensical.org/spark/pricing/)), whose members get
+  early-access releases (the project's own pages, read 2026-10-10). Whether features stay behind it is to be
   watched. [R-19](../requirements/README.md#r-19) open source only.
 
 **Variables and partials.** Variables as written, through Zensical's
@@ -191,8 +205,11 @@ include does not fill in the partial's variables
 ### Starlight
 
 **What it is.** A documentation theme for Astro, a JavaScript static site
-generator. In this evaluation its pages are Markdoc (`.mdoc`): Markdown
-with `{% %}` tags, with HTML allowed. Learn more:
+generator (Astro is a
+[peer dependency](https://github.com/withastro/starlight/blob/67de74077524001c79ec233e1b113e86b2b800b0/packages/starlight/package.json#L51)).
+In this evaluation its pages are Markdoc (`.mdoc`): Markdown with `{% %}`
+tags, with HTML allowed, read through Astro's
+[Markdoc integration](https://github.com/withastro/astro/blob/9050e3819c51b0383cced278c278bc6f45c63468/packages/integrations/markdoc/package.json#L44). Learn more:
 [Starlight](https://starlight.astro.build/), [Astro](https://astro.build/);
 see also the [glossary](../glossary.md#starlight).
 
@@ -240,7 +257,12 @@ work.
 
 **What it is.** A static site generator for documentation written in
 AsciiDoc, a plain-text format with its own table syntax. It is designed to
-build one site from content in several repositories. Learn more:
+build one site from content in several repositories: the playbook's
+`content` key is
+[a list of content sources](https://gitlab.com/antora/antora/-/blob/87797da7a7f337301ec9b1ad26aa291a28342d56/packages/content-aggregator/lib/aggregate-content.js#L84-L90),
+and the project's
+[README](https://gitlab.com/antora/antora/-/blob/87797da7a7f337301ec9b1ad26aa291a28342d56/README.adoc#L29)
+calls it a "single or multi-repository site generator". Learn more:
 [Antora](https://antora.org/); see also the
 [glossary](../glossary.md#antora).
 
@@ -280,7 +302,7 @@ stylesheet. Every spot check passes in every mode.
   moving URL; the site pins one build and checks its hash
   ([finding 10](../concepts/tables/results.md#findings-3)).
 - **Multi-repository sites.** Antora builds from several repositories by
-  design. RFC #1642 §3 proposes one docs repository
+  design ([content aggregator](https://gitlab.com/antora/antora/-/blob/87797da7a7f337301ec9b1ad26aa291a28342d56/packages/content-aggregator/lib/aggregate-content.js#L84-L90)). RFC #1642 §3 proposes one docs repository
   ([L65–88](https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L65-L88)).
   Read about, not tested here.
 
@@ -306,7 +328,12 @@ see also the [glossary](../glossary.md#eleventy).
 **Answer.** Yes for the tables: `uaa-concepts` and the scale table come out
 byte for byte as written. EJS's `<%=` escapes HTML, so HTML-valued
 variables, helpers and includes need `<%-`, and an include needs the full
-file name. EJS is a plugin since Eleventy 3.
+file name. EJS is a plugin since Eleventy 3: Eleventy 2.0.1
+[depends on `ejs`](https://github.com/11ty/eleventy/blob/e71cb94003b5a94dcd40ec96f8f4b455767b9833/package.json#L109),
+[3.0.0 does not](https://github.com/11ty/eleventy/blob/8675d68ec049bb683b0b09f42bd2703909eb0e53/package.json),
+and the
+[`@11ty/eleventy-plugin-ejs`](https://github.com/11ty/eleventy-plugin-template-languages/blob/d765d2ab8ae0328537e7b6c39a5e83742b7f5bfd/ejs/package.json#L2)
+package adds it back.
 Details: [probes/eleventy](../concepts/tables/probes/eleventy/README.md).
 
 **Concerns.** The Middleman helpers other than `partial` (`image_tag`,
@@ -320,7 +347,8 @@ and reuse.
 
 **What it is.** Sphinx is a documentation generator from the Python world;
 the MyST parser lets it read MyST, Markdown with directives (named blocks
-with options). Learn more: [Sphinx](https://www.sphinx-doc.org/),
+with options). The parser is a Sphinx extension built on markdown-it-py
+([dependencies](https://github.com/executablebooks/MyST-Parser/blob/723cffcf84213f0cb58695b27eec9ad72052b53a/pyproject.toml#L33-L39)). Learn more: [Sphinx](https://www.sphinx-doc.org/),
 [MyST parser](https://myst-parser.readthedocs.io/); see also the
 [glossary](../glossary.md#sphinx).
 
@@ -342,7 +370,12 @@ a text comparison has to undo. One page only.
 ### Middleman
 
 **What it is.** A Ruby static site generator; the one Bookbinder runs
-today. Learn more: [Middleman](https://middlemanapp.com/); see also the
+today. The book pins `bookbindery` 9.12.1
+([Gemfile](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/Gemfile#L3)),
+which depends on Middleman 3.4
+([RubyGems](https://rubygems.org/gems/bookbindery/versions/9.12.1));
+the latest Bookbinder source depends on
+[Middleman 4.1.10](https://github.com/pivotal-cf/bookbinder/blob/83bd2a57a8ba3d04c58a5be67607b243bdea0c64/bookbinder.gemspec#L20). Learn more: [Middleman](https://middlemanapp.com/); see also the
 [glossary](../glossary.md#middleman).
 
 **Question.** What is the smallest change that removes Bookbinder and keeps
@@ -372,10 +405,13 @@ has been built.
 ### Hugo
 
 **What it is.** A static site generator written in Go. Pages are Markdown,
-read by the goldmark parser; shortcodes and Go templates add what Markdown
+read by the goldmark parser
+([go.mod](https://github.com/gohugoio/hugo/blob/0732eadd5aead94d4bd4674d87e9bfc79aaf10a7/go.mod#L72)); shortcodes and Go templates add what Markdown
 lacks. RFC #1642 names it as an alternative that "MAY be evaluated"
 ([L31](https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L31)).
-`cloudfoundry/what-is-cf` is a Hugo site today. Learn more:
+`cloudfoundry/what-is-cf` is a Hugo site today: its
+[deploy script](https://github.com/cloudfoundry/what-is-cf/blob/9b48cc72c8e3f0e4483087863b574e9e0526e710/ci/deploy.sh#L7)
+runs `hugo`. Learn more:
 [Hugo](https://gohugo.io/); see also the [glossary](../glossary.md#hugo).
 
 **Not yet written:** the capability check (tables and hints, variables in
@@ -387,7 +423,8 @@ cells, partials, local preview, search, versioning).
 
 **What it is.** A static site generator built on Vite and Vue (JavaScript
 tools). Pages are Markdown read by markdown-it, and can use Vue
-components. Learn more: [VitePress](https://vitepress.dev/); see also the
+components ([dependencies](https://github.com/vuejs/vitepress/blob/633e48af9ec25a9cc28fc3ebf1e9063b359adb2e/package.json#L111-L112),
+[markdown-it](https://github.com/vuejs/vitepress/blob/633e48af9ec25a9cc28fc3ebf1e9063b359adb2e/package.json#L150)). Learn more: [VitePress](https://vitepress.dev/); see also the
 [glossary](../glossary.md#vitepress).
 
 **Not yet written:** the capability check, as for Hugo.
@@ -397,16 +434,29 @@ components. Learn more: [VitePress](https://vitepress.dev/); see also the
 ## Other tools in the CF docs today
 
 - **bosh.io** (`cloudfoundry/docs-bosh`) is built with MkDocs and Material
-  for MkDocs, not Bookbinder. MkDocs is a Python static site generator;
-  Material for MkDocs is a documentation theme for it. Its 40 tables
-  are plain pipe tables. This was read, not built. Learn more:
+  for MkDocs, not Bookbinder: its
+  [`mkdocs.yml`](https://github.com/cloudfoundry/docs-bosh/blob/20a41223a7ba87700424634c42e94a22a669b45e/mkdocs.yml#L319-L321)
+  sets the `material` theme, and its
+  [build task](https://github.com/cloudfoundry/docs-bosh/blob/20a41223a7ba87700424634c42e94a22a669b45e/ci/tasks/build.yml#L5-L12)
+  runs `mkdocs build` in the `squidfunk/mkdocs-material:9.7.6` image.
+  MkDocs is a Python static site generator; Material for MkDocs is a
+  documentation theme for it (it registers as an
+  [MkDocs theme](https://github.com/squidfunk/mkdocs-material/blob/6d3dc570d51064a3f55d189bd22c2390b07d46fe/pyproject.toml#L90)).
+  Its 40 tables are plain pipe tables (counted by this evaluation at
+  docs-bosh commit `20a4122`; the count's data is not yet in this
+  repository). This was read, not built. Learn more:
   [MkDocs](https://www.mkdocs.org/),
   [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/); see
   also the [glossary](../glossary.md#mkdocs-material).
 - **The UAA and CredHub API references** are generated from code. UAA's is
   built with Slate (a tool for single-page API references) from Spring REST
-  Docs snippets (text generated from the API's tests); CredHub uses Spring
-  REST Docs. RFC #1642 asks who can vet the proposal for them
+  Docs snippets (text generated from the API's tests): its
+  [Gradle build](https://github.com/cloudfoundry/uaa/blob/f09cae02367b333bc17d58997c1ba8bf336b3fae/uaa/build.gradle.kts#L150-L193)
+  runs the `*Docs` tests to write the snippets, then builds the
+  [vendored Slate](https://github.com/cloudfoundry/uaa/tree/f09cae02367b333bc17d58997c1ba8bf336b3fae/uaa/slate)
+  with Middleman. CredHub uses Spring REST Docs with Asciidoctor, and its
+  [Gradle build](https://github.com/cloudfoundry/credhub/blob/c28c27a454a259f7506498390928713c9fd7f493/backends/credhub/build.gradle#L125-L131)
+  copies the result into the CredHub application's static files. RFC #1642 asks who can vet the proposal for them
   ([L177](https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L177)).
   Learn more: [Slate](https://github.com/slatedocs/slate),
   [Spring REST Docs](https://spring.io/projects/spring-restdocs).
@@ -422,16 +472,22 @@ decision. These are recorded because the reasons may be wrong.
 
 ### Generators not placed in a tier
 
-**What was done:** only read about. MkDocs (BSD-2-Clause; last push
-2025-10-20 when checked), mdBook (MPL-2.0), Jekyll (MIT), Nextra (MIT) and
-Docsy, a Hugo theme (Apache-2.0), had their licenses checked on 2026-10-08.
-None was built.
+**What was done:** only read about. MkDocs
+([BSD-2-Clause](https://github.com/mkdocs/mkdocs/blob/2862536793b3c67d9d83c33e0dd6d50a791928f8/LICENSE);
+[last commit](https://github.com/mkdocs/mkdocs/commit/2862536793b3c67d9d83c33e0dd6d50a791928f8)
+dated 2025-10-20, checked 2026-10-10), mdBook
+([MPL-2.0](https://github.com/rust-lang/mdBook/blob/d4658998d44112e873c90049767d7eb002169a2d/LICENSE)),
+Jekyll ([MIT](https://github.com/jekyll/jekyll/blob/541d8b2ee75c8907de4744d4b87a7a6f1f997cae/LICENSE)),
+Nextra ([MIT](https://github.com/shuding/nextra/blob/d6e80e1dd627b781429a6ee989b15ebba688c8ea/LICENSE))
+and Docsy, a Hugo theme
+([Apache-2.0](https://github.com/google/docsy/blob/3dbd63ac95988f43713a8f7b0fbb06331acc47f8/LICENSE)),
+had their licenses checked. None was built.
 
-**Why:** the evaluation was kept to the likely candidates, the tools
-already tried out by the people working on the CF docs. These five did
-not come up as candidates; Jekyll, for example, was never proposed.
-Leaving them out was a choice of scope, not a finding
-against them; any of them could be added now. RFC #1642
+**Why:** Decision (evaluation scope, 2026-10): the evaluation was kept to
+the likely candidates, the tools already tried out by the people working
+on the CF docs. These five did not come up as candidates; Jekyll, for
+example, was never proposed. Leaving them out was a choice of scope, not a
+finding against them; any of them could be added now. RFC #1642
 [L31](https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L31)
 names MkDocs as an alternative that "MAY be evaluated".
 

@@ -11,7 +11,8 @@ edits, merges and publishes the docs at `docs.cloudfoundry.org` (its
 [glossary](../glossary.md#docs-wg)).
 
 Today the site is built by Bookbinder, a Ruby tool that collects pages
-from about a dozen `docs-*` content repositories into one site
+from the 12 `docs-*` content repositories listed in the book's
+[`config.yml`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/config.yml) into one site
 ([glossary](../glossary.md#bookbinder)). The collection is called the book,
 and its settings live in
 [docs-book-cloudfoundry](https://github.com/cloudfoundry/docs-book-cloudfoundry).
@@ -69,7 +70,8 @@ Terms used in the table:
 
 - **Variable:** a named value defined once and inserted into pages when the
   site is built. Today it is written `<%= vars.name %>` and defined in the
-  book's `template_variables.yml` ([glossary](../glossary.md#variable)).
+  book's [`template_variables.yml`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/config/template_variables.yml)
+  ([glossary](../glossary.md#variable)).
 - **Partial:** a file of content that other pages include, today with
   `<%= partial 'name' %>` ([glossary](../glossary.md#partial)).
 - **Test pages:** the five pages with complex tables that the Docs WG lead
@@ -108,7 +110,7 @@ Terms used in the table:
 
 | ID | Phrase | Statement | Source | Status |
 |---|---|---|---|---|
-| <a id="r-14"></a>R-14 | Docs WG approves and publishes | Only Docs WG approvers merge content and start publishing. The Docs WG reviews every pull request. | [L54]; [L82]; the [book README](https://github.com/cloudfoundry/docs-book-cloudfoundry) today | proposed |
+| <a id="r-14"></a>R-14 | Docs WG approves and publishes | Only Docs WG approvers merge content and start publishing. The Docs WG reviews every pull request. | [L54]; [L82]; the [book README](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/README.md#L70) today | proposed |
 | <a id="r-17"></a>R-17 | an owner for every area | Every documentation area has a named working-group owner, listed in a `CODEOWNERS` file (a GitHub file that names who must review changes to which paths; [glossary](../glossary.md#codeowners)), before its pages migrate. | [L75]; [L114] | proposed |
 | <a id="r-19"></a>R-19 | open source only | Every tool in the stack is open source. Whether this also covers services, such as a hosted search index or the hosting itself, is open. | [Concepts principles](../concepts/README.md#principles) | open |
 | <a id="r-27"></a>R-27 | a named owner for every task | Each task the new stack creates (migration, technical support of the build, the domain and DNS, the shared extensions, the dictionary) has a named owner before the phase that needs it. | [L172]; [L174]; [L176]; [L178] | proposed |
@@ -117,7 +119,7 @@ Terms used in the table:
 
 | ID | Phrase | Statement | Source | Status |
 |---|---|---|---|---|
-| <a id="r-15"></a>R-15 | URL identifies the source | From a page's URL a contributor can tell which repository and file to edit. Today `docs.cloudfoundry.org/<dir>/<file>.html` maps to `<file>.html.md.erb` in the repository that the book's `config.yml` assigns to `<dir>`. If the content moves into one repository, its directories keep that mapping. | Docs WG lead's comment on the RFC pull request; [`config.yml`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/master/config.yml) | proposed |
+| <a id="r-15"></a>R-15 | URL identifies the source | From a page's URL a contributor can tell which repository and file to edit. Today `docs.cloudfoundry.org/<dir>/<file>.html` maps to `<file>.html.md.erb` in the repository that the book's `config.yml` assigns to `<dir>`. If the content moves into one repository, its directories keep that mapping. | Docs WG lead's comment on the RFC pull request; [`config.yml`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/config.yml#L33-L37) | proposed |
 | <a id="r-16"></a>R-16 | old URLs keep working | Every published URL still resolves after cutover, directly or by redirect. Heading anchors keep their ids where the conversion can keep them. | [L46]; [L58]; [L61]; [L137] | proposed |
 | <a id="r-18"></a>R-18 | full-text search | The site has working full-text search across all its pages. | [L21]; [L36] | proposed |
 | <a id="r-20"></a>R-20 | search-engine and AI-friendly output | The site is plain, crawlable HTML with page titles, descriptions, canonical URLs (the one address search engines should use for a page) and a sitemap, so search engines and AI-based developer tools can read it. Whether to publish an `llms.txt` file (a plain-text index of the site's pages for such tools; [glossary](../glossary.md#llmstxt)) is open. | [L22]; [L40]; [L41] | proposed |
@@ -133,7 +135,11 @@ Terms used in the table:
 | <a id="r-25"></a>R-25 | build-time values are expected differences | When a converted page is compared with the published page, values set at build time (the copyright year in the footer, "Page last updated") count as expected differences. | [Copyright concept](../concepts/README.md#concepts) | proposed |
 | <a id="r-26"></a>R-26 | owner review of migrated pages | The owning working group reviews every migrated section before cutover. | [L131] | proposed |
 
-IDs added after [R-26](#r-26) so far: [R-27](#r-27), [R-28](#r-28), [R-29](#r-29).
+IDs added after the first 26 so far:
+
+- [R-27](#r-27) a named owner for every task
+- [R-28](#r-28) onboarding before cutover
+- [R-29](#r-29) API docs in the same pipeline
 
 ## Where the RFC is wrong or incomplete
 
@@ -160,7 +166,7 @@ one-page Sphinx test carry them as classes with no code
 who writes extensions, not whether any exist: working groups do not write
 their own, the Docs WG maintains shared extensions that apply across all
 documentation, and another working group adds one only with Docs WG approval
-([R-13](#r-13)). Suggested wording for both lines has been posted on the pull request.
+([R-13](#r-13) no per-WG extensions). Suggested wording for both lines has been posted on the pull request.
 
 ### Who does the conversion work (L160 vs L131)
 
@@ -176,7 +182,8 @@ documentation, and another working group adds one only with Docs WG approval
 the RFC's pre-review (comments on an earlier draft, made in a shared document
 before the pull request opened): all conversion done by the migration team, the same way
 for every repository. [L160] should describe the central team's workload. The
-working groups' share is reviewing their migrated pages ([R-23](#r-23), [R-26](#r-26)).
+working groups' share is reviewing their migrated pages ([R-23](#r-23) one
+central conversion, [R-26](#r-26) owner review of migrated pages).
 
 ### Positive bullets the Docs WG lead disputed (L151, L154)
 
@@ -188,8 +195,9 @@ working groups' share is reviewing their migrated pages ([R-23](#r-23), [R-26](#
 are Markdown with HTML and ERB tags (ERB is Ruby's templating syntax,
 `<%= … %>`; [glossary](../glossary.md#erb)) and can be edited on GitHub; the
 Docs WG lead made this point in the pre-review. Bookbinder, the tool that
-assembles the book, is open source under Apache-2.0
-([repository](https://github.com/pivotal-cf/bookbinder)). The real costs
+assembles the book, is open source: its repository's
+[LICENSE](https://github.com/pivotal-cf/bookbinder/blob/83bd2a57a8ba3d04c58a5be67607b243bdea0c64/LICENSE) is Apache-2.0, while its
+[gemspec](https://github.com/pivotal-cf/bookbinder/blob/83bd2a57a8ba3d04c58a5be67607b243bdea0c64/bookbinder.gemspec#L13) declares MIT. The real costs
 are elsewhere: see [Keep and pain](keep-and-pain.md#what-causes-problems).
 
 > **Community ownership:** Documentation deployment is run transparently by the Docs WG without depending on CFF staff.
@@ -206,28 +214,34 @@ restated as a hosting benefit.
 
 - **Unmaintained dependencies are not in the Problem list** ([L17]–[L25]).
   The pre-review agreed this is the main reason to migrate. Bookbinder's
-  repository was last updated in October 2024 (checked 2026-10-10).
+  repository has its
+  [last commit](https://github.com/pivotal-cf/bookbinder/commit/83bd2a57a8ba3d04c58a5be67607b243bdea0c64)
+  on 2024-10-17 (checked 2026-10-10).
 - **Local preview exists today.** [L20] says contributors "have no easy way
-  to preview generated documentation locally". The book's README describes a
-  local preview at `localhost:4567`. The gap is the setup it needs ([R-12](#r-12)).
+  to preview generated documentation locally". The book's
+  [README](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/README.md#L56-L64) describes a local preview at
+  `localhost:4567`. The gap is the setup it needs
+  ([R-12](#r-12) one-command local preview).
 - **One repository and the URL mapping.** [L69] puts all content in "ONE
-  single documentation repository". That is compatible with [R-15](#r-15) only if
+  single documentation repository". That is compatible with [R-15](#r-15) URL identifies the source only if
   its directories map to today's URL directories.
 - **Plain Markdown and HTML.** [L31] says the docs "SHOULD be rewritten in
   plain Markdown", while [L42] requires the "Ability to handle HTML". The
-  position is [R-10](#r-10): simple text plus HTML where needed.
+  position is [R-10](#r-10) simple text plus HTML where needed.
 - **Partials are partly answered.** [L179] asks "Are partials supported by
   Docusaurus?" Every tool in the tables round included the scale-table
   partial from a host page, Docusaurus through an MDX import
   ([sources](../concepts/tables/source/SOURCES.md)). Partials picked by a
-  variable are still open ([R-05](#r-05)).
-- **bosh.io is not mentioned.** Its docs are a separate site with 40 tables;
-  see [Research areas](research-areas.md#is-boshio-in-scope).
+  variable are still open ([R-05](#r-05) partials and reuse).
+- **bosh.io is not mentioned.** Its docs are a separate site with 40 tables
+  (counted by this evaluation at docs-bosh commit `20a4122`; the count's
+  data is not yet in this repository); see [Research areas](research-areas.md#is-boshio-in-scope).
 
 **Not yet written:** requirements that come out of the concepts not yet
 worked (headings, variables, partials, notes, code blocks, cross-repository
 links; [concepts](../concepts/README.md#concepts)). They will sharpen
-[R-04](#r-04) to [R-08](#r-08).
+the requirements from [R-04](#r-04) variables everywhere to [R-08](#r-08)
+cross-repository links.
 
 [L13]: https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L13
 [L17]: https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L17

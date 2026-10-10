@@ -9,15 +9,20 @@ in a given tool, and what that costs, is in [Tooling](../tooling/README.md).
 
 ## From today's book to the new shape
 
-**Today.** About a dozen `docs-*` content repositories hold the pages as
-`.html.md.erb` files: Markdown with HTML mixed in and ERB tags (Ruby's
+**Today.** The 12 `docs-*` content repositories listed in the book's
+[`config.yml`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/config.yml) hold the pages as `.html.md.erb` files
+([examples](../concepts/tables/source/SOURCES.md)): Markdown with HTML mixed in and ERB tags (Ruby's
 templating syntax, `<%= … %>`; [glossary](../glossary.md#erb)). Bookbinder, a
 Ruby tool ([glossary](../glossary.md#bookbinder)), collects the repositories
 listed in the book's `config.yml` and builds one site. Each repository maps
-to one URL directory. Pages share variables (named values defined once in
-`template_variables.yml` and inserted at build time) and partials (files of
-content included in other pages). The book also holds the layout, the
-footer and about 85 redirect rules.
+to one URL directory (the `directory:` of its section). Pages share
+variables (named values defined once in
+[`template_variables.yml`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/config/template_variables.yml) and
+inserted at build time) and partials (files of content included in other
+pages). The book also holds the
+[layout](https://github.com/cloudfoundry/docs-book-cloudfoundry/tree/30dfa57692253a6ae1b3df0726444b1e32852c91/master_middleman/source/layouts),
+the [footer](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/master_middleman/source/layouts/_book-footer.erb) and
+85 redirect rules ([`redirects.rb`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/redirects.rb)).
 
 **The new shape, as far as it is known.**
 
@@ -26,9 +31,10 @@ footer and about 85 redirect rules.
 - A `CODEOWNERS` file (a GitHub file naming who must review changes to which
   paths) assigns each directory to its working group ([R-17](README.md#r-17) an owner for
   every area).
-- Pages are in a simple text format, with HTML where it falls short ([R-10](README.md#r-10)).
+- Pages are in a simple text format, with HTML where it falls short ([R-10](README.md#r-10) simple
+  text plus HTML where needed).
   Which format and which tool is open.
-- The Docs WG reviews and publishes ([R-14](README.md#r-14)).
+- The Docs WG reviews and publishes ([R-14](README.md#r-14) Docs WG approves and publishes).
 
 ## Steps
 
@@ -37,13 +43,15 @@ footer and about 85 redirect rules.
 List every repository, page, partial, variable and redirect that feeds the
 site, with the working group that owns each area. The RFC makes this the
 first phase ([L112], [L114]). The inventory also records where each page's
-URL comes from, so [R-15](README.md#r-15) and [R-16](README.md#r-16) can be checked later.
+URL comes from, so [R-15](README.md#r-15) URL identifies the source and
+[R-16](README.md#r-16) old URLs keep working can be checked later.
 
 Serves: [R-17](README.md#r-17) an owner for every area, [R-15](README.md#r-15) URL identifies the source, [R-16](README.md#r-16)
 old URLs keep working.
 
 Done so far: a survey of every table in the docs and tutorial repositories
-(241 tables), used to pick table styles.
+(241 tables), used to pick table styles (this evaluation's table survey,
+2026-10-09; its data is not yet in this repository).
 
 **Not yet written:** the full inventory, and whether bosh.io and the UAA and
 CredHub API references are in it ([research areas](research-areas.md#scope)).

@@ -14,17 +14,54 @@ its first phase ([L112], [L114]), and is not done yet.
 
 ## Summary
 
-| Audience | Changes the docs? | Main needs |
-|---|---|---|
-| [Docs WG lead and approvers](#docs-wg-lead-and-approvers) | yes, and publishes them | [R-14](README.md#r-14), [R-09](README.md#r-09), [R-11](README.md#r-11), [R-12](README.md#r-12), [R-22](README.md#r-22), [R-27](README.md#r-27), [R-28](README.md#r-28) |
-| [Working-group content owners](#working-group-content-owners) | yes, in their areas | [R-17](README.md#r-17), [R-26](README.md#r-26), [R-13](README.md#r-13), [R-11](README.md#r-11), [R-12](README.md#r-12) |
-| [Occasional contributors](#occasional-contributors) | yes, small fixes | [R-15](README.md#r-15), [R-12](README.md#r-12), [R-10](README.md#r-10), [R-11](README.md#r-11) |
-| [UAA and CredHub API doc maintainers](#uaa-and-credhub-api-doc-maintainers) | yes, from code | [R-29](README.md#r-29), [R-08](README.md#r-08), [R-16](README.md#r-16) |
-| [bosh.io maintainers](#boshio-maintainers) | yes, on a separate site | [R-09](README.md#r-09), [R-07](README.md#r-07) (scope open) |
-| [Central migration team](#central-migration-team) | once, all of it | [R-23](README.md#r-23), [R-24](README.md#r-24), [R-01](README.md#r-01), [R-25](README.md#r-25), [R-04](README.md#r-04), [R-05](README.md#r-05), [R-08](README.md#r-08) |
-| [Downstream consumers](#downstream-consumers) | no, they reuse it | [R-16](README.md#r-16), [R-15](README.md#r-15) |
-| [Readers](#readers) | no | [R-18](README.md#r-18), [R-16](README.md#r-16), [R-02](README.md#r-02), [R-06](README.md#r-06), [R-07](README.md#r-07) |
-| [Search engines and AI-based tools](#search-engines-and-ai-based-tools) | no | [R-20](README.md#r-20), [R-16](README.md#r-16) |
+Each audience, whether it changes the docs, and its main needs:
+
+- **[Docs WG lead and approvers](#docs-wg-lead-and-approvers)** (change the docs, and publish them):
+  - [R-14](README.md#r-14) Docs WG approves and publishes
+  - [R-09](README.md#r-09) table styles by class
+  - [R-11](README.md#r-11) readable source
+  - [R-12](README.md#r-12) one-command local preview
+  - [R-22](README.md#r-22) spellcheck with a shared dictionary
+  - [R-27](README.md#r-27) a named owner for every task
+  - [R-28](README.md#r-28) onboarding before cutover
+- **[Working-group content owners](#working-group-content-owners)** (change the docs in their areas):
+  - [R-17](README.md#r-17) an owner for every area
+  - [R-26](README.md#r-26) owner review of migrated pages
+  - [R-13](README.md#r-13) no per-WG extensions
+  - [R-11](README.md#r-11) readable source
+  - [R-12](README.md#r-12) one-command local preview
+- **[Occasional contributors](#occasional-contributors)** (change the docs: small fixes):
+  - [R-15](README.md#r-15) URL identifies the source
+  - [R-12](README.md#r-12) one-command local preview
+  - [R-10](README.md#r-10) simple text plus HTML where needed
+  - [R-11](README.md#r-11) readable source
+- **[UAA and CredHub API doc maintainers](#uaa-and-credhub-api-doc-maintainers)** (change the docs, from code):
+  - [R-29](README.md#r-29) API docs in the same pipeline
+  - [R-08](README.md#r-08) cross-repository links
+  - [R-16](README.md#r-16) old URLs keep working
+- **[bosh.io maintainers](#boshio-maintainers)** (change the docs, on a separate site; scope open):
+  - [R-09](README.md#r-09) table styles by class
+  - [R-07](README.md#r-07) notes and admonitions
+- **[Central migration team](#central-migration-team)** (change all of it, once):
+  - [R-23](README.md#r-23) one central conversion
+  - [R-24](README.md#r-24) markup cleanup before conversion
+  - [R-01](README.md#r-01) content and outline survive
+  - [R-25](README.md#r-25) build-time values are expected differences
+  - [R-04](README.md#r-04) variables everywhere
+  - [R-05](README.md#r-05) partials and reuse
+  - [R-08](README.md#r-08) cross-repository links
+- **[Downstream consumers](#downstream-consumers)** (do not change the docs; they reuse them):
+  - [R-16](README.md#r-16) old URLs keep working
+  - [R-15](README.md#r-15) URL identifies the source
+- **[Readers](#readers)** (do not change the docs):
+  - [R-18](README.md#r-18) full-text search
+  - [R-16](README.md#r-16) old URLs keep working
+  - [R-02](README.md#r-02) rich tables
+  - [R-06](README.md#r-06) typed code blocks
+  - [R-07](README.md#r-07) notes and admonitions
+- **[Search engines and AI-based tools](#search-engines-and-ai-based-tools)** (do not change the docs):
+  - [R-20](README.md#r-20) search-engine and AI-friendly output
+  - [R-16](README.md#r-16) old URLs keep working
 
 ## Who changes the docs
 
@@ -32,9 +69,9 @@ its first phase ([L112], [L114]), and is not done yet.
 
 The Docs WG is the working group for the Cloud Foundry docs. Its
 [charter](https://github.com/cloudfoundry/community/blob/main/toc/working-groups/docs.md)
-lists in its scope "Merge and edit all doc changes" and "Maintain internal
-consistency of doc style, including Notes and tables". The book's
-[README](https://github.com/cloudfoundry/docs-book-cloudfoundry) states how
+lists in its scope ["Merge and edit all doc changes"](https://github.com/cloudfoundry/community/blob/9f189bfa613bb7a9c2da6616666661790d4410eb/toc/working-groups/docs.md#L17) and
+["Maintain internal consistency of doc style, including Notes and
+tables"](https://github.com/cloudfoundry/community/blob/9f189bfa613bb7a9c2da6616666661790d4410eb/toc/working-groups/docs.md#L19). The book's [README](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/README.md#L70) states how
 it works today: "Only the CFF Docs WG lead can merge pull requests, build to
 staging, and publish the documentation." (CFF is the Cloud Foundry
 Foundation; the book is the configuration that collects the content
@@ -68,8 +105,8 @@ Working groups that own documentation areas review changes to them. The RFC
 assigns each area to a working group's GitHub team through a `CODEOWNERS`
 file, a GitHub file that names who must review changes to which paths
 ([L75]). The Docs WG charter excludes one kind of content from its own
-responsibility: "Be responsible for component level documentation (e.g.
-Cloud Controller v3 docs)" is listed under Non-Goals, so that content belongs
+responsibility: ["Be responsible for component level documentation (e.g.
+Cloud Controller v3 docs)"](https://github.com/cloudfoundry/community/blob/9f189bfa613bb7a9c2da6616666661790d4410eb/toc/working-groups/docs.md#L25) is listed under Non-Goals, so that content belongs
 to the teams that build the components.
 
 Needs:
@@ -91,7 +128,8 @@ Needs:
 
 - [R-15](README.md#r-15) URL identifies the source: today `docs.cloudfoundry.org/adminguide/metadata.html`
   is `metadata.html.md.erb` in `docs-cf-admin`, because the book's
-  `config.yml` maps the `adminguide` directory to that repository. A
+  [`config.yml`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/config.yml#L33-L37) maps the `adminguide`
+  directory to that repository. A
   contributor finds the file from the address bar.
 - [R-12](README.md#r-12) one-command local preview, without installing a language toolchain
   by hand.
@@ -100,19 +138,28 @@ Needs:
 
 ### UAA and CredHub API doc maintainers
 
-UAA (the Cloud Foundry login and token service) and CredHub (the credential
-store used by Cloud Foundry and BOSH) publish API reference docs built from their code, not from the book.
-The UAA API docs live in the `cloudfoundry/uaa` repository and are built with
-Slate, a generator for one-page API references
-([glossary](../glossary.md#slate)), from examples that Spring REST Docs
-writes while the API tests run ([glossary](../glossary.md#spring-rest-docs)).
-CredHub also uses Spring REST Docs. CredHub's prose pages in its own `docs/`
+UAA (the Cloud Foundry login and token service; its
+[README](https://github.com/cloudfoundry/uaa/blob/f09cae02367b333bc17d58997c1ba8bf336b3fae/README.md#L5-L6)) and CredHub (the credential store deployed
+with BOSH; its [README](https://github.com/cloudfoundry/credhub/blob/c28c27a454a259f7506498390928713c9fd7f493/README.md#L5-L11)) publish API reference docs
+built from their code, not from the book. The UAA API docs live in the
+`cloudfoundry/uaa` repository and are built with Slate, a generator for
+one-page API references ([glossary](../glossary.md#slate)), from examples
+that Spring REST Docs writes while the API tests run
+([glossary](../glossary.md#spring-rest-docs)); the
+[Gradle build](https://github.com/cloudfoundry/uaa/blob/f09cae02367b333bc17d58997c1ba8bf336b3fae/uaa/build.gradle.kts#L150-L193) runs those tests, then
+the Slate build. CredHub also uses Spring REST Docs, with Asciidoctor
+([Gradle build](https://github.com/cloudfoundry/credhub/blob/c28c27a454a259f7506498390928713c9fd7f493/backends/credhub/build.gradle#L87-L88)). CredHub's
+prose pages in its own
+[`docs/`](https://github.com/cloudfoundry/credhub/tree/c28c27a454a259f7506498390928713c9fd7f493/docs)
 folder are separate from the book's `docs-credhub` repository.
 
 Book pages link to both references under `docs.cloudfoundry.org/api/uaa/`
-and `docs.cloudfoundry.org/api/credhub/`, and to versioned UAA pages such as
-`api/uaa/version/73.7.0/`, so the UAA reference already publishes
-versions.
+and `docs.cloudfoundry.org/api/credhub/`
+([book navigation](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/master_middleman/source/subnavs/_cf-subnav.erb#L425-L431)),
+and to versioned UAA pages such as `api/uaa/version/73.7.0/`
+([`uaa-concepts`](https://github.com/cloudfoundry/docs-uaa/blob/216c797cfa1a971cf0f9e53eb3e4803aaf914a94/uaa-concepts.html.md.erb#L126-L127)).
+The UAA reference already publishes versions: its build writes each one
+under [`docs/version/<major.minor>.0`](https://github.com/cloudfoundry/uaa/blob/f09cae02367b333bc17d58997c1ba8bf336b3fae/uaa/build.gradle.kts#L189).
 
 The RFC covers "CF, UAA API" ([L13]) and asks "Who can we involve to vet this
 proposal for the UAA API docs and the CredHub API docs?" ([L177]).
@@ -133,16 +180,20 @@ pipeline.
 
 The BOSH docs at `bosh.io/docs` are a separate site built from
 [docs-bosh](https://github.com/cloudfoundry/docs-bosh) with MkDocs and its
-Material theme ([glossary](../glossary.md#mkdocs-material)), not by the book.
+Material theme ([glossary](../glossary.md#mkdocs-material)), not by the book
+([`mkdocs.yml`](https://github.com/cloudfoundry/docs-bosh/blob/20a41223a7ba87700424634c42e94a22a669b45e/mkdocs.yml#L319-L321),
+[build task](https://github.com/cloudfoundry/docs-bosh/blob/20a41223a7ba87700424634c42e94a22a669b45e/ci/tasks/build.yml#L5-L12)).
 They are owned by the Foundational Infrastructure working group (FI WG;
-[charter](https://github.com/cloudfoundry/community/blob/main/toc/working-groups/foundational-infrastructure.md)).
+[charter](https://github.com/cloudfoundry/community/blob/main/toc/working-groups/foundational-infrastructure.md),
+which [lists docs-bosh](https://github.com/cloudfoundry/community/blob/9f189bfa613bb7a9c2da6616666661790d4410eb/toc/working-groups/foundational-infrastructure.md#L352)).
 The site has 40 tables, all plain Markdown pipe tables (rows written on one
 line each, with `|` between cells), and 302 admonitions (boxed callouts
-headed Note, Warning, and so on). The RFC does
-not mention bosh.io.
+headed Note, Warning, and so on), counted by this evaluation at docs-bosh
+commit `20a4122`; the count's data is not yet in this repository. The RFC
+does not mention bosh.io.
 
 Draft position: bosh.io follows the Docs WG's table and note conventions
-([R-09](README.md#r-09), [R-07](README.md#r-07)). Whether bosh.io moves to a new tool or into the new site is the
+([R-09](README.md#r-09) table styles by class, [R-07](README.md#r-07) notes and admonitions). Whether bosh.io moves to a new tool or into the new site is the
 FI WG's decision; the Docs WG can advise. See
 [Research areas](research-areas.md#is-boshio-in-scope).
 
@@ -172,7 +223,7 @@ SAP BTP, anynines, …; VMware Tanzu works from its own branches and is not
 affected) SHOULD be asked whether they consume the CF docs as-is or maintain
 their own derivative documentation" ([L113]). In the pre-review the Docs WG
 lead added that Broadcom's docs are written fully in-house and do not rely on
-the CF doc repositories. The RFC's open questions still name VMware Tanzu as
+the CF doc repositories (unverified: no public source found). The RFC's open questions still name VMware Tanzu as
 a downstream distribution ([L168]), which does not match [L113].
 
 Needs:

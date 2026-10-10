@@ -42,9 +42,17 @@ tutorial).
 A precise specification of Markdown's core syntax, with a test suite,
 written to end the disagreements between Markdown implementations. It has
 no tables; GFM adds them. MDX (Docusaurus), Markdoc (Starlight) and
-markdown-it (the Eleventy probe) all parse CommonMark, while
-Python-Markdown (Zensical) follows the older original Markdown rules, which
-is one reason the same page can need different indentation per tool
+markdown-it (the Eleventy probe) all parse CommonMark: MDX parses with
+[remark-parse](https://github.com/mdx-js/mdx/blob/52285a6758fa078ec57f3d4bd8803d9cbfb12065/packages/mdx/package.json#L63),
+which [parses according to CommonMark](https://github.com/remarkjs/remark/blob/1146b3a274fc1f4607111e5d6607a3a769a0e89a/packages/remark-parse/readme.md#L228),
+and Markdoc ([package.json](https://github.com/markdoc/markdoc/blob/df5ac9aae57505eae5e7572aab3dda50d61f434c/package.json#L59))
+and Eleventy ([package.json](https://github.com/11ty/eleventy/blob/02ad90a2c85f6446d46bdcd231b6d5d3c5c17949/package.json#L148))
+use markdown-it, which
+[follows the CommonMark spec](https://github.com/markdown-it/markdown-it/blob/3c51991c32aaa2b002a52c009334ebe5752c84b3/README.md#L11)
+(each project's own description). Python-Markdown (Zensical) follows the
+older original Markdown rules
+([its documentation](https://github.com/Python-Markdown/markdown/blob/0bf535bc406c95dad66050f07c8402af03fe07d5/docs/index.md#L29)),
+which is one reason the same page can need different indentation per tool
 ([tooling/formats.md](tooling/formats.md)).
 
 Learn more: [CommonMark](https://commonmark.org/).
@@ -52,8 +60,9 @@ Learn more: [CommonMark](https://commonmark.org/).
 ### GFM
 
 GitHub Flavored Markdown: CommonMark plus pipe tables, strikethrough, task
-lists and automatic links. GitHub uses it to show Markdown files, including
-the pages of this repository read raw. Docusaurus's native mode writes GFM
+lists and automatic links. GitHub uses it to show Markdown files
+([the GFM specification](https://github.github.com/gfm/), GitHub's own
+description), including the pages of this repository read raw. Docusaurus's native mode writes GFM
 pipe tables
 ([sites/docusaurus/CONVENTIONS.md](concepts/tables/sites/docusaurus/CONVENTIONS.md)),
 and this repository's Pages build reads its Markdown as GFM
@@ -76,12 +85,14 @@ Learn more: [GFM specification, tables](https://github.github.com/gfm/#tables-ex
 
 ### kramdown
 
-A Markdown converter written in Ruby and the default in Jekyll. It has its
+A Markdown converter written in Ruby and the default in Jekyll
+([configuration.rb](https://github.com/jekyll/jekyll/blob/541d8b2ee75c8907de4744d4b87a7a6f1f997cae/lib/jekyll/configuration.rb#L39)). It has its
 own syntax for attributes and can also read GFM. Only this repository's
 own GitHub Pages build uses it ([_config.yml](_config.yml)); none of the
 candidate tools does, and the published CF book uses a different Ruby
 Markdown engine, Redcarpet
-([probes/middleman/README.md](concepts/tables/probes/middleman/README.md)).
+([probes/middleman/README.md](concepts/tables/probes/middleman/README.md);
+[Bookbinder gemspec](https://github.com/pivotal-cf/bookbinder/blob/83bd2a57a8ba3d04c58a5be67607b243bdea0c64/bookbinder.gemspec#L24)).
 
 Learn more: [kramdown](https://kramdown.gettalong.org/).
 
@@ -90,7 +101,14 @@ Learn more: [kramdown](https://kramdown.gettalong.org/).
 A Markdown converter written in Python, extended through plug-ins such as
 tables, attribute lists and the pymdown-extensions collection. It follows the
 original Markdown rules rather than CommonMark, so nested lists need
-four-space indents. Zensical (and MkDocs) read pages through it; it passes HTML
+four-space indents (the default
+[`tab_length` is 4](https://github.com/Python-Markdown/markdown/blob/0bf535bc406c95dad66050f07c8402af03fe07d5/markdown/core.py#L109);
+[its documentation](https://github.com/Python-Markdown/markdown/blob/0bf535bc406c95dad66050f07c8402af03fe07d5/docs/index.md#L93-L104)).
+Zensical
+([pyproject.toml](https://github.com/zensical/zensical/blob/de3702c2df5257c42501163af0afbd765714824a/pyproject.toml#L58))
+and MkDocs
+([pyproject.toml](https://github.com/mkdocs/mkdocs/blob/2862536793b3c67d9d83c33e0dd6d50a791928f8/pyproject.toml#L39))
+read pages through it; it passes HTML
 blocks through as written, which is why all five test pages build unchanged
 in Zensical, and Zensical's extension mode is a Python-Markdown block
 ([sites/zensical/CONVENTIONS.md](concepts/tables/sites/zensical/CONVENTIONS.md)).
@@ -105,7 +123,9 @@ whole page, its HTML included, as JSX, so markup that browsers tolerate stops
 the build and literal braces in prose must be escaped; all five test pages
 failed as written
 ([results.md](concepts/tables/results.md#raw-passthrough-errors)).
-Docusaurus 3 uses MDX 3, which the RFC names as the replacement for ERB
+Docusaurus 3 uses MDX 3
+([mdx-loader package.json](https://github.com/facebook/docusaurus/blob/c245217563f6491fdb79bf5ac91bfa16536e5de9/packages/docusaurus-mdx-loader/package.json#L25)),
+which the RFC names as the replacement for ERB
 ([RFC L31][L31], [L39][L39]), and RFC §5 says "The PoC MUST validate that the
 most complex existing pages (HTML tables, CSS layouts) can be represented
 with MDX alone" ([RFC L104][L104]).
@@ -125,7 +145,9 @@ Learn more: [Writing markup with JSX](https://react.dev/learn/writing-markup-wit
 
 ### Markdoc
 
-Markdown with `{% %}` tags, made by Stripe for its own documentation. Tags
+Markdown with `{% %}` tags, made by Stripe for its own documentation
+([README](https://github.com/markdoc/markdoc/blob/df5ac9aae57505eae5e7572aab3dda50d61f434c/README.md#L11),
+the project's own description). Tags
 such as `{% table %}` and `{% partial %}` add structure, and `{% $name %}`
 prints a variable. In this evaluation Starlight reads Markdoc pages (`.mdoc`)
 with HTML allowed. Markdoc reads the text inside HTML as Markdown, which
@@ -141,7 +163,9 @@ Learn more: [Markdoc](https://markdoc.dev/).
 A plain-text markup language with a larger built-in vocabulary than
 Markdown: tables with widths and row headers, admonitions, includes and
 attributes (variables) are part of the language. Asciidoctor is the usual
-processor. Antora reads only AsciiDoc, so every test page was rewritten from
+processor; Antora runs it
+([asciidoc-loader package.json](https://gitlab.com/antora/antora/-/blob/87797da7a7f337301ec9b1ad26aa291a28342d56/packages/asciidoc-loader/package.json#L33)).
+Antora reads only AsciiDoc, so every test page was rewritten from
 Markdown in every mode, and that rewrite failed silently in four ways
 ([results.md](concepts/tables/results.md#antora-321)); its tables are written
 `[%header,cols=…]` between `|===` lines
@@ -204,7 +228,9 @@ Learn more: [EJS](https://ejs.co/).
 ### Liquid
 
 A template language from Shopify, with `{{ name }}` and `{% tag %}`
-syntax, used by Jekyll and many other tools. No candidate tool in this
+syntax, used by Jekyll
+([jekyll.gemspec](https://github.com/jekyll/jekyll/blob/541d8b2ee75c8907de4744d4b87a7a6f1f997cae/jekyll.gemspec#L46))
+and other tools. No candidate tool in this
 round uses it. This repository's Pages build turns Liquid off, because code
 samples in these documents use Markdoc and other syntax that looks like
 Liquid and would otherwise be run ([_config.yml](_config.yml)).
@@ -233,7 +259,9 @@ A program that turns source files (Markdown, templates, a theme) into a
 folder of finished HTML pages before anyone visits the site, so the server
 only hands out files. RFC #1642 proposes that the docs be "managed via a
 modern static site generator" ([RFC L31][L31]) and hosted on GitHub Pages,
-which serves only static files. Every tool in this evaluation is one,
+which is a static site hosting service
+([GitHub's description](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages)).
+Every tool in this evaluation is one,
 today's Bookbinder and Middleman included; the tiers are in
 [concepts/README.md](concepts/README.md).
 
@@ -242,10 +270,16 @@ Learn more: [MDN glossary: SSG](https://developer.mozilla.org/en-US/docs/Glossar
 ### Bookbinder
 
 The Ruby tool that builds today's docs.cloudfoundry.org: it collects the
-`docs-*` content repositories listed in docs-book-cloudfoundry into one
-"book" and builds it with Middleman. Each repository maps to a fixed URL
-directory, so a page's URL tells you which repository and file to edit
-([README.md](README.md#background)), and it already offers a local preview.
+`docs-*` content repositories listed in docs-book-cloudfoundry's
+[`config.yml`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/config.yml)
+into one "book" and builds it with Middleman (a runtime dependency in its
+[gemspec](https://github.com/pivotal-cf/bookbinder/blob/83bd2a57a8ba3d04c58a5be67607b243bdea0c64/bookbinder.gemspec#L20)).
+Each repository maps to a fixed URL directory, so a page's URL tells you
+which repository and file to edit ([README.md](README.md#background)), and
+it already offers a local preview
+([book README](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/README.md#L56-L64);
+the `watch` command runs
+[`middleman server`](https://github.com/pivotal-cf/bookbinder/blob/83bd2a57a8ba3d04c58a5be67607b243bdea0c64/lib/bookbinder/commands/watch.rb#L53)).
 The Middleman probe asks what is left when Bookbinder is removed: a short
 configuration and a layout
 ([probes/middleman/README.md](concepts/tables/probes/middleman/README.md)).
@@ -256,7 +290,8 @@ Learn more: [Bookbinder](https://github.com/pivotal-cf/bookbinder),
 ### Middleman
 
 A Ruby static site generator; Bookbinder uses it to render the book's ERB,
-Markdown and HTML into pages. The Middleman probe built all five test pages
+Markdown and HTML into pages
+([Bookbinder gemspec](https://github.com/pivotal-cf/bookbinder/blob/83bd2a57a8ba3d04c58a5be67607b243bdea0c64/bookbinder.gemspec#L20)). The Middleman probe built all five test pages
 unchanged with Middleman 4.6.3 on Ruby 4.0.7 and no Bookbinder, and every
 table matched the published page cell for cell. It is the minimal-change
 baseline: Bookbinder goes, the source format stays
@@ -267,8 +302,11 @@ Learn more: [Middleman](https://middlemanapp.com/).
 
 ### Docusaurus
 
-A documentation site generator from Meta, built on React; pages are Markdown
-or MDX. RFC #1642 says "The recommended engine is the current major version
+A documentation site generator from Meta
+([LICENSE](https://github.com/facebook/docusaurus/blob/c245217563f6491fdb79bf5ac91bfa16536e5de9/LICENSE):
+"Copyright (c) Facebook, Inc. and its affiliates"), built on React; pages are
+Markdown or MDX
+([package.json](https://github.com/facebook/docusaurus/blob/c245217563f6491fdb79bf5ac91bfa16536e5de9/packages/docusaurus/package.json#L92-L94)). RFC #1642 says "The recommended engine is the current major version
 of Docusaurus" ([RFC L31][L31]). A hands-on tool here (3.10.2): no test page
 built with its HTML unchanged, every table rendered correctly after cleanup,
 and its pipe tables carry no width hints
@@ -279,9 +317,12 @@ Learn more: [Docusaurus](https://docusaurus.io/).
 
 ### Zensical
 
-A static site generator from the creators of Material for MkDocs; it reads
-Markdown through Python-Markdown and is designed to build existing MkDocs
-projects. A hands-on tool here (0.0.69): all five test pages built with their
+A static site generator from the creators of Material for MkDocs
+([README](https://github.com/zensical/zensical/blob/de3702c2df5257c42501163af0afbd765714824a/README.md#L11-L12),
+the project's own description); it reads Markdown through Python-Markdown
+([pyproject.toml](https://github.com/zensical/zensical/blob/de3702c2df5257c42501163af0afbd765714824a/pyproject.toml#L58))
+and can build existing MkDocs projects: it reads `mkdocs.yml`
+([config.py](https://github.com/zensical/zensical/blob/de3702c2df5257c42501163af0afbd765714824a/python/zensical/config.py#L264-L265)). A hands-on tool here (0.0.69): all five test pages built with their
 HTML unchanged, and the variables kept their ERB form through its built-in
 macros support
 ([results.md](concepts/tables/results.md#zensical-0069),
@@ -291,12 +332,19 @@ Learn more: [Zensical](https://zensical.org/).
 
 ### MkDocs Material
 
-Material for MkDocs: a theme and set of extensions for MkDocs, a Python
-static site generator that reads Markdown through Python-Markdown. RFC #1642
-says "Other frameworks such as Hugo or MkDocs MAY be evaluated and proposed
-as alternatives during the PoC phase" ([RFC L31][L31]). It is not a hands-on
-tool in this round, but bosh.io's documentation (`docs-bosh`, owned by the
-FI WG) is built with it, which matters for how bosh.io relates to the new
+Material for MkDocs: a theme and set of plugins for MkDocs
+([pyproject.toml](https://github.com/squidfunk/mkdocs-material/blob/6d3dc570d51064a3f55d189bd22c2390b07d46fe/pyproject.toml#L76-L90)),
+a Python static site generator that reads Markdown through Python-Markdown
+([pyproject.toml](https://github.com/mkdocs/mkdocs/blob/2862536793b3c67d9d83c33e0dd6d50a791928f8/pyproject.toml#L39)).
+RFC #1642 says "Other frameworks such as Hugo or MkDocs MAY be evaluated and
+proposed as alternatives during the PoC phase" ([RFC L31][L31]). It is not a
+hands-on tool in this round, but bosh.io's documentation (`docs-bosh`, owned
+by the FI WG:
+[charter](https://github.com/cloudfoundry/community/blob/9f189bfa613bb7a9c2da6616666661790d4410eb/toc/working-groups/foundational-infrastructure.md#L352))
+is built with it
+([mkdocs.yml](https://github.com/cloudfoundry/docs-bosh/blob/20a41223a7ba87700424634c42e94a22a669b45e/mkdocs.yml#L319-L321),
+[ci/tasks/build.yml](https://github.com/cloudfoundry/docs-bosh/blob/20a41223a7ba87700424634c42e94a22a669b45e/ci/tasks/build.yml#L5-L12)),
+which matters for how bosh.io relates to the new
 site ([requirements/audiences.md](requirements/audiences.md),
 [tooling/tools.md](tooling/tools.md)).
 
@@ -305,9 +353,13 @@ Learn more: [MkDocs](https://www.mkdocs.org/),
 
 ### Starlight
 
-A documentation framework for Astro, a JavaScript site builder. Starlight
-reads Markdown and MDX by default; here it ran with Astro's Markdoc
-integration, so the pages are Markdoc with HTML allowed (Starlight 0.42.6,
+A documentation framework for Astro, a JavaScript site builder
+([package.json](https://github.com/withastro/starlight/blob/67de74077524001c79ec233e1b113e86b2b800b0/packages/starlight/package.json#L51)).
+Starlight reads Markdown and MDX by default
+([package.json](https://github.com/withastro/starlight/blob/67de74077524001c79ec233e1b113e86b2b800b0/packages/starlight/package.json#L70));
+here it ran with Astro's Markdoc integration
+([`@astrojs/markdoc`](https://github.com/withastro/astro/blob/9050e3819c51b0383cced278c278bc6f45c63468/packages/integrations/markdoc/package.json#L44)),
+so the pages are Markdoc with HTML allowed (Starlight 0.42.6,
 Astro 7.3.8). Four of five pages parsed with their HTML unchanged, but
 Markdoc changed text inside HTML without an error, and Markdoc's own table
 tag carries widths and lists in cells with no custom code
@@ -320,7 +372,9 @@ Learn more: [Starlight](https://starlight.astro.build/),
 ### Antora
 
 A documentation site generator for AsciiDoc that builds one site from
-content kept in many git repositories, organized as versioned components. A
+content kept in many git repositories, organized as versioned components
+([aggregate-content.js](https://gitlab.com/antora/antora/-/blob/87797da7a7f337301ec9b1ad26aa291a28342d56/packages/content-aggregator/lib/aggregate-content.js#L84-L90);
+[README](https://gitlab.com/antora/antora/-/blob/87797da7a7f337301ec9b1ad26aa291a28342d56/README.adoc#L29-L31)). A
 hands-on tool here (3.2.1): every page had to be rewritten as AsciiDoc,
 while the HTML tables built unchanged inside passthrough blocks. AsciiDoc's
 own tables carry most hints, and the extension needs no code, only roles and
@@ -333,7 +387,8 @@ Learn more: [Antora](https://antora.org/).
 ### Sphinx
 
 A Python documentation generator that reads reStructuredText and, with the
-myst-parser extension, MyST Markdown. It ran as a probe (Sphinx 9.1.0,
+myst-parser extension, MyST Markdown
+([myst-parser pyproject.toml](https://github.com/executablebooks/MyST-Parser/blob/723cffcf84213f0cb58695b27eec9ad72052b53a/pyproject.toml#L33-L39)). It ran as a probe (Sphinx 9.1.0,
 myst-parser 5.1.0) to see whether list-table options carry the table hints:
 the header row, row headers and widths yes, and the column roles and capped
 no-wrap through classes and CSS, with no code
@@ -344,7 +399,14 @@ Learn more: [Sphinx](https://www.sphinx-doc.org/).
 ### Eleventy
 
 A JavaScript static site generator (also written 11ty) that accepts many
-template languages; since version 3, EJS is a plugin. It ran as a probe
+template languages; since version 3, EJS is a plugin: `ejs` is a dependency
+of Eleventy
+[2.0.1](https://github.com/11ty/eleventy/blob/e71cb94003b5a94dcd40ec96f8f4b455767b9833/package.json#L109)
+but not of
+[3.0.0](https://github.com/11ty/eleventy/blob/8675d68ec049bb683b0b09f42bd2703909eb0e53/package.json),
+and it comes from
+[`@11ty/eleventy-plugin-ejs`](https://github.com/11ty/eleventy-plugin-template-languages/blob/d765d2ab8ae0328537e7b6c39a5e83742b7f5bfd/ejs/package.json#L2).
+It ran as a probe
 (3.1.6): with the CF pages' `<%= vars.* %>` tags left as they are and read as
 EJS, the `uaa-concepts` tables came out byte for byte as written
 ([probes/eleventy/README.md](concepts/tables/probes/eleventy/README.md)).
@@ -353,8 +415,10 @@ Learn more: [Eleventy](https://www.11ty.dev/).
 
 ### Hugo
 
-A static site generator written in Go, with templates in Go's template
-syntax. RFC #1642 names it, with MkDocs, as an alternative that "MAY be
+A static site generator written in Go
+([go.mod](https://github.com/gohugoio/hugo/blob/0732eadd5aead94d4bd4674d87e9bfc79aaf10a7/go.mod#L1)),
+with templates in Go's template syntax
+([tpl/internal/go_templates](https://github.com/gohugoio/hugo/tree/0732eadd5aead94d4bd4674d87e9bfc79aaf10a7/tpl/internal/go_templates)). RFC #1642 names it, with MkDocs, as an alternative that "MAY be
 evaluated" ([RFC L31][L31]). In this evaluation it is an on-paper tool, not
 yet assessed ([concepts/README.md](concepts/README.md),
 [tooling/tools.md](tooling/tools.md)).
@@ -364,7 +428,9 @@ Learn more: [Hugo](https://gohugo.io/).
 ### VitePress
 
 A documentation site generator built on Vite and Vue; pages are Markdown,
-with Vue components allowed. In this evaluation it is an on-paper tool, not
+read by markdown-it, with Vue components allowed
+([package.json](https://github.com/vuejs/vitepress/blob/633e48af9ec25a9cc28fc3ebf1e9063b359adb2e/package.json#L111-L112),
+[markdown-it](https://github.com/vuejs/vitepress/blob/633e48af9ec25a9cc28fc3ebf1e9063b359adb2e/package.json#L150)). In this evaluation it is an on-paper tool, not
 yet assessed ([concepts/README.md](concepts/README.md),
 [tooling/tools.md](tooling/tools.md)).
 
@@ -373,7 +439,10 @@ Learn more: [VitePress](https://vitepress.dev/).
 ### Jekyll
 
 A Ruby static site generator and the engine behind GitHub Pages' built-in
-builds; it reads Markdown with kramdown and templates with Liquid. It is not
+builds
+([GitHub's documentation](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/about-github-pages-and-jekyll));
+it reads Markdown with kramdown and templates with Liquid
+([jekyll.gemspec](https://github.com/jekyll/jekyll/blob/541d8b2ee75c8907de4744d4b87a7a6f1f997cae/jekyll.gemspec#L44-L46)). It is not
 a candidate tool. This repository's own Pages site is built with Jekyll 4 by
 a workflow ([.github/workflows/pages.yml](.github/workflows/pages.yml)), with
 Liquid turned off and the tool folders left out ([_config.yml](_config.yml)).
@@ -382,10 +451,14 @@ Learn more: [Jekyll](https://jekyllrb.com/).
 
 ### Slate
 
-A tool, built on Middleman, that turns Markdown into a single-page API
-reference with navigation, explanations and code samples side by side. The
-UAA API documentation is built with Slate from snippets that Spring REST
-Docs generates, outside the Bookbinder book, and RFC #1642's summary covers
+A tool, built on Middleman (the copy in UAA's repository pins it in its
+[Gemfile](https://github.com/cloudfoundry/uaa/blob/f09cae02367b333bc17d58997c1ba8bf336b3fae/uaa/slate/Gemfile#L6)),
+that turns Markdown into a single-page API reference with navigation,
+explanations and code samples side by side. The UAA API documentation is
+built with Slate from snippets that Spring REST Docs generates, outside the
+Bookbinder book: UAA's build runs the `*Docs` tests to write the snippets,
+then `middleman build` in its Slate copy
+([uaa/build.gradle.kts](https://github.com/cloudfoundry/uaa/blob/f09cae02367b333bc17d58997c1ba8bf336b3fae/uaa/build.gradle.kts#L150-L193)), and RFC #1642's summary covers
 "the Cloud Foundry documentation (CF, UAA API)" ([RFC L13][L13]). Who
 maintains these docs and what they need is in
 [requirements/audiences.md](requirements/audiences.md).
@@ -396,8 +469,11 @@ Learn more: [Slate](https://github.com/slatedocs/slate).
 
 A Spring project that documents a REST API from its tests: each test that
 calls the API writes request and response snippets, which the documentation
-pages include. The CredHub API docs use it, and it feeds the UAA API's Slate
-pages, so these docs are partly generated from code rather than written by
+pages include. The CredHub API docs use it
+([backends/credhub/build.gradle](https://github.com/cloudfoundry/credhub/blob/c28c27a454a259f7506498390928713c9fd7f493/backends/credhub/build.gradle#L87-L88)),
+and it feeds the UAA API's Slate pages
+([uaa/build.gradle.kts](https://github.com/cloudfoundry/uaa/blob/f09cae02367b333bc17d58997c1ba8bf336b3fae/uaa/build.gradle.kts#L102)),
+so these docs are partly generated from code rather than written by
 hand. RFC #1642 asks "Who can we involve to vet this proposal for the UAA
 API docs and the CredHub API docs?" ([RFC L177][L177]); see
 [requirements/audiences.md](requirements/audiences.md).
@@ -444,7 +520,8 @@ What a table asks for, written once and independent of any tool: a column's
 role, a width, "don't wrap", row headers, a title, a style. A hint expresses
 the author's intent, not an exact value, and each tool and template honors
 it as well as it can ("Everything else is a hint",
-[concepts/README.md](concepts/README.md)). Column widths as hints are [R-03](requirements/README.md#r-03)
+[concepts/README.md](concepts/README.md)). The requirement is
+[R-03](requirements/README.md#r-03) column widths as hints
 ([requirements/README.md](requirements/README.md)).
 
 Learn more: [Hints after the round](concepts/tables/README.md#hints-after-the-round).
@@ -509,7 +586,7 @@ Learn more: [Raw passthrough errors in Docusaurus](concepts/tables/results.md#ra
 
 A tool's own plug-in point, used to carry the hints its table syntax cannot:
 a remark plugin in Docusaurus, a Python-Markdown block in Zensical,
-attributes on Markdoc's table tag in Starlight (76 lines), and in Antora and
+attributes on Markdoc's table tag in Starlight ([83 lines](concepts/tables/sites/starlight/list-table.mjs)), and in Antora and
 the Sphinx probe only classes and a stylesheet, no code. RFC #1642 says
 "Working Groups MUST NOT need custom extensions, plugins, or JavaScript code
 to author documentation" ([RFC L100][L100]). Extension mode shows what one
@@ -606,7 +683,8 @@ Learn more: [Probes](concepts/tables/README.md#probes).
 A fragment of a page kept in its own file and included in other pages, so
 shared content is written once. The CF pages include one with
 `<%= partial 'name' %>`, and some partial names are themselves stored in
-variables (`scale_table: "oss_scale_table"`). RFC #1642 asks "Are partials
+variables (`scale_table: "oss_scale_table"` in the book's
+[`template_variables.yml`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/config/template_variables.yml#L287)). RFC #1642 asks "Are partials
 supported by Docusaurus? If not, the migration will have to integrate them
 into their calling topics." ([RFC L179][L179]) In this round every tool
 included the `_oss_scale_table` partial, Docusaurus as an imported MDX
@@ -663,8 +741,10 @@ Learn more: [HTML standard](https://html.spec.whatwg.org/).
 ### Docs WG
 
 The Cloud Foundry Documentation Working Group. Its charter's mission is "To
-document the Cloud Foundry user experience", and its scope starts with
-"Merge and edit all doc changes". RFC #1642 keeps publishing with it: "Only
+document the Cloud Foundry user experience"
+([charter L5](https://github.com/cloudfoundry/community/blob/9f189bfa613bb7a9c2da6616666661790d4410eb/toc/working-groups/docs.md#L5)),
+and its scope starts with "Merge and edit all doc changes"
+([L17](https://github.com/cloudfoundry/community/blob/9f189bfa613bb7a9c2da6616666661790d4410eb/toc/working-groups/docs.md#L17)). RFC #1642 keeps publishing with it: "Only
 Docs WG approvers can merge into the central repository and trigger
 deployments." ([RFC L54][L54]) The requirements in this repository are a
 draft Docs WG position ([R-14](requirements/README.md#r-14) Docs WG approves and publishes,
@@ -675,9 +755,13 @@ Learn more: [Docs WG charter](https://github.com/cloudfoundry/community/blob/mai
 ### FI WG
 
 The Foundational Infrastructure Working Group, whose scope covers BOSH, UAA
-and CredHub and includes "Operate https://bosh.io". It owns `docs-bosh`, the
-bosh.io documentation, which is built with MkDocs Material outside the
-Bookbinder book. How bosh.io's docs relate to the new site is covered in
+and CredHub and includes "Operate https://bosh.io"
+([charter L15–L18](https://github.com/cloudfoundry/community/blob/9f189bfa613bb7a9c2da6616666661790d4410eb/toc/working-groups/foundational-infrastructure.md#L15-L18)).
+It owns `docs-bosh`
+([L352](https://github.com/cloudfoundry/community/blob/9f189bfa613bb7a9c2da6616666661790d4410eb/toc/working-groups/foundational-infrastructure.md#L352)),
+the bosh.io documentation, which is built with MkDocs Material outside the
+Bookbinder book
+([mkdocs.yml](https://github.com/cloudfoundry/docs-bosh/blob/20a41223a7ba87700424634c42e94a22a669b45e/mkdocs.yml#L319-L321)). How bosh.io's docs relate to the new site is covered in
 [requirements/audiences.md](requirements/audiences.md).
 
 Learn more: [FI WG charter](https://github.com/cloudfoundry/community/blob/main/toc/working-groups/foundational-infrastructure.md).
@@ -687,7 +771,7 @@ Learn more: [FI WG charter](https://github.com/cloudfoundry/community/blob/main/
 Request for Comments: in the Cloud Foundry community, a written proposal for
 a change that affects the project, discussed in public as a pull request
 against `cloudfoundry/community` and kept under `toc/rfc`. RFC #1642,
-"Cloud Foundry Documentation Modernization", is a draft that proposes moving
+"Cloud Foundry Documentation Modernization" ([RFC L3][L3]), is a draft that proposes moving
 the CF docs to Markdown on a modern static site generator hosted on GitHub
 Pages. These documents quote it by line at commit `c737539`, because a draft
 changes; where they disagree, they say so next to the quote
@@ -728,7 +812,8 @@ them; GitHub then asks those owners to review every pull request that
 touches their paths. RFC #1642: "The docs repository contains a `CODEOWNERS`
 file that assigns each documentation area to the GitHub team of the
 responsible Working Group" ([RFC L74][L74]). Today's source pages already
-name an owner in their front matter (`owner: CredHub`) ([R-17](requirements/README.md#r-17) an owner for
+name an owner in their front matter (`owner: CredHub`;
+[source/credential-types.html.md.erb](concepts/tables/source/credential-types.html.md.erb)) ([R-17](requirements/README.md#r-17) an owner for
 every area,
 [requirements/README.md](requirements/README.md)).
 
@@ -737,7 +822,8 @@ Learn more: [About code owners](https://docs.github.com/en/repositories/managing
 ### GitHub Pages
 
 GitHub's hosting for static sites, built from a repository by a GitHub
-Actions workflow or by GitHub's own Jekyll build. RFC #1642: "The
+Actions workflow or by GitHub's own Jekyll build
+([publishing sources](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)). RFC #1642: "The
 documentation site MUST be deployed to GitHub Pages under the `cloudfoundry`
 GitHub organization" ([RFC L50][L50]). This repository is published there
 too ([.github/workflows/pages.yml](.github/workflows/pages.yml)). Whether
@@ -749,16 +835,27 @@ Learn more: [GitHub Pages](https://docs.github.com/en/pages).
 
 ### Algolia DocSearch
 
-A hosted search service from Algolia, free for open-source documentation:
-Algolia crawls the site and answers searches from its own index. RFC #1642
-names it as an example of "Built-in full-text search" ([RFC L36][L36]) and
-asks whether it "is the preferred search backend, or should a self-hosted
-option (e.g., Pagefind, lunr.js) be used?" ([RFC L170][L170]). Pagefind
-builds the index into the site at build time and needs no service. Because
-the index is a proprietary service, the choice touches the open question on
-open source
-([concepts/tables/README.md](concepts/tables/README.md#open-questions); [R-18](requirements/README.md#r-18),
-[R-19](requirements/README.md#r-19)).
+A hosted search service from Algolia, offered free to public technical
+documentation and technical blogs
+([who can apply](https://docsearch.algolia.com/docs/who-can-apply/)):
+the Algolia Crawler extracts the site into an Algolia index, and the
+DocSearch packages query that index
+([what is DocSearch](https://docsearch.algolia.com/docs/what-is-docsearch/);
+both Algolia's own description). The search client is open source
+([MIT](https://github.com/algolia/docsearch/blob/e387920e842c1f2fdb69bbdfff4c2d4d7754ce29/LICENSE))
+but needs an Algolia application ID and API key
+([DocSearch.tsx](https://github.com/algolia/docsearch/blob/e387920e842c1f2fdb69bbdfff4c2d4d7754ce29/packages/docsearch-react/src/DocSearch.tsx#L57-L59)).
+RFC #1642 names it as an example of "Built-in full-text search"
+([RFC L36][L36]) and asks whether it "is the preferred search backend, or
+should a self-hosted option (e.g., Pagefind, lunr.js) be used?"
+([RFC L170][L170]). Pagefind runs over the built site and writes its search
+bundle into it
+([options.rs](https://github.com/Pagefind/pagefind/blob/b6185b2ec6f43c198299eccde2c4b05ffc0ec1e5/pagefind/src/options.rs#L34-L50)),
+so it needs no service. Because the index is hosted by Algolia, the choice
+touches the open question on open source
+([concepts/tables/README.md](concepts/tables/README.md#open-questions);
+[R-18](requirements/README.md#r-18) full-text search,
+[R-19](requirements/README.md#r-19) open source only).
 
 Learn more: [Algolia DocSearch](https://docsearch.algolia.com/),
 [Pagefind](https://pagefind.app/).
@@ -788,6 +885,7 @@ The migration steps it serves are in
 
 Learn more: [concepts/README.md](concepts/README.md).
 
+[L3]: https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L3
 [L13]: https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L13
 [L19]: https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L19
 [L31]: https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L31

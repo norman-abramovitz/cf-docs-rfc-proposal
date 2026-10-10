@@ -10,33 +10,44 @@ refer to the [requirement list](README.md#requirements).
 
 ### Which repositories feed the docs, and who owns each?
 
-- **Why it matters:** every area needs an owner before it migrates ([R-17](README.md#r-17)),
-  and the URL mapping depends on the repository list ([R-15](README.md#r-15)).
+- **Why it matters:** every area needs an owner before it migrates
+  ([R-17](README.md#r-17) an owner for every area), and the URL mapping
+  depends on the repository list ([R-15](README.md#r-15) URL identifies the source).
 - **Known:** the book's
-  [`config.yml`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/master/config.yml)
+  [`config.yml`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/config.yml)
   (the settings file that tells Bookbinder, today's build tool, which
   repositories to collect) lists 12 sections, each a `docs-*` repository
   mapped to a URL directory, plus sample-code repositories with no pages. A
   survey of tables covered the 15 `docs-*` repositories that are not
-  archived. The book's own `CODEOWNERS` file (which names who must review
-  changes) lists one team for everything.
+  archived (this evaluation's table survey, 2026-10-09; its data is not yet
+  in this repository). The book's own [`CODEOWNERS`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/CODEOWNERS) file
+  (which names who must review changes) lists one team for everything.
 - **What answers it:** the inventory in the RFC's first phase ([L112],
   [L167]).
 
 ### Is bosh.io in scope?
 
 - **Why it matters:** the RFC does not mention it, yet it is Cloud Foundry
-  documentation with its own tables and notes ([R-07](README.md#r-07), [R-09](README.md#r-09)), and the book
-  already sends all of `/bosh/` to `bosh.io/docs` ([R-16](README.md#r-16)).
+  documentation with its own tables and notes ([R-07](README.md#r-07) notes
+  and admonitions, [R-09](README.md#r-09) table styles by class), and the
+  book already [sends all of `/bosh/`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/redirects.rb#L6) to
+  `bosh.io/docs` ([R-16](README.md#r-16) old URLs keep working).
 - **Known:** `bosh.io/docs` is built from
   [docs-bosh](https://github.com/cloudfoundry/docs-bosh) with MkDocs and its
-  Material theme ([glossary](../glossary.md#mkdocs-material)), and is owned by
+  Material theme ([glossary](../glossary.md#mkdocs-material);
+  [`mkdocs.yml`](https://github.com/cloudfoundry/docs-bosh/blob/20a41223a7ba87700424634c42e94a22a669b45e/mkdocs.yml#L319-L321),
+  [build task](https://github.com/cloudfoundry/docs-bosh/blob/20a41223a7ba87700424634c42e94a22a669b45e/ci/tasks/build.yml#L5-L12)), and is owned by
   the Foundational Infrastructure working group (FI WG;
-  [glossary](../glossary.md#fi-wg)). Its 40 tables are all plain Markdown pipe
-  tables; it has 302 admonitions (boxed callouts headed Note, Warning, and so
-  on). The rest of bosh.io (release and stemcell pages) loads the stylesheet
-  and scripts that the docs build produces, so changing the docs tool affects
-  the whole site.
+  [glossary](../glossary.md#fi-wg); its
+  [charter lists docs-bosh](https://github.com/cloudfoundry/community/blob/9f189bfa613bb7a9c2da6616666661790d4410eb/toc/working-groups/foundational-infrastructure.md#L352)).
+  Its 40 tables are all plain Markdown pipe tables; it has 302 admonitions
+  (boxed callouts headed Note, Warning, and so on); both counted by this
+  evaluation at docs-bosh commit `20a4122`, and the count's data is not yet
+  in this repository. The rest of bosh.io (release and stemcell pages) loads
+  the stylesheet and scripts that the docs build produces
+  ([`bosh-io-web` `main.go`](https://github.com/cloudfoundry/bosh-io-web/blob/951ec131ce4218a2a259603390d70e259ebeb691/main/main.go#L120-L205),
+  [layout](https://github.com/cloudfoundry/bosh-io-web/blob/951ec131ce4218a2a259603390d70e259ebeb691/templates/layout.tmpl#L43)), so changing the docs tool
+  affects the whole site.
 - **What answers it:** the FI WG, with the RFC authors. Draft position:
   bosh.io follows the Docs WG table and note conventions; a tool or hosting
   change is the FI WG's decision.
@@ -47,9 +58,14 @@ refer to the [requirement list](README.md#requirements).
 - **Known:** the UAA API reference is built with Slate (a generator for
   one-page API references; [glossary](../glossary.md#slate)) from examples
   that Spring REST Docs writes during the API tests
-  ([glossary](../glossary.md#spring-rest-docs)). CredHub also uses Spring REST
-  Docs. Book pages link to both under `docs.cloudfoundry.org/api/`, and to
-  versioned UAA pages. The RFC asks who can vet the proposal for them
+  ([glossary](../glossary.md#spring-rest-docs);
+  [UAA Gradle build](https://github.com/cloudfoundry/uaa/blob/f09cae02367b333bc17d58997c1ba8bf336b3fae/uaa/build.gradle.kts#L150-L193)). CredHub also
+  uses Spring REST Docs
+  ([CredHub Gradle build](https://github.com/cloudfoundry/credhub/blob/c28c27a454a259f7506498390928713c9fd7f493/backends/credhub/build.gradle#L87-L88)).
+  Book pages link to both under `docs.cloudfoundry.org/api/`
+  ([book navigation](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/master_middleman/source/subnavs/_cf-subnav.erb#L425-L431)),
+  and to versioned UAA pages
+  ([`uaa-concepts`](https://github.com/cloudfoundry/docs-uaa/blob/216c797cfa1a971cf0f9e53eb3e4803aaf914a94/uaa-concepts.html.md.erb#L126-L127)). The RFC asks who can vet the proposal for them
   ([L177]).
 - **What answers it:** the UAA and CredHub maintainers: where each reference
   is built and published, and whether it must change format to join the
@@ -58,12 +74,13 @@ refer to the [requirement list](README.md#requirements).
 ### What do downstream consumers reuse?
 
 - **Why it matters:** if anyone copies raw source, the source format and
-  partials matter to them ([R-05](README.md#r-05)); if they link to the site, URLs do ([R-16](README.md#r-16)).
+  partials matter to them ([R-05](README.md#r-05) partials and reuse); if
+  they link to the site, URLs do ([R-16](README.md#r-16) old URLs keep working).
 - **Known:** the RFC names SAP BTP and anynines as examples and says VMware
   Tanzu "works from its own branches and is not affected" ([L113]), but its
   open questions still name Tanzu ([L168]). In the RFC's pre-review (comments
   on an earlier draft) the Docs WG lead stated that Broadcom's docs are
-  written fully in-house.
+  written fully in-house (unverified: no public source found).
 - **What answers it:** the consumer survey in the RFC's first phase ([L113]).
 
 ## Content
@@ -75,7 +92,8 @@ refer to the [requirement list](README.md#requirements).
   named value defined once and inserted at build time), so the include is
   decided at build time. No tool has been tested with that yet.
 - **Known:** the book's `template_variables.yml` maps
-  `scale_table: "oss_scale_table"` and `roles_table: "_oss_roles_table"`,
+  [`scale_table: "oss_scale_table"`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/config/template_variables.yml#L287)
+  and [`roles_table: "_oss_roles_table"`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/config/template_variables.yml#L231),
   apparently so that another edition of the docs could swap in its own table.
   Every tool in the tables round included the scale-table partial when it was
   named directly
@@ -100,7 +118,8 @@ refer to the [requirement list](README.md#requirements).
 - **Why it matters:** [R-09](README.md#r-09) table styles by class. A style class is a name the
   site's stylesheet gives a look to ([glossary](../glossary.md#style-class)).
 - **Known:** a survey of all 241 tables in the docs and tutorial repositories
-  found one class in use, `table`. The closest thing to a second style is a
+  found one class in use, `table` (this evaluation's table survey,
+  2026-10-09; its data is not yet in this repository). The closest thing to a second style is a
   compact one for comparison grids and long reference tables. The tables
   round added `table-media`, an image grid, as an example of how a style is
   added ([template conventions](../concepts/tables/README.md#template-conventions)).
@@ -108,9 +127,18 @@ refer to the [requirement list](README.md#requirements).
 
 ### What do the concepts not yet worked require?
 
-- **Why it matters:** [R-01](README.md#r-01), [R-04](README.md#r-04) to [R-08](README.md#r-08) and [R-25](README.md#r-25) are stated from the tables
-  round and from reading the source. Each concept (one documentation feature,
-  worked through every candidate tool) can change them.
+- **Why it matters:** these requirements are stated from the tables round
+  and from reading the source:
+  - [R-01](README.md#r-01) content and outline survive
+  - [R-04](README.md#r-04) variables everywhere
+  - [R-05](README.md#r-05) partials and reuse
+  - [R-06](README.md#r-06) typed code blocks
+  - [R-07](README.md#r-07) notes and admonitions
+  - [R-08](README.md#r-08) cross-repository links
+  - [R-25](README.md#r-25) build-time values are expected differences
+
+  Each concept (one documentation feature, worked through every candidate
+  tool) can change them.
 - **Known:** tables are done; headings, variables, partials, notes and
   admonitions, code blocks, cross-repository links, and copyright and
   build-time values are proposed
@@ -123,7 +151,8 @@ refer to the [requirement list](README.md#requirements).
 ### Should the copyright year follow content changes?
 
 - **Why it matters:** [R-25](README.md#r-25) build-time values are expected differences.
-- **Known:** the footer prints the build year (`<%= Time.now.year %>`), so
+- **Known:** the footer prints the build year
+  ([`<%= Time.now.year %>`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/master_middleman/source/layouts/_book-footer.erb#L3)), so
   the year changes on every build. A conversion that only changes the format
   may not warrant a new year.
 - **What answers it:** a Docs WG decision, with the Cloud Foundry
@@ -134,12 +163,19 @@ refer to the [requirement list](README.md#requirements).
 ### Does "open source only" cover services?
 
 - **Why it matters:** [R-19](README.md#r-19) open source only, [R-18](README.md#r-18) full-text search.
-- **Known:** every tool evaluated so far is open source. Algolia DocSearch
-  (a hosted search service, free for open-source projects;
+- **Known:** every tool evaluated so far is open source (licenses in
+  [Tools](../tooling/tools.md#summary)). Algolia DocSearch (a hosted search
+  service, free for public technical documentation per Algolia's
+  [own page](https://docsearch.algolia.com/docs/who-can-apply/);
   [glossary](../glossary.md#algolia-docsearch)) and GitHub Pages (GitHub's
   hosting for static sites; [glossary](../glossary.md#github-pages)) are
-  services that are not. The RFC names self-hosted search options such as
-  [Pagefind](https://pagefind.app/), which builds its index with the site
+  services that are not. DocSearch's search client is
+  [MIT-licensed](https://github.com/algolia/docsearch/blob/e387920e842c1f2fdb69bbdfff4c2d4d7754ce29/LICENSE),
+  but it needs an Algolia application ID and API key
+  ([code](https://github.com/algolia/docsearch/blob/e387920e842c1f2fdb69bbdfff4c2d4d7754ce29/packages/docsearch-react/src/DocSearch.tsx#L57-L59)).
+  The RFC names self-hosted search options such as
+  [Pagefind](https://pagefind.app/), which builds its index from the built
+  site ([options](https://github.com/Pagefind/pagefind/blob/b6185b2ec6f43c198299eccde2c4b05ffc0ec1e5/pagefind/src/options.rs#L34-L37))
   ([L170]).
 - **What answers it:** a Docs WG decision.
 
@@ -158,7 +194,7 @@ refer to the [requirement list](README.md#requirements).
   a later Version 2 ([L92], [L94]). In the pre-review the Docs WG lead noted
   that there is one current version of Cloud Foundry and of its docs, with
   history kept in GitHub. The UAA API reference already publishes versioned
-  pages.
+  pages ([build](https://github.com/cloudfoundry/uaa/blob/f09cae02367b333bc17d58997c1ba8bf336b3fae/uaa/build.gradle.kts#L189)).
 - **What answers it:** experience with Version 1, as the RFC proposes.
 
 ### Should the site publish an `llms.txt` file?
@@ -188,8 +224,8 @@ refer to the [requirement list](README.md#requirements).
   to the build tool so it handles markup it lacks
   ([glossary](../glossary.md#extension)).
 - **Known:** in the tables round, Docusaurus, Zensical and Starlight each
-  needed one small extension for column roles and "don't wrap"; Starlight's
-  is 76 lines. Antora needed none
+  needed one small extension for column roles and "don't wrap"
+  ([list-table.mjs](../concepts/tables/sites/starlight/list-table.mjs)). Antora needed none
   ([results](../concepts/tables/results.md#summary)). The RFC's wording at
   [L100] and [L104] does not allow for this yet.
 - **What answers it:** a Docs WG decision on ownership and a request
