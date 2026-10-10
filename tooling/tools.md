@@ -427,8 +427,11 @@ decision. These are recorded because the reasons may be wrong.
 Docsy, a Hugo theme (Apache-2.0), had their licenses checked on 2026-10-08.
 None was built.
 
-**Why:** **Not yet written:** the reason each was left out of the tiers is
-not recorded. RFC #1642
+**Why:** the evaluation was kept to the likely candidates, the tools
+already tried out by the people working on the CF docs. These five did
+not come up as candidates; Jekyll, for example, was never proposed.
+Leaving them out was a choice of scope, not a finding
+against them; any of them could be added now. RFC #1642
 [L31](https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L31)
 names MkDocs as an alternative that "MAY be evaluated".
 
