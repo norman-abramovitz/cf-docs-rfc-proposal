@@ -28,7 +28,7 @@ table syntax carries, and how much the rest of the page has to change.
 | **Cleanup beyond the intent files** | close void elements, `style` as an object, `<tbody>` and `<colgroup>`, closing tags off the line start | one indent | entities and one-line cells where Markdoc would drop a dash or a space | the AsciiDoc rewrite, with four kinds of silent failure |
 | **Spot checks after cleanup** (six pages; 36 before `uaa-performance`) | 40/42 in every mode (the two misses are page descriptions, not tables) | 42/42 in every mode | 42/42 in every mode | 42/42 in every mode |
 | **Own table syntax carries** | nothing beyond a header row (pipe tables) | widths on header cells | widths, lists and paragraphs in cells, spanning cells | widths, row headers, top alignment, lists and paragraphs in cells, spanning cells |
-| **Extension for the rest** | remark plugin | Python-Markdown block | attributes on Markdoc's table tag (76 lines) | none: roles on the table plus CSS |
+| **Extension for the rest** | remark plugin | Python-Markdown block | attributes on Markdoc's table tag (83 lines) | none: roles on the table plus CSS |
 | **A second style** (`table-media`) | a class on the list-table directive, `{.table-media}`; a pipe table cannot take one | the list-table block's `style` option; a pipe table cannot take one | Markdoc's class shorthand, `{% table .table-media %}`, which the native table tag takes too | a role, `[.table-media]`: plain AsciiDoc |
 | **Wide tables** (wider than the column) | scroll in their own box: the theme shows every table as a block that scrolls | scroll in their own box: the theme's wrapper around Markdown tables; the site's `table.table` rule copies the theme's scrolling | scroll in their own box: the theme shows every table as a block that scrolls | the page widened; a short script in the site's UI files now puts each table in a box that scrolls |
 | **Variables** | one import per page; HTML values escaped | ERB form kept as written | `{% $vars.name %}`; HTML values escaped | `{name}` attributes |
@@ -494,7 +494,7 @@ wide.
   headers become an ordinary row).
 - **The extension adds the hints as attributes on that same tag.**
   [list-table.mjs](sites/starlight/list-table.mjs) declares them on Markdoc's
-  table node, 76 lines, the counterpart of the Docusaurus and Zensical
+  table node, 83 lines, the counterpart of the Docusaurus and Zensical
   extensions; what #1642 §5 says about plugins is quoted in the Docusaurus
   summary. Authors write Markdoc's table syntax; only the attributes are new.
 - **Variables need one translation.** `<%= vars.name %>` becomes

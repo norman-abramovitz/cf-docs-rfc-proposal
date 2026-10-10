@@ -30,7 +30,7 @@ in `../sites/` and `../probes/`.
   `template_variables:` key and the variables the test pages use, in their
   original order, plus `route_services` (a value that is HTML, used to check
   that a site does not escape HTML-valued variables) and `scale_table`. The
-  full file has about 290 variables.
+  full file has 272 variables at that commit.
 - **Variables used but not defined.** `metadata.html.md.erb` uses
   `vars.metadata_ref`, and `troubleshooting_slow_requests.html.md.erb` uses
   `vars.bosh_cli_link` (three times). Neither appears in the book's
