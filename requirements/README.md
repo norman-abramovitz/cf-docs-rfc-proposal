@@ -110,7 +110,7 @@ Terms used in the table:
 
 | ID | Phrase | Statement | Source | Status |
 |---|---|---|---|---|
-| <a id="r-14"></a>R-14 | Docs WG approves and publishes | Only Docs WG approvers merge content and start publishing. The Docs WG reviews every pull request. | [L54]; [L82]; the [book README](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/README.md#L70) today | proposed |
+| <a id="r-14"></a>R-14 | Docs WG approves and publishes | Only Docs WG approvers merge content and start publishing. The Docs WG reviews every pull request. | [L54]; [L82]; the [book README](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/README.md#L70) and [`CODEOWNERS`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/CODEOWNERS#L1) today | proposed |
 | <a id="r-17"></a>R-17 | an owner for every area | Every documentation area has a named working-group owner, listed in a `CODEOWNERS` file (a GitHub file that names who must review changes to which paths; [glossary](../glossary.md#codeowners)), before its pages migrate. | [L75]; [L114] | proposed |
 | <a id="r-19"></a>R-19 | open source only | Every tool in the stack is open source. Whether this also covers services, such as a hosted search index or the hosting itself, is open. | [Concepts principles](../concepts/README.md#principles) | open |
 | <a id="r-27"></a>R-27 | a named owner for every task | Each task the new stack creates (migration, technical support of the build, the domain and DNS, the shared extensions, the dictionary) has a named owner before the phase that needs it. | [L172]; [L174]; [L176]; [L178] | proposed |

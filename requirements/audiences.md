@@ -71,11 +71,14 @@ The Docs WG is the working group for the Cloud Foundry docs. Its
 [charter](https://github.com/cloudfoundry/community/blob/main/toc/working-groups/docs.md)
 lists in its scope ["Merge and edit all doc changes"](https://github.com/cloudfoundry/community/blob/9f189bfa613bb7a9c2da6616666661790d4410eb/toc/working-groups/docs.md#L17) and
 ["Maintain internal consistency of doc style, including Notes and
-tables"](https://github.com/cloudfoundry/community/blob/9f189bfa613bb7a9c2da6616666661790d4410eb/toc/working-groups/docs.md#L19). The book's [README](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/README.md#L70) states how
-it works today: "Only the CFF Docs WG lead can merge pull requests, build to
-staging, and publish the documentation." (CFF is the Cloud Foundry
-Foundation; the book is the configuration that collects the content
-repositories into one site.)
+tables"](https://github.com/cloudfoundry/community/blob/9f189bfa613bb7a9c2da6616666661790d4410eb/toc/working-groups/docs.md#L19). Today the Docs WG lead and the
+approvers can merge. The book's [`CODEOWNERS`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/CODEOWNERS#L1) file assigns every path to one team,
+`@cloudfoundry/wg-app-runtime-platform-docs-approvers`. The book's
+[README](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/README.md#L70)
+still names only the lead: "Only the CFF Docs WG lead can merge pull
+requests, build to staging, and publish the documentation." (CFF is the
+Cloud Foundry Foundation; the book is the configuration that collects the
+content repositories into one site.)
 
 Needs:
 

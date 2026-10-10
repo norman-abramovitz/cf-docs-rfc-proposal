@@ -73,9 +73,12 @@ opposite ([L20]); see the
 
 ### The Docs WG publishes
 
-"Only the CFF Docs WG lead can merge pull requests, build to staging, and
-publish the documentation." ([book README](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/README.md#L70)). The RFC
-keeps this ([L54]).
+The Docs WG lead and the approvers merge pull requests today; the book's
+[`CODEOWNERS`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/CODEOWNERS#L1) file names the approvers' team. The book's
+[README](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/README.md#L70)
+still says "Only the CFF Docs WG lead can merge pull requests, build to
+staging, and publish the documentation." The RFC keeps merging and
+publishing with the Docs WG ([L54]).
 
 Leads to: [R-14](README.md#r-14) Docs WG approves and publishes.
 
