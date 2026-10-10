@@ -1,0 +1,21 @@
+{%- comment -%}
+Path from the home page to this one, built from the URL. Each folder's
+README is its index page, so every crumb links to a real page.
+{%- endcomment -%}
+{%- if page.url != "/" -%}
+{%- assign parts = page.url | split: "/" -%}
+<nav aria-label="Breadcrumb" class="f6 text-gray mb-3">
+  <a href="{{ "/" | relative_url }}">Home</a>
+  {%- assign path = "/" -%}
+  {%- for part in parts offset: 1 -%}
+    {%- if forloop.last -%}
+      <span aria-hidden="true"> › </span><span aria-current="page">{{ page.title | default: part }}</span>
+    {%- else -%}
+      {%- assign path = path | append: part | append: "/" -%}
+      {%- assign crumb = site.pages | where: "url", path | first -%}
+      <span aria-hidden="true"> › </span>
+      {%- if crumb -%}<a href="{{ path | relative_url }}">{{ crumb.title | default: part }}</a>{%- else -%}{{ part }}{%- endif -%}
+    {%- endif -%}
+  {%- endfor %}
+</nav>
+{%- endif -%}
