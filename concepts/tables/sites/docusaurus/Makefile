@@ -1,4 +1,4 @@
-.PHONY: install build serve clean check-raw check
+.PHONY: install build serve clean check-raw check check-wide
 
 install: node_modules
 node_modules: package.json
@@ -28,6 +28,14 @@ check: build
 	  echo "== $$m: $$(../../checks/spot-checks.sh .check/$$m | grep -c '^ok') passed"; \
 	  ../../checks/spot-checks.sh .check/$$m | grep -v '^ok' || true; \
 	done
+
+# Wide tables scroll in their own box (run while make serve is running)
+check-wide: ../../checks/node_modules
+	node ../../checks/wide-tables.mjs 'http://localhost:3000/%m/%p' passthrough extension native
+
+../../checks/node_modules: ../../checks/package.json
+	npm --prefix ../../checks install --no-audit --no-fund
+	touch $@
 
 clean:
 	rm -rf build .docusaurus vars.json .check

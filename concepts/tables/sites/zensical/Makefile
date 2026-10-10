@@ -1,4 +1,4 @@
-.PHONY: install build serve clean check
+.PHONY: install build serve clean check check-wide
 
 # PYTHONPATH lets the build import list_table.py from this directory
 ZENSICAL = PYTHONPATH=. uv run --project . zensical
@@ -32,6 +32,14 @@ check: build
 	  echo "== $$m: $$(../../checks/spot-checks.sh .check/$$m | grep -c '^ok') passed"; \
 	  ../../checks/spot-checks.sh .check/$$m | grep -v '^ok' || true; \
 	done
+
+# Wide tables scroll in their own box (run while make serve is running)
+check-wide: ../../checks/node_modules
+	node ../../checks/wide-tables.mjs 'http://localhost:$(PORT)/%m/%p/' $(MODES)
+
+../../checks/node_modules: ../../checks/package.json
+	npm --prefix ../../checks install --no-audit --no-fund
+	touch $@
 
 clean:
 	rm -rf site vars.yml .check

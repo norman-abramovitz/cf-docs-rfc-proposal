@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "description": "Browser checks for the built sites",
+  "type": "module",
+  "dependencies": {
+    "playwright-core": "1.63.0"
+  }
+}
