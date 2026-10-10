@@ -314,7 +314,10 @@ values render as markup. Partials with `include::partial$file.adoc[]`.
 
 ## Probes
 
-Each probe built one page in one tool to answer one question.
+Each probe answered one question in one tool and built only what the
+question needed: Eleventy two test pages (`uaa-concepts` and the scale-table
+partial), Sphinx with MyST one table (the scale table), and Middleman all
+five test pages.
 
 ### Eleventy
 

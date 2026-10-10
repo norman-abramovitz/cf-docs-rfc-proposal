@@ -68,10 +68,10 @@ Not every tool got the same amount of work. The tiers come from
 | Tier | Tools | What was done | Status |
 |------|-------|---------------|--------|
 | Hands-on | Docusaurus, Zensical, Starlight (on Astro), Antora | All five test pages converted by hand in every mode (below), built, measured in a browser, and checked | under evaluation |
-| Probe | Eleventy, Sphinx with MyST, Middleman without Bookbinder | One page each, to answer one question | under evaluation |
+| Probe | Eleventy, Sphinx with MyST, Middleman without Bookbinder | One question each, with only the pages it needs: Eleventy two test pages, Sphinx one table, Middleman all five test pages | under evaluation |
 | On paper | Hugo, VitePress | A capability check against the requirements is planned | not yet assessed |
 
-A probe is a small, single-question test: one page in one tool. Each
+A probe is a small test that answers one question in one tool. Each
 tool's entry, with its findings, is in [tools.md](tools.md).
 
 ## Modes

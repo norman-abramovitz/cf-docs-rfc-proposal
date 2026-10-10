@@ -62,7 +62,7 @@ VitePress are assessed on paper only and have no results here.
 | Zensical | 0.0.69 | Markdown read by Python-Markdown | every test page, every mode |
 | Starlight (on Astro 7.3.8) | 0.42.6 | Markdoc: Markdown with `{% %}` tags | every test page, every mode |
 | Antora | 3.2.1 | AsciiDoc | every test page, every mode |
-| Eleventy | 3.1.6 | EJS: `<% %>` tags, close to today's ERB | one page ([probe](../concepts/tables/probes/eleventy/README.md)) |
+| Eleventy | 3.1.6 | EJS: `<% %>` tags, close to today's ERB | two test pages: `uaa-concepts` and the scale-table partial ([probe](../concepts/tables/probes/eleventy/README.md)) |
 | Sphinx with MyST | 9.1.0, 5.1.0 | MyST: Markdown with directives | one table ([probe](../concepts/tables/probes/sphinx-myst/README.md)) |
 | Middleman without Bookbinder | 4.6.3 | today's ERB pages unchanged | the five original test pages ([probe](../concepts/tables/probes/middleman/README.md)) |
 

@@ -68,7 +68,8 @@ table syntax carries, and how much the rest of the page has to change.
   table, so it shrinks its images to fit, and the check only asserts that
   it fits the column.
 
-**Probes** (one page each):
+**Probes** (one question each; Eleventy built two test pages, Sphinx one
+table, Middleman all five test pages):
 
 | Probe | Question | Answer |
 |---|---|---|

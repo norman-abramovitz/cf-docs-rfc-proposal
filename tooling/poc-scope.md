@@ -48,7 +48,8 @@ Two other lines set what the PoC compares and what it must report.
 **What is known.** The Docs WG lead named five pages whose tables are hard
 to express outside HTML; they are the test pages of the tables round
 ([list](../concepts/tables/README.md#test-pages)). All five were built in
-four tools and three probes. Every table renders correctly in every tool
+the four hands-on tools and in the Middleman probe; the Eleventy probe
+built two of them and the Sphinx probe one table. Every table renders correctly in every tool
 once the source is cleaned up; the tools differ in the cost of getting
 there ([results summary](../concepts/tables/results.md#summary)).
 

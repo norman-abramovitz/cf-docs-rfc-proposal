@@ -670,7 +670,7 @@ Learn more: [Template conventions](concepts/tables/README.md#template-convention
 
 ### Probe
 
-A one-page experiment that answers a single question about a tool, short of
+A small experiment that answers a single question about a tool, short of
 a full hands-on round. There are three: Eleventy (do ERB variable tags work
 as EJS?), Sphinx with MyST (can list-table options carry the hints?) and
 Middleman without Bookbinder (what is the smallest change that removes
