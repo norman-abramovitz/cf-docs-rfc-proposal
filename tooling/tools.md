@@ -473,12 +473,36 @@ Things set aside during the evaluation. Each entry says what was done, why
 it was set aside, where the evidence is, and what would change the
 decision. These are recorded because the reasons may be wrong.
 
-### Generators not placed in a tier
+### MkDocs with Material for MkDocs
 
-**What was done:** only read about. MkDocs
+**What was done:** not built. MkDocs
 ([BSD-2-Clause](https://github.com/mkdocs/mkdocs/blob/2862536793b3c67d9d83c33e0dd6d50a791928f8/LICENSE);
 [last commit](https://github.com/mkdocs/mkdocs/commit/2862536793b3c67d9d83c33e0dd6d50a791928f8)
-dated 2025-10-20, checked 2026-10-10), mdBook
+dated 2025-10-20, checked 2026-10-10) had its license checked, and bosh.io's
+MkDocs Material site was read and its tables surveyed
+([Other tools in the CF docs today](#other-tools-in-the-cf-docs-today)).
+
+**Why:** No separate decision was recorded. RFC #1642
+[L31](https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L31)
+names MkDocs as an alternative that "MAY be evaluated". Zensical, a
+hands-on tool here, comes from the team behind Material for MkDocs
+([README](https://github.com/zensical/zensical/blob/de3702c2df5257c42501163af0afbd765714824a/README.md#L11-L12))
+and reads `mkdocs.yml`
+([config.py](https://github.com/zensical/zensical/blob/de3702c2df5257c42501163af0afbd765714824a/python/zensical/config.py#L264-L265)),
+so the round tested the Markdown reader MkDocs also uses, Python-Markdown,
+but not MkDocs itself.
+
+**Evidence:** bosh.io is built with MkDocs and Material for MkDocs (above).
+On the RFC pull request, a community member reports that Concourse moved
+from Booklit to MkDocs Material and then to Zensical
+([comment](https://github.com/cloudfoundry/community/pull/1642#issuecomment-5974585133)).
+
+**What would change it:** a reason to keep MkDocs itself rather than
+Zensical, such as bosh.io staying on it, or a question from the Docs WG.
+
+### Generators not placed in a tier
+
+**What was done:** only read about. mdBook
 ([MPL-2.0](https://github.com/rust-lang/mdBook/blob/d4658998d44112e873c90049767d7eb002169a2d/LICENSE)),
 Jekyll ([MIT](https://github.com/jekyll/jekyll/blob/541d8b2ee75c8907de4744d4b87a7a6f1f997cae/LICENSE)),
 Nextra ([MIT](https://github.com/shuding/nextra/blob/d6e80e1dd627b781429a6ee989b15ebba688c8ea/LICENSE))
@@ -488,13 +512,11 @@ had their licenses checked. None was built.
 
 **Why:** Decision (evaluation scope, 2026-10): the evaluation was kept to
 the likely candidates, the tools already tried out by the people working
-on the CF docs. These five did not come up as candidates; Jekyll, for
+on the CF docs. These four did not come up as candidates; Jekyll, for
 example, was never proposed. Leaving them out was a choice of scope, not a
-finding against them; any of them could be added now. RFC #1642
-[L31](https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L31)
-names MkDocs as an alternative that "MAY be evaluated".
+finding against them; any of them could be added now.
 
-**Evidence:** none in this repository yet.
+**Evidence:** none in this repository yet; the license links above.
 
 **What would change it:** a requirement one of them meets better than the
 tiered tools, or a question from the Docs WG.
