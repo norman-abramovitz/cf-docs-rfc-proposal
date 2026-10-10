@@ -40,6 +40,21 @@ differ in how much cleanup the HTML needs, which hints their own table
 syntax carries, and how much of the rest of the page must change
 ([results summary](../concepts/tables/results.md#summary)).
 
+### Formats tested
+
+Each tool was run in one of the formats it reads: Docusaurus in MDX,
+Zensical in Python-Markdown, Starlight in Markdoc, Antora in AsciiDoc,
+Eleventy in Markdown with EJS, Sphinx in MyST, and Middleman in today's ERB
+pages. The other formats in the "Reads" column are untested, among them
+Docusaurus's CommonMark mode for `.md` files (turned on in this site's
+[docusaurus.config.js](../concepts/tables/sites/docusaurus/docusaurus.config.js),
+but no test page uses it), Starlight's Markdown and MDX, and Sphinx's
+reStructuredText. Running Starlight with Markdoc was not a recorded
+decision.
+
+**Decision** (2026-10-10): every tool is to be tested in each format it
+reads. Not yet done.
+
 ## Today's stack
 
 ### Bookbinder
@@ -214,7 +229,8 @@ tags, with HTML allowed, read through Astro's
 see also the [glossary](../glossary.md#starlight).
 
 **What was done.** Starlight 0.42.6 on Astro 7.3.8, Markdoc integration
-2.0.11, default theme. Site:
+2.0.11, default theme. Its Markdown and MDX pages are untested
+([Formats tested](#formats-tested)). Site:
 [sites/starlight/](../concepts/tables/sites/starlight/CONVENTIONS.md);
 results: [results.md](../concepts/tables/results.md#starlight-0426).
 
