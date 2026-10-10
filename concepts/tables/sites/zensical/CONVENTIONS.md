@@ -8,6 +8,7 @@ make build  # install, generate vars.yml, build the site
 make serve  # serve site/ at http://localhost:8001
 make check  # build, then run the spot checks for each mode
             # (MODES="passthrough-raw passthrough extension native native-plain" for all)
+make check-wide  # while make serve runs: wide tables scroll in their own box
 ```
 
 ## Every mode
@@ -153,7 +154,10 @@ with no cell borders, a rule under the header, and centered cells.
   The theme styles only tables without a class, so a styled table gets its
   whole look from these rules, not only the parts that differ. Theme
   variables (`--md-typeset-table-color`, `--md-default-fg-color--lighter`)
-  keep its colors in step with the theme, dark mode included.
+  keep its colors in step with the theme, dark mode included. The theme
+  scrolls a wide table sideways in a box; `table.table` copies that, and
+  `table-media` gives it up to share the full width among the images,
+  which shrink to fit the column instead.
 - **Passthrough** names the style as the table's class:
   `<table class="table-media">`.
 - **Extension** names it with the `style` option of the `list-table` block;

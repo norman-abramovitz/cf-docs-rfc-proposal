@@ -8,6 +8,7 @@ make build      # install, generate vars.json, build the site
 make serve      # serve build/ at http://localhost:3000
 make check      # build, then run the spot checks for each mode
 make check-raw  # first MDX error on each unchanged-HTML page
+make check-wide # while make serve runs: wide tables scroll in their own box
 ```
 
 ## Every mode
@@ -108,6 +109,8 @@ The theme styles every table, so a style's rules undo what it does not want
 for what it keeps (`--ifm-table-border-color`, `--ifm-table-border-width`).
 The theme also shows tables as blocks that scroll sideways; `table-media`
 sets `display: table` and full width so the image columns share the width.
+That gives up the sideways scrolling: a media grid shrinks its images to
+fit the column instead.
 
 ## Native
 

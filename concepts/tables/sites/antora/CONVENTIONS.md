@@ -9,6 +9,7 @@ make serve      # serve site/ at http://localhost:8002
 make check      # build, then run the spot checks for each mode
                 # (MODES="passthrough-raw passthrough extension native native-plain" for all)
 make build-raw  # also builds the unchanged-HTML pages
+make check-wide # while make serve runs: wide tables scroll in their own box
 ```
 
 ## Every mode
@@ -44,6 +45,15 @@ make build-raw  # also builds the unchanged-HTML pages
 - **A list step that holds a nested list and then more blocks** wraps its
   content in an open block (`+` then `--` … `--`): AsciiDoc otherwise attaches
   the blocks after the nested list to its last bullet.
+- **Wide tables.** The default UI gives a table no box of its own, so a
+  table wider than the article widened the page. A short script,
+  [supplemental-ui/js/table-scroll.js](supplemental-ui/js/table-scroll.js),
+  puts each table in a `div.table-scroll` that scrolls sideways; the UI's
+  empty `header-scripts` partial loads it
+  ([supplemental-ui/partials/header-scripts.hbs](supplemental-ui/partials/header-scripts.hbs)).
+  CSS alone would have to show the table as a block, which changes how
+  Asciidoctor's column widths apply. A `table-media` grid shrinks its
+  images to fit and never needs the box.
 
 ## Passthrough
 

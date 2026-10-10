@@ -265,6 +265,11 @@ Conversions drop that markup and rely on the template instead:
   `CONVENTIONS.md` shows how it is added. Which further styles to
   support (candidates: compact, boxed, plain, striped) is decided from the
   survey of every table in the docs and tutorial repos; it is still open.
+- **A wide table scrolls in its own box.** A table wider than the content
+  column scrolls sideways inside a box of its own; the page never scrolls
+  sideways because of a table. A `table-media` grid shrinks its images to
+  fit instead. Each site's `make check-wide` checks this in a browser
+  ([results](results.md)).
 
 ## Method
 

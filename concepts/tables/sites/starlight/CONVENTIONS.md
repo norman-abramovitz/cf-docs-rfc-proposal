@@ -9,6 +9,7 @@ make serve      # serve dist/ at http://localhost:4321
 make check      # build, then run the spot checks for each mode
                 # (MODES="passthrough-raw passthrough extension native native-plain" for all)
 make check-raw  # Markdoc errors on each unchanged-HTML page
+make check-wide # while make serve runs: wide tables scroll in their own box
 ```
 
 ## Every mode
@@ -125,6 +126,8 @@ thin line between rows, and centered cells.
 The theme's table rules sit in cascade layers, so the style's rules need no
 extra specificity to win; they do need `display: table` and `width: 100%`,
 because the theme shows every table as a block that scrolls sideways.
+A media grid gives up that scrolling and shrinks its images to fit the
+column instead.
 
 ## Native
 

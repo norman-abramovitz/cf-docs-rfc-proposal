@@ -30,6 +30,7 @@ table syntax carries, and how much the rest of the page has to change.
 | **Own table syntax carries** | nothing beyond a header row (pipe tables) | widths on header cells | widths, lists and paragraphs in cells, spanning cells | widths, row headers, top alignment, lists and paragraphs in cells, spanning cells |
 | **Extension for the rest** | remark plugin | Python-Markdown block | attributes on Markdoc's table tag (76 lines) | none: roles on the table plus CSS |
 | **A second style** (`table-media`) | a class on the list-table directive, `{.table-media}`; a pipe table cannot take one | the list-table block's `style` option; a pipe table cannot take one | Markdoc's class shorthand, `{% table .table-media %}`, which the native table tag takes too | a role, `[.table-media]`: plain AsciiDoc |
+| **Wide tables** (wider than the column) | scroll in their own box: the theme shows every table as a block that scrolls | scroll in their own box: the theme's wrapper around Markdown tables; the site's `table.table` rule copies the theme's scrolling | scroll in their own box: the theme shows every table as a block that scrolls | the page widened; a short script in the site's UI files now puts each table in a box that scrolls |
 | **Variables** | one import per page; HTML values escaped | ERB form kept as written | `{% $vars.name %}`; HTML values escaped | `{name}` attributes |
 
 - **Two hints need CSS everywhere.** No tool's table syntax carries the
@@ -58,6 +59,14 @@ table syntax carries, and how much the rest of the page has to change.
   table cannot, so it takes the extension. The native pages keep the
   standard style in every tool, as decided. Each site's `CONVENTIONS.md`
   has an "Adding a style" section.
+- **A wide table scrolls in its own box.** Checked in a browser at 1280
+  and 390 pixels by giving each table an unbreakable 200-character line
+  (`make check-wide`; 84 tables in Docusaurus, 112 in each of the others,
+  all pass). Antora's default UI gives a table no box, so the page
+  widened until the site added a script that wraps each table. A
+  `table-media` grid does not scroll: its rules make it a full-width
+  table, so it shrinks its images to fit, and the check only asserts that
+  it fits the column.
 
 **Probes** (one page each):
 
