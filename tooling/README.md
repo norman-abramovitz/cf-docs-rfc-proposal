@@ -35,7 +35,7 @@ generator (a program that turns source files into a set of web pages).
 
 RFC #1642 (the draft proposal for a new CF docs stack) asks for Markdown
 authoring and, in the same list, for the
-[ability to handle HTML](https://github.com/ZPascal/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L42):
+[ability to handle HTML](https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L42):
 
 > Ability to handle HTML, especially HTML tables with column-width
 > specification supported
@@ -105,7 +105,7 @@ as a whole involves (inventory, owners, redirects, cutover) is in
 the "how".
 
 RFC #1642 asks for one conversion done centrally
-([L131](https://github.com/ZPascal/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L131)):
+([L131](https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L131)):
 
 > The conversion MUST be done by one central migration team to ensure
 > consistency, not by each Working Group individually.
@@ -180,7 +180,7 @@ special form for it. Zensical, Antora and Middleman insert the value as
 markup, as the published site does.
 
 RFC #1642
-[L100](https://github.com/ZPascal/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L100)
+[L100](https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L100)
 says:
 
 > Working Groups MUST NOT need custom extensions, plugins, or JavaScript

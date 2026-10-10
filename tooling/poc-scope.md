@@ -14,7 +14,7 @@ Requirements are cited by ID and a short phrase; the full list is in
 
 ## What RFC #1642 asks
 
-[Phase 2, L119–127](https://github.com/ZPascal/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L119-L127):
+[Phase 2, L119–127](https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L119-L127):
 
 > A PoC SHOULD be established in a new repository (e.g.,
 > `cloudfoundry/docs-next`) to:
@@ -30,12 +30,12 @@ Requirements are cited by ID and a short phrase; the full list is in
 > The results of the PoC SHOULD be presented in a TOC / Docs WG meeting.
 
 Two other lines set what the PoC compares and what it must report.
-[L31](https://github.com/ZPascal/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L31):
+[L31](https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L31):
 
 > Other frameworks such as Hugo or MkDocs MAY be evaluated and proposed as
 > alternatives during the PoC phase.
 
-[L104](https://github.com/ZPascal/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L104):
+[L104](https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L104):
 
 > The PoC MUST validate that the most complex existing pages (HTML tables,
 > CSS layouts) can be represented with MDX alone. Any gap found MUST be
@@ -94,7 +94,7 @@ How the same table looks in every tool and mode:
   Starlight, Antora and Eleventy; Python (through `uv`) for Zensical and
   Sphinx; Ruby for Middleman. R-12 one-command local preview.
 - **Search.** **Not yet tested** in any tool. RFC
-  [L170](https://github.com/ZPascal/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L170)
+  [L170](https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L170)
   asks whether Algolia DocSearch or a self-hosted option such as Pagefind
   is preferred. Algolia DocSearch's index is a hosted service that is not
   open source, which bears on R-19 open source only (an open question:

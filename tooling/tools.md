@@ -61,7 +61,7 @@ repositories, navigation, the "Page last updated" line) was not tested
 without it.
 
 **Status.** In use today. RFC #1642 proposes replacing the stack it is part
-of ([Problem, L17–25](https://github.com/ZPascal/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L17-L25)).
+of ([Problem, L17–25](https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L17-L25)).
 
 ## Hands-on tools
 
@@ -80,7 +80,7 @@ Learn more: [Docusaurus](https://docusaurus.io/); see also the
 [glossary](../glossary.md#docusaurus).
 
 RFC #1642 names it
-([L31](https://github.com/ZPascal/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L31)):
+([L31](https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L31)):
 
 > The recommended engine is the current major version of Docusaurus (v3 or
 > newer, maintained by Meta, MIT-licensed, widely adopted in the CNCF
@@ -105,7 +105,7 @@ table, which carries no widths, row headers or titles.
 - **No native table hints.** Widths, row headers, top alignment and titles
   need HTML or a plugin; the extension here is a remark plugin
   ([plugins/list-table.js](../concepts/tables/sites/docusaurus/plugins/list-table.js)).
-  RFC [L104](https://github.com/ZPascal/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L104)
+  RFC [L104](https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L104)
   asks the PoC to validate "that the most complex existing pages (HTML
   tables, CSS layouts) can be represented with MDX alone"; this is that
   evidence. R-02 rich tables, R-03 column widths as hints, R-13 no per-WG
@@ -132,7 +132,7 @@ table, which carries no widths, row headers or titles.
 **Variables and partials.** One `import vars` line per page, then
 `{vars.name}`. A partial (a file included in other pages) is imported and
 used as a component, which answers RFC
-[L179](https://github.com/ZPascal/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L179)
+[L179](https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L179)
 ("Are partials supported by Docusaurus?") for the scale table: yes, as an
 MDX import. R-05 partials and reuse.
 
@@ -281,7 +281,7 @@ stylesheet. Every spot check passes in every mode.
   ([finding 10](../concepts/tables/results.md#findings-3)).
 - **Multi-repository sites.** Antora builds from several repositories by
   design. RFC #1642 §3 proposes one docs repository
-  ([L65–88](https://github.com/ZPascal/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L65-L88)).
+  ([L65–88](https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L65-L88)).
   Read about, not tested here.
 
 **Variables and partials.** Variables are AsciiDoc attributes, `{name}`; an
@@ -356,7 +356,7 @@ Details: [probes/middleman](../concepts/tables/probes/middleman/README.md).
 
 **Concerns.** This keeps ERB and Ruby. RFC #1642 lists among the MUST
 capabilities
-([L39](https://github.com/ZPascal/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L39))
+([L39](https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L39))
 "A lightweight templating/component system that does not require Ruby or
 ERB". Whether that line stands is a requirements question. The probe's
 layout has none of the book's navigation; search, versioning and the rest
@@ -374,7 +374,7 @@ has been built.
 **What it is.** A static site generator written in Go. Pages are Markdown,
 read by the goldmark parser; shortcodes and Go templates add what Markdown
 lacks. RFC #1642 names it as an alternative that "MAY be evaluated"
-([L31](https://github.com/ZPascal/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L31)).
+([L31](https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L31)).
 `cloudfoundry/what-is-cf` is a Hugo site today. Learn more:
 [Hugo](https://gohugo.io/); see also the [glossary](../glossary.md#hugo).
 
@@ -407,7 +407,7 @@ components. Learn more: [VitePress](https://vitepress.dev/); see also the
   built with Slate (a tool for single-page API references) from Spring REST
   Docs snippets (text generated from the API's tests); CredHub uses Spring
   REST Docs. RFC #1642 asks who can vet the proposal for them
-  ([L177](https://github.com/ZPascal/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L177)).
+  ([L177](https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L177)).
   Learn more: [Slate](https://github.com/slatedocs/slate),
   [Spring REST Docs](https://spring.io/projects/spring-restdocs).
 
@@ -429,7 +429,7 @@ None was built.
 
 **Why:** **Not yet written:** the reason each was left out of the tiers is
 not recorded. RFC #1642
-[L31](https://github.com/ZPascal/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L31)
+[L31](https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L31)
 names MkDocs as an alternative that "MAY be evaluated".
 
 **Evidence:** none in this repository yet.

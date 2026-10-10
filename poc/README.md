@@ -16,10 +16,10 @@ RFC #1642, the draft proposal for a new CF docs stack, plans its PoC as
 Phase 2:
 
 > A PoC SHOULD be established in a new repository (e.g., `cloudfoundry/docs-next`) to:
-> ([L119](https://github.com/ZPascal/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L119))
+> ([L119](https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L119))
 
 > Stand up Docusaurus (or the chosen alternative) with a representative subset of CF documentation migrated to Markdown.
-> ([L121](https://github.com/ZPascal/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L121))
+> ([L121](https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L121))
 
 The work here is smaller and comes earlier. It is not that PoC. Each
 candidate tool has its own small test site. The *test pages* (five pages
@@ -33,7 +33,7 @@ Phase 2 PoC runs.
 The RFC also says what its PoC must check for complex pages:
 
 > The PoC MUST validate that the most complex existing pages (HTML tables, CSS layouts) can be represented with MDX alone. Any gap found MUST be reported as a PoC finding.
-> ([L104](https://github.com/ZPascal/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L104))
+> ([L104](https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L104))
 
 The Docusaurus results here bear on that line. MDX is Markdown that also
 accepts JSX, the HTML-like syntax of React components (see the
