@@ -172,6 +172,7 @@ for repo in sorted(sha):
         dn[:] = [d for d in dn if d not in ('.git', 'node_modules', 'vendor')]
         for f in fn:
             if not f.endswith(EXTS): continue
+            if dp == root and f.endswith(('.md', '.markdown')): continue  # root notes and READMEs: the sites publish none of these files
             full = os.path.join(dp, f); rel = os.path.relpath(full, root)
             try: text = open(full, encoding='utf-8', errors='replace').read()
             except OSError: continue

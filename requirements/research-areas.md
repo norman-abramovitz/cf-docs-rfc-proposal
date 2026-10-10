@@ -119,7 +119,7 @@ refer to the [requirement list](README.md#requirements).
 
 - **Why it matters:** [R-09](README.md#r-09) table styles by class. A style class is a name the
   site's stylesheet gives a look to ([glossary](../glossary.md#style-class)).
-- **Known:** a survey of all 241 tables in the docs and tutorial repositories
+- **Known:** a survey of all 238 tables in the docs and tutorial repositories
   found one class in use, `table` (this evaluation's
   [table survey](../concepts/tables/survey/README.md#totals), 2026-10-09). The closest thing to a second style is a
   compact one for comparison grids and long reference tables. The tables

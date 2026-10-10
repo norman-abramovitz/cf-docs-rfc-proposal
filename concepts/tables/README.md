@@ -106,7 +106,7 @@ What has been done in this round, newest last. Each line links to the work.
   a summary across the four tools and the three probes; what the round
   taught is under [What we learned](#what-we-learned) below.
 - [x] **Table styles surveyed.** Every table in the docs repos and the
-  tutorial repos (241) was counted to find which table styles the template
+  tutorial repos (238) was counted to find which table styles the template
   needs beyond the standard one. The only class any source uses is
   `table`; the closest thing to a second style is a compact one for
   comparison grids and long reference tables. Which styles to support is

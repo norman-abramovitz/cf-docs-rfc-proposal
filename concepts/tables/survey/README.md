@@ -18,7 +18,7 @@ the start were compact, boxed, plain and striped.
 
 | File | What it is |
 |---|---|
-| [tables.csv](tables.csv) | The data: one row per table, 241 rows, each with a GitHub link to the table at the surveyed commit |
+| [tables.csv](tables.csv) | The data: one row per table, 238 rows, each with a GitHub link to the table at the surveyed commit |
 | [shas.txt](shas.txt) | The 21 repositories and the commit surveyed in each |
 | [survey.py](survey.py) | Finds and measures the tables in a set of clones |
 | [families.py](families.py) | Sorts the tables into families and prints a summary |
@@ -36,8 +36,8 @@ repositories were cloned anyway.
 
 | Repository | Commit (date) | Tables |
 |---|---|---|
-| cloudfoundry/docs-bbr | [`5146595`](https://github.com/cloudfoundry/docs-bbr/tree/51465950ce3a2196d66a9339086b94feed280c3e) (2026-07-09) | 3 |
-| cloudfoundry/docs-book-cloudfoundry | [`30dfa57`](https://github.com/cloudfoundry/docs-book-cloudfoundry/tree/30dfa57692253a6ae1b3df0726444b1e32852c91) (2026-10-08) | 2 |
+| cloudfoundry/docs-bbr | [`5146595`](https://github.com/cloudfoundry/docs-bbr/tree/51465950ce3a2196d66a9339086b94feed280c3e) (2026-07-09) | 2 |
+| cloudfoundry/docs-book-cloudfoundry | [`30dfa57`](https://github.com/cloudfoundry/docs-book-cloudfoundry/tree/30dfa57692253a6ae1b3df0726444b1e32852c91) (2026-10-08) | 0 |
 | cloudfoundry/docs-bosh | [`20a4122`](https://github.com/cloudfoundry/docs-bosh/tree/20a41223a7ba87700424634c42e94a22a669b45e) (2026-10-01) | 40 |
 | cloudfoundry/docs-buildpacks | [`239e5c8`](https://github.com/cloudfoundry/docs-buildpacks/tree/239e5c8676200914c4d386970f9989e46de9e969) (2026-10-09) | 15 |
 | cloudfoundry/docs-cf-admin | [`13826fa`](https://github.com/cloudfoundry/docs-cf-admin/tree/13826fa7d93eee66902c4a2187a96b884137b58a) (2026-07-22) | 31 |
@@ -64,8 +64,7 @@ The date is the commit's date. In `shas.txt` a `cft-` prefix marks a
 - **The book.** "The book" is the set of repositories that Bookbinder, the
   tool that builds docs.cloudfoundry.org today, collects into one site
   ([glossary](../../../glossary.md#bookbinder)). `docs-book-cloudfoundry`
-  holds its layout and settings; its two tables are in a notes file at the
-  repository root, not on a published page.
+  holds its layout and settings and has no tables.
 - **bosh.io is counted apart.** `docs-bosh` is not part of the book. It
   builds bosh.io/docs with MkDocs and the Material theme
   ([glossary](../../../glossary.md#mkdocs-material);
@@ -74,6 +73,8 @@ The date is the commit's date. In `shas.txt` a `cft-` prefix marks a
   but reported in their own row and in [bosh.io](#boshio) below.
 - **File types.** `.md`, `.erb`, `.html`, `.haml`, `.markdown`, `.mdx` and
   `.adoc`. Folders named `.git`, `node_modules` and `vendor` are skipped.
+  Markdown files at a repository's root (contributor notes, READMEs) are
+  left out on purpose: no site publishes them.
 - **Source, not published pages.** The survey reads the files in the
   repositories. A partial (a file included into other pages;
   [glossary](../../../glossary.md#partial)) counts once, however many pages
@@ -124,10 +125,10 @@ The families come from the data, not from a list of style names.
 
 | | HTML | Pipe | All |
 |---|---|---|---|
-| Book repositories (docs.cloudfoundry.org) | 123 | 75 | 198 |
+| Book repositories (docs.cloudfoundry.org) | 123 | 72 | 195 |
 | bosh.io (`docs-bosh`) | 0 | 40 | 40 |
 | Tutorial repositories | 0 | 3 | 3 |
-| **All** | **123** | **118** | **241** |
+| **All** | **123** | **115** | **238** |
 
 **Classes.** Of the 123 HTML tables, 70 have `class="table"`, 8 have
 `class=“table”` with typographic quotes (so the browser does not read
@@ -135,7 +136,7 @@ The families come from the data, not from a list of style names.
 have no class. No other class appears anywhere. No pipe table has a class:
 there are no kramdown attribute lists next to tables.
 
-**Traits across all 241 tables.**
+**Traits across all 238 tables.**
 
 - Every table has a header row; none is used for page layout. No table sits
   inside another.
@@ -167,8 +168,8 @@ after `###`.
 
 | Family | Count | HTML / pipe | Typical | Repositories with most |
 |---|---|---|---|---|
-| key-value | 127 | 51 / 76 | 2 columns, median 4 body rows (max 47), median cell 21 characters; code in 73 | dev-guide 26, running-cf 22, bosh 21, concepts 19 |
-| reference-3-4 | 79 | 49 / 30 | median 4 body rows (max 59), median cell 17 characters | cf-admin 16, bosh 14, concepts 14, dev-guide 14 |
+| key-value | 126 | 51 / 75 | 2 columns, median 4 body rows (max 47), median cell 21 characters; code in 72 | dev-guide 26, running-cf 22, bosh 21, concepts 19 |
+| reference-3-4 | 77 | 49 / 28 | median 4 body rows (max 59), median cell 16 characters | cf-admin 16, bosh 14, concepts 14, dev-guide 14 |
 | media | 12 | 12 / 0 | 3–5 columns of chart thumbnails linked to full images | running-cf only (`uaa-performance`) |
 | matrix | 11 | 5 / 6 | 4–12 columns of Yes/blank, numbers or short tokens | concepts 3, bosh 2, cf-admin 2, dev-guide 2 |
 | wide | 10 | 4 / 6 | 5–6 columns of text | bosh 3, cf-admin 3, uaa 3 |
@@ -178,7 +179,7 @@ after `###`.
 reference-3-4 tables have 15 or more body rows. The metrics partials in
 `docs-running-cf` reach 41–59 rows; others are `docs-cf-cli` `v8` (30),
 `docs-uaa` `uaa-deploy` (33) and the concepts `glossary` (16). Tables of
-short cells (median 12 characters or fewer) are 30 of the key-value and 24
+short cells (median 12 characters or fewer) are 29 of the key-value and 24
 of the reference-3-4 tables.
 
 Decision (evaluation, tables round): a table title is a bold line above the
@@ -378,8 +379,10 @@ cmp tables.csv SURVEY/tables.csv
 
 `survey.py` writes `raw.json` and `raw.csv` and prints the table count;
 `families.py` prints the family summary and writes `tables.json` and
-`tables.csv` with the `family` column. The run that produced
-[tables.csv](tables.csv) printed `241 tables`.
+`tables.csv` with the `family` column. [tables.csv](tables.csv) holds 238
+tables. On 2026-10-10 `survey.py` was rerun on `docs-bbr`,
+`docs-book-cloudfoundry` and `docs-bosh`, and its rows for them match the
+file.
 
 **Only the families**, from the data here, without clones:
 
@@ -388,7 +391,7 @@ python3 -I SURVEY/families.py SURVEY/tables.csv
 ```
 
 This prints the [families](#families) and the counts behind
-[traits across all 241 tables](#totals). With a second argument it writes a
+[traits across all 238 tables](#totals). With a second argument it writes a
 copy of the data with the `family` column; on `tables.csv` that copy is
 byte-identical to the input (checked 2026-10-10).
 
