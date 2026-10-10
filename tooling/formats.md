@@ -706,11 +706,27 @@ lists, document settings, and "resources" such as
 It also
 [removes raw HTML](https://markua.com/#markua-s-one-key-subtraction-from-markdown-raw-html-is-removed-m-):
 "in Markua all raw HTML elements are removed", because HTML is only one of
-its outputs, next to LaTeX and PDF. Every test page uses HTML, so the test
+its outputs, next to LaTeX and PDF. It does produce HTML; the spec defines
+how Markua maps to
+[HTML fragments](https://markua.com/#about-the-html-output-m-), and leaves
+the rest of the page to the processor. Every test page uses HTML, so the test
 is whether Markua's own syntax carries what that HTML does
 ([R-10](../requirements/README.md#r-10) simple text plus HTML where needed).
-Which processors exist besides Leanpub, and under which licenses, is not yet
-checked ([R-19](../requirements/README.md#r-19) open source only).
+No maintained open-source Markua processor was found
+([R-19](../requirements/README.md#r-19) open source only). The spec's own note
+says Markua 0.30 is "currently in beta on Leanpub", a hosted publishing
+service. A GitHub search
+on 2026-10-10 found only parsers that predate Markua 0.30 and have not
+changed since:
+[dshafik/markua](https://github.com/dshafik/markua/tree/5ae07b6f02f30f9157f7786e185c29b0c8b0783e)
+(PHP, last change 2015),
+[danhunsaker/markua](https://github.com/danhunsaker/markua/tree/d338812afd6d159d17cd7607cbdadde30eeeda9b)
+(PHP, built on League\CommonMark, 2018), and
+[krtek4/Markua-py](https://github.com/krtek4/Markua-py/tree/6e073668750961b77dbc356c7a5ca439f94ab38e)
+(Python, 2016). The one active project,
+[fatpub](https://github.com/hschwentner/fatpub/tree/5deef7be4579455750a5adc5f9b3527ae771f86f)
+(GPL-3.0, last change 2026-09-19), preprocesses Markua for Pandoc to make
+Word files, not web pages.
 
 **Not yet written:** the other test pages in every format. Their sources
 are in each site folder under
