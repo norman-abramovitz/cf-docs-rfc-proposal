@@ -697,6 +697,21 @@ and VitePress's input (Markdown read by markdown-it, with Vue components;
 [markdown-it](https://github.com/vuejs/vitepress/blob/633e48af9ec25a9cc28fc3ebf1e9063b359adb2e/package.json#L150)). Neither tool has been assessed; no page source exists for
 either.
 
+**Not yet written:** Markua, a Markdown-like format for books and courses
+([Markua Spec](https://markua.com/), version 0.31.50 of 2026-08-11, read
+2026-10-10). Its spec was developed at Leanpub, is based on the CommonMark
+Spec 0.31.2 and is licensed CC-BY-SA 4.0. To Markdown it adds attribute
+lists, document settings, and "resources" such as
+[tables, including CSV tables](https://markua.com/#table-resources-and-csv-format-tables-m-).
+It also
+[removes raw HTML](https://markua.com/#markua-s-one-key-subtraction-from-markdown-raw-html-is-removed-m-):
+"in Markua all raw HTML elements are removed", because HTML is only one of
+its outputs, next to LaTeX and PDF. Every test page uses HTML, so the test
+is whether Markua's own syntax carries what that HTML does
+([R-10](../requirements/README.md#r-10) simple text plus HTML where needed).
+Which processors exist besides Leanpub, and under which licenses, is not yet
+checked ([R-19](../requirements/README.md#r-19) open source only).
+
 **Not yet written:** the other test pages in every format. Their sources
 are in each site folder under
 [concepts/tables/sites/](../concepts/tables/sites/), and the conventions
