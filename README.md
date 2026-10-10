@@ -16,6 +16,24 @@ proposes moving this content to Markdown on a modern static site generator,
 hosted on GitHub Pages. This repository holds the evidence gathered to inform
 that proposal.
 
+## Start here
+
+Three draft documents, each readable on its own. They cover what is known
+as of 2026-10-10 and mark what is not yet written.
+
+1. [Requirements](requirements/README.md): what the Docs WG is looking for
+   in a new documentation stack, with requirement IDs (R-01, R-02, …) that
+   the other documents cite. A draft Docs WG position; it may be wrong.
+2. [Tooling](tooling/README.md): the tools evaluated, the input formats they
+   read, how today's pages convert into them, and the extensions each needs.
+   Neutral evidence; it makes no choice.
+3. [Proof-of-concept results](poc/README.md): what each tool built from real
+   Cloud Foundry pages, next to the page as published today. Neutral
+   evidence.
+
+The [glossary](glossary.md) explains the terms further. Each document
+defines its terms where it first uses them, so the glossary is optional.
+
 ## Contents
 
 - [Concepts](concepts/README.md): the migration worked one documentation
