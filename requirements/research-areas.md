@@ -19,8 +19,7 @@ refer to the [requirement list](README.md#requirements).
   repositories to collect) lists 12 sections, each a `docs-*` repository
   mapped to a URL directory, plus sample-code repositories with no pages. A
   survey of tables covered the 15 `docs-*` repositories that are not
-  archived (this evaluation's table survey, 2026-10-09; its data is not yet
-  in this repository). The book's own [`CODEOWNERS`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/CODEOWNERS) file
+  archived (this evaluation's [table survey](../concepts/tables/survey/README.md#scope), 2026-10-09). The book's own [`CODEOWNERS`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/CODEOWNERS) file
   (which names who must review changes) lists one team for everything.
 - **What answers it:** the inventory in the RFC's first phase ([L112],
   [L167]).
@@ -42,8 +41,8 @@ refer to the [requirement list](README.md#requirements).
   [charter lists docs-bosh](https://github.com/cloudfoundry/community/blob/9f189bfa613bb7a9c2da6616666661790d4410eb/toc/working-groups/foundational-infrastructure.md#L352)).
   Its 40 tables are all plain Markdown pipe tables; it has 302 admonitions
   (boxed callouts headed Note, Warning, and so on); both counted by this
-  evaluation at docs-bosh commit `20a4122`, and the count's data is not yet
-  in this repository. The rest of bosh.io (release and stemcell pages) loads
+  evaluation at docs-bosh commit `20a4122`
+  ([table survey, bosh.io](../concepts/tables/survey/README.md#boshio)). The rest of bosh.io (release and stemcell pages) loads
   the stylesheet and scripts that the docs build produces
   ([`bosh-io-web` `main.go`](https://github.com/cloudfoundry/bosh-io-web/blob/951ec131ce4218a2a259603390d70e259ebeb691/main/main.go#L120-L205),
   [layout](https://github.com/cloudfoundry/bosh-io-web/blob/951ec131ce4218a2a259603390d70e259ebeb691/templates/layout.tmpl#L43)), so changing the docs tool
@@ -118,12 +117,13 @@ refer to the [requirement list](README.md#requirements).
 - **Why it matters:** [R-09](README.md#r-09) table styles by class. A style class is a name the
   site's stylesheet gives a look to ([glossary](../glossary.md#style-class)).
 - **Known:** a survey of all 241 tables in the docs and tutorial repositories
-  found one class in use, `table` (this evaluation's table survey,
-  2026-10-09; its data is not yet in this repository). The closest thing to a second style is a
+  found one class in use, `table` (this evaluation's
+  [table survey](../concepts/tables/survey/README.md#totals), 2026-10-09). The closest thing to a second style is a
   compact one for comparison grids and long reference tables. The tables
   round added `table-media`, an image grid, as an example of how a style is
   added ([template conventions](../concepts/tables/README.md#template-conventions)).
-- **What answers it:** the Docs WG choosing from the survey's table families.
+- **What answers it:** the Docs WG choosing from the survey's
+  [table families](../concepts/tables/survey/README.md#families).
 
 ### What do the concepts not yet worked require?
 

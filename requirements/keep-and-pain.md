@@ -42,7 +42,7 @@ Authors use Markdown where it is enough and HTML where it is not. The
 written as a Markdown pipe table (one row per line, `|` between cells), and
 two HTML tables with a spanning title row and bulleted lists in cells
 ([source](../concepts/tables/source/metadata.html.md.erb)). Across the
-book's repositories, 123 of 198 tables are HTML (this evaluation's table survey, 2026-10-09; its data is not yet in this repository).
+book's repositories, 123 of 198 tables are HTML (this evaluation's [table survey](../concepts/tables/survey/README.md#totals), 2026-10-09).
 
 Leads to: [R-10](README.md#r-10) simple text plus HTML where needed, [R-02](README.md#r-02) rich tables.
 
@@ -130,9 +130,9 @@ tag closed and nested properly, every attribute value quoted;
 `</td>` instead of `</tr>`
 ([details](../concepts/tables/README.md#markup-that-only-browsers-tolerate)).
 A survey of all 241 tables in the docs and tutorial repositories found
-more (this evaluation's table survey, 2026-10-09; its data is not yet in this repository): 5 tables
-never close `<thead>`, 8 classes in typographic quotes, 1 class with a
-mismatched quote, and cells ending in `</td` without `>`.
+more (this evaluation's [table survey](../concepts/tables/survey/README.md#totals), 2026-10-09): 5 tables
+never close `<thead>`, 8 classes are in typographic quotes, and 1 class has
+a mismatched quote.
 
 Strict tools fail on this markup (MDX stops the build) or change the text
 without an error (Markdoc). MDX is Markdown that can also hold JSX, the

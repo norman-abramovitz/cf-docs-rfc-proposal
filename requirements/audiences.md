@@ -189,7 +189,7 @@ which [lists docs-bosh](https://github.com/cloudfoundry/community/blob/9f189bfa6
 The site has 40 tables, all plain Markdown pipe tables (rows written on one
 line each, with `|` between cells), and 302 admonitions (boxed callouts
 headed Note, Warning, and so on), counted by this evaluation at docs-bosh
-commit `20a4122`; the count's data is not yet in this repository. The RFC
+commit `20a4122` ([table survey, bosh.io](../concepts/tables/survey/README.md#boshio)). The RFC
 does not mention bosh.io.
 
 Draft position: bosh.io follows the Docs WG's table and note conventions

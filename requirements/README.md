@@ -240,8 +240,8 @@ restated as a hosting benefit.
   ([sources](../concepts/tables/source/SOURCES.md)). Partials picked by a
   variable are still open ([R-05](#r-05) partials and reuse).
 - **bosh.io is not mentioned.** Its docs are a separate site with 40 tables
-  (counted by this evaluation at docs-bosh commit `20a4122`; the count's
-  data is not yet in this repository); see [Research areas](research-areas.md#is-boshio-in-scope).
+  (counted by this evaluation at docs-bosh commit `20a4122`:
+  [table survey, bosh.io](../concepts/tables/survey/README.md#boshio)); see [Research areas](research-areas.md#is-boshio-in-scope).
 
 **Not yet written:** requirements that come out of the concepts not yet
 worked (headings, variables, partials, notes, code blocks, cross-repository

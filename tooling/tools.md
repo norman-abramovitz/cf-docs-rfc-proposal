@@ -443,8 +443,8 @@ components ([dependencies](https://github.com/vuejs/vitepress/blob/633e48af9ec25
   documentation theme for it (it registers as an
   [MkDocs theme](https://github.com/squidfunk/mkdocs-material/blob/6d3dc570d51064a3f55d189bd22c2390b07d46fe/pyproject.toml#L90)).
   Its 40 tables are plain pipe tables (counted by this evaluation at
-  docs-bosh commit `20a4122`; the count's data is not yet in this
-  repository). This was read, not built. Learn more:
+  docs-bosh commit `20a4122`;
+  [table survey, bosh.io](../concepts/tables/survey/README.md#boshio)). This was read, not built. Learn more:
   [MkDocs](https://www.mkdocs.org/),
   [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/); see
   also the [glossary](../glossary.md#mkdocs-material).

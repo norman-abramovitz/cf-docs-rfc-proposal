@@ -50,8 +50,8 @@ Serves: [R-17](README.md#r-17) an owner for every area, [R-15](README.md#r-15) U
 old URLs keep working.
 
 Done so far: a survey of every table in the docs and tutorial repositories
-(241 tables), used to pick table styles (this evaluation's table survey,
-2026-10-09; its data is not yet in this repository).
+(241 tables), used to pick table styles (this evaluation's
+[table survey](../concepts/tables/survey/README.md#totals), 2026-10-09).
 
 **Not yet written:** the full inventory, and whether bosh.io and the UAA and
 CredHub API references are in it ([research areas](research-areas.md#scope)).
