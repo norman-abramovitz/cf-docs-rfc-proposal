@@ -1,7 +1,7 @@
 # Intent: `_oss_scale_table` (partial)
 
 - Source: [`../source/_oss_scale_table.html.md.erb`](../source/_oss_scale_table.html.md.erb)
-- Included by `high-availability.html.md.erb` (docs-cloudfoundry-concepts, line 102)
+- Included by `high-availability.html.md.erb` (docs-cloudfoundry-concepts, line 108)
 - Published: <https://docs.cloudfoundry.org/concepts/high-availability.html>
 
 ## Table 1 — Component / Total Instances / Notes

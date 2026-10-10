@@ -20,7 +20,7 @@ in `../sites/` and `../probes/`.
 
 - **The partial and its host.** `_oss_scale_table` is not a page on its own.
   `high-availability.html.md.erb` in docs-cloudfoundry-concepts includes it at
-  line 102 with `<%= partial 'oss_scale_table' %>`. The book also maps
+  line 108 with `<%= partial 'oss_scale_table' %>`. The book also maps
   `scale_table: "oss_scale_table"` as a variable. Each site in this round
   includes the partial from a small host page instead of copying the whole
   host page.
