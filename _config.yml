@@ -1,0 +1,27 @@
+# Site build for GitHub Pages. The same Markdown files read as written on
+# GitHub; this only controls how Pages renders them.
+repository: norman-abramovitz/cf-docs-rfc-proposal
+branch: main
+theme: jekyll-theme-primer
+markdown: kramdown
+kramdown:
+  input: GFM
+
+# Code samples in these documents use Markdoc, Jinja and Hugo syntax that
+# looks like Liquid; render every page as written.
+defaults:
+  - scope:
+      path: ""
+    values:
+      render_with_liquid: false
+
+# Tool input trees are source files for other generators, not pages of this
+# site. Links into them go to the GitHub file view (_plugins/github_links.rb).
+exclude:
+  - concepts/tables/sites
+  - concepts/tables/probes
+  - concepts/tables/checks
+  - concepts/tables/source
+  - Gemfile
+  - Gemfile.lock
+  - vendor
