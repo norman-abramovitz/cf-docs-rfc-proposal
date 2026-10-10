@@ -59,6 +59,7 @@ Each audience, whether it changes the docs, and its main needs:
   - [R-02](README.md#r-02) rich tables
   - [R-06](README.md#r-06) typed code blocks
   - [R-07](README.md#r-07) notes and admonitions
+  - [R-30](README.md#r-30) single-page HTML and PDF
 - **[Search engines and AI-based tools](#search-engines-and-ai-based-tools)** (do not change the docs):
   - [R-20](README.md#r-20) search-engine and AI-friendly output
   - [R-16](README.md#r-16) old URLs keep working
@@ -265,7 +266,8 @@ People who use Cloud Foundry and read the docs to do so.
 
 Needs: [R-18](README.md#r-18) full-text search, [R-16](README.md#r-16) old URLs keep working (bookmarks and links
 from other sites), [R-02](README.md#r-02) rich tables, [R-06](README.md#r-06) typed code blocks, [R-07](README.md#r-07) notes and
-admonitions.
+admonitions, [R-30](README.md#r-30) single-page HTML and PDF (to read offline or print the
+docs as one document).
 
 ### Search engines and AI-based tools
 
