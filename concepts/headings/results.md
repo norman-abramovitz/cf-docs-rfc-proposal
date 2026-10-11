@@ -197,9 +197,12 @@ Site: [sites/starlight/](sites/starlight/) — conventions:
 
 - **The title's id is `_top`**, and the table of contents adds an
   "Overview" entry for it ([toc](results/starlight-toc.txt)).
-- **Body changes outside headings** on the two new pages: a variable in a
-  fenced code block or in inline code renders as the literal tag
-  (`{% $vars.app_domain %}`); in `<pre><code>` and `<code>` it renders. A
+- **Body changes outside headings** on the two new pages: a variable in
+  inline code renders as the literal tag (`{% $vars.app_domain %}`); in
+  `<code>` it renders. Correction (2026-10-11): this said the same of a
+  fenced code block, but a fence renders the variable, rebuilt with this
+  site's configuration
+  ([variables round](../variables/results.md#starlight-0426)). A
   `<pre>` block keeps its lines only with each line break written
   `&#10;`; otherwise Markdoc joins the lines and turns blank lines into
   paragraphs, as the tables round found

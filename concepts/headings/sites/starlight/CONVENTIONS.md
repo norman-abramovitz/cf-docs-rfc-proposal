@@ -50,6 +50,6 @@ Not headings; they belong to the variables and code blocks concepts:
 
 | Source | Starlight |
 |--------|-----------|
-| a variable in a fenced code block | `<pre><code>$ cf create-shared-domain {% $vars.app_domain %}</code></pre>`: the site's code block renders the fence's text as written, so the variable tag shows as text |
+| a variable in a fenced code block | `<pre><code>$ cf create-shared-domain {% $vars.app_domain %}</code></pre>`. Correction (2026-10-11): a fence renders the variable; Markdoc processes tags inside fences. Rebuilt with this site's configuration and package lock, the value appears in a fence with no language, with `console`, and in a list step. The `<pre>` form was not needed ([variables round](../../../variables/results.md#starlight-0426)) |
 | a variable in inline code | `<code>{% $vars.app_domain %}</code>`, for the same reason |
 | line breaks inside `<pre>` (code blocks above, and `<pre class="terminal">`) | written `&#10;`, the block on one line; Markdoc reads the text inside HTML as Markdown, so it joins the lines and turns blank lines into paragraphs |
