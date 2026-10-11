@@ -1,0 +1,12 @@
+# Excerpt of cloudfoundry/docs-book-cloudfoundry config/template_variables.yml
+# at commit 30dfa57692253a6ae1b3df0726444b1e32852c91. See SOURCES.md.
+template_variables:
+  app_runtime_first: Cloud Foundry
+  app_runtime_abbr: Cloud Foundry
+  company_name: Cloud Foundry
+  admin: Cloud Foundry administrator
+  app_domain: shared-domain.example.com
+  app_healthcheck_timeout: In Cloud Foundry, the default timeout is 60 seconds and the default maximum configurable timeout is 180 seconds. Your Cloud Foundry operator can set other values for these defaults.
+  external_vol_win_note: <p class="note"><span class="note__title"><strong>Note</strong></span> NFS and SMB volume services are available for Linux cells only. These services are not available for Windows cells.</p>
+  private_app_domain: private-domain.example.com
+  tcp_app_domain: tcp-domain.example.com

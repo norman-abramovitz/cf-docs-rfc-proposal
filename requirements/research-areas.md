@@ -153,9 +153,11 @@ it link to their line, as in [L112] ([glossary](../glossary.md#rfc)).
   tool) can change them.
 - **Known:** tables are done. Headings are converted in all four
   hands-on tools, with their conventions under review
-  ([headings results](../concepts/headings/results.md#summary)).
-  Variables, partials, notes and admonitions, code blocks, cross-repository
-  links, and copyright and build-time values are proposed
+  ([headings results](../concepts/headings/results.md#summary)). Notes
+  and admonitions are converted in all four as well, with the map from the
+  book's kinds to each tool's types still open
+  ([notes results](../concepts/notes/results.md#summary)). Variables, partials, code blocks,
+  cross-repository links, and copyright and build-time values are proposed
   ([concepts](../concepts/README.md#concepts)). The tables round already
   found problems outside tables: heading anchors written as `<a id>`, terminal
   blocks, the `*` lost in `Accept: */*`, and HTML-valued variables

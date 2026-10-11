@@ -167,10 +167,12 @@ The steps seen in the tables round, in order:
    round.
 
 The headings round proposes its conversion rules as conventions, under
-review ([headings results](../concepts/headings/results.md#conventions-to-record)).
+review ([headings results](../concepts/headings/results.md#conventions-to-record)),
+and so does the notes round
+([notes results](../concepts/notes/results.md#conventions-to-record)).
 
 **Not yet written:** the conversion steps for the other concepts
-(variables, partials, notes, code blocks, cross-repository links), and how
+(variables, partials, code blocks, cross-repository links), and how
 `scan` and `convert` are built.
 
 ## Extensions needed per tool
@@ -224,11 +226,13 @@ here because they stop a page from building or change its content.
 | Themes style different tables: all, only classless ones, only their own | all four | [R-09](../requirements/README.md#r-09) table styles by class | [summary](../concepts/tables/results.md#summary) |
 | Heading anchors written `<a id>` break the table of contents | Docusaurus | [R-16](../requirements/README.md#r-16) old URLs keep working | [Docusaurus finding 6](../concepts/tables/results.md#findings) |
 | A page description shows raw variable code | Docusaurus | [R-20](../requirements/README.md#r-20) search-engine and AI-friendly output | [Docusaurus finding 7](../concepts/tables/results.md#findings) |
+| HTML notes damaged without a warning: an empty note box, words run together, `>=` as a blockquote | Docusaurus, Starlight | [R-07](../requirements/README.md#r-07) notes and admonitions | [notes results](../concepts/notes/results.md#summary) |
+| A note never closed swallows the rest of the page or stops the build | Zensical, Docusaurus, Starlight | [R-24](../requirements/README.md#r-24) markup cleanup before conversion | [notes never closed](../concepts/notes/results.md#notes-never-closed) |
 | No check for links to missing anchors | Starlight, Antora | [R-08](../requirements/README.md#r-08) cross-repository links (a link checker is how broken links are found) | [Starlight finding 7](../concepts/tables/results.md#findings-2) |
 | ERB tags shown as examples in prose are run as code | Zensical (its template engine reads every `<%= … %>`) | [R-01](../requirements/README.md#r-01) content and outline survive | [Zensical finding 3](../concepts/tables/results.md#findings-1) |
 | A table after a list step leaves the list unless indented | Docusaurus, Zensical, Starlight | [R-01](../requirements/README.md#r-01) content and outline survive | [Docusaurus finding 3](../concepts/tables/results.md#findings) |
 | Default themes hyphenate words in cells | Antora, Sphinx | none yet (a template choice) | [Antora finding 5](../concepts/tables/results.md#findings-3) |
 
 **Not yet written:** problem areas for the concepts not yet worked (code
-blocks, notes, cross-repository links), and for the two tools not yet
+blocks, cross-repository links), and for the two tools not yet
 assessed.

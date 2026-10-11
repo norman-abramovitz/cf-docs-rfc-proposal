@@ -1,0 +1,2 @@
+# Antora 3.2.1: Asciidoctor's messages during the build (make build)
+(none)

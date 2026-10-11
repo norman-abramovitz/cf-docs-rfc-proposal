@@ -1,0 +1,69 @@
+$ ../../checks/check-site.sh site note=note,important=important,caution=caution
+== passthrough/cf-backup
+ok    outline: 7 headings, same levels and text
+info  ids used more than once on the built page (1): #supported-external-databases
+info  published heading ids not on the built page (2): #-applying-ops-files-in-the-correct-order #-next-steps
+ok    count: 3 notes
+ok    note 1: caution -> caution, title 'Caution', 114 words, list=4 code=2 link=1, body
+ok    note 2: caution -> caution, title 'Caution', 40 words, link=1, body
+ok    note 3: note -> note, title 'Note', 27 words, code=2, body
+== passthrough/using-vol-services
+ok    outline: 3 headings, same levels and text
+info  published heading ids not on the built page (2): #-create-and-use-nfs-volume-services #-create-an-nfs-volume-service
+ok    count: 4 notes
+ok    note 1: note -> note, title 'Note', 19 words, -, body
+ok    note 2: note -> note, title 'Note', 7 words, -, body
+ok    note 3: important -> important, title 'Important', 12 words, code=1, list
+ok    note 4: important -> important, title 'Important', 71 words, code=3, list
+== passthrough/healthchecks
+ok    outline: 8 headings, same levels and text
+info  published heading ids not on the built page (7): #-configure-liveness-health-checks-when-creating-or-updating-an-app #-configure-liveness-health-checks-for-an-existing-app #-understanding-health-checks #-health-check-life-cycle #-health-check-types #-health-check-timeouts #-health-check-http-endpoints
+ok    count: 4 notes
+ok    note 1: important -> important, title 'Important', 17 words, code=1, body
+ok    note 2: important -> important, title 'Important', 27 words, code=1, body
+ok    note 3: important -> important, title 'Important', 22 words, -, table
+ok    note 4: important -> important, title 'Important', 19 words, code=1, body
+== passthrough/routes-domains
+ok    outline: 18 headings, same levels and text
+ok    anchors: all 17 exist
+info  published heading ids not on the built page (12): #-domains #-list-domains-for-an-org #-http-versus-tcp-domains #-shared-domains #-private-domains #-delete-a-private-domain #-requirements-for-parent-and-child-domains #-dns-for-domains #-mapping-domains-to-your-custom-domain #-mapping-a-single-domain-to-your-custom-domain and 2 more
+ok    count: 5 notes
+ok    note 1: note -> note, title 'Note', 39 words, code=2 link=1, body
+ok    note 2: important -> important, title 'Important', 15 words, -, body
+ok    note 3: note -> note, title 'Note', 25 words, code=2 link=1, body
+ok    note 4: note -> note, title 'Note', 8 words, -, body
+ok    note 5: important -> important, title 'Important', 32 words, link=1, body
+== native/cf-backup
+ok    outline: 7 headings, same levels and text
+info  ids used more than once on the built page (1): #supported-external-databases
+info  published heading ids not on the built page (2): #-applying-ops-files-in-the-correct-order #-next-steps
+ok    count: 3 notes
+ok    note 1: caution -> caution, title 'Caution', 114 words, list=4 code=2 link=1, body
+ok    note 2: caution -> caution, title 'Caution', 40 words, link=1, body
+ok    note 3: note -> note, title 'Note', 27 words, code=2, body
+== native/using-vol-services
+ok    outline: 3 headings, same levels and text
+info  published heading ids not on the built page (2): #-create-and-use-nfs-volume-services #-create-an-nfs-volume-service
+ok    count: 4 notes
+ok    note 1: note -> note, title 'Note', 19 words, -, body
+ok    note 2: note -> note, title 'Note', 7 words, -, body
+ok    note 3: important -> important, title 'Important', 12 words, code=1, list
+ok    note 4: important -> important, title 'Important', 71 words, code=3, list
+== native/healthchecks
+ok    outline: 8 headings, same levels and text
+info  published heading ids not on the built page (7): #-configure-liveness-health-checks-when-creating-or-updating-an-app #-configure-liveness-health-checks-for-an-existing-app #-understanding-health-checks #-health-check-life-cycle #-health-check-types #-health-check-timeouts #-health-check-http-endpoints
+ok    count: 4 notes
+ok    note 1: important -> important, title 'Important', 17 words, code=1, body
+ok    note 2: important -> important, title 'Important', 27 words, code=1, body
+ok    note 3: important -> important, title 'Important', 22 words, -, table
+ok    note 4: important -> important, title 'Important', 19 words, code=1, body
+== native/routes-domains
+ok    outline: 18 headings, same levels and text
+ok    anchors: all 17 exist
+info  published heading ids not on the built page (12): #-domains #-list-domains-for-an-org #-http-versus-tcp-domains #-shared-domains #-private-domains #-delete-a-private-domain #-requirements-for-parent-and-child-domains #-dns-for-domains #-mapping-domains-to-your-custom-domain #-mapping-a-single-domain-to-your-custom-domain and 2 more
+ok    count: 5 notes
+ok    note 1: note -> note, title 'Note', 39 words, code=2 link=1, body
+ok    note 2: important -> important, title 'Important', 15 words, -, body
+ok    note 3: note -> note, title 'Note', 25 words, code=2 link=1, body
+ok    note 4: note -> note, title 'Note', 8 words, -, body
+ok    note 5: important -> important, title 'Important', 32 words, link=1, body

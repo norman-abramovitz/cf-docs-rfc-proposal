@@ -1,0 +1,6 @@
+= Notes round
+
+Test pages from the notes round, in two modes: passthrough (notes as
+written, `<p class="note">` and `<div class="note">`, in passthrough
+blocks), and native (AsciiDoc's own admonitions). The raw component holds
+one page with a Markdown code span left inside a passthrough note.

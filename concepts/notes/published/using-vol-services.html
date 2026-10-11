@@ -1,0 +1,1038 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  <style type="text/css">@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic/300/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek-ext/300/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin-ext/300/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic-ext/300/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/vietnamese/300/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek/300/normal.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin/300/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin/300/italic.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek-ext/300/italic.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin-ext/300/italic.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/vietnamese/300/italic.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic-ext/300/italic.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic/300/italic.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek/300/italic.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic-ext/400/italic.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic/400/italic.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek-ext/400/italic.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin/400/italic.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin-ext/400/italic.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/vietnamese/400/italic.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek/400/italic.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin/400/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek-ext/400/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin-ext/400/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/vietnamese/400/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic/400/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic-ext/400/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek/400/normal.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin/600/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin-ext/600/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic-ext/600/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/vietnamese/600/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic/600/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek/600/normal.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek-ext/600/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}</style>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      Using an external file system (volume services) |
+    Cloud Foundry Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  <script type="text/javascript">
+if (window.location.host === 'docs.cloudfoundry.org') {
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22181585-2']);
+  _gaq.push(['_setDomainName', 'cloudfoundry.org']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script');
+    ga.type = 'text/javascript';
+    ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ga, s);
+  })();
+}
+</script>
+
+
+</head>
+
+<body class="devguide devguide_services devguide_services_using-vol-services has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "cloudfoundry.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Cloud Foundry Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      
+      <div class="header-item">
+        <a href="https://www.cloudfoundry.org/community/" target="_blank">Get Involved</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="js-sidenav collapsible nav-container" role="navigation" data-behavior="Collapsible">
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+  Doc Index
+  </a>
+  <div class="nav-content">
+    <ul>
+      <li><strong>General Information</strong></li>
+      <li class=""><a href="/concepts/contribute.html">Contribute to Cloud Foundry documentation</a></li>
+      <li class="has_submenu"><a href="/concepts/index.html">Cloud Foundry concepts</a>
+        <ul>
+          <li class=""><a href="/concepts/overview.html">Cloud Foundry overview</a></li>
+          <li class="has_submenu"><a href="/concepts/security-index.html">Security and networking</a>
+            <ul>
+              <li class=""><a href="/concepts/security.html">Cloud Foundry security</a></li>
+              <li class=""><a href="/concepts/container-security.html">Container security in Cloud Foundry</a></li>
+              <li class=""><a href="/concepts/understand-cf-networking.html">Container-to-container networking</a></li>
+              <li class=""><a href="/concepts/identity-aware-routing.html">Identity-aware routing</a></li>
+              <li class=""><a href="/concepts/roles.html">Orgs, spaces, roles, and permissions in Cloud Foundry</a></li>
+              <li class=""><a href="/concepts/managing-roles.html">Managing Roles</a></li>
+              <li class=""><a href="/concepts/orgs-and-spaces.html">Planning orgs and spaces in Cloud Foundry</a></li>
+              <li class=""><a href="/concepts/asg.html">App Security Groups in Cloud Foundry</a></li>
+              <li class=""><a href="/concepts/diego/ssh-conceptual.html">Cloud Foundry app SSH components and processes</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/concepts/ha-index.html">High availability</a>
+            <ul>
+              <li class=""><a href="/concepts/high-availability.html">High availability in Cloud Foundry</a></li>
+              <li class=""><a href="/concepts/maintaining-high-availability.html">How Cloud Foundry maintains high availability</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/concepts/apps-index.html">How Cloud Foundry manages apps</a>
+            <ul>
+              <li class=""><a href="/concepts/how-applications-are-staged.html">Staging your apps in Cloud Foundry</a></li>
+              <!-- file lives in docs-dev-guide, not docs-cloudfoundry-concepts -->
+              <li class=""><a href="/devguide/deploy-apps/app-lifecycle.html">The app container lifecycle on Diego architecture</a></li>
+              <li class=""><a href="/concepts/diego/diego-auction.html">How Diego balances app processes in Cloud Foundry</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/concepts/architecture/index.html">Cloud Foundry components</a>
+            <ul>
+              <li class=""><a href="/concepts/diego/diego-architecture.html">Diego components and architecture</a></li>
+              <li class=""><a href="/concepts/cf-routing-architecture.html">Cloud Foundry routing architecture</a></li>
+              <li class=""><a href="/concepts/architecture/cloud-controller.html">Cloud Controller</a></li>
+              <li class=""><a href="/concepts/cc-blobstore.html">Cloud Controller blobstore</a></li>
+              <li class=""><a href="/concepts/architecture/uaa.html">User Account and Authentication server</a></li>
+              <li class=""><a href="/concepts/architecture/garden.html">Garden component</a></li>
+              <li class=""><a href="/concepts/grootfs-disk.html">GrootFS disk usage in Cloud Foundry</a></li>
+              <li class=""><a href="/concepts/http-routing.html">HTTP routing</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="has_submenu"><span>Cloud Foundry Command Line Interface (cf CLI)</span>
+        <ul>
+          <li class=""><a href="/cf-cli/install-go-cli.html">Installing the cf CLI</a></li>
+          <li class=""><a href="/cf-cli/v8.html">Upgrading to cf CLI v8</a></li>
+          <li class=""><a href="/cf-cli/getting-started.html">Getting started with the cf CLI</a></li>
+          <li class=""><a href="/cf-cli/http-proxy.html">Using the cf CLI with a proxy server</a></li>
+          <li class=""><a href="/cf-cli/self-signed.html">Using the cf CLI with a self-signed certificate</a></li>
+          <li class=""><a href="/cf-cli/use-cli-plugins.html">Using cf CLI plug-ins</a></li>
+          <li class=""><a href="/cf-cli/develop-cli-plugins.html">Developing cf CLI plug-ins</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>
+          <hr>
+        </span>
+      </li>
+      <li><strong>Information for Operators</strong></li>
+      <li class="has_submenu"><a href="/deploying/index.html">Deploying Cloud Foundry</a>
+        <ul>
+          <li class=""><a href="/deploying/common/dns_prereqs.html">Setting up DNS for your environment</a></li>
+          <li class="has_submenu"><a href="/deploying/cf-deployment/index.html">Deploying Cloud Foundry with cf-deployment</a>
+            <ul>
+              <li class=""><a href="/deploying/common/aws.html">Deploying BOSH on AWS</a></li>
+              <li class=""><a href="/deploying/cf-deployment/gcp.html">Deploying BOSH on GCP</a></li>
+              <li class=""><a href="/deploying/cf-deployment/deploy-cf.html">Deploying Cloud Foundry</a></li>
+              <li class=""><a href="/deploying/cf-deployment/enable-identity-aware-routing.html">Enabling identity-aware routing</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/bbr/index.html">Backing up and restoring with BBR</a></li>
+          <li class="has_submenu"><span>Additional configuration</span>
+            <ul>
+              <li class=""><a href="/deploying/common/cc-blobstore-config.html">Cloud Controller blobstore configuration</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="has_submenu"><a href="/adminguide/index.html">Administering Cloud Foundry</a>
+        <ul>
+          <li class="has_submenu"><a href="/adminguide/platform-index.html">Managing the runtime</a>
+            <ul>
+              <li class=""><a href="/adminguide/start-stop-vms.html">Stopping and starting virtual machines</a></li>
+              <li class=""><a href="/adminguide/quota-plans.html">Creating and modifying quota plans</a></li>
+              <li class=""><a href="/adminguide/listing-feature-flags.html">Using feature flags</a></li>
+              <li class=""><a href="/adminguide/examining_grootfs_disk.html">Examining GrootFS disk usage</a></li>
+              <li class=""><a href="/adminguide/metadata.html">Using metadata</a></li>
+              <li class=""><a href="/adminguide/buildpacks.html">Managing custom buildpacks</a></li>
+              <li class=""><a href="/adminguide/docker.html">Using Docker in Cloud Foundry</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/adminguide/user-accounts-index.html">User accounts and communications</a>
+            <ul>
+              <li class=""><a href="/adminguide/cli-user-management.html">Creating and managing users with the cf CLI</a></li>
+              <li class=""><a href="/uaa/uaa-user-management.html">Creating and managing users with the UAA CLI (UAAC)</a></li>
+              <li class=""><a href="/adminguide/notifications.html">Get started with the Notifications Service</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/adminguide/routing-index.html">Routing</a>
+            <ul>
+              <li class=""><a href="/adminguide/enabling_ipv6.html">Enabling IPv6 for hosted apps</a></li>
+              <li class=""><a href="/adminguide/distributed-tracing.html">Distributed tracing</a></li>
+              <li class=""><a href="/adminguide/zipkin_tracing.html">Enabling Zipkin tracing</a></li>
+              <li class=""><a href="/adminguide/w3c_tracing.html">Enabling W3C tracing</a></li>
+              <li class=""><a href="/adminguide/supporting-websockets.html">Supporting WebSockets</a></li>
+              <li class=""><a href="/adminguide/configure-lb-healthcheck.html">Configuring load balancer health checks for CF routers</a></li>
+              <li class=""><a href="/adminguide/troubleshooting_slow_requests.html">Troubleshooting slow requests</a></li>
+              <li class=""><a href="/adminguide/troubleshooting-router-error-responses.html">Troubleshooting router error responses</a></li>
+              <li class=""><a href="/adminguide/securing-traffic.html">Securing incoming traffic</a></li>
+              <li class=""><a href="/devguide/deploy-apps/trusted-system-certificates.html">Configuring trusted system certificates for apps</a></li>
+              <li class=""><a href="/adminguide/bbs-encryption-keys.html">Bulletin Board System data store encryption</a></li>
+              <li class=""><a href="/adminguide/enabling-tcp-routing.html">Enabling and configuring TCP routing</a></li>
+              <li class=""><a href="/adminguide/supporting-http2.html">Configuring HTTP/2 support</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/adminguide/isolation-segment-index.html">Isolation segments</a>
+            <ul>
+              <li class=""><a href="/adminguide/isolation-segments.html">Managing isolation segments</a></li>
+              <li class=""><a href="/adminguide/routing-is.html">Routing for isolation segments</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu">
+            <a href="/adminguide/delayed-jobs-index.html">Delayed jobs in Cloud Foundry</a>
+            <ul>
+              <li class="">
+                <a href="/adminguide/configuring-delayed-job-priorities.html">Configuring delayed job priorities with Cloud Controller</a>
+              </li>
+            </ul>
+          </li>
+          <li class="has_submenu">
+            <a href="/adminguide/managing-apps-stacks-index.html">Managing apps and their stacks</a>
+            <ul>
+              <li class=""><a href="/adminguide/stack-auditor.html">Using Stack Auditor</a></li>
+              <li class=""><a href="/adminguide/managing-stacks.html">Managing stack lifecycle</a></li>
+              <li class=""><a href="/devguide/deploy-apps/stacks.html">Changing stacks</a></li>
+              <li class=""><a href="/devguide/deploy-apps/windows-stacks.html">Restaging your apps on a Windows stack</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="has_submenu"><a href="/running/">Running and Troubleshooting Cloud Foundry</a>
+        <ul>
+          <li class=""><a href="/running/managing-cf/logging.html">Cloud Foundry logging</a></li>
+          <li class=""><a href="/running/managing-cf/logging-config.html">Configuring system logging</a></li>
+          <li class=""><a href="/running/diego-upgrades.html">Configuring Diego for upgrades</a></li>
+          <li class=""><a href="/running/managing-cf/audit-events.html">Audit Events</a></li>
+          <li class=""><a href="/running/managing-cf/uaa-audit-requirements.html">UAA audit requirements</a></li>
+          <li class=""><a href="/running/managing-cf/usage-events.html">Usage events and billing</a></li>
+          <li class=""><a href="/running/config-ssh.html">Configuring SSH access for Cloud Foundry</a></li>
+          <li class=""><a href="/running/config-cell-cleanup.html">Configuring Diego Cell disk cleanup scheduling</a></li>
+          <li class=""><a href="/running/hm-notifications.html">Configuring Health Monitor Notifications</a></li>
+          <li class=""><a href="/running/custom-stack.html">Adding a custom stack</a></li>
+          <li class=""><a href="/running/monitoring-test.html">Monitoring and testing Diego components</a></li>
+          <li class=""><a href="/running/troubleshooting.html">Troubleshooting Cloud Foundry</a></li>
+          <li class=""><a href="/running/uaa-performance.html">UAA performance</a></li>
+          <li class=""><a href="/uaa/uaa-metrics.html">UAA performance metrics</a></li>
+          <li class=""><a href="/running/managing-cf/scaling-cloud-controller.html">Scaling Cloud Controller</a></li>
+          <li class=""><a href="/running/managing-cf/multi-process-cloud-controller.html">Cloud Controller Multi-Process Mode (Puma)</a></li>
+          <li class=""><a href="/running/managing-cf/scaling-cloud-controller-k8s.html">Scaling Cloud Controller (cf-for-k8s)</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu"><span>Logging and metrics in Cloud Foundry</span>
+        <ul>
+          <li class=""><a href="/loggregator/architecture.html">Logging and metrics architecture</a></li>
+          <li class=""><a href="/loggregator/cli-plugin.html">Installing the Loggregator plug-in for cf CLI</a></li>
+          <li class=""><a href="/loggregator/cc-uaa-logging.html">Security event logging</a></li>
+          <li class=""><a href="/devguide/deploy-apps/streaming-logs.html">App logging in Cloud Foundry</a></li>
+          <li class=""><a href="/loggregator/app-log-rate-limits.html">Limiting your app log rate in Cloud Foundry</a></li>
+          <li class=""><a href="/running/all_metrics.html">Cloud Foundry component metrics</a></li>
+          <li class=""><a href="/loggregator/container-metrics.html">Container metrics</a></li>
+          <li class=""><a href="/loggregator/log-ops-guide.html">Loggregator guide for Cloud Foundry operators</a></li>
+          <li class=""><a href="/loggregator/data-sources.html">Logging and metrics in Cloud Foundry</a></li>
+          <li class=""><a href="/loggregator/opentelemetry.html">Configuring the OpenTelemetry Collector</a></li>
+          <li class=""><a href="/loggregator/nozzle-tutorial.html">Deploying a nozzle to your Cloud Foundry Loggregator Firehose</a></li>
+        </ul>
+      </li>
+      <li class=""><a href="http://bosh.io/docs/">BOSH Documentation</a></li>
+      <li class="has_submenu"><a href="/bbr/index.html">BOSH Backup and Restore (BBR)</a>
+        <ul>
+          <li class=""><a href="/bbr/installing.html">Installing BBR</a></li>
+          <li class=""><a href="https://github.com/cloudfoundry-incubator/bosh-backup-and-restore/releases">Release notes for BBR</a></li>
+          <li class=""><a href="/bbr/backup.html">Backing up with BBR</a></li>
+          <li class=""><a href="/bbr/restore.html">Restoring with BBR</a></li>
+          <li class=""><a href="/bbr/cf-backup.html">Configuring Cloud Foundry for BOSH Backup and Restore</a></li>
+          <li class=""><a href="/bbr/external-blobstores.html">Backup and restore for external blobstores</a></li>
+          <li class=""><a href="/bbr/logging.html">BBR logging</a></li>
+          <li class=""><a href="/bbr/experimental-features.html">Advanced features</a></li>
+          <li class=""><a href="/bbr/bbr-devguide.html">BBR developer's guide</a></li>
+        </ul>
+      </li>
+      <li><span><hr></span></li>
+      <li><strong>Information for developers</strong></li>
+      <li class="has_submenu"><a href="/devguide/index.html">Developing and managing apps</a>
+        <ul>
+          <li class="has_submenu"><a href="/devguide/push.html">How to push your app with Cloud Foundry CLI (cf push)</a>
+            <ul>
+              <li class=""><a href="/devguide/deploy-apps/deploy-app.html">Pushing your app using Cloud Foundry CLI (cf push)</a></li>
+              <li class=""><a href="/devguide/deploy-apps/manifest.html">Deploying with app manifests</a></li>
+              <li class=""><a href="/devguide/deploy-apps/manifest-attributes.html">App manifest attribute reference</a></li>
+              <li class=""><a href="/devguide/deploy-apps/push-docker.html">Deploying an app with Docker</a></li>
+              <li class=""><a href="/devguide/deploy-apps/large-app-deploy.html">Deploying your large apps</a></li>
+              <li class=""><a href="/devguide/deploy-apps/start-restart-restage.html">Starting, restarting, and restaging apps</a></li>
+              <li class=""><a href="/devguide/multiple-processes.html">Pushing an app with multiple processes</a></li>
+              <li class=""><a href="/devguide/push-sub-commands.html">Running cf push sub-step commands</a></li>
+              <li class=""><a href="/devguide/deploy-apps/rolling-deploy.html">Configuring app deployments</a></li>
+              <li class=""><a href="/devguide/sidecars.html">Pushing apps with sidecar processes</a></li>
+              <li class=""><a href="/devguide/deploy-apps/blue-green.html">Using blue-green deployment to reduce downtime</a></li>
+              <li class=""><a href="/devguide/deploy-apps/troubleshoot-app-health.html">Troubleshooting app deployment and health</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/devguide/ssh-index.html">SSH for apps and services</a>
+            <ul>
+              <li class=""><a href="/devguide/deploy-apps/app-ssh-overview.html">Configuring SSH access for your deployment</a></li>
+              <li class=""><a href="/devguide/deploy-apps/ssh-apps.html">Accessing your apps with SSH</a></li>
+              <li class=""><a href="/devguide/deploy-apps/ssh-services.html">Accessing services with SSH</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/devguide/routing-index.html">Routes and domains</a>
+            <ul>
+              <li class=""><a href="/devguide/deploy-apps/routes-domains.html">Configuring routes and domains</a></li>
+              <li class=""><a href="/devguide/custom-per-route-options.html">Configuring per-route options</a></li>
+              <li class=""><a href="/devguide/deploy-apps/identity-aware-routing.html">Configuring identity-aware routing</a></li>
+              <li class=""><a href="/devguide/hash-based-routing.html">Hash-Based Routing</a></li>
+              <li class=""><a href="/devguide/custom-ports.html">Configuring CF to route traffic to apps on custom ports</a></li>
+              <li class=""><a href="/devguide/http2-protocol.html">Routing HTTP/2 and gRPC traffic to apps</a></li>
+              <!-- file lives in docs-cf-admin, not docs-dev-guide -->
+              <li class=""><a href="/adminguide/troubleshooting_tcp_routing.html">Troubleshooting TCP routing</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/devguide/services-index.html">Managing services</a>
+            <ul>
+              <li class=""><a href="/devguide/services/index.html">Provisioning and integrating service instances</a></li>
+              <li class=""><a href="/devguide/services/managing-services.html">Managing service instances</a></li>
+              <li class=""><a href="/devguide/services/sharing-instances.html">Sharing service instances</a></li>
+              <li class=""><a href="/devguide/services/application-binding.html">Delivering service credentials to an app</a></li>
+              <li class=""><a href="/devguide/services/service-keys.html">Managing service keys</a></li>
+              <li class=""><a href="/devguide/services/play-service-bindings.html">Configuring Play Framework service connections</a></li>
+              <li class=""><a href="/devguide/services/using-vol-services.html">Using an external file system (volume services)</a></li>
+              <li class=""><a href="/devguide/services/user-provided.html">User-provided service instances</a></li>
+              <li class=""><a href="/devguide/services/route-binding.html">Manage app requests with route services</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/devguide/streaming-logs-index.html">Streaming app logs</a>
+            <ul>
+              <li class=""><a href="/devguide/services/log-management.html">Streaming app logs to log management services</a></li>
+              <li class=""><a href="/devguide/services/log-management-thirdparty-svc.html">Streaming app logs to third-party services</a></li>
+              <li class=""><a href="/devguide/services/integrate-splunk.html">Streaming app logs to Splunk</a></li>
+              <li class=""><a href="/devguide/services/fluentd.html">Streaming app logs with Fluentd</a></li>
+              <li class=""><a href="/devguide/services/oms-nozzle.html">Streaming app logs to Azure OMS log analytics</a></li>
+              <li class=""><a href="/devguide/services/metrics.html">Using metrics with drain logs</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/devguide/managing-apps-index.html">Managing apps with the cf CLI</a>
+            <ul>
+              <li class=""><a href="/devguide/using-tasks.html">Running tasks in your apps</a></li>
+              <li class=""><a href="/devguide/deploy-apps/cf-scale.html">Scaling your app using Cloud Foundry CLI (cf scale)</a></li>
+              <li class=""><a href="/devguide/deploy-apps/healthchecks.html">Using Cloud Foundry health checks</a></li>
+              <!-- file lives in docs-running-cf, not docs-dev-guide -->
+              <li class=""><a href="/running/managing-cf/app-event.html">Retrieving app and event information</a></li>
+              <li class=""><a href="/devguide/deploy-apps/cf-networking.html">Configuring container-to-Container networking</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/devguide/deploy-apps/environment-variable.html">Cloud Foundry environment variables</a></li>
+          <li class=""><a href="/devguide/capi/client-libraries.html">Available Cloud Controller API client libraries</a></li>
+          <li class=""><a href="/devguide/deploy-apps/prepare-to-deploy.html">Designing and running your app in the cloud</a></li>
+          <li class=""><a href="/devguide/revisions.html">Cloud Foundry API app revisions</a></li>
+        </ul>
+      </li>
+
+
+      <li class="has_submenu"><a href="/buildpacks/index.html">Cloud Foundry Buildpacks</a>
+        <ul>
+          <li class="has_submenu"><a href="/buildpacks/cnb/index.html">Cloud Native Buildpacks</a>
+            <ul>
+              <li class=""><a href="/buildpacks/cnb/paketo.html">Paketo Buildpacks</a></li>
+            </ul>
+          </li>
+
+          <li class="has_submenu"><a href="/buildpacks/classic.html">Classic Buildpacks</a>
+          <ul>
+          <li class="has_submenu"><a href="/buildpacks/using-buildpacks.html">What are classic buildpacks?</a>
+            <ul>
+              <li class=""><a href="/buildpacks/understand-buildpacks.html">Working with buildpacks in Cloud Foundry </a></li>
+              <li class=""><a href="/buildpacks/stack-association.html">Stack association</a></li>
+              <li class=""><a href="/buildpacks/use-multiple-buildpacks.html">Pushing an app with multiple buildpacks</a></li>
+              <li class=""><a href="/buildpacks/proxy-usage.html">Using a proxy server</a></li>
+              <li class=""><a href="/buildpacks/supported-binary-dependencies.html">Supported binary dependencies</a></li>
+              <li class=""><a href="/buildpacks/prod-server.html">Configuring the production server</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/buildpacks/binary/index.html">Binary buildpack</a></li>
+          <li class=""><a href="/buildpacks/go/index.html">Go buildpack</a></li>
+          <li class="has_submenu"><a href="/buildpacks/hwc/index.html">Hosted Web Core buildpack</a>
+            <ul>
+              <li class=""><a href="/buildpacks/hwc/extension-buildpack.html">Creating an extension buildpack for .NET apps</a></li>
+              <li class=""><a href="/buildpacks/hwc/web-config-transform-buildpack.html">Using the .NET Framework Web Config Transform Extension Buildpack</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/buildpacks/java/index.html">Java buildpack</a>
+            <ul>
+              <li class=""><a href="/buildpacks/java/java-tips.html">Using Cloud Foundry Java buildpack</a></li>
+              <li class="has_submenu"><a href="/buildpacks/java/getting-started-deploying-apps/index.html">Getting started deploying Java apps to Cloud Foundry</a>
+                <ul>
+                  <li class=""><a href="/buildpacks/java/getting-started-deploying-apps/gsg-grails.html">Getting started deploying your Grails apps to Cloud Foundry</a></li>
+                  <li class=""><a href="/buildpacks/java/getting-started-deploying-apps/gsg-ratpack.html">Getting started deploying Ratpack apps to Cloud Foundry</a></li>
+                  <li class=""><a href="/buildpacks/java/getting-started-deploying-apps/gsg-spring.html">Getting started deploying Spring apps to Cloud Foundry</a></li>
+                </ul>
+              </li>
+              <li class=""><a href="/buildpacks/java/configuring-service-connections.html">Configuring service connections</a></li>
+              <li class=""><a href="/buildpacks/java/java-native-image.html">Using Java Native Image</a></li>
+              <li class=""><a href="/buildpacks/java/java-client.html">Cloud Foundry Java Client Library</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/buildpacks/dotnet-core/index.html">.NET Core buildpack</a></li>
+          <li class=""><a href="/buildpacks/nginx/index.html">NGINX buildpack</a></li>
+          <li class="has_submenu"><a href="/buildpacks/node/index.html">Node.js buildpack</a>
+            <ul>
+              <li class=""><a href="/buildpacks/node/node-tips.html">Node.js buildpack-specific information</a></li>
+              <li class=""><a href="/buildpacks/node/node-environment.html">Environment variables defined by Node buildpack</a></li>
+              <li class=""><a href="/buildpacks/node/node-service-bindings.html">Configuring service connections for Node.js application</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/buildpacks/php/index.html">Using PHP buildpack with runtimes</a>
+            <ul>
+              <li class=""><a href="/buildpacks/php/gsg-php-tips.html">Additional information on PHP buildpacks in Cloud Foundry</a></li>
+              <li class=""><a href="/buildpacks/php/gsg-php-usage.html">Getting started deploying PHP apps to Cloud Foundry</a></li>
+              <li class=""><a href="/buildpacks/php/gsg-php-config.html">PHP buildpack configuration</a></li>
+              <li class=""><a href="/buildpacks/php/gsg-php-composer.html">Composer</a></li>
+              <li class=""><a href="/buildpacks/php/gsg-php-sessions.html">Sessions</a></li>
+              <li class=""><a href="/buildpacks/php/gsg-php-newrelic.html">New Relic</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/buildpacks/python/index.html">Python buildpack</a></li>
+          <li class=""><a href="/buildpacks/r/index.html">R buildpack</a></li>
+          <li class="has_submenu"><a href="/buildpacks/ruby/index.html">Ruby buildpack</a>
+            <ul>
+              <li class=""><a href="/buildpacks/ruby/ruby-tips.html">Additional information on Ruby buildpacks in Cloud Foundry</a></li>
+              <li class="has_submenu"><a href="/buildpacks/ruby/deploying-apps-index.html">Getting started deploying Ruby apps</a>
+                <ul>
+                  <li class=""><a href="/buildpacks/ruby/gsg-ruby.html">Getting started deploying Ruby apps</a></li>
+                  <li class=""><a href="/buildpacks/ruby/gsg-ror.html">Getting started deploying Ruby on Rails apps</a></li>
+                  <li class=""><a href="/buildpacks/ruby/sample-ror.html">Deploy a sample Ruby on Rails app</a></li>
+                </ul>
+              </li>
+              <li class=""><a href="/buildpacks/ruby/rake-config.html">Configuring Rake tasks for deployed apps</a></li>
+              <li class=""><a href="/buildpacks/ruby/ruby-environment.html">Environment variables defined by Ruby buildpack</a></li>
+              <li class=""><a href="/buildpacks/ruby/ruby-service-bindings.html">Configuring service connections for Ruby</a></li>
+              <li class=""><a href="/buildpacks/ruby/windows.html">Windows Gemfile support</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/buildpacks/staticfile/index.html">Staticfile buildpacks</a></li>
+          <li class="has_submenu"><a href="/buildpacks/custom.html">Creating custom buildpacks</a>
+            <ul>
+              <li class=""><a href="/buildpacks/depend-pkg-offline.html">Packaging dependencies for offline buildpacks</a></li>
+              <li class=""><a href="/buildpacks/merging_upstream.html">Merging from upstream buildpacks</a></li>
+              <li class=""><a href="/buildpacks/upgrading_dependency_versions.html">Upgrading dependency versions for Cloud Foundry</a></li>
+              <li class="has_submenu"><a href="/buildpacks/buildpack-ci-index.html">Using CI for buildpacks</a>
+                <ul>
+                  <li class=""><a href="/buildpacks/releasing_a_new_buildpack_version.html">Releasing a new Cloud Foundry buildpack version</a></li>
+                  <li class=""><a href="/buildpacks/updating-buildpack-related-gems.html">Updating buildpack-related gems in Cloud Foundry</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+        </ul>
+      </li>
+
+      <li><span><hr></span></li>
+      <li class="has_submenu"><span>Information for Managed Service Authors</span>
+        <ul>
+          <li class=""><a href="/services/overview.html">Services in Cloud Foundry</a></li>
+          <li class="has_submenu"><span>Service Broker API</span>
+            <ul>
+              <li class=""><a href="https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/spec.md">Open Service Broker API</a></li>
+              <li class=""><a href="https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/profile.md">Platform profiles</a></li>
+              <li class=""><a href="https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/profile.md#service-metadata">Catalog metadata</a></li>
+              <li class=""><a href="https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/spec.md#volume-mounts-object">Volume services</a></li>
+              <li class=""><a href="https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/release-notes.md">Release Notes</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/services/managing-service-brokers.html">Managing service brokers in Cloud Foundry</a></li>
+          <li class=""><a href="/services/access-control.html">Managing access to service plans</a></li>
+          <li class=""><a href="/services/binding-credentials.html">Binding credentials in Cloud Foundry</a></li>
+          <li class="has_submenu"><a href="/credhub/index.html">CredHub</a>
+            <ul>
+              <li class=""><a href="/credhub/setup-credhub-bosh.html">Setting up and deploying CredHub with BOSH</a></li>
+              <li class=""><a href="/credhub/hsm-config.html">Configuring a hardware security module</a></li>
+              <li class=""><a href="/credhub/kms-plugin.html">Using a key management service with CredHub</a></li>
+              <li class=""><a href="/credhub/credential-types.html">CredHub credential types</a></li>
+              <li class=""><a href="/credhub/backup-restore.html">Backing up and restoring CredHub instances</a></li>
+              <li class=""><a href="/credhub/troubleshooting-credhub.html">Troubleshooting CredHub</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/services/dashboard-sso.html">Dashboard Single Sign-on</a></li>
+          <li class=""><a href="/services/enable-sharing.html">Service instance sharing in Cloud Foundry</a></li>
+          <li class=""><a href="/services/examples.html">Service broker examples</a></li>
+          <li class=""><a href="/services/app-log-streaming.html">App log streaming in Cloud Foundry</a></li>
+          <li class=""><a href="/services/route-services.html">Offering Route Services in Cloud Foundry</a></li>
+          <li class=""><a href="/services/supporting-multiple-cf-instances.html">Supporting multiple CF instances</a></li>
+        </ul>
+      </li>
+      <li><span><hr></span></li>
+      <li class="has_submenu"><span>User Account and Authentication</span>
+        <ul>
+          <li class=""><a href="/uaa/uaa-overview.html">UAA Overview</a></li>
+          <li class=""><a href="/uaa/uaa-concepts.html">UAA Concepts</a></li>
+          <li class=""><a href="/uaa/identity-providers.html">Identity Providers in UAA</a></li>
+          <li class=""><a href="/uaa/uaa-metrics.html">UAA Metrics</a></li>
+
+        </ul>
+      </li>
+      <li><strong>API Reference</strong></li>
+      <li class=""><a href="https://docs.cloudfoundry.org/api/uaa/index.html">UAA API</a></li>
+      <li class="has_submenu"><span>CAPI API</span>
+        <ul>
+          <li class=""><a href="/running/rate-limit-cloud-controller-api.html">Rate limit information returned by the Cloud Controller API</a></li>
+          <li class=""><a href="https://v2-apidocs.cloudfoundry.org">CAPI V2</a></li>
+          <li class=""><a href="https://v3-apidocs.cloudfoundry.org/index.html">CAPI V3</a></li>
+          <li class=""><a href="https://docs.cloudfoundry.org/api/credhub/">CredHub API documentation</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container">
+    Using an external file system (volume services)
+  </h1>
+
+          <div class="js-quick-links">
+            
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        <p id="modified-date"><strong>Page last updated: <span data-behavior="DisplayModifiedDate" data-modified-date="1784669156000"></span></strong></p>
+
+        <p>Here are instructions to help you read and write to a mounted file system from your apps.
+In Cloud Foundry, a volume service provides a volume so your app can read
+or write to a reliable, persistent file system.</p>
+
+<p class="note"><span class="note__title"><strong>Note</strong></span> NFS and SMB volume services are available for Linux cells only. These services are not available for Windows cells.</p>
+
+<h2 id="-prerequisite"><a id="pre"></a> Prerequisite</h2>
+
+<p>Before you can use a volume service with your app, find out if any volume services are available for your app.</p>
+
+<ol>
+<li><p>Log in to the Cloud Foundry Command Line Interface (cf CLI). Run:</p>
+<pre class="highlight plaintext"><code>cf login
+</code></pre></li>
+<li><p>List available NFS volume services. Run:</p>
+<pre class="highlight plaintext"><code>cf marketplace
+</code></pre>
+
+<p>See the following example output of the NFS volume service:</p>
+
+<pre class="terminal">
+cf marketplace
+service   plans      description
+nfs       Existing   Service for connecting to NFS volumes
+</pre></li>
+<li><p>Do one of the following:</p>
+
+<ul>
+<li><strong>If no NFS volume service exists</strong>: If no volume service that fits your requirements exists, contact your Cloud Foundry administrator. Your admin can add volume services to the deployment.</li>
+<li><strong>If an NFS volume service exists</strong>: Continue to <a href="#mount-external-filesystem">Mount an external file system</a>.</li>
+</ul></li>
+</ol>
+
+<h2 id="-mount-an-external-file-system"><a id="mount-external-filesystem"></a> Mount an external file system</h2>
+
+<p>The following sections describe how to mount an external file system to your app.</p>
+
+<h3 id="-create-and-bind-a-service-instance"><a id="create"></a> Create and bind a service instance</h3>
+
+<p>To use a volume service deployed by your Cloud Foundry administrator, you must first create an instance of the specific volume service that you need.</p>
+
+<p class="note">
+<span class="note__title"><strong>Note</strong></span>
+You can also bind volume services using an app manifest. However, app manifests do not support bind configuration. To bind a volume service using an app manifest, you must specify bind configuration when you create the service instance. The releases that support this are <code>nfs-volume</code> v1.3.1 and later and <code>smb-volume</code> v1.0.0 and later. For more information, see <a href="../deploy-apps/manifest.html#services-block">Services</a> in <em>Deploying with App Manifests</em>.
+</p>
+
+<p>To create and bind an instance for the volume service:</p>
+
+<ol>
+<li><p>Create a service instance:</p>
+
+<ul>
+<li><strong>NFS</strong>: See <a href="#create-nfs">Create an NFS volume service</a>.</li>
+<li><strong>SMB</strong>: See <a href="#create-smb">Create an SMB volume service</a>.</li>
+</ul></li>
+<li><p>Bind your service instance to an app:</p>
+
+<ul>
+<li><p><strong>NFS-only</strong>: Bind an NFS service instance to an app. Run:</p>
+<pre class="highlight plaintext"><code>cf bind-service YOUR-APP SERVICE-NAME -c '{"mount":"OPTIONAL-MOUNT-PATH","readonly":true}'
+</code></pre>
+
+<p>The app file operations use the UID of the running app process. For buildpack apps, this UID is always <code>2000</code>. For Docker apps, the effective UID is the same as the UID of the process inside the Docker container, except for <code>root</code>, which is mapped to <code>4294967294</code> outside the Docker container.</p>
+
+<p>Or to use UID/GID mapping:
+<code>
+cf bind-service YOUR-APP SERVICE-NAME -c &#39;{&quot;uid&quot;:&quot;UID&quot;,&quot;gid&quot;:&quot;GID&quot;,&quot;mount&quot;:&quot;OPTIONAL-MOUNT-PATH&quot;,&quot;readonly&quot;:true}&#39;
+</code>
+<br>
+Where:
+<ul>
+  <li><code>YOUR-APP</code> is the name of the app for which you want to use the volume service.</li>
+  <li><code>SERVICE-NAME</code> is the name of the volume service instance you created in an earlier step.</li>
+  <li>
+    <p>(Optional) <code>UID</code> and <code>GID</code> are the UID and GID to use when mounting the share to the app.
+    The <code>GID</code> and <code>UID</code> must be positive integer values greater than <code>0</code>.
+    Provide the UID and GID as a JSON string in-line or in a file.
+    If you omit <code>uid</code> and <code>gid</code>, the driver skips <code>mapfs</code> mounting and performs
+    only the normal kernel mount of the NFS file system without the performance overhead associated with FUSE mounts.
+    <br>
+    The key advantage of specifying <code>UID</code> and <code>GID</code> is that you can specify different values for different apps, so
+    file permissions can be granted at the app level. If this is not needed, the you can eliminate the performance overhead of <code>mapfs</code> by managing permissions on the NFS server.<br>
+    The user specified by <code>uid</code> must have access to the files on the share. When <code>uid</code> and <code>gid</code> are omitted, the app file operations use the UID of the running app process. For buildpack apps, this UID is always <code>2000</code>. For Docker apps, the effective UID is the same as the UID of the process inside the Docker container, except for <code>root</code>, which is mapped to <code>4294967294</code> outside the Docker container.</p>
+    <p class="note caution">
+    <span class="note__title"><strong>Caution</strong></span>
+    Specifying UID and GID values affects performance because the FUSE file system mapfs is used to translate UID and GID values.
+    </p>
+  </li>
+  <li>
+    (Optional) <code>OPTIONAL-MOUNT-PATH</code> is a JSON string that indicates that the volume must be mounted to a particular path in your app rather than the default path. Choose a path with a root-level directory that already exists in the container, such as <code>/home</code>, <code>/usr</code>, or <code>/var</code>.
+    <p class="note important">
+    <span class="note__title"><strong>Important</strong></span>
+    Do not specify a <code>MOUNT-PATH</code> in the <code>/app</code> directory, which is where Cloud Foundry unpacks the droplet. For more information, see <a href="#mount-path">Mount a shared volume in the /app directory</a>.
+    </p>
+  </li>
+  <li>
+    (Optional) <code>&quot;readonly&quot;:true</code> is a JSON string that creates a read-only mount. By default, Volume Services mounts a read-write file system. For read-only mounts, the driver activates attribute caching. This results in fewer attribute RPCs and better performance.
+  </li>
+</ul></p>
+
+<p>The following example shows binding <code>my-app</code> to the <code>nfs_service_instance</code> and specifying a read-only volume to be mounted to <code>/var/volume1</code>, passing an in-line JSON string:
+<pre class="terminal">
+cf bind-service my-app nfs_service_instance -c &#39;{&quot;uid&quot;:&quot;1000&quot;,&quot;gid&quot;:&quot;1000&quot;,&quot;mount&quot;:&quot;/var/volume1&quot;,&quot;readonly&quot;:true}&#39;
+</pre></p></li>
+<li><p><strong>LDAP-only</strong>: Bind an LDAP service to an app. Run:</p>
+<pre class="highlight plaintext"><code>cf bind-service YOUR-APP SERVICE-NAME -c '{"username":"USERNAME","password":"PASSWORD","mount":"OPTIONAL-MOUNT-PATH","readonly":true}'
+</code></pre>
+
+<p>Where:
+<ul>
+  <li><code>YOUR-APP</code> is the name of the app for which you want to use the volume service.</li>
+  <li><code>SERVICE-NAME</code> is the name of the volume service instance you created in an earlier step.</li>
+  <li>
+    <code>USERNAME</code> and <code>PASSWORD</code> are the user name and password for the LDAP server. If you omit <code>username</code> and <code>password</code>, the driver skips <code>mapfs</code> mounting and performs only the normal kernel mount of the NFS file system without the overhead associated with FUSE mounts.
+  </li>
+  <li>
+    (Optional) <code>OPTIONAL-MOUNT-PATH</code> is a JSON string that indicates the volume must be mounted to a particular path within your app rather than the default path. Choose a path with a root-level directory that already exists in the container, such as <code>/home</code>, <code>/usr</code>, or <code>/var</code>.
+    <p class="note important">
+    <span class="note__title"><strong>Important</strong></span>
+    Do not specify a <code>MOUNT-PATH</code> within the <code>/app</code> directory, which is where Cloud Foundry unpacks the droplet. For more information, see <a href="#mount-path">Mount a shared volume in the /app directory</a>.
+    </p>
+  </li>
+  <li>
+    (Optional) <code>&quot;readonly&quot;:true</code> is a JSON string that creates a read-only mount. By default, Volume Services mounts a read write file system. For read-only mounts, the driver activates attribute caching. This results in fewer attribute RPCs and better performance.
+  </li>
+</ul></p></li>
+</ul></li>
+<li><p>Restage your app. Run:</p>
+<pre class="highlight plaintext"><code>  cf restage YOUR-APP
+</code></pre>
+
+<p>Where <code>YOUR-APP</code> is the name of the app.</p></li>
+</ol>
+
+<h3 id="-access-the-volume-service-from-your-app"><a id='app'></a> Access the volume service from your app</h3>
+
+<p>To access the volume service from your app, you must know which file path to use in your code.</p>
+
+<p>You can view the file path in the details of the service binding, which are available from the <code>VCAP_SERVICES</code> environment variable. See <a href="/devguide/deploy-apps/environment-variable.html#view-env">VCAP_SERVICES</a>.</p>
+
+<p>See <a href="/devguide/services/application-binding.html#credential-delivery-methods">Credential Delivery Methods</a> for information about how to retrieve the volume mount information if you use file-based service bindings.</p>
+
+<p>To access the volume service from your app:</p>
+
+<ol>
+<li><p>View environment variables for your app. Run:</p>
+<pre class="highlight plaintext"><code>cf env YOUR-APP
+</code></pre>
+
+<p>Where <code>YOUR-APP</code> is the name of your app.
+<br>
+<br>
+The following is example output of the <code>cf env</code> command:
+<pre class="terminal">
+$ cf env YOUR-APP
+&quot;VCAP_SERVICES&quot;: {
+  &quot;nfs&quot;: [
+    {
+      &quot;credentials&quot;: {},
+      &quot;label&quot;: &quot;nfs&quot;,
+      &quot;name&quot;: &quot;nfs_service_instance&quot;,
+      &quot;plan&quot;: &quot;Existing&quot;,
+      &quot;provider&quot;: null,
+      &quot;syslog_drain_url&quot;: null,
+      &quot;tags&quot;: [
+        &quot;nfs&quot;
+      ],
+      &quot;volume_mounts&quot;: [
+        {
+          &quot;container_dir&quot;: &quot;/var/vcap/data/153e3c4b-1151-4cf7-b311-948dd77fce64&quot;,
+          &quot;device_type&quot;: &quot;shared&quot;,
+          &quot;mode&quot;: &quot;rw&quot;
+        }
+      ]
+    }
+  ]
+}
+</pre></p></li>
+<li><p>Use the properties under <code>volume_mounts</code> for any information your app needs.
+<table class="table">
+<thead><tr>
+  <th width="30%">
+    Property
+  </th>
+  <th>
+    Description
+  </th>
+</tr></thead>
+<tr>
+  <td><code>container_dir</code></td>
+  <td>String containing the path to the mounted volume that you bound to your app.</td>
+</tr>
+<tr>
+  <td><code>device_type</code></td>
+  <td>The NFS volume release. This only supports <code>shared</code> devices. A <code>shared</code> device represents a distributed file system that can mount on all app instances simultaneously.</td>
+</tr>
+<tr>
+  <td><code>mode</code></td>
+  <td>String that informs what type of access your app has to NFS, either read-only, <code>ro</code>, or read and write, <code>rw</code>.
+    </td>
+</tr>
+</table></p></li>
+</ol>
+
+<h3 id="-mount-a-shared-volume-in-the-/app-directory"><a id='mount-path'></a> Mount a shared volume in the /app directory</h3>
+
+<p>If you specify a mount inside the <code>/app</code> directory, the app might fail to start and parts of the app droplet can be written to the remote file share. This is because Cloud Foundry mounts the volume before moving your compiled app into the droplet.</p>
+
+<p>If your app requires the shared volume to be placed within the <code>/app</code> directory, you can use a symbolic link at app startup.</p>
+
+<p>To mount a volume in the <code>/app</code> directory:</p>
+
+<ol>
+<li><p>Specify a mount volume in a location outside of the <code>/app</code> directory.</p></li>
+<li><p>Create a symbolic link at app startup time, prior to launching the app. For example, run:</p>
+<pre class="highlight plaintext"><code>cf push YOUR-APP -c "ln -s /var/volume1 /app/volume1 &amp;&amp; \$HOME/boot.sh"
+</code></pre>
+
+<p>Where <code>YOUR-APP</code> is the name of the app.</p></li>
+</ol>
+
+<h2 id="-create-and-use-nfs-volume-services"><a id='nfs'></a> Create and use NFS volume services</h2>
+
+<p>This section describes how to use the NFS volume service.</p>
+
+<p>Cloud Foundry offers two NFS volume services:</p>
+
+<ul>
+<li><p><code>nfs</code>: This volume service provides support for NFS volumes using both v3 and v4.x protocols.</p></li>
+<li><p><code>nfs-legacy</code> (deprecated): Although it is deprecated, this volume service is still available due to the difficulty of retiring services. If you use this service, it performs exactly the same mount as the <code>nfs</code> service. For information about migrating to <code>nfs</code>, see <a href="#migrate">Migrate <code>nfs-legacy</code> Services to <code>nfs</code></a>.</p></li>
+</ul>
+
+<p>Both services offer a single plan called <code>Existing</code>.</p>
+
+<p class="note">
+<span class="note__title"><strong>Note</strong></span>
+NFS is not available on Windows systems.
+</p>
+
+<h3 id="-create-an-nfs-volume-service"><a id='create-nfs'></a> Create an NFS volume service</h3>
+
+<p>To create an NFS volume service using the <code>Existing</code> plan of the <code>nfs</code> service:</p>
+
+<ol>
+<li><p>Create an NFS volume service. Run:</p>
+<pre class="highlight plaintext"><code>cf create-service nfs Existing SERVICE-INSTANCE-NAME -c '{"share":"SERVER/SHARE", "version":"NFS-PROTOCOL"}'
+</code></pre>
+
+<p>Where:
+<ul>
+  <li><code>SERVICE-INSTANCE-NAME</code> is a name you provide for this NFS volume service instance.</li>
+  <li><code>SERVER/SHARE</code> is the NFS address of your server and share.
+    <p class="note important">
+    <span class="note__title"><strong>Important</strong></span>
+    Omit the <code>:</code> that usually follows the server name in the address.
+    </p>
+  </li>
+  <li>
+    (Optional) <code>NFS-PROTOCOL</code> is the NFS protocol you want to use. For example, to use NFSv4, set the version to <code>4.1</code>. Valid values are <code>3</code>, <code>4.0</code>, <code>4.1</code> or <code>4.2</code>. If you do not specify a <code>version</code>, the protocol version used is negotiated between client and server at mount time. This usually causes the latest available version to be used.
+  </li>
+</ul>
+<p class="note important">
+<span class="note__title"><strong>Important</strong></span>
+nfs-volume versions <code>v7.1.45 - v7.1.47</code> ship with a recent version of nfs-utils (a dependency of nfs-volume-service). Recent versions of nfs-utils have stricter option parsing. This leads to an issue with environments that configured the <code>vers=3.0</code> mount option.<br>
+NFSv3 does not utilize a MINOR version, but NFSv4 introduced MINOR versions that can be specified.<br>
+This has been mitigated by adding auto-correction logic to the nfsdriver process available with nfs-volume <code>&gt;= v7.1.48</code>.
+</p></p></li>
+<li><p>Confirm that the NFS volume service appears in your list of services. Run:</p>
+<pre class="highlight plaintext"><code>cf services
+</code></pre></li>
+</ol>
+
+<h3 id="-migrate-nfs-legacy-services-to-nfs"><a id='migrate'></a> Migrate nfs-legacy services to nfs</h3>
+
+<p>With the release of NFS Volume Service v1.5.4, the original fuse-based NFS service is deprecated in favor of the later kernel mount-based NFS service. Existing NFS volume service bindings are listed as <code>nfs-legacy</code>.</p>
+
+<p>To migrate from <code>nfs-legacy</code> to the later <code>nfs</code> service,
+Cloud Foundry recommends that you recreate and re-bind your <code>nfs</code> service instances.</p>
+
+<p>With the release of NFS Volume Service v2.0.0, the <code>nfs-legacy</code> service uses the <code>nfs</code> service. To avoid being affected when the <code>nfs-legacy</code> service is retired, recreate and re-bind your service instances using the <code>nfs</code> service.</p>
+
+<h3 id="-deploy-and-bind-a-sample-app"><a id='nfs-sample'></a> Deploy and bind a sample app</h3>
+
+<p>This section describes how to deploy a sample app and bind it to the NFS volume service.</p>
+
+<p>To deploy and bind a sample app:</p>
+
+<ol>
+<li><p>Clone the GitHub repository for the sample app into your workspace by running these commands:</p>
+<pre class="highlight shell_session"><code>cd ~/workspace
+</code></pre>
+<pre class="highlight shell_session"><code>git clone https://github.com/cloudfoundry/cf-acceptance-tests.git
+</code></pre></li>
+<li><p>Change into the <code>cf-acceptance-tests/assets/pora/</code> directory:</p>
+<pre class="highlight shell_session"><code>cd ~/workspace/cf-acceptance-tests/assets/pora
+</code></pre></li>
+<li><p>Push the <code>pora</code> test app by running:</p>
+<pre class="highlight shell_session"><code>cf push pora --no-start
+</code></pre></li>
+<li><p>Bind the service to your app. Run:</p>
+<pre class="highlight plaintext"><code>cf bind-service pora SERVICE-INSTANCE-NAME -c '{"uid":"UID","gid":"GID"}'
+</code></pre>
+
+<p>Where:
+<ul>
+  <li><code>SERVICE-INSTANCE-NAME</code>: The name of the volume service instance you created previously.</li>
+  <li>
+    <code>UID</code> and <code>GID</code>: The <code>UID</code> and <code>GID</code> to use when mounting the share to the app. The NFS driver uses these values in the following ways:
+    <ul>
+      <li>
+        When sending traffic to the NFS server, the NFS driver translates the app user ID
+        and group ID to the <code>UID</code> and <code>GID</code> values.
+      </li>
+      <li>
+        When returning attributes from the NFS server, the NFS driver translates the
+        <code>UID</code> and <code>GID</code> back to the running user UID and default GID.
+        This allows you to interact with your NFS server as a specific user
+        while allowing Cloud Foundry to run your app as an arbitrary user.
+        <code>UID</code> and <code>GID</code> must be positive integer values.
+        <p class="note important">
+        <span class="note__title"><strong>Important</strong></span>
+        In NFS v2.0.0 and later, <code>uid</code> and <code>gid</code> values of <code>0</code> are no longer permissible because of security concerns.
+        </p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    (Optional) <code>mount</code>: Use this option to specify the path at which volumes mount to the application container.
+    The default is an arbitrarily-named directory in <code>/var/vcap/data</code>.
+    You can edit this value if your app has specific requirements. For example:
+    <pre class="terminal">cf bind-service pora myVolume -c &#39;{&quot;mount&quot;:&quot;/var/path&quot;}&#39;</pre>
+  </li>
+  <li>
+    (Optional) <code>readonly</code>: When you run the <code>cf bind-service</code> command, Volume Services mounts a read-write file system by default.
+    You can specify a read-only mount by adding <code>&quot;readonly&quot;:true</code> to the bind configuration JSON string.
+  </li>
+  <li>
+    (Optional) <code>cache</code>: When you run the <code>cf bind-service</code> command,
+    Volume Services mounts the remote file system with attribute caching deactivated by default.
+    You can activate attribute caching using default values by adding <code>&quot;cache&quot;:true</code>
+    to the bind configuration JSON string.
+  </li>
+</ul></p></li>
+<li><p>Start the app. Run:</p>
+<pre class="highlight plaintext"><code>cf start pora
+</code></pre></li>
+<li><p>Confirm the app is running. Run:</p>
+<pre class="highlight plaintext"><code>curl http://pora.YOUR-CF-DOMAIN.com
+</code></pre>
+
+<p>The command returns an instance index for your app.</p></li>
+<li><p>Confirm the app can access the shared volume. Run:</p>
+<pre class="highlight plaintext"><code>curl http://pora.YOUR-CF-DOMAIN.com/write
+</code></pre>
+
+<p>The command writes a file to the share and then reads it back out again.</p></li>
+</ol>
+
+<h3 id="-use-nfs-volume-service"><a id="nfs-additional"></a> Use NFS volume service</h3>
+
+<p>This section describes using the NFS volume service.</p>
+
+<h4 id="-configure-ldap-credentials-with-service-instance-creation"><a id='ldap'></a> Configure LDAP credentials with service instance creation</h4>
+
+<p>If your Cloud Foundry deployment has LDAP activated, you can configure LDAP credentials for your NFS Volume Service instance.</p>
+
+<p>To configure LDAP credentials while creating your NFS Volume Service instance:</p>
+
+<ol>
+<li><p>Specify values for <code>username</code> and <code>password</code> in the JSON string for your <code>cf create-service</code> command:</p>
+<pre class="highlight plaintext"><code>cf create-service nfs PLAN SERVICE-INSTANCE-NAME -c '{"share":"SERVER/SHARE", "username":"USERNAME", "password":"PASSWORD"}'
+</code></pre>
+
+<p>Where:
+<ul>
+  <li><code>PLAN</code> is the name of the service plan.</li>
+  <li><code>SERVICE-INSTANCE-NAME</code> is a name you provide for this NFS Volume Service instance.</li>
+  <li><code>SERVER/SHARE</code> is the NFS address of your server and share.</li>
+  <li><code>USERNAME</code> is a user name you provide for this NFS Volume Service instance.</li>
+  <li><code>PASSWORD</code> is a password you provide for this NFS Volume Service instance.</li>
+</ul></p></li>
+</ol>
+
+<h4 id="-specify-bind-parameters-during-service-instance-creation"><a id='bind-parameters'></a> Specify bind parameters during service instance creation</h4>
+
+<p>As of <code>nfs-volume-release</code> v1.3.1, you can specify bind parameters in advance, when you create a service instance. Use this option if you bind the service to your app in an app manifest, where bind configuration is not supported.</p>
+
+<h4 id="-file-locking-with-flock()-and-lockf()/fcntl()"><a id='flock'></a> File locking with flock() and lockf()/fcntl()</h4>
+
+<p>Apps that use file locking through UNIX system calls such as <code>flock()</code> and <code>fcntl()</code> or script commands such as <code>flock</code> to use the <code>nfs</code> service. The <code>nfs-legacy</code> service uses a fuse mounting process that does not enforce locks across Diego Cells.</p>
+
+<h4 id="-hard-links-in-the-nfs-service"><a id='hard-links'></a> Hard links in the NFS service</h4>
+
+<p>The mapfs UID mapping layer used by the NFS service does not support hard link operations.
+You get a <code>Function not implemented</code> error if you try to create a hard link in an NFS share
+when <code>uid</code> or <code>username</code> is specified for the service.</p>
+
+<p>Workarounds for this issue:</p>
+
+<ul>
+<li>Use symbolic links, <code>ln -s</code>, instead of hard links.</li>
+<li>Omit the <code>uid</code> and <code>gid</code> or the <code>username</code> and <code>password</code> parameters to mount the share without UID mapping.
+For this workaround, the app user must have access to the files on the share.</li>
+</ul>
+
+<h2 id="-create-and-use-smb-volume-services"><a id='smb'></a> Create and use SMB volume services</h2>
+
+<p>This section describes how to use a Server Message Block (SMB) volume service. For more information about SMB volume services, see the <a href="https://docs.microsoft.com/en-us/windows/desktop/fileio/microsoft-smb-protocol-and-cifs-protocol-overview">Microsoft documentation</a> in the Microsoft documentation.</p>
+
+<h3 id="-create-an-smb-volume-service"><a id='create-smb'></a> Create an SMB volume service</h3>
+
+<p>Cloud Foundry offers an <code>smb</code> volume service.
+This volume service provides support for existing SMB shares.</p>
+
+<p>The service offers a single plan called <code>Existing</code>.</p>
+
+<p>To create an SMB volume service:</p>
+
+<ol>
+<li><p>Create the service by running:</p>
+<pre class="highlight plaintext"><code>cf create-service smb Existing SERVICE-INSTANCE-NAME -c '{"share":"//SERVER/SHARE", "version":"SMB-VERSION"}'
+</code></pre>
+
+<p>Where:
+<ul>
+  <li><code>SERVICE-INSTANCE-NAME</code> is a name you provide for this SMB volume service instance.</li>
+  <li><code>//SERVER/SHARE</code> is the SMB address of your server and share.</li>
+  <li>
+    (Optional) <code>SMB-VERSION</code> is the SMB protocol version you want to use. For example, to use SMB 2.1, set the version to <code>2.1</code>. Valid values are <code>1.0</code>, <code>2.0</code>, <code>2.1</code>, or <code>3.0</code>, <code>3.1.1</code>. If you do not specify a <code>version</code>, the client and server negotiate a protocol version at mount time. The client and server usually select the latest available version. 3.1.1 is supported as of <a href="https://github.com/cloudfoundry/smb-volume-release/releases/tag/v3.2.0">v3.2.0 smb-volume-release</a>.
+  </li>
+</ul></p></li>
+<li><p>Confirm that the SMB volume service appears in your list of services. Run:</p>
+<pre class="highlight plaintext"><code>cf services
+</code></pre></li>
+</ol>
+
+<h3 id="-deploy-and-bind-a-sample-app"><a id='smb-sample'></a> Deploy and bind a sample app</h3>
+
+<p>This section describes how to deploy a sample app and bind it to the SMB volume service.</p>
+
+<p>To deploy and bind a sample app:</p>
+
+<ol>
+<li><p>Clone the GitHub repository for the sample app into your workspace. Run:</p>
+<pre class="highlight shell_session"><code>cd ~/workspace
+</code></pre>
+<pre class="highlight shell_session"><code>git clone https://github.com/cloudfoundry/cf-acceptance-tests.git
+</code></pre></li>
+<li><p>Change into the <code>cf-acceptance-tests/assets/pora/</code> directory:</p>
+<pre class="highlight shell_session"><code>cd ~/workspace/cf-acceptance-tests/assets/pora
+</code></pre></li>
+<li><p>Push the <code>pora</code> test app. Run:</p>
+<pre class="highlight shell_session"><code>cf push pora --no-start
+</code></pre></li>
+<li><p>Bind the service to your app. Run:</p>
+<pre class="highlight plaintext"><code>cf bind-service pora SERVICE-INSTANCE-NAME -c '{"username":"USERNAME","password":"PASSWORD"}'
+</code></pre>
+
+<p>Where:
+<ul>
+  <li>
+    <p><code>SERVICE-INSTANCE-NAME</code>: The name of the volume service instance you created previously.</p>
+  </li>
+  <li>
+    <p><code>USERNAME</code> and <code>PASSWORD</code>: The user name and password to use when mounting the share to the app. This allows you to interact with your SMB server as a specific user while allowing Cloud Foundry to run your app as an arbitrary user.</p>
+  </li>
+  <li>
+    <p>(Optional) <code>mount</code>: Use this option to specify the path at which volumes mount to the application container. The default is an arbitrarily-named directory in <code>/var/vcap/data</code>. You can edit this value if your app has specific requirements. For example, run:</p>
+    <pre class="terminal">cf bind-service pora myVolume -c &#39;{&quot;username&quot;:&quot;some-user&quot;,&quot;password&quot;:&quot;some-password&quot;,&quot;mount&quot;:&quot;/var/path&quot;}&#39;</pre>
+  </li>
+  <li>
+    <p>(Optional) <code>readonly</code>: When you run the <code>cf bind-service</code> command, Volume Services mounts a read-write file system by default. You can specify a read-only mount by adding <code>&quot;readonly&quot;:true</code> to the bind configuration JSON string.</p>
+  </li>
+  <li>
+    <p>(Optional) <code>domain</code>: If you use a Windows domain, you can specify a <code>domain</code> parameter.</p>
+  </li>
+</ul></p></li>
+<li><p>Start the app. Run:</p>
+<pre class="highlight plaintext"><code>cf start pora
+</code></pre></li>
+<li><p>Confirm the app is running. Run:</p>
+<pre class="highlight plaintext"><code>curl http://pora.YOUR-CF-DOMAIN.com
+</code></pre>
+
+<p>The command returns an instance index for your app.</p></li>
+<li><p>Confirm the app can access the shared volume. Run:</p>
+<pre class="highlight plaintext"><code>curl http://pora.YOUR-CF-DOMAIN.com/write
+</code></pre>
+
+<p>The command writes a file to the share and then reads it back out again.</p></li>
+</ol>
+
+        <a id='repo-link' href="https://github.com/cloudfoundry/docs-dev-guide/tree/master/services/using-vol-services.html.md.erb">Create a pull request or raise an issue on the source for this page in GitHub</a>
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    <div class="copyright">
+  <a href='/'>Cloud Foundry Documentation</a>
+  &copy; 2026 <a href='https://cloudfoundry.org'>Cloud Foundry Foundation</a>. All Rights Reserved.
+</div>
+<div class="support">
+  <a href="https://www.cloudfoundry.org/community/" target="_blank">Get Involved</a>
+</div>
+
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

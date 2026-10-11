@@ -1,0 +1,29 @@
+# Which note kinds each default theme styles, read from the built sites' stylesheets (2026-10-10).
+
+## Zensical 0.0.69: site/assets/stylesheets/modern/main.e15858d4.min.css
+# Admonition types with an icon of their own:
+  abstract
+  bug
+  danger
+  example
+  failure
+  info
+  mkdocstrings
+  note
+  question
+  quote
+  success
+  tip
+  warning
+# Occurrences of the class names .important and .caution in the stylesheet:
+  .important: 0   .caution: 0
+# So !!! important and !!! caution get the default admonition look, the same as note
+# (browser-checks.txt: background rgba(68, 138, 255, 0.1) for all three).
+
+## Antora 3.2.1, default UI (the pinned bundle): site/_/css/site.css
+  .admonitionblock td.icon i.icon-caution{background-color:#a0439c;color:#fff}
+  .admonitionblock td.icon i.icon-important{background-color:#d32f2f;color:#fff}
+  .admonitionblock td.icon i.icon-note{background-color:#217ee7;color:#fff}
+  .admonitionblock td.icon i.icon-tip{background-color:#41af46;color:#fff}
+  .admonitionblock td.icon i.icon-warning{background-color:#e18114;color:#fff}
+  .admonitionblock td.icon i::after{content:attr(title);font-weight:600;font-style:normal;text-transform:uppercase}

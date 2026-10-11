@@ -1,0 +1,30 @@
+# Zensical 0.0.69: the build's warnings (make build), colours removed
+sed 's/^template_variables:/vars:/' ../../source/template_variables.yml > vars.yml
+uv run --project . zensical build --clean
+Build started
+Warning: anchor does not exist
+    ╭─[ native/routes-domains.md:40:243 ]
+ 40 │ If a developer pushes an app without specifying a domain, a route is created for it from the first shared domain created in the system. All other operations involving route require the domain be specified. For more information, see [Routes](#routes).
+    │                                                                                                                                                                                                                                                   ───┬──  
+    │                                                                                                                                                                                                                                                      ╰──── anchor does not exist
+────╯
+Warning: anchor does not exist
+    ╭─[ native/using-vol-services.md:22:310 ]
+ 22 │ * `nfs-legacy` (deprecated): Although it is deprecated, this volume service is still available due to the difficulty of retiring services. If you use this service, it performs exactly the same mount as the `nfs` service. For information about migrating to `nfs`, see [Migrate `nfs-legacy` Services to `nfs`](#migrate).
+    │                                                                                                                                                                                                                                                                                                                      ───┬───  
+    │                                                                                                                                                                                                                                                                                                                         ╰───── anchor does not exist
+────╯
+Warning: anchor does not exist
+    ╭─[ passthrough/routes-domains.md:40:243 ]
+ 40 │ If a developer pushes an app without specifying a domain, a route is created for it from the first shared domain created in the system. All other operations involving route require the domain be specified. For more information, see [Routes](#routes).
+    │                                                                                                                                                                                                                                                   ───┬──  
+    │                                                                                                                                                                                                                                                      ╰──── anchor does not exist
+────╯
+Warning: anchor does not exist
+    ╭─[ passthrough/using-vol-services.md:22:310 ]
+ 22 │ * `nfs-legacy` (deprecated): Although it is deprecated, this volume service is still available due to the difficulty of retiring services. If you use this service, it performs exactly the same mount as the `nfs` service. For information about migrating to `nfs`, see [Migrate `nfs-legacy` Services to `nfs`](#migrate).
+    │                                                                                                                                                                                                                                                                                                                      ───┬───  
+    │                                                                                                                                                                                                                                                                                                                         ╰───── anchor does not exist
+────╯
+4 issues found
+Build finished in 0.47s

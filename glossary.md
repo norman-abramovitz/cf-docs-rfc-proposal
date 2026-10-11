@@ -722,11 +722,14 @@ Learn more: [concepts/README.md](concepts/README.md).
 
 A highlighted block that sets a note, tip or warning apart from the text
 around it. The CF pages write notes as HTML, `<p class="note">` with a
-`note__title` span, and one variable (`route_services`) holds such a note.
+`note__title` span, and 12 variables hold such a note, 7 of them used by
+pages ([note survey](concepts/notes/survey/README.md#the-books-notes)).
 Most candidate tools have admonition syntax of their own, such as `:::note`
 in Docusaurus. RFC #1642 says customization "is handled by MDX 3 features of
-the current Docusaurus version, such as admonitions" ([RFC L100][L100]). Notes and admonitions are
-a proposed concept, not yet worked ([concepts/README.md](concepts/README.md);
+the current Docusaurus version, such as admonitions" ([RFC L100][L100]). The notes round converted
+four pages' notes into each tool's admonition in all four hands-on tools,
+checked with a notes check; its conventions are under review
+([notes results](concepts/notes/results.md#summary);
 [R-07](requirements/README.md#r-07) notes and admonitions).
 
 Learn more: [Admonitions in Docusaurus](https://docusaurus.io/docs/markdown-features/admonitions).

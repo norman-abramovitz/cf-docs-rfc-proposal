@@ -1,0 +1,18 @@
+$ ../../checks/check-site.sh site "" raw
+== raw/cf-backup
+FAIL  outline: published 7 headings, built 4
+        - h4 Restoring apps when using selective backups   #restoring-apps-when-using-selective-backups #selective-backup-restore-steps
+        - h3 Applying ops files in the correct order   #-applying-ops-files-in-the-correct-order #order
+        - h2 Next steps   #-next-steps #process
+info  ids used more than once on the built page (1): #supported-external-databases
+info  published heading ids not on the built page (3): #restoring-apps-when-using-selective-backups #-applying-ops-files-in-the-correct-order #-next-steps
+FAIL  count: expected 3 notes, found 2
+ok    note 1: caution -> caution, title 'Caution', 114 words, list=4 code=2 link=1, body
+FAIL  note 2 (caution, html:caution): holds code=2 link=1, expected link=1; text differs at word 41: expected '', found 'Restoring apps when using selective backups'
+FAIL  note 3: missing (note: You can apply other component ops files before the backup an)
+== raw/using-vol-services
+skip  not in this mode
+== raw/healthchecks
+skip  not in this mode
+== raw/routes-domains
+skip  not in this mode

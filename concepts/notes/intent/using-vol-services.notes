@@ -1,0 +1,10 @@
+# Notes on published/using-vol-services.html in the excerpt the sites convert: the note
+# before the first heading (held in the variable external_vol_win_note) and the three in
+# "Create and use NFS volume services" up to "Migrate nfs-legacy services to nfs".
+# Written with: python3 -I checks/notes.py published/using-vol-services.html --emit
+# (notes 1, 6, 7 and 8 of its output; the page has 9 notes)
+# Fields, separated by tabs: kind, title, holds, section, place, text
+note	Note	-	Using an external file system (volume services)	body	NFS and SMB volume services are available for Linux cells only. These services are not available for Windows cells.
+note	Note	-	Create and use NFS volume services	body	NFS is not available on Windows systems.
+important	Important	code=1	Create an NFS volume service	list	Omit the : that usually follows the server name in the address.
+important	Important	code=3	Create an NFS volume service	list	nfs-volume versions v7.1.45 - v7.1.47 ship with a recent version of nfs-utils (a dependency of nfs-volume-service). Recent versions of nfs-utils have stricter option parsing. This leads to an issue with environments that configured the vers=3.0 mount option. NFSv3 does not utilize a MINOR version, but NFSv4 introduced MINOR versions that can be specified. This has been mitigated by adding auto-correction logic to the nfsdriver process available with nfs-volume >= v7.1.48.

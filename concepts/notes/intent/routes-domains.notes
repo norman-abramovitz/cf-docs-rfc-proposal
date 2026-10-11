@@ -1,0 +1,10 @@
+# Notes on ../headings/published/routes-domains.html in the excerpt the sites convert:
+# the Domains section. Written with:
+# python3 -I checks/notes.py ../headings/published/routes-domains.html --emit
+# (notes 5 to 9 of its output; the page has 9 notes)
+# Fields, separated by tabs: kind, title, holds, section, place, text
+note	Note	code=2 link=1	Create a shared domain	body	To create a domain that requires mutual TLS and enforces identity-based route policies, add the --enforce-route-policies flag (optionally with --scope). This setting is fixed when the domain is created and cannot be changed afterward. See Configuring identity-aware routing.
+important	Important	-	Create a shared domain	body	cf CLI v7+ does not support TCP routing or creating shared domains with router groups.
+note	Note	code=2 link=1	Create a private domain	body	Org managers can create an identity-aware private domain by adding --enforce-route-policies (optionally with --scope). This setting is fixed at creation. See Configuring identity-aware routing.
+note	Note	-	Configuring DNS for your registered root domain	body	Root domains are also called zone apex domains.
+important	Important	link=1	Configuring DNS for your registered root domain	body	If you use domain forwarding, SSL requests to the root domain might fail if the SSL certificate matches only the subdomain. For more information about SSL certificates, see the Cloud Foundry documentation.

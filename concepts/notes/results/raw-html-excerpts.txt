@@ -1,0 +1,23 @@
+# Built HTML excerpts behind the raw-mode findings (notes as the source writes them).
+# Each block names the tool and the built page, then shows the lines with the effect.
+
+## Docusaurus 3.10.2, build/raw/routes-domains/index.html: a <p class="note"> written over several lines
+# MDX puts the note's text in a paragraph of its own, a <p> inside the <p>. The static HTML the
+# build writes closes the note before its text, so the note is empty and its text follows it:
+<p class="note"></p><p><span class="note__title"><strong>Note</strong></span>
+
+## Starlight 0.42.6, dist/raw/using-vol-services/index.html: '<code>>= v7.1.48</code>' inside an HTML note
+nfs-volume <code><blockquote><p>= v7.1.48</p></blockquote></code>.
+
+## Starlight 0.42.6, dist/raw/healthchecks/index.html: spaces next to inline tags in a note's text
+# Second line of a note written over three lines:
+of a deployed app with the<code>cf set-health-check</code>command, you must restart
+# One line, a variable earlier on the same line:
+recommends setting the health check type to<code>http</code> instead
+
+## Antora 3.2.1, site/raw/using-vol-services/index.html: a Markdown code span inside a passthrough block
+configured the `vers=3.0` mount option
+
+## Zensical 0.0.69, site/raw/cf-backup/index.html: the first note never closed
+# Python-Markdown reads the rest of the page as raw HTML; the next heading is left as Markdown text:
+842:#### <a id='selective-backup-restore-steps'></a>Restoring apps when using selective backups

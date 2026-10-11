@@ -1,0 +1,111 @@
+# Browser checks, 2026-10-10: Google Chrome through Playwright (checks/notes-browser.mjs), 1280 x 900 window.
+# The published pages as docs.cloudfoundry.org served them that day; each built site served with
+# python3 -m http.server from its build directory (Zensical :8101, Docusaurus :8102, Starlight :8103, Antora :8104).
+# Colours are computed styles; appearance is not compared, they show only whether a note has a box
+# and whether the three kinds look different.
+
+https://docs.cloudfoundry.org/bbr/cf-backup.html
+  console errors: none
+  1. note caution | label "Caution" | box: border rgb(235, 235, 211), background rgb(255, 255, 237) | Caution Backup artifacts can contain secrets. Secu
+  2. note caution | label "Caution" | box: border rgb(235, 235, 211), background rgb(255, 255, 237) | Caution Selective backups increase your overall re
+  3. note | label "Note" | box: border rgb(235, 235, 211), background rgb(255, 255, 237) | Note You can apply other component ops files befor
+
+https://docs.cloudfoundry.org/devguide/deploy-apps/healthchecks.html
+  console errors: none
+  1. note important | label "Important" | box: border rgb(235, 235, 211), background rgb(255, 255, 237) | Important The health check configuration that you 
+  2. note important | label "Important" | box: border rgb(235, 235, 211), background rgb(255, 255, 237) | Important After you set the health check configura
+  3. note important | label "Important" | box: border rgb(235, 235, 211), background rgb(255, 255, 237) | Important To prevent false negatives, use a dedica
+  4. note important | label "Important" | box: border rgb(235, 235, 211), background rgb(255, 255, 237) | Important For HTTP apps, Cloud Foundry recommends 
+
+http://localhost:8101/passthrough/cf-backup/
+  console errors: none
+  1. note caution | label "Caution" | no box | Caution Backup artifacts can contain secrets. Secu
+  2. note caution | label "Caution" | no box | Caution Selective backups increase your overall re
+  3. note | label "Note" | no box | Note You can apply other component ops files befor
+
+http://localhost:8101/native/cf-backup/
+  console errors: none
+  1. admonition caution | label "Caution" | box: border -, background rgba(68, 138, 255, 0.1) | Caution Backup artifacts can contain secrets. Secu
+  2. admonition caution | label "Caution" | box: border -, background rgba(68, 138, 255, 0.1) | Caution Selective backups increase your overall re
+  3. admonition note | label "Note" | box: border -, background rgba(68, 138, 255, 0.1) | Note You can apply other component ops files befor
+
+http://localhost:8101/native/healthchecks/
+  console errors: none
+  1. admonition important | label "Important" | box: border -, background rgba(68, 138, 255, 0.1) | Important The health check configuration that you 
+  2. admonition important | label "Important" | box: border -, background rgba(68, 138, 255, 0.1) | Important After you set the health check configura
+  3. admonition important | label "Important" | box: border -, background rgba(68, 138, 255, 0.1) | Important To prevent false negatives, use a dedica
+  4. admonition important | label "Important" | box: border -, background rgba(68, 138, 255, 0.1) | Important For HTTP apps, Cloud Foundry recommends 
+
+http://localhost:8102/passthrough/cf-backup/
+  console errors: none
+  1. note caution | label "Caution" | no box | Caution Backup artifacts can contain secrets. Secu
+  2. note caution | label "Caution" | no box | Caution Selective backups increase your overall re
+  3. note | label "Note" | no box | Note You can apply other component ops files befor
+
+http://localhost:8102/native/cf-backup/
+  console errors: none
+  1. theme-admonition theme-admonition-danger admonition_xJq3 alert alert--danger | label "CAUTION" | box: border rgb(225, 50, 56), background rgb(255, 235, 236) | CAUTION Backup artifacts can contain secrets. Secu
+  2. theme-admonition theme-admonition-danger admonition_xJq3 alert alert--danger | label "CAUTION" | box: border rgb(225, 50, 56), background rgb(255, 235, 236) | CAUTION Selective backups increase your overall re
+  3. theme-admonition theme-admonition-note admonition_xJq3 alert alert--secondary | label "NOTE" | box: border rgb(212, 213, 216), background rgb(253, 253, 254) | NOTE You can apply other component ops files befor
+
+http://localhost:8102/native/healthchecks/
+  console errors: none
+  1. theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning | label "IMPORTANT" | box: border rgb(230, 167, 0), background rgb(255, 248, 230) | IMPORTANT The health check configuration that you 
+  2. theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning | label "IMPORTANT" | box: border rgb(230, 167, 0), background rgb(255, 248, 230) | IMPORTANT After you set the health check configura
+  3. theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning | label "IMPORTANT" | box: border rgb(230, 167, 0), background rgb(255, 248, 230) | IMPORTANT To prevent false negatives, use a dedica
+  4. theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning | label "IMPORTANT" | box: border rgb(230, 167, 0), background rgb(255, 248, 230) | IMPORTANT For HTTP apps, Cloud Foundry recommends 
+
+http://localhost:8102/passthrough/routes-domains/
+  console errors: none
+  1. note | label "Note" | no box | Note To create a domain that requires mutual TLS a
+  2. note important | label "Important" | no box | Important cf CLI v7+ does not support TCP routing 
+  3. note | label "Note" | no box | Note Org managers can create an identity-aware pri
+  4. note | label "Note" | no box | Note Root domains are also called zone apex domain
+  5. note important | label "Important" | no box | Important If you use domain forwarding, SSL reques
+
+http://localhost:8102/raw/routes-domains/
+  console errors: 
+    Docusaurus React Root onRecoverableError: Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use t [http://localhost:8102/assets/js/main.67dc6073.js]
+  1. note | label "Note" | no box | Note To create a domain that requires mutual TLS a
+  2. note important | label "Important" | no box | Important cf CLI v7+ does not support TCP routing 
+  3. note | label "Note" | no box | Note Org managers can create an identity-aware pri
+  4. note | label "Note" | no box | Note Root domains are also called zone apex domain
+  5. note important | label "Important" | no box | Important If you use domain forwarding, SSL reques
+
+http://localhost:8103/passthrough/cf-backup/
+  console errors: none
+  1. note caution | label "Caution" | no box | Caution Backup artifacts can contain secrets. Secu
+  2. note caution | label "Caution" | no box | Caution Selective backups increase your overall re
+  3. note | label "Note" | no box | Note You can apply other component ops files befor
+
+http://localhost:8103/native/cf-backup/
+  console errors: none
+  1. starlight-aside starlight-aside--danger | label "Caution" | box: border rgb(245, 61, 125), background rgb(250, 209, 223) | Caution Backup artifacts can contain secrets. Secu
+  2. starlight-aside starlight-aside--danger | label "Caution" | box: border rgb(245, 61, 125), background rgb(250, 209, 223) | Caution Selective backups increase your overall re
+  3. starlight-aside starlight-aside--note | label "Note" | box: border rgb(61, 80, 245), background rgb(207, 212, 252) | Note You can apply other component ops files befor
+
+http://localhost:8103/native/healthchecks/
+  console errors: none
+  1. starlight-aside starlight-aside--caution | label "Important" | box: border rgb(245, 187, 61), background rgb(252, 234, 197) | Important The health check configuration that you 
+  2. starlight-aside starlight-aside--caution | label "Important" | box: border rgb(245, 187, 61), background rgb(252, 234, 197) | Important After you set the health check configura
+  3. starlight-aside starlight-aside--caution | label "Important" | box: border rgb(245, 187, 61), background rgb(252, 234, 197) | Important To prevent false negatives, use a dedica
+  4. starlight-aside starlight-aside--caution | label "Important" | box: border rgb(245, 187, 61), background rgb(252, 234, 197) | Important For HTTP apps, Cloud Foundry recommends 
+
+http://localhost:8104/passthrough/cf-backup/
+  console errors: none
+  1. note caution | label "Caution" | no box | Caution Backup artifacts can contain secrets. Secu
+  2. note caution | label "Caution" | no box | Caution Selective backups increase your overall re
+  3. note | label "Note" | no box | Note You can apply other component ops files befor
+
+http://localhost:8104/native/cf-backup/
+  console errors: none
+  1. admonitionblock caution | label "CAUTION" on rgb(160, 67, 156) | box: border -, background rgb(250, 250, 250) | Backup artifacts can contain secrets. Secure backu
+  2. admonitionblock caution | label "CAUTION" on rgb(160, 67, 156) | box: border -, background rgb(250, 250, 250) | Selective backups increase your overall recovery t
+  3. admonitionblock note | label "NOTE" on rgb(33, 126, 231) | box: border -, background rgb(250, 250, 250) | You can apply other component ops files before the
+
+http://localhost:8104/native/healthchecks/
+  console errors: none
+  1. admonitionblock important | label "IMPORTANT" on rgb(211, 47, 47) | box: border -, background rgb(250, 250, 250) | The health check configuration that you provide wi
+  2. admonitionblock important | label "IMPORTANT" on rgb(211, 47, 47) | box: border -, background rgb(250, 250, 250) | After you set the health check configuration of a 
+  3. admonitionblock important | label "IMPORTANT" on rgb(211, 47, 47) | box: border -, background rgb(250, 250, 250) | To prevent false negatives, use a dedicated endpoi
+  4. admonitionblock important | label "IMPORTANT" on rgb(211, 47, 47) | box: border -, background rgb(250, 250, 250) | For HTTP apps, Cloud Foundry recommends setting th

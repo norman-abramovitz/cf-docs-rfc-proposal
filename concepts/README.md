@@ -44,6 +44,6 @@ written.
 | [Headings](headings/) | In progress | Simplest concept; establishes the outline check |
 | Variables | Proposed | `<%= vars.* %>` from `template_variables.yml`; some values contain HTML or Markdown |
 | Partials | Proposed | `<%= partial '...' %>`; some partial names are themselves stored in variables |
-| Notes and admonitions | Proposed | `<p class="note">` with `note__title` spans |
+| [Notes and admonitions](notes/) | In progress | `<p class="note">` with `note__title` spans |
 | Code blocks | Proposed | Shell, console, JSON, YAML; copy button |
 | Cross-repository links | Proposed | Links between content repositories must survive conversion |

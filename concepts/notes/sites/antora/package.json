@@ -1,0 +1,8 @@
+{
+  "name": "notes-round-antora",
+  "private": true,
+  "description": "Notes round: the test pages built with Antora",
+  "devDependencies": {
+    "antora": "3.2.1"
+  }
+}

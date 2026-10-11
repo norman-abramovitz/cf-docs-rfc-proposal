@@ -1,0 +1,32 @@
+$ node markdoc-check.mjs raw-mdoc/*.mdoc
+cf-backup.mdoc: 1 error(s)
+  line NaN: Node 'html-tag' is missing closing
+$ ../../checks/check-site.sh dist "" raw
+== raw/cf-backup
+skip  not in this mode
+== raw/using-vol-services
+ok    outline: 3 headings, same levels and text
+info  published heading ids not on the built page (2): #-create-and-use-nfs-volume-services #-create-an-nfs-volume-service
+ok    count: 4 notes
+ok    note 1: note -> note, title 'Note', 19 words, -, body
+ok    note 2: note -> note, title 'Note', 7 words, -, body
+ok    note 3: important -> important, title 'Important', 12 words, code=1, list
+FAIL  note 4 (important, html:important): text differs at word 5: expected 'v7.1.47 ship with a recent version', found 'v7.1.47ship with a recent version of'
+== raw/healthchecks
+ok    outline: 8 headings, same levels and text
+info  published heading ids not on the built page (7): #-configure-liveness-health-checks-when-creating-or-updating-an-app #-configure-liveness-health-checks-for-an-existing-app #-understanding-health-checks #-health-check-life-cycle #-health-check-types #-health-check-timeouts #-health-check-http-endpoints
+ok    count: 4 notes
+ok    note 1: important -> important, title 'Important', 17 words, code=1, body
+FAIL  note 2 (important, html:important): text differs at word 13: expected 'the cf set-health-check command you must', found 'thecf set-health-checkcommand you must restart the'
+ok    note 3: important -> important, title 'Important', 22 words, -, table
+FAIL  note 4 (important, html:important): text differs at word 12: expected 'to http instead of a simple', found 'tohttp instead of a simple port'
+== raw/routes-domains
+ok    outline: 18 headings, same levels and text
+ok    anchors: all 17 exist
+info  published heading ids not on the built page (12): #-domains #-list-domains-for-an-org #-http-versus-tcp-domains #-shared-domains #-private-domains #-delete-a-private-domain #-requirements-for-parent-and-child-domains #-dns-for-domains #-mapping-domains-to-your-custom-domain #-mapping-a-single-domain-to-your-custom-domain and 2 more
+ok    count: 5 notes
+ok    note 1: note -> note, title 'Note', 39 words, code=2 link=1, body
+ok    note 2: important -> important, title 'Important', 15 words, -, body
+ok    note 3: note -> note, title 'Note', 25 words, code=2 link=1, body
+ok    note 4: note -> note, title 'Note', 8 words, -, body
+FAIL  note 5 (important, html:important): text differs at word 29: expected 'the Cloud Foundry documentation.', found 'theCloud Foundry documentation.'

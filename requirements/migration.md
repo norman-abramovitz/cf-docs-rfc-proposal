@@ -118,7 +118,9 @@ listed for each test page) and a word-by-word text comparison, used in the
 tables round ([checks](../concepts/tables/checks/)). The headings round
 added an outline check: it compares each converted page's headings, in
 order with their levels, with the published page and confirms the anchors
-to keep ([outline.py](../concepts/headings/checks/outline.py)).
+to keep ([outline.py](../concepts/headings/checks/outline.py)). The notes
+round added a notes check: it compares each note's kind, title, words,
+contents and place ([notes.py](../concepts/notes/checks/notes.py)).
 
 ### 5. Owner review
 

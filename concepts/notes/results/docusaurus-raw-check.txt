@@ -1,0 +1,24 @@
+$ node mdx-check.mjs raw-mdx/*.mdx
+FAIL  cf-backup.mdx:undefined: Expected a closing tag for `<p>` (111:1-111:17)
+      > 
+FAIL  healthchecks.mdx:140: Expected a closing tag for `<td>` (142:5-142:9) before the end of `paragraph`
+      > <td><code>http</code></td>
+FAIL  using-vol-services.mdx:46: Expected a closing tag for `<li>` (47:7-47:11) before the end of `paragraph`
+      > <li><code>SERVICE-INSTANCE-NAME</code> is a name you provide for this NFS volume service instance.</li>
+$ ../../checks/check-site.sh build "" raw
+== raw/cf-backup
+skip  not in this mode
+== raw/using-vol-services
+skip  not in this mode
+== raw/healthchecks
+skip  not in this mode
+== raw/routes-domains
+ok    outline: 18 headings, same levels and text
+ok    anchors: all 17 exist
+info  published heading ids not on the built page (12): #-domains #-list-domains-for-an-org #-http-versus-tcp-domains #-shared-domains #-private-domains #-delete-a-private-domain #-requirements-for-parent-and-child-domains #-dns-for-domains #-mapping-domains-to-your-custom-domain #-mapping-a-single-domain-to-your-custom-domain and 2 more
+ok    count: 5 notes
+FAIL  note 1 (note, html:note): title '', expected 'Note'; holds -, expected code=2 link=1; text differs at word 1: expected 'To create a domain that requires', found ''
+FAIL  note 2 (important, html:important): title '', expected 'Important'; text differs at word 1: expected 'cf CLI v7+ does not support', found ''
+FAIL  note 3 (note, html:note): title '', expected 'Note'; holds -, expected code=2 link=1; text differs at word 1: expected 'Org managers can create an identity-aware', found ''
+ok    note 4: note -> note, title 'Note', 8 words, -, body
+ok    note 5: important -> important, title 'Important', 32 words, link=1, body

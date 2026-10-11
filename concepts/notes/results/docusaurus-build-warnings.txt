@@ -1,0 +1,61 @@
+# Docusaurus 3.10.2: the build's broken-link and broken-anchor warnings (make build)
+[WARNING] Docusaurus found broken links!
+
+Please check the pages of your site in the list below, and make sure you don't reference any path that does not exist.
+Note: it's possible to ignore broken links with the 'onBrokenLinks' Docusaurus configuration, and let the build pass.
+
+Exhaustive list of all broken links found:
+- Broken link on source page path = /native/cf-backup:
+   -> linking to restore.html (resolved as: /native/restore.html)
+   -> linking to external-blobstores.html (resolved as: /native/external-blobstores.html)
+   -> linking to backup.html#back-up-deployment (resolved as: /native/backup.html#back-up-deployment)
+   -> linking to restore.html#restore-deployment (resolved as: /native/restore.html#restore-deployment)
+- Broken link on source page path = /native/healthchecks:
+   -> linking to manifest.html (resolved as: /native/manifest.html)
+   -> linking to manifest-attributes.html#optional-attributes (resolved as: /native/manifest-attributes.html#optional-attributes)
+   -> linking to manifest-attributes.html#health-check-type (resolved as: /native/manifest-attributes.html#health-check-type)
+   -> linking to manifest-attributes.html#health-check-interval (resolved as: /native/manifest-attributes.html#health-check-interval)
+   -> linking to manifest-attributes.html#health-check-http-ep (resolved as: /native/manifest-attributes.html#health-check-http-ep)
+   -> linking to manifest-attributes.html#health-check-invoc-time (resolved as: /native/manifest-attributes.html#health-check-invoc-time)
+   -> linking to manifest-attributes.html#readiness-health-check-type (resolved as: /native/manifest-attributes.html#readiness-health-check-type)
+   -> linking to manifest-attributes.html#readiness-health-check-interval (resolved as: /native/manifest-attributes.html#readiness-health-check-interval)
+   -> linking to manifest-attributes.html#readiness-health-check-http-ep (resolved as: /native/manifest-attributes.html#readiness-health-check-http-ep)
+   -> linking to manifest-attributes.html#readiness-health-check-invoc-time (resolved as: /native/manifest-attributes.html#readiness-health-check-invoc-time)
+   -> linking to ../../concepts/diego/diego-architecture.html (resolved as: /concepts/diego/diego-architecture.html)
+- Broken link on source page path = /native/routes-domains:
+   -> linking to identity-aware-routing.html (resolved as: /native/identity-aware-routing.html)
+- Broken link on source page path = /passthrough/cf-backup:
+   -> linking to external-blobstores.html (resolved as: /passthrough/external-blobstores.html)
+   -> linking to backup.html#back-up-deployment (resolved as: /passthrough/backup.html#back-up-deployment)
+   -> linking to restore.html#restore-deployment (resolved as: /passthrough/restore.html#restore-deployment)
+- Broken link on source page path = /passthrough/healthchecks:
+   -> linking to manifest.html (resolved as: /passthrough/manifest.html)
+   -> linking to manifest-attributes.html#optional-attributes (resolved as: /passthrough/manifest-attributes.html#optional-attributes)
+   -> linking to manifest-attributes.html#health-check-type (resolved as: /passthrough/manifest-attributes.html#health-check-type)
+   -> linking to manifest-attributes.html#health-check-interval (resolved as: /passthrough/manifest-attributes.html#health-check-interval)
+   -> linking to manifest-attributes.html#health-check-http-ep (resolved as: /passthrough/manifest-attributes.html#health-check-http-ep)
+   -> linking to manifest-attributes.html#health-check-invoc-time (resolved as: /passthrough/manifest-attributes.html#health-check-invoc-time)
+   -> linking to manifest-attributes.html#readiness-health-check-type (resolved as: /passthrough/manifest-attributes.html#readiness-health-check-type)
+   -> linking to manifest-attributes.html#readiness-health-check-interval (resolved as: /passthrough/manifest-attributes.html#readiness-health-check-interval)
+   -> linking to manifest-attributes.html#readiness-health-check-http-ep (resolved as: /passthrough/manifest-attributes.html#readiness-health-check-http-ep)
+   -> linking to manifest-attributes.html#readiness-health-check-invoc-time (resolved as: /passthrough/manifest-attributes.html#readiness-health-check-invoc-time)
+   -> linking to ../../concepts/diego/diego-architecture.html (resolved as: /concepts/diego/diego-architecture.html)
+
+[WARNING] Docusaurus found broken anchors!
+
+Please check the pages of your site in the list below, and make sure you don't reference any anchor that does not exist.
+Note: it's possible to ignore broken anchors with the 'onBrokenAnchors' Docusaurus configuration, and let the build pass.
+
+Exhaustive list of all broken anchors found:
+- Broken anchor on source page path = /native/routes-domains:
+   -> linking to #routes (resolved as: /native/routes-domains#routes)
+- Broken anchor on source page path = /native/using-vol-services:
+   -> linking to #migrate (resolved as: /native/using-vol-services#migrate)
+- Broken anchor on source page path = /passthrough/routes-domains:
+   -> linking to #routes (resolved as: /passthrough/routes-domains#routes)
+- Broken anchor on source page path = /passthrough/using-vol-services:
+   -> linking to #migrate (resolved as: /passthrough/using-vol-services#migrate)
+- Broken anchor on source page path = /raw/routes-domains:
+   -> linking to #routes (resolved as: /raw/routes-domains#routes)
+
+[SUCCESS] Generated static files in "build".

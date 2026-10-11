@@ -1,0 +1,5 @@
+---
+// Renders an HTML-valued variable as markup; Markdoc renders variables as text.
+const {value} = Astro.props;
+---
+<Fragment set:html={value} />

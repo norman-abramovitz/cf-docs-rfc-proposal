@@ -1,0 +1,7 @@
+# Notes on published/healthchecks.html, every note on the page.
+# Written with: python3 -I checks/notes.py published/healthchecks.html --emit
+# Fields, separated by tabs: kind, title, holds, section, place, text
+important	Important	code=1	Configure liveness health checks when creating or updating an app	body	The health check configuration that you provide with cf push overrides any configuration in the app manifest.
+important	Important	code=1	Configure liveness health checks for an existing app	body	After you set the health check configuration of a deployed app with the cf set-health-check command, you must restart the app for the change to take effect.
+important	Important	-	Health check types	table	To prevent false negatives, use a dedicated endpoint for health checks where response time and result do not depend on business logic.
+important	Important	code=1	Health check HTTP endpoints	body	For HTTP apps, Cloud Foundry recommends setting the health check type to http instead of a simple port check.

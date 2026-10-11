@@ -1,0 +1,37 @@
+# Antora playbook for the notes round: the headings round's playbook (the
+# tables round's without its supplemental UI) with the notes round's
+# components. `make build` adds the variables from source/template_variables.yml
+# as AsciiDoc attributes (playbook.js) and builds from site-playbook.yml.
+site:
+  title: Notes round — Antora
+  start_page: ROOT::index.adoc
+content:
+  sources:
+  # This repository, read from its worktree, so pages need not be committed
+  - url: ./../../../..
+    branches: HEAD
+    start_paths:
+    - concepts/notes/sites/antora/home
+    - concepts/notes/sites/antora/passthrough
+    - concepts/notes/sites/antora/native
+    - concepts/notes/sites/antora/raw
+ui:
+  bundle:
+    # The default UI, pinned: `make` downloads one build and checks its hash
+    url: ./.cache/ui-bundle.zip
+urls:
+  html_extension_style: indexify
+asciidoc:
+  attributes:
+    # An undefined attribute renders as nothing, as an undefined ERB variable does
+    attribute-missing: drop
+    # A heading without an id gets one with no prefix and words joined by
+    # hyphens (about-metadata), as on the published page and in the other
+    # tools; Asciidoctor's default is _about_metadata
+    idprefix: ''
+    idseparator: '-'
+output:
+  dir: ./site
+runtime:
+  cache_dir: ./.cache/antora
+  fetch: false

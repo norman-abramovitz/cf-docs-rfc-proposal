@@ -1,0 +1,15 @@
+$ ../../checks/check-site.sh site "" raw
+== raw/cf-backup
+skip  not in this mode
+== raw/using-vol-services
+ok    outline: 3 headings, same levels and text
+info  published heading ids not on the built page (2): #-create-and-use-nfs-volume-services #-create-an-nfs-volume-service
+ok    count: 4 notes
+ok    note 1: note -> note, title 'Note', 19 words, -, body
+ok    note 2: note -> note, title 'Note', 7 words, -, body
+ok    note 3: important -> important, title 'Important', 12 words, code=1, list
+FAIL  note 4 (important, html:important): holds code=2, expected code=3
+== raw/healthchecks
+skip  not in this mode
+== raw/routes-domains
+skip  not in this mode

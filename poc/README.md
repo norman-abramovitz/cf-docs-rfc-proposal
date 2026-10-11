@@ -147,10 +147,21 @@ Every id the source writes survives in passthrough and native; with no ids
 written, 11 of the 69 anchors to keep survive. The conventions are under
 review ([headings results](../concepts/headings/results.md#summary)).
 
+### Notes and admonitions
+
+Four pages' 16 notes were converted in the four hands-on tools, kept as
+HTML and written as each tool's own admonition. Every note survives in both,
+checked by a notes check that compares each note's kind, title, words,
+contents and place with the published page. The tool's own admonition
+passes with no workaround; HTML notes pass only after changes per tool,
+and as written two tools damage them without a warning. A note held in a
+variable becomes a partial. The map from the book's kinds to each tool's
+types is still open ([notes results](../concepts/notes/results.md#summary)).
+
 ### Other concepts
 
-**Not yet written:** variables, partials, notes and admonitions, code
-blocks, cross-repository links, and build-time values such as the
+**Not yet written:** variables, partials, code blocks, cross-repository
+links, and build-time values such as the
 copyright year. Each is listed in [Concepts](../concepts/README.md); none
 of them has been converted yet.
 
