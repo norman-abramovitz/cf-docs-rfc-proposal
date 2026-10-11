@@ -15,7 +15,9 @@ How to read the comparisons:
 
 - **Modes.** Each page was converted by hand in up to four ways (see the
   [glossary](../glossary.md#mode) for more). *Passthrough* keeps the page's
-  HTML as written, with only the changes a tool forces. *Native* uses the
+  HTML, after the cleanup listed in its intent file (the page's record of
+  what each table needs; closing unclosed tags and similar fixes) and the
+  changes a tool forces. *Native* uses the
   tool's own table syntax and whatever width or alignment settings that syntax
   offers. *Native-plain* is native with no width or alignment settings.
   *Extension* writes the table in a list-like syntax (one cell per line)
@@ -793,8 +795,8 @@ Differences seen:
 - Only Antora native shows row headers. Extension mode adds them in every
   tool, along with top alignment and a key column that does not wrap. In
   Zensical and Starlight the bold row headers are the only visible change
-  from native; in Antora nothing visible changes. Each extension is written once for the whole site, not per
-  working group (see [R-13](../requirements/README.md#r-13) no per-WG extensions).
+  from native; in Antora nothing visible changes. Each extension is code
+  for the whole site, not for one page.
 - Source readability ([R-11](../requirements/README.md#r-11) readable source): results.md rates every native
   form of this table readable. Passthrough is HTML in every tool.
 

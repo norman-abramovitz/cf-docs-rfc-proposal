@@ -81,8 +81,9 @@ test page:
    Files: [intent/](../concepts/tables/intent/).
 2. **Convert by hand, in each mode.** A *mode* is one way of writing the
    page for a tool:
-   - *passthrough*: the page's HTML kept as written, with only the changes
-     the tool forces, and variables and partials translated to the tool's
+   - *passthrough*: the page's HTML kept, after the cleanup its intent file
+     lists (closing unclosed tags and similar fixes) and the changes the
+     tool forces, with variables and partials translated to the tool's
      syntax;
    - *extension*: the tool's extension point (a plugin or a custom block)
      carrying the hints;
@@ -163,7 +164,7 @@ Starlight and Antora 42 of 42 in every mode.
 |---|---|---|---|---|
 | `Accept: */*` in terminal output | shows as `Accept: /` | kept | shows as `Accept: /` | kept |
 | Other prose | matches | three literal `*` where a list follows a text line | matches after the passthrough changes | matches after the AsciiDoc rewrite |
-| Quotes | straight (published: curly) | straight | straight | curly in AsciiDoc text, straight in HTML blocks |
+| Quotes | straight (published: curly) | straight | straight | apostrophes curly in AsciiDoc text, straight in HTML blocks; double quotes straight everywhere |
 
 Details: [results.md](../concepts/tables/results.md), section "Text compared
 with the published page" under each tool.
