@@ -1,8 +1,8 @@
 # Concept: Notes and admonitions
 
-Status: **In progress.** Draft, incomplete — covers what is known as of
-2026-10-10. The survey, the conversions and the checks are done; the
-conventions below are proposals for review. Results: [results.md](results.md).
+Status: **Done, with open items** (listed under
+[Not yet written](results.md#not-yet-written)). The survey, the conversions
+and the checks are done; the map from kinds to types stays open. Results: [results.md](results.md).
 
 This round asks whether the book's notes survive conversion into each
 hands-on tool: their kind, their title, their words and what they hold, and

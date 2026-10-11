@@ -1,8 +1,8 @@
 # Concept: Headings
 
-Status: **In progress.** Draft, incomplete — covers what is known as of
-2026-10-10. The conversions and checks are done; the conventions below
-are proposals for review. Results: [results.md](results.md).
+Status: **Done, with open items** (listed under
+[Not yet written](results.md#not-yet-written)). The conversions and checks
+are done; the id convention is accepted. Results: [results.md](results.md).
 
 This round asks whether a page's heading tree and its heading anchors
 survive conversion into each hands-on tool, and it adds the automated

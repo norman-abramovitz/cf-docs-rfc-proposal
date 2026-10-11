@@ -1,8 +1,8 @@
 # Concept: Variables
 
-Status: draft, incomplete — covers what is known as of 2026-10-11. The
-survey, the conversions and the checks are done; the conventions are
-proposals for review. Results: [results.md](results.md).
+Status: **Done, with open items** (listed under
+[Not yet written](results.md#not-yet-written)). The survey, the conversions
+and the checks are done; the decisions are recorded in the conventions. Results: [results.md](results.md).
 
 This round asks whether the book's variables survive conversion into each
 hands-on tool: their value, rendered as text or as markup as the book
