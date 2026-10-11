@@ -6,6 +6,10 @@ The steps that take today's docs to the new site, and what each step must
 achieve. This page says **what** each step does and which requirements it
 serves ([requirement list](README.md#requirements)). **How** a step is done
 in a given tool, and what that costs, is in [Tooling](../tooling/README.md).
+The RFC is
+[cloudfoundry/community#1642](https://github.com/cloudfoundry/community/pull/1642),
+the draft request for comments that proposes the new docs stack; quotes from
+it link to their line, as in [L112] ([glossary](../glossary.md#rfc)).
 
 ## From today's book to the new shape
 
@@ -89,8 +93,9 @@ Serves: [R-23](README.md#r-23) one central conversion, [R-01](README.md#r-01) co
 variables everywhere, [R-05](README.md#r-05) partials and reuse, [R-07](README.md#r-07) notes and admonitions,
 [R-08](README.md#r-08) cross-repository links.
 
-Done so far: tables, for the test pages
-([tables concept](../concepts/tables/README.md)).
+Done so far: tables, for the test pages (published pages with complex
+tables that the Docs WG lead chose for testing tools;
+[tables concept](../concepts/tables/README.md#test-pages)).
 
 ### 4. Automated content and outline check
 

@@ -7,10 +7,25 @@ group needs. Needs are given as requirement IDs from the
 [requirement list](README.md#requirements), such as "[R-15](README.md#r-15) URL identifies the
 source".
 
+The RFC is [cloudfoundry/community#1642](https://github.com/cloudfoundry/community/pull/1642),
+the draft request for comments that proposes the new docs stack; quotes from
+it link to their line, as in [L112] ([glossary](../glossary.md#rfc)).
+
 This page does not say which working group owns which part of the docs. A
 working group is one of the Cloud Foundry community's standing teams, each
 with a charter. Mapping areas to owners is the inventory the RFC asks for in
 its first phase ([L112], [L114]), and is not done yet.
+
+Terms used below:
+
+- **Docs WG:** the Documentation working group, which looks after the Cloud
+  Foundry docs as a whole ([glossary](../glossary.md#docs-wg)).
+- **FI WG:** the Foundational Infrastructure working group, which owns BOSH
+  and its docs among other things ([glossary](../glossary.md#fi-wg)).
+- **bosh.io:** the separate website with the BOSH docs, at `bosh.io/docs`.
+- **Cutover:** the moment the new site replaces today's site at
+  `docs.cloudfoundry.org`, the RFC's "Phase 4: Cutover and Decommission"
+  ([L133]).
 
 ## Summary
 
@@ -102,7 +117,7 @@ Needs:
 
 The RFC's proof of concept is to "Gather feedback from at least three active
 CF documentation contributors" ([L125]). The Docs WG lead asked to be one of
-them.
+them, in a comment on the non-public pre-review.
 
 ### Working-group content owners
 
@@ -242,11 +257,12 @@ The RFC asks that "Working Group leads and known downstream consumers (e.g.,
 SAP BTP, anynines, …; VMware Tanzu works from its own branches and is not
 affected) SHOULD be asked whether they consume the CF docs as-is or maintain
 their own derivative documentation" ([L113]). In the non-public pre-review the
-Docs WG lead added that Broadcom's docs are written fully in-house and do not rely on
-the CF doc repositories (see commits
-[docs-book-cloudfoundry `bdb9de7`](https://github.com/cloudfoundry/docs-book-cloudfoundry/commit/bdb9de7cca8bda0c1ed2e8930090019cc4927269)
-and
-[docs-dev-guide `689faba`](https://github.com/cloudfoundry/docs-dev-guide/commit/689faba303969899f0a18aa56f499c2956c70dc0)).
+Docs WG lead stated that Broadcom's docs are written fully in-house and do not
+rely on the CF doc repositories. The repositories show only the open-source
+side: docs-dev-guide removed its commercial branching in July 2026, and its
+commit [`689faba`](https://github.com/cloudfoundry/docs-dev-guide/commit/689faba303969899f0a18aa56f499c2956c70dc0)
+says the repository "is now dedicated exclusively to the OSS Cloud Foundry
+doc set". How Broadcom writes its own docs is not visible in them.
 The RFC's open questions still name VMware Tanzu as
 a downstream distribution ([L168]), which does not match [L113].
 
@@ -288,6 +304,7 @@ Needs: [R-20](README.md#r-20) search-engine and AI-friendly output, [R-16](READM
 [L115]: https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L115
 [L125]: https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L125
 [L131]: https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L131
+[L133]: https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L133
 [L168]: https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L168
 [L172]: https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L172
 [L174]: https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L174

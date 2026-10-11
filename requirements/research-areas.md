@@ -4,7 +4,10 @@ Status: draft Docs WG position, incomplete — covers what is known as of 2026-1
 
 Questions the requirements depend on that nobody has answered yet. For each:
 why it matters, what is known, and what would answer it. Requirement IDs
-refer to the [requirement list](README.md#requirements).
+refer to the [requirement list](README.md#requirements). The RFC is
+[cloudfoundry/community#1642](https://github.com/cloudfoundry/community/pull/1642),
+the draft request for comments that proposes the new docs stack; quotes from
+it link to their line, as in [L112] ([glossary](../glossary.md#rfc)).
 
 ## Scope
 
@@ -45,7 +48,8 @@ refer to the [requirement list](README.md#requirements).
   ([table survey, bosh.io](../concepts/tables/survey/README.md#boshio)). The rest of bosh.io (release and stemcell pages) loads
   the stylesheet and scripts that the docs build produces
   ([`bosh-io-web` `main.go`](https://github.com/cloudfoundry/bosh-io-web/blob/951ec131ce4218a2a259603390d70e259ebeb691/main/main.go#L120-L205),
-  [layout](https://github.com/cloudfoundry/bosh-io-web/blob/951ec131ce4218a2a259603390d70e259ebeb691/templates/layout.tmpl#L43)), so changing the docs tool
+  layout [stylesheets](https://github.com/cloudfoundry/bosh-io-web/blob/951ec131ce4218a2a259603390d70e259ebeb691/templates/layout.tmpl#L11-L18)
+  and [script](https://github.com/cloudfoundry/bosh-io-web/blob/951ec131ce4218a2a259603390d70e259ebeb691/templates/layout.tmpl#L202)), so changing the docs tool
   affects the whole site.
 - **What answers it:** the FI WG, with the RFC authors. Draft position:
   bosh.io follows the Docs WG table and note conventions; a tool or hosting
@@ -98,7 +102,9 @@ refer to the [requirement list](README.md#requirements).
   [`scale_table: "oss_scale_table"`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/config/template_variables.yml#L287)
   and [`roles_table: "_oss_roles_table"`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/config/template_variables.yml#L231),
   apparently so that another edition of the docs could swap in its own table.
-  Every tool in the tables round included the scale-table partial when it was
+  Every tool in the tables round (the first concept, worked by hand in four
+  candidate tools; [results](../concepts/tables/results.md#summary))
+  included the scale-table partial when it was
   named directly
   ([sources](../concepts/tables/source/SOURCES.md)).
 - **What answers it:** the downstream survey above, and a search of the
@@ -214,7 +220,8 @@ refer to the [requirement list](README.md#requirements).
 ### Who controls hosting and the domain today?
 
 - **Why it matters:** [R-16](README.md#r-16) old URLs keep working depends on whoever can
-  change DNS at cutover; [R-27](README.md#r-27) a named owner for every task.
+  change DNS at cutover (the moment the new site replaces today's site at
+  `docs.cloudfoundry.org`); [R-27](README.md#r-27) a named owner for every task.
 - **Known:** the RFC says the current hosting is "managed outside the
   community GitHub organization" ([L24]) and asks who owns the domain
   ([L178]).

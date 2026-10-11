@@ -87,6 +87,11 @@ Terms used in the table:
 - **Concept:** one documentation feature (tables, variables, notes, …) worked
   through every candidate tool at a time
   ([concepts](../concepts/README.md)).
+- **Cutover:** the moment the new site replaces today's site at
+  `docs.cloudfoundry.org`, the RFC's "Phase 4: Cutover and Decommission"
+  ([L133]).
+- **Version 1:** the RFC's name for the first release of the new site
+  ("PoC / Version 1", [L92]).
 
 ### Content
 
@@ -126,7 +131,7 @@ Terms used in the table:
 
 | ID | Phrase | Statement | Source | Status |
 |---|---|---|---|---|
-| <a id="r-15"></a>R-15 | URL identifies the source | From a page's URL a contributor can tell which repository and file to edit. Today `docs.cloudfoundry.org/<dir>/<file>.html` maps to `<file>.html.md.erb` in the repository that the book's `config.yml` assigns to `<dir>`. If the content moves into one repository, its directories keep that mapping. | Docs WG lead's comment on the RFC pull request; [`config.yml`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/config.yml#L33-L37) | proposed |
+| <a id="r-15"></a>R-15 | URL identifies the source | From a page's URL a contributor can tell which repository and file to edit. Today `docs.cloudfoundry.org/<dir>/<file>.html` maps to `<file>.html.md.erb` in the repository that the book's `config.yml` assigns to `<dir>`. If the content moves into one repository, its directories keep that mapping. | Docs WG lead's [comment on the RFC pull request](https://github.com/cloudfoundry/community/pull/1642#issuecomment-6068605821); [`config.yml`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/config.yml#L33-L37) | proposed |
 | <a id="r-16"></a>R-16 | old URLs keep working | Every published URL still resolves after cutover, directly or by redirect. Heading anchors keep their ids where the conversion can keep them. | [L46]; [L58]; [L61]; [L137] | proposed |
 | <a id="r-18"></a>R-18 | full-text search | The site has working full-text search across all its pages. | [L21]; [L36] | proposed |
 | <a id="r-20"></a>R-20 | search-engine and AI-friendly output | The site is plain, crawlable HTML with page titles, descriptions, canonical URLs (the one address search engines should use for a page) and a sitemap, so search engines and AI-based developer tools can read it. Whether to publish an `llms.txt` file (a plain-text index of the site's pages for such tools; [glossary](../glossary.md#llmstxt)) is open. | [L22]; [L40]; [L41] | proposed |
@@ -169,7 +174,8 @@ Antora; see [Tooling](../tooling/README.md)) found the same. Every tool needs
 stylesheet rules for two table hints (statements of author intent, here a
 column's role and "don't wrap"; [glossary](../glossary.md#hint)). Docusaurus,
 Zensical and Starlight need a small extension to carry them; Antora and a
-one-page Sphinx test carry them as classes with no code
+one-page test in Sphinx (a Python documentation generator;
+[glossary](../glossary.md#sphinx)) carry them as classes with no code
 ([results](../concepts/tables/results.md#summary)). The rule should be about
 who writes extensions, not whether any exist: working groups do not write
 their own, the Docs WG maintains shared extensions that apply across all
@@ -240,7 +246,9 @@ restated as a hosting benefit.
 - **Local preview exists today.** [L20] says contributors "have no easy way
   to preview generated documentation locally". The book's
   [README](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/README.md#L56-L64) describes a local preview at
-  `localhost:4567`. The gap is the setup it needs
+  `localhost:4567`, and Bookbinder's `watch` command runs
+  [`middleman server`](https://github.com/pivotal-cf/bookbinder/blob/83bd2a57a8ba3d04c58a5be67607b243bdea0c64/lib/bookbinder/commands/watch.rb#L53)
+  to serve it. The gap is the setup it needs
   ([R-12](#r-12) one-command local preview).
 - **One repository and the URL mapping.** [L69] puts all content in "ONE
   single documentation repository". That is compatible with [R-15](#r-15) URL identifies the source only if
@@ -250,8 +258,11 @@ restated as a hosting benefit.
   position is [R-10](#r-10) simple text plus HTML where needed.
 - **Partials are partly answered.** [L179] asks "Are partials supported by
   Docusaurus?" Every tool in the tables round included the scale-table
-  partial from a host page, Docusaurus through an MDX import
-  ([sources](../concepts/tables/source/SOURCES.md)). Partials picked by a
+  partial (`_oss_scale_table`, a table file that the `high-availability` page
+  includes; [sources](../concepts/tables/source/SOURCES.md))
+  from a host page, Docusaurus through an MDX import
+  (Docusaurus [conventions](../concepts/tables/sites/docusaurus/CONVENTIONS.md),
+  "Partials"). Partials picked by a
   variable are still open ([R-05](#r-05) partials and reuse).
 - **bosh.io is not mentioned.** Its docs are a separate site with 40 tables
   (counted by this evaluation at docs-bosh commit `20a4122`:
@@ -294,6 +305,7 @@ cross-repository links.
 [L114]: https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L114
 [L115]: https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L115
 [L131]: https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L131
+[L133]: https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L133
 [L137]: https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L137
 [L151]: https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L151
 [L154]: https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L154

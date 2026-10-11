@@ -4,7 +4,10 @@ Status: draft Docs WG position, incomplete — covers what is known as of 2026-1
 
 What works in today's docs and must survive the move, and what causes
 problems. Each item names the requirements it leads to, from the
-[requirement list](README.md#requirements).
+[requirement list](README.md#requirements). The RFC is
+[cloudfoundry/community#1642](https://github.com/cloudfoundry/community/pull/1642),
+the draft request for comments that proposes the new docs stack; quotes from
+it link to their line, as in [L20] ([glossary](../glossary.md#rfc)).
 
 **How the docs are built today.** The pages live in the 12 `docs-*`
 content repositories listed in the book's [`config.yml`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/config.yml)
@@ -30,15 +33,18 @@ the `docs-cf-admin` repository: the book's
 [`config.yml`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/config.yml#L33-L37)
 maps the `adminguide` directory to that repository, and the file name follows
 the page name ([source](../concepts/tables/source/SOURCES.md)). The Docs
-WG lead asked on the RFC pull request that this
-mapping be kept.
+WG lead asked in a
+[comment on the RFC pull request](https://github.com/cloudfoundry/community/pull/1642#issuecomment-6068605821)
+that this mapping be kept.
 
 Leads to: [R-15](README.md#r-15) URL identifies the source.
 
 ### HTML where Markdown falls short
 
 Authors use Markdown where it is enough and HTML where it is not. The
-`metadata` test page shows both: a simple three-column reference table
+`metadata` page, one of the test pages (published pages with complex tables
+that the Docs WG lead chose for testing tools;
+[list](../concepts/tables/README.md#test-pages)), shows both: a simple three-column reference table
 written as a Markdown pipe table (one row per line, `|` between cells), and
 two HTML tables with a spanning title row and bulleted lists in cells
 ([source](../concepts/tables/source/metadata.html.md.erb)). Across the
@@ -66,6 +72,8 @@ set from your local copies and skips any content repositories you do not have
 checked out. Point your browser at `localhost:4567` to preview your changes.
 On save, your browser reloads with any additional changes." A container setup
 for the same preview is in the book's [`docker/`](https://github.com/cloudfoundry/docs-book-cloudfoundry/tree/30dfa57692253a6ae1b3df0726444b1e32852c91/docker) folder.
+The code agrees: Bookbinder's `watch` command runs
+[`middleman server`](https://github.com/pivotal-cf/bookbinder/blob/83bd2a57a8ba3d04c58a5be67607b243bdea0c64/lib/bookbinder/commands/watch.rb#L53).
 
 Leads to: [R-12](README.md#r-12) one-command local preview. The RFC's Problem list says the
 opposite ([L20]); see the
