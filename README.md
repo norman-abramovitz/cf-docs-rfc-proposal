@@ -10,11 +10,13 @@ files also read as written here on GitHub.
 
 ## Background
 
-The CF docs at `docs.cloudfoundry.org` are built by Bookbinder from
-[docs-book-cloudfoundry](https://github.com/cloudfoundry/docs-book-cloudfoundry),
+The CF docs at `docs.cloudfoundry.org` are built by Bookbinder, a Ruby
+command-line tool ([Bookbinder](https://github.com/pivotal-cf/bookbinder)),
+from [docs-book-cloudfoundry](https://github.com/cloudfoundry/docs-book-cloudfoundry),
 which collates the `docs-*` content repositories (`*.html.md.erb` sources)
-into one site. Each repository maps to a fixed URL directory, so a page's URL
-identifies the repository and file to edit.
+into one site. Each repository maps to a fixed URL directory
+([`config.yml`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/config.yml#L33-L37)),
+so a page's URL identifies the repository and file to edit.
 
 [cloudfoundry/community#1642](https://github.com/cloudfoundry/community/pull/1642)
 proposes moving this content to Markdown on a modern static site generator,
