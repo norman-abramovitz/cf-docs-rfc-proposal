@@ -157,6 +157,6 @@ Found in the tables round and not in the RFC's list:
 | Page descriptions | Docusaurus publishes raw variable code in the description search engines show | [R-20](../requirements/README.md#r-20) search-engine and AI-friendly output | [Docusaurus finding 7](../concepts/tables/results.md#findings) |
 | Build-time values | The copyright year changes on every build; comparisons must expect it | [R-25](../requirements/README.md#r-25) build-time values are expected differences | [concepts README](../concepts/README.md#concepts) |
 
-**Not yet written:** PoC scope for the concepts not yet worked (headings,
-notes and admonitions, code blocks, cross-repository links), and for Hugo
+**Not yet written:** PoC scope for the concepts not yet worked (notes and
+admonitions, code blocks, cross-repository links), and for Hugo
 and VitePress, which have not been assessed.

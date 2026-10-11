@@ -1,0 +1,11 @@
+# Anchors access-control must keep: the ids the source writes as <a id>,
+# then the ids the published page generates for the four headings that have
+# none. Read by ../checks/outline.py --anchors.
+prerequisites
+display-access
+enable-access        linked from docs-services managing-service-brokers and broker READMEs
+disable-access
+enabling-access-to-a-subset-of-users             generated on the published page
+deactivating-access-to-all-plans-for-all-users   generated on the published page
+deactivating-access-for-specific-orgs-or-plans   generated on the published page
+limitations                                      generated on the published page

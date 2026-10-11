@@ -166,8 +166,11 @@ The steps seen in the tables round, in order:
    owner review of migrated pages). This step was not part of the tables
    round.
 
-**Not yet written:** the conversion steps for the other concepts (headings,
-variables, partials, notes, code blocks, cross-repository links), and how
+The headings round proposes its conversion rules as conventions, under
+review ([headings results](../concepts/headings/results.md#conventions-to-record)).
+
+**Not yet written:** the conversion steps for the other concepts
+(variables, partials, notes, code blocks, cross-repository links), and how
 `scan` and `convert` are built.
 
 ## Extensions needed per tool

@@ -138,12 +138,21 @@ What the round found:
   no-wrap. Antora and the Sphinx probe carry them as classes on the table;
   Docusaurus, Zensical and Starlight use a small extension.
 
+### Headings
+
+Four pages were converted in the four hands-on tools, in three modes each.
+Every heading tree survives in every tool and mode, checked by an outline
+check that compares each built page's headings with the published page.
+Every id the source writes survives in passthrough and native; with no ids
+written, 11 of the 69 anchors to keep survive. The conventions are under
+review ([headings results](../concepts/headings/results.md#summary)).
+
 ### Other concepts
 
-**Not yet written:** headings, variables, partials, notes and admonitions,
-code blocks, cross-repository links, and build-time values such as the
-copyright year. Each is listed as proposed in
-[Concepts](../concepts/README.md); none has been converted yet.
+**Not yet written:** variables, partials, notes and admonitions, code
+blocks, cross-repository links, and build-time values such as the
+copyright year. Each is listed in [Concepts](../concepts/README.md); none
+of them has been converted yet.
 
 ## Other comparisons
 

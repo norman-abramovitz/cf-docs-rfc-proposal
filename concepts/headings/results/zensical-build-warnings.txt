@@ -1,0 +1,32 @@
+# Zensical 0.0.69 build warnings (zensical build --clean, NO_COLOR=1): file:line:column of each link whose anchor does not exist
+Warning: anchor does not exist
+native-plain/metadata.md:117:178
+Warning: anchor does not exist
+native-plain/metadata.md:233:178
+Warning: anchor does not exist
+native-plain/metadata.md:237:182
+Warning: anchor does not exist
+native-plain/metadata.md:269:95
+Warning: anchor does not exist
+native-plain/metadata.md:293:134
+Warning: anchor does not exist
+native-plain/routes-domains.md:11:382
+Warning: anchor does not exist
+native-plain/routes-domains.md:40:243
+Warning: anchor does not exist
+native-plain/troubleshooting_slow_requests.md:172:68
+Warning: anchor does not exist
+native-plain/troubleshooting_slow_requests.md:249:105
+Warning: anchor does not exist
+native-plain/troubleshooting_slow_requests.md:249:157
+Warning: anchor does not exist
+native-plain/troubleshooting_slow_requests.md:298:258
+Warning: anchor does not exist
+native-plain/troubleshooting_slow_requests.md:318:51
+Warning: anchor does not exist
+native-plain/troubleshooting_slow_requests.md:329:61
+Warning: anchor does not exist
+native/routes-domains.md:40:243
+Warning: anchor does not exist
+passthrough/routes-domains.md:40:243
+15 issues found

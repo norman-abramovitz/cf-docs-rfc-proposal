@@ -25,6 +25,12 @@ exclude:
   - concepts/tables/survey/*.csv
   - concepts/tables/survey/*.py
   - concepts/tables/survey/*.txt
+  - concepts/headings/sites
+  - concepts/headings/checks
+  - concepts/headings/source
+  - concepts/headings/published
+  - concepts/headings/survey/*.csv
+  - concepts/headings/survey/*.py
   - Gemfile
   - Gemfile.lock
   - vendor

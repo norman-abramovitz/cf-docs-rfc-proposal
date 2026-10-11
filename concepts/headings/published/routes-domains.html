@@ -1,0 +1,1461 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  <style type="text/css">@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic-ext/300/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic/300/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek-ext/300/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin/300/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek/300/normal.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin-ext/300/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/vietnamese/300/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek-ext/300/italic.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/vietnamese/300/italic.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic-ext/300/italic.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek/300/italic.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin/300/italic.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin-ext/300/italic.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic/300/italic.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic-ext/400/italic.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic/400/italic.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek/400/italic.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin/400/italic.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin-ext/400/italic.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/vietnamese/400/italic.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek-ext/400/italic.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/vietnamese/400/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek/400/normal.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek-ext/400/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic/400/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic-ext/400/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin/400/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin-ext/400/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin-ext/600/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/vietnamese/600/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek-ext/600/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic/600/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin/600/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic-ext/600/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek/600/normal.woff2);unicode-range:U+0370-03FF;font-display:swap;}</style>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      Configuring routes and domains |
+    Cloud Foundry Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  <script type="text/javascript">
+if (window.location.host === 'docs.cloudfoundry.org') {
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22181585-2']);
+  _gaq.push(['_setDomainName', 'cloudfoundry.org']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script');
+    ga.type = 'text/javascript';
+    ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ga, s);
+  })();
+}
+</script>
+
+
+</head>
+
+<body class="devguide devguide_deploy-apps devguide_deploy-apps_routes-domains has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "cloudfoundry.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Cloud Foundry Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      
+      <div class="header-item">
+        <a href="https://www.cloudfoundry.org/community/" target="_blank">Get Involved</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="js-sidenav collapsible nav-container" role="navigation" data-behavior="Collapsible">
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+  Doc Index
+  </a>
+  <div class="nav-content">
+    <ul>
+      <li><strong>General Information</strong></li>
+      <li class=""><a href="/concepts/contribute.html">Contribute to Cloud Foundry documentation</a></li>
+      <li class="has_submenu"><a href="/concepts/index.html">Cloud Foundry concepts</a>
+        <ul>
+          <li class=""><a href="/concepts/overview.html">Cloud Foundry overview</a></li>
+          <li class="has_submenu"><a href="/concepts/security-index.html">Security and networking</a>
+            <ul>
+              <li class=""><a href="/concepts/security.html">Cloud Foundry security</a></li>
+              <li class=""><a href="/concepts/container-security.html">Container security in Cloud Foundry</a></li>
+              <li class=""><a href="/concepts/understand-cf-networking.html">Container-to-container networking</a></li>
+              <li class=""><a href="/concepts/identity-aware-routing.html">Identity-aware routing</a></li>
+              <li class=""><a href="/concepts/roles.html">Orgs, spaces, roles, and permissions in Cloud Foundry</a></li>
+              <li class=""><a href="/concepts/managing-roles.html">Managing Roles</a></li>
+              <li class=""><a href="/concepts/orgs-and-spaces.html">Planning orgs and spaces in Cloud Foundry</a></li>
+              <li class=""><a href="/concepts/asg.html">App Security Groups in Cloud Foundry</a></li>
+              <li class=""><a href="/concepts/diego/ssh-conceptual.html">Cloud Foundry app SSH components and processes</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/concepts/ha-index.html">High availability</a>
+            <ul>
+              <li class=""><a href="/concepts/high-availability.html">High availability in Cloud Foundry</a></li>
+              <li class=""><a href="/concepts/maintaining-high-availability.html">How Cloud Foundry maintains high availability</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/concepts/apps-index.html">How Cloud Foundry manages apps</a>
+            <ul>
+              <li class=""><a href="/concepts/how-applications-are-staged.html">Staging your apps in Cloud Foundry</a></li>
+              <!-- file lives in docs-dev-guide, not docs-cloudfoundry-concepts -->
+              <li class=""><a href="/devguide/deploy-apps/app-lifecycle.html">The app container lifecycle on Diego architecture</a></li>
+              <li class=""><a href="/concepts/diego/diego-auction.html">How Diego balances app processes in Cloud Foundry</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/concepts/architecture/index.html">Cloud Foundry components</a>
+            <ul>
+              <li class=""><a href="/concepts/diego/diego-architecture.html">Diego components and architecture</a></li>
+              <li class=""><a href="/concepts/cf-routing-architecture.html">Cloud Foundry routing architecture</a></li>
+              <li class=""><a href="/concepts/architecture/cloud-controller.html">Cloud Controller</a></li>
+              <li class=""><a href="/concepts/cc-blobstore.html">Cloud Controller blobstore</a></li>
+              <li class=""><a href="/concepts/architecture/uaa.html">User Account and Authentication server</a></li>
+              <li class=""><a href="/concepts/architecture/garden.html">Garden component</a></li>
+              <li class=""><a href="/concepts/grootfs-disk.html">GrootFS disk usage in Cloud Foundry</a></li>
+              <li class=""><a href="/concepts/http-routing.html">HTTP routing</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="has_submenu"><span>Cloud Foundry Command Line Interface (cf CLI)</span>
+        <ul>
+          <li class=""><a href="/cf-cli/install-go-cli.html">Installing the cf CLI</a></li>
+          <li class=""><a href="/cf-cli/v8.html">Upgrading to cf CLI v8</a></li>
+          <li class=""><a href="/cf-cli/getting-started.html">Getting started with the cf CLI</a></li>
+          <li class=""><a href="/cf-cli/http-proxy.html">Using the cf CLI with a proxy server</a></li>
+          <li class=""><a href="/cf-cli/self-signed.html">Using the cf CLI with a self-signed certificate</a></li>
+          <li class=""><a href="/cf-cli/use-cli-plugins.html">Using cf CLI plug-ins</a></li>
+          <li class=""><a href="/cf-cli/develop-cli-plugins.html">Developing cf CLI plug-ins</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>
+          <hr>
+        </span>
+      </li>
+      <li><strong>Information for Operators</strong></li>
+      <li class="has_submenu"><a href="/deploying/index.html">Deploying Cloud Foundry</a>
+        <ul>
+          <li class=""><a href="/deploying/common/dns_prereqs.html">Setting up DNS for your environment</a></li>
+          <li class="has_submenu"><a href="/deploying/cf-deployment/index.html">Deploying Cloud Foundry with cf-deployment</a>
+            <ul>
+              <li class=""><a href="/deploying/common/aws.html">Deploying BOSH on AWS</a></li>
+              <li class=""><a href="/deploying/cf-deployment/gcp.html">Deploying BOSH on GCP</a></li>
+              <li class=""><a href="/deploying/cf-deployment/deploy-cf.html">Deploying Cloud Foundry</a></li>
+              <li class=""><a href="/deploying/cf-deployment/enable-identity-aware-routing.html">Enabling identity-aware routing</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/bbr/index.html">Backing up and restoring with BBR</a></li>
+          <li class="has_submenu"><span>Additional configuration</span>
+            <ul>
+              <li class=""><a href="/deploying/common/cc-blobstore-config.html">Cloud Controller blobstore configuration</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="has_submenu"><a href="/adminguide/index.html">Administering Cloud Foundry</a>
+        <ul>
+          <li class="has_submenu"><a href="/adminguide/platform-index.html">Managing the runtime</a>
+            <ul>
+              <li class=""><a href="/adminguide/start-stop-vms.html">Stopping and starting virtual machines</a></li>
+              <li class=""><a href="/adminguide/quota-plans.html">Creating and modifying quota plans</a></li>
+              <li class=""><a href="/adminguide/listing-feature-flags.html">Using feature flags</a></li>
+              <li class=""><a href="/adminguide/examining_grootfs_disk.html">Examining GrootFS disk usage</a></li>
+              <li class=""><a href="/adminguide/metadata.html">Using metadata</a></li>
+              <li class=""><a href="/adminguide/buildpacks.html">Managing custom buildpacks</a></li>
+              <li class=""><a href="/adminguide/docker.html">Using Docker in Cloud Foundry</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/adminguide/user-accounts-index.html">User accounts and communications</a>
+            <ul>
+              <li class=""><a href="/adminguide/cli-user-management.html">Creating and managing users with the cf CLI</a></li>
+              <li class=""><a href="/uaa/uaa-user-management.html">Creating and managing users with the UAA CLI (UAAC)</a></li>
+              <li class=""><a href="/adminguide/notifications.html">Get started with the Notifications Service</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/adminguide/routing-index.html">Routing</a>
+            <ul>
+              <li class=""><a href="/adminguide/enabling_ipv6.html">Enabling IPv6 for hosted apps</a></li>
+              <li class=""><a href="/adminguide/distributed-tracing.html">Distributed tracing</a></li>
+              <li class=""><a href="/adminguide/zipkin_tracing.html">Enabling Zipkin tracing</a></li>
+              <li class=""><a href="/adminguide/w3c_tracing.html">Enabling W3C tracing</a></li>
+              <li class=""><a href="/adminguide/supporting-websockets.html">Supporting WebSockets</a></li>
+              <li class=""><a href="/adminguide/configure-lb-healthcheck.html">Configuring load balancer health checks for CF routers</a></li>
+              <li class=""><a href="/adminguide/troubleshooting_slow_requests.html">Troubleshooting slow requests</a></li>
+              <li class=""><a href="/adminguide/troubleshooting-router-error-responses.html">Troubleshooting router error responses</a></li>
+              <li class=""><a href="/adminguide/securing-traffic.html">Securing incoming traffic</a></li>
+              <li class=""><a href="/devguide/deploy-apps/trusted-system-certificates.html">Configuring trusted system certificates for apps</a></li>
+              <li class=""><a href="/adminguide/bbs-encryption-keys.html">Bulletin Board System data store encryption</a></li>
+              <li class=""><a href="/adminguide/enabling-tcp-routing.html">Enabling and configuring TCP routing</a></li>
+              <li class=""><a href="/adminguide/supporting-http2.html">Configuring HTTP/2 support</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/adminguide/isolation-segment-index.html">Isolation segments</a>
+            <ul>
+              <li class=""><a href="/adminguide/isolation-segments.html">Managing isolation segments</a></li>
+              <li class=""><a href="/adminguide/routing-is.html">Routing for isolation segments</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu">
+            <a href="/adminguide/delayed-jobs-index.html">Delayed jobs in Cloud Foundry</a>
+            <ul>
+              <li class="">
+                <a href="/adminguide/configuring-delayed-job-priorities.html">Configuring delayed job priorities with Cloud Controller</a>
+              </li>
+            </ul>
+          </li>
+          <li class="has_submenu">
+            <a href="/adminguide/managing-apps-stacks-index.html">Managing apps and their stacks</a>
+            <ul>
+              <li class=""><a href="/adminguide/stack-auditor.html">Using Stack Auditor</a></li>
+              <li class=""><a href="/adminguide/managing-stacks.html">Managing stack lifecycle</a></li>
+              <li class=""><a href="/devguide/deploy-apps/stacks.html">Changing stacks</a></li>
+              <li class=""><a href="/devguide/deploy-apps/windows-stacks.html">Restaging your apps on a Windows stack</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="has_submenu"><a href="/running/">Running and Troubleshooting Cloud Foundry</a>
+        <ul>
+          <li class=""><a href="/running/managing-cf/logging.html">Cloud Foundry logging</a></li>
+          <li class=""><a href="/running/managing-cf/logging-config.html">Configuring system logging</a></li>
+          <li class=""><a href="/running/diego-upgrades.html">Configuring Diego for upgrades</a></li>
+          <li class=""><a href="/running/managing-cf/audit-events.html">Audit Events</a></li>
+          <li class=""><a href="/running/managing-cf/uaa-audit-requirements.html">UAA audit requirements</a></li>
+          <li class=""><a href="/running/managing-cf/usage-events.html">Usage events and billing</a></li>
+          <li class=""><a href="/running/config-ssh.html">Configuring SSH access for Cloud Foundry</a></li>
+          <li class=""><a href="/running/config-cell-cleanup.html">Configuring Diego Cell disk cleanup scheduling</a></li>
+          <li class=""><a href="/running/hm-notifications.html">Configuring Health Monitor Notifications</a></li>
+          <li class=""><a href="/running/custom-stack.html">Adding a custom stack</a></li>
+          <li class=""><a href="/running/monitoring-test.html">Monitoring and testing Diego components</a></li>
+          <li class=""><a href="/running/troubleshooting.html">Troubleshooting Cloud Foundry</a></li>
+          <li class=""><a href="/running/uaa-performance.html">UAA performance</a></li>
+          <li class=""><a href="/uaa/uaa-metrics.html">UAA performance metrics</a></li>
+          <li class=""><a href="/running/managing-cf/scaling-cloud-controller.html">Scaling Cloud Controller</a></li>
+          <li class=""><a href="/running/managing-cf/multi-process-cloud-controller.html">Cloud Controller Multi-Process Mode (Puma)</a></li>
+          <li class=""><a href="/running/managing-cf/scaling-cloud-controller-k8s.html">Scaling Cloud Controller (cf-for-k8s)</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu"><span>Logging and metrics in Cloud Foundry</span>
+        <ul>
+          <li class=""><a href="/loggregator/architecture.html">Logging and metrics architecture</a></li>
+          <li class=""><a href="/loggregator/cli-plugin.html">Installing the Loggregator plug-in for cf CLI</a></li>
+          <li class=""><a href="/loggregator/cc-uaa-logging.html">Security event logging</a></li>
+          <li class=""><a href="/devguide/deploy-apps/streaming-logs.html">App logging in Cloud Foundry</a></li>
+          <li class=""><a href="/loggregator/app-log-rate-limits.html">Limiting your app log rate in Cloud Foundry</a></li>
+          <li class=""><a href="/running/all_metrics.html">Cloud Foundry component metrics</a></li>
+          <li class=""><a href="/loggregator/container-metrics.html">Container metrics</a></li>
+          <li class=""><a href="/loggregator/log-ops-guide.html">Loggregator guide for Cloud Foundry operators</a></li>
+          <li class=""><a href="/loggregator/data-sources.html">Logging and metrics in Cloud Foundry</a></li>
+          <li class=""><a href="/loggregator/opentelemetry.html">Configuring the OpenTelemetry Collector</a></li>
+          <li class=""><a href="/loggregator/nozzle-tutorial.html">Deploying a nozzle to your Cloud Foundry Loggregator Firehose</a></li>
+        </ul>
+      </li>
+      <li class=""><a href="http://bosh.io/docs/">BOSH Documentation</a></li>
+      <li class="has_submenu"><a href="/bbr/index.html">BOSH Backup and Restore (BBR)</a>
+        <ul>
+          <li class=""><a href="/bbr/installing.html">Installing BBR</a></li>
+          <li class=""><a href="https://github.com/cloudfoundry-incubator/bosh-backup-and-restore/releases">Release notes for BBR</a></li>
+          <li class=""><a href="/bbr/backup.html">Backing up with BBR</a></li>
+          <li class=""><a href="/bbr/restore.html">Restoring with BBR</a></li>
+          <li class=""><a href="/bbr/cf-backup.html">Configuring Cloud Foundry for BOSH Backup and Restore</a></li>
+          <li class=""><a href="/bbr/external-blobstores.html">Backup and restore for external blobstores</a></li>
+          <li class=""><a href="/bbr/logging.html">BBR logging</a></li>
+          <li class=""><a href="/bbr/experimental-features.html">Advanced features</a></li>
+          <li class=""><a href="/bbr/bbr-devguide.html">BBR developer's guide</a></li>
+        </ul>
+      </li>
+      <li><span><hr></span></li>
+      <li><strong>Information for developers</strong></li>
+      <li class="has_submenu"><a href="/devguide/index.html">Developing and managing apps</a>
+        <ul>
+          <li class="has_submenu"><a href="/devguide/push.html">How to push your app with Cloud Foundry CLI (cf push)</a>
+            <ul>
+              <li class=""><a href="/devguide/deploy-apps/deploy-app.html">Pushing your app using Cloud Foundry CLI (cf push)</a></li>
+              <li class=""><a href="/devguide/deploy-apps/manifest.html">Deploying with app manifests</a></li>
+              <li class=""><a href="/devguide/deploy-apps/manifest-attributes.html">App manifest attribute reference</a></li>
+              <li class=""><a href="/devguide/deploy-apps/push-docker.html">Deploying an app with Docker</a></li>
+              <li class=""><a href="/devguide/deploy-apps/large-app-deploy.html">Deploying your large apps</a></li>
+              <li class=""><a href="/devguide/deploy-apps/start-restart-restage.html">Starting, restarting, and restaging apps</a></li>
+              <li class=""><a href="/devguide/multiple-processes.html">Pushing an app with multiple processes</a></li>
+              <li class=""><a href="/devguide/push-sub-commands.html">Running cf push sub-step commands</a></li>
+              <li class=""><a href="/devguide/deploy-apps/rolling-deploy.html">Configuring app deployments</a></li>
+              <li class=""><a href="/devguide/sidecars.html">Pushing apps with sidecar processes</a></li>
+              <li class=""><a href="/devguide/deploy-apps/blue-green.html">Using blue-green deployment to reduce downtime</a></li>
+              <li class=""><a href="/devguide/deploy-apps/troubleshoot-app-health.html">Troubleshooting app deployment and health</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/devguide/ssh-index.html">SSH for apps and services</a>
+            <ul>
+              <li class=""><a href="/devguide/deploy-apps/app-ssh-overview.html">Configuring SSH access for your deployment</a></li>
+              <li class=""><a href="/devguide/deploy-apps/ssh-apps.html">Accessing your apps with SSH</a></li>
+              <li class=""><a href="/devguide/deploy-apps/ssh-services.html">Accessing services with SSH</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/devguide/routing-index.html">Routes and domains</a>
+            <ul>
+              <li class=""><a href="/devguide/deploy-apps/routes-domains.html">Configuring routes and domains</a></li>
+              <li class=""><a href="/devguide/custom-per-route-options.html">Configuring per-route options</a></li>
+              <li class=""><a href="/devguide/deploy-apps/identity-aware-routing.html">Configuring identity-aware routing</a></li>
+              <li class=""><a href="/devguide/hash-based-routing.html">Hash-Based Routing</a></li>
+              <li class=""><a href="/devguide/custom-ports.html">Configuring CF to route traffic to apps on custom ports</a></li>
+              <li class=""><a href="/devguide/http2-protocol.html">Routing HTTP/2 and gRPC traffic to apps</a></li>
+              <!-- file lives in docs-cf-admin, not docs-dev-guide -->
+              <li class=""><a href="/adminguide/troubleshooting_tcp_routing.html">Troubleshooting TCP routing</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/devguide/services-index.html">Managing services</a>
+            <ul>
+              <li class=""><a href="/devguide/services/index.html">Provisioning and integrating service instances</a></li>
+              <li class=""><a href="/devguide/services/managing-services.html">Managing service instances</a></li>
+              <li class=""><a href="/devguide/services/sharing-instances.html">Sharing service instances</a></li>
+              <li class=""><a href="/devguide/services/application-binding.html">Delivering service credentials to an app</a></li>
+              <li class=""><a href="/devguide/services/service-keys.html">Managing service keys</a></li>
+              <li class=""><a href="/devguide/services/play-service-bindings.html">Configuring Play Framework service connections</a></li>
+              <li class=""><a href="/devguide/services/using-vol-services.html">Using an external file system (volume services)</a></li>
+              <li class=""><a href="/devguide/services/user-provided.html">User-provided service instances</a></li>
+              <li class=""><a href="/devguide/services/route-binding.html">Manage app requests with route services</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/devguide/streaming-logs-index.html">Streaming app logs</a>
+            <ul>
+              <li class=""><a href="/devguide/services/log-management.html">Streaming app logs to log management services</a></li>
+              <li class=""><a href="/devguide/services/log-management-thirdparty-svc.html">Streaming app logs to third-party services</a></li>
+              <li class=""><a href="/devguide/services/integrate-splunk.html">Streaming app logs to Splunk</a></li>
+              <li class=""><a href="/devguide/services/fluentd.html">Streaming app logs with Fluentd</a></li>
+              <li class=""><a href="/devguide/services/oms-nozzle.html">Streaming app logs to Azure OMS log analytics</a></li>
+              <li class=""><a href="/devguide/services/metrics.html">Using metrics with drain logs</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/devguide/managing-apps-index.html">Managing apps with the cf CLI</a>
+            <ul>
+              <li class=""><a href="/devguide/using-tasks.html">Running tasks in your apps</a></li>
+              <li class=""><a href="/devguide/deploy-apps/cf-scale.html">Scaling your app using Cloud Foundry CLI (cf scale)</a></li>
+              <li class=""><a href="/devguide/deploy-apps/healthchecks.html">Using Cloud Foundry health checks</a></li>
+              <!-- file lives in docs-running-cf, not docs-dev-guide -->
+              <li class=""><a href="/running/managing-cf/app-event.html">Retrieving app and event information</a></li>
+              <li class=""><a href="/devguide/deploy-apps/cf-networking.html">Configuring container-to-Container networking</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/devguide/deploy-apps/environment-variable.html">Cloud Foundry environment variables</a></li>
+          <li class=""><a href="/devguide/capi/client-libraries.html">Available Cloud Controller API client libraries</a></li>
+          <li class=""><a href="/devguide/deploy-apps/prepare-to-deploy.html">Designing and running your app in the cloud</a></li>
+          <li class=""><a href="/devguide/revisions.html">Cloud Foundry API app revisions</a></li>
+        </ul>
+      </li>
+
+
+      <li class="has_submenu"><a href="/buildpacks/index.html">Cloud Foundry Buildpacks</a>
+        <ul>
+          <li class="has_submenu"><a href="/buildpacks/cnb/index.html">Cloud Native Buildpacks</a>
+            <ul>
+              <li class=""><a href="/buildpacks/cnb/paketo.html">Paketo Buildpacks</a></li>
+            </ul>
+          </li>
+
+          <li class="has_submenu"><a href="/buildpacks/classic.html">Classic Buildpacks</a>
+          <ul>
+          <li class="has_submenu"><a href="/buildpacks/using-buildpacks.html">What are classic buildpacks?</a>
+            <ul>
+              <li class=""><a href="/buildpacks/understand-buildpacks.html">Working with buildpacks in Cloud Foundry </a></li>
+              <li class=""><a href="/buildpacks/stack-association.html">Stack association</a></li>
+              <li class=""><a href="/buildpacks/use-multiple-buildpacks.html">Pushing an app with multiple buildpacks</a></li>
+              <li class=""><a href="/buildpacks/proxy-usage.html">Using a proxy server</a></li>
+              <li class=""><a href="/buildpacks/supported-binary-dependencies.html">Supported binary dependencies</a></li>
+              <li class=""><a href="/buildpacks/prod-server.html">Configuring the production server</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/buildpacks/binary/index.html">Binary buildpack</a></li>
+          <li class=""><a href="/buildpacks/go/index.html">Go buildpack</a></li>
+          <li class="has_submenu"><a href="/buildpacks/hwc/index.html">Hosted Web Core buildpack</a>
+            <ul>
+              <li class=""><a href="/buildpacks/hwc/extension-buildpack.html">Creating an extension buildpack for .NET apps</a></li>
+              <li class=""><a href="/buildpacks/hwc/web-config-transform-buildpack.html">Using the .NET Framework Web Config Transform Extension Buildpack</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/buildpacks/java/index.html">Java buildpack</a>
+            <ul>
+              <li class=""><a href="/buildpacks/java/java-tips.html">Using Cloud Foundry Java buildpack</a></li>
+              <li class="has_submenu"><a href="/buildpacks/java/getting-started-deploying-apps/index.html">Getting started deploying Java apps to Cloud Foundry</a>
+                <ul>
+                  <li class=""><a href="/buildpacks/java/getting-started-deploying-apps/gsg-grails.html">Getting started deploying your Grails apps to Cloud Foundry</a></li>
+                  <li class=""><a href="/buildpacks/java/getting-started-deploying-apps/gsg-ratpack.html">Getting started deploying Ratpack apps to Cloud Foundry</a></li>
+                  <li class=""><a href="/buildpacks/java/getting-started-deploying-apps/gsg-spring.html">Getting started deploying Spring apps to Cloud Foundry</a></li>
+                </ul>
+              </li>
+              <li class=""><a href="/buildpacks/java/configuring-service-connections.html">Configuring service connections</a></li>
+              <li class=""><a href="/buildpacks/java/java-native-image.html">Using Java Native Image</a></li>
+              <li class=""><a href="/buildpacks/java/java-client.html">Cloud Foundry Java Client Library</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/buildpacks/dotnet-core/index.html">.NET Core buildpack</a></li>
+          <li class=""><a href="/buildpacks/nginx/index.html">NGINX buildpack</a></li>
+          <li class="has_submenu"><a href="/buildpacks/node/index.html">Node.js buildpack</a>
+            <ul>
+              <li class=""><a href="/buildpacks/node/node-tips.html">Node.js buildpack-specific information</a></li>
+              <li class=""><a href="/buildpacks/node/node-environment.html">Environment variables defined by Node buildpack</a></li>
+              <li class=""><a href="/buildpacks/node/node-service-bindings.html">Configuring service connections for Node.js application</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/buildpacks/php/index.html">Using PHP buildpack with runtimes</a>
+            <ul>
+              <li class=""><a href="/buildpacks/php/gsg-php-tips.html">Additional information on PHP buildpacks in Cloud Foundry</a></li>
+              <li class=""><a href="/buildpacks/php/gsg-php-usage.html">Getting started deploying PHP apps to Cloud Foundry</a></li>
+              <li class=""><a href="/buildpacks/php/gsg-php-config.html">PHP buildpack configuration</a></li>
+              <li class=""><a href="/buildpacks/php/gsg-php-composer.html">Composer</a></li>
+              <li class=""><a href="/buildpacks/php/gsg-php-sessions.html">Sessions</a></li>
+              <li class=""><a href="/buildpacks/php/gsg-php-newrelic.html">New Relic</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/buildpacks/python/index.html">Python buildpack</a></li>
+          <li class=""><a href="/buildpacks/r/index.html">R buildpack</a></li>
+          <li class="has_submenu"><a href="/buildpacks/ruby/index.html">Ruby buildpack</a>
+            <ul>
+              <li class=""><a href="/buildpacks/ruby/ruby-tips.html">Additional information on Ruby buildpacks in Cloud Foundry</a></li>
+              <li class="has_submenu"><a href="/buildpacks/ruby/deploying-apps-index.html">Getting started deploying Ruby apps</a>
+                <ul>
+                  <li class=""><a href="/buildpacks/ruby/gsg-ruby.html">Getting started deploying Ruby apps</a></li>
+                  <li class=""><a href="/buildpacks/ruby/gsg-ror.html">Getting started deploying Ruby on Rails apps</a></li>
+                  <li class=""><a href="/buildpacks/ruby/sample-ror.html">Deploy a sample Ruby on Rails app</a></li>
+                </ul>
+              </li>
+              <li class=""><a href="/buildpacks/ruby/rake-config.html">Configuring Rake tasks for deployed apps</a></li>
+              <li class=""><a href="/buildpacks/ruby/ruby-environment.html">Environment variables defined by Ruby buildpack</a></li>
+              <li class=""><a href="/buildpacks/ruby/ruby-service-bindings.html">Configuring service connections for Ruby</a></li>
+              <li class=""><a href="/buildpacks/ruby/windows.html">Windows Gemfile support</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/buildpacks/staticfile/index.html">Staticfile buildpacks</a></li>
+          <li class="has_submenu"><a href="/buildpacks/custom.html">Creating custom buildpacks</a>
+            <ul>
+              <li class=""><a href="/buildpacks/depend-pkg-offline.html">Packaging dependencies for offline buildpacks</a></li>
+              <li class=""><a href="/buildpacks/merging_upstream.html">Merging from upstream buildpacks</a></li>
+              <li class=""><a href="/buildpacks/upgrading_dependency_versions.html">Upgrading dependency versions for Cloud Foundry</a></li>
+              <li class="has_submenu"><a href="/buildpacks/buildpack-ci-index.html">Using CI for buildpacks</a>
+                <ul>
+                  <li class=""><a href="/buildpacks/releasing_a_new_buildpack_version.html">Releasing a new Cloud Foundry buildpack version</a></li>
+                  <li class=""><a href="/buildpacks/updating-buildpack-related-gems.html">Updating buildpack-related gems in Cloud Foundry</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+        </ul>
+      </li>
+
+      <li><span><hr></span></li>
+      <li class="has_submenu"><span>Information for Managed Service Authors</span>
+        <ul>
+          <li class=""><a href="/services/overview.html">Services in Cloud Foundry</a></li>
+          <li class="has_submenu"><span>Service Broker API</span>
+            <ul>
+              <li class=""><a href="https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/spec.md">Open Service Broker API</a></li>
+              <li class=""><a href="https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/profile.md">Platform profiles</a></li>
+              <li class=""><a href="https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/profile.md#service-metadata">Catalog metadata</a></li>
+              <li class=""><a href="https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/spec.md#volume-mounts-object">Volume services</a></li>
+              <li class=""><a href="https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/release-notes.md">Release Notes</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/services/managing-service-brokers.html">Managing service brokers in Cloud Foundry</a></li>
+          <li class=""><a href="/services/access-control.html">Managing access to service plans</a></li>
+          <li class=""><a href="/services/binding-credentials.html">Binding credentials in Cloud Foundry</a></li>
+          <li class="has_submenu"><a href="/credhub/index.html">CredHub</a>
+            <ul>
+              <li class=""><a href="/credhub/setup-credhub-bosh.html">Setting up and deploying CredHub with BOSH</a></li>
+              <li class=""><a href="/credhub/hsm-config.html">Configuring a hardware security module</a></li>
+              <li class=""><a href="/credhub/kms-plugin.html">Using a key management service with CredHub</a></li>
+              <li class=""><a href="/credhub/credential-types.html">CredHub credential types</a></li>
+              <li class=""><a href="/credhub/backup-restore.html">Backing up and restoring CredHub instances</a></li>
+              <li class=""><a href="/credhub/troubleshooting-credhub.html">Troubleshooting CredHub</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/services/dashboard-sso.html">Dashboard Single Sign-on</a></li>
+          <li class=""><a href="/services/enable-sharing.html">Service instance sharing in Cloud Foundry</a></li>
+          <li class=""><a href="/services/examples.html">Service broker examples</a></li>
+          <li class=""><a href="/services/app-log-streaming.html">App log streaming in Cloud Foundry</a></li>
+          <li class=""><a href="/services/route-services.html">Offering Route Services in Cloud Foundry</a></li>
+          <li class=""><a href="/services/supporting-multiple-cf-instances.html">Supporting multiple CF instances</a></li>
+        </ul>
+      </li>
+      <li><span><hr></span></li>
+      <li class="has_submenu"><span>User Account and Authentication</span>
+        <ul>
+          <li class=""><a href="/uaa/uaa-overview.html">UAA Overview</a></li>
+          <li class=""><a href="/uaa/uaa-concepts.html">UAA Concepts</a></li>
+          <li class=""><a href="/uaa/identity-providers.html">Identity Providers in UAA</a></li>
+          <li class=""><a href="/uaa/uaa-metrics.html">UAA Metrics</a></li>
+
+        </ul>
+      </li>
+      <li><strong>API Reference</strong></li>
+      <li class=""><a href="https://docs.cloudfoundry.org/api/uaa/index.html">UAA API</a></li>
+      <li class="has_submenu"><span>CAPI API</span>
+        <ul>
+          <li class=""><a href="/running/rate-limit-cloud-controller-api.html">Rate limit information returned by the Cloud Controller API</a></li>
+          <li class=""><a href="https://v2-apidocs.cloudfoundry.org">CAPI V2</a></li>
+          <li class=""><a href="https://v3-apidocs.cloudfoundry.org/index.html">CAPI V3</a></li>
+          <li class=""><a href="https://docs.cloudfoundry.org/api/credhub/">CredHub API documentation</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container">
+    Configuring routes and domains
+  </h1>
+
+          <div class="js-quick-links">
+            <div class="quick-links"><ul>
+<li>
+<a href="#routes">Routes</a><ul>
+<li><a href="#http-vs-tcp-routes">HTTP versus TCP routes</a></li>
+<li><a href="#internal-routes">Internal container-to-container routes</a></li>
+<li><a href="#create-route">Create a route</a></li>
+<li><a href="#list-routes">List routes</a></li>
+<li><a href="#view-route">View a route</a></li>
+<li><a href="#check-routes">Check routes</a></li>
+<li><a href="#map-route">Map a route to your app</a></li>
+<li><a href="#unmap-route">Unmap a route</a></li>
+<li><a href="#share-route">Share a route with another space</a></li>
+<li><a href="#move-route">Transfer ownership of a route to another space</a></li>
+<li><a href="#delete-route">Delete a route</a></li>
+<li><a href="#surgical-routing">Routing requests to a specific app instance</a></li>
+<li><a href="#surgical-routing-process">Routing requests to a specific process instance</a></li>
+</ul>
+</li>
+<li>
+<a href="#domains">Domains</a><ul>
+<li><a href="#list-domains">List domains for an org</a></li>
+<li><a href="#http-vs-tcp-domains">HTTP versus TCP domains</a></li>
+<li><a href="#shared-domains">Shared domains</a></li>
+<li><a href="#private-domains">Private domains</a></li>
+<li><a href="#parent-child-domains">Requirements for parent and child domains</a></li>
+<li><a href="#domains-dns">DNS for domains</a></li>
+</ul>
+</li>
+</ul></div>
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        <p id="modified-date"><strong>Page last updated: <span data-behavior="DisplayModifiedDate" data-modified-date="1783713245000"></span></strong></p>
+
+        <p>Developers and administrators can configure routes and domains for their apps using the Cloud Foundry Command Line Interface (cf CLI).
+This topic describes how routes and domains work in Cloud Foundry (Cloud Foundry).
+For more information about routing capabilities in Cloud Foundry, see <a href="/concepts/http-routing.html">HTTP routing</a>.</p>
+
+<h2 id="-routes"><a id='routes'></a> Routes</h2>
+
+<p>The Cloud Foundry Gorouter routes requests to apps by associating an app with an address, known as a route. This is known as a <em>mapping</em>.
+Use the <code>cf CLI cf map-route</code> command to associate an app and route.</p>
+
+<p>The routing tier compares each request with a list of all the routes mapped to apps and attempts to find the best match. For example, the Gorouter makes the following matches for the two routes <code>example-app.shared-domain.example.com</code> and <code>example-app.shared-domain.example.com/products</code>:</p>
+
+<table>
+  <thead><tr>
+    <th>Request</th>
+    <th>Matched Route</th>
+  </tr></thead>
+  <tbody>
+  <tr>
+    <td><code>http://example-app.shared-domain.example.com</code></td>
+    <td><code>example-app.shared-domain.example.com</code></td>
+  </tr>
+  <tr>
+    <td><code>http://example-app.shared-domain.example.com/contact</code></td>
+    <td><code>example-app.shared-domain.example.com</code></td>
+  </tr>
+  <tr>
+    <td><code>http://example-app.shared-domain.example.com/products</code></td>
+    <td><code>example-app.shared-domain.example.com/products</code></td>
+  </tr>
+  <tr>
+    <td><code>http://example-app.shared-domain.example.com/products/123</code></td>
+    <td><code>example-app.shared-domain.example.com/products</code></td>
+  </tr>
+  <tr>
+    <td><code>http://products.shared-domain.example.com</code></td>
+    <td>No match; <code>404</code></td>
+  </tr>
+  </tbody>
+</table>
+
+<p>The Gorouter does not use a route to match requests until the route is mapped to an app. In the example, <code>products.shared-domain.example.com</code> might have been created as a route in Cloud Foundry, but until it is mapped to an app, requests for the route receive a <code>404</code> error.</p>
+
+<p>The routing tier knows the location of instances for apps mapped to routes. After the routing tier calculates a route as the best match for a request, it makes a load-balancing calculation using the configured balancing algorithm (by default, this is <a href="/concepts/http-routing.html#round-robin">round-robin</a>), and forwards the request to an instance of the mapped app.</p>
+
+<p>Developers can map many apps to a single route, resulting in load-balanced requests for the route across all instances of all mapped apps. This approach activates the blue/green rolling deployment strategy. Developers can also map an individual app to multiple routes, enabling access to the app from many URLs.
+The number of routes that can be mapped to each app is approximately 1000 (128&nbsp;KB).</p>
+
+<p>Routes belong to a space, and developers can only map apps to a route created in or shared with the same space. For more information about sharing routes across spaces, see <a href="#share-route">Share a route with another space</a> .</p>
+
+<p>Routes are globally unique. Developers in one space cannot create a route with the same URL as developers in another space, regardless of which orgs control these spaces.</p>
+
+<h3 id="-http-versus-tcp-routes"><a id='http-vs-tcp-routes'></a> HTTP versus TCP routes</h3>
+
+<p>By default, Cloud Foundry only supports routing of HTTP requests to apps.</p>
+
+<p>Routes are considered HTTP if they are created from HTTP domains, and TCP if they are created from TCP domains. For more information, see <a href="#http-vs-tcp-shared-domains">HTTP versus TCP shared domains</a>.</p>
+
+<p>HTTP routes include a domain, a host name (optional), and a context path (optional). <code>shared-domain.example.com</code>, <code>example-app.shared-domain.example.com</code>, and <code>example-app.shared-domain.example.com/products</code> are all examples of HTTP routes. Apps listen to the <code>localhost</code> port defined by the <code>$PORT</code> environment variable, which is <code>8080</code> on Diego. For example, requests to <code>example-app.shared-domain.example.com</code> are routed to the application container at <code>localhost:8080</code>.</p>
+
+<p>Requests to HTTP routes must be sent to ports <code>80</code> or <code>443</code>. Ports cannot be reserved for HTTP routes. You can update the ports on which an app can receive requests through the Cloud Controller API. For more information, see <a href="../custom-ports.html">Configuring apps to listen on custom ports (Beta)</a>.</p>
+
+<p>TCP routes include a domain and a route port. A route port is the port clients make requests to. This is not the same port as what an app pushed to Cloud Foundry listens on. <code>tcp.shared-domain.example.com:60000</code> is an example of a TCP route. Just as for HTTP routes, apps listen to the <code>localhost</code> port defined by the <code>$PORT</code> environment variable, which is <code>8080</code> on Diego. For example, requests to <code>tcp.shared-domain.example.com:60000</code> are routed to the application container at <code>localhost:8080</code>.</p>
+
+<p>When a port is reserved for a route, it cannot be reserved for another route. Host name and path are not supported for TCP routes.</p>
+
+<h3 id="-internal-container-to-container-routes"><a id='internal-routes'></a> Internal container-to-container routes</h3>
+
+<p>Cloud Foundry apps can communicate with each other securely and directly over internal routes that never leave the platform.
+Apps running on Windows cells cannot use internal, container-to-container routes.</p>
+
+<p>To create an internal route:</p>
+
+<ol>
+<li><p>Use the <a href="#map-internal-route">cf map-route</a> command with an <a href="#internal-domains">internal domain</a>. For example:</p>
+<pre class="highlight shell_session"><code>  $ cf map-route app apps.internal --hostname app
+</code></pre>
+
+<ul><li>After an internal route is mapped to an app, the route resolves to IP addresses of the app instances. The IP addresses are visible in the application container:
+
+  <pre><code>
+$ cf ssh app
+vcap@1234:~$ host app.apps.internal
+app.apps.internal has address 10.255.169.200
+app.apps.internal has address 10.255.49.7
+app.apps.internal has address 10.255.49.77
+  </code></pre></li>
+
+<li>To resolve individual instances, prepend the index to the internal route.
+
+  <pre><code>
+vcap@1234:~$ host 1.app.apps.internal
+1.app.apps.internal has address 10.255.49.7
+  </code></pre></li>
+</ul></li>
+<li><p>Create a network policy that allows your apps to communicate with each other. By default, apps cannot communicate over the container network. For more information, see <a href="/devguide/deploy-apps/cf-networking.html">Configuring container-to-container networking</a>, or enter <code>cf add-network-policy --help</code>.</p></li>
+</ol>
+
+<h3 id="-create-a-route"><a id='create-route'></a> Create a route</h3>
+
+<p>When a developer creates a route using the cf CLI, Cloud Foundry determines whether the route is an HTTP or a TCP route based on the domain. To create a HTTP route, a developer must choose an HTTP domain. To create a TCP route, a developer must choose a TCP domain.</p>
+
+<p>Domains in Cloud Foundry provide a namespace from which to create routes. To list available domains for a targeted organization, use the <code>cf domains</code> command. For more information about domains, see <a href="#domains">Domains</a>.</p>
+
+<p>The following sections describe how developers can create HTTP and TCP routes for different use cases.</p>
+
+<h4 id="-create-an-http-route-with-host-name"><a id='create-route-w-hostname'></a> Create an HTTP route with host name</h4>
+
+<p>In Cloud Foundry, a host name is the label that indicates a subdomain of the domain associated with the route.
+Given a domain
+<code>shared-domain.example.com</code>, a developer can create the route <code>example-app.shared-domain.example.com</code> by specifying the host name <code>example-app</code> with the
+<code>cf create-route</code> command as shown in this example:</p>
+<pre class="highlight shell_session"><code><span class="w">$ </span><span class="nc">cf</span><span class="kv"> create-route shared-domain.example.com --hostname example-app
+</span>Creating route example-app.shared-domain.example.com for org example-org / space example-space as username&lt;span&gt;@&lt;/span&gt;example.com...
+OK
+</code></pre>
+
+<p class="note important">
+<span class="note__title"><strong>Important</strong></span>
+The cf CLI <code>create-route</code> command does not require the space as an argument. It uses the space you are targeting.
+</p>
+
+<p>This command instructs Cloud Foundry to only route requests to apps mapped to this route for these URLs:</p>
+
+<ul>
+  <li><code>http://example-app.shared-domain.example.com</code></li>
+  <li><code>https://example-app.shared-domain.example.com</code></li>
+  <li>Any path under either of the these URLs, such as <code>http://example-app.shared-domain.example.com/bar</code></li>
+</ul>
+
+<h4><a id='create-route-wo-hostname'></a>Create an HTTP route without host name</h4>
+
+<p>This approach creates a route with the same address as the domain itself and is permitted for private domains only. For more information, see
+<a href="#private-domains">Private Domains</a>.
+<br>
+A developer can create a route from the domain <code>private-domain.example.com</code> with no host name with the <code>cf create-route</code> command:</p>
+
+<pre><code>
+$ cf create-route private-domain.example.com
+Creating route private-domain.example.com for org example-org / space example-space as username<span>@</span>example.com...
+OK
+</code></pre>
+
+<p>If DNS is configured correctly, this command instructs Cloud Foundry to route requests to apps mapped to this route from these URLs:</p>
+
+<ul>
+  <li><code>http://private-domain.example.com</code></li>
+  <li><code>https://private-domain.example.com</code></li>
+  <li>Any path under either of these URLs, such as <code>http://private-domain.example.com/foo</code></li>
+</ul>
+
+<p>If there are no other routes for the domain, requests to any subdomain, such as <code>http://foo.private-domain.example.com</code>, fail.</p>
+
+<p>A developer can also create routes for subdomains with no host names. The following command creates a route from the subdomain
+<code>foo.private-domain.example.com</code>:</p>
+
+<pre><code>
+$ cf create-route foo.private-domain.example.com
+Creating route foo.private-domain.example.com for org example-org / space example-space as username<span>@</span>example.com...
+OK
+</code></pre>
+
+<p>If DNS is configured for this subdomain, this command instructs Cloud Foundry to route requests to apps mapped to this route from these URLs:</p>
+
+<ul>
+   <li><code>http://foo.private-domain.example.com</code></li>
+   <li><code>https://foo.private-domain.example.com</code></li>
+   <li>Any path under either of these URLs, such as <code>http://foo.private-domain.example.com/foo</code></li>
+</ul>
+
+<h4><a id='create-route-w-wildcard-hostname'></a> Create an HTTP route with wildcard host name</h4>
+
+<p>An app mapped to a wildcard route acts as a fallback app for route requests if the requested route does not exist. To create a wildcard route, use an asterisk for the host name.
+<br>
+A developer can create a wildcard route from the domain <code>foo.shared-domain.example.com</code> by running:</p>
+
+<pre><code>
+$ cf create-route foo.shared-domain.example.com --hostname '*'
+Creating route *.foo.shared-domain.example.com for org example-org / space example-space as username<span>@</span>example.com...
+OK
+</code></pre>
+
+<p>If a client sends a request to <code>http://app.foo.shared-domain.example.com</code> by accident, attempting to reach <code>example-app.foo.shared-domain.example.com</code>,
+Cloud Foundry routes the request to the app mapped to the route <code>*.foo.shared-domain.example.com</code>.</p>
+
+<h4><a id='create-route-w-path'></a> Create an HTTP route with a path</h4>
+
+<p>Developers can use paths to route requests for the same host name and domain to different apps.
+<br>
+A developer can create three routes using the same host name and domain in the space <code>example-space</code> by running:
+<br></p>
+
+<pre><code>
+$ cf create-route shared-domain.example.com --hostname store --path products
+Creating route store.shared-domain.example.com/products for org example-org / space example-space as username<span>@</span>example.com...
+OK
+</code></pre>
+
+<pre><code>
+$ cf create-route shared-domain.example.com --hostname store --path orders
+Creating route store.shared-domain.example.com/orders for org example-org / space example-space as username<span>@</span>example.com...
+OK
+</code></pre>
+
+<pre><code>
+$ cf create-route shared-domain.example.com --hostname store
+Creating route store.shared-domain.example.com for org example-org / space example-space as username<span>@</span>example.com...
+OK
+</code></pre>
+
+<p>The developer can then map the new routes to different apps by following the procedure in
+<a href="#map-route">Map a route to your app</a>.</p>
+
+<p>If the developer maps the first route with path <code>products</code> to the <code>products</code> app, the second route with path <code>orders</code> to the <code>orders</code> app, and the last route to the <code>storefront</code> app. After this:</p>
+
+<ul>
+  <li>Cloud Foundry routes requests to <code>http://store.shared-domain.example.com/products</code> to the <code>products</code> app.</li>
+  <li>Cloud Foundry routes requests to <code>http://store.shared-domain.example.com/orders</code> to the <code>orders</code> app.</li>
+  <li>Cloud Foundry routes requests to <code>http://store.shared-domain.example.com</code> to the <code>storefront</code> app.</li>
+</ul>
+
+<p>Cloud Foundry attempts to match routes with a path, and then attempts to match host and domain.</p>
+
+<div class="note important">
+<span class="note__title"><strong>Important</strong></span>
+<ul>
+  <li>Routes with the same domain and host name but different paths can only be created in the same space. Private domains do not have this limitation.</li>
+  <li>Cloud Foundry does not route requests for context paths to the root context of an app. Apps must serve requests on the context path.</li>
+</ul>
+</div>
+
+<h4><a id='create-route-with-port'></a> Create a TCP route with a port</h4>
+
+<p>A developer can create a TCP route for <code>tcp-domain.example.com</code> on an arbitrary port. This is the default in the cf CLI.</p>
+
+<ul>
+<li>An arbitrary (random) port is the default. The <code>--random port</code> flag is not supported.</li>
+</ul>
+<pre class="highlight shell_session"><code>  $ cf create-route example-space tcp-domain.example.com --random-port
+  Creating route tcp-domain.example.com for org example-org / space example-space as <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f580869087b5908d9498859990db969a98">[email&#160;protected]</a>...
+  OK
+  Route tcp-domain.example.com:60034 has been created
+</code></pre>
+
+<p>In this example, Cloud Foundry routes requests to <code>tcp-domain.example.com:60034</code> to apps mapped to this route.</p>
+
+<p>To request a specific port, a developer can use the <code>--port</code> flag, so long as the port is not reserved for another space. To create a TCP route for
+<code>tcp-domain.example.com</code> on port 60035, run:</p>
+<pre class="highlight shell_session"><code><span class="w">$ </span><span class="nc">cf</span><span class="kv"> create-route example-space tcp-domain.example.com --port 60035
+</span>Creating route tcp-domain.example.com:60035 for org example-org / space example-space as <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="453036203705203d24283529206b262a28">[email&#160;protected]</a>...
+OK
+</code></pre>
+
+<h3 id="-list-routes"><a id='list-routes'></a> List routes</h3>
+
+<p>Developers can list routes for the current space with the <code>cf routes</code> command. A route is uniquely identified by the combination of host name, domain, port, and path.</p>
+<pre class="highlight shell_session"><code><span class="w">$ </span><span class="nc">cf</span><span class="kv"> routes
+</span>Getting routes as <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4d383e283f0d3d3f243b2c3928602922202c24236328352c203d2128632e2220">[email&#160;protected]</a> ...
+
+space           host          domain                    type   apps
+example-space   example-app   shared-domain.example.com              example-app
+example-space   example-app   private-domain.example.com example-app
+example-space   store         shared-domain.example.com          products
+example-space   store         shared-domain.example.com          orders
+example-space   store         shared-domain.example.com         storefront
+example-space                     shared-domain.example.com tcp    tcp-app
+</code></pre>
+
+<p>Developers can only see routes in spaces where they are a member.</p>
+
+<h3 id="-view-a-route"><a id='view-route'></a> View a route</h3>
+
+<p>Developers can view a route and its destinations within the current space with the <code>cf route</code> command. A route is uniquely identified by the combination of a host name, domain, port, and path.
+Note that the <code>cf route</code> command is available in cf CLI v8 only.</p>
+<pre class="highlight shell_session"><code><span class="w">$ </span><span class="nc">cf</span><span class="kv"> route shared-domain.example.com --hostname example-app
+</span>Showing route example-app.shared-domain.example.com in org o / space example-space as admin...
+
+domain:     shared-domain.example.com
+host:       example-app
+port:
+path:
+protocol:   http
+
+Destinations:
+        app      process   port   protocol
+        mystore  web       8080   http1
+</code></pre>
+
+<p>Developers can only view a route within a space where they are a member.</p>
+
+<h3 id="-check-routes"><a id='check-routes'></a> Check routes</h3>
+
+<p>Developers cannot create a route that is already taken. To find out if a route is available, developers can use the
+<code>cf check-route</code> command.</p>
+
+<p>To find out if a route with the host name <code>store</code> and the domain <code>shared-domain.example.com</code> and the path <code>products</code> exists, run:</p>
+<pre class="highlight shell_session"><code><span class="w">$ </span><span class="nc">cf</span><span class="kv"> check-route shared-domain.example.com --hostname store --path /products
+</span>Checking for route...
+OK
+Route store.shared-domain.example.com/products does exist
+</code></pre>
+
+<h3 id="-map-a-route-to-your-app"><a id='map-route'></a> Map a route to your app</h3>
+
+<p>For an app to receive requests to a route, developers must map the route to the app with the <code>cf map-route</code> command. If the route does not already exist, this command creates it.</p>
+
+<p>Any app that is not routed to port <code>80</code> or port <code>443</code> must be explicitly mapped using the <code>cf map-route</code> command. Otherwise, the route is mapped to port <code>443</code>.</p>
+
+<p>You can create and reserve routes for later use by following the procedure in <a href="#map-route-manually">Manually map a route</a>. You can also map routes to their app immediately as part of a push. See <a href="#map-route-on-push">Map a route with app push</a>.</p>
+
+<p>Changes to route mappings are run asynchronously. On startup, an app becomes accessible at its route within a few seconds. Similarly, upon mapping a new route to a running app, the app becomes accessible at this route within a few seconds of the CLI exiting.</p>
+
+<h4><a id='map-route-manually'></a>Manually map a route</h4>
+
+<p>For these routes and apps:</p>
+
+<table class="table">
+  <thead><tr>
+    <th>Route</th>
+    <th>Apps</th>
+  </tr></thead>
+  <tr>
+    <td>store.shared-domain.example.com/products</td>
+    <td>products</td>
+  </tr>
+  <tr>
+    <td>store.shared-domain.example.com/orders</td>
+    <td>orders</td>
+  </tr>
+  <tr>
+    <td>store.shared-domain.example.com</td>
+    <td>storefront</td>
+  </tr>
+  <tr>
+    <td>tcp-domain.example.com:60000</td>
+    <td>tcp-app</td>
+  </tr>
+</table>
+
+<p>The following commands map the routes in the table to their respective apps. Developers use host name, domain, and path to uniquely identify a route to which to map their apps.</p>
+<pre class="highlight shell_session"><code><span class="w">$ </span><span class="nc">cf</span><span class="kv"> map-route products shared-domain.example.com --hostname store --path products
+</span><span class="w">$ </span><span class="nc">cf</span><span class="kv"> map-route orders shared-domain.example.com --hostname store --path orders
+</span><span class="w">$ </span><span class="nc">cf</span><span class="kv"> map-route storefront shared-domain.example.com --hostname store
+</span><span class="w">$ </span><span class="nc">cf</span><span class="kv"> map-route tcp-app tcp-domain.example.com --port 60000
+</span></code></pre>
+
+<p>The following command maps the wildcard route <code>*.foo.shared-domain.example.com</code> to the app <code>myfallbackapp</code>.</p>
+<pre class="highlight shell_session"><code><span class="w">$ </span><span class="nc">cf</span><span class="kv"> map-route myfallbackapp foo.shared-domain.example.com --hostname '*'
+</span></code></pre>
+
+<p>In cf CLI v8, the following command maps the route <code>h2app.shared-domain.example.com</code> as an HTTP/2 route to the HTTP/2 app <code>h2app</code>.</p>
+<pre class="highlight shell_session"><code><span class="w">$ </span><span class="nc">cf</span><span class="kv"> map-route h2app shared-domain.example.com --hostname h2app --app-protocol http2
+</span></code></pre>
+
+<h4><a id='map-route-on-push'></a>Map a route with app push</h4>
+
+<p>Developers can map a route to their app with the <code>cf push</code> command.
+The best way to do this is by using the <code>routes</code> property in the manifest.</p>
+<pre class="highlight shell_session"><code><span class="w">$ </span><span class="nc">cf</span><span class="kv"> push example-app
+</span></code></pre>
+
+<p>To customize the route during <code>push</code>, specify the domain using the <code>-d</code> flag and the host name with the <code>--hostname</code> flag. The following command creates the <code>foo.private-domain.example.com</code> route for <code>example-app</code>:</p>
+<pre class="highlight shell_session"><code><span class="w">$ </span><span class="nc">cf</span><span class="kv"> push example-app -d private-domain.example.com --hostname foo
+</span></code></pre>
+
+<p>To map a TCP route during <code>push</code>, specify a TCP domain and request a random port using <code>--random-route</code>. To specify a port, push the app without a route, then create and map the route manually by following the procedure in <a href="#create-route-w-port">Create a TCP route with a port</a>.</p>
+<pre class="highlight shell_session"><code><span class="w">$ </span><span class="nc">cf</span><span class="kv"> push tcp-app -d tcp-domain.example.com --random-route
+</span></code></pre>
+
+<h4><a id='map-route-w-manifest'></a>Map a route using app manifest</h4>
+
+<p>Developers can map a route to their app with a manifest by editing the <code>route</code> attribute to specify the host, domain, port, and path components of the route. For more information, see <a href="/devguide/deploy-apps/manifest.html#routes">Deploying with app manifests</a>.</p>
+
+<h4><a id='map-route-to-mult-apps'></a>Map a route to multiple apps</h4>
+
+<p>Cloud Foundry allows multiple apps, or versions of the same app, to be mapped to the same route. This feature activates blue-green deployment. For more information see <a href="/devguide/deploy-apps/blue-green.html">Using blue-green deployment to reduce downtime and risk</a>.</p>
+
+<p>Routing multiple apps to the same route might cause undesirable behavior in some situations by routing incoming requests randomly to one of the apps on the shared route.</p>
+
+<p>For more information about troubleshooting this problem, see <a href="/devguide/deploy-apps/troubleshoot-app-health.html#routing-conflict">Routing conflict</a> in <em>Troubleshooting app deployment and health</em>.</p>
+
+<h4><a id='map-multiple-routes'></a>Map multiple routes to one app</h4>
+
+<p>You can have multiple routes to an app, but those routes cannot have different context paths.</p>
+
+<p>These routes are valid for a single app:</p>
+
+<table class="table">
+  <thead><tr>
+    <th>Route 1</th>
+    <th>Route 2</th>
+  </tr></thead>
+  <tr>
+    <td><code>example-app.example.com</code></td>
+    <td><code>example-app.apps.cf.example.com</code></td>
+  </tr>
+  <tr>
+    <td><code>example-app.example.com/foo</code></td>
+    <td><code>example-app.apps.cf.example.com/foo</code></td>
+  </tr>
+</table>
+
+<p>These routes are not valid for a single app:</p>
+
+<table class="table">
+  <thead><tr>
+    <th>Route 1</th>
+    <th>Route 2</th>
+  </tr></thead>
+  <tr>
+    <td><code>example-app.example.com/foo</code></td>
+    <td><code>example-app.apps.cf.example.com/bar</code></td>
+  </tr>
+  <tr>
+    <td><code>example-app.apps.cf.example.com/foo</code></td>
+    <td><code>example-app.example.com/bar</code></td>
+  </tr>
+</table>
+
+<h4><a id='map-internal-route'></a>Map an internal route to an app</h4>
+
+<p>You can map an internal route to any app. This internal route allows your app to communicate with other apps without leaving the platform. After it is mapped, this route becomes available to all other apps on the platform.</p>
+
+<p>This example creates a <code>foo.apps.internal</code> internal route for <code>example-app</code>:</p>
+<pre class="highlight shell_session"><code><span class="w">$ </span><span class="nc">cf</span><span class="kv"> map-route example-app apps.internal --hostname foo
+</span></code></pre>
+
+<h3 id="-unmap-a-route"><a id='unmap-route'></a> Unmap a route</h3>
+
+<p>Developers can remove a route from an app using the <code>cf unmap-route</code> command. The route remains reserved for later use in the space where it was created until the route is deleted.</p>
+
+<p>To unmap an HTTP route from an app, identify the route using the host name, domain, and path:</p>
+<pre class="highlight shell_session"><code><span class="w">$ </span><span class="nc">cf</span><span class="kv"> unmap-route tcp-app private-domain.example.com --hostname example-app --path mypath
+</span></code></pre>
+
+<p>To unmap a TCP route from an app, identify the route using the domain and port:</p>
+<pre class="highlight shell_session"><code><span class="w">$ </span><span class="nc">cf</span><span class="kv"> unmap-route tcp-app tcp-domain.example.com --port 60000
+</span></code></pre>
+
+<h3 id="-share-a-route-with-another-space"><a id='share-route'></a> Share a route with another space</h3>
+
+<div class="note important">
+<span class="note__title"><strong>Important</strong></span>
+To follow the procedure in this section, you must use cf CLI v8.5.0 or later. To download cf CLI v8.5.0 or later, see the <a href="https://github.com/cloudfoundry/cli/releases/tag/v8.5.0">Cloud Foundry CLI repository</a> on GitHub.
+</div>
+
+<p>You can share a route with another space using the <code>cf share-route</code> command. To move an app to another space, you can share routes with that space to prevent downtime during the transition. Rather than deleting the route in the original space and re-creating the route in the new space, you can share the route with the new space and map it to the app running in that space.</p>
+
+<p>To share a route with another space:</p>
+
+<ol>
+<li><p>In a terminal window, allow route sharing by running:</p>
+<pre class="highlight plaintext"><code>  cf enable-feature-flag route_sharing
+</code></pre></li>
+<li><p>Run:</p>
+<pre class="highlight plaintext"><code>  cf share-route DOMAIN --hostname HOSTNAME --path PATH -s SPACE -o ORG
+</code></pre>
+
+<p>Where:
+  <ul>
+    <li><code>DOMAIN</code> is the domain in the route for your app.</li>
+    <li><code>HOSTNAME</code> is the host name in the route for your app.</li>
+    <li><code>PATH</code> is the path in the route for your app.</li>
+    <li><code>SPACE</code> is the space with which you want to share the route for your app.</li>
+    <li><code>ORG</code> is the org containing space with which you want to share the route for your app. If the space with which you want to share the route is within the same org as the space that contains the route, do not include the <code>-o</code> flag.</li>
+  </ul></p>
+
+<p>The following example command shares the route <code>example-app.example.com/example-path</code> with the <code>other-space</code> space in the <code>other-org</code> org:</p>
+<pre class="highlight shell_session"><code>  cf share-route example.com --hostname example-app --path example-path -s other-space -o other-org
+</code></pre></li>
+</ol>
+
+<h3 id="-transfer-ownership-of-a-route-to-another-space"><a id='move-route'></a> Transfer ownership of a route to another space</h3>
+
+<div class="note important">
+<span class="note__title"><strong>Important</strong></span>
+To follow the procedure in this section, you must use cf CLI v8.5.0 or later. To download cf CLI v8.5.0 or later, see the <a href="https://github.com/cloudfoundry/cli/releases/tag/v8.5.0">Cloud Foundry CLI repository</a> on GitHub.
+</div>
+
+<p>After sharing a route with another space, you can transfer ownership of the route to that space using the <code>cf move-route</code> command. You can use this command if you are unable to maintain or delete a shared route within the space with which it was shared. For information about sharing routes across spaces, see <a href="#share-route">Share a route with another space</a>.</p>
+
+<p>To move a route:</p>
+
+<ol>
+<li><p>In a terminal window, target the space from which the route was originally shared by running:</p>
+<pre class="highlight plaintext"><code>  cf target -s SPACE -o ORG
+</code></pre>
+
+<p>Where:
+  <ul>
+     <li><code>SPACE</code> is the space from which the route was originally shared.</li>
+     <li><code>ORG</code> is the org containing space from which the route was originally shared. If the space from which the route was originally shared is within the same
+  org as the space with which the route was shared, do not include the <code>-o</code> flag.</li>
+  </ul></p></li>
+<li><p>Run:</p>
+<pre class="highlight plaintext"><code>  cf move-route DOMAIN --hostname HOSTNAME --path PATH -s SPACE -o ORG
+</code></pre>
+
+<p>Where:
+  <ul>
+    <li><code>DOMAIN</code> is the domain in the route for your app.</li>
+    <li><code>HOSTNAME</code> is the host name in the route for your app.</li>
+    <li><code>PATH</code> is the path in the route for your app.</li>
+    <li><code>SPACE</code> is the space to which you want to move the route for your app.</li>
+    <li><code>ORG</code> is the org containing space to which you want to move the route for your app. If the space to which you want to move the route is within the same org as the space that contains the route, do not include the <code>-o</code> flag.</li>
+  </ul></p>
+
+<p>The following example command moves the route <code>example-app.example.com/example-path</code> with the <code>other-space</code> space in the <code>other-org</code> org:</p>
+<pre class="highlight shell_session"><code>   cf move-route example.com --hostname example-app --path example-path -s other-space -o other-org
+</code></pre></li>
+</ol>
+
+<h3 id="-delete-a-route"><a id='delete-route'></a> Delete a route</h3>
+
+<p>Developers can delete a route from a space using the <code>cf delete-route</code> command.</p>
+
+<p>To delete a HTTP route, identify the route using the host name, domain, and path:</p>
+<pre class="highlight shell_session"><code><span class="w">$ </span><span class="nc">cf</span><span class="kv"> delete-route private-domain.example.com --hostname example-app --path mypath
+</span></code></pre>
+
+<p>To delete a TCP route, identify the route using the domain and port.</p>
+<pre class="highlight shell_session"><code><span class="w">$ </span><span class="nc">cf</span><span class="kv"> delete-route tcp.private-domain.example.com --port 60000
+</span></code></pre>
+
+<h3 id="-routing-requests-to-a-specific-app-instance"><a id='surgical-routing'></a> Routing requests to a specific app instance</h3>
+
+<p>Users can route HTTP requests to a specific app instance using the header <code>X-Cf-App-Instance</code>.</p>
+
+<p>The format of the header is <code>X-Cf-App-Instance: APP_GUID:APP_INDEX</code>.</p>
+
+<p><code>APP_GUID</code> is an internal identifier for your app.
+Use the <code>cf APP-NAME --guid</code> command to discover the <code>APP_GUID</code> for your app.</p>
+<pre class="highlight shell_session"><code><span class="w">$ </span><span class="nc">cf</span><span class="kv"> app example-app --guid
+</span></code></pre>
+
+<p><code>APP_INDEX</code>, for example, <code>0</code>,<code>1</code>, <code>2</code>, or <code>3</code>, is an identifier for a particular app instance. Use the CLI command <code>cf app APP-NAME</code> to get statistics on each
+instance of a particular app.</p>
+<pre class="highlight shell_session"><code><span class="w">$ </span><span class="nc">cf</span><span class="kv"> app example-app
+</span></code></pre>
+
+<p>The following example shows a request made to instance <code>9</code> of an app with GUID <code>5cdc7595-2e9b-4f62-8d5a-a86b92f2df0e</code> and mapped to route
+<code>example-app.private-domain.example.com</code>.</p>
+<pre class="highlight shell_session"><code><span class="w">$ </span><span class="nc">curl</span><span class="kv"> example-app.private-domain.example.com -H "X-Cf-App-Instance: 5cdc7595-2e9b-4f62-8d5a-a86b92f2df0e:9"
+</span></code></pre>
+
+<p>If the <code>X-Cf-App-Instance</code> header is set to an invalid value, Gorouter returns a <code>400</code> status code and the response from Gorouter contains a
+<code>X-Cf-Routererror</code> header with more information about the error. Before the routing release v0.197.0, Gorouter returned a <code>404</code> error.</p>
+
+<p>These are the possible error responses:</p>
+
+<table class="table">
+  <thead><tr>
+    <th width="30%">X-Cf-Routererror value</th>
+    <th width="30%">Reason for error</xth>
+    <th width="40%">Response body</th>
+  </tr></thead>
+  <tr>
+    <td><code>invalid_cf_app_instance_header</code></td>
+    <td>The value provided for <code>X-Cf-App-Instance</code> was an incorrectly formatted GUID.</td>
+    <td>None</td>
+  </tr>
+  <tr>
+    <td><code>unknown_route</code></td>
+    <td>The value provided for <code>X-Cf-App-Instance</code> is a correctly formatted GUID, but no instance is found with that GUID for the route
+      requested.</td>
+    <td><code>400 Bad Request: Requested instance ('1') with guid ('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa') does not exist for route
+      ('example-route.cf.com')</code></td>
+  </tr>
+</table>
+
+<h3 id="-routing-requests-to-a-specific-process-instance"><a id='surgical-routing-process'></a> Routing requests to a specific process instance</h3>
+
+<p>Since routing-release version 0.332.0, users can route HTTP requests to a specific
+process instance using the header <code>X-Cf-Process-Instance</code>.</p>
+
+<p>The format of the header is <code>X-Cf-Process-Instance: PROCESS_GUID:PROCESS_INDEX</code> or <code>X-Cf-Process-Instance: PROCESS_GUID</code>.</p>
+
+<p><code>PROCESS_GUID</code> is an internal identifier for a specific app process.
+Use <code>cf curl /v3/apps/$(cf APP-NAME --guid)/processes</code> command to discover the <code>PROCESS_GUID</code>s related to your app.</p>
+
+<p><code>PROCESS_INDEX</code>, for example, <code>0</code>,<code>1</code>, <code>2</code>, or <code>3</code>, is an identifier for a particular process instance. Use the CLI command <code>cf app APP-NAME</code> to get statistics on each
+instance of a particular app process.</p>
+<pre class="highlight shell_session"><code><span class="w">$ </span><span class="nc">cf</span><span class="kv"> app example-app
+</span></code></pre>
+
+<p>The following example shows a request made to instance <code>9</code> of an process with GUID <code>5cdc7595-2e9b-4f62-8d5a-a86b92f2df0e</code> and mapped to route
+<code>example-app.private-domain.example.com</code>.</p>
+<pre class="highlight shell_session"><code><span class="w">$ </span><span class="nc">curl</span><span class="kv"> example-app.private-domain.example.com -H "X-Cf-Process-Instance: 5cdc7595-2e9b-4f62-8d5a-a86b92f2df0e:9"
+</span></code></pre>
+
+<p>The following example shows a request made a process with GUID <code>5cdc7595-2e9b-4f62-8d5a-a86b92f2df0e</code> and mapped to route
+<code>example-app.private-domain.example.com</code>.</p>
+<pre class="highlight shell_session"><code><span class="w">$ </span><span class="nc">curl</span><span class="kv"> example-app.private-domain.example.com -H "X-Cf-Process-Instance: 5cdc7595-2e9b-4f62-8d5a-a86b92f2df0e"
+</span></code></pre>
+
+<p>If the <code>X-Cf-Process-Instance</code> header is set to an invalid value, Gorouter returns a <code>400</code> status code and the response from Gorouter contains a
+<code>X-Cf-Routererror</code> header with more information about the error.</p>
+
+<p>These are the possible error responses:</p>
+
+<table class="table">
+  <thead><tr>
+    <th width="30%">X-Cf-Routererror value</th>
+    <th width="30%">Reason for error</xth>
+    <th width="40%">Response body</th>
+  </tr></thead>
+  <tr>
+    <td><code>invalid_cf_process_instance_header</code></td>
+    <td>The value provided for <code>X-Cf-Process-Instance</code> was an incorrectly formatted GUID.</td>
+    <td>None</td>
+  </tr>
+  <tr>
+    <td><code>unknown_route</code></td>
+    <td>The value provided for <code>X-Cf-Process-Instance</code> is a correctly formatted GUID, but no backend is found with that GUID and index for the route
+      requested.</td>
+    <td><code>400 Bad Request: Requested process instance ('1') with guid ('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa') does not exist for route
+      ('example-route.cf.com')</code></td>
+  </tr>
+  <tr>
+    <td><code>unknown_route</code></td>
+    <td>The value provided for <code>X-Cf-Process-Instance</code> is a correctly formatted GUID but no backend is found with that GUID for the route
+      requested.</td>
+    <td><code>400 Bad Request: Requested process instance with guid ('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa') does not exist for route
+      ('example-route.cf.com')</code></td>
+  </tr>
+</table>
+
+<p>If the <code>X-Cf-App-Instance</code> header and the <code>X-Cf-Process-Instance</code> header are
+present on the same request, then the <code>X-Cf-App-Instance</code> takes presidence.</p>
+
+<h2 id="-domains"><a id='domains'></a> Domains</h2>
+
+<p>The term <em>domain</em> here differs from its common use and is specific to Cloud Foundry.
+Likewise, shared domain and private domain refer to resources with specific meaning in Cloud Foundry. The use of <em>domain name</em>, <em>root domain</em>, and <em>subdomain</em> refers to DNS records.</p>
+
+<p>Domains indicate to a developer that requests for any route created from the domain are routed to Cloud Foundry. This requires DNS to be configured out-of-band to resolve the domain name to the IP address of a load balancer configured to forward requests to the Cloud Foundryrouters. For more information about configuring DNS, see <a href="#domains-dns">DNS for domains</a>.</p>
+
+<h3 id="-list-domains-for-an-org"><a id='list-domains'></a> List domains for an org</h3>
+
+<p>When creating a route, developers select from domains available to them. Use the <code>cf domains</code> command to view a list of available domains for the targeted org:</p>
+<pre class="highlight shell_session"><code><span class="w">$ </span><span class="nc">cf</span><span class="kv"> domains
+</span>Getting domains in org example-org as <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4035332532002538212d302c256e232f2d">[email&#160;protected]</a>... OK
+name                          status   type
+shared-domain.example.com        shared
+tcp-domain.example.com    shared   tcp
+private-domain.example.com         owned
+</code></pre>
+
+<p>This example displays three available domains: a shared HTTP domain <code>shared-domain.example.com</code>, a shared TCP domain <code>tcp-domain.example.com</code>, and a private
+domain <code>private-domain.example.com</code>. For more information, see <a href="#shared-domains">Shared domains</a> and <a href="#private-domains">Private domains</a>.</p>
+
+<h3 id="-http-versus-tcp-domains"><a id='http-vs-tcp-domains'></a> HTTP versus TCP domains</h3>
+
+<p>By default, Cloud Foundry only supports routing of HTTP requests to apps.
+HTTP domains indicate to a developer that only requests using the HTTP protocol are routed to apps mapped to routes created from the domain. Routing for HTTP domains is layer 7 and offers features like custom host names, sticky sessions, and TLS termination.</p>
+
+<p>TCP domains indicate to a developer that requests over any TCP protocol, including HTTP, are routed to apps mapped to routes created from the domain. Routing for TCP domains is layer 4 and protocol-agnostic, so many features available to HTTP routing are not available for TCP routing. TCP domains are defined as being associated with the TCP router group. The TCP router group defines the range of ports available to be reserved with TCP routes. Only shared domains can use a TCP protocol.</p>
+
+<h3 id="-shared-domains"><a id='shared-domains'></a> Shared domains</h3>
+
+<p>Admins manage shared domains, which are available to users in all orgs of a Cloud Foundry deployment. An admin can offer multiple shared domains to users. For example, an admin might offer developers the choice of creating routes for their apps from <code>shared-domain.example.com</code> and <code>cf.example-company.com</code>.</p>
+
+<p>If a developer pushes an app without specifying a domain, a route is created for it from the first shared domain created in the system. All other operations involving route require the domain be specified. For more information, see <a href="#routes">Routes</a>.</p>
+
+<p>When using shared domains, you cannot have routes with the same host name and domain across different orgs and spaces.</p>
+
+<p>Shared domains are HTTP by default, but can be configured to be TCP when associated with the TCP router group.</p>
+
+<h4><a id='create-shared-domain'></a> Create a shared domain</h4>
+
+<p>Admins can create an HTTP shared domain with the <code>cf create-shared-domain</code> command:</p>
+<pre class="highlight shell_session"><code><span class="w">$ </span><span class="nc">cf</span><span class="kv"> create-shared-domain shared-domain.example.com
+</span></code></pre>
+
+<p class="note">
+<span class="note__title"><strong>Note</strong></span>
+To create a domain that requires mutual TLS and enforces identity-based route policies, add the <code>--enforce-route-policies</code> flag (optionally with <code>--scope</code>). This setting is fixed when the domain is created and cannot be changed afterward. See <a href="identity-aware-routing.html">Configuring identity-aware routing</a>.
+</p>
+
+<p class="note important">
+<span class="note__title"><strong>Important</strong></span>
+cf CLI v7+ does not support TCP routing or creating shared domains with router groups.
+</p>
+
+<h4><a id='delete-shared-domain'></a>Delete a shared domain</h4>
+
+<p>Admins can delete a shared domain from Cloud Foundry with the <code>cf delete-shared-domain</code> command:</p>
+<pre class="highlight shell_session"><code><span class="w">$ </span><span class="nc">cf</span><span class="kv"> delete-shared-domain example.com
+</span></code></pre>
+
+<h4><a id='internal-domains'></a>Internal domain</h4>
+
+<p>The internal domain is a special type of shared domain used for app communication internal to the platform. When you activate service discovery, the internal domain <code>apps.internal</code> becomes available for route mapping.</p>
+
+<p>Admins can configure multiple internal domains. Add a custom internal domain name to the <code>internal_domains</code> property on the <code>bosh-dns-adapter</code> job. Then create an internal domain using the <code>--internal</code> option:</p>
+<pre class="highlight shell_session"><code><span class="w">$ </span><span class="nc">cf</span><span class="kv"> create-shared-domain shared-domain.example.com --internal
+</span></code></pre>
+
+<p>The <code>--router-group</code> option is not used with internal domains.</p>
+
+<h3 id="-private-domains"><a id='private-domains'></a> Private domains</h3>
+
+<p>Org managers can add private domains, or custom domains, and give members of the org permission to create routes for privately registered domain names.</p>
+
+<p>Private domains can be shared with other orgs and spaces. These are called as shared private domains and are not the same as shared domains. For more information, see <a href="#shared-domains">Shared domains</a>.</p>
+
+<p>When using private domains, you can have routes with the same host name and domain name across different orgs and spaces. This cannot be done with shared domains.</p>
+
+<p>Private domains can be HTTP or HTTPS only. TCP routing is supported for shared domains only.</p>
+
+<h4><a id='create-private-domain'></a>Create a private domain</h4>
+
+<p>Org managers can create a private domain by running:</p>
+<pre class="highlight shell_session"><code><span class="w">$ </span><span class="nc">cf</span><span class="kv"> create-private-domain example-org private-domain.example.com
+</span></code></pre>
+
+<p class="note">
+<span class="note__title"><strong>Note</strong></span>
+Org managers can create an identity-aware private domain by adding <code>--enforce-route-policies</code> (optionally with <code>--scope</code>). This setting is fixed at creation. See <a href="identity-aware-routing.html">Configuring identity-aware routing</a>.
+</p>
+
+<p>Org managers can create a private domain for a subdomain by running:</p>
+<pre class="highlight shell_session"><code><span class="w">$ </span><span class="nc">cf</span><span class="kv"> create-private-domain example-org foo.private-domain.example.com
+</span></code></pre>
+
+<h4><a id='sharing-private-domains'></a>Sharing a private domain with one or more orgs</h4>
+
+<p>Org managers can grant or revoke access to a private domain to other orgs if they have permissions for these orgs.
+The <code>cf unshare-private-domain</code> command provides a warning and requires confirmation before it proceeds.</p>
+<pre class="highlight shell_session"><code><span class="w">$ </span><span class="nc">cf</span><span class="kv"> share-private-domain test-org private-domain.example.com
+</span>
+<span class="w">$ </span><span class="nc">cf</span><span class="kv"> unshare-private-domain test-org private-domain.example.com
+</span></code></pre>
+
+<h4 id="-delete-a-private-domain"><a id='delete-private-domain'></a> Delete a private domain</h4>
+
+<p>Org managers can delete a domain from Cloud Foundry with the <code>cf delete-domain</code> command:</p>
+<pre class="highlight shell_session"><code><span class="w">$ </span><span class="nc">cf</span><span class="kv"> delete-private-domain private-domain.example.com
+</span></code></pre>
+
+<h3 id="-requirements-for-parent-and-child-domains"><a id='parent-child-domains'></a> Requirements for parent and child domains</h3>
+
+<p>In the domain <code>example-app.shared-domain.example.com</code>, <code>shared-domain.example.com</code> is the parent domain of subdomain <code>example-app</code>. The following list describes requirements for creating domains:</p>
+
+<ul>
+<li><p>You can only create a private domain that is parent to a private subdomain.</p></li>
+<li><p>You can create a shared domain that is parent to either a shared or a private subdomain.</p></li>
+</ul>
+
+<p>The domain <code>foo.example-app.shared-domain.example.com</code> is the child subdomain of <code>example-app.shared-domain.example.com</code>. The following list describes requirements for creating subdomains:</p>
+
+<ul>
+<li><p>You can create a private subdomain for a private parent domain only if the domains belong to the same org.</p></li>
+<li><p>You can create a private subdomain for a shared parent domain.</p></li>
+<li><p>You can only create a shared subdomain for a shared parent domain.</p></li>
+<li><p>You cannot create a shared subdomain for a private parent domain.</p></li>
+</ul>
+
+<h3 id="-dns-for-domains"><a id='domains-dns'></a> DNS for domains</h3>
+
+<p>To create customized access to your apps, you can map specific or wildcard custom domains to Cloud Foundry by using your DNS provider.</p>
+
+<h4 id="-mapping-domains-to-your-custom-domain"><a id='subdomain-dns'></a> Mapping Domains to your custom domain</h4>
+
+<p>To associate a registered domain name with a domain on Cloud Foundry, configure a CNAME record with your DNS provider, pointing at any shared
+domain offered in Cloud Foundry.</p>
+
+<h5 id="-mapping-a-single-domain-to-your-custom-domain"><a id='single-mapping'></a> Mapping a single domain to your custom domain</h5>
+
+<p>To map a single domain to a custom domain to Cloud Foundry, configure a CNAME record with your DNS provider.</p>
+
+<p>Here are some example CNAME record mappings.</p>
+
+<table class="table">
+  <thead><tr>
+    <th>Record set in custom domain</th>
+    <th>Type</th>
+    <th>Target in Cloud Foundry</th>
+  </tr></thead>
+  <tr>
+    <td>example-app.yourcustomdomain.com.</td>
+    <td>CNAME</td>
+    <td>example-app.shared-domain.example.com</td>
+  </tr>
+  <tr>
+    <td>www.yourcustomdomain.com.</td>
+    <td>CNAME</td>
+    <td>example-app.shared-domain.example.com</td>
+  </tr>
+</table>
+
+<p>After you create the CNAME mapping, your DNS provider routes your custom domain to <code>example-app.shared-domain.example.com</code>.
+See your DNS provider documentation to find out if the trailing <code>.</code> is required.</p>
+
+<h5 id="-mapping-multiple-subdomains-to-your-custom-domain"><a id='wildcard-mapping'></a> Mapping multiple subdomains to your custom domain</h5>
+
+<p>Use a wildcard CNAME record to point all of the subdomains in your custom domain to shared-domain.example.com.</p>
+
+<p>Each separately configured subdomain has priority over the wildcard configuration.</p>
+
+<p>Here are some example wildcard CNAME record mappings.</p>
+
+<table class="table">
+  <thead><tr>
+    <th>Record set in custom domain</th>
+    <th>Type</th>
+    <th>Target in Cloud Foundry</th>
+  </tr></thead>
+  <tr>
+    <td>*.yourcustomdomain.com.</td>
+    <td>CNAME</td>
+    <td>*.shared-domain.example.com</td>
+  </tr>
+  <tr>
+    <td>*.yourcustomdomain.com.</td>
+    <td>CNAME</td>
+    <td>*.example-app.shared-domain.example.com</td>
+  </tr>
+</table>
+
+<p>If you use a wildcard as the subdomain name, then your DNS provider can route from <code>*.YOURCUSTOMDOMAIN</code> to any of the following:</p>
+
+<ul>
+<li><code>*.shared-domain.example.com</code></li>
+<li><code>foo.example-app.shared-domain.example.com</code></li>
+<li><code>bar.foo.example-app.shared-domain.example.com</code></li>
+</ul>
+
+<h4 id="-configuring-dns-for-your-registered-root-domain"><a id='root-domain-dns'></a> Configuring DNS for your registered root domain</h4>
+
+<p>To use your root domain for apps on Cloud Foundry, you can use custom DNS record types like ALIAS and ANAME, if your DNS provider offers them, or you can use subdomain redirection.</p>
+
+<div class="note">
+<span class="note__title"><strong>Note</strong></span>
+Root domains are also called zone apex domains.
+</div>
+
+<p>If your DNS provider supports using an ALIAS or ANAME record, configure your root domain with your DNS provider to point at a shared domain in
+Cloud Foundry.</p>
+
+<table class="table">
+  <thead><tr>
+    <th>Record</th>
+    <th>Name</th>
+    <th>Target</th>
+    <th>Note</th>
+  </tr></thead>
+  <tr>
+    <td>ALIAS or ANAME</td>
+    <td>empty or @</td>
+    <td>private-domain.example.com.</td>
+    <td>To decide whether to use an empty or @ value for the Name entry, see the documentation for your DNS provider.</td>
+  </tr>
+</table>
+
+<p>If your DNS provider does not support ANAME or ALIAS records, you can use subdomain redirection, also known as domain forwarding, to redirect requests for your root domain to a subdomain configured as a CNAME.</p>
+
+<div class="note important">
+<span class="note__title"><strong>Important</strong></span>
+If you use domain forwarding, SSL requests to the root domain might fail if the SSL certificate matches only the subdomain.
+For more information about SSL certificates, see
+the <a href="https://docs.cloudfoundry.org/devguide/deploy-apps/trusted-system-certificates.html">Cloud Foundry documentation</a>.
+</div>
+
+<p>Configure the root domain to point at a subdomain such as <code>www</code>, and configure the subdomain as a CNAME record pointing at a shared domain in
+Cloud Foundry.</p>
+
+<table class="table">
+  <thead><tr>
+    <th>Record</th>
+    <th>Name</th>
+    <th>Target</th>
+    <th>Note</th>
+  </tr></thead>
+  <tr>
+    <td>URL or Forward</td>
+    <td>private-domain.example.com</td>
+    <td>www.private-domain.example.com</td>
+    <td>This method causes a <code>301 permanent redirect</code> to the subdomain you configure.</td>
+  </tr>
+  <tr>
+    <td>CNAME</td>
+    <td>www</td>
+    <td>example-app.shared-domain.example.com</td>
+    <td></td>
+  </tr>
+</table>
+
+        <a id='repo-link' href="https://github.com/cloudfoundry/docs-dev-guide/tree/master/deploy-apps/routes-domains.html.md.erb">Create a pull request or raise an issue on the source for this page in GitHub</a>
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    <div class="copyright">
+  <a href='/'>Cloud Foundry Documentation</a>
+  &copy; 2026 <a href='https://cloudfoundry.org'>Cloud Foundry Foundation</a>. All Rights Reserved.
+</div>
+<div class="support">
+  <a href="https://www.cloudfoundry.org/community/" target="_blank">Get Involved</a>
+</div>
+
+  </footer>
+</div><!--end of container-->
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

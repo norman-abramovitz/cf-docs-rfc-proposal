@@ -1,0 +1,10 @@
+# Antora 3.2.1 build warnings (npx antora), message and file:line
+warn section title out of sequence: expected level 2, got level 3 -- passthrough/modules/ROOT/pages/access-control.adoc:61
+warn section title out of sequence: expected level 2, got level 3 -- passthrough/modules/ROOT/pages/access-control.adoc:109
+warn section title out of sequence: expected level 2, got level 3 -- passthrough/modules/ROOT/pages/access-control.adoc:127
+warn section title out of sequence: expected level 2, got level 3 -- native/modules/ROOT/pages/access-control.adoc:64
+warn section title out of sequence: expected level 2, got level 3 -- native/modules/ROOT/pages/access-control.adoc:113
+warn section title out of sequence: expected level 2, got level 3 -- native/modules/ROOT/pages/access-control.adoc:131
+warn section title out of sequence: expected level 2, got level 3 -- native-plain/modules/ROOT/pages/access-control.adoc:61
+warn section title out of sequence: expected level 2, got level 3 -- native-plain/modules/ROOT/pages/access-control.adoc:109
+warn section title out of sequence: expected level 2, got level 3 -- native-plain/modules/ROOT/pages/access-control.adoc:127

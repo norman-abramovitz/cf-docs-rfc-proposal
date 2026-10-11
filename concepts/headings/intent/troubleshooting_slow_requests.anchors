@@ -1,0 +1,14 @@
+# Anchors troubleshooting_slow_requests must keep: every id the source
+# writes as <a id>. Read by ../checks/outline.py --anchors.
+overview
+cause
+total-latency        linked from this page (Experiment 6 table)
+within-cf
+duplicate-latency
+remove-the-load-balancer
+remove-the-gorouter
+test-internal-network
+next
+app_logs
+gorouter-latency     linked from this page (Experiment 5 table)
+ops-recommendations  linked from this page (Experiment 5 table)

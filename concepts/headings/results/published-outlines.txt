@@ -1,0 +1,106 @@
+# published/metadata.html: 33 headings in main#js-content
+h1 Using metadata in Cloud Foundry
+  h2 About metadata   #-about-metadata #about
+    h3 Methods of adding metadata   #-methods-of-adding-metadata #methods
+    h3 Types of metadata   #-types-of-metadata #types
+      h4 Annotations sent to service brokers   #-annotations-sent-to-service-brokers #annotations
+    h3 Metadata Requirements   #-metadata-requirements #reqs
+      h4 Requirements for labels   #-requirements-for-labels #reqs-labels
+      h4 Requirements for annotations   #-requirements-for-annotations #reqs-annotations
+    h3 Metadata key prefixes   #-metadata-key-prefixes #prefix
+  h2 cf CLI procedures   #-cf-cli-procedures #cf-cli-procedures
+    h3 Add metadata to a resource   #-add-metadata-to-a-resource #add-cli
+      h4 Add a label   #-add-a-label #add-label-cli
+    h3 Update metadata for a resource   #-update-metadata-for-a-resource #update-cli
+    h3 Remove metadata from a resource   #-remove-metadata-from-a-resource #remove-cli
+      h4 Remove a label   #-remove-a-label #remove-label-cli
+    h3 View metadata for a resource   #-view-metadata-for-a-resource #view-cli
+      h4 View labels   #-view-labels #view-label-cli
+      h4 Select resources by labels   #-select-resources-by-labels #select-resources-cli
+  h2 API procedures   #-api-procedures #api-procedures
+    h3 Add metadata to a resource   #-add-metadata-to-a-resource #add
+      h4 Add a label   #-add-a-label #add-label
+      h4 Add an annotation   #-add-an-annotation #annotation
+    h3 Update metadata for a resource   #-update-metadata-for-a-resource #update
+    h3 Remove metadata from a resource   #-remove-metadata-from-a-resource #remove
+    h3 View metadata for a resource   #-view-metadata-for-a-resource #view
+    h3 List resources by querying labels   #-list-resources-by-querying-labels #query
+      h4 Selector requirement reference   #-selector-requirement-reference #requirements-reference
+  h2 Example: Label resources with a git commit   #-example:-label-resources-with-a-git-commit #example
+    h3 Manually label resources   #-manually-label-resources #manual
+    h3 Automate labeling resources   #-automate-labeling-resources #example-script
+      h4 Prerequisite   #-prerequisite #example-prerequisite
+      h4 Example script   #-example-script #script
+  h2 Example: Add custom tags to log and metric envelopes   #-example:-add-custom-tags-to-log-and-metric-envelopes #example-custom-tags
+
+# published/troubleshooting_slow_requests.html: 13 headings in main#js-content
+h1 Troubleshooting slow requests in Cloud Foundry
+  h2 App requests overview   #app-requests-overview #overview
+  h2 Find the cause of latency   #-find-the-cause-of-latency #cause
+    h3 Experiment 1: Measure total round-trip app requests   #-experiment-1:-measure-total-round-trip-app-requests #total-latency
+    h3 Experiment 2: View request time in access logs   #-experiment-2:-view-request-time-in-access-logs #within-cf
+    h3 Experiment 3: Duplicate latency on another endpoint   #-experiment-3:-duplicate-latency-on-another-endpoint #duplicate-latency
+    h3 Experiment 4: Remove the load balancer from request path   #-experiment-4:-remove-the-load-balancer-from-request-path #remove-the-load-balancer
+    h3 Experiment 5: Remove Gorouter from request path   #-experiment-5:-remove-gorouter-from-request-path #remove-the-gorouter
+    h3 Experiment 6: Test the network between the router and the app   #-experiment-6:-test-the-network-between-the-router-and-the-app #test-internal-network
+  h2 Investigate or address latency   #-investigate-or-address-latency #next
+    h3 Use app logs to locate delays in Cloud Foundry   #-use-app-logs-to-locate-delays-in-cloud-foundry #app_logs
+    h3 Causes for Gorouter latency   #causes-for-gorouter-latency #gorouter-latency
+    h3 Operations recommendations   #-operations-recommendations #ops-recommendations
+
+# published/access-control.html: 9 headings in main#js-content
+h1 Managing access to Service Plans
+  h2 Prerequisites   #prerequisites #prerequisites
+  h2 Service Plan access   #service-plan-access #display-access
+  h2 Enabling access to Service Plans   #enabling-access-to-service-plans #enable-access
+      h4 Enabling access to a subset of users   #enabling-access-to-a-subset-of-users   (skips from h2)
+  h2 Deactivating access to Service Plans   #deactivating-access-to-service-plans #disable-access
+      h4 Deactivating access to all plans for all users   #deactivating-access-to-all-plans-for-all-users   (skips from h2)
+      h4 Deactivating access for specific orgs or plans   #deactivating-access-for-specific-orgs-or-plans
+    h3 Limitations   #limitations
+
+# published/routes-domains.html: 43 headings in main#js-content
+h1 Configuring routes and domains
+  h2 Routes   #-routes #routes
+    h3 HTTP versus TCP routes   #-http-versus-tcp-routes #http-vs-tcp-routes
+    h3 Internal container-to-container routes   #-internal-container-to-container-routes #internal-routes
+    h3 Create a route   #-create-a-route #create-route
+      h4 Create an HTTP route with host name   #-create-an-http-route-with-host-name #create-route-w-hostname
+      h4 Create an HTTP route without host name   #create-route-wo-hostname
+      h4 Create an HTTP route with wildcard host name   #create-route-w-wildcard-hostname
+      h4 Create an HTTP route with a path   #create-route-w-path
+      h4 Create a TCP route with a port   #create-route-with-port
+    h3 List routes   #-list-routes #list-routes
+    h3 View a route   #-view-a-route #view-route
+    h3 Check routes   #-check-routes #check-routes
+    h3 Map a route to your app   #-map-a-route-to-your-app #map-route
+      h4 Manually map a route   #map-route-manually
+      h4 Map a route with app push   #map-route-on-push
+      h4 Map a route using app manifest   #map-route-w-manifest
+      h4 Map a route to multiple apps   #map-route-to-mult-apps
+      h4 Map multiple routes to one app   #map-multiple-routes
+      h4 Map an internal route to an app   #map-internal-route
+    h3 Unmap a route   #-unmap-a-route #unmap-route
+    h3 Share a route with another space   #-share-a-route-with-another-space #share-route
+    h3 Transfer ownership of a route to another space   #-transfer-ownership-of-a-route-to-another-space #move-route
+    h3 Delete a route   #-delete-a-route #delete-route
+    h3 Routing requests to a specific app instance   #-routing-requests-to-a-specific-app-instance #surgical-routing
+    h3 Routing requests to a specific process instance   #-routing-requests-to-a-specific-process-instance #surgical-routing-process
+  h2 Domains   #-domains #domains
+    h3 List domains for an org   #-list-domains-for-an-org #list-domains
+    h3 HTTP versus TCP domains   #-http-versus-tcp-domains #http-vs-tcp-domains
+    h3 Shared domains   #-shared-domains #shared-domains
+      h4 Create a shared domain   #create-shared-domain
+      h4 Delete a shared domain   #delete-shared-domain
+      h4 Internal domain   #internal-domains
+    h3 Private domains   #-private-domains #private-domains
+      h4 Create a private domain   #create-private-domain
+      h4 Sharing a private domain with one or more orgs   #sharing-private-domains
+      h4 Delete a private domain   #-delete-a-private-domain #delete-private-domain
+    h3 Requirements for parent and child domains   #-requirements-for-parent-and-child-domains #parent-child-domains
+    h3 DNS for domains   #-dns-for-domains #domains-dns
+      h4 Mapping Domains to your custom domain   #-mapping-domains-to-your-custom-domain #subdomain-dns
+        h5 Mapping a single domain to your custom domain   #-mapping-a-single-domain-to-your-custom-domain #single-mapping
+        h5 Mapping multiple subdomains to your custom domain   #-mapping-multiple-subdomains-to-your-custom-domain #wildcard-mapping
+      h4 Configuring DNS for your registered root domain   #-configuring-dns-for-your-registered-root-domain #root-domain-dns
+

@@ -1,0 +1,49 @@
+# Outline check, antora with the default idprefix (_) and idseparator (_): ../checks/outline-site.sh site (run from sites/antora)
+== passthrough/metadata
+ok    outline: 33 headings, same levels and text
+ok    anchors: all 32 exist
+info  published heading ids not on the built page (32): #-about-metadata #-methods-of-adding-metadata #-types-of-metadata #-annotations-sent-to-service-brokers #-metadata-requirements #-requirements-for-labels #-requirements-for-annotations #-metadata-key-prefixes #-cf-cli-procedures #-add-metadata-to-a-resource and 22 more
+== passthrough/troubleshooting_slow_requests
+ok    outline: 13 headings, same levels and text
+ok    anchors: all 12 exist
+info  published heading ids not on the built page (12): #app-requests-overview #-find-the-cause-of-latency #-experiment-1:-measure-total-round-trip-app-requests #-experiment-2:-view-request-time-in-access-logs #-experiment-3:-duplicate-latency-on-another-endpoint #-experiment-4:-remove-the-load-balancer-from-request-path #-experiment-5:-remove-gorouter-from-request-path #-experiment-6:-test-the-network-between-the-router-and-the-app #-investigate-or-address-latency #-use-app-logs-to-locate-delays-in-cloud-foundry and 2 more
+== passthrough/access-control
+ok    outline: 9 headings, same levels and text
+FAIL  anchors: 4 of 8 exist; missing: #enabling-access-to-a-subset-of-users #deactivating-access-to-all-plans-for-all-users #deactivating-access-for-specific-orgs-or-plans #limitations
+info  published heading ids not on the built page (7): #service-plan-access #enabling-access-to-service-plans #enabling-access-to-a-subset-of-users #deactivating-access-to-service-plans #deactivating-access-to-all-plans-for-all-users #deactivating-access-for-specific-orgs-or-plans #limitations
+== passthrough/routes-domains
+ok    outline: 18 headings, same levels and text
+ok    anchors: all 17 exist
+info  published heading ids not on the built page (12): #-domains #-list-domains-for-an-org #-http-versus-tcp-domains #-shared-domains #-private-domains #-delete-a-private-domain #-requirements-for-parent-and-child-domains #-dns-for-domains #-mapping-domains-to-your-custom-domain #-mapping-a-single-domain-to-your-custom-domain and 2 more
+== native/metadata
+ok    outline: 33 headings, same levels and text
+ok    anchors: all 32 exist
+info  published heading ids not on the built page (32): #-about-metadata #-methods-of-adding-metadata #-types-of-metadata #-annotations-sent-to-service-brokers #-metadata-requirements #-requirements-for-labels #-requirements-for-annotations #-metadata-key-prefixes #-cf-cli-procedures #-add-metadata-to-a-resource and 22 more
+== native/troubleshooting_slow_requests
+ok    outline: 13 headings, same levels and text
+ok    anchors: all 12 exist
+info  published heading ids not on the built page (12): #app-requests-overview #-find-the-cause-of-latency #-experiment-1:-measure-total-round-trip-app-requests #-experiment-2:-view-request-time-in-access-logs #-experiment-3:-duplicate-latency-on-another-endpoint #-experiment-4:-remove-the-load-balancer-from-request-path #-experiment-5:-remove-gorouter-from-request-path #-experiment-6:-test-the-network-between-the-router-and-the-app #-investigate-or-address-latency #-use-app-logs-to-locate-delays-in-cloud-foundry and 2 more
+== native/access-control
+ok    outline: 9 headings, same levels and text
+FAIL  anchors: 4 of 8 exist; missing: #enabling-access-to-a-subset-of-users #deactivating-access-to-all-plans-for-all-users #deactivating-access-for-specific-orgs-or-plans #limitations
+info  published heading ids not on the built page (7): #service-plan-access #enabling-access-to-service-plans #enabling-access-to-a-subset-of-users #deactivating-access-to-service-plans #deactivating-access-to-all-plans-for-all-users #deactivating-access-for-specific-orgs-or-plans #limitations
+== native/routes-domains
+ok    outline: 18 headings, same levels and text
+ok    anchors: all 17 exist
+info  published heading ids not on the built page (12): #-domains #-list-domains-for-an-org #-http-versus-tcp-domains #-shared-domains #-private-domains #-delete-a-private-domain #-requirements-for-parent-and-child-domains #-dns-for-domains #-mapping-domains-to-your-custom-domain #-mapping-a-single-domain-to-your-custom-domain and 2 more
+== native-plain/metadata
+ok    outline: 33 headings, same levels and text
+FAIL  anchors: 0 of 32 exist; missing: #about #methods #types #annotations #reqs #reqs-labels #reqs-annotations #prefix #cf-cli-procedures #add-cli #add-label-cli #update-cli #remove-cli #remove-label-cli #view-cli #view-label-cli #select-resources-cli #api-procedures #add #add-label #annotation #update #remove #view #query #requirements-reference #example #manual #example-script #example-prerequisite #script #example-custom-tags
+info  published heading ids not on the built page (64): #-about-metadata #about #-methods-of-adding-metadata #methods #-types-of-metadata #types #-annotations-sent-to-service-brokers #annotations #-metadata-requirements #reqs and 54 more
+== native-plain/troubleshooting_slow_requests
+ok    outline: 13 headings, same levels and text
+FAIL  anchors: 0 of 12 exist; missing: #overview #cause #total-latency #within-cf #duplicate-latency #remove-the-load-balancer #remove-the-gorouter #test-internal-network #next #app_logs #gorouter-latency #ops-recommendations
+info  published heading ids not on the built page (24): #app-requests-overview #overview #-find-the-cause-of-latency #cause #-experiment-1:-measure-total-round-trip-app-requests #total-latency #-experiment-2:-view-request-time-in-access-logs #within-cf #-experiment-3:-duplicate-latency-on-another-endpoint #duplicate-latency and 14 more
+== native-plain/access-control
+ok    outline: 9 headings, same levels and text
+FAIL  anchors: 0 of 8 exist; missing: #prerequisites #display-access #enable-access #disable-access #enabling-access-to-a-subset-of-users #deactivating-access-to-all-plans-for-all-users #deactivating-access-for-specific-orgs-or-plans #limitations
+info  published heading ids not on the built page (12): #prerequisites #prerequisites #service-plan-access #display-access #enabling-access-to-service-plans #enable-access #enabling-access-to-a-subset-of-users #deactivating-access-to-service-plans #disable-access #deactivating-access-to-all-plans-for-all-users and 2 more
+== native-plain/routes-domains
+ok    outline: 18 headings, same levels and text
+FAIL  anchors: 0 of 17 exist; missing: #domains #list-domains #http-vs-tcp-domains #shared-domains #create-shared-domain #delete-shared-domain #internal-domains #private-domains #create-private-domain #sharing-private-domains #delete-private-domain #parent-child-domains #domains-dns #subdomain-dns #single-mapping #wildcard-mapping #root-domain-dns
+info  published heading ids not on the built page (29): #-domains #domains #-list-domains-for-an-org #list-domains #-http-versus-tcp-domains #http-vs-tcp-domains #-shared-domains #shared-domains #create-shared-domain #delete-shared-domain and 19 more

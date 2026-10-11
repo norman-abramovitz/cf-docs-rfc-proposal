@@ -1,0 +1,8 @@
+---
+title: Headings round
+slug: /
+---
+
+Test pages from the headings round, in three modes: passthrough (headings
+as written), native (the tool's own heading ids), and native-plain (no
+explicit ids; the tool makes them).

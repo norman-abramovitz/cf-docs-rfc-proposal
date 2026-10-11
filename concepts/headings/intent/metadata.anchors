@@ -1,0 +1,34 @@
+# Anchors metadata must keep: every id the source writes as <a id>, in page
+# order. Read by ../checks/outline.py --anchors. See metadata.md.
+about
+methods
+types          linked from docs-dev-guide deploy-apps/manifest-attributes
+annotations
+reqs           linked from orange-cloudfoundry/osb-cmdb
+reqs-labels
+reqs-annotations
+prefix
+cf-cli-procedures
+add-cli
+add-label-cli
+update-cli
+remove-cli
+remove-label-cli
+view-cli
+view-label-cli
+select-resources-cli
+api-procedures
+add
+add-label
+annotation
+update
+remove
+view
+query          linked from cloudfoundry/cloud_controller_ng (v3 API docs)
+requirements-reference   linked from orange-cloudfoundry/cf-cli-cmdb-scripts
+example
+manual
+example-script
+example-prerequisite
+script
+example-custom-tags

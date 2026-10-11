@@ -1,0 +1,60 @@
+# Docusaurus 3.10.2 build warnings (npm run build), broken links and anchors only
+[WARNING] Docusaurus found broken links!
+
+Please check the pages of your site in the list below, and make sure you don't reference any path that does not exist.
+Note: it's possible to ignore broken links with the 'onBrokenLinks' Docusaurus configuration, and let the build pass.
+
+Exhaustive list of all broken links found:
+- Broken link on source page path = /native-plain/metadata:
+   -> linking to ../cf-cli/v8.html (resolved as: /cf-cli/v8.html)
+- Broken link on source page path = /native-plain/troubleshooting_slow_requests:
+   -> linking to ../loggregator/nozzle-tutorial.html (resolved as: /loggregator/nozzle-tutorial.html)
+- Broken link on source page path = /native/metadata:
+   -> linking to ../cf-cli/v8.html (resolved as: /cf-cli/v8.html)
+- Broken link on source page path = /native/troubleshooting_slow_requests:
+   -> linking to ../loggregator/nozzle-tutorial.html (resolved as: /loggregator/nozzle-tutorial.html)
+- Broken link on source page path = /passthrough/metadata:
+   -> linking to ../cf-cli/v8.html (resolved as: /cf-cli/v8.html)
+- Broken link on source page path = /passthrough/troubleshooting_slow_requests:
+   -> linking to ../loggregator/nozzle-tutorial.html (resolved as: /loggregator/nozzle-tutorial.html)
+
+[WARNING] Docusaurus found broken anchors!
+
+Please check the pages of your site in the list below, and make sure you don't reference any anchor that does not exist.
+Note: it's possible to ignore broken anchors with the 'onBrokenAnchors' Docusaurus configuration, and let the build pass.
+
+Exhaustive list of all broken anchors found:
+- Broken anchor on source page path = /native-plain/metadata:
+   -> linking to #add-cli (resolved as: /native-plain/metadata#add-cli)
+   -> linking to #add (resolved as: /native-plain/metadata#add)
+   -> linking to #manual (resolved as: /native-plain/metadata#manual)
+- Broken anchor on source page path = /native-plain/routes-domains:
+   -> linking to #domains-dns (resolved as: /native-plain/routes-domains#domains-dns)
+   -> linking to #routes (resolved as: /native-plain/routes-domains#routes)
+- Broken anchor on source page path = /native-plain/troubleshooting_slow_requests:
+   -> linking to #app_logs (resolved as: /native-plain/troubleshooting_slow_requests#app_logs)
+   -> linking to #gorouter-latency (resolved as: /native-plain/troubleshooting_slow_requests#gorouter-latency)
+   -> linking to #ops-recommendations (resolved as: /native-plain/troubleshooting_slow_requests#ops-recommendations)
+   -> linking to #total-latency (resolved as: /native-plain/troubleshooting_slow_requests#total-latency)
+   -> linking to #within-cf (resolved as: /native-plain/troubleshooting_slow_requests#within-cf)
+- Broken anchor on source page path = /native/routes-domains:
+   -> linking to #routes (resolved as: /native/routes-domains#routes)
+- Broken anchor on source page path = /passthrough/metadata:
+   -> linking to #cf-cli-procedures (resolved as: /passthrough/metadata#cf-cli-procedures)
+   -> linking to #api-procedures (resolved as: /passthrough/metadata#api-procedures)
+   -> linking to #add-cli (resolved as: /passthrough/metadata#add-cli)
+   -> linking to #add (resolved as: /passthrough/metadata#add)
+   -> linking to #manual (resolved as: /passthrough/metadata#manual)
+   -> linking to #example-script (resolved as: /passthrough/metadata#example-script)
+- Broken anchor on source page path = /passthrough/routes-domains:
+   -> linking to #domains-dns (resolved as: /passthrough/routes-domains#domains-dns)
+   -> linking to #shared-domains (resolved as: /passthrough/routes-domains#shared-domains)
+   -> linking to #private-domains (resolved as: /passthrough/routes-domains#private-domains)
+   -> linking to #routes (resolved as: /passthrough/routes-domains#routes)
+- Broken anchor on source page path = /passthrough/troubleshooting_slow_requests:
+   -> linking to #app_logs (resolved as: /passthrough/troubleshooting_slow_requests#app_logs)
+   -> linking to #gorouter-latency (resolved as: /passthrough/troubleshooting_slow_requests#gorouter-latency)
+   -> linking to #ops-recommendations (resolved as: /passthrough/troubleshooting_slow_requests#ops-recommendations)
+   -> linking to #total-latency (resolved as: /passthrough/troubleshooting_slow_requests#total-latency)
+   -> linking to #within-cf (resolved as: /passthrough/troubleshooting_slow_requests#within-cf)
+

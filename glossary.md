@@ -629,8 +629,10 @@ rows, each with 2 cells" for `credential-types`. Each intent file lists them
 per table, and `make check` in each site runs them against the built pages
 with [checks/spot-checks.sh](concepts/tables/checks/spot-checks.sh). Next to
 them, the tables round compared each page's text word by word with the
-published page ([checks/text-diff.py](concepts/tables/checks/text-diff.py)).
-A check of text and headings for every migrated page belongs to
+published page ([checks/text-diff.py](concepts/tables/checks/text-diff.py)),
+and the headings round checked each page's headings and anchors
+([checks/outline.py](concepts/headings/checks/outline.py)). A check of text
+and headings for every migrated page belongs to
 cf-docs-migrate ([R-01](requirements/README.md#r-01) content and outline
 survive, [requirements/README.md](requirements/README.md)).
 

@@ -1,0 +1,228 @@
+# Zensical 0.0.69: the page's table of contents (static HTML), every page and mode
+
+# passthrough/access-control/index.html: 8 entries
+  #prerequisites | Prerequisites
+  #service-plan-access | Service Plan access
+  #enabling-access-to-service-plans | Enabling access to Service Plans
+  #enabling-access-to-a-subset-of-users | Enabling access to a subset of users
+  #deactivating-access-to-service-plans | Deactivating access to Service Plans
+  #deactivating-access-to-all-plans-for-all-users | Deactivating access to all plans for all users
+  #deactivating-access-for-specific-orgs-or-plans | Deactivating access for specific orgs or plans
+  #limitations | Limitations
+
+# passthrough/metadata/index.html: 32 entries
+  #about-metadata | About metadata
+  #methods-of-adding-metadata | Methods of adding metadata
+  #types-of-metadata | Types of metadata
+  #annotations-sent-to-service-brokers | Annotations sent to service brokers
+  #metadata-requirements | Metadata Requirements
+  #requirements-for-labels | Requirements for labels
+  #requirements-for-annotations | Requirements for annotations
+  #metadata-key-prefixes | Metadata key prefixes
+  #cf-cli-procedures | cf CLI procedures
+  #add-metadata-to-a-resource | Add metadata to a resource
+  #add-a-label | Add a label
+  #update-metadata-for-a-resource | Update metadata for a resource
+  #remove-metadata-from-a-resource | Remove metadata from a resource
+  #remove-a-label | Remove a label
+  #view-metadata-for-a-resource | View metadata for a resource
+  #view-labels | View labels
+  #select-resources-by-labels | Select resources by labels
+  #api-procedures | API procedures
+  #add-metadata-to-a-resource_1 | Add metadata to a resource
+  #add-a-label_1 | Add a label
+  #add-an-annotation | Add an annotation
+  #update-metadata-for-a-resource_1 | Update metadata for a resource
+  #remove-metadata-from-a-resource_1 | Remove metadata from a resource
+  #view-metadata-for-a-resource_1 | View metadata for a resource
+  #list-resources-by-querying-labels | List resources by querying labels
+  #selector-requirement-reference | Selector requirement reference
+  #example-label-resources-with-a-git-commit | Example: Label resources with a git commit
+  #manually-label-resources | Manually label resources
+  #automate-labeling-resources | Automate labeling resources
+  #prerequisite | Prerequisite
+  #example-script | Example script
+  #example-add-custom-tags-to-log-and-metric-envelopes | Example: Add custom tags to log and metric envelopes
+
+# passthrough/routes-domains/index.html: 12 entries
+  #domains | Domains
+  #list-domains-for-an-org | List domains for an org
+  #http-versus-tcp-domains | HTTP versus TCP domains
+  #shared-domains | Shared domains
+  #private-domains | Private domains
+  #delete-a-private-domain | Delete a private domain
+  #requirements-for-parent-and-child-domains | Requirements for parent and child domains
+  #dns-for-domains | DNS for domains
+  #mapping-domains-to-your-custom-domain | Mapping Domains to your custom domain
+  #mapping-a-single-domain-to-your-custom-domain | Mapping a single domain to your custom domain
+  #mapping-multiple-subdomains-to-your-custom-domain | Mapping multiple subdomains to your custom domain
+  #configuring-dns-for-your-registered-root-domain | Configuring DNS for your registered root domain
+
+# passthrough/troubleshooting_slow_requests/index.html: 12 entries
+  #app-requests-overview | App requests overview
+  #find-the-cause-of-latency | Find the cause of latency
+  #experiment-1-measure-total-round-trip-app-requests | Experiment 1: Measure total round-trip app requests
+  #experiment-2-view-request-time-in-access-logs | Experiment 2: View request time in access logs
+  #experiment-3-duplicate-latency-on-another-endpoint | Experiment 3: Duplicate latency on another endpoint
+  #experiment-4-remove-the-load-balancer-from-request-path | Experiment 4: Remove the load balancer from request path
+  #experiment-5-remove-gorouter-from-request-path | Experiment 5: Remove Gorouter from request path
+  #experiment-6-test-the-network-between-the-router-and-the-app | Experiment 6: Test the network between the router and the app
+  #investigate-or-address-latency | Investigate or address latency
+  #use-app-logs-to-locate-delays-in-cloud-foundry | Use app logs to locate delays in Cloud Foundry
+  #causes-for-gorouter-latency | Causes for Gorouter latency
+  #operations-recommendations | Operations recommendations
+
+# native/access-control/index.html: 8 entries
+  #prerequisites | Prerequisites
+  #display-access | Service Plan access
+  #enable-access | Enabling access to Service Plans
+  #enabling-access-to-a-subset-of-users | Enabling access to a subset of users
+  #disable-access | Deactivating access to Service Plans
+  #deactivating-access-to-all-plans-for-all-users | Deactivating access to all plans for all users
+  #deactivating-access-for-specific-orgs-or-plans | Deactivating access for specific orgs or plans
+  #limitations | Limitations
+
+# native/metadata/index.html: 32 entries
+  #about | About metadata
+  #methods | Methods of adding metadata
+  #types | Types of metadata
+  #annotations | Annotations sent to service brokers
+  #reqs | Metadata Requirements
+  #reqs-labels | Requirements for labels
+  #reqs-annotations | Requirements for annotations
+  #prefix | Metadata key prefixes
+  #cf-cli-procedures | cf CLI procedures
+  #add-cli | Add metadata to a resource
+  #add-label-cli | Add a label
+  #update-cli | Update metadata for a resource
+  #remove-cli | Remove metadata from a resource
+  #remove-label-cli | Remove a label
+  #view-cli | View metadata for a resource
+  #view-label-cli | View labels
+  #select-resources-cli | Select resources by labels
+  #api-procedures | API procedures
+  #add | Add metadata to a resource
+  #add-label | Add a label
+  #annotation | Add an annotation
+  #update | Update metadata for a resource
+  #remove | Remove metadata from a resource
+  #view | View metadata for a resource
+  #query | List resources by querying labels
+  #requirements-reference | Selector requirement reference
+  #example | Example: Label resources with a git commit
+  #manual | Manually label resources
+  #example-script | Automate labeling resources
+  #example-prerequisite | Prerequisite
+  #script | Example script
+  #example-custom-tags | Example: Add custom tags to log and metric envelopes
+
+# native/routes-domains/index.html: 17 entries
+  #domains | Domains
+  #list-domains | List domains for an org
+  #http-vs-tcp-domains | HTTP versus TCP domains
+  #shared-domains | Shared domains
+  #create-shared-domain | Create a shared domain
+  #delete-shared-domain | Delete a shared domain
+  #internal-domains | Internal domain
+  #private-domains | Private domains
+  #create-private-domain | Create a private domain
+  #sharing-private-domains | Sharing a private domain with one or more orgs
+  #delete-private-domain | Delete a private domain
+  #parent-child-domains | Requirements for parent and child domains
+  #domains-dns | DNS for domains
+  #subdomain-dns | Mapping Domains to your custom domain
+  #single-mapping | Mapping a single domain to your custom domain
+  #wildcard-mapping | Mapping multiple subdomains to your custom domain
+  #root-domain-dns | Configuring DNS for your registered root domain
+
+# native/troubleshooting_slow_requests/index.html: 12 entries
+  #overview | App requests overview
+  #cause | Find the cause of latency
+  #total-latency | Experiment 1: Measure total round-trip app requests
+  #within-cf | Experiment 2: View request time in access logs
+  #duplicate-latency | Experiment 3: Duplicate latency on another endpoint
+  #remove-the-load-balancer | Experiment 4: Remove the load balancer from request path
+  #remove-the-gorouter | Experiment 5: Remove Gorouter from request path
+  #test-internal-network | Experiment 6: Test the network between the router and the app
+  #next | Investigate or address latency
+  #app_logs | Use app logs to locate delays in Cloud Foundry
+  #gorouter-latency | Causes for Gorouter latency
+  #ops-recommendations | Operations recommendations
+
+# native-plain/access-control/index.html: 8 entries
+  #prerequisites | Prerequisites
+  #service-plan-access | Service Plan access
+  #enabling-access-to-service-plans | Enabling access to Service Plans
+  #enabling-access-to-a-subset-of-users | Enabling access to a subset of users
+  #deactivating-access-to-service-plans | Deactivating access to Service Plans
+  #deactivating-access-to-all-plans-for-all-users | Deactivating access to all plans for all users
+  #deactivating-access-for-specific-orgs-or-plans | Deactivating access for specific orgs or plans
+  #limitations | Limitations
+
+# native-plain/metadata/index.html: 32 entries
+  #about-metadata | About metadata
+  #methods-of-adding-metadata | Methods of adding metadata
+  #types-of-metadata | Types of metadata
+  #annotations-sent-to-service-brokers | Annotations sent to service brokers
+  #metadata-requirements | Metadata Requirements
+  #requirements-for-labels | Requirements for labels
+  #requirements-for-annotations | Requirements for annotations
+  #metadata-key-prefixes | Metadata key prefixes
+  #cf-cli-procedures | cf CLI procedures
+  #add-metadata-to-a-resource | Add metadata to a resource
+  #add-a-label | Add a label
+  #update-metadata-for-a-resource | Update metadata for a resource
+  #remove-metadata-from-a-resource | Remove metadata from a resource
+  #remove-a-label | Remove a label
+  #view-metadata-for-a-resource | View metadata for a resource
+  #view-labels | View labels
+  #select-resources-by-labels | Select resources by labels
+  #api-procedures | API procedures
+  #add-metadata-to-a-resource_1 | Add metadata to a resource
+  #add-a-label_1 | Add a label
+  #add-an-annotation | Add an annotation
+  #update-metadata-for-a-resource_1 | Update metadata for a resource
+  #remove-metadata-from-a-resource_1 | Remove metadata from a resource
+  #view-metadata-for-a-resource_1 | View metadata for a resource
+  #list-resources-by-querying-labels | List resources by querying labels
+  #selector-requirement-reference | Selector requirement reference
+  #example-label-resources-with-a-git-commit | Example: Label resources with a git commit
+  #manually-label-resources | Manually label resources
+  #automate-labeling-resources | Automate labeling resources
+  #prerequisite | Prerequisite
+  #example-script | Example script
+  #example-add-custom-tags-to-log-and-metric-envelopes | Example: Add custom tags to log and metric envelopes
+
+# native-plain/routes-domains/index.html: 17 entries
+  #domains | Domains
+  #list-domains-for-an-org | List domains for an org
+  #http-versus-tcp-domains | HTTP versus TCP domains
+  #shared-domains | Shared domains
+  #create-a-shared-domain | Create a shared domain
+  #delete-a-shared-domain | Delete a shared domain
+  #internal-domain | Internal domain
+  #private-domains | Private domains
+  #create-a-private-domain | Create a private domain
+  #sharing-a-private-domain-with-one-or-more-orgs | Sharing a private domain with one or more orgs
+  #delete-a-private-domain | Delete a private domain
+  #requirements-for-parent-and-child-domains | Requirements for parent and child domains
+  #dns-for-domains | DNS for domains
+  #mapping-domains-to-your-custom-domain | Mapping Domains to your custom domain
+  #mapping-a-single-domain-to-your-custom-domain | Mapping a single domain to your custom domain
+  #mapping-multiple-subdomains-to-your-custom-domain | Mapping multiple subdomains to your custom domain
+  #configuring-dns-for-your-registered-root-domain | Configuring DNS for your registered root domain
+
+# native-plain/troubleshooting_slow_requests/index.html: 12 entries
+  #app-requests-overview | App requests overview
+  #find-the-cause-of-latency | Find the cause of latency
+  #experiment-1-measure-total-round-trip-app-requests | Experiment 1: Measure total round-trip app requests
+  #experiment-2-view-request-time-in-access-logs | Experiment 2: View request time in access logs
+  #experiment-3-duplicate-latency-on-another-endpoint | Experiment 3: Duplicate latency on another endpoint
+  #experiment-4-remove-the-load-balancer-from-request-path | Experiment 4: Remove the load balancer from request path
+  #experiment-5-remove-gorouter-from-request-path | Experiment 5: Remove Gorouter from request path
+  #experiment-6-test-the-network-between-the-router-and-the-app | Experiment 6: Test the network between the router and the app
+  #investigate-or-address-latency | Investigate or address latency
+  #use-app-logs-to-locate-delays-in-cloud-foundry | Use app logs to locate delays in Cloud Foundry
+  #causes-for-gorouter-latency | Causes for Gorouter latency
+  #operations-recommendations | Operations recommendations
+

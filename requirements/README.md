@@ -277,8 +277,11 @@ restated as a hosting benefit.
   [table survey, bosh.io](../concepts/tables/survey/README.md#boshio)); see [Research areas](research-areas.md#is-boshio-in-scope).
 
 **Not yet written:** requirements that come out of the concepts not yet
-worked (headings, variables, partials, notes, code blocks, cross-repository
-links; [concepts](../concepts/README.md#concepts)). They will sharpen
+worked (variables, partials, notes, code blocks, cross-repository links;
+[concepts](../concepts/README.md#concepts)). The headings round bears on
+[R-01](#r-01) content and outline survive and [R-16](#r-16) old URLs keep
+working; its conventions are under review
+([headings results](../concepts/headings/results.md#requirements)). They will sharpen
 the requirements from [R-04](#r-04) variables everywhere to [R-08](#r-08)
 cross-repository links.
 

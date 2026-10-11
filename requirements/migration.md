@@ -115,7 +115,10 @@ expected differences.
 
 Done so far: per-page spot checks (checks every converted page must pass,
 listed for each test page) and a word-by-word text comparison, used in the
-tables round ([checks](../concepts/tables/checks/)).
+tables round ([checks](../concepts/tables/checks/)). The headings round
+added an outline check: it compares each converted page's headings, in
+order with their levels, with the published page and confirms the anchors
+to keep ([outline.py](../concepts/headings/checks/outline.py)).
 
 ### 5. Owner review
 

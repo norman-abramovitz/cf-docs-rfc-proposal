@@ -1,0 +1,8 @@
+# Excerpt of cloudfoundry/docs-book-cloudfoundry config/template_variables.yml
+# at commit 0f2d16e419498c84f304da96f3afc8fd9c689975. See SOURCES.md.
+template_variables:
+  app_runtime_first: Cloud Foundry
+  app_runtime_abbr: Cloud Foundry
+  app_domain: shared-domain.example.com
+  private_app_domain: private-domain.example.com
+  tcp_app_domain: tcp-domain.example.com

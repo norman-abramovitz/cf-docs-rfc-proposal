@@ -1,0 +1,35 @@
+# Browser checks, 2026-10-10, Chromium through Playwright, 1280 x 900 window.
+# Each site served with `python3 -m http.server` from its build directory.
+
+## Docusaurus 3.10.2: console errors on load
+
+passthrough/metadata/ (headings written as `## <a id="about"></a> About metadata`):
+  [ERROR] Docusaurus React Root onRecoverableError: Error: Minified React error #418;
+          visit https://react.dev/errors/418?args[]=HTML&args[]= ...
+          componentStack: at ul ...
+  (#418 is React's hydration mismatch: the HTML the server built differs from
+  what the browser renders. The table of contents holds <a><a></a> About
+  metadata</a>, a link inside a link, which the browser's HTML parser splits.)
+
+native/metadata/ (headings written as `## About metadata {#about}`):
+  no console errors.
+
+## Antora 3.2.1 default UI: table of contents (built in the browser by the UI's script)
+
+native/access-control/, `aside.toc a` (sidebar and in-page copies):
+  #prerequisites | Prerequisites
+  #display-access | Service Plan access
+  #enable-access | Enabling access to Service Plans
+  #disable-access | Deactivating access to Service Plans
+  #limitations | Limitations
+  (h2 and h3 only: the three h4 headings are not listed)
+
+passthrough/routes-domains/, `aside.toc.sidebar a`:
+  #domains | Domains
+  #list-domains-for-an-org | List domains for an org
+  #http-versus-tcp-domains | HTTP versus TCP domains
+  #shared-domains | Shared domains
+  #private-domains | Private domains
+  #requirements-for-parent-and-child-domains | Requirements for parent and child domains
+  #dns-for-domains | DNS for domains
+  (links go to the generated ids, not to the <a id> anchors the source wrote)

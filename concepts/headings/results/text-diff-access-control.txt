@@ -1,0 +1,31 @@
+# Text of access-control (native mode) against the published page: ../../tables/checks/text-diff.py ../published/access-control.html BUILT.html
+# Starlight is not listed: the script reads the built page's <article>, which Starlight pages do not have.
+
+## docusaurus/build/native/access-control/index.html
+published 839 words, converted 806 words, matching 0.978
+  delete   published: 'Prerequisites Service Plan access Enabling access to Service Plans Deactivating access to Service Plans Page last updated:'
+           converted: ''
+  replace  published: 'broker’s'
+           converted: "broker's"
+  replace  published: 'broker’s'
+           converted: "broker's"
+  delete   published: 'Create a pull request or raise an issue on the source for this page in GitHub'
+           converted: ''
+
+## zensical/site/native/access-control/index.html
+published 839 words, converted 806 words, matching 0.978
+  delete   published: 'Prerequisites Service Plan access Enabling access to Service Plans Deactivating access to Service Plans Page last updated:'
+           converted: ''
+  replace  published: 'broker’s'
+           converted: "broker's"
+  replace  published: 'broker’s'
+           converted: "broker's"
+  delete   published: 'Create a pull request or raise an issue on the source for this page in GitHub'
+           converted: ''
+
+## antora/site/native/access-control/index.html
+published 839 words, converted 806 words, matching 0.980
+  delete   published: 'Prerequisites Service Plan access Enabling access to Service Plans Deactivating access to Service Plans Page last updated:'
+           converted: ''
+  delete   published: 'Create a pull request or raise an issue on the source for this page in GitHub'
+           converted: ''

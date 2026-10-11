@@ -1,0 +1,8 @@
+{
+  "name": "headings-round-antora",
+  "private": true,
+  "description": "Headings round: the test pages built with Antora",
+  "devDependencies": {
+    "antora": "3.2.1"
+  }
+}

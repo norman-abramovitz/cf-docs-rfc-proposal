@@ -1,0 +1,170 @@
+# Starlight 0.42.6: the page's table of contents (static HTML), every page and mode
+
+# passthrough/access-control/index.html: 6 entries
+  #_top | Overview
+  #prerequisites | Prerequisites
+  #service-plan-access | Service Plan access
+  #enabling-access-to-service-plans | Enabling access to Service Plans
+  #deactivating-access-to-service-plans | Deactivating access to Service Plans
+  #limitations | Limitations
+
+# passthrough/metadata/index.html: 21 entries
+  #_top | Overview
+  #-about-metadata | About metadata
+  #-methods-of-adding-metadata | Methods of adding metadata
+  #-types-of-metadata | Types of metadata
+  #-metadata-requirements | Metadata Requirements
+  #-metadata-key-prefixes | Metadata key prefixes
+  #-cf-cli-procedures | cf CLI procedures
+  #-add-metadata-to-a-resource | Add metadata to a resource
+  #-update-metadata-for-a-resource | Update metadata for a resource
+  #-remove-metadata-from-a-resource | Remove metadata from a resource
+  #-view-metadata-for-a-resource | View metadata for a resource
+  #-api-procedures | API procedures
+  #-add-metadata-to-a-resource-1 | Add metadata to a resource
+  #-update-metadata-for-a-resource-1 | Update metadata for a resource
+  #-remove-metadata-from-a-resource-1 | Remove metadata from a resource
+  #-view-metadata-for-a-resource-1 | View metadata for a resource
+  #-list-resources-by-querying-labels | List resources by querying labels
+  #-example-label-resources-with-a-git-commit | Example: Label resources with a git commit
+  #-manually-label-resources | Manually label resources
+  #-automate-labeling-resources | Automate labeling resources
+  #-example-add-custom-tags-to-log-and-metric-envelopes | Example: Add custom tags to log and metric envelopes
+
+# passthrough/routes-domains/index.html: 8 entries
+  #_top | Overview
+  #-domains | Domains
+  #-list-domains-for-an-org | List domains for an org
+  #-http-versus-tcp-domains | HTTP versus TCP domains
+  #-shared-domains | Shared domains
+  #-private-domains | Private domains
+  #-requirements-for-parent-and-child-domains | Requirements for parent and child domains
+  #-dns-for-domains | DNS for domains
+
+# passthrough/troubleshooting_slow_requests/index.html: 13 entries
+  #_top | Overview
+  #app-requests-overview | App requests overview
+  #-find-the-cause-of-latency | Find the cause of latency
+  #-experiment-1-measure-total-round-trip-app-requests | Experiment 1: Measure total round-trip app requests
+  #-experiment-2-view-request-time-in-access-logs | Experiment 2: View request time in access logs
+  #-experiment-3-duplicate-latency-on-another-endpoint | Experiment 3: Duplicate latency on another endpoint
+  #-experiment-4-remove-the-load-balancer-from-request-path | Experiment 4: Remove the load balancer from request path
+  #-experiment-5-remove-gorouter-from-request-path | Experiment 5: Remove Gorouter from request path
+  #-experiment-6-test-the-network-between-the-router-and-the-app | Experiment 6: Test the network between the router and the app
+  #-investigate-or-address-latency | Investigate or address latency
+  #-use-app-logs-to-locate-delays-in-cloud-foundry | Use app logs to locate delays in Cloud Foundry
+  #causes-for-gorouter-latency | Causes for Gorouter latency
+  #-operations-recommendations | Operations recommendations
+
+# native/access-control/index.html: 6 entries
+  #_top | Overview
+  #prerequisites | Prerequisites
+  #display-access | Service Plan access
+  #enable-access | Enabling access to Service Plans
+  #disable-access | Deactivating access to Service Plans
+  #limitations | Limitations
+
+# native/metadata/index.html: 21 entries
+  #_top | Overview
+  #about | About metadata
+  #methods | Methods of adding metadata
+  #types | Types of metadata
+  #reqs | Metadata Requirements
+  #prefix | Metadata key prefixes
+  #cf-cli-procedures | cf CLI procedures
+  #add-cli | Add metadata to a resource
+  #update-cli | Update metadata for a resource
+  #remove-cli | Remove metadata from a resource
+  #view-cli | View metadata for a resource
+  #api-procedures | API procedures
+  #add | Add metadata to a resource
+  #update | Update metadata for a resource
+  #remove | Remove metadata from a resource
+  #view | View metadata for a resource
+  #query | List resources by querying labels
+  #example | Example: Label resources with a git commit
+  #manual | Manually label resources
+  #example-script | Automate labeling resources
+  #example-custom-tags | Example: Add custom tags to log and metric envelopes
+
+# native/routes-domains/index.html: 8 entries
+  #_top | Overview
+  #domains | Domains
+  #list-domains | List domains for an org
+  #http-vs-tcp-domains | HTTP versus TCP domains
+  #shared-domains | Shared domains
+  #private-domains | Private domains
+  #parent-child-domains | Requirements for parent and child domains
+  #domains-dns | DNS for domains
+
+# native/troubleshooting_slow_requests/index.html: 13 entries
+  #_top | Overview
+  #overview | App requests overview
+  #cause | Find the cause of latency
+  #total-latency | Experiment 1: Measure total round-trip app requests
+  #within-cf | Experiment 2: View request time in access logs
+  #duplicate-latency | Experiment 3: Duplicate latency on another endpoint
+  #remove-the-load-balancer | Experiment 4: Remove the load balancer from request path
+  #remove-the-gorouter | Experiment 5: Remove Gorouter from request path
+  #test-internal-network | Experiment 6: Test the network between the router and the app
+  #next | Investigate or address latency
+  #app_logs | Use app logs to locate delays in Cloud Foundry
+  #gorouter-latency | Causes for Gorouter latency
+  #ops-recommendations | Operations recommendations
+
+# native-plain/access-control/index.html: 6 entries
+  #_top | Overview
+  #prerequisites | Prerequisites
+  #service-plan-access | Service Plan access
+  #enabling-access-to-service-plans | Enabling access to Service Plans
+  #deactivating-access-to-service-plans | Deactivating access to Service Plans
+  #limitations | Limitations
+
+# native-plain/metadata/index.html: 21 entries
+  #_top | Overview
+  #about-metadata | About metadata
+  #methods-of-adding-metadata | Methods of adding metadata
+  #types-of-metadata | Types of metadata
+  #metadata-requirements | Metadata Requirements
+  #metadata-key-prefixes | Metadata key prefixes
+  #cf-cli-procedures | cf CLI procedures
+  #add-metadata-to-a-resource | Add metadata to a resource
+  #update-metadata-for-a-resource | Update metadata for a resource
+  #remove-metadata-from-a-resource | Remove metadata from a resource
+  #view-metadata-for-a-resource | View metadata for a resource
+  #api-procedures | API procedures
+  #add-metadata-to-a-resource-1 | Add metadata to a resource
+  #update-metadata-for-a-resource-1 | Update metadata for a resource
+  #remove-metadata-from-a-resource-1 | Remove metadata from a resource
+  #view-metadata-for-a-resource-1 | View metadata for a resource
+  #list-resources-by-querying-labels | List resources by querying labels
+  #example-label-resources-with-a-git-commit | Example: Label resources with a git commit
+  #manually-label-resources | Manually label resources
+  #automate-labeling-resources | Automate labeling resources
+  #example-add-custom-tags-to-log-and-metric-envelopes | Example: Add custom tags to log and metric envelopes
+
+# native-plain/routes-domains/index.html: 8 entries
+  #_top | Overview
+  #domains | Domains
+  #list-domains-for-an-org | List domains for an org
+  #http-versus-tcp-domains | HTTP versus TCP domains
+  #shared-domains | Shared domains
+  #private-domains | Private domains
+  #requirements-for-parent-and-child-domains | Requirements for parent and child domains
+  #dns-for-domains | DNS for domains
+
+# native-plain/troubleshooting_slow_requests/index.html: 13 entries
+  #_top | Overview
+  #app-requests-overview | App requests overview
+  #find-the-cause-of-latency | Find the cause of latency
+  #experiment-1-measure-total-round-trip-app-requests | Experiment 1: Measure total round-trip app requests
+  #experiment-2-view-request-time-in-access-logs | Experiment 2: View request time in access logs
+  #experiment-3-duplicate-latency-on-another-endpoint | Experiment 3: Duplicate latency on another endpoint
+  #experiment-4-remove-the-load-balancer-from-request-path | Experiment 4: Remove the load balancer from request path
+  #experiment-5-remove-gorouter-from-request-path | Experiment 5: Remove Gorouter from request path
+  #experiment-6-test-the-network-between-the-router-and-the-app | Experiment 6: Test the network between the router and the app
+  #investigate-or-address-latency | Investigate or address latency
+  #use-app-logs-to-locate-delays-in-cloud-foundry | Use app logs to locate delays in Cloud Foundry
+  #causes-for-gorouter-latency | Causes for Gorouter latency
+  #operations-recommendations | Operations recommendations
+

@@ -1,0 +1,20 @@
+# Anchors the Domains section of routes-domains must keep: every id the
+# source writes as <a id> in that section. Read by ../checks/outline.py
+# --anchors (with --section domains).
+domains             linked from docs-cf-admin enabling-tcp-routing and others
+list-domains
+http-vs-tcp-domains
+shared-domains      linked from this page
+create-shared-domain
+delete-shared-domain
+internal-domains
+private-domains     linked from this page
+create-private-domain
+sharing-private-domains
+delete-private-domain
+parent-child-domains
+domains-dns         linked from this page
+subdomain-dns
+single-mapping
+wildcard-mapping
+root-domain-dns
