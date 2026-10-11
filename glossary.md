@@ -221,8 +221,8 @@ Learn more: [ERB](https://github.com/ruby/erb).
 Embedded JavaScript templates: the same `<% %>` tags as ERB, with JavaScript
 inside. The difference that matters here is escaping: EJS's `<%=` escapes
 HTML and `<%-` does not, where the CF pages' `<%=` in Middleman does not
-escape. The Eleventy probe built `uaa-concepts` with its ERB variable tags
-read as EJS; HTML-valued variables, helpers and includes need `<%-`
+escape. The Eleventy probe built `uaa-concepts` and the scale table with
+their ERB variable tags read as EJS; HTML-valued variables, helpers and includes need `<%-`
 ([probes/eleventy/README.md](concepts/tables/probes/eleventy/README.md)).
 
 Learn more: [EJS](https://ejs.co/).
@@ -410,7 +410,8 @@ and it comes from
 [`@11ty/eleventy-plugin-ejs`](https://github.com/11ty/eleventy-plugin-template-languages/blob/d765d2ab8ae0328537e7b6c39a5e83742b7f5bfd/ejs/package.json#L2).
 It ran as a probe
 (3.1.6): with the CF pages' `<%= vars.* %>` tags left as they are and read as
-EJS, the `uaa-concepts` tables came out byte for byte as written
+EJS, the `uaa-concepts` tables and the scale table came out byte for byte
+as written
 ([probes/eleventy/README.md](concepts/tables/probes/eleventy/README.md)).
 
 Learn more: [Eleventy](https://www.11ty.dev/).
@@ -624,9 +625,11 @@ Learn more: [Native with and without widths](concepts/tables/results.md#native-w
 A specific, checkable statement about a converted page, such as "7 body
 rows, each with 2 cells" for `credential-types`. Each intent file lists them
 per table, and `make check` in each site runs them against the built pages
-with [checks/spot-checks.sh](concepts/tables/checks/spot-checks.sh). They are
-this round's content check; an automated comparison of text and headings with
-the published page belongs to cf-docs-migrate ([R-01](requirements/README.md#r-01) content and outline
+with [checks/spot-checks.sh](concepts/tables/checks/spot-checks.sh). Next to
+them, the tables round compared each page's text word by word with the
+published page ([checks/text-diff.py](concepts/tables/checks/text-diff.py)).
+A check of text and headings for every migrated page belongs to
+cf-docs-migrate ([R-01](requirements/README.md#r-01) content and outline
 survive, [requirements/README.md](requirements/README.md)).
 
 Learn more: [intent/credential-types.md](concepts/tables/intent/credential-types.md).
