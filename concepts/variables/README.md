@@ -51,9 +51,10 @@ Terms used below:
   native, plus raw. Every value is in place in native mode in every tool;
   passthrough keeps all of them in Zensical only:
   [results.md](results.md#summary).
-- [ ] **Conventions reviewed.** The eight proposals in
+- [x] **Conventions reviewed.** The eight proposals in
   [results.md](results.md#conventions-to-record), and the open questions
-  below.
+  below, answered 2026-10-11; a ninth convention, product names as text,
+  follows from question 1.
 
 ## Test pages
 
@@ -151,24 +152,40 @@ Each tool keeps the version and configuration of the earlier rounds.
    book still builds from these repositories; if none does, write the
    names as text during conversion, which removes most uses and every
    heading and title case.
+   **Answer (Docs WG lead, 2026-10-11):** as recommended. No open-source
+   book other than this one builds from these repositories
+   (`pivotal-cf/docs-book-tiledev` is a commercial book), so the names
+   are written as text.
 2. **Remove the 82 references to undefined or empty names?** They render
    as nothing today; strict builds fail on them. Recommendation: remove
    them in cleanup and list them for the owners, who can add a value
    where text is missing.
+   **Answer (Docs WG lead, 2026-10-11):** remove them, with the list. The
+   list stays with the Docs WG, which does the conversion.
 3. **Zensical's delimiters.** Decision (this round): keep `<%= %>`,
    because Jinja's `{{ }}` and `{# #}` clash with 12 lines of the book's
    content and with `{#id}` heading ids. Recommendation: accept.
+   **Answer (Docs WG lead, 2026-10-11):** accepted.
 4. **Docusaurus headings with a variable**: export the table of contents
    by hand on each such page (15 pages, 27 headings), or write the value
    in the heading. Recommendation: follow question 1; if the names stay
    variables, export the table of contents.
+   **Answer (Docs WG lead, 2026-10-11):** question 1 leaves few such
+   headings. For those, test a remark plugin that writes the value into
+   the heading before Docusaurus builds the table of contents, rather
+   than exporting it by hand.
 5. **Where values that hold markup live.** Recommendation: one shared
    variables file, from which each site's build writes the tool's form
    (JSX, Markdoc trees, HTML); block values become partials, as the notes
    round decided for notes.
+   **Answer (Docs WG lead, 2026-10-11):** decide at implementation; one
+   file is fine, or one shared folder of several files, so that one
+   editor's mistake reaches fewer values.
 6. **Starlight's undefined-name check runs outside the build.**
    Recommendation: accept it as part of `make build` and of the pull
    request checks, since Astro's Markdoc integration will not report it.
+   **Answer (Docs WG lead, 2026-10-11):** accepted, with a note. A check
+   of variables outside every tool may be worth having as well.
 
 ## Layout
 

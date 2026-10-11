@@ -67,6 +67,7 @@ the build says when something is wrong.
   [survey](survey/README.md#how-the-book-resolves-a-partial)). In
   Docusaurus, Starlight and Antora, and in Zensical native, the paragraph
   stays in the step and the headings are in the table of contents.
+  Treated as defects (Docs WG lead, 2026-10-11): the converted pages fix them.
 - **The book needs few partial patterns.** 45 calls, all
   `<%= partial '…' %>` with a literal name, none in a conditional, none
   with `locals:`, none crossing a repository, no nesting, and four in list
@@ -313,7 +314,8 @@ Evidence from this round:
    ([grids above](#summary)). A requirement to keep the form would rule
    out, or add code to, two of the four tools for a feature with no user.
 
-Recommendation, for review: **partial names in variables are not needed.**
+Recommendation, accepted (Docs WG lead, 2026-10-11): **partial names in variables
+are not needed.**
 The converter resolves any such name when it converts and writes a plain
 include, and the ten unused variables are removed from the book's
 variables file in the cleanup before conversion
@@ -342,6 +344,7 @@ For `cf-docs-migrate convert`. Decisions of this round, for review:
    line of its own becomes the tool's include on a line of its own.
 4. **A partial after text in a list item goes on its own line under the
    item**, after the text, which stays the item's first paragraph.
+   **Accepted** (Docs WG lead, 2026-10-11).
 5. **A partial that is a list step's content is placed inside the step**:
    the include indented under the item (Docusaurus, Starlight), wrapped in
    `filter indent(N)` (Zensical), or after `{empty}`, `+` and inside an
@@ -349,6 +352,7 @@ For `cf-docs-migrate convert`. Decisions of this round, for review:
 6. **A partial name held in a variable is resolved at conversion time**;
    no converted page takes a partial's name from a variable
    ([recommendation](#are-partial-names-in-variables-still-needed)).
+   **Accepted** (Docs WG lead, 2026-10-11).
 7. **Headings in partials carry explicit ids in the tool's syntax**, as on
    pages (headings round), and a partial with headings is not included
    twice on one page; the partials check fails on an id used twice inside
@@ -356,6 +360,7 @@ For `cf-docs-migrate convert`. Decisions of this round, for review:
 8. **The build fails on a missing partial**: Zensical with
    `on_error_fail` (and `check_paths` if snippets are used), Antora with
    `--log-failure-level=error`; Docusaurus and Starlight do by default.
+   **Accepted** (Docs WG lead, 2026-10-11), for CI as well.
 9. **The partials check runs on every converted page that includes a
    partial**, beside the outline and notes checks:
    [checks/partials.py](checks/partials.py).

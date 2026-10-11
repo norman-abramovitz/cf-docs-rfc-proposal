@@ -101,7 +101,7 @@ Terms used in the table:
 | <a id="r-02"></a>R-02 | rich tables | Tables can hold lists and paragraphs in cells, cells that span columns, row headers, a title above the column headers, and variables in cells, as the test pages do. A table wider than the page scrolls in its own box. | [L42]; [test pages](../concepts/tables/README.md#what-the-pages-have-in-common) | proposed |
 | <a id="r-03"></a>R-03 | column widths as hints | An author can say how wide a column should be and whether it should avoid wrapping. The site honors this as intent, not as an exact value: a column's role (a short key, a value, or prose) decides most widths. | [L42]; [hints](../concepts/tables/README.md#hints-after-the-round) | proposed |
 | <a id="r-04"></a>R-04 | variables everywhere | Variables work in prose, in table cells, inside HTML and in page descriptions. A variable whose value is HTML renders as markup, not as escaped text. A variable that is not defined is reported when the site builds, instead of showing as empty text. | [L43]; [variables in cells](../concepts/tables/README.md#what-the-pages-have-in-common) | proposed |
-| <a id="r-05"></a>R-05 | partials and reuse | A page can include a partial, and the partial renders inside it. Today a page can also pick its partial from a variable (`scale_table: "oss_scale_table"`); whether that is still needed is an [open question](research-areas.md#are-partial-names-in-variables-still-needed). | [L179]; [`_oss_scale_table`](../concepts/tables/source/SOURCES.md) | proposed |
+| <a id="r-05"></a>R-05 | partials and reuse | A page can include a partial, and the partial renders inside it. The book can also hold a partial's name in a variable (`scale_table: "oss_scale_table"`), but no page uses that form; it is [not needed](research-areas.md#are-partial-names-in-variables-still-needed), and the converter resolves any such name. | [L179]; [`_oss_scale_table`](../concepts/tables/source/SOURCES.md) | proposed |
 | <a id="r-06"></a>R-06 | typed code blocks | Code blocks show their type (shell, console, JSON, YAML) with matching highlighting, keep their text exactly, and have a copy button. | [L44]; [tables findings](../concepts/tables/README.md#what-we-learned) | proposed |
 | <a id="r-07"></a>R-07 | notes and admonitions | A note, today `<p class="note">` with a `note__title` span, becomes an admonition (a boxed callout headed Note, Warning, and so on; [glossary](../glossary.md#admonition)) with the same text, including notes held in a variable. | [Concepts list](../concepts/README.md#concepts); [L100] | proposed |
 | <a id="r-08"></a>R-08 | cross-repository links | Links between pages that come from different content repositories keep working after conversion, whatever the new repository layout. | [L131] | proposed |
@@ -271,7 +271,7 @@ restated as a hosting benefit.
   tables round included it from a host page, Docusaurus through an MDX
   import (Docusaurus [conventions](../concepts/tables/sites/docusaurus/CONVENTIONS.md),
   "Partials"). Partials picked by a
-  variable are still open ([R-05](#r-05) partials and reuse).
+  variable are not needed ([R-05](#r-05) partials and reuse).
 - **bosh.io is not mentioned.** Its docs are a separate site with 40 tables
   (counted by this evaluation at docs-bosh commit `20a4122`:
   [table survey, bosh.io](../concepts/tables/survey/README.md#boshio)); see [Research areas](research-areas.md#is-boshio-in-scope).

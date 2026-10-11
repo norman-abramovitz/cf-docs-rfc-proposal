@@ -322,7 +322,11 @@ let other books build the same pages with their own names; a comment in
 `overview` mentions "private/commercial books". If no other book builds from these
 repositories any more, writing the name as text would remove most uses,
 every heading case, and with it the Docusaurus table-of-contents
-workaround. That is a question for the Docs WG, not a conversion rule.
+workaround. Decision (Docs WG lead, 2026-10-11): **the names are
+written as text.** No open-source book other than this one builds from
+these repositories;
+`pivotal-cf/docs-book-tiledev`, whose `config.yml` names `docs-services`,
+is a commercial book (convention 9).
 
 ## Copyright and build-time values
 
@@ -343,28 +347,40 @@ For `cf-docs-migrate convert`. Decisions of this round, for review:
    (Docusaurus), `<%= vars.name %>` (Zensical, macros extension with ERB
    delimiters), `{% $vars.name %}` (Starlight), `{name}` (Antora). The
    book's `template_variables.yml`, or its successor, stays the one place
-   values are written.
+   values are written. Zensical's ERB delimiters: **Accepted** (Docs WG
+   lead, 2026-10-11).
 2. **The build writes each tool's variables from that file**: text as
    text; empty values as `""`; values that hold HTML or Markdown in the
    form the tool renders inline (JSX; a Markdoc tree; HTML; as written).
    Values that are blocks become partials. Keys only layouts read go to
    the site's configuration; `title` is never an AsciiDoc attribute; the
-   key that is not a name is dropped.
+   key that is not a name is dropped. Whether the source is one file or
+   one shared folder of several files (fewer values reached by one
+   editor's mistake) is decided at implementation (Docs WG lead,
+   2026-10-11).
 3. **Every site requires every name at build**: Docusaurus through its
    variables module, Zensical with `on_undefined = "strict"`, Starlight
    with a validator run in `make build`, Antora with
-   `attribute-missing: warn` and `failure_level: warn`.
+   `attribute-missing: warn` and `failure_level: warn`. **Accepted**
+   (Docs WG lead, 2026-10-11), with a note that Starlight's validator
+   runs outside the tool; a check of variables outside every tool may
+   be worth having as well.
 4. **References to undefined and empty names are removed before
-   conversion**, each listed in the cleanup record for the page's owners
-   (82 uses on 59 names); they render as nothing today
+   conversion**, each listed in the cleanup record (82 uses on 59 names);
+   they render as nothing today
    ([R-24](../../requirements/README.md#r-24) markup cleanup before
-   conversion).
+   conversion). **Accepted** (Docs WG lead, 2026-10-11): the list stays
+   with the Docs WG, which does the conversion, rather than going to page
+   owners.
 5. **Each place has a rule per tool**, as in
    [Each place a variable can sit](#each-place-a-variable-can-sit):
    code blocks keep their type; link targets use the tool's link form;
    titles and descriptions take the value where front matter cannot hold
    a variable; in Docusaurus, a page with a variable in a heading exports
-   its table of contents.
+   its table of contents. After convention 9 few such headings remain;
+   a remark plugin that writes the value into the heading before
+   Docusaurus builds the table of contents is to be tested in place of
+   hand-written ones.
 6. **Code that only computes text is evaluated by the converter**: the
    title line of `all_metrics` and the two conditions on the stacks pages
    become their result, listed for the owners.
@@ -375,6 +391,10 @@ For `cf-docs-migrate convert`. Decisions of this round, for review:
 8. **The copyright year is not a variable**: it stays with the copyright
    concept ([R-25](../../requirements/README.md#r-25) build-time values
    are expected differences).
+9. **Product names are written as text**: "Cloud Foundry", "CF" and
+   "cf" from `app_runtime_abbr` and the eleven other keys
+   ([Product names](#product-names)). **Accepted** (Docs WG lead,
+   2026-10-11).
 
 ## Requirements
 

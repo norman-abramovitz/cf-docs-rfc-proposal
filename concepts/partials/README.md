@@ -58,6 +58,8 @@ Terms used below:
 - [ ] **Conventions reviewed.** The nine proposals in
   [results.md](results.md#conventions-to-record), and the recommendation on
   [partial names in variables](results.md#are-partial-names-in-variables-still-needed).
+  Accepted (2026-10-11): conventions 4, 6 and 8, the recommendation, and
+  the book's two partial defects as defects the converted pages fix.
 
 ## Test pages
 
