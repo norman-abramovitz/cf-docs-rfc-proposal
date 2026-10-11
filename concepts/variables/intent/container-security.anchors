@@ -1,0 +1,14 @@
+# Heading ids on container-security that a converted page must keep: each
+# <a id> the source writes, and the generated id of each heading that has
+# none (the headings round's accepted decision). Read by the outline check's --anchors.
+mechanics
+cpu
+cpu-shares-algorithm-1
+cpu-shares-algorithm-2
+cpu-share-interaction
+networking
+net-overview
+config-traffic
+security
+types
+hardening

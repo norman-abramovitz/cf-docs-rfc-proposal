@@ -1,0 +1,21 @@
+# make check-probe and make probe-missing, Docusaurus 3.10.2, 2026-10-11
+## One partial with a heading included twice (docs/probe/twice.mdx)
+# build/probe/twice/index.html: 9 headings in div.theme-doc-markdown
+h1 One partial with a heading, included twice
+  h2 First inclusion, explicit id   #first
+    h3 Metrics Collector   #old-metrics-collector
+  h2 Second inclusion, explicit id   #second
+    h3 Metrics Collector   #old-metrics-collector
+  h2 First inclusion, generated id   #third
+    h3 Metrics Collector   #metrics-collector
+  h2 Second inclusion, generated id   #fourth
+    h3 Metrics Collector   #metrics-collector
+toc: first old-metrics-collector second old-metrics-collector third metrics-collector fourth metrics-collector
+
+## A partial that does not exist (probes/missing.mdx), the build's output
+[INFO] [en] Creating an optimized production build...
+[webpackbar] ✔ Server: Compiled with some errors in 725.86ms
+[webpackbar] ✔ Client: Compiled with some errors in 1.75s
+[ERROR] Client bundle compiled with errors therefore further build is impossible.
+Module not found: Error: Can't resolve './_does_not_exist.mdx' in '<site>/docs/probe'
+exit status 1

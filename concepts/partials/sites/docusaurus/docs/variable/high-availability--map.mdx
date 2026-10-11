@@ -1,0 +1,16 @@
+---
+title: High Availability in Cloud Foundry
+owner: Release Integration
+---
+
+import vars from '@site/vars.json';
+import OssScaleTable from '../native/_oss_scale_table.mdx';
+
+export const partials = {oss_scale_table: OssScaleTable};
+export const ScaleTable = partials[vars.scale_table];
+
+## Recommended instance counts for high availability {#instance-counts}
+
+{vars.scaling_ert}
+
+<ScaleTable />

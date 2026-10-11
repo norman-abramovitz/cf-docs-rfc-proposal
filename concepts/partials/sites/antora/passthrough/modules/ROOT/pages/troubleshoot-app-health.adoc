@@ -1,0 +1,24 @@
+= Troubleshooting app deployment and health
+
+[[routing-conflict]]
+=== Routing conflict
+
+include::_routing_conflict.adoc[]
+
+If you suspect a routing conflict, run `cf routes` to verify the routes in your {app_runtime_abbr} deployment.
+
+If two apps share a route outside of a blue-green deployment strategy, choose one app to reassign to a different route and use the following procedure:
+
+. Remove the existing route from that app by running:
++
+[source,console]
+----
+cf unmap-route APP-NAME OLD-ROUTE
+----
+
+. Map the app to a new, unique route by running:
++
+[source,console]
+----
+cf map-route APP-NAME NEW-ROUTE
+----

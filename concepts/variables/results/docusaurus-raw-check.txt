@@ -1,0 +1,4 @@
+# Docusaurus 3.10.2: make check-raw. app-ssh-overview exactly as the book writes
+# it (raw-mdx/), compiled with the site's MDX; MDX stops at the first error.
+FAIL  app-ssh-overview.mdx:9: Unexpected character `%` (U+0025) before name, expected a character that can start a name, such as a letter, `$`, or `_`
+      > <%= vars.mutual_tls_ssh %>

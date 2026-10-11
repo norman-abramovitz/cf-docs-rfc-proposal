@@ -1,0 +1,118 @@
+$ ../../checks/check-site.sh dist note=note,important=caution,caution=danger
+== passthrough/app-ssh-overview
+FAIL  scan: 1 finding(s)
+        Markdown link shown as text in p: cess for your deployment, see [Configuring SSH Access](../../running/config-ssh.html).
+FAIL  platform-ssh-config p "Cloud Foundry deployments control SSH access to apps at the Cloud Foundry level. Additionally, Cloud Foundry supports load balancing of SSH sessions. For more information about setting SSH access for your deployment, see Configuring SSH Access."
+        1 p in the section; closest: "Cloud Foundry deployments control SSH access to apps at the Cloud Foundry level. Additionally, Cloud Foundry supports load balancing of SSH sessions. For more i"
+        note: L66 platform_ssh_configuration: a Markdown value, a paragraph of its own
+FAIL  platform-ssh-config a "Configuring SSH Access"
+        2 a in the section; closest: "PreviousCloud Foundry component metrics"
+        note: L66 platform_ssh_configuration: the value's Markdown link is a link
+FAIL  platform-ssh-config a@href "running/config-ssh.html"
+        hrefs: /passthrough/all_metrics/ /passthrough/container-security/
+        note: L66 platform_ssh_configuration: the value's link target (the book makes it /running/config-ssh.html)
+FAIL  values: 6 of 9 in place
+ok    outline: 5 headings, same levels and text
+ok    anchors: all 4 exist
+info  published heading ids not on the built page (4): #-about-ssh-access #-ssh-access-control-hierarchy #-ssh-access-for-apps-and-spaces #-configuring-ssh-access-for-cloud-foundry
+== passthrough/routes-domains
+ok    scan: no variable syntax left, no markup or Markdown shown as text
+ok    values: 50 of 50 in place
+ok    outline: 18 headings, same levels and text
+ok    anchors: all 17 exist
+info  published heading ids not on the built page (12): #-domains #-list-domains-for-an-org #-http-versus-tcp-domains #-shared-domains #-private-domains #-delete-a-private-domain #-requirements-for-parent-and-child-domains #-dns-for-domains #-mapping-domains-to-your-custom-domain #-mapping-a-single-domain-to-your-custom-domain and 2 more
+ok    count: 5 notes
+ok    note 1: note -> note, title 'Note', 39 words, code=2 link=1, body
+ok    note 2: important -> caution, title 'Important', 15 words, -, body
+ok    note 3: note -> note, title 'Note', 25 words, code=2 link=1, body
+ok    note 4: note -> note, title 'Note', 8 words, -, body
+ok    note 5: important -> caution, title 'Important', 32 words, link=1, body
+== passthrough/troubleshooting-router-error-responses
+FAIL  scan: 3 finding(s)
+        Markdoc or Jinja tag in a@href (content): {% $vars.gorouter_metrics_link %}
+        Markdoc variable in a@href (content): {% $vars.gorouter_metrics_link %}
+        Markdown link shown as text in li: Are there any suspicious [metrics](../running/all_metrics.html#routing) spiking? How is the CPU and m
+FAIL  debugging-steps a "metrics"
+        2 a in the section; closest: "Dynamic Routing Table"
+        note: L40 gorouter_metrics_link: link text of a Markdown link whose URL is a variable
+FAIL  debugging-steps a@href "running/all_metrics.html#routing"
+        hrefs: https://github.com/cloudfoundry/gorouter#dynamic-routing-table ../concepts/http-routing.html#zipkin-headers
+        note: L40 gorouter_metrics_link: a variable as a Markdown link URL, in a nested list (the book makes it /running/all_metrics.html#routing)
+FAIL  gorouter-error-classification a@href "../running/all_metrics.html#routing"
+        hrefs: https://github.com/cloudfoundry/gorouter#logs https://github.com/cloudfoundry/gorouter#dynamic-routing-table {% $vars.gorouter_metrics_link %}
+        note: L388 gorouter_metrics_link: a variable as an HTML href, in a table cell
+FAIL  values: 5 of 8 in place
+ok    outline: 17 headings, same levels and text
+ok    anchors: all 16 exist
+info  published heading ids not on the built page (14): #-outer-error-responses-overview #-general-debugging-steps #-levels #-message-contents #-access-logs #diagnose-gorouter-errors #gorouter-cannot-connect-to-the-app-container #gorouter-errors-after-connecting #-diagnose-stale-routes-in-gorouter #-causes-of-stale-routes and 4 more
+== passthrough/container-security
+FAIL  scan: 2 finding(s)
+        Markdown link shown as text in p: e information about ASGs, see [App Security Groups](../adminguide/app-sec-groups.html).
+        Markdown link shown as text in p: e information about ASGs, see [App Security Groups](../adminguide/app-sec-groups.html).
+FAIL  config-traffic li "Application Security Groups (ASGs) apply network traffic rules at the container level. For more information about ASGs, see App Security Groups."
+        2 li in the section; closest: "Application Security Groups (ASGs) apply network traffic rules at the container level. For more information about ASGs, see [App Security Groups](../adminguide/"
+        note: L181 app_sec_groups_link: a Markdown value at the end of a list item
+FAIL  config-traffic a@href "adminguide/app-sec-groups.html"
+        hrefs: ../devguide/deploy-apps/cf-networking.html
+        note: L181 app_sec_groups_link: the value's link (the book makes it /adminguide/app-sec-groups.html, a redirect)
+FAIL  security li "Only allowing outbound connections to public addresses from app containers. This is the original default. Admins can change this behavior by configuring ASGs. For more information about ASGs, see App Security Groups."
+        3 li in the section; closest: "Only allowing outbound connections to public addresses from app containers. This is the original default. Admins can change this behavior by configuring ASGs. F"
+        note: L193 app_sec_groups_default, app_sec_groups_link: two values side by side, text and Markdown, as a whole list item
+FAIL  security a "App Security Groups"
+        4 a in the section; closest: "Types"
+        note: L193 app_sec_groups_link: the Markdown link is a link
+FAIL  values: 12 of 16 in place
+ok    outline: 12 headings, same levels and text
+ok    anchors: all 11 exist
+info  published heading ids not on the built page (8): #-container-mechanics #-cpu #-inbound-and-outbound-traffic-from-cloud-foundry #-networking-overview #-network-traffic-rules #-container-security #-types #-hardening
+== passthrough/all_metrics
+ok    scan: no variable syntax left, no markup or Markdown shown as text
+FAIL  @ title "Cloud Foundry Component Metrics"
+        title "Cloud Foundry component metrics | Variables round — Starlight"
+        note: L6: the page title, from a variable; the front matter's title (Cloud Foundry component metrics) is replaced
+FAIL  @ h1 "Cloud Foundry Component Metrics"
+        h1 "Cloud Foundry component metrics"
+        note: L6: the heading that shows the title
+FAIL  values: 0 of 2 in place
+FAIL  outline: published 9 headings, built 9
+        - h1 Cloud Foundry Component Metrics
+        + h1 Cloud Foundry component metrics   #_top
+ok    anchors: all 8 exist
+info  published heading ids not on the built page (8): #-cloud-controller #-diego #-dopplerserver #-metron-agent #-routing #-syslog-binding-cache #-traffic-controller #-user-account-and-authentication-(uaa)
+== native/app-ssh-overview
+ok    scan: no variable syntax left, no markup or Markdown shown as text
+ok    values: 9 of 9 in place
+ok    outline: 5 headings, same levels and text
+ok    anchors: all 4 exist
+info  published heading ids not on the built page (4): #-about-ssh-access #-ssh-access-control-hierarchy #-ssh-access-for-apps-and-spaces #-configuring-ssh-access-for-cloud-foundry
+== native/routes-domains
+ok    scan: no variable syntax left, no markup or Markdown shown as text
+ok    values: 50 of 50 in place
+ok    outline: 18 headings, same levels and text
+ok    anchors: all 17 exist
+info  published heading ids not on the built page (12): #-domains #-list-domains-for-an-org #-http-versus-tcp-domains #-shared-domains #-private-domains #-delete-a-private-domain #-requirements-for-parent-and-child-domains #-dns-for-domains #-mapping-domains-to-your-custom-domain #-mapping-a-single-domain-to-your-custom-domain and 2 more
+ok    count: 5 notes
+ok    note 1: note -> note, title 'Note', 39 words, code=2 link=1, body
+ok    note 2: important -> caution, title 'Important', 15 words, -, body
+ok    note 3: note -> note, title 'Note', 25 words, code=2 link=1, body
+ok    note 4: note -> note, title 'Note', 8 words, -, body
+ok    note 5: important -> caution, title 'Important', 32 words, link=1, body
+== native/troubleshooting-router-error-responses
+ok    scan: no variable syntax left, no markup or Markdown shown as text
+ok    values: 8 of 8 in place
+ok    outline: 17 headings, same levels and text
+ok    anchors: all 16 exist
+info  published heading ids not on the built page (14): #-outer-error-responses-overview #-general-debugging-steps #-levels #-message-contents #-access-logs #diagnose-gorouter-errors #gorouter-cannot-connect-to-the-app-container #gorouter-errors-after-connecting #-diagnose-stale-routes-in-gorouter #-causes-of-stale-routes and 4 more
+== native/container-security
+ok    scan: no variable syntax left, no markup or Markdown shown as text
+ok    values: 16 of 16 in place
+ok    outline: 12 headings, same levels and text
+ok    anchors: all 11 exist
+info  published heading ids not on the built page (8): #-container-mechanics #-cpu #-inbound-and-outbound-traffic-from-cloud-foundry #-networking-overview #-network-traffic-rules #-container-security #-types #-hardening
+== native/all_metrics
+ok    scan: no variable syntax left, no markup or Markdown shown as text
+ok    values: 2 of 2 in place
+ok    outline: 9 headings, same levels and text
+ok    anchors: all 8 exist
+info  published heading ids not on the built page (8): #-cloud-controller #-diego #-dopplerserver #-metron-agent #-routing #-syslog-binding-cache #-traffic-controller #-user-account-and-authentication-(uaa)
+exit status 1

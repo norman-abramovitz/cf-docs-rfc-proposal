@@ -1,0 +1,85 @@
+---
+title: Logging and metrics architecture
+owner: Logging and Metrics
+---
+
+## Architecture reference diagrams {#architecture-references}
+
+This section provides architecture diagrams that show the components that collect, store, and forward logs and metrics in your <%= vars.app_runtime_abbr %> deployment.
+
+You can use these diagrams to:
+
+* Understand the components that transport logs and metrics on your <%= vars.app_runtime_abbr %> deployment.
+
+* Diagnose performance issues related to logging and metrics.
+
+* Make decisions about how to best scale the components or consumers described in the architecture.
+
+This section includes the following diagrams:
+
+* Loggregator Firehose architecture. For more information, see [Loggregator Firehose Architecture](#firehose-architecture).
+
+* Shared-nothing architecture. For more information, see [Shared-nothing Architecture](#shared-nothing-architecture).
+
+* System Metrics Agents architecture. For more information, see [System Metrics Agents Architecture](#system-metrics-agents).
+
+### Loggregator Firehose architecture {#firehose-architecture}
+<a id='loggregator-architecture'></a>
+
+The following diagram shows how logs and metrics are transported from components and apps on your deployment to Loggregator Firehose consumers, such as nozzles, monitoring tools, or third-party software.
+
+The following components are included in the Loggregator Firehose architecture, as shown in the previous diagram:
+
+* **Prom Scraper:** Prometheus Scrapers run on both component VMs and Diego Cell VMs. They aggregate metrics from components located on those VMs through Prometheus exposition. Prom Scrapers then forward the metrics to Forwarder Agents.
+
+* **Statsd Injector:** Statsd Injectors run on component VMs. They receive metrics from components over the Statsd protocol. Statsd Injectors then forward the metrics to Forwarder Agents.
+
+* **Forwarder Agent:** Forwarder Agents run on both component VMs and Diego Cell VMs. They receive logs and metrics from the apps and components located on those VMs. Forwarder Agents then forward the logs and metrics to Loggregator Agents and other agents.
+
+* **Loggregator Agent:** Loggregator Agents run on both component VMs and Diego Cell VMs. They receive logs and metrics from the Forwarder Agents, then forward the logs and metrics from multiple Dopplers.
+
+* **Doppler:** Dopplers receive logs and metrics from Loggregator Agents, store them in temporary buffers, and forward them to Traffic Controllers and Reverse Log Proxies.
+
+* **Traffic Controller:** Traffic Controllers poll Doppler servers for logs and metrics, then translate these messages from the Doppler servers as necessary for external and legacy APIs. It services the Firehose Endpoint, also known as the V1 Firehose. The Firehose cf CLI plug-in allows you to view the output of the Firehose. For more information about the Firehose plug-in, see [Installing the Loggregator Firehose plug-in for cf CLI](cli-plugin.html).
+
+* **Reverse Log Proxy (V2 Firehose):** Reverse Log Proxies (RLPs) collect logs and metrics from Dopplers and forward them to Log Cache and other consumers over gRPC. Operators can scale up the number of RLPs based on overall log volume.
+
+* **Reverse Log Proxy Gateway (V2 Firehose):** Reverse Log Proxies Gateways (RLP Gateways) collect logs and metrics from Reverse Log Proxies and forward them to consumers over HTTP. Collecting logs and metrics through the RLP Gateway has lower throughput compared to consuming from the Traffic Controller or Reverse Log Proxy.
+
+* **Log Cache:**
+
+    <% include "native/_log_cache.md" %>
+
+* **Log Cache Syslog Server:** The Log Cache Syslog Server receives logs and metrics from Syslog Agents and sends them to Log Cache.
+
+### Shared-nothing architecture {#shared-nothing-architecture}
+
+This section describes the components in the shared-nothing architecture that collect, store, and transport logs and metrics on your deployment.
+
+Similar to the Loggregator Firehose Architecture, the shared-nothing architecture allows you to forward logs and metrics from your deployment to external and internal consumers.
+
+In contrast to the Loggregator Firehose architecture, logs and metrics pass through fewer components in the shared-nothing architecture.
+
+The following components are included in the shared-nothing architecture, as shown in the previous diagram:
+
+* **Prom Scraper:** Prom Scrapers run on both <%= vars.app_runtime_abbr %> component VMs and Diego Cell VMs. They aggregate metrics from <%= vars.app_runtime_abbr %> components located on those VMs through Prometheus exposition. Prom Scrapers then forward those metrics to Forwarder Agents.
+
+* **Statsd Injector:** Statsd Injectors run on <%= vars.app_runtime_abbr %> component VMs. They receive metrics from <%= vars.app_runtime_abbr %> components over the Statsd protocol. Statsd Injectors then forward those metrics to Forwarder Agents.
+
+* **Forwarder Agent:** Forwarder Agents run on both <%= vars.app_runtime_abbr %> component VMs and Diego Cell VMs. They receive logs and metrics from the apps and <%= vars.app_runtime_abbr %> components located on those VMs. Forwarder Agents then forward the logs and metrics to Loggregator Agents and other agents.
+
+* **Syslog Agent:**
+
+    <% include "native/_syslog_agents.md" %>
+
+* **Syslog Binding Cache** (not pictured): Syslog Agents can overwhelm CAPI when querying for existing bindings. To address this, the Syslog Binding Cache is a caching proxy between the Syslog Agents and CAPI.
+
+* **Metrics Discovery Registrars:** Metrics Discovery Registrars register each scrapeable endpoint with NATS for discovery by Metrics Scrapers.
+
+* **Log Cache:**
+
+    <% include "native/_log_cache.md" %>
+
+* **Log Cache Syslog Server:** The Log Cache Syslog Server receives logs and metrics from Syslog Agents and sends them to Log Cache.
+
+* **OTel Collector (experimental):** [OpenTelemetry Collectors](https://opentelemetry.io/docs/collector/) are configured to receive metrics from Forwarder Agents and send them to external drains using a variety of available formats.

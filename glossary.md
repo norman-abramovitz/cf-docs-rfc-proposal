@@ -699,7 +699,10 @@ into their calling topics." ([RFC L179][L179]) In this round every tool
 included the `_oss_scale_table` partial, Docusaurus as an imported MDX
 component
 ([sites/docusaurus/CONVENTIONS.md](concepts/tables/sites/docusaurus/CONVENTIONS.md);
-[R-05](requirements/README.md#r-05) partials and reuse).
+[R-05](requirements/README.md#r-05) partials and reuse). The partials round
+found that no page at the surveyed commits picks its partial through a
+variable, and converted six pages' partials in all four hands-on tools
+([partials results](concepts/partials/results.md#summary)).
 
 Learn more: [Importing Markdown in Docusaurus](https://docusaurus.io/docs/markdown-features/react#importing-markdown).
 
@@ -714,7 +717,9 @@ RFC #1642 asks for the "Ability to handle variables in a way that's easy and
 transparent for contributers" ([RFC L43][L43]); each tool's syntax and how it
 handles HTML values are in
 [results.md](concepts/tables/results.md#summary) ([R-04](requirements/README.md#r-04) variables
-everywhere).
+everywhere). The variables round counted 1,503 uses of 180 names, 28 of
+them defined nowhere, and converted five pages' variables in all four
+hands-on tools ([variables results](concepts/variables/results.md#summary)).
 
 Learn more: [concepts/README.md](concepts/README.md).
 

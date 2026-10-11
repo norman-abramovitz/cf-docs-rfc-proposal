@@ -1,0 +1,42 @@
+= Enabling and configuring TCP routing in Cloud Foundry
+
+[[prerequisites]]
+== Prerequisites for activating TCP routing
+
+[subs=attributes+]
+++++
+{mutual_tls_tcp}
+++++
+
+Before you activate TCP routing, you must set up networking requirements.
+
+To set up networking
+requirements:
+
+. Choose a domain from which you can create TCP routes for your apps. For
+example, create a domain which is similar to your app domain but prefixed by the TCP subdomain,
+such as `tcp.APP-DOMAIN.com`, where `APP-DOMAIN` is the name of your app domain.
+
+. Configure DNS to resolve this domain name to the IP address of a highly available load
+balancer that can forward traffic for the domain to the TCP routers. For more information,
+see link:../devguide/deploy-apps/routes-domains.html#domains[Domains] in _Configuring Routes
+and Domains_. If you are operating an environment that does not require high availability,
+configure DNS to resolve the TCP domain name you have chosen directly to a single instance
+of the TCP router.
+
+. (Optional) Choose IP addresses for the TCP routers and configure your load balancer to
+forward requests for the domain you chose in the first step above to these addresses. Skip
+this step if you have configured DNS to resolve the TCP domain name to an instance of the
+TCP router. {tcp_iaas}
+
+. (Optional) Decide how many TCP routes you want to support. For each TCP route, you must
+reserve a port. Configure your load balancer to forward the range of ports to the TCP routers.
+Skip this step if you have configured DNS to resolve the TCP domain name to an instance of
+the TCP router. For more information about configuring port reservations, see <<modify-ports,Modify TCP
+Port Reservations>>.
+
+. {empty}
++
+--
+include::_tcp_modify_ports.adoc[]
+--

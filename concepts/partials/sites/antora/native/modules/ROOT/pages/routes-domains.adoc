@@ -1,0 +1,8 @@
+= Configuring routes and domains
+
+[[map-route-to-mult-apps]]
+==== Map a route to multiple apps
+
+include::shared::partial$routing_conflict.adoc[]
+
+For more information about troubleshooting this problem, see link:troubleshoot-app-health.html#routing-conflict[Routing conflict] in _Troubleshooting app deployment and health_.

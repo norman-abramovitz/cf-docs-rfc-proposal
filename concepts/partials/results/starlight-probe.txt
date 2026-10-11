@@ -1,0 +1,34 @@
+# make check-probe and make probe-missing, Starlight 0.42.6, 2026-10-11
+## One partial with a heading included twice (src/content/docs/probe/twice.mdoc)
+# dist/probe/twice/index.html: 9 headings in main
+h1 One partial with a heading, included twice   #_top
+  h2 First inclusion, explicit id   #first
+    h3 Metrics Collector   #old-metrics-collector
+  h2 Second inclusion, explicit id   #second
+    h3 Metrics Collector   #old-metrics-collector
+  h2 First inclusion, generated id   #third
+    h3 Metrics Collector   #metrics-collector
+  h2 Second inclusion, generated id   #fourth
+    h3 Metrics Collector   #metrics-collector-1
+toc: _top first old-metrics-collector second old-metrics-collector third metrics-collector fourth metrics-collector-1
+
+## Pages that stop the build (probes/), each built on its own: the error and the exit status
+## missing
+06:20:08 [ERROR] [vite] ✗ Build failed in 127ms
+**src/content/docs/probe/missing.mdoc** contains invalid content:
+Could not read partial file `./_does_not_exist.mdoc`. Does the file exist?
+exit status 1
+## inline-partial
+06:20:09 [ERROR] [vite] ✗ Build failed in 126ms
+**src/content/docs/probe/inline-partial.mdoc** contains invalid content:
+- 'partial' tag should be block
+- 'partial' tag should be block
+- 'partial' tag should be block
+  Location:
+    <site>/src/content/docs/probe/inline-partial.mdoc:48:0
+exit status 1
+## variable-attribute
+06:20:10 [ERROR] [vite] ✗ Build failed in 125ms
+**src/content/docs/probe/variable-attribute.mdoc** contains invalid content:
+Could not read partial file `[object Object]`. Does the file exist?
+exit status 1

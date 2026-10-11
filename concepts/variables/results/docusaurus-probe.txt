@@ -1,0 +1,17 @@
+# Docusaurus 3.10.2: make probe. Each probe page built alone: probe.mdx imports the
+# native variables module (src/vars.js), probe-json.mdx the book's file as JSON.
+# A name the file does not define (no_such_name), a key with no value (ssl),
+# and a defined name, each between brackets.
+== probe.mdx
+exit status 1
+Can't render static file for pathname "/probe"
+Variable not defined: vars.no_such_name
+== probe-json.mdx
+exit status 0
+Undefined: [<!-- -->] empty: [<!-- -->] defined: [
+
+# A page with no front matter and a heading '# {vars.app_runtime_abbr} Component Metrics',
+# which Docusaurus takes as the page title (scratch page probe2.mdx, built alone,
+# 2026-10-11): the heading shows the value, the <title> the expression's source.
+<title data-rh="true">{vars.app_runtime_abbr} Component Metrics | Notes round — Docusaurus
+<h1>Cloud Foundry<!-- --> Component Metrics</h1>

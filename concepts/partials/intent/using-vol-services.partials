@@ -1,0 +1,9 @@
+# Partials on using-vol-services (docs-dev-guide): the page is one partial call; the excerpt is the
+# partial's opening and its NFS section up to "Migrate". In native modes the note held in the
+# variable external_vol_win_note is a partial of its own, nested in the page's partial.
+# Fields, separated by tabs: include, NAME, SECTION, PLACE, BEFORE, FIRST, LAST, AFTER
+# (see ../checks/partials.py). "-" means none.
+# toc, ID...: ids that must be in the page's table of contents (headings inside the partial)
+include	using-vol-services	Using an external file system (volume services)	body/list	-	Here are instructions to help you read and write	cf services	-
+include	external_vol_win_note (a variable; a partial in native)	Using an external file system (volume services)	body	or write to a reliable, persistent file system.	NFS and SMB volume services are available for Linux cells only.	These services are not available for Windows cells.	-
+toc	nfs create-nfs

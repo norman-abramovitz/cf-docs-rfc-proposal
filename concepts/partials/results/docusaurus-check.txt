@@ -1,0 +1,129 @@
+# make check, Docusaurus 3.10.2, 2026-10-11: partials, outline and notes checks on every page in passthrough, native and variable
+== passthrough/architecture
+ok    outline: 4 headings, same levels and text
+ok    anchors: all 4 exist
+info  anchors not on a heading: #loggregator-architecture
+info  published heading ids not on the built page (3): #-architecture-reference-diagrams #-loggregator-firehose-architecture #-shared-nothing-architecture
+ok    log_cache (Log Cache allows viewing of logs and met…): in 'Loggregator Firehose architecture', list
+ok    syslog_agents (Syslog Agents run on Cloud Foundry VMs…): in 'Shared-nothing architecture', list
+ok    log_cache (Log Cache allows viewing of logs and met…): in 'Shared-nothing architecture', list
+ok    no include syntax left
+ok    no id inside an included span is used twice
+== passthrough/enabling-tcp-routing
+ok    outline: 2 headings, same levels and text
+ok    anchors: all 1 exist
+info  published heading ids not on the built page (1): #-prerequisites-for-activating-tcp-routing
+ok    tcp_modify_ports ((Optional) Configure the routing_api.rou…): in 'Prerequisites for activating TCP routing', list
+ok    no include syntax left
+ok    no id inside an included span is used twice
+ok    count: 1 notes
+ok    note 1: note -> note, title 'Note', 32 words, code=2, body
+== passthrough/high-availability
+ok    outline: 2 headings, same levels and text
+ok    anchors: all 1 exist
+info  published heading ids not on the built page (1): #-recommended-instance-counts-for-high-availability
+ok    oss_scale_table (The following table provides recommended…): in 'Recommended instance counts for high availability', body/table
+ok    no include syntax left
+ok    no id inside an included span is used twice
+== passthrough/routes-domains
+ok    outline: 2 headings, same levels and text
+ok    anchors: all 1 exist
+ok    routing_conflict (Cloud Foundry allows multiple apps, or v…): in 'Map a route to multiple apps', body
+ok    no include syntax left
+ok    no id inside an included span is used twice
+== passthrough/troubleshoot-app-health
+ok    outline: 2 headings, same levels and text
+ok    anchors: all 1 exist
+info  published heading ids not on the built page (1): #-routing-conflict
+ok    routing_conflict (Cloud Foundry allows multiple apps, or v…): in 'Routing conflict', body
+ok    no include syntax left
+ok    no id inside an included span is used twice
+== passthrough/using-vol-services
+ok    outline: 3 headings, same levels and text
+ok    anchors: all 2 exist
+info  published heading ids not on the built page (2): #-create-and-use-nfs-volume-services #-create-an-nfs-volume-service
+ok    using-vol-services (Here are instructions to help you read a…): in 'Using an external file system (volume services)', body/list
+ok    external_vol_win_note (a variable; a partial in native) (NFS and SMB volume services are availabl…): in 'Using an external file system (volume services)', body
+ok    no include syntax left
+ok    no id inside an included span is used twice
+ok    toc: all 2 ids
+ok    count: 4 notes
+ok    note 1: note -> note, title 'Note', 19 words, -, body
+ok    note 2: note -> note, title 'Note', 7 words, -, body
+ok    note 3: important -> important, title 'Important', 12 words, code=1, list
+ok    note 4: important -> important, title 'Important', 71 words, code=3, list
+== native/architecture
+ok    outline: 4 headings, same levels and text
+ok    anchors: all 4 exist
+info  anchors not on a heading: #loggregator-architecture
+info  published heading ids not on the built page (3): #-architecture-reference-diagrams #-loggregator-firehose-architecture #-shared-nothing-architecture
+ok    log_cache (Log Cache allows viewing of logs and met…): in 'Loggregator Firehose architecture', list
+ok    syslog_agents (Syslog Agents run on Cloud Foundry VMs…): in 'Shared-nothing architecture', list
+ok    log_cache (Log Cache allows viewing of logs and met…): in 'Shared-nothing architecture', list
+ok    no include syntax left
+ok    no id inside an included span is used twice
+== native/enabling-tcp-routing
+ok    outline: 2 headings, same levels and text
+ok    anchors: all 1 exist
+info  published heading ids not on the built page (1): #-prerequisites-for-activating-tcp-routing
+ok    tcp_modify_ports ((Optional) Configure the routing_api.rou…): in 'Prerequisites for activating TCP routing', list
+ok    no include syntax left
+ok    no id inside an included span is used twice
+ok    count: 1 notes
+ok    note 1: note -> note, title 'note', 32 words, code=2, body
+== native/high-availability
+ok    outline: 2 headings, same levels and text
+ok    anchors: all 1 exist
+info  published heading ids not on the built page (1): #-recommended-instance-counts-for-high-availability
+ok    oss_scale_table (The following table provides recommended…): in 'Recommended instance counts for high availability', body/table
+ok    no include syntax left
+ok    no id inside an included span is used twice
+== native/routes-domains
+ok    outline: 2 headings, same levels and text
+ok    anchors: all 1 exist
+ok    routing_conflict (Cloud Foundry allows multiple apps, or v…): in 'Map a route to multiple apps', body
+ok    no include syntax left
+ok    no id inside an included span is used twice
+== native/troubleshoot-app-health
+ok    outline: 2 headings, same levels and text
+ok    anchors: all 1 exist
+info  published heading ids not on the built page (1): #-routing-conflict
+ok    routing_conflict (Cloud Foundry allows multiple apps, or v…): in 'Routing conflict', body
+ok    no include syntax left
+ok    no id inside an included span is used twice
+== native/using-vol-services
+ok    outline: 3 headings, same levels and text
+ok    anchors: all 2 exist
+info  published heading ids not on the built page (2): #-create-and-use-nfs-volume-services #-create-an-nfs-volume-service
+ok    using-vol-services (Here are instructions to help you read a…): in 'Using an external file system (volume services)', body/list
+ok    external_vol_win_note (a variable; a partial in native) (NFS and SMB volume services are availabl…): in 'Using an external file system (volume services)', body
+ok    no include syntax left
+ok    no id inside an included span is used twice
+ok    toc: all 2 ids
+ok    count: 4 notes
+ok    note 1: note -> note, title 'note', 19 words, -, body
+ok    note 2: note -> note, title 'note', 7 words, -, body
+ok    note 3: important -> warning, title 'Important', 12 words, code=1, list
+ok    note 4: important -> warning, title 'Important', 71 words, code=3, list
+== variable/high-availability--conditional
+ok    outline: 2 headings, same levels and text
+ok    anchors: all 1 exist
+info  published heading ids not on the built page (1): #-recommended-instance-counts-for-high-availability
+ok    oss_scale_table (The following table provides recommended…): in 'Recommended instance counts for high availability', body/table
+ok    no include syntax left
+ok    no id inside an included span is used twice
+== variable/high-availability--map
+ok    outline: 2 headings, same levels and text
+ok    anchors: all 1 exist
+info  published heading ids not on the built page (1): #-recommended-instance-counts-for-high-availability
+ok    oss_scale_table (The following table provides recommended…): in 'Recommended instance counts for high availability', body/table
+ok    no include syntax left
+ok    no id inside an included span is used twice
+== variable/high-availability--require
+ok    outline: 2 headings, same levels and text
+ok    anchors: all 1 exist
+info  published heading ids not on the built page (1): #-recommended-instance-counts-for-high-availability
+ok    oss_scale_table (The following table provides recommended…): in 'Recommended instance counts for high availability', body/table
+ok    no include syntax left
+ok    no id inside an included span is used twice
+exit status 0

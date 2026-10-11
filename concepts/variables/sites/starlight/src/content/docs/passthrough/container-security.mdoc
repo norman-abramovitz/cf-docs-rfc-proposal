@@ -1,0 +1,59 @@
+---
+title: Container security
+owner: Security
+---
+
+This topic tells you about how {% $vars.app_runtime_first %} secures the containers
+that host app instances on Linux.
+
+For an overview of other {% $vars.app_runtime_abbr %} security features, see [{% $vars.app_runtime_abbr %} Security](security.html).
+
+The sections in this topic provide the following information:
+
+* [Container Mechanics](#mechanics) provides an overview of container isolation.
+
+* [Inbound and Outbound Traffic from {% $vars.app_runtime_abbr %}](#networking) provides an overview of container networking and describes how {% $vars.app_runtime_abbr %} admins customize container network traffic rules for their deployment.
+
+* [Container Security](#security) describes how {% $vars.app_runtime_abbr %} secures containers by running app instances in unprivileged containers and by hardening them.
+
+## Container mechanics {% #mechanics %}
+
+### CPU {% #cpu %}
+
+#### CPU Shares Algorithm 1
+
+#### CPU Shares Algorithm 2
+
+#### CPU Share Interaction
+
+## Inbound and outbound traffic from {% $vars.app_runtime_abbr %} {% #networking %}
+
+Learn about container networking and how {% $vars.app_runtime_abbr %} admins customize
+container network traffic rules for their deployment.
+
+### Networking overview {% #net-overview %}
+
+### Network traffic rules {% #config-traffic %}
+
+Admins configure rules to govern container network traffic. This is how containers send traffic outside of {% $vars.app_runtime_abbr %} and receive traffic from outside, the Internet. These rules can prevent system access from external networks and between internal components and determine if apps can establish connections over the virtual network interface.
+
+Admins configure these rules at two levels:
+
+* Application Security Groups (ASGs) apply network traffic rules at the container level. {% $vars.app_sec_groups_link %}
+
+* Container-to-container networking policies determine app-to-app communication. Within {% $vars.app_runtime_abbr %}, apps can communicate directly with each other, but the containers are isolated from outside {% $vars.app_runtime_abbr %}. {% rawhtml value=$vars.container_network_link /%}
+
+## Container security {% #security %}
+
+{% $vars.app_runtime_abbr %} secures containers through the following measures:
+
+* Running app instances in unprivileged containers by default. For more information about app instances, see [Types](#types).
+
+* Hardening containers by limiting function and access rights. For more information about hardening containers, see [Hardening](#hardening).
+
+* {% $vars.app_sec_groups_default %} {% $vars.app_sec_groups_link %}
+
+### Types {% #types %}
+
+### Hardening {% #hardening %}
+

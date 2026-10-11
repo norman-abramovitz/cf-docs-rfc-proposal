@@ -168,11 +168,13 @@ The steps seen in the tables round, in order:
 
 The headings round proposes its conversion rules as conventions, under
 review ([headings results](../concepts/headings/results.md#conventions-to-record)),
-and so does the notes round
-([notes results](../concepts/notes/results.md#conventions-to-record)).
+and so do the notes, variables and partials rounds
+([notes](../concepts/notes/results.md#conventions-to-record),
+[variables](../concepts/variables/results.md#conventions-to-record),
+[partials](../concepts/partials/results.md#conventions-to-record)).
 
 **Not yet written:** the conversion steps for the other concepts
-(variables, partials, code blocks, cross-repository links), and how
+(code blocks, cross-repository links), and how
 `scan` and `convert` are built.
 
 ## Extensions needed per tool

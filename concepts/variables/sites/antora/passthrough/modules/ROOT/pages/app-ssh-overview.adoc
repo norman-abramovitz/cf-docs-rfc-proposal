@@ -1,0 +1,67 @@
+= Configuring SSH access for your deployment
+
+If you need to troubleshoot an instance of an application, you can gain SSH access to the app using the SSH proxy and daemon.
+For example, one of the app instances might be unresponsive, or the log output from the app is inconsistent or incomplete. You can SSH into the individual VM to troubleshoot the problem instance.
+
+{mutual_tls_ssh}
+
+[[diego-ssh-concepts]]
+== About SSH access
+
+The SSH system components include the SSH proxy and daemon, and the system also supports authentication and load balancing of incoming SSH traffic. For a conceptual overview, see link:../../concepts/diego/ssh-conceptual.html[App SSH components and processes].
+
+[[ssh-access-control-hierarchy]]
+== SSH access control hierarchy
+
+Operators, space managers, and space developers can configure SSH access for {app_runtime_abbr},
+for spaces, and for apps as described in the table:
+
+[subs=attributes+]
+++++
+<table id='TK-NAME' class="table" >
+  <thead><tr>
+    <th><strong>User role</strong></th>
+    <th><strong>Scope of SSH permissions control</strong></th>
+    <th><strong>How they define SSH permissions</strong></th>
+  </tr></thead>
+  <tr>
+    <td>Operator</td>
+    <td>Entire deployment</td>
+    <td>Configure the deployment to allow or prohibit SSH access (one-time). {config_ssh_link}</td>
+  </tr><tr>
+    <td>Space manager</td>
+    <td>Space</td>
+    <td>cf CLI <code>cf allow-space-ssh</code> and <code>cf disallow-space-ssh</code> commands</td>
+  </tr><tr>
+    <td>Space developer</td>
+    <td>App</td>
+    <td>cf CLI <code>enable-ssh</code> and <code>disable-ssh</code> commands</td>
+  </tr>
+</table>
+++++
+
+An app is SSH-accessible only if operators, space managers, and space developers all grant SSH access at their respective levels. For example, the following image shows a deployment in whi:
+
+* An operator allowed SSH access at the deployment level.
+* A space manager allowed SSH access for apps running in spaces "A" and "B," but not "C".
+* A space developer activated SSH access for apps that include "Foo," "Bar," and "Baz".
+
+As a result, apps "Foo," "Bar," and "Baz" accept SSH requests.
+
+image::ssh-app-access.png[This diagram shows examples of successful and unsuccessful SSH Application Access Control in deployments.]
+
+Space A has SSH Access Enabled, indicated by a green check mark, for apps "Foo" and "Bar," Space A does not have SSH Access allowed for the third app, indicated by a red X.
+
+Space B has has SSH Access Enabled, indicated by a green check mark, for app "Baz". Space B does not have SSH Access allowed for the other two apps, indicated by a red X.
+
+Space C does not have SSH Access allowed for all three apps, indicated by a red X.
+
+[[app-ssh-config]]
+== SSH access for apps and spaces
+
+Space managers and space developers can configure SSH access from the CLI. The Cloud Foundry Command Line Interface (cf CLI) also includes commands to return the value of the SSH access setting. To use and configure SSH at both the app level and the space level, see link:./ssh-apps.html[Accessing apps with Diego SSH].
+
+[[platform-ssh-config]]
+== Configuring SSH access for {app_runtime_full}
+
+{platform_ssh_configuration}

@@ -1,0 +1,19 @@
+---
+title: One partial with a heading, included twice
+---
+
+## First inclusion, explicit id {% #first %}
+
+{% partial file="./_old_collector.mdoc" /%}
+
+## Second inclusion, explicit id {% #second %}
+
+{% partial file="./_old_collector.mdoc" /%}
+
+## First inclusion, generated id {% #third %}
+
+{% partial file="./_old_collector_plain.mdoc" /%}
+
+## Second inclusion, generated id {% #fourth %}
+
+{% partial file="./_old_collector_plain.mdoc" /%}

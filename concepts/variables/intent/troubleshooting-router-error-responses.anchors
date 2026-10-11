@@ -1,0 +1,19 @@
+# Heading ids on troubleshooting-router-error-responses that a converted page must keep: each
+# <a id> the source writes, and the generated id of each heading that has
+# none (the headings round's accepted decision). Read by the outline check's --anchors.
+overview
+debugging-steps
+log-formatting
+levels
+message-contents
+access-logs
+gorouter
+cannot-connect
+connect-error
+diagnose-stale-routes
+stale-routes
+stale-route-triage
+stale-routes-fix
+gorouter-error-classification
+app-errors
+gorouter-specific-response-headers

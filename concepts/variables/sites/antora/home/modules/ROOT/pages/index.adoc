@@ -1,0 +1,6 @@
+= Variables round
+
+Test pages of the variables round, in two modes: passthrough (each
+`<%= vars.name %>` written as an AsciiDoc attribute reference, `+{name}+`,
+with the book's values as they are), and native (the values prepared for
+AsciiDoc, and every name required).

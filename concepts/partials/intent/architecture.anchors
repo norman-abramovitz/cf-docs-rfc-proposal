@@ -1,0 +1,5 @@
+# Ids in the excerpt that must exist on a built page
+architecture-references
+firehose-architecture
+loggregator-architecture
+shared-nothing-architecture

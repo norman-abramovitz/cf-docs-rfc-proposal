@@ -1,0 +1,8 @@
+# Antora 3.2.1: make probe. The native playbook (attribute-missing: warn,
+# runtime.log.failure_level: warn) with a component holding probe/probe.adoc: a
+# name no attribute defines (no_such_name), a key with no value (ssl, written ''),
+# and a defined name, each between brackets. Asciidoctor's message, as Antora logs it:
+exit status 2
+   1 "msg":"skipping reference to missing attribute: no_such_name"
+Undefined: [{no_such_name}] empty: [] defined: [Cloud Foundry]
+{"level":"warn","name":"asciidoctor","file":{"path":"…/concepts/variables/sites/antora/probe/modules/ROOT/pages/probe.adoc"},"source":{"url":"…","local":"…","worktree":"…","refname":"main","reftype":"branch","startPath":"concepts/variables/sites/antora/probe"},"msg":"skipping reference to missing attribute: no_such_name"}

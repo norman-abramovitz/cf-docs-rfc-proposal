@@ -1,0 +1,845 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  <style type="text/css">@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin-ext/300/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek/300/normal.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin/300/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/vietnamese/300/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek-ext/300/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic-ext/300/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic/300/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/vietnamese/300/italic.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek-ext/300/italic.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic-ext/300/italic.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin/300/italic.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic/300/italic.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek/300/italic.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin-ext/300/italic.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek/400/italic.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic/400/italic.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic-ext/400/italic.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek-ext/400/italic.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin/400/italic.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin-ext/400/italic.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/vietnamese/400/italic.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin-ext/400/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/vietnamese/400/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic/400/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic-ext/400/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek/400/normal.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin/400/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek-ext/400/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin-ext/600/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek-ext/600/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/vietnamese/600/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic/600/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin/600/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek/600/normal.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic-ext/600/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}</style>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      Troubleshooting app deployment and health |
+    Cloud Foundry Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  <script type="text/javascript">
+if (window.location.host === 'docs.cloudfoundry.org') {
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22181585-2']);
+  _gaq.push(['_setDomainName', 'cloudfoundry.org']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script');
+    ga.type = 'text/javascript';
+    ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ga, s);
+  })();
+}
+</script>
+
+
+</head>
+
+<body class="devguide devguide_deploy-apps devguide_deploy-apps_troubleshoot-app-health has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "cloudfoundry.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Cloud Foundry Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      
+      <div class="header-item">
+        <a href="https://www.cloudfoundry.org/community/" target="_blank">Get Involved</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="js-sidenav collapsible nav-container" role="navigation" data-behavior="Collapsible">
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+  Doc Index
+  </a>
+  <div class="nav-content">
+    <ul>
+      <li><strong>General Information</strong></li>
+      <li class=""><a href="/concepts/contribute.html">Contribute to Cloud Foundry documentation</a></li>
+      <li class="has_submenu"><a href="/concepts/index.html">Cloud Foundry concepts</a>
+        <ul>
+          <li class=""><a href="/concepts/overview.html">Cloud Foundry overview</a></li>
+          <li class="has_submenu"><a href="/concepts/security-index.html">Security and networking</a>
+            <ul>
+              <li class=""><a href="/concepts/security.html">Cloud Foundry security</a></li>
+              <li class=""><a href="/concepts/container-security.html">Container security in Cloud Foundry</a></li>
+              <li class=""><a href="/concepts/understand-cf-networking.html">Container-to-container networking</a></li>
+              <li class=""><a href="/concepts/identity-aware-routing.html">Identity-aware routing</a></li>
+              <li class=""><a href="/concepts/roles.html">Orgs, spaces, roles, and permissions in Cloud Foundry</a></li>
+              <li class=""><a href="/concepts/managing-roles.html">Managing Roles</a></li>
+              <li class=""><a href="/concepts/orgs-and-spaces.html">Planning orgs and spaces in Cloud Foundry</a></li>
+              <li class=""><a href="/concepts/asg.html">App Security Groups in Cloud Foundry</a></li>
+              <li class=""><a href="/concepts/diego/ssh-conceptual.html">Cloud Foundry app SSH components and processes</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/concepts/ha-index.html">High availability</a>
+            <ul>
+              <li class=""><a href="/concepts/high-availability.html">High availability in Cloud Foundry</a></li>
+              <li class=""><a href="/concepts/maintaining-high-availability.html">How Cloud Foundry maintains high availability</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/concepts/apps-index.html">How Cloud Foundry manages apps</a>
+            <ul>
+              <li class=""><a href="/concepts/how-applications-are-staged.html">Staging your apps in Cloud Foundry</a></li>
+              <!-- file lives in docs-dev-guide, not docs-cloudfoundry-concepts -->
+              <li class=""><a href="/devguide/deploy-apps/app-lifecycle.html">The app container lifecycle on Diego architecture</a></li>
+              <li class=""><a href="/concepts/diego/diego-auction.html">How Diego balances app processes in Cloud Foundry</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/concepts/architecture/index.html">Cloud Foundry components</a>
+            <ul>
+              <li class=""><a href="/concepts/diego/diego-architecture.html">Diego components and architecture</a></li>
+              <li class=""><a href="/concepts/cf-routing-architecture.html">Cloud Foundry routing architecture</a></li>
+              <li class=""><a href="/concepts/architecture/cloud-controller.html">Cloud Controller</a></li>
+              <li class=""><a href="/concepts/cc-blobstore.html">Cloud Controller blobstore</a></li>
+              <li class=""><a href="/concepts/architecture/uaa.html">User Account and Authentication server</a></li>
+              <li class=""><a href="/concepts/architecture/garden.html">Garden component</a></li>
+              <li class=""><a href="/concepts/grootfs-disk.html">GrootFS disk usage in Cloud Foundry</a></li>
+              <li class=""><a href="/concepts/http-routing.html">HTTP routing</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="has_submenu"><span>Cloud Foundry Command Line Interface (cf CLI)</span>
+        <ul>
+          <li class=""><a href="/cf-cli/install-go-cli.html">Installing the cf CLI</a></li>
+          <li class=""><a href="/cf-cli/v8.html">Upgrading to cf CLI v8</a></li>
+          <li class=""><a href="/cf-cli/getting-started.html">Getting started with the cf CLI</a></li>
+          <li class=""><a href="/cf-cli/http-proxy.html">Using the cf CLI with a proxy server</a></li>
+          <li class=""><a href="/cf-cli/self-signed.html">Using the cf CLI with a self-signed certificate</a></li>
+          <li class=""><a href="/cf-cli/use-cli-plugins.html">Using cf CLI plug-ins</a></li>
+          <li class=""><a href="/cf-cli/develop-cli-plugins.html">Developing cf CLI plug-ins</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>
+          <hr>
+        </span>
+      </li>
+      <li><strong>Information for Operators</strong></li>
+      <li class="has_submenu"><a href="/deploying/index.html">Deploying Cloud Foundry</a>
+        <ul>
+          <li class=""><a href="/deploying/common/dns_prereqs.html">Setting up DNS for your environment</a></li>
+          <li class="has_submenu"><a href="/deploying/cf-deployment/index.html">Deploying Cloud Foundry with cf-deployment</a>
+            <ul>
+              <li class=""><a href="/deploying/common/aws.html">Deploying BOSH on AWS</a></li>
+              <li class=""><a href="/deploying/cf-deployment/gcp.html">Deploying BOSH on GCP</a></li>
+              <li class=""><a href="/deploying/cf-deployment/deploy-cf.html">Deploying Cloud Foundry</a></li>
+              <li class=""><a href="/deploying/cf-deployment/enable-identity-aware-routing.html">Enabling identity-aware routing</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/bbr/index.html">Backing up and restoring with BBR</a></li>
+          <li class="has_submenu"><span>Additional configuration</span>
+            <ul>
+              <li class=""><a href="/deploying/common/cc-blobstore-config.html">Cloud Controller blobstore configuration</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="has_submenu"><a href="/adminguide/index.html">Administering Cloud Foundry</a>
+        <ul>
+          <li class="has_submenu"><a href="/adminguide/platform-index.html">Managing the runtime</a>
+            <ul>
+              <li class=""><a href="/adminguide/start-stop-vms.html">Stopping and starting virtual machines</a></li>
+              <li class=""><a href="/adminguide/quota-plans.html">Creating and modifying quota plans</a></li>
+              <li class=""><a href="/adminguide/listing-feature-flags.html">Using feature flags</a></li>
+              <li class=""><a href="/adminguide/examining_grootfs_disk.html">Examining GrootFS disk usage</a></li>
+              <li class=""><a href="/adminguide/metadata.html">Using metadata</a></li>
+              <li class=""><a href="/adminguide/buildpacks.html">Managing custom buildpacks</a></li>
+              <li class=""><a href="/adminguide/docker.html">Using Docker in Cloud Foundry</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/adminguide/user-accounts-index.html">User accounts and communications</a>
+            <ul>
+              <li class=""><a href="/adminguide/cli-user-management.html">Creating and managing users with the cf CLI</a></li>
+              <li class=""><a href="/uaa/uaa-user-management.html">Creating and managing users with the UAA CLI (UAAC)</a></li>
+              <li class=""><a href="/adminguide/notifications.html">Get started with the Notifications Service</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/adminguide/routing-index.html">Routing</a>
+            <ul>
+              <li class=""><a href="/adminguide/enabling_ipv6.html">Enabling IPv6 for hosted apps</a></li>
+              <li class=""><a href="/adminguide/distributed-tracing.html">Distributed tracing</a></li>
+              <li class=""><a href="/adminguide/zipkin_tracing.html">Enabling Zipkin tracing</a></li>
+              <li class=""><a href="/adminguide/w3c_tracing.html">Enabling W3C tracing</a></li>
+              <li class=""><a href="/adminguide/supporting-websockets.html">Supporting WebSockets</a></li>
+              <li class=""><a href="/adminguide/configure-lb-healthcheck.html">Configuring load balancer health checks for CF routers</a></li>
+              <li class=""><a href="/adminguide/troubleshooting_slow_requests.html">Troubleshooting slow requests</a></li>
+              <li class=""><a href="/adminguide/troubleshooting-router-error-responses.html">Troubleshooting router error responses</a></li>
+              <li class=""><a href="/adminguide/securing-traffic.html">Securing incoming traffic</a></li>
+              <li class=""><a href="/devguide/deploy-apps/trusted-system-certificates.html">Configuring trusted system certificates for apps</a></li>
+              <li class=""><a href="/adminguide/bbs-encryption-keys.html">Bulletin Board System data store encryption</a></li>
+              <li class=""><a href="/adminguide/enabling-tcp-routing.html">Enabling and configuring TCP routing</a></li>
+              <li class=""><a href="/adminguide/supporting-http2.html">Configuring HTTP/2 support</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/adminguide/isolation-segment-index.html">Isolation segments</a>
+            <ul>
+              <li class=""><a href="/adminguide/isolation-segments.html">Managing isolation segments</a></li>
+              <li class=""><a href="/adminguide/routing-is.html">Routing for isolation segments</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu">
+            <a href="/adminguide/delayed-jobs-index.html">Delayed jobs in Cloud Foundry</a>
+            <ul>
+              <li class="">
+                <a href="/adminguide/configuring-delayed-job-priorities.html">Configuring delayed job priorities with Cloud Controller</a>
+              </li>
+            </ul>
+          </li>
+          <li class="has_submenu">
+            <a href="/adminguide/managing-apps-stacks-index.html">Managing apps and their stacks</a>
+            <ul>
+              <li class=""><a href="/adminguide/stack-auditor.html">Using Stack Auditor</a></li>
+              <li class=""><a href="/adminguide/managing-stacks.html">Managing stack lifecycle</a></li>
+              <li class=""><a href="/devguide/deploy-apps/stacks.html">Changing stacks</a></li>
+              <li class=""><a href="/devguide/deploy-apps/windows-stacks.html">Restaging your apps on a Windows stack</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="has_submenu"><a href="/running/">Running and Troubleshooting Cloud Foundry</a>
+        <ul>
+          <li class=""><a href="/running/managing-cf/logging.html">Cloud Foundry logging</a></li>
+          <li class=""><a href="/running/managing-cf/logging-config.html">Configuring system logging</a></li>
+          <li class=""><a href="/running/diego-upgrades.html">Configuring Diego for upgrades</a></li>
+          <li class=""><a href="/running/managing-cf/audit-events.html">Audit Events</a></li>
+          <li class=""><a href="/running/managing-cf/uaa-audit-requirements.html">UAA audit requirements</a></li>
+          <li class=""><a href="/running/managing-cf/usage-events.html">Usage events and billing</a></li>
+          <li class=""><a href="/running/config-ssh.html">Configuring SSH access for Cloud Foundry</a></li>
+          <li class=""><a href="/running/config-cell-cleanup.html">Configuring Diego Cell disk cleanup scheduling</a></li>
+          <li class=""><a href="/running/hm-notifications.html">Configuring Health Monitor Notifications</a></li>
+          <li class=""><a href="/running/custom-stack.html">Adding a custom stack</a></li>
+          <li class=""><a href="/running/monitoring-test.html">Monitoring and testing Diego components</a></li>
+          <li class=""><a href="/running/troubleshooting.html">Troubleshooting Cloud Foundry</a></li>
+          <li class=""><a href="/running/uaa-performance.html">UAA performance</a></li>
+          <li class=""><a href="/uaa/uaa-metrics.html">UAA performance metrics</a></li>
+          <li class=""><a href="/running/managing-cf/scaling-cloud-controller.html">Scaling Cloud Controller</a></li>
+          <li class=""><a href="/running/managing-cf/multi-process-cloud-controller.html">Cloud Controller Multi-Process Mode (Puma)</a></li>
+          <li class=""><a href="/running/managing-cf/scaling-cloud-controller-k8s.html">Scaling Cloud Controller (cf-for-k8s)</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu"><span>Logging and metrics in Cloud Foundry</span>
+        <ul>
+          <li class=""><a href="/loggregator/architecture.html">Logging and metrics architecture</a></li>
+          <li class=""><a href="/loggregator/cli-plugin.html">Installing the Loggregator plug-in for cf CLI</a></li>
+          <li class=""><a href="/loggregator/cc-uaa-logging.html">Security event logging</a></li>
+          <li class=""><a href="/devguide/deploy-apps/streaming-logs.html">App logging in Cloud Foundry</a></li>
+          <li class=""><a href="/loggregator/app-log-rate-limits.html">Limiting your app log rate in Cloud Foundry</a></li>
+          <li class=""><a href="/running/all_metrics.html">Cloud Foundry component metrics</a></li>
+          <li class=""><a href="/loggregator/container-metrics.html">Container metrics</a></li>
+          <li class=""><a href="/loggregator/log-ops-guide.html">Loggregator guide for Cloud Foundry operators</a></li>
+          <li class=""><a href="/loggregator/data-sources.html">Logging and metrics in Cloud Foundry</a></li>
+          <li class=""><a href="/loggregator/opentelemetry.html">Configuring the OpenTelemetry Collector</a></li>
+          <li class=""><a href="/loggregator/nozzle-tutorial.html">Deploying a nozzle to your Cloud Foundry Loggregator Firehose</a></li>
+        </ul>
+      </li>
+      <li class=""><a href="http://bosh.io/docs/">BOSH Documentation</a></li>
+      <li class="has_submenu"><a href="/bbr/index.html">BOSH Backup and Restore (BBR)</a>
+        <ul>
+          <li class=""><a href="/bbr/installing.html">Installing BBR</a></li>
+          <li class=""><a href="https://github.com/cloudfoundry-incubator/bosh-backup-and-restore/releases">Release notes for BBR</a></li>
+          <li class=""><a href="/bbr/backup.html">Backing up with BBR</a></li>
+          <li class=""><a href="/bbr/restore.html">Restoring with BBR</a></li>
+          <li class=""><a href="/bbr/cf-backup.html">Configuring Cloud Foundry for BOSH Backup and Restore</a></li>
+          <li class=""><a href="/bbr/external-blobstores.html">Backup and restore for external blobstores</a></li>
+          <li class=""><a href="/bbr/logging.html">BBR logging</a></li>
+          <li class=""><a href="/bbr/experimental-features.html">Advanced features</a></li>
+          <li class=""><a href="/bbr/bbr-devguide.html">BBR developer's guide</a></li>
+        </ul>
+      </li>
+      <li><span><hr></span></li>
+      <li><strong>Information for developers</strong></li>
+      <li class="has_submenu"><a href="/devguide/index.html">Developing and managing apps</a>
+        <ul>
+          <li class="has_submenu"><a href="/devguide/push.html">How to push your app with Cloud Foundry CLI (cf push)</a>
+            <ul>
+              <li class=""><a href="/devguide/deploy-apps/deploy-app.html">Pushing your app using Cloud Foundry CLI (cf push)</a></li>
+              <li class=""><a href="/devguide/deploy-apps/manifest.html">Deploying with app manifests</a></li>
+              <li class=""><a href="/devguide/deploy-apps/manifest-attributes.html">App manifest attribute reference</a></li>
+              <li class=""><a href="/devguide/deploy-apps/push-docker.html">Deploying an app with Docker</a></li>
+              <li class=""><a href="/devguide/deploy-apps/large-app-deploy.html">Deploying your large apps</a></li>
+              <li class=""><a href="/devguide/deploy-apps/start-restart-restage.html">Starting, restarting, and restaging apps</a></li>
+              <li class=""><a href="/devguide/multiple-processes.html">Pushing an app with multiple processes</a></li>
+              <li class=""><a href="/devguide/push-sub-commands.html">Running cf push sub-step commands</a></li>
+              <li class=""><a href="/devguide/deploy-apps/rolling-deploy.html">Configuring app deployments</a></li>
+              <li class=""><a href="/devguide/sidecars.html">Pushing apps with sidecar processes</a></li>
+              <li class=""><a href="/devguide/deploy-apps/blue-green.html">Using blue-green deployment to reduce downtime</a></li>
+              <li class=""><a href="/devguide/deploy-apps/troubleshoot-app-health.html">Troubleshooting app deployment and health</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/devguide/ssh-index.html">SSH for apps and services</a>
+            <ul>
+              <li class=""><a href="/devguide/deploy-apps/app-ssh-overview.html">Configuring SSH access for your deployment</a></li>
+              <li class=""><a href="/devguide/deploy-apps/ssh-apps.html">Accessing your apps with SSH</a></li>
+              <li class=""><a href="/devguide/deploy-apps/ssh-services.html">Accessing services with SSH</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/devguide/routing-index.html">Routes and domains</a>
+            <ul>
+              <li class=""><a href="/devguide/deploy-apps/routes-domains.html">Configuring routes and domains</a></li>
+              <li class=""><a href="/devguide/custom-per-route-options.html">Configuring per-route options</a></li>
+              <li class=""><a href="/devguide/deploy-apps/identity-aware-routing.html">Configuring identity-aware routing</a></li>
+              <li class=""><a href="/devguide/hash-based-routing.html">Hash-Based Routing</a></li>
+              <li class=""><a href="/devguide/custom-ports.html">Configuring CF to route traffic to apps on custom ports</a></li>
+              <li class=""><a href="/devguide/http2-protocol.html">Routing HTTP/2 and gRPC traffic to apps</a></li>
+              <!-- file lives in docs-cf-admin, not docs-dev-guide -->
+              <li class=""><a href="/adminguide/troubleshooting_tcp_routing.html">Troubleshooting TCP routing</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/devguide/services-index.html">Managing services</a>
+            <ul>
+              <li class=""><a href="/devguide/services/index.html">Provisioning and integrating service instances</a></li>
+              <li class=""><a href="/devguide/services/managing-services.html">Managing service instances</a></li>
+              <li class=""><a href="/devguide/services/sharing-instances.html">Sharing service instances</a></li>
+              <li class=""><a href="/devguide/services/application-binding.html">Delivering service credentials to an app</a></li>
+              <li class=""><a href="/devguide/services/service-keys.html">Managing service keys</a></li>
+              <li class=""><a href="/devguide/services/play-service-bindings.html">Configuring Play Framework service connections</a></li>
+              <li class=""><a href="/devguide/services/using-vol-services.html">Using an external file system (volume services)</a></li>
+              <li class=""><a href="/devguide/services/user-provided.html">User-provided service instances</a></li>
+              <li class=""><a href="/devguide/services/route-binding.html">Manage app requests with route services</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/devguide/streaming-logs-index.html">Streaming app logs</a>
+            <ul>
+              <li class=""><a href="/devguide/services/log-management.html">Streaming app logs to log management services</a></li>
+              <li class=""><a href="/devguide/services/log-management-thirdparty-svc.html">Streaming app logs to third-party services</a></li>
+              <li class=""><a href="/devguide/services/integrate-splunk.html">Streaming app logs to Splunk</a></li>
+              <li class=""><a href="/devguide/services/fluentd.html">Streaming app logs with Fluentd</a></li>
+              <li class=""><a href="/devguide/services/oms-nozzle.html">Streaming app logs to Azure OMS log analytics</a></li>
+              <li class=""><a href="/devguide/services/metrics.html">Using metrics with drain logs</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/devguide/managing-apps-index.html">Managing apps with the cf CLI</a>
+            <ul>
+              <li class=""><a href="/devguide/using-tasks.html">Running tasks in your apps</a></li>
+              <li class=""><a href="/devguide/deploy-apps/cf-scale.html">Scaling your app using Cloud Foundry CLI (cf scale)</a></li>
+              <li class=""><a href="/devguide/deploy-apps/healthchecks.html">Using Cloud Foundry health checks</a></li>
+              <!-- file lives in docs-running-cf, not docs-dev-guide -->
+              <li class=""><a href="/running/managing-cf/app-event.html">Retrieving app and event information</a></li>
+              <li class=""><a href="/devguide/deploy-apps/cf-networking.html">Configuring container-to-Container networking</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/devguide/deploy-apps/environment-variable.html">Cloud Foundry environment variables</a></li>
+          <li class=""><a href="/devguide/capi/client-libraries.html">Available Cloud Controller API client libraries</a></li>
+          <li class=""><a href="/devguide/deploy-apps/prepare-to-deploy.html">Designing and running your app in the cloud</a></li>
+          <li class=""><a href="/devguide/revisions.html">Cloud Foundry API app revisions</a></li>
+        </ul>
+      </li>
+
+
+      <li class="has_submenu"><a href="/buildpacks/index.html">Cloud Foundry Buildpacks</a>
+        <ul>
+          <li class="has_submenu"><a href="/buildpacks/cnb/index.html">Cloud Native Buildpacks</a>
+            <ul>
+              <li class=""><a href="/buildpacks/cnb/paketo.html">Paketo Buildpacks</a></li>
+            </ul>
+          </li>
+
+          <li class="has_submenu"><a href="/buildpacks/classic.html">Classic Buildpacks</a>
+          <ul>
+          <li class="has_submenu"><a href="/buildpacks/using-buildpacks.html">What are classic buildpacks?</a>
+            <ul>
+              <li class=""><a href="/buildpacks/understand-buildpacks.html">Working with buildpacks in Cloud Foundry </a></li>
+              <li class=""><a href="/buildpacks/stack-association.html">Stack association</a></li>
+              <li class=""><a href="/buildpacks/use-multiple-buildpacks.html">Pushing an app with multiple buildpacks</a></li>
+              <li class=""><a href="/buildpacks/proxy-usage.html">Using a proxy server</a></li>
+              <li class=""><a href="/buildpacks/supported-binary-dependencies.html">Supported binary dependencies</a></li>
+              <li class=""><a href="/buildpacks/prod-server.html">Configuring the production server</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/buildpacks/binary/index.html">Binary buildpack</a></li>
+          <li class=""><a href="/buildpacks/go/index.html">Go buildpack</a></li>
+          <li class="has_submenu"><a href="/buildpacks/hwc/index.html">Hosted Web Core buildpack</a>
+            <ul>
+              <li class=""><a href="/buildpacks/hwc/extension-buildpack.html">Creating an extension buildpack for .NET apps</a></li>
+              <li class=""><a href="/buildpacks/hwc/web-config-transform-buildpack.html">Using the .NET Framework Web Config Transform Extension Buildpack</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/buildpacks/java/index.html">Java buildpack</a>
+            <ul>
+              <li class=""><a href="/buildpacks/java/java-tips.html">Using Cloud Foundry Java buildpack</a></li>
+              <li class="has_submenu"><a href="/buildpacks/java/getting-started-deploying-apps/index.html">Getting started deploying Java apps to Cloud Foundry</a>
+                <ul>
+                  <li class=""><a href="/buildpacks/java/getting-started-deploying-apps/gsg-grails.html">Getting started deploying your Grails apps to Cloud Foundry</a></li>
+                  <li class=""><a href="/buildpacks/java/getting-started-deploying-apps/gsg-ratpack.html">Getting started deploying Ratpack apps to Cloud Foundry</a></li>
+                  <li class=""><a href="/buildpacks/java/getting-started-deploying-apps/gsg-spring.html">Getting started deploying Spring apps to Cloud Foundry</a></li>
+                </ul>
+              </li>
+              <li class=""><a href="/buildpacks/java/configuring-service-connections.html">Configuring service connections</a></li>
+              <li class=""><a href="/buildpacks/java/java-native-image.html">Using Java Native Image</a></li>
+              <li class=""><a href="/buildpacks/java/java-client.html">Cloud Foundry Java Client Library</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/buildpacks/dotnet-core/index.html">.NET Core buildpack</a></li>
+          <li class=""><a href="/buildpacks/nginx/index.html">NGINX buildpack</a></li>
+          <li class="has_submenu"><a href="/buildpacks/node/index.html">Node.js buildpack</a>
+            <ul>
+              <li class=""><a href="/buildpacks/node/node-tips.html">Node.js buildpack-specific information</a></li>
+              <li class=""><a href="/buildpacks/node/node-environment.html">Environment variables defined by Node buildpack</a></li>
+              <li class=""><a href="/buildpacks/node/node-service-bindings.html">Configuring service connections for Node.js application</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/buildpacks/php/index.html">Using PHP buildpack with runtimes</a>
+            <ul>
+              <li class=""><a href="/buildpacks/php/gsg-php-tips.html">Additional information on PHP buildpacks in Cloud Foundry</a></li>
+              <li class=""><a href="/buildpacks/php/gsg-php-usage.html">Getting started deploying PHP apps to Cloud Foundry</a></li>
+              <li class=""><a href="/buildpacks/php/gsg-php-config.html">PHP buildpack configuration</a></li>
+              <li class=""><a href="/buildpacks/php/gsg-php-composer.html">Composer</a></li>
+              <li class=""><a href="/buildpacks/php/gsg-php-sessions.html">Sessions</a></li>
+              <li class=""><a href="/buildpacks/php/gsg-php-newrelic.html">New Relic</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/buildpacks/python/index.html">Python buildpack</a></li>
+          <li class=""><a href="/buildpacks/r/index.html">R buildpack</a></li>
+          <li class="has_submenu"><a href="/buildpacks/ruby/index.html">Ruby buildpack</a>
+            <ul>
+              <li class=""><a href="/buildpacks/ruby/ruby-tips.html">Additional information on Ruby buildpacks in Cloud Foundry</a></li>
+              <li class="has_submenu"><a href="/buildpacks/ruby/deploying-apps-index.html">Getting started deploying Ruby apps</a>
+                <ul>
+                  <li class=""><a href="/buildpacks/ruby/gsg-ruby.html">Getting started deploying Ruby apps</a></li>
+                  <li class=""><a href="/buildpacks/ruby/gsg-ror.html">Getting started deploying Ruby on Rails apps</a></li>
+                  <li class=""><a href="/buildpacks/ruby/sample-ror.html">Deploy a sample Ruby on Rails app</a></li>
+                </ul>
+              </li>
+              <li class=""><a href="/buildpacks/ruby/rake-config.html">Configuring Rake tasks for deployed apps</a></li>
+              <li class=""><a href="/buildpacks/ruby/ruby-environment.html">Environment variables defined by Ruby buildpack</a></li>
+              <li class=""><a href="/buildpacks/ruby/ruby-service-bindings.html">Configuring service connections for Ruby</a></li>
+              <li class=""><a href="/buildpacks/ruby/windows.html">Windows Gemfile support</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/buildpacks/staticfile/index.html">Staticfile buildpacks</a></li>
+          <li class="has_submenu"><a href="/buildpacks/custom.html">Creating custom buildpacks</a>
+            <ul>
+              <li class=""><a href="/buildpacks/depend-pkg-offline.html">Packaging dependencies for offline buildpacks</a></li>
+              <li class=""><a href="/buildpacks/merging_upstream.html">Merging from upstream buildpacks</a></li>
+              <li class=""><a href="/buildpacks/upgrading_dependency_versions.html">Upgrading dependency versions for Cloud Foundry</a></li>
+              <li class="has_submenu"><a href="/buildpacks/buildpack-ci-index.html">Using CI for buildpacks</a>
+                <ul>
+                  <li class=""><a href="/buildpacks/releasing_a_new_buildpack_version.html">Releasing a new Cloud Foundry buildpack version</a></li>
+                  <li class=""><a href="/buildpacks/updating-buildpack-related-gems.html">Updating buildpack-related gems in Cloud Foundry</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+        </ul>
+      </li>
+
+      <li><span><hr></span></li>
+      <li class="has_submenu"><span>Information for Managed Service Authors</span>
+        <ul>
+          <li class=""><a href="/services/overview.html">Services in Cloud Foundry</a></li>
+          <li class="has_submenu"><span>Service Broker API</span>
+            <ul>
+              <li class=""><a href="https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/spec.md">Open Service Broker API</a></li>
+              <li class=""><a href="https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/profile.md">Platform profiles</a></li>
+              <li class=""><a href="https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/profile.md#service-metadata">Catalog metadata</a></li>
+              <li class=""><a href="https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/spec.md#volume-mounts-object">Volume services</a></li>
+              <li class=""><a href="https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/release-notes.md">Release Notes</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/services/managing-service-brokers.html">Managing service brokers in Cloud Foundry</a></li>
+          <li class=""><a href="/services/access-control.html">Managing access to service plans</a></li>
+          <li class=""><a href="/services/binding-credentials.html">Binding credentials in Cloud Foundry</a></li>
+          <li class="has_submenu"><a href="/credhub/index.html">CredHub</a>
+            <ul>
+              <li class=""><a href="/credhub/setup-credhub-bosh.html">Setting up and deploying CredHub with BOSH</a></li>
+              <li class=""><a href="/credhub/hsm-config.html">Configuring a hardware security module</a></li>
+              <li class=""><a href="/credhub/kms-plugin.html">Using a key management service with CredHub</a></li>
+              <li class=""><a href="/credhub/credential-types.html">CredHub credential types</a></li>
+              <li class=""><a href="/credhub/backup-restore.html">Backing up and restoring CredHub instances</a></li>
+              <li class=""><a href="/credhub/troubleshooting-credhub.html">Troubleshooting CredHub</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/services/dashboard-sso.html">Dashboard Single Sign-on</a></li>
+          <li class=""><a href="/services/enable-sharing.html">Service instance sharing in Cloud Foundry</a></li>
+          <li class=""><a href="/services/examples.html">Service broker examples</a></li>
+          <li class=""><a href="/services/app-log-streaming.html">App log streaming in Cloud Foundry</a></li>
+          <li class=""><a href="/services/route-services.html">Offering Route Services in Cloud Foundry</a></li>
+          <li class=""><a href="/services/supporting-multiple-cf-instances.html">Supporting multiple CF instances</a></li>
+        </ul>
+      </li>
+      <li><span><hr></span></li>
+      <li class="has_submenu"><span>User Account and Authentication</span>
+        <ul>
+          <li class=""><a href="/uaa/uaa-overview.html">UAA Overview</a></li>
+          <li class=""><a href="/uaa/uaa-concepts.html">UAA Concepts</a></li>
+          <li class=""><a href="/uaa/identity-providers.html">Identity Providers in UAA</a></li>
+          <li class=""><a href="/uaa/uaa-metrics.html">UAA Metrics</a></li>
+
+        </ul>
+      </li>
+      <li><strong>API Reference</strong></li>
+      <li class=""><a href="https://docs.cloudfoundry.org/api/uaa/index.html">UAA API</a></li>
+      <li class="has_submenu"><span>CAPI API</span>
+        <ul>
+          <li class=""><a href="/running/rate-limit-cloud-controller-api.html">Rate limit information returned by the Cloud Controller API</a></li>
+          <li class=""><a href="https://v2-apidocs.cloudfoundry.org">CAPI V2</a></li>
+          <li class=""><a href="https://v3-apidocs.cloudfoundry.org/index.html">CAPI V3</a></li>
+          <li class=""><a href="https://docs.cloudfoundry.org/api/credhub/">CredHub API documentation</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container">
+    Troubleshooting app deployment and health
+  </h1>
+
+          <div class="js-quick-links">
+            <div class="quick-links"><ul>
+<li>
+<a href="#scenarios">Common issues</a><ul>
+<li><a href="#time">cf push times out</a></li>
+<li><a href="#upload">App too large</a></li>
+<li><a href="#detect">Unable to detect a supported app type</a></li>
+<li><a href="#deploy-fail">App deploy fails</a></li>
+<li><a href="#unique-url">App requires unique URL</a></li>
+<li><a href="#start">App fails to start</a></li>
+<li><a href="#out-of-memory">App consumes too much memory, then fails</a></li>
+<li><a href="#routing-conflict">Routing conflict</a></li>
+</ul>
+</li>
+<li>
+<a href="#info">Gather diagnostic information</a><ul>
+<li><a href="#env">Examine environment variables</a></li>
+<li><a href="#logs">View logs</a></li>
+<li><a href="#trace">Trace Cloud Controller REST API calls</a></li>
+<li><a href="#zipkin_trace">Analyze Zipkin trace IDs</a></li>
+</ul>
+</li>
+<li><a href="#cf-commands">Use troubleshooting commands</a></li>
+<li><a href="#ssh">Access apps with SSH</a></li>
+<li><a href="#request-to-instance">Send requests to app instance</a></li>
+</ul></div>
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        <p id="modified-date"><strong>Page last updated: <span data-behavior="DisplayModifiedDate" data-modified-date="1783698931000"></span></strong></p>
+
+        <p>You can diagnose and resolve common issues when you deploy and run apps on Cloud Foundry.</p>
+
+<h2 id="-common-issues"><a id='scenarios'></a> Common issues</h2>
+
+<p>The following sections describe common issues you might encounter when attempting to deploy and run your app, and suggest possible resolutions.</p>
+
+<h3 id="-cf-push-times-out"><a id='time'></a> cf push times out</h3>
+
+<p>If your deployment times out during the upload or staging phase, you might receive one of these error messages:</p>
+
+<ul>
+<li><p><code>504 Gateway Timeout</code></p></li>
+<li><p><code>Error uploading application</code></p></li>
+<li><p><code>Timed out waiting for async job JOB-NAME to finish</code></p></li>
+</ul>
+
+<p>If this happens:</p>
+
+<ul>
+<li><p><strong>Check your network speed.</strong> Depending on the size of your app, your <code>cf push</code> can timeout if the upload takes too long.
+Cloud Foundry recommends an Internet connection speed of at least 768&nbsp;KB/s, or 6&nbsp;Mb/s, for uploads.</p></li>
+<li><p><strong>Make sure you are pushing only needed files.</strong> By default, <code>cf push</code> pushes all the contents of the current working directory. Make sure you are pushing only the directory for your app. If your app is too large, or if it has many small files, Cloud Foundry might timeout during the upload. To reduce the number of files you are pushing, ensure that you push only the directory for your app, and remove unneeded files or use the <code>.cfignore</code> file to specify excluded files. For more information, see <a href="/devguide/deploy-apps/prepare-to-deploy.html#exclude">Ignore unnecessary files when pushing</a> in <em>Considerations for Designing and Running an App in the Cloud</em>.</p></li>
+<li><p><strong>Set the <code>CF_STAGING_TIMEOUT</code> and <code>CF_STARTUP_TIMEOUT</code> environment variables.</strong> By default, your app has 15 minutes to stage and 5 minutes to start. You can increase these times by setting <code>CF_STAGING_TIMEOUT</code> and <code>CF_STARTUP_TIMEOUT</code>. For more information, run <code>cf push -h</code>.</p></li>
+<li><p><strong>If your app contains a large number of files, try pushing the app repeatedly.</strong> Each push uploads a few more files. Eventually, all files upload, and the push succeeds. This is less likely to work if your app has many small files.</p></li>
+</ul>
+
+<h3 id="-app-too-large"><a id='upload'></a> App too large</h3>
+
+<p>If your app is very large, you might receive an error message on <code>cf push</code>. For example:</p>
+
+<ul>
+<li><p><code>413 Request Entity Too Large</code></p></li>
+<li><p><code>You have exceeded your organization&#39;s memory limit</code></p></li>
+</ul>
+
+<p>If this happens:</p>
+
+<ul>
+<li><p><strong>Make sure your org and space have enough resources for all instances of your app.</strong> You cannot use more resources in a space than is allocated for your org. To view the resource quota name for your org, use <code>cf org ORG-NAME</code>, then <code>cf org-quota QUOTA-NAME</code>. To view resource quota name for your space, use <code>cf space SPACE-NAME</code>, then <code>cf space-quota QUOTA-NAME</code>. Your total organization resource usage is the sum of the resources used by all apps in all spaces within the org. Each app&rsquo;s resource usage is the resources allocated to it multiplied by the number of instances. To view the resource usage of all the apps in a space, use <code>cf apps</code>, then <code>cf app APP-NAME</code> for each app.</p></li>
+<li><p><strong>Make sure your app is less than 1&nbsp;GB.</strong> By default, <code>cf push</code> deploys all the contents of the current working directory. To reduce the number of files you are pushing, ensure that you push only the directory for your app, and remove unneeded files or use the <code>.cfignore</code> file to specify excluded files.
+The following limits apply:</p>
+
+<ul>
+<li>The app files to push cannot exceed 1&nbsp;GB.</li>
+<li>The droplet that results from compiling those files cannot exceed 1.5&nbsp;GB. Droplets are typically a third larger than the pushed files.</li>
+<li>The combined size of the app files, compiled droplet, and buildpack cache cannot total more than 4&nbsp;GB of space during staging.</li>
+</ul></li>
+</ul>
+
+<h3 id="-unable-to-detect-a-supported-app-type"><a id='detect'></a> Unable to detect a supported app type</h3>
+
+<p>If Cloud Foundry cannot identify an appropriate buildpack for your app, you see an <code>Unable to detect a supported app type</code> error.</p>
+
+<p>You can view what buildpacks are available with the <code>cf buildpacks</code> command.</p>
+
+<p>If you see a buildpack that you believe supports your app, see the <a href="/buildpacks/">buildpack documentation</a> for details about how that buildpack
+detects apps it supports.</p>
+
+<p>If you do not see a buildpack for your app, you might still be able to push your app with a <a href="/buildpacks/custom.html">custom buildpack</a> using <code>cf push -b</code>
+with a path to your buildpack.</p>
+
+<h3 id="-app-deploy-fails"><a id='deploy-fail'></a> App deploy fails</h3>
+
+<p>Even when the deployment fails, the app might exist on Cloud Foundry. Run <code>cf apps</code> to review the apps in the targeted org and space. You might be able to correct the issue using the CLI, or you might need to delete the app and re-deploy.</p>
+
+<p>If you push multiple apps using a manifest and one fails to deploy, Cloud Foundry does not attempt to push apps specified after the app that failed.</p>
+
+<p>Common reasons deploying an app fails include:</p>
+
+<ul>
+<li><p>The app does not bind to a service, such as a PostgreSQL or MongoDB. The service might not exist, be down, or reject the binding.</p></li>
+<li><p>The app does not have a unique URL. For more information, see <a href="#unique-url">App requires unique URL</a>.</p></li>
+</ul>
+
+<h3 id="-app-requires-unique-url"><a id='unique-url'></a> App requires unique URL</h3>
+
+<p>Cloud Foundry requires that each app that you deploy has a unique URL. Otherwise, the new app URL collides with an existing app URL and Cloud Foundry cannot deploy the app. You can resolve this issue by running <code>cf push</code> with either of the following flags to create a unique URL:</p>
+
+<ul>
+<li><code>--random-route</code> to create a URL that includes the app name and random words. Using this option might create a long URL, depending on the number of words that the app name includes.</li>
+</ul>
+
+<h3 id="-app-fails-to-start"><a id='start'></a> App fails to start</h3>
+
+<p>After <code>cf push</code> stages the app and uploads the droplet, the app might fail to start, commonly with a pattern of starting and failing similar to the following example:</p>
+
+<pre class="terminal">
+-----> Uploading droplet (23M)
+...
+0 of 1 instances running, 1 starting
+0 of 1 instances running, 1 down
+...
+0 of 1 instances running, 1 failing
+FAILED
+Start unsuccessful
+</pre>
+
+<p>If this happens:</p>
+
+<ul>
+<li><p><strong>Find the reason app is failing and modify your code.</strong> Run <code>cf events APP-NAME</code> and <code>cf logs APP-NAME --recent</code> and look for messages similar to the following example:
+<pre class="terminal">
+2018-07-20T15:53:26.00-0700   app.crash      app-name   index: 2, reason: CRASHED, cell_id: d874ad05-d0ca-4c63-9f5a-0b1ddd90dd5d, instance: f406c53e-b1ca-4a0f-6140-dddd, exit_description: APP/PROC/WEB: Exited with status 1
+</pre>
+These messages can identify a memory or port issue. If they do, take that as a starting point when you re-examine and fix your app code.</p></li>
+<li><p><strong>Ensure that your app code uses the <code>PORT</code> environment variable.</strong> Your app might be failing because it is listening on the wrong port. Instead of hard-coding
+the port on which your app listens, use the <code>PORT</code> environment variable. For example, this Ruby snippet assigns the port value to the <code>listen_here</code> variable:</p>
+<pre class="highlight plaintext"><code>listen_here = ENV['PORT']
+</code></pre>
+
+<p>For more examples specific to your app framework, see the appropriate <a href="/buildpacks/">buildpack documentation</a> for your app&rsquo;s language.</p></li>
+<li><p><strong>Ensure that your app adheres to the principles described in <a href="http://12factor.net">Twelve-Factor App</a> and <a href="/devguide/deploy-apps/prepare-to-deploy.html">Prepare to deploy an app</a>.</strong> These texts explain how to prevent situations where your app builds locally but fails to build in the cloud.</p></li>
+<li><p><strong>Verify the timeout configuration of your app.</strong> App health checks use a timeout setting when an app starts up for the first time. For more information, see <a href="/devguide/deploy-apps/healthchecks.html">Using app health checks</a>. If an app fails to start up due to health check timeout, you might see messages in the logs similar to the following example:</p></li>
+</ul>
+
+<p><pre class="terminal">
+  2017-01-30T14:07:20.39-0800 [CELL/0]     OUT Creating container
+  2017-01-30T14:07:20.65-0800 [CELL/0]     OUT Successfully created container
+  2017-01-30T14:07:22.30-0800 [CELL/0]     OUT Starting health monitoring of container
+  2017-01-30T14:08:23.52-0800 [CELL/0]     ERR Timed out after 1m0s:
+  health check never passed.
+  2017-01-30T14:08:23.57-0800 [CELL/0]     OUT Destroying container
+  2017-01-30T14:08:23.59-0800 [API/0]      OUT Process has crashed with type: &quot;web&quot;
+  2017-01-30T14:08:23.59-0800 [CELL/0]     OUT Creating container
+  2017-01-30T14:08:23.60-0800 [API/0]      OUT App instance exited with guid 91086440-bac0-44f0-808f-a034a1ec2ed0
+  payload: {&quot;instance&quot;=&gt;&quot;&quot;, &quot;index&quot;=&gt;0, &quot;reason&quot;=&gt;&quot;CRASHED&quot;,
+  &quot;exit_description&quot;=&gt;&quot;2 error(s) occurred:\n\n* 1 error(s)
+  occurred:\n\n* Exited with status 6\n* 2 error(s)
+  occurred:\n\n* cancelled\n* cancelled&quot;, &quot;crash_count&quot;=&gt;1,
+  &quot;crash_timestamp&quot;=&gt;1485814103565763172,
+  &quot;version&quot;=&gt;&quot;3e6e4232-7e19-4168-9583-1176833d2c71&quot;}
+  2017-01-30T14:08:23.83-0800 [CELL/0]     OUT Successfully destroyed container
+  2017-01-30T14:08:23.84-0800 [CELL/0]     OUT Successfully created container
+  2017-01-30T14:08:25.41-0800 [CELL/0]     OUT Starting health monitoring of container
+  </pre></p>
+
+<h3 id="-app-consumes-too-much-memory,-then-fails"><a id='out-of-memory'></a> App consumes too much memory, then fails</h3>
+
+<p>An app that <code>cf push</code> has uploaded and started can fail later if it uses too much memory.</p>
+
+<p><strong>Make sure your app is not consuming more memory than allowed.</strong> When you ran <code>cf push</code> and <code>cf scale</code>, that configured a limit on the amount of memory your app uses. Verify your app&rsquo;s actual memory usage. If it exceeds the limit, edit the app to use less memory.</p>
+
+<h3 id="-routing-conflict"><a id='routing-conflict'></a> Routing conflict</h3>
+
+<p>Cloud Foundry allows multiple apps, or versions of the same app, to be mapped to the same route. This feature activates blue-green deployment. For more information see <a href="/devguide/deploy-apps/blue-green.html">Using blue-green deployment to reduce downtime and risk</a>.</p>
+
+<p>Routing multiple apps to the same route might cause undesirable behavior in some situations by routing incoming requests randomly to one of the apps on the shared route.</p>
+
+<p>If you suspect a routing conflict, run <code>cf routes</code> to verify the routes in your Cloud Foundry deployment.</p>
+
+<p>If two apps share a route outside of a blue-green deployment strategy, choose one app to reassign to a different route and use the following procedure:</p>
+
+<ol>
+<li><p>Remove the existing route from that app by running:</p>
+<pre class="highlight shell_session"><code>cf unmap-route APP-NAME OLD-ROUTE
+</code></pre></li>
+<li><p>Map the app to a new, unique route by running:</p>
+<pre class="highlight shell_session"><code>cf map-route APP-NAME NEW-ROUTE
+</code></pre></li>
+</ol>
+
+<h2 id="-gather-diagnostic-information"><a id='info'></a> Gather diagnostic information</h2>
+
+<p>This section describes how to gather diagnostic information and troubleshoot app deployment issues.</p>
+
+<h3 id="-examine-environment-variables"><a id='env'></a> Examine environment variables</h3>
+
+<p><code>cf push</code> deploys your app to a container on the server. The environment variables in the container govern your app.</p>
+
+<p>You can set environment variables in a manifest created before you deploy. For more information, see <a href="/devguide/deploy-apps/manifest.html">Deploying with app manifests</a>.</p>
+
+<p>You can also set an environment variable by running <code>cf set-env</code>, followed by <code>cf push</code>. You must run <code>cf push</code> for the variable to take effect in the
+container environment.</p>
+
+<p>Run <code>cf env APP-NAME</code> to view the environment variables that you have set using the <code>cf set-env</code> command and the variables in the container environment:</p>
+
+<pre class="terminal">
+Getting env variables for app example-app in org example-org / space development as admin...
+OK
+
+System-Provided:
+{
+ "VCAP_SERVICES": {
+   "p-mysql-n/a": [
+     {
+       "credentials": {
+         "uri":"postgres://lrra:<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fe9bc8bcd3a6be8ed393878d8f928e8c9188979a9b8cd09b869f938e929bd09d9193">[email&#160;protected]</a>:5432/lraa
+       },
+       "label": "p-mysql-n/a",
+       "name": "p-mysql",
+       "syslog_drain_url": "",
+       "tags": ["postgres","postgresql","relational"]
+     }
+   ]
+ }
+}
+
+User-Provided:
+my-env-var: 100
+my-drain: http://drain.example.com
+</pre>
+
+<h3 id="-view-logs"><a id='logs'></a> View logs</h3>
+
+<p>To view app logs streamed in real time, run <code>cf logs APP-NAME</code>.</p>
+
+<p>To aggregate your app logs to view log history, bind your app to a syslog drain service. For more information, see <a href="/devguide/services/log-management.html">Streaming app logs to log management services</a>.</p>
+
+<h3 id="-trace-cloud-controller-rest-api-calls"><a id='trace'></a> Trace Cloud Controller REST API calls</h3>
+
+<p>If a command fails or produces unexpected results, re-run it with HTTP tracing activated to view requests and responses between the Cloud Foundry Command Line Interface (cf CLI) and the Cloud Controller REST API.</p>
+
+<p>For example:</p>
+
+<ul>
+<li><p>Re-run <code>cf push</code> with <code>-v</code>:</p>
+<pre class="highlight plaintext"><code>cf push APP-NAME -v
+</code></pre></li>
+<li><p>Re-run <code>cf push</code> while appending API request diagnostics to a log file:</p>
+<pre class="highlight plaintext"><code>CF_TRACE=PATH-TO-TRACE.LOG cf push APP-NAME
+</code></pre></li>
+</ul>
+
+<p>These examples activate HTTP tracing for a single command only. To activate it for an entire shell session, set the variable first:</p>
+<pre class="highlight plaintext"><code>export CF_TRACE=true
+export CF_TRACE=PATH-TO-TRACE.LOG
+</code></pre>
+
+<p class="note caution">
+<span class="note__title"><strong>Caution</strong></span>
+<code>CF_TRACE</code> is a local environment variable that modifies the behavior of the cf CLI. Do not confuse <code>CF_TRACE</code> with the variables in the container environment where your apps run. For more information about these container variables, see <a href="#env">Examine environment variables</a>.
+</p>
+
+<h3 id="-analyze-zipkin-trace-ids"><a id='zipkin_trace'></a> Analyze Zipkin trace IDs</h3>
+
+<p>When the Zipkin feature is activated in Cloud Foundry, the Gorouter adds or forwards Zipkin trace IDs and span IDs to HTTP headers. For more information about what the Gorouter provides in the HTTP header, see <a href="/concepts/http-routing.html#http-headers">HTTP headers</a> in <em>HTTP Routing</em>.</p>
+
+<p>After adding Zipkin HTTP headers to app logs, developers can run <code>cf logs APP-NAME</code> to correlate the trace and span IDs logged by the Gorouter with the trace IDs logged by their app. To correlate trace IDs for a request through multiple apps, each app must forward appropriate values for the headers with requests to other apps.</p>
+
+<h2 id="-use-troubleshooting-commands"><a id='cf-commands'></a> Use troubleshooting commands</h2>
+
+<p>You can investigate app deployment and health using the cf CLI.</p>
+
+<p>Some cf CLI commands return connection credentials. Remove credentials and other sensitive information from command output before you post the output a public forum.</p>
+
+<ul>
+<li><p><code>cf apps</code>: Returns a list of the apps deployed to the current space with deployment options, including the name, current state, number of instances, and URLs of each app.</p></li>
+<li><p><code>cf app APP-NAME</code>: Returns information about the processes in the current space. Apps are listed alphabetically.</p>
+
+<p class="note important">
+<span class="note__title"><strong>Important</strong></span>
+CPU values returned by <code>cf app</code> show the total usage of each app instance on all CPU cores on a host VM, where each core contributes 100%. For example, the CPU of a single-threaded app instance on a Diego Cell with one core cannot exceed 100%, and four instances sharing the Diego Cell cannot exceed an average CPU of 25%. A multi-threaded app instance running alone on a Diego Cell with eight cores can draw up to 800% CPU.
+</p></li>
+<li><p><code>cf env APP-NAME</code>: Returns environment variables set using <code>cf set-env</code> and variables existing in the container environment.</p></li>
+<li><p><code>cf events APP-NAME</code>: Returns information about app failures, including error codes. Shows that an app instance exited. For more detail, look in the app
+logs. For a list of Cloud Foundry errors, see the <a href="https://github.com/cloudfoundry/errors">cloudfoundry-attic</a> repository on GitHub.</p></li>
+<li><p><code>cf logs APP-NAME --recent</code>: Dumps recent logs. For more information, see <a href="/devguide/deploy-apps/streaming-logs.html#view">Viewing logs in the Command Line Interface</a> in <em>App
+Logging in Cloud Foundry</em>.</p></li>
+<li><p><code>cf logs APP-NAME</code>: Returns a real-time stream of the app stdout and stderr. Press <strong>Ctrl+C</strong> or <strong>Command+C</strong> on your keyboard to exit the real-time stream.</p></li>
+</ul>
+
+<p class="note important">
+<span class="note__title"><strong>Important</strong></span>
+Your app must direct its logs to stdout and stderr. The <code>cf logs</code> command also returns messages from any Log4j facility that you configure to send logs to STDOUT. For more information, see the <a href="http://logging.apache.org/log4j/">Log4j website</a>.
+</p>
+
+<h2 id="-access-apps-with-ssh"><a id='ssh'></a> Access apps with SSH</h2>
+
+<p>If you need to troubleshoot an instance of an app, you can gain SSH access to the app with the SSH proxy and daemon. For more information, see <a href="/devguide/deploy-apps/app-ssh-overview.html">App SSH overview</a>.</p>
+
+<h2 id="-send-requests-to-app-instance"><a id='request-to-instance'></a> Send requests to app instance</h2>
+
+<p>To obtain debug data without SSH, you can make HTTP requests to a specific instance of an app by using the <code>X-CF-APP-INSTANCE</code> HTTP header. For more
+information, see <a href="/concepts/http-routing.html#app-instance-routing">App instance routing</a> in <em>HTTP Routing</em>.</p>
+
+        <a id='repo-link' href="https://github.com/cloudfoundry/docs-dev-guide/tree/master/deploy-apps/troubleshoot-app-health.html.md.erb">Create a pull request or raise an issue on the source for this page in GitHub</a>
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    <div class="copyright">
+  <a href='/'>Cloud Foundry Documentation</a>
+  &copy; 2026 <a href='https://cloudfoundry.org'>Cloud Foundry Foundation</a>. All Rights Reserved.
+</div>
+<div class="support">
+  <a href="https://www.cloudfoundry.org/community/" target="_blank">Get Involved</a>
+</div>
+
+  </footer>
+</div><!--end of container-->
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

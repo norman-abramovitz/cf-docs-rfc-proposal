@@ -1,0 +1,12 @@
+---
+title: High Availability in Cloud Foundry
+owner: Release Integration
+---
+
+## Recommended instance counts for high availability {% #instance-counts %}
+
+{% $vars.scaling_ert %}
+
+{% if equals($vars.scale_table, "oss_scale_table") %}
+{% partial file="../native/_oss_scale_table.mdoc" /%}
+{% /if %}

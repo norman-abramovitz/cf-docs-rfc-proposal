@@ -1,0 +1,1047 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  <style type="text/css">@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek/300/normal.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin/300/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic-ext/300/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek-ext/300/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic/300/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin-ext/300/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/vietnamese/300/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek/300/italic.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin-ext/300/italic.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/vietnamese/300/italic.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic/300/italic.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin/300/italic.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic-ext/300/italic.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek-ext/300/italic.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin/400/italic.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek/400/italic.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin-ext/400/italic.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/vietnamese/400/italic.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic/400/italic.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic-ext/400/italic.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek-ext/400/italic.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic/400/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek-ext/400/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin/400/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic-ext/400/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin-ext/400/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/vietnamese/400/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek/400/normal.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic/600/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin/600/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic-ext/600/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek-ext/600/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek/600/normal.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin-ext/600/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/vietnamese/600/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}</style>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      Troubleshooting router error responses in Cloud Foundry |
+    Cloud Foundry Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  <script type="text/javascript">
+if (window.location.host === 'docs.cloudfoundry.org') {
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22181585-2']);
+  _gaq.push(['_setDomainName', 'cloudfoundry.org']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script');
+    ga.type = 'text/javascript';
+    ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ga, s);
+  })();
+}
+</script>
+
+
+</head>
+
+<body class="adminguide adminguide_troubleshooting-router-error-responses has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "cloudfoundry.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Cloud Foundry Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      
+      <div class="header-item">
+        <a href="https://www.cloudfoundry.org/community/" target="_blank">Get Involved</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="js-sidenav collapsible nav-container" role="navigation" data-behavior="Collapsible">
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+  Doc Index
+  </a>
+  <div class="nav-content">
+    <ul>
+      <li><strong>General Information</strong></li>
+      <li class=""><a href="/concepts/contribute.html">Contribute to Cloud Foundry documentation</a></li>
+      <li class="has_submenu"><a href="/concepts/index.html">Cloud Foundry concepts</a>
+        <ul>
+          <li class=""><a href="/concepts/overview.html">Cloud Foundry overview</a></li>
+          <li class="has_submenu"><a href="/concepts/security-index.html">Security and networking</a>
+            <ul>
+              <li class=""><a href="/concepts/security.html">Cloud Foundry security</a></li>
+              <li class=""><a href="/concepts/container-security.html">Container security in Cloud Foundry</a></li>
+              <li class=""><a href="/concepts/understand-cf-networking.html">Container-to-container networking</a></li>
+              <li class=""><a href="/concepts/identity-aware-routing.html">Identity-aware routing</a></li>
+              <li class=""><a href="/concepts/roles.html">Orgs, spaces, roles, and permissions in Cloud Foundry</a></li>
+              <li class=""><a href="/concepts/managing-roles.html">Managing Roles</a></li>
+              <li class=""><a href="/concepts/orgs-and-spaces.html">Planning orgs and spaces in Cloud Foundry</a></li>
+              <li class=""><a href="/concepts/asg.html">App Security Groups in Cloud Foundry</a></li>
+              <li class=""><a href="/concepts/diego/ssh-conceptual.html">Cloud Foundry app SSH components and processes</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/concepts/ha-index.html">High availability</a>
+            <ul>
+              <li class=""><a href="/concepts/high-availability.html">High availability in Cloud Foundry</a></li>
+              <li class=""><a href="/concepts/maintaining-high-availability.html">How Cloud Foundry maintains high availability</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/concepts/apps-index.html">How Cloud Foundry manages apps</a>
+            <ul>
+              <li class=""><a href="/concepts/how-applications-are-staged.html">Staging your apps in Cloud Foundry</a></li>
+              <!-- file lives in docs-dev-guide, not docs-cloudfoundry-concepts -->
+              <li class=""><a href="/devguide/deploy-apps/app-lifecycle.html">The app container lifecycle on Diego architecture</a></li>
+              <li class=""><a href="/concepts/diego/diego-auction.html">How Diego balances app processes in Cloud Foundry</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/concepts/architecture/index.html">Cloud Foundry components</a>
+            <ul>
+              <li class=""><a href="/concepts/diego/diego-architecture.html">Diego components and architecture</a></li>
+              <li class=""><a href="/concepts/cf-routing-architecture.html">Cloud Foundry routing architecture</a></li>
+              <li class=""><a href="/concepts/architecture/cloud-controller.html">Cloud Controller</a></li>
+              <li class=""><a href="/concepts/cc-blobstore.html">Cloud Controller blobstore</a></li>
+              <li class=""><a href="/concepts/architecture/uaa.html">User Account and Authentication server</a></li>
+              <li class=""><a href="/concepts/architecture/garden.html">Garden component</a></li>
+              <li class=""><a href="/concepts/grootfs-disk.html">GrootFS disk usage in Cloud Foundry</a></li>
+              <li class=""><a href="/concepts/http-routing.html">HTTP routing</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="has_submenu"><span>Cloud Foundry Command Line Interface (cf CLI)</span>
+        <ul>
+          <li class=""><a href="/cf-cli/install-go-cli.html">Installing the cf CLI</a></li>
+          <li class=""><a href="/cf-cli/v8.html">Upgrading to cf CLI v8</a></li>
+          <li class=""><a href="/cf-cli/getting-started.html">Getting started with the cf CLI</a></li>
+          <li class=""><a href="/cf-cli/http-proxy.html">Using the cf CLI with a proxy server</a></li>
+          <li class=""><a href="/cf-cli/self-signed.html">Using the cf CLI with a self-signed certificate</a></li>
+          <li class=""><a href="/cf-cli/use-cli-plugins.html">Using cf CLI plug-ins</a></li>
+          <li class=""><a href="/cf-cli/develop-cli-plugins.html">Developing cf CLI plug-ins</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>
+          <hr>
+        </span>
+      </li>
+      <li><strong>Information for Operators</strong></li>
+      <li class="has_submenu"><a href="/deploying/index.html">Deploying Cloud Foundry</a>
+        <ul>
+          <li class=""><a href="/deploying/common/dns_prereqs.html">Setting up DNS for your environment</a></li>
+          <li class="has_submenu"><a href="/deploying/cf-deployment/index.html">Deploying Cloud Foundry with cf-deployment</a>
+            <ul>
+              <li class=""><a href="/deploying/common/aws.html">Deploying BOSH on AWS</a></li>
+              <li class=""><a href="/deploying/cf-deployment/gcp.html">Deploying BOSH on GCP</a></li>
+              <li class=""><a href="/deploying/cf-deployment/deploy-cf.html">Deploying Cloud Foundry</a></li>
+              <li class=""><a href="/deploying/cf-deployment/enable-identity-aware-routing.html">Enabling identity-aware routing</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/bbr/index.html">Backing up and restoring with BBR</a></li>
+          <li class="has_submenu"><span>Additional configuration</span>
+            <ul>
+              <li class=""><a href="/deploying/common/cc-blobstore-config.html">Cloud Controller blobstore configuration</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="has_submenu"><a href="/adminguide/index.html">Administering Cloud Foundry</a>
+        <ul>
+          <li class="has_submenu"><a href="/adminguide/platform-index.html">Managing the runtime</a>
+            <ul>
+              <li class=""><a href="/adminguide/start-stop-vms.html">Stopping and starting virtual machines</a></li>
+              <li class=""><a href="/adminguide/quota-plans.html">Creating and modifying quota plans</a></li>
+              <li class=""><a href="/adminguide/listing-feature-flags.html">Using feature flags</a></li>
+              <li class=""><a href="/adminguide/examining_grootfs_disk.html">Examining GrootFS disk usage</a></li>
+              <li class=""><a href="/adminguide/metadata.html">Using metadata</a></li>
+              <li class=""><a href="/adminguide/buildpacks.html">Managing custom buildpacks</a></li>
+              <li class=""><a href="/adminguide/docker.html">Using Docker in Cloud Foundry</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/adminguide/user-accounts-index.html">User accounts and communications</a>
+            <ul>
+              <li class=""><a href="/adminguide/cli-user-management.html">Creating and managing users with the cf CLI</a></li>
+              <li class=""><a href="/uaa/uaa-user-management.html">Creating and managing users with the UAA CLI (UAAC)</a></li>
+              <li class=""><a href="/adminguide/notifications.html">Get started with the Notifications Service</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/adminguide/routing-index.html">Routing</a>
+            <ul>
+              <li class=""><a href="/adminguide/enabling_ipv6.html">Enabling IPv6 for hosted apps</a></li>
+              <li class=""><a href="/adminguide/distributed-tracing.html">Distributed tracing</a></li>
+              <li class=""><a href="/adminguide/zipkin_tracing.html">Enabling Zipkin tracing</a></li>
+              <li class=""><a href="/adminguide/w3c_tracing.html">Enabling W3C tracing</a></li>
+              <li class=""><a href="/adminguide/supporting-websockets.html">Supporting WebSockets</a></li>
+              <li class=""><a href="/adminguide/configure-lb-healthcheck.html">Configuring load balancer health checks for CF routers</a></li>
+              <li class=""><a href="/adminguide/troubleshooting_slow_requests.html">Troubleshooting slow requests</a></li>
+              <li class=""><a href="/adminguide/troubleshooting-router-error-responses.html">Troubleshooting router error responses</a></li>
+              <li class=""><a href="/adminguide/securing-traffic.html">Securing incoming traffic</a></li>
+              <li class=""><a href="/devguide/deploy-apps/trusted-system-certificates.html">Configuring trusted system certificates for apps</a></li>
+              <li class=""><a href="/adminguide/bbs-encryption-keys.html">Bulletin Board System data store encryption</a></li>
+              <li class=""><a href="/adminguide/enabling-tcp-routing.html">Enabling and configuring TCP routing</a></li>
+              <li class=""><a href="/adminguide/supporting-http2.html">Configuring HTTP/2 support</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/adminguide/isolation-segment-index.html">Isolation segments</a>
+            <ul>
+              <li class=""><a href="/adminguide/isolation-segments.html">Managing isolation segments</a></li>
+              <li class=""><a href="/adminguide/routing-is.html">Routing for isolation segments</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu">
+            <a href="/adminguide/delayed-jobs-index.html">Delayed jobs in Cloud Foundry</a>
+            <ul>
+              <li class="">
+                <a href="/adminguide/configuring-delayed-job-priorities.html">Configuring delayed job priorities with Cloud Controller</a>
+              </li>
+            </ul>
+          </li>
+          <li class="has_submenu">
+            <a href="/adminguide/managing-apps-stacks-index.html">Managing apps and their stacks</a>
+            <ul>
+              <li class=""><a href="/adminguide/stack-auditor.html">Using Stack Auditor</a></li>
+              <li class=""><a href="/adminguide/managing-stacks.html">Managing stack lifecycle</a></li>
+              <li class=""><a href="/devguide/deploy-apps/stacks.html">Changing stacks</a></li>
+              <li class=""><a href="/devguide/deploy-apps/windows-stacks.html">Restaging your apps on a Windows stack</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="has_submenu"><a href="/running/">Running and Troubleshooting Cloud Foundry</a>
+        <ul>
+          <li class=""><a href="/running/managing-cf/logging.html">Cloud Foundry logging</a></li>
+          <li class=""><a href="/running/managing-cf/logging-config.html">Configuring system logging</a></li>
+          <li class=""><a href="/running/diego-upgrades.html">Configuring Diego for upgrades</a></li>
+          <li class=""><a href="/running/managing-cf/audit-events.html">Audit Events</a></li>
+          <li class=""><a href="/running/managing-cf/uaa-audit-requirements.html">UAA audit requirements</a></li>
+          <li class=""><a href="/running/managing-cf/usage-events.html">Usage events and billing</a></li>
+          <li class=""><a href="/running/config-ssh.html">Configuring SSH access for Cloud Foundry</a></li>
+          <li class=""><a href="/running/config-cell-cleanup.html">Configuring Diego Cell disk cleanup scheduling</a></li>
+          <li class=""><a href="/running/hm-notifications.html">Configuring Health Monitor Notifications</a></li>
+          <li class=""><a href="/running/custom-stack.html">Adding a custom stack</a></li>
+          <li class=""><a href="/running/monitoring-test.html">Monitoring and testing Diego components</a></li>
+          <li class=""><a href="/running/troubleshooting.html">Troubleshooting Cloud Foundry</a></li>
+          <li class=""><a href="/running/uaa-performance.html">UAA performance</a></li>
+          <li class=""><a href="/uaa/uaa-metrics.html">UAA performance metrics</a></li>
+          <li class=""><a href="/running/managing-cf/scaling-cloud-controller.html">Scaling Cloud Controller</a></li>
+          <li class=""><a href="/running/managing-cf/multi-process-cloud-controller.html">Cloud Controller Multi-Process Mode (Puma)</a></li>
+          <li class=""><a href="/running/managing-cf/scaling-cloud-controller-k8s.html">Scaling Cloud Controller (cf-for-k8s)</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu"><span>Logging and metrics in Cloud Foundry</span>
+        <ul>
+          <li class=""><a href="/loggregator/architecture.html">Logging and metrics architecture</a></li>
+          <li class=""><a href="/loggregator/cli-plugin.html">Installing the Loggregator plug-in for cf CLI</a></li>
+          <li class=""><a href="/loggregator/cc-uaa-logging.html">Security event logging</a></li>
+          <li class=""><a href="/devguide/deploy-apps/streaming-logs.html">App logging in Cloud Foundry</a></li>
+          <li class=""><a href="/loggregator/app-log-rate-limits.html">Limiting your app log rate in Cloud Foundry</a></li>
+          <li class=""><a href="/running/all_metrics.html">Cloud Foundry component metrics</a></li>
+          <li class=""><a href="/loggregator/container-metrics.html">Container metrics</a></li>
+          <li class=""><a href="/loggregator/log-ops-guide.html">Loggregator guide for Cloud Foundry operators</a></li>
+          <li class=""><a href="/loggregator/data-sources.html">Logging and metrics in Cloud Foundry</a></li>
+          <li class=""><a href="/loggregator/opentelemetry.html">Configuring the OpenTelemetry Collector</a></li>
+          <li class=""><a href="/loggregator/nozzle-tutorial.html">Deploying a nozzle to your Cloud Foundry Loggregator Firehose</a></li>
+        </ul>
+      </li>
+      <li class=""><a href="http://bosh.io/docs/">BOSH Documentation</a></li>
+      <li class="has_submenu"><a href="/bbr/index.html">BOSH Backup and Restore (BBR)</a>
+        <ul>
+          <li class=""><a href="/bbr/installing.html">Installing BBR</a></li>
+          <li class=""><a href="https://github.com/cloudfoundry-incubator/bosh-backup-and-restore/releases">Release notes for BBR</a></li>
+          <li class=""><a href="/bbr/backup.html">Backing up with BBR</a></li>
+          <li class=""><a href="/bbr/restore.html">Restoring with BBR</a></li>
+          <li class=""><a href="/bbr/cf-backup.html">Configuring Cloud Foundry for BOSH Backup and Restore</a></li>
+          <li class=""><a href="/bbr/external-blobstores.html">Backup and restore for external blobstores</a></li>
+          <li class=""><a href="/bbr/logging.html">BBR logging</a></li>
+          <li class=""><a href="/bbr/experimental-features.html">Advanced features</a></li>
+          <li class=""><a href="/bbr/bbr-devguide.html">BBR developer's guide</a></li>
+        </ul>
+      </li>
+      <li><span><hr></span></li>
+      <li><strong>Information for developers</strong></li>
+      <li class="has_submenu"><a href="/devguide/index.html">Developing and managing apps</a>
+        <ul>
+          <li class="has_submenu"><a href="/devguide/push.html">How to push your app with Cloud Foundry CLI (cf push)</a>
+            <ul>
+              <li class=""><a href="/devguide/deploy-apps/deploy-app.html">Pushing your app using Cloud Foundry CLI (cf push)</a></li>
+              <li class=""><a href="/devguide/deploy-apps/manifest.html">Deploying with app manifests</a></li>
+              <li class=""><a href="/devguide/deploy-apps/manifest-attributes.html">App manifest attribute reference</a></li>
+              <li class=""><a href="/devguide/deploy-apps/push-docker.html">Deploying an app with Docker</a></li>
+              <li class=""><a href="/devguide/deploy-apps/large-app-deploy.html">Deploying your large apps</a></li>
+              <li class=""><a href="/devguide/deploy-apps/start-restart-restage.html">Starting, restarting, and restaging apps</a></li>
+              <li class=""><a href="/devguide/multiple-processes.html">Pushing an app with multiple processes</a></li>
+              <li class=""><a href="/devguide/push-sub-commands.html">Running cf push sub-step commands</a></li>
+              <li class=""><a href="/devguide/deploy-apps/rolling-deploy.html">Configuring app deployments</a></li>
+              <li class=""><a href="/devguide/sidecars.html">Pushing apps with sidecar processes</a></li>
+              <li class=""><a href="/devguide/deploy-apps/blue-green.html">Using blue-green deployment to reduce downtime</a></li>
+              <li class=""><a href="/devguide/deploy-apps/troubleshoot-app-health.html">Troubleshooting app deployment and health</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/devguide/ssh-index.html">SSH for apps and services</a>
+            <ul>
+              <li class=""><a href="/devguide/deploy-apps/app-ssh-overview.html">Configuring SSH access for your deployment</a></li>
+              <li class=""><a href="/devguide/deploy-apps/ssh-apps.html">Accessing your apps with SSH</a></li>
+              <li class=""><a href="/devguide/deploy-apps/ssh-services.html">Accessing services with SSH</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/devguide/routing-index.html">Routes and domains</a>
+            <ul>
+              <li class=""><a href="/devguide/deploy-apps/routes-domains.html">Configuring routes and domains</a></li>
+              <li class=""><a href="/devguide/custom-per-route-options.html">Configuring per-route options</a></li>
+              <li class=""><a href="/devguide/deploy-apps/identity-aware-routing.html">Configuring identity-aware routing</a></li>
+              <li class=""><a href="/devguide/hash-based-routing.html">Hash-Based Routing</a></li>
+              <li class=""><a href="/devguide/custom-ports.html">Configuring CF to route traffic to apps on custom ports</a></li>
+              <li class=""><a href="/devguide/http2-protocol.html">Routing HTTP/2 and gRPC traffic to apps</a></li>
+              <!-- file lives in docs-cf-admin, not docs-dev-guide -->
+              <li class=""><a href="/adminguide/troubleshooting_tcp_routing.html">Troubleshooting TCP routing</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/devguide/services-index.html">Managing services</a>
+            <ul>
+              <li class=""><a href="/devguide/services/index.html">Provisioning and integrating service instances</a></li>
+              <li class=""><a href="/devguide/services/managing-services.html">Managing service instances</a></li>
+              <li class=""><a href="/devguide/services/sharing-instances.html">Sharing service instances</a></li>
+              <li class=""><a href="/devguide/services/application-binding.html">Delivering service credentials to an app</a></li>
+              <li class=""><a href="/devguide/services/service-keys.html">Managing service keys</a></li>
+              <li class=""><a href="/devguide/services/play-service-bindings.html">Configuring Play Framework service connections</a></li>
+              <li class=""><a href="/devguide/services/using-vol-services.html">Using an external file system (volume services)</a></li>
+              <li class=""><a href="/devguide/services/user-provided.html">User-provided service instances</a></li>
+              <li class=""><a href="/devguide/services/route-binding.html">Manage app requests with route services</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/devguide/streaming-logs-index.html">Streaming app logs</a>
+            <ul>
+              <li class=""><a href="/devguide/services/log-management.html">Streaming app logs to log management services</a></li>
+              <li class=""><a href="/devguide/services/log-management-thirdparty-svc.html">Streaming app logs to third-party services</a></li>
+              <li class=""><a href="/devguide/services/integrate-splunk.html">Streaming app logs to Splunk</a></li>
+              <li class=""><a href="/devguide/services/fluentd.html">Streaming app logs with Fluentd</a></li>
+              <li class=""><a href="/devguide/services/oms-nozzle.html">Streaming app logs to Azure OMS log analytics</a></li>
+              <li class=""><a href="/devguide/services/metrics.html">Using metrics with drain logs</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/devguide/managing-apps-index.html">Managing apps with the cf CLI</a>
+            <ul>
+              <li class=""><a href="/devguide/using-tasks.html">Running tasks in your apps</a></li>
+              <li class=""><a href="/devguide/deploy-apps/cf-scale.html">Scaling your app using Cloud Foundry CLI (cf scale)</a></li>
+              <li class=""><a href="/devguide/deploy-apps/healthchecks.html">Using Cloud Foundry health checks</a></li>
+              <!-- file lives in docs-running-cf, not docs-dev-guide -->
+              <li class=""><a href="/running/managing-cf/app-event.html">Retrieving app and event information</a></li>
+              <li class=""><a href="/devguide/deploy-apps/cf-networking.html">Configuring container-to-Container networking</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/devguide/deploy-apps/environment-variable.html">Cloud Foundry environment variables</a></li>
+          <li class=""><a href="/devguide/capi/client-libraries.html">Available Cloud Controller API client libraries</a></li>
+          <li class=""><a href="/devguide/deploy-apps/prepare-to-deploy.html">Designing and running your app in the cloud</a></li>
+          <li class=""><a href="/devguide/revisions.html">Cloud Foundry API app revisions</a></li>
+        </ul>
+      </li>
+
+
+      <li class="has_submenu"><a href="/buildpacks/index.html">Cloud Foundry Buildpacks</a>
+        <ul>
+          <li class="has_submenu"><a href="/buildpacks/cnb/index.html">Cloud Native Buildpacks</a>
+            <ul>
+              <li class=""><a href="/buildpacks/cnb/paketo.html">Paketo Buildpacks</a></li>
+            </ul>
+          </li>
+
+          <li class="has_submenu"><a href="/buildpacks/classic.html">Classic Buildpacks</a>
+          <ul>
+          <li class="has_submenu"><a href="/buildpacks/using-buildpacks.html">What are classic buildpacks?</a>
+            <ul>
+              <li class=""><a href="/buildpacks/understand-buildpacks.html">Working with buildpacks in Cloud Foundry </a></li>
+              <li class=""><a href="/buildpacks/stack-association.html">Stack association</a></li>
+              <li class=""><a href="/buildpacks/use-multiple-buildpacks.html">Pushing an app with multiple buildpacks</a></li>
+              <li class=""><a href="/buildpacks/proxy-usage.html">Using a proxy server</a></li>
+              <li class=""><a href="/buildpacks/supported-binary-dependencies.html">Supported binary dependencies</a></li>
+              <li class=""><a href="/buildpacks/prod-server.html">Configuring the production server</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/buildpacks/binary/index.html">Binary buildpack</a></li>
+          <li class=""><a href="/buildpacks/go/index.html">Go buildpack</a></li>
+          <li class="has_submenu"><a href="/buildpacks/hwc/index.html">Hosted Web Core buildpack</a>
+            <ul>
+              <li class=""><a href="/buildpacks/hwc/extension-buildpack.html">Creating an extension buildpack for .NET apps</a></li>
+              <li class=""><a href="/buildpacks/hwc/web-config-transform-buildpack.html">Using the .NET Framework Web Config Transform Extension Buildpack</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/buildpacks/java/index.html">Java buildpack</a>
+            <ul>
+              <li class=""><a href="/buildpacks/java/java-tips.html">Using Cloud Foundry Java buildpack</a></li>
+              <li class="has_submenu"><a href="/buildpacks/java/getting-started-deploying-apps/index.html">Getting started deploying Java apps to Cloud Foundry</a>
+                <ul>
+                  <li class=""><a href="/buildpacks/java/getting-started-deploying-apps/gsg-grails.html">Getting started deploying your Grails apps to Cloud Foundry</a></li>
+                  <li class=""><a href="/buildpacks/java/getting-started-deploying-apps/gsg-ratpack.html">Getting started deploying Ratpack apps to Cloud Foundry</a></li>
+                  <li class=""><a href="/buildpacks/java/getting-started-deploying-apps/gsg-spring.html">Getting started deploying Spring apps to Cloud Foundry</a></li>
+                </ul>
+              </li>
+              <li class=""><a href="/buildpacks/java/configuring-service-connections.html">Configuring service connections</a></li>
+              <li class=""><a href="/buildpacks/java/java-native-image.html">Using Java Native Image</a></li>
+              <li class=""><a href="/buildpacks/java/java-client.html">Cloud Foundry Java Client Library</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/buildpacks/dotnet-core/index.html">.NET Core buildpack</a></li>
+          <li class=""><a href="/buildpacks/nginx/index.html">NGINX buildpack</a></li>
+          <li class="has_submenu"><a href="/buildpacks/node/index.html">Node.js buildpack</a>
+            <ul>
+              <li class=""><a href="/buildpacks/node/node-tips.html">Node.js buildpack-specific information</a></li>
+              <li class=""><a href="/buildpacks/node/node-environment.html">Environment variables defined by Node buildpack</a></li>
+              <li class=""><a href="/buildpacks/node/node-service-bindings.html">Configuring service connections for Node.js application</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/buildpacks/php/index.html">Using PHP buildpack with runtimes</a>
+            <ul>
+              <li class=""><a href="/buildpacks/php/gsg-php-tips.html">Additional information on PHP buildpacks in Cloud Foundry</a></li>
+              <li class=""><a href="/buildpacks/php/gsg-php-usage.html">Getting started deploying PHP apps to Cloud Foundry</a></li>
+              <li class=""><a href="/buildpacks/php/gsg-php-config.html">PHP buildpack configuration</a></li>
+              <li class=""><a href="/buildpacks/php/gsg-php-composer.html">Composer</a></li>
+              <li class=""><a href="/buildpacks/php/gsg-php-sessions.html">Sessions</a></li>
+              <li class=""><a href="/buildpacks/php/gsg-php-newrelic.html">New Relic</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/buildpacks/python/index.html">Python buildpack</a></li>
+          <li class=""><a href="/buildpacks/r/index.html">R buildpack</a></li>
+          <li class="has_submenu"><a href="/buildpacks/ruby/index.html">Ruby buildpack</a>
+            <ul>
+              <li class=""><a href="/buildpacks/ruby/ruby-tips.html">Additional information on Ruby buildpacks in Cloud Foundry</a></li>
+              <li class="has_submenu"><a href="/buildpacks/ruby/deploying-apps-index.html">Getting started deploying Ruby apps</a>
+                <ul>
+                  <li class=""><a href="/buildpacks/ruby/gsg-ruby.html">Getting started deploying Ruby apps</a></li>
+                  <li class=""><a href="/buildpacks/ruby/gsg-ror.html">Getting started deploying Ruby on Rails apps</a></li>
+                  <li class=""><a href="/buildpacks/ruby/sample-ror.html">Deploy a sample Ruby on Rails app</a></li>
+                </ul>
+              </li>
+              <li class=""><a href="/buildpacks/ruby/rake-config.html">Configuring Rake tasks for deployed apps</a></li>
+              <li class=""><a href="/buildpacks/ruby/ruby-environment.html">Environment variables defined by Ruby buildpack</a></li>
+              <li class=""><a href="/buildpacks/ruby/ruby-service-bindings.html">Configuring service connections for Ruby</a></li>
+              <li class=""><a href="/buildpacks/ruby/windows.html">Windows Gemfile support</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/buildpacks/staticfile/index.html">Staticfile buildpacks</a></li>
+          <li class="has_submenu"><a href="/buildpacks/custom.html">Creating custom buildpacks</a>
+            <ul>
+              <li class=""><a href="/buildpacks/depend-pkg-offline.html">Packaging dependencies for offline buildpacks</a></li>
+              <li class=""><a href="/buildpacks/merging_upstream.html">Merging from upstream buildpacks</a></li>
+              <li class=""><a href="/buildpacks/upgrading_dependency_versions.html">Upgrading dependency versions for Cloud Foundry</a></li>
+              <li class="has_submenu"><a href="/buildpacks/buildpack-ci-index.html">Using CI for buildpacks</a>
+                <ul>
+                  <li class=""><a href="/buildpacks/releasing_a_new_buildpack_version.html">Releasing a new Cloud Foundry buildpack version</a></li>
+                  <li class=""><a href="/buildpacks/updating-buildpack-related-gems.html">Updating buildpack-related gems in Cloud Foundry</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+        </ul>
+      </li>
+
+      <li><span><hr></span></li>
+      <li class="has_submenu"><span>Information for Managed Service Authors</span>
+        <ul>
+          <li class=""><a href="/services/overview.html">Services in Cloud Foundry</a></li>
+          <li class="has_submenu"><span>Service Broker API</span>
+            <ul>
+              <li class=""><a href="https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/spec.md">Open Service Broker API</a></li>
+              <li class=""><a href="https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/profile.md">Platform profiles</a></li>
+              <li class=""><a href="https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/profile.md#service-metadata">Catalog metadata</a></li>
+              <li class=""><a href="https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/spec.md#volume-mounts-object">Volume services</a></li>
+              <li class=""><a href="https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/release-notes.md">Release Notes</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/services/managing-service-brokers.html">Managing service brokers in Cloud Foundry</a></li>
+          <li class=""><a href="/services/access-control.html">Managing access to service plans</a></li>
+          <li class=""><a href="/services/binding-credentials.html">Binding credentials in Cloud Foundry</a></li>
+          <li class="has_submenu"><a href="/credhub/index.html">CredHub</a>
+            <ul>
+              <li class=""><a href="/credhub/setup-credhub-bosh.html">Setting up and deploying CredHub with BOSH</a></li>
+              <li class=""><a href="/credhub/hsm-config.html">Configuring a hardware security module</a></li>
+              <li class=""><a href="/credhub/kms-plugin.html">Using a key management service with CredHub</a></li>
+              <li class=""><a href="/credhub/credential-types.html">CredHub credential types</a></li>
+              <li class=""><a href="/credhub/backup-restore.html">Backing up and restoring CredHub instances</a></li>
+              <li class=""><a href="/credhub/troubleshooting-credhub.html">Troubleshooting CredHub</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/services/dashboard-sso.html">Dashboard Single Sign-on</a></li>
+          <li class=""><a href="/services/enable-sharing.html">Service instance sharing in Cloud Foundry</a></li>
+          <li class=""><a href="/services/examples.html">Service broker examples</a></li>
+          <li class=""><a href="/services/app-log-streaming.html">App log streaming in Cloud Foundry</a></li>
+          <li class=""><a href="/services/route-services.html">Offering Route Services in Cloud Foundry</a></li>
+          <li class=""><a href="/services/supporting-multiple-cf-instances.html">Supporting multiple CF instances</a></li>
+        </ul>
+      </li>
+      <li><span><hr></span></li>
+      <li class="has_submenu"><span>User Account and Authentication</span>
+        <ul>
+          <li class=""><a href="/uaa/uaa-overview.html">UAA Overview</a></li>
+          <li class=""><a href="/uaa/uaa-concepts.html">UAA Concepts</a></li>
+          <li class=""><a href="/uaa/identity-providers.html">Identity Providers in UAA</a></li>
+          <li class=""><a href="/uaa/uaa-metrics.html">UAA Metrics</a></li>
+
+        </ul>
+      </li>
+      <li><strong>API Reference</strong></li>
+      <li class=""><a href="https://docs.cloudfoundry.org/api/uaa/index.html">UAA API</a></li>
+      <li class="has_submenu"><span>CAPI API</span>
+        <ul>
+          <li class=""><a href="/running/rate-limit-cloud-controller-api.html">Rate limit information returned by the Cloud Controller API</a></li>
+          <li class=""><a href="https://v2-apidocs.cloudfoundry.org">CAPI V2</a></li>
+          <li class=""><a href="https://v3-apidocs.cloudfoundry.org/index.html">CAPI V3</a></li>
+          <li class=""><a href="https://docs.cloudfoundry.org/api/credhub/">CredHub API documentation</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container">
+    Troubleshooting router error responses in Cloud Foundry
+  </h1>
+
+          <div class="js-quick-links">
+            <div class="quick-links"><ul>
+<li><a href="#overview">Outer error responses overview</a></li>
+<li><a href="#debugging-steps">General debugging steps</a></li>
+<li>
+<a href="#log-formatting">Log formatting</a><ul>
+<li><a href="#levels">Levels</a></li>
+<li><a href="#message-contents">Message contents</a></li>
+<li><a href="#access-logs">Access logs</a></li>
+</ul>
+</li>
+<li>
+<a href="#gorouter">Diagnose Gorouter errors</a><ul>
+<li><a href="#cannot-connect">Gorouter cannot connect to the app container</a></li>
+<li><a href="#connect-error">Gorouter errors after connecting</a></li>
+</ul>
+</li>
+<li>
+<a href="#diagnose-stale-routes">Diagnose stale routes in Gorouter</a><ul>
+<li><a href="#stale-routes">Causes of stale routes</a></li>
+<li><a href="#stale-route-triage">How to locate stale routes</a></li>
+<li><a href="#stale-routes-fix">How to fix stale routes</a></li>
+</ul>
+</li>
+<li><a href="#gorouter-error-classification">Gorouter error classification table</a></li>
+<li><a href="#app-errors">Diagnose app errors</a></li>
+</ul></div>
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        <p id="modified-date"><strong>Page last updated: <span data-behavior="DisplayModifiedDate" data-modified-date="1784755976000"></span></strong></p>
+
+        <p>Are your 502 errors the result of your infrastructure, Cloud Foundry, or an app? This topic helps you understand and
+debug these errors.</p>
+
+<h2 id="-outer-error-responses-overview"><a id="overview"></a> Outer error responses overview</h2>
+
+<p>In your deployment, 502 errors can come from any of the following:</p>
+
+<ul>
+<li><strong>Infrastructure</strong>: issues with your load balancer or network can cause 502 errors.</li>
+<li><strong>Platform</strong>: issues with Gorouter or Diego Cells can cause 502 errors.
+See the following sections:
+
+<ul>
+<li><a href="#gorouter-errors">Diagnose Gorouter Errors</a></li>
+<li><a href="#diagnose-stale-routes">Diagnose Stale Routes in Gorouter</a></li>
+<li><a href="#gorouter-error-classification">Gorouter Error Classification Table</a></li>
+</ul></li>
+<li><strong>App</strong>: issues with an app&rsquo;s load or configuration can cause 502 errors.
+See <a href="#app-errors">Diagnose App Errors</a>.</li>
+</ul>
+
+<p>If you are unsure of the source of 502 errors, see <a href="#debugging-steps">General Debugging Steps</a>.</p>
+
+<h2 id="-general-debugging-steps"><a id="debugging-steps"></a> General debugging steps</h2>
+
+<p>Some general debugging steps for any issue resulting in 502 errors are as follows:</p>
+
+<ol>
+<li><p>Gather the Gorouter logs and Diego Cell logs at the time of the incident. </p></li>
+<li><p>Review the logs and consider the following:</p>
+
+<ol>
+<li>Which errors are the Gorouters returning?</li>
+<li>Is Gorouter&rsquo;s routing table accurate? Are the endpoints for the route as expected? For more information, see <a href="https://github.com/cloudfoundry/gorouter#dynamic-routing-table">Dynamic Routing Table</a> in the Gorouter documentation on GitHub.</li>
+<li>Do the Diego Cell logs have anything interesting about unexpected app crashes or restarts?</li>
+<li>Is the app healthy and handling requests successfully? You can use request tracing headers to verify. For more information, see <a href="/concepts/http-routing.html#zipkin-headers">HTTP Headers for Zipkin Tracing</a> in <em>HTTP Routing</em>.</li>
+</ol></li>
+<li><p>Consider the following:</p>
+
+<ul>
+<li>Does your load balancer log 502 errors, but Gorouter does not? This means that traffic is not reaching Gorouter.</li>
+<li>Was there a recent platform change or upgrade that caused an increase in 502 errors?</li>
+<li>Are there any suspicious <a href="/running/all_metrics.html#routing">metrics</a> spiking? How is the CPU and memory utilization?</li>
+</ul></li>
+</ol>
+
+<h2 id="log-formatting"><a id="log-formatting"></a>Log formatting</h2>
+
+<h3 id="-levels"><a id="levels"></a> Levels</h3>
+
+<p>The following table describes the log levels supported by Gorouter.
+The log level is specified in the configuration YAML file for Gorouter.</p>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Message</th>
+    <th>Description</th>
+    <th>Examples</th>
+  </tr>
+  </thead>
+  <tr>
+    <td><code>fatal</code></td>
+    <td>Gorouter is unable to handle any requests due to a fatal error.</td>
+    <td>Gorouter cannot bind to its TCP port, a Cloud Foundry component has
+  published invalid data to Gorouter.</td>
+  </tr>
+  <tr>
+    <td><code>error</code></td>
+    <td>An unexpected error has occurred.</td>
+    <td>Gorouter failed to fetch token from UAA service.</td>
+  </tr>
+  <tr>
+    <td><code>info</code></td>
+    <td>An expected event has occurred.</td>
+    <td>Gorouter started or exited, Gorouter has begun to prune
+  routes for stale droplets.</td>
+  </tr>
+  <tr>
+    <td><code>debug</code></td>
+    <td>A lower-level event has occurred.</td>
+    <td>Route registration, route unregistration.</td>
+  </tr>
+</table>
+
+<h3 id="-message-contents"><a id="message-contents"></a> Message contents</h3>
+
+<p>This section provides a sample Gorouter log entry and explanation of the contents.</p>
+
+<p><code>[2017-02-01 22:54:08+0000] {&quot;log_level&quot;:0,&quot;timestamp&quot;:1485989648.0895808,&quot;message&quot;:&quot;endpoint-registered&quot;,&quot;source&quot;:&quot;vcap.Gorouter.registry&quot;,&quot;data&quot;:{&quot;uri&quot;:&quot;0-*.login.bosh-lite.com&quot;,&quot;backend&quot;:&quot;10.123.0.134:8080&quot;,&quot;modification_tag&quot;:{&quot;guid&quot;:&quot;&quot;,&quot;index&quot;:0}}}
+</code></p>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Property</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tr>
+    <td><code>log_level</code></td>
+    <td>Logging level of the message</td>
+  </tr>
+  <tr>
+    <td><code>timestamp</code></td>
+    <td>Epoch time of the log</td>
+  </tr>
+  <tr>
+    <td><code>message</code></td>
+    <td>Content of the log entry</td>
+  </tr>
+  <tr>
+    <td><code>source</code></td>
+    <td>Gorouter function that initiated the log entry</td>
+  </tr>
+  <tr>
+    <td><code>data</code></td>
+    <td>Additional information that varies based on the message</td>
+  </tr>
+</table>
+
+<h3 id="-access-logs"><a id="access-logs"></a> Access logs</h3>
+
+<p>This section provides details about Gorouter access logs.</p>
+
+<p>By default, Gorouter generates an access log in the following format when it receives a request:</p>
+<pre class="highlight plaintext"><code>  &lt;Request Host&gt; - [&lt;Start Date&gt;] "&lt;Request Method&gt; &lt;Request URL&gt; &lt;Request Protocol&gt;" &lt;Status Code&gt; &lt;Bytes Received&gt; &lt;Bytes Sent&gt; "&lt;Referrer&gt;" "&lt;User-Agent&gt;" &lt;Remote Address&gt; &lt;Backend Address&gt; x_forwarded_for:"&lt;X-Forwarded-For&gt;" x_forwarded_proto:"&lt;X-Forwarded-Proto&gt;" vcap_request_id:&lt;X-Vcap-Request-ID&gt; response_time:&lt;Response Time&gt; gorouter_time:&lt;Gorouter Time&gt; app_id:&lt;Application ID&gt; app_index:&lt;Application Index&gt; instance_id:&lt;Container Instance ID&gt; x_cf_routererror:&lt;X-Cf-RouterError&gt; &lt;Extra Headers&gt;
+</code></pre>
+
+<p>When Gorouter is configured to log additional request attempt details, the format includes <code>failed_attempts</code>, <code>failed_attempts_time</code>, <code>dns_time</code>, <code>dial_time</code>, <code>tls_time</code>, and <code>backend_time</code>:</p>
+<pre class="highlight plaintext"><code>  &lt;Request Host&gt; - [&lt;Start Date&gt;] "&lt;Request Method&gt; &lt;Request URL&gt; &lt;Request Protocol&gt;" &lt;Status Code&gt; &lt;Bytes Received&gt; &lt;Bytes Sent&gt; "&lt;Referrer&gt;" "&lt;User-Agent&gt;" &lt;Remote Address&gt; &lt;Backend Address&gt; x_forwarded_for:"&lt;X-Forwarded-For&gt;" x_forwarded_proto:"&lt;X-Forwarded-Proto&gt;" vcap_request_id:&lt;X-Vcap-Request-ID&gt; response_time:&lt;Response Time&gt; gorouter_time:&lt;Gorouter Time&gt; app_id:&lt;Application ID&gt; app_index:&lt;Application Index&gt; instance_id:&lt;Instance ID&gt; failed_attempts:&lt;Failed Attempts&gt; failed_attempts_time:&lt;Failed Attempts Time&gt; dns_time:&lt;DNS Time&gt; dial_time:&lt;Dial Time&gt; tls_time:&lt;TLS Time&gt; backend_time:&lt;Backend Time&gt; x_cf_routererror:&lt;X-Cf-RouterError&gt; &lt;Extra Headers&gt;
+</code></pre>
+
+<p>Gorouter access logs are also redirected to syslog.</p>
+
+<p>See the following list for more information about the Gorouter access log fields:</p>
+
+<ul>
+<li><p>The following are optional fields: <code>Status Code</code>, <code>Response Time</code>, <code>Application ID</code>, <code>Application Index</code>, <code>Instance ID</code>,  <code>X-Cf-RouterError</code>, and <code>Extra Headers</code>.</p></li>
+<li><p>If the access log lacks a <code>Status Code</code>,  <code>Response Time</code>, <code>Application ID</code>, <code>Application Index</code>, or <code>X-Cf-RouterError</code>, the corresponding field shows <code>-</code>.</p></li>
+<li><p><code>Response Time</code> is the total time it takes for the request to go through the Gorouter to the app
+and for the response to travel back through the Gorouter.
+This has the time that the request spends traversing the network to the app and back again to the Gorouter.
+It also has the time the app spends forming a response.</p></li>
+<li><p><code>Gorouter Time</code> is the total time it takes for the request to go through the Gorouter
+initially plus the time it takes for the response to travel back through the Gorouter.
+This does not have the time the request spends traversing the network to the app.
+This also does not have the time the app spends forming a response.</p></li>
+<li><p><code>X-Cf-RouterError</code> is populated if the Gorouter encounters an error. The returned values can
+help distinguish whether a non 2xx response code is due to an error in the Gorouter
+or the back end. For more information on the possible errors, see
+the <a href="#app-errors">Diagnose App Errors</a> section.</p></li>
+</ul>
+
+<p>When Gorouter is configured to log additional request attempt details, the following fields are provided for diagnosing request behaviors:</p>
+
+<ul>
+<li><code>Failed Attempts</code> is the number of attempts Gorouter tried to backends for the app before either getting a success, or giving up.</li>
+<li><code>Failed Attempts Time</code> is the time spent on the attempted backend requests that failed.</li>
+<li><code>DNS Time</code> is the time spent resolving DNS records.</li>
+<li><code>Dial Time</code> is the time spent establishing a TCP connection with the backend.</li>
+<li><code>TLS Time</code> is the time spent during TLS handshake with the backend.</li>
+<li><code>Backend Time</code> is the time spent waiting on the backend to respond to the request.</li>
+</ul>
+
+<p>When identity-aware routing is enabled on a domain, the Gorouter records additional fields for each request. These fields appear in <code>&lt;Extra Headers&gt;</code> in the access log format above and show <code>-</code> when the request did not go through an identity-aware domain:</p>
+
+<ul>
+<li><code>tls_sni</code> is the TLS Server Name Indication (SNI) value the caller requested.</li>
+<li><code>caller_cf_app</code> is the caller&rsquo;s app GUID, extracted from the validated client certificate.</li>
+<li><code>caller_cf_space</code> is the caller&rsquo;s space GUID.</li>
+<li><code>caller_cf_org</code> is the caller&rsquo;s org GUID.</li>
+<li><code>route_policy</code> is the route-policy rule that matched the request, for example <code>cf:app:&lt;app-guid&gt;</code>. It is <code>-</code> when no rule matched or enforcement is disabled.</li>
+</ul>
+
+<p>For more information about identity-aware routing and how these fields are used for observability, see <a href="/concepts/identity-aware-routing.html">Identity-aware routing</a>.</p>
+
+<h2 id="diagnose-gorouter-errors"><a id="gorouter"></a>Diagnose Gorouter errors</h2>
+
+<p>This section describes the basic structure of Gorouter logs and how to diagnose Gorouter errors.</p>
+
+<h3 id="gorouter-cannot-connect-to-the-app-container"><a id="cannot-connect"></a>Gorouter cannot connect to the app container</h3>
+
+<p>If Gorouter cannot connect to the app container, you might see this error in the <code>gorouter.log</code>:
+<pre class="terminal">
+[2018-07-05 17:59:10+0000] {&quot;log_level&quot;:3,&quot;timestamp&quot;:1530813550.92134,&quot;message&quot;:
+&quot;backend-endpoint-failed&quot;,&quot;source&quot;:&quot;vcap.gorouter&quot;,&quot;data&quot;:{&quot;route-endpoint&quot;:
+{&quot;ApplicationId&quot;:&quot;&quot;,&quot;Addr&quot;:&quot;10.0.32.15:60099&quot;,&quot;Tags&quot;:null,&quot;RouteServiceUrl&quot;:&quot;&quot;},
+&quot;error&quot;:&quot;dial tcp 10.0.32.15:60099: getsockopt: connection refused&quot;}}
+</pre></p>
+
+<p>If TCP cannot make an initial connection to the backend, Gorouter retries TCP dial errors up to <a href="https://github.com/cloudfoundry/gorouter#dynamic-routing-table"><code>max_attemps</code></a> which defaults to 3.
+If it still fails, Gorouter returns a 502 to the client and writes to the <code>access.log</code>.</p>
+
+<p>Any of the following can cause connection errors between Gorouter and the app container:</p>
+
+<ul>
+<li>An app that is unresponsive, indicates an issue with the app.</li>
+<li>A stale route in Gorouter, indicates an issue with the platform. For more information, see <a href="#diagnose-stale-routes">Diagnose Stale Routes</a>.</li>
+<li>A corrupted app container, indicates a problem with the platform.</li>
+</ul>
+
+<h3 id="gorouter-errors-after-connecting"><a id="connect-error"></a>Gorouter errors after connecting</h3>
+
+<p>If Gorouter successfully dials the endpoint but an error occurs, you might see the following:</p>
+
+<ul>
+<li><p><code>read: connection reset by peer</code> errors.
+When these errors occur, the Gorouter returns error to the client, marks backend ineligible, and does not retry another back end.</p>
+
+<ul>
+<li>Only for idempotent requests and if <a href="#tls-to-back-end">route-integrity</a> is enabled:</li>
+</ul>
+
+<p>If a TCP connection can be established (with Envoy), but the app itself does not send a complete http response, Gorouter retries the request on different app instances if any exist.</p>
+
+<p>A request is considered idempotent under the following circumstances (see also <a href="https://github.com/golang/go/blob/5c489514bc5e61ad9b5b07bd7d8ec65d66a0512a/src/net/http/request.go#L1413-L1427">Gorouter source code</a>):</p>
+
+<blockquote>
+<p>Request body is empty AND (Request method is one of &ldquo;GET&rdquo;, &ldquo;HEAD&rdquo;, &ldquo;OPTIONS&rdquo;, &ldquo;TRACE&rdquo; OR Request Header <code>X-Idempotency-Key</code> or <code>Idempotency-Key</code> is set)</p>
+</blockquote>
+
+<p>The most likely scenario for this to occur is during creation of a new app instance, while the app is not yet completely started, but Envoy is already accepting connections.</p></li>
+<li><p>TLS handshake errors.
+When these errors occur, the Gorouter retries up to <a href="https://github.com/cloudfoundry/gorouter#dynamic-routing-table"><code>max_attemps</code></a> which defaults to 3.
+If it still fails, Gorouter can return a 502.
+These errors appear similar to the following in the <code>gorouter.log</code>, and a 502 error is logged in the <code>access.log</code>:
+<pre class="terminal">
+[2018-07-05 18:20:54+0000] {&quot;log_level&quot;:3,&quot;timestamp&quot;:1530814854.4359834,&quot;message&quot;:&quot;
+backend-endpoint-failed&quot;,&quot;source&quot;:&quot;vcap.gorouter&quot;,&quot;data&quot;:{&quot;route-endpoint&quot;:
+{&quot;ApplicationId&quot;:&quot;&quot;,&quot;Addr&quot;:&quot;10.0.16.17:61002&quot;,&quot;Tags&quot;:null,&quot;RouteServiceUrl&quot;:&quot;&quot;},
+&quot;error&quot;:&quot;x509:certificate is valid for 53079ca3-c4fe-4910-78b9-c1a6, not xxx&quot;}}
+</pre></p></li>
+<li><p>If a clients cancels a request before the server responds with headers, Gorouter returns a 499 error.</p></li>
+</ul>
+
+<h2 id="-diagnose-stale-routes-in-gorouter"><a id="diagnose-stale-routes"></a> Diagnose stale routes in Gorouter</h2>
+
+<p>A stale route occurs when Gorouter contains out-of-date route information for a
+backend app.
+In nearly all cases, stale routes are self correcting.</p>
+
+<p>By default, when Gorouter detects that it is sending traffic to the wrong app, it prunes that backend app from its route table and terminates the connection.</p>
+
+<p>To disable this behavior, set <code>router.backends.enable_tls</code> to <code>false</code> as described in <a href="/concepts/http-routing.html#tls-to-back-end">TLS to apps and other back end services</a> in <em>HTTP Routing</em>.</p>
+
+<h3 id="-causes-of-stale-routes"><a id="stale-routes"></a> Causes of stale routes</h3>
+
+<p>When a route is unmapped or when an app container is deleted because the app is deleted or moved, a deregister message is sent to Gorouter.
+This message tells Gorouter to delete the route mapping to that container.</p>
+
+<p>If Gorouter does not receive this deregister message, the route is now considered stale.
+Gorouter still attempts to send traffic to the app.</p>
+
+<p>You are more likely to have stale routes when the following are true:</p>
+
+<ul>
+<li>SSL verification is not activated.</li>
+<li>You do not have Diego Release v2.34.0 or later deployed, which contains a fix that sends unregistration messages multiple times.</li>
+<li>You unmapped a route to an app, but traffic to that route is still being sent to the app.</li>
+</ul>
+
+<h3 id="-how-to-locate-stale-routes"><a id="stale-route-triage"></a> How to locate stale routes</h3>
+
+<p>The following procedure helps you identify stale routes:</p>
+
+<ol>
+<li><strong>Verify the state of the deployment</strong>.
+Run <code>cf routes</code> for all spaces and ensure the route is only mapped to the intended apps.
+Sometimes there can be multiple routes using the same hostname and domain, but with different paths.
+If the domain is shared, check all orgs as well.</li>
+<li><strong>Examine the Gorouter routes table</strong>. It might be necessary to check multiple Gorouters, as it is possible that some received the proper deregister message and some did not.
+
+<ol>
+<li>SSH to the VM where Gorouter is running.</li>
+<li>To print the entire Gorouter routes table, run:
+<code>/var/vcap/jobs/gorouter/bin/retrieve-local-routes | jq .</code></li>
+<li>Find the entry for the suspected stale route. Note the values for <code>address</code> and <code>private_instance_id</code>.</li>
+</ol></li>
+<li><strong>Cross-reference the Gorouter routes table entry with actual Long-Running Processes (LRPs)</strong>:
+
+<ol>
+<li>SSH onto the Diego Cell where the IP address matches the IP address that you found on the routes table entry.</li>
+<li>To get information about all of the actual LRPs, run:
+<code>cfdot actual-lrps | jq .&#39;</code></li>
+<li>Look through the actual LRPs to find the instance ID that you noted from the routes table.
+If that instance ID exists and the port in the route table does not exist in the ports section, then there is likely a stale route.</li>
+</ol></li>
+</ol>
+
+<p><p class="note important">
+  <span class="note__title"><strong>Important</strong></span>
+  The CAPI endpoint <code>GET /v3/processes/:guid/stats</code>
+  provides information about the host and ports the app is using, and is intended for use by app developers.
+  This endpoint does not provide complete information for operators. Operators should
+  use the <code>cfdot</code> CLI on the Diego Cell to view the LRPs directly and all at once.
+  </p></p>
+
+<h3 id="-how-to-fix-stale-routes"><a id="stale-routes-fix"></a> How to fix stale routes</h3>
+
+<p>In most cases, you do not have to fix stale routes.
+Stale routes are normal in the routing table.</p>
+
+<p>Gorouter fixes stale routes on its own when SSL verification is activated.
+When Gorouter attempts to send traffic to a stale endpoint, it recognizes that the endpoint is stale.
+Gorouter prunes the stale route and then tries another endpoint.
+Stale routes are only a problem if an end user receives errors.</p>
+
+<p>The following procedure helps you fix stale routes:</p>
+
+<ol>
+<li>Ensure that SSL verification is activated.
+For more information, see <a href="/concepts/http-routing.html#with-tls">With TLS Enabled</a> in <em>HTTP Routing</em>.
+<p class="note important">
+<span class="note__title"><strong>Important</strong></span>
+Using TLS to verify app identity depends on SSL verification.
+If you deactivate SSL verification, there is no way to avoid misrouting.
+</p></li>
+<li>If there is a stale route, then restarting Gorouter fixes the immediate issue.
+If you restart all of the Gorouters, and see the same issue for the exact same route, then the issue is not a stale route. The issue is that a bad route is continuing to be added to the route table no matter how many time Gorouter prunes it.</li>
+<li>If Gorouter is continually missing deregister messages, it might be because either the NATS message bus or the Gorouters are overwhelmed.
+Look at the VM usage and consider scaling.</li>
+</ol>
+
+<h2 id="-gorouter-error-classification-table"><a id="gorouter-error-classification"></a> Gorouter error classification table</h2>
+
+<p>Use this table when you are debugging Gorouter errors.
+The table lists error types, status codes, and indicates if the Gorouter retries the errored request.</p>
+
+<p>For each error, a <code>backend-endpoint-failure</code> log entry appears in <code>gorouter.log</code>
+and an error message in <code>gorouter.err.log</code>.
+Additionally, the <code>access.log</code> records the request status codes.
+For more information about debugging Gorouter errors, see the <a href="https://github.com/cloudfoundry/gorouter#logs">Gorouter documentation</a> on GitHub.</p>
+
+<p>If the request is one that can be retried, Gorouter makes up to <a href="https://github.com/cloudfoundry/gorouter#dynamic-routing-table"><code>max_attemps</code></a> which defaults to 3.</p>
+
+<table class="table">
+  <thead>
+  <th width="15%">Error Type</th>
+  <th width="10%">Status Code</th>
+  <th width="15%">Can be re&#8209;tried?</th>
+  <th width="20%">Source of Issue</th>
+  <th width="40%">Evidence</th>
+  </thead>
+  <tr>
+    <td>Dial</td>
+    <td>502</td>
+    <td>Yes</td>
+    <td>App or Platform</td>
+    <td>Logs with error <code>dial tcp</code></td>
+  </tr>
+  <tr>
+    <td>AttemptedTLSWith<br/>NonTLSBackend</td>
+    <td>525</td>
+    <td>Yes</td>
+    <td>Platform</td>
+    <td>Logs with error <code>tls: first record does not look like a TLS handshake</code> or <code>backend_tls_handshake_failed</code> metric increments</td>
+  </tr>
+  <tr>
+    <td>HostnameMismatch</td>
+    <td>503</td>
+    <td>Yes</td>
+    <td>Platform</td>
+    <td>Logs with error <code>x509: certificate is valid for < x >, not < y > </code><br/> or <code>backend_invalid_id</code> metric increments</td>
+  </tr>
+  <tr>
+    <td>UntrustedCert</td>
+    <td>526</td>
+    <td>Yes</td>
+    <td>Platform</td>
+    <td>Logs with error prefix <code>x509: certificate signed by unknown authority</code> or <code>backend_invalid_tls_cert</code> metric increments</td>
+  </tr>
+  <tr>
+    <td>RemoteFailedCertCheck</td>
+    <td>496</td>
+    <td>Yes</td>
+    <td>Platform</td>
+    <td>Logs with error remote <code>error: tls: bad certificate</code></td>
+  </tr>
+  <tr>
+    <td>ContextCancelled</td>
+    <td> 499</td><td> No</td>
+    <td> Client/App</td>
+    <td> Logs with error <code>context canceled</code><br>
+         This status code appears in logs only.
+         It is never returned to clients as it occurs when the downstream client closes the connection
+         before Gorouter responds.</td>
+  </tr>
+  <tr>
+    <td>RemoteHandshakeFailure</td>
+    <td> 525</td>
+    <td> Yes</td>
+    <td> Platform</td>
+    <td> Logs with error remote <code>error: tls: handshake failure</code> and <code>backend_tls_handshake_failed</code> metric increments</td>
+  </tr>
+  <tr>
+    <td>ExpiredOrNotYetValidCertFailure</td>
+    <td> 502</td>
+    <td> Yes</td>
+    <td> Platform</td>
+    <td> Logs with error <code>x509: certificate has expired or is not yet valid</code>.
+         For example, this error can occur if the Diego Cell clock drifts.</td>
+  </tr>
+  <tr>
+    <td><em>unknown</em></td>
+    <td> 502</td>
+    <td> No</td>
+    <td> App or Platform</td>
+    <td> If the error is not one of the types mentioned earlier, then <code>502</code> is the default response.
+         Gorouter tracks <code>502</code> errors with the <code>gorouter.bad_gateways</code> metric.
+         See <a href="../running/all_metrics.html#routing">Router Error: 502 Bad Gateway</a>.
+         </td>
+  </tr>
+</table>
+
+<h2 id="diagnose-app-errors"><a id="app-errors"></a>Diagnose app errors</h2>
+
+<p>This section describes app-related 502 errors.</p>
+
+<p>When 502 errors only occur in specific app instances and not all app instances on the platform, it is likely an app-related error.
+The app might be overloaded, unresponsive, or unable to connect to the database.</p>
+
+<p>When all apps are experiencing 502 errors, then it could either be a platform issue. For example, a misconfiguration, or an app issue likely all apps being unable to connect to an upstream database.</p>
+
+<p>If the Gorouter has back end keep-alive connections activated, 502 errors can occur due to a race condition when the app instance keep alive idle timeout is less than 90 seconds.</p>
+
+<p>For any other errors that appear in Gorouter access logs, you can analyze application logs if they need further investigation.</p>
+
+<p>Gorouter does not retry any error response returned by the app.</p>
+
+<h3 id="gorouter-specific-response-headers">Gorouter specific response headers</h3>
+
+<p>In the case that Gorouter encounters an error connecting to an application backend, the <code>X-CF-RouterError</code> header is populated to help distinguish the origin of a non-2xx response code.</p>
+
+<p>The value of the <code>X-Cf-Routererror</code> header can be one of the following:</p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>invalid_cf_app_instance_header</td>
+<td>The provided value for the <code>X-Cf-App-Instance</code> header does not match the required format of <code>APP_GUID:INSTANCE_ID</code>.</td>
+</tr>
+<tr>
+<td>empty_host</td>
+<td>The value for the <code>Host</code> header is empty, or the <code>Host</code> header is equivalent to the remote address. Some LB&rsquo;s optimistically set the <code>Host</code> header value with their IP address when there is no value present.</td>
+</tr>
+<tr>
+<td>unknown_route</td>
+<td>The desired route does not exist in the gorouter&rsquo;s route table.</td>
+</tr>
+<tr>
+<td>no_endpoints</td>
+<td>The entry is in the route table for the desired route, but there are no healthy endpoints available.</td>
+</tr>
+<tr>
+<td>Connection Limit Reached</td>
+<td>The backends associated with the route have reached their max number of connections. The max connection number is set via the spec property <code>router.backends.max_conns</code>.</td>
+</tr>
+<tr>
+<td>route_service_unsupported</td>
+<td>Route services are not enabled or WebSockets requests are bound to route services. You can configure route services using the spec property <code>router.route_services_secret</code>. If the property is empty, route services are deactivated.</td>
+</tr>
+<tr>
+<td>endpoint_failure</td>
+<td>The registered endpoint for the desired route failed to handle the request.</td>
+</tr>
+<tr>
+<td>max-request-size-exceeded</td>
+<td>The request line + headers exceeded the configured limit. Either the request has too many headers or the headers are too large. This can be configured via the <code>router.max_request_*</code> and <code>router.max_response_*</code> properties.</td>
+</tr>
+</tbody></table>
+
+        <a id='repo-link' href="https://github.com/cloudfoundry/docs-cf-admin/tree/master/troubleshooting-router-error-responses.html.md.erb">Create a pull request or raise an issue on the source for this page in GitHub</a>
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    <div class="copyright">
+  <a href='/'>Cloud Foundry Documentation</a>
+  &copy; 2026 <a href='https://cloudfoundry.org'>Cloud Foundry Foundation</a>. All Rights Reserved.
+</div>
+<div class="support">
+  <a href="https://www.cloudfoundry.org/community/" target="_blank">Get Involved</a>
+</div>
+
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

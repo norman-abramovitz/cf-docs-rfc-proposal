@@ -1,0 +1,7 @@
+# Heading ids on app-ssh-overview that a converted page must keep: each
+# <a id> the source writes, and the generated id of each heading that has
+# none (the headings round's accepted decision). Read by the outline check's --anchors.
+diego-ssh-concepts
+ssh-access-control-hierarchy
+app-ssh-config
+platform-ssh-config

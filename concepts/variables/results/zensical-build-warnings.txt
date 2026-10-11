@@ -1,0 +1,24 @@
+# Zensical 0.0.69: the build's messages (make build), colours removed. Both modes
+# report the one link that leaves the routes-domains excerpt (#routes).
+NO_COLOR=1 uv run --project . zensical build --clean -f zensical.toml 2>&1 | tee build-passthrough.log
+Build started
+Warning: anchor does not exist
+    ╭─[ routes-domains.md:40:243 ]
+    │
+ 40 │ If a developer pushes an app without specifying a domain, a route is created for it from the first shared domain created in the system. All other operations involving route require the domain be specified. For more information, see [Routes](#routes).
+    │                                                                                                                                                                                                                                                   ───┬──  
+    │                                                                                                                                                                                                                                                      ╰──── anchor does not exist
+────╯
+1 issue found
+Build finished in 0.38s
+NO_COLOR=1 uv run --project . zensical build --clean -f zensical-native.toml 2>&1 | tee build-native.log
+Build started
+Warning: anchor does not exist
+    ╭─[ routes-domains.md:40:243 ]
+    │
+ 40 │ If a developer pushes an app without specifying a domain, a route is created for it from the first shared domain created in the system. All other operations involving route require the domain be specified. For more information, see [Routes](#routes).
+    │                                                                                                                                                                                                                                                   ───┬──  
+    │                                                                                                                                                                                                                                                      ╰──── anchor does not exist
+────╯
+1 issue found
+Build finished in 0.35s

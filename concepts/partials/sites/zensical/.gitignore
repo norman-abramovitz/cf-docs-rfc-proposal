@@ -1,0 +1,5 @@
+.venv/
+site/
+vars.yml
+.cache/
+.check/

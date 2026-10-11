@@ -1,0 +1,5 @@
+# Partials on routes-domains (docs-dev-guide), section "Map a route to multiple apps".
+# The same partial is on troubleshoot-app-health (troubleshoot-app-health.partials).
+# Fields, separated by tabs: include, NAME, SECTION, PLACE, BEFORE, FIRST, LAST, AFTER
+# (see ../checks/partials.py). "-" means none.
+include	routing_conflict	Map a route to multiple apps	body	Map a route to multiple apps	Cloud Foundry allows multiple apps, or versions of the same app	to one of the apps on the shared route.	For more information about troubleshooting this problem

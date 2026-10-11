@@ -1,0 +1,121 @@
+= Troubleshooting router error responses in Cloud Foundry
+
+Are your 502 errors the result of your infrastructure, {app_runtime_abbr}, or an app? This topic helps you understand and
+debug these errors.
+
+[[overview]]
+== Outer error responses overview
+
+[[debugging-steps]]
+== General debugging steps
+
+Some general debugging steps for any issue resulting in 502 errors are as follows:
+
+. Gather the Gorouter logs and Diego Cell logs at the time of the incident. {gather_routing_logs}
+
+. Review the logs and consider the following:
+.. Which errors are the Gorouters returning?
+.. Is Gorouter's routing table accurate? Are the endpoints for the route as expected? For more information, see https://github.com/cloudfoundry/gorouter#dynamic-routing-table[Dynamic Routing Table] in the Gorouter documentation on GitHub.
+.. Do the Diego Cell logs have anything interesting about unexpected app crashes or restarts?
+.. Is the app healthy and handling requests successfully? You can use request tracing headers to verify. For more information, see link:../concepts/http-routing.html#zipkin-headers[HTTP Headers for Zipkin Tracing] in _HTTP Routing_.
+
+. Consider the following:
+** Does your load balancer log 502 errors, but Gorouter does not? This means that traffic is not reaching Gorouter.
+** Was there a recent platform change or upgrade that caused an increase in 502 errors?
+** Are there any suspicious link:{gorouter_metrics_link}[metrics] spiking? How is the CPU and memory utilization?
+
+[[log-formatting]]
+== Log formatting
+
+[[levels]]
+=== Levels
+
+The following table describes the log levels supported by Gorouter.
+The log level is specified in the configuration YAML file for Gorouter.
+
+[subs=attributes+]
+++++
+<table class="table">
+  <thead>
+  <tr>
+    <th>Message</th>
+    <th>Description</th>
+    <th>Examples</th>
+  </tr>
+  </thead>
+  <tr>
+    <td><code>fatal</code></td>
+    <td>Gorouter is unable to handle any requests due to a fatal error.</td>
+    <td>Gorouter cannot bind to its TCP port, a {app_runtime_abbr} component has
+  published invalid data to Gorouter.</td>
+  </tr>
+</table>
+++++
+
+[[message-contents]]
+=== Message contents
+
+[[access-logs]]
+=== Access logs
+
+[[gorouter]]
+== Diagnose Gorouter errors
+
+[[cannot-connect]]
+=== Gorouter cannot connect to the app container
+
+[[connect-error]]
+=== Gorouter errors after connecting
+
+[[diagnose-stale-routes]]
+== Diagnose stale routes in Gorouter
+
+[[stale-routes]]
+=== Causes of stale routes
+
+[[stale-route-triage]]
+=== How to locate stale routes
+
+[[stale-routes-fix]]
+=== How to fix stale routes
+
+[[gorouter-error-classification]]
+== Gorouter error classification table
+
+Use this table when you are debugging Gorouter errors.
+The table lists error types, status codes, and indicates if the Gorouter retries the errored request.
+
+For each error, a `backend-endpoint-failure` log entry appears in `gorouter.log`
+and an error message in `gorouter.err.log`.
+Additionally, the `access.log` records the request status codes.
+For more information about debugging Gorouter errors, see the https://github.com/cloudfoundry/gorouter#logs[Gorouter documentation] on GitHub.
+
+If the request is one that can be retried, Gorouter makes up to https://github.com/cloudfoundry/gorouter#dynamic-routing-table[`max_attemps`] which defaults to 3.
+
+[subs=attributes+]
+++++
+<table class="table">
+  <thead>
+  <th width="15%">Error Type</th>
+  <th width="10%">Status Code</th>
+  <th width="15%">Can be re&#8209;tried?</th>
+  <th width="20%">Source of Issue</th>
+  <th width="40%">Evidence</th>
+  </thead>
+  <tr>
+    <td><em>unknown</em></td>
+    <td> 502</td>
+    <td> No</td>
+    <td> App or Platform</td>
+    <td> If the error is not one of the types mentioned earlier, then <code>502</code> is the default response.
+         Gorouter tracks <code>502</code> errors with the <code>gorouter.bad_gateways</code> metric.
+         See <a href="{gorouter_metrics_link}">Router Error: 502 Bad Gateway</a>.
+         </td>
+  </tr>
+</table>
+++++
+
+[[app-errors]]
+== Diagnose app errors
+
+=== Gorouter specific response headers

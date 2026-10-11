@@ -1,0 +1,14 @@
+# Excerpt of cloudfoundry/docs-book-cloudfoundry config/template_variables.yml
+# at commit 30dfa57692253a6ae1b3df0726444b1e32852c91. See SOURCES.md.
+template_variables:
+  platform_name: Cloud Foundry
+  app_runtime_first: Cloud Foundry
+  app_runtime_abbr: Cloud Foundry
+  product_short: Cloud Foundry
+  external_vol_win_note: <p class="note"><span class="note__title"><strong>Note</strong></span> NFS and SMB volume services are available for Linux cells only. These services are not available for Windows cells.</p>
+  mutual_tls_tcp: <p class="note"><span class="note__title"><strong>Note</strong></span> If you have mutual TLS app identity verification enabled, you must also enable support for TLS backends with TCP Router via the <code>tcp_router.backend_tls.enabled</code> property, and on Route Emitter via the <code>tcp.enable_tls</code> property..</p>
+  recommended_by: Cloud Foundry
+  roles_table: "_oss_roles_table"
+  scale_table: "oss_scale_table"
+  scaling_ert:
+  tcp_iaas: Configure these IPs as your static IPs in your deployment manifest.

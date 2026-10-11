@@ -162,6 +162,15 @@ note to each tool's types, which is open for Docusaurus and Starlight
 ([notes results](../concepts/notes/results.md#how-each-tool-maps-the-kinds); [R-07](../requirements/README.md#r-07)
 notes and admonitions).
 
+The variables and partials rounds add three areas
+([R-04](../requirements/README.md#r-04) variables everywhere,
+[R-05](../requirements/README.md#r-05) partials and reuse). The build
+reports a variable that is not defined
+([variables results](../concepts/variables/results.md#names-that-are-not-defined-and-empty-values)).
+It also reports a missing partial
+([partials results](../concepts/partials/results.md#missing-partials)). And a partial inside a list
+item renders in place ([partials results](../concepts/partials/results.md#where-a-call-sits)).
+
 **Not yet written:** PoC scope for the concepts not yet worked (code
 blocks, cross-repository links), and for Hugo
 and VitePress, which have not been assessed.

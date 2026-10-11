@@ -1,0 +1,3 @@
+= A partial in another component that does not exist
+
+include::shared::partial$does_not_exist.adoc[]

@@ -1,0 +1,7 @@
+# Starlight 0.42.6: make probe. probe/probe.mdoc checked by vars-check.mjs, then
+# built: a name the file does not define (no_such_name), a key with no value
+# (ssl), and a defined name, each between brackets.
+probe.mdoc:5: Undefined variable: 'vars.no_such_name'
+1 variable(s) not defined
+exit status 0
+Undefined: [] empty: [] defined: [Cloud Foundry]

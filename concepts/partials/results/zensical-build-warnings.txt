@@ -1,0 +1,46 @@
+# make build, Zensical 0.0.69, 2026-10-11: the build log (colour codes removed)
+Build started
+Warning: anchor does not exist
+    ╭─[ native/architecture.md:24:103 ]
+    │
+ 24 │ * System Metrics Agents architecture. For more information, see [System Metrics Agents Architecture](#system-metrics-agents).
+    │                                                                                                       ──────────┬──────────  
+    │                                                                                                                 ╰──────────── anchor does not exist
+────╯
+Warning: anchor does not exist
+    ╭─[ native/enabling-tcp-routing.md:35:21 ]
+    │
+ 35 │ Port Reservations](#modify-ports).
+    │                     ──────┬─────  
+    │                           ╰─────── anchor does not exist
+────╯
+Warning: anchor does not exist
+    ╭─[ passthrough/architecture.md:24:103 ]
+    │
+ 24 │ * System Metrics Agents architecture. For more information, see [System Metrics Agents Architecture](#system-metrics-agents).
+    │                                                                                                       ──────────┬──────────  
+    │                                                                                                                 ╰──────────── anchor does not exist
+────╯
+Warning: anchor does not exist
+    ╭─[ passthrough/enabling-tcp-routing.md:35:21 ]
+    │
+ 35 │ Port Reservations](#modify-ports).
+    │                     ──────┬─────  
+    │                           ╰─────── anchor does not exist
+────╯
+Warning: anchor does not exist
+    ╭─[ snippet/architecture.md:24:103 ]
+    │
+ 24 │ * System Metrics Agents architecture. For more information, see [System Metrics Agents Architecture](#system-metrics-agents).
+    │                                                                                                       ──────────┬──────────  
+    │                                                                                                                 ╰──────────── anchor does not exist
+────╯
+Warning: anchor does not exist
+    ╭─[ snippet/enabling-tcp-routing.md:35:21 ]
+    │
+ 35 │ Port Reservations](#modify-ports).
+    │                     ──────┬─────  
+    │                           ╰─────── anchor does not exist
+────╯
+6 issues found
+Build finished in 0.53s

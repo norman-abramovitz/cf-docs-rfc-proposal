@@ -1,0 +1,179 @@
+# make check, Zensical 0.0.69, 2026-10-11: partials, outline and notes checks on every page in passthrough, native, snippet and variable
+== passthrough/architecture
+ok    outline: 4 headings, same levels and text
+ok    anchors: all 4 exist
+info  anchors not on a heading: #loggregator-architecture
+info  ids used more than once on the built page (1): #shared-nothing-architecture
+info  published heading ids not on the built page (3): #-architecture-reference-diagrams #-loggregator-firehose-architecture #-shared-nothing-architecture
+ok    log_cache (Log Cache allows viewing of logs and met…): in 'Loggregator Firehose architecture', list
+ok    syslog_agents (Syslog Agents run on Cloud Foundry VMs…): in 'Shared-nothing architecture', list
+ok    log_cache (Log Cache allows viewing of logs and met…): in 'Shared-nothing architecture', list
+ok    no include syntax left
+ok    no id inside an included span is used twice
+info  other ids used more than once: #shared-nothing-architecture
+== passthrough/enabling-tcp-routing
+ok    outline: 2 headings, same levels and text
+ok    anchors: all 1 exist
+info  published heading ids not on the built page (1): #-prerequisites-for-activating-tcp-routing
+FAIL  tcp_modify_ports ((Optional) Configure the routing_api.rou…): its last words are in body, expected list
+ok    no include syntax left
+ok    no id inside an included span is used twice
+ok    count: 1 notes
+ok    note 1: note -> note, title 'Note', 32 words, code=2, body
+== passthrough/high-availability
+ok    outline: 2 headings, same levels and text
+ok    anchors: all 1 exist
+info  published heading ids not on the built page (1): #-recommended-instance-counts-for-high-availability
+ok    oss_scale_table (The following table provides recommended…): in 'Recommended instance counts for high availability', body/table
+ok    no include syntax left
+ok    no id inside an included span is used twice
+== passthrough/routes-domains
+ok    outline: 2 headings, same levels and text
+ok    anchors: all 1 exist
+ok    routing_conflict (Cloud Foundry allows multiple apps, or v…): in 'Map a route to multiple apps', body
+ok    no include syntax left
+ok    no id inside an included span is used twice
+== passthrough/troubleshoot-app-health
+ok    outline: 2 headings, same levels and text
+ok    anchors: all 1 exist
+info  ids used more than once on the built page (1): #routing-conflict
+info  published heading ids not on the built page (1): #-routing-conflict
+ok    routing_conflict (Cloud Foundry allows multiple apps, or v…): in 'Routing conflict', body
+ok    no include syntax left
+ok    no id inside an included span is used twice
+info  other ids used more than once: #routing-conflict
+== passthrough/using-vol-services
+ok    outline: 3 headings, same levels and text
+ok    anchors: all 2 exist
+info  published heading ids not on the built page (2): #-create-and-use-nfs-volume-services #-create-an-nfs-volume-service
+ok    using-vol-services (Here are instructions to help you read a…): in 'Using an external file system (volume services)', body/list
+ok    external_vol_win_note (a variable; a partial in native) (NFS and SMB volume services are availabl…): in 'Using an external file system (volume services)', body
+ok    no include syntax left
+ok    no id inside an included span is used twice
+FAIL  toc: 0 of 2 ids; missing #nfs #create-nfs
+ok    count: 4 notes
+ok    note 1: note -> note, title 'Note', 19 words, -, body
+ok    note 2: note -> note, title 'Note', 7 words, -, body
+ok    note 3: important -> important, title 'Important', 12 words, code=1, list
+ok    note 4: important -> important, title 'Important', 71 words, code=3, list
+== native/architecture
+ok    outline: 4 headings, same levels and text
+ok    anchors: all 4 exist
+info  anchors not on a heading: #loggregator-architecture
+info  published heading ids not on the built page (3): #-architecture-reference-diagrams #-loggregator-firehose-architecture #-shared-nothing-architecture
+ok    log_cache (Log Cache allows viewing of logs and met…): in 'Loggregator Firehose architecture', list
+ok    syslog_agents (Syslog Agents run on Cloud Foundry VMs…): in 'Shared-nothing architecture', list
+ok    log_cache (Log Cache allows viewing of logs and met…): in 'Shared-nothing architecture', list
+ok    no include syntax left
+ok    no id inside an included span is used twice
+== native/enabling-tcp-routing
+ok    outline: 2 headings, same levels and text
+ok    anchors: all 1 exist
+info  published heading ids not on the built page (1): #-prerequisites-for-activating-tcp-routing
+ok    tcp_modify_ports ((Optional) Configure the routing_api.rou…): in 'Prerequisites for activating TCP routing', list
+ok    no include syntax left
+ok    no id inside an included span is used twice
+ok    count: 1 notes
+ok    note 1: note -> note, title 'Note', 32 words, code=2, body
+== native/high-availability
+ok    outline: 2 headings, same levels and text
+ok    anchors: all 1 exist
+info  published heading ids not on the built page (1): #-recommended-instance-counts-for-high-availability
+ok    oss_scale_table (The following table provides recommended…): in 'Recommended instance counts for high availability', body/table
+ok    no include syntax left
+ok    no id inside an included span is used twice
+== native/routes-domains
+ok    outline: 2 headings, same levels and text
+ok    anchors: all 1 exist
+ok    routing_conflict (Cloud Foundry allows multiple apps, or v…): in 'Map a route to multiple apps', body
+ok    no include syntax left
+ok    no id inside an included span is used twice
+== native/troubleshoot-app-health
+ok    outline: 2 headings, same levels and text
+ok    anchors: all 1 exist
+info  published heading ids not on the built page (1): #-routing-conflict
+ok    routing_conflict (Cloud Foundry allows multiple apps, or v…): in 'Routing conflict', body
+ok    no include syntax left
+ok    no id inside an included span is used twice
+== native/using-vol-services
+ok    outline: 3 headings, same levels and text
+ok    anchors: all 2 exist
+info  published heading ids not on the built page (2): #-create-and-use-nfs-volume-services #-create-an-nfs-volume-service
+ok    using-vol-services (Here are instructions to help you read a…): in 'Using an external file system (volume services)', body/list
+ok    external_vol_win_note (a variable; a partial in native) (NFS and SMB volume services are availabl…): in 'Using an external file system (volume services)', body
+ok    no include syntax left
+ok    no id inside an included span is used twice
+ok    toc: all 2 ids
+ok    count: 4 notes
+ok    note 1: note -> note, title 'Note', 19 words, -, body
+ok    note 2: note -> note, title 'Note', 7 words, -, body
+ok    note 3: important -> important, title 'Important', 12 words, code=1, list
+ok    note 4: important -> important, title 'Important', 71 words, code=3, list
+== snippet/architecture
+ok    outline: 4 headings, same levels and text
+ok    anchors: all 4 exist
+info  anchors not on a heading: #loggregator-architecture
+info  published heading ids not on the built page (3): #-architecture-reference-diagrams #-loggregator-firehose-architecture #-shared-nothing-architecture
+ok    log_cache (Log Cache allows viewing of logs and met…): in 'Loggregator Firehose architecture', list
+FAIL  syslog_agents (Syslog Agents run on Cloud Foundry VMs…): partial not found after 'Syslog Agent:'
+ok    log_cache (Log Cache allows viewing of logs and met…): in 'Shared-nothing architecture', list
+FAIL  'Syslog Agents run on Cloud Foundry VMs' appears 0 times, expected 1
+FAIL  leftover ERB tag: 'ent: <p>Syslog Agents run on <%= vars.platform_name %> VMs to collect and forward'
+FAIL  leftover ERB tag: 'd to an application or in the <%= vars.app_runtime_abbr %> configuration for all a'
+ok    no id inside an included span is used twice
+== snippet/enabling-tcp-routing
+ok    outline: 2 headings, same levels and text
+ok    anchors: all 1 exist
+info  published heading ids not on the built page (1): #-prerequisites-for-activating-tcp-routing
+ok    tcp_modify_ports ((Optional) Configure the routing_api.rou…): in 'Prerequisites for activating TCP routing', list
+ok    no include syntax left
+ok    no id inside an included span is used twice
+ok    count: 1 notes
+ok    note 1: note -> note, title 'Note', 32 words, code=2, body
+== snippet/high-availability
+ok    outline: 2 headings, same levels and text
+ok    anchors: all 1 exist
+info  published heading ids not on the built page (1): #-recommended-instance-counts-for-high-availability
+ok    oss_scale_table (The following table provides recommended…): in 'Recommended instance counts for high availability', body/table
+FAIL  leftover ERB tag: 'and deregistration messages. <%= vars.recommended_by %> recommends scaling NATS V'
+ok    no id inside an included span is used twice
+== snippet/routes-domains
+ok    outline: 2 headings, same levels and text
+ok    anchors: all 1 exist
+FAIL  routing_conflict (Cloud Foundry allows multiple apps, or v…): partial not found after 'Map a route to multiple apps'
+FAIL  'Cloud Foundry allows multiple apps, or versions of' appears 0 times, expected 1
+FAIL  leftover ERB tag: '" title="Permanent link"> <p><%=vars.product_short%> allows multiple apps, or ver'
+ok    no id inside an included span is used twice
+== snippet/troubleshoot-app-health
+ok    outline: 2 headings, same levels and text
+ok    anchors: all 1 exist
+info  published heading ids not on the built page (1): #-routing-conflict
+FAIL  routing_conflict (Cloud Foundry allows multiple apps, or v…): partial not found after 'Routing conflict'
+FAIL  'Cloud Foundry allows multiple apps, or versions of' appears 0 times, expected 1
+FAIL  leftover ERB tag: '" title="Permanent link"> <p><%=vars.product_short%> allows multiple apps, or ver'
+ok    no id inside an included span is used twice
+== snippet/using-vol-services
+ok    outline: 3 headings, same levels and text
+ok    anchors: all 2 exist
+info  published heading ids not on the built page (2): #-create-and-use-nfs-volume-services #-create-an-nfs-volume-service
+ok    using-vol-services (Here are instructions to help you read a…): in 'Using an external file system (volume services)', body/list
+FAIL  external_vol_win_note (a variable; a partial in native) (NFS and SMB volume services are availabl…): partial not found after 'or write to a reliable, persistent file system.'
+FAIL  'NFS and SMB volume services are available for Linu' appears 0 times, expected 1
+FAIL  leftover ERB tag: 'ile system from your apps. In <%= vars.app_runtime_first %>, a volume service prov'
+FAIL  leftover ERB tag: 'e, persistent file system. <p><% include "native/_external_vol_win_note.md" %> <h2'
+FAIL  leftover ERB tag: 'se the NFS volume service. <p><%= vars.app_runtime_abbr %> offers two NFS volume s'
+ok    no id inside an included span is used twice
+ok    toc: all 2 ids
+FAIL  count: expected 4 notes, found 3
+FAIL  note 1 (note, material:note): section 'Create and use NFS volume services', expected 'Using an external file system (volume services)'; text differs at word 2: expected 'and SMB volume services are available', found 'is not available on Windows systems.'
+FAIL  note 2 (note, material:important): kind 'important', expected 'note'; title 'Important', expected 'Note'; holds code=1, expected -; section 'Create an NFS volume service', expected 'Create and use NFS volume services'; place list, expected body; text differs at word 1: expected 'NFS is not available on Windows', found 'Omit the : that usually follows'
+FAIL  note 3 (important, material:important): holds code=3, expected code=1; text differs at word 1: expected 'Omit the : that usually follows', found 'nfs-volume versions v7.1.45 - v7.1.47 ship'
+FAIL  note 4: missing (important: nfs-volume versions v7.1.45 - v7.1.47 ship with a recent ver)
+== variable/high-availability--include
+ok    outline: 2 headings, same levels and text
+ok    anchors: all 1 exist
+info  published heading ids not on the built page (1): #-recommended-instance-counts-for-high-availability
+ok    oss_scale_table (The following table provides recommended…): in 'Recommended instance counts for high availability', body/table
+ok    no include syntax left
+ok    no id inside an included span is used twice
+exit status 1

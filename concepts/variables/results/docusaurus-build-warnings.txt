@@ -1,0 +1,43 @@
+# Docusaurus 3.10.2: the build's messages (make build). Links to pages outside
+# the test set are reported in both modes; in passthrough, the Markdown link
+# whose target is a variable is reported as a link to %7Bvars.gorouter_metrics_link%7D.
+[INFO] [en] Creating an optimized production build...
+[WARNING] Docusaurus found broken links!
+Please check the pages of your site in the list below, and make sure you don't reference any path that does not exist.
+Note: it's possible to ignore broken links with the 'onBrokenLinks' Docusaurus configuration, and let the build pass.
+Exhaustive list of all broken links found:
+- Broken link on source page path = /native/all_metrics:
+   -> linking to ../loggregator/architecture.html (resolved as: /loggregator/architecture.html)
+   -> linking to ../uaa/uaa-metrics.html (resolved as: /uaa/uaa-metrics.html)
+- Broken link on source page path = /native/app-ssh-overview:
+   -> linking to ../../concepts/diego/ssh-conceptual.html (resolved as: /concepts/diego/ssh-conceptual.html)
+   -> linking to ./ssh-apps.html (resolved as: /native/ssh-apps.html)
+- Broken link on source page path = /native/container-security:
+   -> linking to security.html (resolved as: /native/security.html)
+- Broken link on source page path = /native/routes-domains:
+   -> linking to identity-aware-routing.html (resolved as: /native/identity-aware-routing.html)
+- Broken link on source page path = /native/troubleshooting-router-error-responses:
+   -> linking to ../concepts/http-routing.html#zipkin-headers (resolved as: /concepts/http-routing.html#zipkin-headers)
+- Broken link on source page path = /passthrough/all_metrics:
+   -> linking to ../loggregator/architecture.html (resolved as: /loggregator/architecture.html)
+   -> linking to ../uaa/uaa-metrics.html (resolved as: /uaa/uaa-metrics.html)
+- Broken link on source page path = /passthrough/app-ssh-overview:
+   -> linking to ../../concepts/diego/ssh-conceptual.html (resolved as: /concepts/diego/ssh-conceptual.html)
+   -> linking to ./ssh-apps.html (resolved as: /passthrough/ssh-apps.html)
+- Broken link on source page path = /passthrough/container-security:
+   -> linking to security.html (resolved as: /passthrough/security.html)
+- Broken link on source page path = /passthrough/routes-domains:
+   -> linking to identity-aware-routing.html (resolved as: /passthrough/identity-aware-routing.html)
+- Broken link on source page path = /passthrough/troubleshooting-router-error-responses:
+   -> linking to ../concepts/http-routing.html#zipkin-headers (resolved as: /concepts/http-routing.html#zipkin-headers)
+   -> linking to %7Bvars.gorouter_metrics_link%7D (resolved as: /passthrough/%7Bvars.gorouter_metrics_link%7D)
+[WARNING] Docusaurus found broken anchors!
+Please check the pages of your site in the list below, and make sure you don't reference any anchor that does not exist.
+Note: it's possible to ignore broken anchors with the 'onBrokenAnchors' Docusaurus configuration, and let the build pass.
+Exhaustive list of all broken anchors found:
+- Broken anchor on source page path = /native/routes-domains:
+   -> linking to #routes (resolved as: /native/routes-domains#routes)
+- Broken anchor on source page path = /passthrough/routes-domains:
+   -> linking to #routes (resolved as: /passthrough/routes-domains#routes)
+[SUCCESS] Generated static files in "build".
+[INFO] Use `npm run serve` command to test your build locally.

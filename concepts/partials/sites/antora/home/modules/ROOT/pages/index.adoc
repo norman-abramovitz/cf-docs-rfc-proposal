@@ -1,0 +1,11 @@
+= Partials round
+
+Test pages from the partials round. passthrough: each partial a file
+beside its page in `pages/`, named as today with a leading underscore (so
+Antora does not publish it), included with a relative `include::` where
+the ERB call was, its content as the earlier rounds' passthrough. native:
+each partial in the module's `partials/` folder, included with
+`include::partial$...[]`, its content AsciiDoc; one shared partial lives
+in a component of its own, `shared`. variable: a partial chosen by an
+attribute. raw: the ERB call as written. probe: one partial with a
+heading, included twice.

@@ -1,0 +1,8 @@
+# Partials on architecture (docs-loggregator), the "Architecture reference diagrams" section up to
+# "System Metrics Agents architecture": a partial after the bold label of a list item, three times,
+# the same partial twice.
+# Fields, separated by tabs: include, NAME, SECTION, PLACE, BEFORE, FIRST, LAST, AFTER
+# (see ../checks/partials.py). "-" means none.
+include	log_cache	Loggregator Firehose architecture	list	Log Cache:	Log Cache allows viewing of logs and metrics	see Log Cache on GitHub.	Log Cache Syslog Server:
+include	syslog_agents	Shared-nothing architecture	list	Syslog Agent:	Syslog Agents run on Cloud Foundry VMs	including Diego Cells, Routers, and Cloud Controllers.	Syslog Binding Cache
+include	log_cache	Shared-nothing architecture	list	Log Cache:	Log Cache allows viewing of logs and metrics	see Log Cache on GitHub.	Log Cache Syslog Server:

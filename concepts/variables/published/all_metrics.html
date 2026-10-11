@@ -1,0 +1,2488 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  <style type="text/css">@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin-ext/300/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin/300/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/vietnamese/300/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic-ext/300/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic/300/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek/300/normal.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek-ext/300/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin/300/italic.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/vietnamese/300/italic.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin-ext/300/italic.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic-ext/300/italic.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek/300/italic.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic/300/italic.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek-ext/300/italic.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin/400/italic.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/vietnamese/400/italic.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek-ext/400/italic.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek/400/italic.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic/400/italic.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin-ext/400/italic.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic-ext/400/italic.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin/400/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin-ext/400/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/vietnamese/400/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic/400/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic-ext/400/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek/400/normal.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek-ext/400/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic/600/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek-ext/600/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic-ext/600/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin-ext/600/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin/600/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek/600/normal.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/vietnamese/600/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}</style>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      Cloud Foundry Component Metrics |
+    Cloud Foundry Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  <script type="text/javascript">
+if (window.location.host === 'docs.cloudfoundry.org') {
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22181585-2']);
+  _gaq.push(['_setDomainName', 'cloudfoundry.org']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script');
+    ga.type = 'text/javascript';
+    ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ga, s);
+  })();
+}
+</script>
+
+
+</head>
+
+<body class="running running_all_metrics has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "cloudfoundry.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Cloud Foundry Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      
+      <div class="header-item">
+        <a href="https://www.cloudfoundry.org/community/" target="_blank">Get Involved</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="js-sidenav collapsible nav-container" role="navigation" data-behavior="Collapsible">
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+  Doc Index
+  </a>
+  <div class="nav-content">
+    <ul>
+      <li><strong>General Information</strong></li>
+      <li class=""><a href="/concepts/contribute.html">Contribute to Cloud Foundry documentation</a></li>
+      <li class="has_submenu"><a href="/concepts/index.html">Cloud Foundry concepts</a>
+        <ul>
+          <li class=""><a href="/concepts/overview.html">Cloud Foundry overview</a></li>
+          <li class="has_submenu"><a href="/concepts/security-index.html">Security and networking</a>
+            <ul>
+              <li class=""><a href="/concepts/security.html">Cloud Foundry security</a></li>
+              <li class=""><a href="/concepts/container-security.html">Container security in Cloud Foundry</a></li>
+              <li class=""><a href="/concepts/understand-cf-networking.html">Container-to-container networking</a></li>
+              <li class=""><a href="/concepts/identity-aware-routing.html">Identity-aware routing</a></li>
+              <li class=""><a href="/concepts/roles.html">Orgs, spaces, roles, and permissions in Cloud Foundry</a></li>
+              <li class=""><a href="/concepts/managing-roles.html">Managing Roles</a></li>
+              <li class=""><a href="/concepts/orgs-and-spaces.html">Planning orgs and spaces in Cloud Foundry</a></li>
+              <li class=""><a href="/concepts/asg.html">App Security Groups in Cloud Foundry</a></li>
+              <li class=""><a href="/concepts/diego/ssh-conceptual.html">Cloud Foundry app SSH components and processes</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/concepts/ha-index.html">High availability</a>
+            <ul>
+              <li class=""><a href="/concepts/high-availability.html">High availability in Cloud Foundry</a></li>
+              <li class=""><a href="/concepts/maintaining-high-availability.html">How Cloud Foundry maintains high availability</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/concepts/apps-index.html">How Cloud Foundry manages apps</a>
+            <ul>
+              <li class=""><a href="/concepts/how-applications-are-staged.html">Staging your apps in Cloud Foundry</a></li>
+              <!-- file lives in docs-dev-guide, not docs-cloudfoundry-concepts -->
+              <li class=""><a href="/devguide/deploy-apps/app-lifecycle.html">The app container lifecycle on Diego architecture</a></li>
+              <li class=""><a href="/concepts/diego/diego-auction.html">How Diego balances app processes in Cloud Foundry</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/concepts/architecture/index.html">Cloud Foundry components</a>
+            <ul>
+              <li class=""><a href="/concepts/diego/diego-architecture.html">Diego components and architecture</a></li>
+              <li class=""><a href="/concepts/cf-routing-architecture.html">Cloud Foundry routing architecture</a></li>
+              <li class=""><a href="/concepts/architecture/cloud-controller.html">Cloud Controller</a></li>
+              <li class=""><a href="/concepts/cc-blobstore.html">Cloud Controller blobstore</a></li>
+              <li class=""><a href="/concepts/architecture/uaa.html">User Account and Authentication server</a></li>
+              <li class=""><a href="/concepts/architecture/garden.html">Garden component</a></li>
+              <li class=""><a href="/concepts/grootfs-disk.html">GrootFS disk usage in Cloud Foundry</a></li>
+              <li class=""><a href="/concepts/http-routing.html">HTTP routing</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="has_submenu"><span>Cloud Foundry Command Line Interface (cf CLI)</span>
+        <ul>
+          <li class=""><a href="/cf-cli/install-go-cli.html">Installing the cf CLI</a></li>
+          <li class=""><a href="/cf-cli/v8.html">Upgrading to cf CLI v8</a></li>
+          <li class=""><a href="/cf-cli/getting-started.html">Getting started with the cf CLI</a></li>
+          <li class=""><a href="/cf-cli/http-proxy.html">Using the cf CLI with a proxy server</a></li>
+          <li class=""><a href="/cf-cli/self-signed.html">Using the cf CLI with a self-signed certificate</a></li>
+          <li class=""><a href="/cf-cli/use-cli-plugins.html">Using cf CLI plug-ins</a></li>
+          <li class=""><a href="/cf-cli/develop-cli-plugins.html">Developing cf CLI plug-ins</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>
+          <hr>
+        </span>
+      </li>
+      <li><strong>Information for Operators</strong></li>
+      <li class="has_submenu"><a href="/deploying/index.html">Deploying Cloud Foundry</a>
+        <ul>
+          <li class=""><a href="/deploying/common/dns_prereqs.html">Setting up DNS for your environment</a></li>
+          <li class="has_submenu"><a href="/deploying/cf-deployment/index.html">Deploying Cloud Foundry with cf-deployment</a>
+            <ul>
+              <li class=""><a href="/deploying/common/aws.html">Deploying BOSH on AWS</a></li>
+              <li class=""><a href="/deploying/cf-deployment/gcp.html">Deploying BOSH on GCP</a></li>
+              <li class=""><a href="/deploying/cf-deployment/deploy-cf.html">Deploying Cloud Foundry</a></li>
+              <li class=""><a href="/deploying/cf-deployment/enable-identity-aware-routing.html">Enabling identity-aware routing</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/bbr/index.html">Backing up and restoring with BBR</a></li>
+          <li class="has_submenu"><span>Additional configuration</span>
+            <ul>
+              <li class=""><a href="/deploying/common/cc-blobstore-config.html">Cloud Controller blobstore configuration</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="has_submenu"><a href="/adminguide/index.html">Administering Cloud Foundry</a>
+        <ul>
+          <li class="has_submenu"><a href="/adminguide/platform-index.html">Managing the runtime</a>
+            <ul>
+              <li class=""><a href="/adminguide/start-stop-vms.html">Stopping and starting virtual machines</a></li>
+              <li class=""><a href="/adminguide/quota-plans.html">Creating and modifying quota plans</a></li>
+              <li class=""><a href="/adminguide/listing-feature-flags.html">Using feature flags</a></li>
+              <li class=""><a href="/adminguide/examining_grootfs_disk.html">Examining GrootFS disk usage</a></li>
+              <li class=""><a href="/adminguide/metadata.html">Using metadata</a></li>
+              <li class=""><a href="/adminguide/buildpacks.html">Managing custom buildpacks</a></li>
+              <li class=""><a href="/adminguide/docker.html">Using Docker in Cloud Foundry</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/adminguide/user-accounts-index.html">User accounts and communications</a>
+            <ul>
+              <li class=""><a href="/adminguide/cli-user-management.html">Creating and managing users with the cf CLI</a></li>
+              <li class=""><a href="/uaa/uaa-user-management.html">Creating and managing users with the UAA CLI (UAAC)</a></li>
+              <li class=""><a href="/adminguide/notifications.html">Get started with the Notifications Service</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/adminguide/routing-index.html">Routing</a>
+            <ul>
+              <li class=""><a href="/adminguide/enabling_ipv6.html">Enabling IPv6 for hosted apps</a></li>
+              <li class=""><a href="/adminguide/distributed-tracing.html">Distributed tracing</a></li>
+              <li class=""><a href="/adminguide/zipkin_tracing.html">Enabling Zipkin tracing</a></li>
+              <li class=""><a href="/adminguide/w3c_tracing.html">Enabling W3C tracing</a></li>
+              <li class=""><a href="/adminguide/supporting-websockets.html">Supporting WebSockets</a></li>
+              <li class=""><a href="/adminguide/configure-lb-healthcheck.html">Configuring load balancer health checks for CF routers</a></li>
+              <li class=""><a href="/adminguide/troubleshooting_slow_requests.html">Troubleshooting slow requests</a></li>
+              <li class=""><a href="/adminguide/troubleshooting-router-error-responses.html">Troubleshooting router error responses</a></li>
+              <li class=""><a href="/adminguide/securing-traffic.html">Securing incoming traffic</a></li>
+              <li class=""><a href="/devguide/deploy-apps/trusted-system-certificates.html">Configuring trusted system certificates for apps</a></li>
+              <li class=""><a href="/adminguide/bbs-encryption-keys.html">Bulletin Board System data store encryption</a></li>
+              <li class=""><a href="/adminguide/enabling-tcp-routing.html">Enabling and configuring TCP routing</a></li>
+              <li class=""><a href="/adminguide/supporting-http2.html">Configuring HTTP/2 support</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/adminguide/isolation-segment-index.html">Isolation segments</a>
+            <ul>
+              <li class=""><a href="/adminguide/isolation-segments.html">Managing isolation segments</a></li>
+              <li class=""><a href="/adminguide/routing-is.html">Routing for isolation segments</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu">
+            <a href="/adminguide/delayed-jobs-index.html">Delayed jobs in Cloud Foundry</a>
+            <ul>
+              <li class="">
+                <a href="/adminguide/configuring-delayed-job-priorities.html">Configuring delayed job priorities with Cloud Controller</a>
+              </li>
+            </ul>
+          </li>
+          <li class="has_submenu">
+            <a href="/adminguide/managing-apps-stacks-index.html">Managing apps and their stacks</a>
+            <ul>
+              <li class=""><a href="/adminguide/stack-auditor.html">Using Stack Auditor</a></li>
+              <li class=""><a href="/adminguide/managing-stacks.html">Managing stack lifecycle</a></li>
+              <li class=""><a href="/devguide/deploy-apps/stacks.html">Changing stacks</a></li>
+              <li class=""><a href="/devguide/deploy-apps/windows-stacks.html">Restaging your apps on a Windows stack</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="has_submenu"><a href="/running/">Running and Troubleshooting Cloud Foundry</a>
+        <ul>
+          <li class=""><a href="/running/managing-cf/logging.html">Cloud Foundry logging</a></li>
+          <li class=""><a href="/running/managing-cf/logging-config.html">Configuring system logging</a></li>
+          <li class=""><a href="/running/diego-upgrades.html">Configuring Diego for upgrades</a></li>
+          <li class=""><a href="/running/managing-cf/audit-events.html">Audit Events</a></li>
+          <li class=""><a href="/running/managing-cf/uaa-audit-requirements.html">UAA audit requirements</a></li>
+          <li class=""><a href="/running/managing-cf/usage-events.html">Usage events and billing</a></li>
+          <li class=""><a href="/running/config-ssh.html">Configuring SSH access for Cloud Foundry</a></li>
+          <li class=""><a href="/running/config-cell-cleanup.html">Configuring Diego Cell disk cleanup scheduling</a></li>
+          <li class=""><a href="/running/hm-notifications.html">Configuring Health Monitor Notifications</a></li>
+          <li class=""><a href="/running/custom-stack.html">Adding a custom stack</a></li>
+          <li class=""><a href="/running/monitoring-test.html">Monitoring and testing Diego components</a></li>
+          <li class=""><a href="/running/troubleshooting.html">Troubleshooting Cloud Foundry</a></li>
+          <li class=""><a href="/running/uaa-performance.html">UAA performance</a></li>
+          <li class=""><a href="/uaa/uaa-metrics.html">UAA performance metrics</a></li>
+          <li class=""><a href="/running/managing-cf/scaling-cloud-controller.html">Scaling Cloud Controller</a></li>
+          <li class=""><a href="/running/managing-cf/multi-process-cloud-controller.html">Cloud Controller Multi-Process Mode (Puma)</a></li>
+          <li class=""><a href="/running/managing-cf/scaling-cloud-controller-k8s.html">Scaling Cloud Controller (cf-for-k8s)</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu"><span>Logging and metrics in Cloud Foundry</span>
+        <ul>
+          <li class=""><a href="/loggregator/architecture.html">Logging and metrics architecture</a></li>
+          <li class=""><a href="/loggregator/cli-plugin.html">Installing the Loggregator plug-in for cf CLI</a></li>
+          <li class=""><a href="/loggregator/cc-uaa-logging.html">Security event logging</a></li>
+          <li class=""><a href="/devguide/deploy-apps/streaming-logs.html">App logging in Cloud Foundry</a></li>
+          <li class=""><a href="/loggregator/app-log-rate-limits.html">Limiting your app log rate in Cloud Foundry</a></li>
+          <li class=""><a href="/running/all_metrics.html">Cloud Foundry component metrics</a></li>
+          <li class=""><a href="/loggregator/container-metrics.html">Container metrics</a></li>
+          <li class=""><a href="/loggregator/log-ops-guide.html">Loggregator guide for Cloud Foundry operators</a></li>
+          <li class=""><a href="/loggregator/data-sources.html">Logging and metrics in Cloud Foundry</a></li>
+          <li class=""><a href="/loggregator/opentelemetry.html">Configuring the OpenTelemetry Collector</a></li>
+          <li class=""><a href="/loggregator/nozzle-tutorial.html">Deploying a nozzle to your Cloud Foundry Loggregator Firehose</a></li>
+        </ul>
+      </li>
+      <li class=""><a href="http://bosh.io/docs/">BOSH Documentation</a></li>
+      <li class="has_submenu"><a href="/bbr/index.html">BOSH Backup and Restore (BBR)</a>
+        <ul>
+          <li class=""><a href="/bbr/installing.html">Installing BBR</a></li>
+          <li class=""><a href="https://github.com/cloudfoundry-incubator/bosh-backup-and-restore/releases">Release notes for BBR</a></li>
+          <li class=""><a href="/bbr/backup.html">Backing up with BBR</a></li>
+          <li class=""><a href="/bbr/restore.html">Restoring with BBR</a></li>
+          <li class=""><a href="/bbr/cf-backup.html">Configuring Cloud Foundry for BOSH Backup and Restore</a></li>
+          <li class=""><a href="/bbr/external-blobstores.html">Backup and restore for external blobstores</a></li>
+          <li class=""><a href="/bbr/logging.html">BBR logging</a></li>
+          <li class=""><a href="/bbr/experimental-features.html">Advanced features</a></li>
+          <li class=""><a href="/bbr/bbr-devguide.html">BBR developer's guide</a></li>
+        </ul>
+      </li>
+      <li><span><hr></span></li>
+      <li><strong>Information for developers</strong></li>
+      <li class="has_submenu"><a href="/devguide/index.html">Developing and managing apps</a>
+        <ul>
+          <li class="has_submenu"><a href="/devguide/push.html">How to push your app with Cloud Foundry CLI (cf push)</a>
+            <ul>
+              <li class=""><a href="/devguide/deploy-apps/deploy-app.html">Pushing your app using Cloud Foundry CLI (cf push)</a></li>
+              <li class=""><a href="/devguide/deploy-apps/manifest.html">Deploying with app manifests</a></li>
+              <li class=""><a href="/devguide/deploy-apps/manifest-attributes.html">App manifest attribute reference</a></li>
+              <li class=""><a href="/devguide/deploy-apps/push-docker.html">Deploying an app with Docker</a></li>
+              <li class=""><a href="/devguide/deploy-apps/large-app-deploy.html">Deploying your large apps</a></li>
+              <li class=""><a href="/devguide/deploy-apps/start-restart-restage.html">Starting, restarting, and restaging apps</a></li>
+              <li class=""><a href="/devguide/multiple-processes.html">Pushing an app with multiple processes</a></li>
+              <li class=""><a href="/devguide/push-sub-commands.html">Running cf push sub-step commands</a></li>
+              <li class=""><a href="/devguide/deploy-apps/rolling-deploy.html">Configuring app deployments</a></li>
+              <li class=""><a href="/devguide/sidecars.html">Pushing apps with sidecar processes</a></li>
+              <li class=""><a href="/devguide/deploy-apps/blue-green.html">Using blue-green deployment to reduce downtime</a></li>
+              <li class=""><a href="/devguide/deploy-apps/troubleshoot-app-health.html">Troubleshooting app deployment and health</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/devguide/ssh-index.html">SSH for apps and services</a>
+            <ul>
+              <li class=""><a href="/devguide/deploy-apps/app-ssh-overview.html">Configuring SSH access for your deployment</a></li>
+              <li class=""><a href="/devguide/deploy-apps/ssh-apps.html">Accessing your apps with SSH</a></li>
+              <li class=""><a href="/devguide/deploy-apps/ssh-services.html">Accessing services with SSH</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/devguide/routing-index.html">Routes and domains</a>
+            <ul>
+              <li class=""><a href="/devguide/deploy-apps/routes-domains.html">Configuring routes and domains</a></li>
+              <li class=""><a href="/devguide/custom-per-route-options.html">Configuring per-route options</a></li>
+              <li class=""><a href="/devguide/deploy-apps/identity-aware-routing.html">Configuring identity-aware routing</a></li>
+              <li class=""><a href="/devguide/hash-based-routing.html">Hash-Based Routing</a></li>
+              <li class=""><a href="/devguide/custom-ports.html">Configuring CF to route traffic to apps on custom ports</a></li>
+              <li class=""><a href="/devguide/http2-protocol.html">Routing HTTP/2 and gRPC traffic to apps</a></li>
+              <!-- file lives in docs-cf-admin, not docs-dev-guide -->
+              <li class=""><a href="/adminguide/troubleshooting_tcp_routing.html">Troubleshooting TCP routing</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/devguide/services-index.html">Managing services</a>
+            <ul>
+              <li class=""><a href="/devguide/services/index.html">Provisioning and integrating service instances</a></li>
+              <li class=""><a href="/devguide/services/managing-services.html">Managing service instances</a></li>
+              <li class=""><a href="/devguide/services/sharing-instances.html">Sharing service instances</a></li>
+              <li class=""><a href="/devguide/services/application-binding.html">Delivering service credentials to an app</a></li>
+              <li class=""><a href="/devguide/services/service-keys.html">Managing service keys</a></li>
+              <li class=""><a href="/devguide/services/play-service-bindings.html">Configuring Play Framework service connections</a></li>
+              <li class=""><a href="/devguide/services/using-vol-services.html">Using an external file system (volume services)</a></li>
+              <li class=""><a href="/devguide/services/user-provided.html">User-provided service instances</a></li>
+              <li class=""><a href="/devguide/services/route-binding.html">Manage app requests with route services</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/devguide/streaming-logs-index.html">Streaming app logs</a>
+            <ul>
+              <li class=""><a href="/devguide/services/log-management.html">Streaming app logs to log management services</a></li>
+              <li class=""><a href="/devguide/services/log-management-thirdparty-svc.html">Streaming app logs to third-party services</a></li>
+              <li class=""><a href="/devguide/services/integrate-splunk.html">Streaming app logs to Splunk</a></li>
+              <li class=""><a href="/devguide/services/fluentd.html">Streaming app logs with Fluentd</a></li>
+              <li class=""><a href="/devguide/services/oms-nozzle.html">Streaming app logs to Azure OMS log analytics</a></li>
+              <li class=""><a href="/devguide/services/metrics.html">Using metrics with drain logs</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/devguide/managing-apps-index.html">Managing apps with the cf CLI</a>
+            <ul>
+              <li class=""><a href="/devguide/using-tasks.html">Running tasks in your apps</a></li>
+              <li class=""><a href="/devguide/deploy-apps/cf-scale.html">Scaling your app using Cloud Foundry CLI (cf scale)</a></li>
+              <li class=""><a href="/devguide/deploy-apps/healthchecks.html">Using Cloud Foundry health checks</a></li>
+              <!-- file lives in docs-running-cf, not docs-dev-guide -->
+              <li class=""><a href="/running/managing-cf/app-event.html">Retrieving app and event information</a></li>
+              <li class=""><a href="/devguide/deploy-apps/cf-networking.html">Configuring container-to-Container networking</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/devguide/deploy-apps/environment-variable.html">Cloud Foundry environment variables</a></li>
+          <li class=""><a href="/devguide/capi/client-libraries.html">Available Cloud Controller API client libraries</a></li>
+          <li class=""><a href="/devguide/deploy-apps/prepare-to-deploy.html">Designing and running your app in the cloud</a></li>
+          <li class=""><a href="/devguide/revisions.html">Cloud Foundry API app revisions</a></li>
+        </ul>
+      </li>
+
+
+      <li class="has_submenu"><a href="/buildpacks/index.html">Cloud Foundry Buildpacks</a>
+        <ul>
+          <li class="has_submenu"><a href="/buildpacks/cnb/index.html">Cloud Native Buildpacks</a>
+            <ul>
+              <li class=""><a href="/buildpacks/cnb/paketo.html">Paketo Buildpacks</a></li>
+            </ul>
+          </li>
+
+          <li class="has_submenu"><a href="/buildpacks/classic.html">Classic Buildpacks</a>
+          <ul>
+          <li class="has_submenu"><a href="/buildpacks/using-buildpacks.html">What are classic buildpacks?</a>
+            <ul>
+              <li class=""><a href="/buildpacks/understand-buildpacks.html">Working with buildpacks in Cloud Foundry </a></li>
+              <li class=""><a href="/buildpacks/stack-association.html">Stack association</a></li>
+              <li class=""><a href="/buildpacks/use-multiple-buildpacks.html">Pushing an app with multiple buildpacks</a></li>
+              <li class=""><a href="/buildpacks/proxy-usage.html">Using a proxy server</a></li>
+              <li class=""><a href="/buildpacks/supported-binary-dependencies.html">Supported binary dependencies</a></li>
+              <li class=""><a href="/buildpacks/prod-server.html">Configuring the production server</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/buildpacks/binary/index.html">Binary buildpack</a></li>
+          <li class=""><a href="/buildpacks/go/index.html">Go buildpack</a></li>
+          <li class="has_submenu"><a href="/buildpacks/hwc/index.html">Hosted Web Core buildpack</a>
+            <ul>
+              <li class=""><a href="/buildpacks/hwc/extension-buildpack.html">Creating an extension buildpack for .NET apps</a></li>
+              <li class=""><a href="/buildpacks/hwc/web-config-transform-buildpack.html">Using the .NET Framework Web Config Transform Extension Buildpack</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/buildpacks/java/index.html">Java buildpack</a>
+            <ul>
+              <li class=""><a href="/buildpacks/java/java-tips.html">Using Cloud Foundry Java buildpack</a></li>
+              <li class="has_submenu"><a href="/buildpacks/java/getting-started-deploying-apps/index.html">Getting started deploying Java apps to Cloud Foundry</a>
+                <ul>
+                  <li class=""><a href="/buildpacks/java/getting-started-deploying-apps/gsg-grails.html">Getting started deploying your Grails apps to Cloud Foundry</a></li>
+                  <li class=""><a href="/buildpacks/java/getting-started-deploying-apps/gsg-ratpack.html">Getting started deploying Ratpack apps to Cloud Foundry</a></li>
+                  <li class=""><a href="/buildpacks/java/getting-started-deploying-apps/gsg-spring.html">Getting started deploying Spring apps to Cloud Foundry</a></li>
+                </ul>
+              </li>
+              <li class=""><a href="/buildpacks/java/configuring-service-connections.html">Configuring service connections</a></li>
+              <li class=""><a href="/buildpacks/java/java-native-image.html">Using Java Native Image</a></li>
+              <li class=""><a href="/buildpacks/java/java-client.html">Cloud Foundry Java Client Library</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/buildpacks/dotnet-core/index.html">.NET Core buildpack</a></li>
+          <li class=""><a href="/buildpacks/nginx/index.html">NGINX buildpack</a></li>
+          <li class="has_submenu"><a href="/buildpacks/node/index.html">Node.js buildpack</a>
+            <ul>
+              <li class=""><a href="/buildpacks/node/node-tips.html">Node.js buildpack-specific information</a></li>
+              <li class=""><a href="/buildpacks/node/node-environment.html">Environment variables defined by Node buildpack</a></li>
+              <li class=""><a href="/buildpacks/node/node-service-bindings.html">Configuring service connections for Node.js application</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/buildpacks/php/index.html">Using PHP buildpack with runtimes</a>
+            <ul>
+              <li class=""><a href="/buildpacks/php/gsg-php-tips.html">Additional information on PHP buildpacks in Cloud Foundry</a></li>
+              <li class=""><a href="/buildpacks/php/gsg-php-usage.html">Getting started deploying PHP apps to Cloud Foundry</a></li>
+              <li class=""><a href="/buildpacks/php/gsg-php-config.html">PHP buildpack configuration</a></li>
+              <li class=""><a href="/buildpacks/php/gsg-php-composer.html">Composer</a></li>
+              <li class=""><a href="/buildpacks/php/gsg-php-sessions.html">Sessions</a></li>
+              <li class=""><a href="/buildpacks/php/gsg-php-newrelic.html">New Relic</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/buildpacks/python/index.html">Python buildpack</a></li>
+          <li class=""><a href="/buildpacks/r/index.html">R buildpack</a></li>
+          <li class="has_submenu"><a href="/buildpacks/ruby/index.html">Ruby buildpack</a>
+            <ul>
+              <li class=""><a href="/buildpacks/ruby/ruby-tips.html">Additional information on Ruby buildpacks in Cloud Foundry</a></li>
+              <li class="has_submenu"><a href="/buildpacks/ruby/deploying-apps-index.html">Getting started deploying Ruby apps</a>
+                <ul>
+                  <li class=""><a href="/buildpacks/ruby/gsg-ruby.html">Getting started deploying Ruby apps</a></li>
+                  <li class=""><a href="/buildpacks/ruby/gsg-ror.html">Getting started deploying Ruby on Rails apps</a></li>
+                  <li class=""><a href="/buildpacks/ruby/sample-ror.html">Deploy a sample Ruby on Rails app</a></li>
+                </ul>
+              </li>
+              <li class=""><a href="/buildpacks/ruby/rake-config.html">Configuring Rake tasks for deployed apps</a></li>
+              <li class=""><a href="/buildpacks/ruby/ruby-environment.html">Environment variables defined by Ruby buildpack</a></li>
+              <li class=""><a href="/buildpacks/ruby/ruby-service-bindings.html">Configuring service connections for Ruby</a></li>
+              <li class=""><a href="/buildpacks/ruby/windows.html">Windows Gemfile support</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/buildpacks/staticfile/index.html">Staticfile buildpacks</a></li>
+          <li class="has_submenu"><a href="/buildpacks/custom.html">Creating custom buildpacks</a>
+            <ul>
+              <li class=""><a href="/buildpacks/depend-pkg-offline.html">Packaging dependencies for offline buildpacks</a></li>
+              <li class=""><a href="/buildpacks/merging_upstream.html">Merging from upstream buildpacks</a></li>
+              <li class=""><a href="/buildpacks/upgrading_dependency_versions.html">Upgrading dependency versions for Cloud Foundry</a></li>
+              <li class="has_submenu"><a href="/buildpacks/buildpack-ci-index.html">Using CI for buildpacks</a>
+                <ul>
+                  <li class=""><a href="/buildpacks/releasing_a_new_buildpack_version.html">Releasing a new Cloud Foundry buildpack version</a></li>
+                  <li class=""><a href="/buildpacks/updating-buildpack-related-gems.html">Updating buildpack-related gems in Cloud Foundry</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+        </ul>
+      </li>
+
+      <li><span><hr></span></li>
+      <li class="has_submenu"><span>Information for Managed Service Authors</span>
+        <ul>
+          <li class=""><a href="/services/overview.html">Services in Cloud Foundry</a></li>
+          <li class="has_submenu"><span>Service Broker API</span>
+            <ul>
+              <li class=""><a href="https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/spec.md">Open Service Broker API</a></li>
+              <li class=""><a href="https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/profile.md">Platform profiles</a></li>
+              <li class=""><a href="https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/profile.md#service-metadata">Catalog metadata</a></li>
+              <li class=""><a href="https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/spec.md#volume-mounts-object">Volume services</a></li>
+              <li class=""><a href="https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/release-notes.md">Release Notes</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/services/managing-service-brokers.html">Managing service brokers in Cloud Foundry</a></li>
+          <li class=""><a href="/services/access-control.html">Managing access to service plans</a></li>
+          <li class=""><a href="/services/binding-credentials.html">Binding credentials in Cloud Foundry</a></li>
+          <li class="has_submenu"><a href="/credhub/index.html">CredHub</a>
+            <ul>
+              <li class=""><a href="/credhub/setup-credhub-bosh.html">Setting up and deploying CredHub with BOSH</a></li>
+              <li class=""><a href="/credhub/hsm-config.html">Configuring a hardware security module</a></li>
+              <li class=""><a href="/credhub/kms-plugin.html">Using a key management service with CredHub</a></li>
+              <li class=""><a href="/credhub/credential-types.html">CredHub credential types</a></li>
+              <li class=""><a href="/credhub/backup-restore.html">Backing up and restoring CredHub instances</a></li>
+              <li class=""><a href="/credhub/troubleshooting-credhub.html">Troubleshooting CredHub</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/services/dashboard-sso.html">Dashboard Single Sign-on</a></li>
+          <li class=""><a href="/services/enable-sharing.html">Service instance sharing in Cloud Foundry</a></li>
+          <li class=""><a href="/services/examples.html">Service broker examples</a></li>
+          <li class=""><a href="/services/app-log-streaming.html">App log streaming in Cloud Foundry</a></li>
+          <li class=""><a href="/services/route-services.html">Offering Route Services in Cloud Foundry</a></li>
+          <li class=""><a href="/services/supporting-multiple-cf-instances.html">Supporting multiple CF instances</a></li>
+        </ul>
+      </li>
+      <li><span><hr></span></li>
+      <li class="has_submenu"><span>User Account and Authentication</span>
+        <ul>
+          <li class=""><a href="/uaa/uaa-overview.html">UAA Overview</a></li>
+          <li class=""><a href="/uaa/uaa-concepts.html">UAA Concepts</a></li>
+          <li class=""><a href="/uaa/identity-providers.html">Identity Providers in UAA</a></li>
+          <li class=""><a href="/uaa/uaa-metrics.html">UAA Metrics</a></li>
+
+        </ul>
+      </li>
+      <li><strong>API Reference</strong></li>
+      <li class=""><a href="https://docs.cloudfoundry.org/api/uaa/index.html">UAA API</a></li>
+      <li class="has_submenu"><span>CAPI API</span>
+        <ul>
+          <li class=""><a href="/running/rate-limit-cloud-controller-api.html">Rate limit information returned by the Cloud Controller API</a></li>
+          <li class=""><a href="https://v2-apidocs.cloudfoundry.org">CAPI V2</a></li>
+          <li class=""><a href="https://v3-apidocs.cloudfoundry.org/index.html">CAPI V3</a></li>
+          <li class=""><a href="https://docs.cloudfoundry.org/api/credhub/">CredHub API documentation</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container">
+    Cloud Foundry Component Metrics
+  </h1>
+
+          <div class="js-quick-links">
+            <div class="quick-links"><ul>
+<li><a href="#cc">Cloud Controller</a></li>
+<li><a href="#diego">Diego</a></li>
+<li><a href="#doppler">DopplerServer</a></li>
+<li><a href="#metron">Metron Agent</a></li>
+<li><a href="#routing">Routing</a></li>
+<li><a href="#syslog">Syslog Binding Cache</a></li>
+<li><a href="#traffic">Traffic Controller</a></li>
+<li><a href="#uaa">User Account and Authentication (UAA)</a></li>
+</ul></div>
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        <p id="modified-date"><strong>Page last updated: <span data-behavior="DisplayModifiedDate" data-modified-date="1748618868000"></span></strong></p>
+
+        <p><a id='top'></a> This topic lists and describes the metrics available for Cloud Foundry system components. These metrics are streamed from the Loggregator Firehose. For more information about the Firehose, see <a href="/loggregator/architecture.html">Loggregator architecture</a>.</p>
+
+<p>The Cloud Foundry component metric names and descriptions listed in this topic may be out of date because Cloud Foundry component metrics change often. If you have questions about Cloud Foundry component metrics, consider contacting the component teams directly on their respective channels in the <a href="https://cloudfoundry.slack.com">Cloud Foundry Slack</a> organization. For example, you can contact the Diego team at <strong>#diego</strong>.</p>
+
+<h2 id="-cloud-controller"><a id='cc'></a> Cloud Controller</h2>
+
+<p>Cloud Controller metrics have the following origin names:</p>
+
+<ul>
+<li><a href="#cc">cc</a></li>
+<li><a href="#cc_worker">cc_worker</a></li>
+</ul>
+
+<p>Default Origin Name: cc</p>
+
+<p>Statsd/Prometheus metrics for Cloud Controller API Server</p>
+
+<table><thead>
+<tr>
+<th>Statsd Metric Name</th>
+<th>Prometheus Metric Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>NA</td>
+<td>cc_puma_worker_count</td>
+<td>Worker count<br /> <strong>Puma-Only Metric</strong></td>
+</tr>
+<tr>
+<td>NA</td>
+<td>cc_puma_worker_started_at</td>
+<td>Worker, started_at<br /> <strong>Puma-Only Metric</strong></td>
+</tr>
+<tr>
+<td>NA</td>
+<td>cc_puma_worker_thread_count</td>
+<td>Worker thread count<br /> <strong>Puma-Only Metric</strong></td>
+</tr>
+<tr>
+<td>NA</td>
+<td>cc_puma_worker_backlog</td>
+<td>Worker backlog<br /> <strong>Puma-Only Metric</strong></td>
+</tr>
+<tr>
+<td>deployments.deploying</td>
+<td>cc_deployments_in_progress_total</td>
+<td>Number of deployments in the DEPLOYING state. Emitted every 30 seconds.</td>
+</tr>
+<tr>
+<td>NA</td>
+<td>cc_acquired_db_connections_total</td>
+<td>Number of acquired DB connections (blocked by threads).</td>
+</tr>
+<tr>
+<td>NA</td>
+<td>cc_open_db_connections_total</td>
+<td>Number of open DB connections (acquired + available).</td>
+</tr>
+<tr>
+<td>NA</td>
+<td>cc_db_connection_hold_duration_seconds</td>
+<td>Durations of connections held by threads.</td>
+</tr>
+<tr>
+<td>NA</td>
+<td>cc_db_connection_wait_duration_seconds</td>
+<td>Durations of threads which waited for an available DB connection.</td>
+</tr>
+<tr>
+<td>NA</td>
+<td>cc_db_connection_pool_timeouts_total</td>
+<td>Number of threads which failed to acquire a free DB connection from the pool within the timeout.</td>
+</tr>
+<tr>
+<td>deployments.update.duration</td>
+<td>NA</td>
+<td>Time in milliseconds that it took to complete an update of app deployments. Emitted every 5 seconds.</td>
+</tr>
+<tr>
+<td>diego_sync.invalid_desired_lrps</td>
+<td>NA</td>
+<td>Number of invalid DesiredLRPs found during Cloud Foundry apps and Diego DesiredLRPs periodic synchronization. Emitted every 30 seconds.</td>
+</tr>
+<tr>
+<td>diego_sync.duration</td>
+<td>NA</td>
+<td>Time in milliseconds that it took to synchronize Cloud Foundry apps and Diego DesiredLRPs. Emitted every 30 seconds.</td>
+</tr>
+<tr>
+<td>failed_job_count.total</td>
+<td>cc_failed_job_count_total</td>
+<td>Number of failed jobs in all queues. By default, Cloud Controller deletes failed jobs after 31 days. Emitted every 30 seconds per VM.</td>
+</tr>
+<tr>
+<td>http_status.1XX</td>
+<td>NA</td>
+<td>Number of HTTP response status codes of type 1xx (informational). This resets when the Cloud Controller process is restarted and is incremented at the end of each request cycle.</td>
+</tr>
+<tr>
+<td>http_status.2XX</td>
+<td>NA</td>
+<td>Number of HTTP response status codes of type 2xx (success). This resets when the Cloud Controller process is restarted and is incremented at the end of each request cycle. Emitted for each Cloud Controller request.</td>
+</tr>
+<tr>
+<td>http_status.3XX</td>
+<td>NA</td>
+<td>Number of HTTP response status codes of type 3xx (redirection). This resets when the Cloud Controller process is restarted and is incremented at the end of each request cycle. Emitted for each Cloud Controller request.</td>
+</tr>
+<tr>
+<td>http_status.4XX</td>
+<td>NA</td>
+<td>Number of HTTP response status codes of type 4xx (client error). This resets when the Cloud Controller process is restarted and is incremented at the end of each request cycle. Emitted for each Cloud Controller request.</td>
+</tr>
+<tr>
+<td>http_status.5XX</td>
+<td>NA</td>
+<td>Number of HTTP response status codes of type 5xx (server error). This resets when the Cloud Controller process is restarted and is incremented at the end of each request cycle.</td>
+</tr>
+<tr>
+<td></td>
+<td>NA</td>
+<td>Number of background jobs in the cc-generic queue that have yet to run for the first time. Emitted every 30 seconds per VM.</td>
+</tr>
+<tr>
+<td>job_queue_length.total</td>
+<td>cc_job_queues_length_total</td>
+<td>Total number of background jobs in the queues that have yet to run for the first time. Emitted every 30 seconds per VM.</td>
+</tr>
+<tr>
+<td>job_queue_load.total</td>
+<td>cc_job_queues_load_total</td>
+<td>Total number of background jobs in the queues that are ready to run now. Emitted every 30 seconds per VM.</td>
+</tr>
+<tr>
+<td>log_count.all</td>
+<td>NA</td>
+<td>Total number of log messages, sum of messages of all severity levels. The count resets when the Cloud Controller process is restarted. Emitted every 30 seconds per VM.</td>
+</tr>
+<tr>
+<td>log_count.debug</td>
+<td>NA</td>
+<td>Number of log messages of severity &ldquo;debug.&rdquo; The count resets when the Cloud Controller process is restarted. Emitted every 30 seconds per VM.</td>
+</tr>
+<tr>
+<td>log_count.debug1</td>
+<td>NA</td>
+<td>Not used.</td>
+</tr>
+<tr>
+<td>log_count.debug2</td>
+<td>NA</td>
+<td>Number of log messages of severity &ldquo;debug2.&rdquo; The count resets when the Cloud Controller process is restarted. Emitted every 30 seconds per VM.</td>
+</tr>
+<tr>
+<td>log_count.error</td>
+<td>NA</td>
+<td>Number of log messages of severity &ldquo;error.&rdquo; Error is the most severe level. It is used for failures and during error handling. Most errors can be found under this log level, eg. failed unbinding a service, failed to cancel a task, Diego app crashed error, staging completion errors, staging errors, and resource not found. The count resets when the Cloud Controller process is restarted. Emitted every 30 seconds per VM.</td>
+</tr>
+<tr>
+<td>log_count.fatal</td>
+<td>NA</td>
+<td>Number of log messages of severity &ldquo;fatal.&rdquo; The count resets when the Cloud Controller process is restarted. Emitted every 30 seconds per VM.</td>
+</tr>
+<tr>
+<td>log_count.info</td>
+<td>NA</td>
+<td>Number of log messages of severity &ldquo;info.&rdquo; Examples of info messages are droplet created, copying package, uploading package, access denied due to insufficient scope, job logging, blobstore actions, staging requests, and app running requests. The count resets when the Cloud Controller process is restarted. Emitted every 30 seconds per VM.</td>
+</tr>
+<tr>
+<td>log_count.off</td>
+<td>NA</td>
+<td>Number of log messages of severity &ldquo;off.&rdquo; The count resets when the Cloud Controller process is restarted. Emitted every 30 seconds per VM.</td>
+</tr>
+<tr>
+<td>log_count.warn</td>
+<td>NA</td>
+<td>Number of log messages of severity &ldquo;warn.&rdquo;  Warn is also used for failures and during error handling, eg. diagnostics written to file, failed to capture diagnostics, app rollback failed, service broker already deleted, and UAA token problems. The count resets when the Cloud Controller process is restarted. Emitted every 30 seconds per VM.</td>
+</tr>
+<tr>
+<td>requests.completed</td>
+<td>cc_requests_completed_total</td>
+<td>Number of requests that have been processed. Emitted for each Cloud Controller request.</td>
+</tr>
+<tr>
+<td>requests.outstanding</td>
+<td>NA</td>
+<td>DEPRECATED in favor of requests.outstanding.gauge</td>
+</tr>
+<tr>
+<td>requests.outstanding.gauge</td>
+<td>cc_requests_outstanding_total</td>
+<td>Number of requests that are currently being processed. Emitted for each Cloud Controller request.</td>
+</tr>
+<tr>
+<td>staging.requested</td>
+<td>cc_staging_requests_total</td>
+<td>Cumulative number of requests to start a staging task handled by each Cloud Controller.</td>
+</tr>
+<tr>
+<td>staging.succeeded</td>
+<td>NA</td>
+<td>Cumulative number of successful staging tasks handled by each Cloud Controller. Emitted every time a staging task completes successfully.</td>
+</tr>
+<tr>
+<td>staging.succeeded_duration</td>
+<td>NA</td>
+<td>Time in milliseconds that the successful staging task took to run. Emitted each time a staging task completes successfully.</td>
+</tr>
+<tr>
+<td>NA</td>
+<td>cc_staging_succeeded_duration_seconds</td>
+<td>Histogram - Time in seconds that the successful staging task took to run. <strong>Puma-Only Metric</strong></td>
+</tr>
+<tr>
+<td>staging.failed</td>
+<td>NA</td>
+<td>Cumulative number of failed staging tasks handled by each Cloud Controller. Emitted every time a staging task fails.</td>
+</tr>
+<tr>
+<td>staging.failed_duration</td>
+<td>NA</td>
+<td>Time in milliseconds that the failed staging task took to run. Emitted each time a staging task fails.</td>
+</tr>
+<tr>
+<td>NA</td>
+<td>cc_staging_failed_duration_seconds</td>
+<td>Histogram - Time in seconds that the failed staging task took to run. <strong>Puma-Only Metric</strong></td>
+</tr>
+<tr>
+<td>tasks_running.count</td>
+<td>cc_running_tasks_total</td>
+<td>Number of currently running tasks. Emitted every 30 seconds per VM. This metric is only seen in version 3 of the Cloud Foundry API.</td>
+</tr>
+<tr>
+<td>tasks_running.memory_in_mb</td>
+<td>cc_running_tasks_memory_bytes</td>
+<td>Memory being consumed by all currently running tasks. Emitted every 30 seconds per VM. This metric is only seen in version 3 of the Cloud Foundry API</td>
+</tr>
+<tr>
+<td>thread_info.event_machine.connection_count</td>
+<td>cc_thread_info_event_machine_connection_count</td>
+<td>Number of open connections to event machine. Emitted every 30 seconds per VM.<br /> <strong>Thin Only, Not available in Puma</strong></td>
+</tr>
+<tr>
+<td>thread_info.event_machine.resultqueue.num_waiting</td>
+<td>cc_thread_info_event_machine_resultqueue_num_waiting</td>
+<td>Number of scheduled tasks in the result. Emitted every 30 seconds per VM. <strong>Thin Only, Not available in Puma</strong></td>
+</tr>
+<tr>
+<td>thread_info.event_machine.resultqueue.size</td>
+<td>cc_thread_info_event_machine_resultqueue_size</td>
+<td>Number of unscheduled tasks in the result. Emitted every 30 seconds per VM.<br /> <strong>Thin Only, Not available in Puma</strong></td>
+</tr>
+<tr>
+<td>thread_info.event_machine.threadqueue.num_waiting</td>
+<td>cc_thread_info_event_machine_threadqueue_num_waiting</td>
+<td>Number of scheduled tasks in the threadqueue. Emitted every 30 seconds per VM<br />. <strong>Thin Only, Not available in Puma</strong></td>
+</tr>
+<tr>
+<td>thread_info.event_machine.threadqueue.size</td>
+<td>cc_thread_info_event_machine_threadqueue_size</td>
+<td>Number of unscheduled tasks in the threadqueue. Emitted every 30 seconds per VM.<br /> <strong>Thin Only, Not available in Puma</strong></td>
+</tr>
+<tr>
+<td>thread_info.thread_count</td>
+<td>cc_thread_info_thread_count</td>
+<td>Total number of threads that are either runnable or stopped. Emitted every 30 seconds per VM.<br /> <strong>Thin Only, Not available in Puma</strong></td>
+</tr>
+<tr>
+<td>total_users</td>
+<td>cc_users_total</td>
+<td>Total number of users ever created, including inactive users. Emitted every 10 minutes per VM.<br /> <strong>Thin Only, Not available in Puma</strong></td>
+</tr>
+<tr>
+<td>vcap_sinatra.recent_errors</td>
+<td>NA</td>
+<td>50 most recent errors. DEPRECATED</td>
+</tr>
+<tr>
+<td>NA</td>
+<td>cc_vitals_started_at</td>
+<td>CloudController Vitals: started_at</td>
+</tr>
+<tr>
+<td>vitals.cpu</td>
+<td>NA</td>
+<td>Average lifetime CPU% utilization of the Cloud Controller process according to ps. Usually misleading, prefer <code>vitals.cpu_load_average</code>. Emitted every 30 seconds per VM.</td>
+</tr>
+<tr>
+<td>vitals.cpu_load_avg</td>
+<td>cc_vitals_cpu_load_avg</td>
+<td>System CPU load averaged over the last 1 minute according to the OS&rsquo;s vmstat metrics. Emitted every 30 seconds per VM.</td>
+</tr>
+<tr>
+<td>vitals.mem_bytes</td>
+<td>cc_vitals_mem_bytes</td>
+<td>The RSS bytes (resident set size) or real memory of the Cloud Controller process. Emitted every 30 seconds per VM.</td>
+</tr>
+<tr>
+<td>vitals.mem_free_bytes</td>
+<td>cc_vitals_mem_free_bytes</td>
+<td>Total memory available according to the OS. Emitted every 30 seconds per VM.</td>
+</tr>
+<tr>
+<td>vitals.mem_used_bytes</td>
+<td>cc_vitals_mem_used_bytes</td>
+<td>Total memory used (active + wired) according to the OS. Emitted every 30 seconds per VM.</td>
+</tr>
+<tr>
+<td>vitals.num_cores</td>
+<td>cc_vitals_num_cores</td>
+<td>The number of CPUs of a host machine. Emitted every 30 seconds per VM.</td>
+</tr>
+<tr>
+<td>vitals.uptime</td>
+<td>NA</td>
+<td>The uptime of the Cloud Controller process in seconds. Emitted every 30 seconds per VM.</td>
+</tr>
+</tbody></table>
+
+<p>Default Origin Name: cc_worker</p>
+
+<p>Statsd/Prometheus metrics for Cloud Controller Workers</p>
+
+<table><thead>
+<tr>
+<th>Prometheus Metric Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>cc_acquired_db_connections_total</td>
+<td>Number of acquired DB connections (blocked by threads).</td>
+</tr>
+<tr>
+<td>cc_open_db_connections_total</td>
+<td>Number of open DB connections (acquired + available).</td>
+</tr>
+<tr>
+<td>cc_db_connection_hold_duration_seconds</td>
+<td>Durations of connections held by threads.</td>
+</tr>
+<tr>
+<td>cc_db_connection_wait_duration_seconds</td>
+<td>Durations of threads which waited for an available DB connection.</td>
+</tr>
+<tr>
+<td>cc_db_connection_pool_timeouts_total</td>
+<td>Number of threads which failed to acquire a free DB connection from the pool within the timeout.</td>
+</tr>
+<tr>
+<td>cc_job_pickup_delay_seconds</td>
+<td>Time between scheduled run time (<code>run_at</code>) and actual start (<code>locked_at</code>). Labeled by queue and worker.</td>
+</tr>
+<tr>
+<td>cc_job_duration_seconds</td>
+<td>Time between actual start (<code>locked_at</code>) and end of execution. Labeled by queue and worker.</td>
+</tr>
+</tbody></table>
+
+<p><a href="#top">Top</a></p>
+
+<h2 id="-diego"><a id='diego'></a> Diego</h2>
+
+<p>Diego metrics have the following origin names:</p>
+
+<ul>
+<li><a href="#auctioneer">auctioneer</a></li>
+<li><a href="#bbs">bbs</a></li>
+<li><a href="#fileserver">file_server</a></li>
+<li><a href="#locket">locket</a></li>
+<li><a href="#rep">rep</a></li>
+<li><a href="#routeemitter">route_emitter</a></li>
+<li><a href="#sshproxy">ssh_proxy</a><a id="auctioneer"></a></li>
+<li><a href="#garden-linux">garden-linux</a><a id="garden-linux"></a></li>
+</ul>
+
+<p>Default Origin Name: auctioneer</p>
+
+<table><thead>
+<tr>
+<th>Metric Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>AuctioneerFailedCellStateRequests</td>
+<td>Cumulative number of cells the auctioneer failed to query for state. Emitted during each auction.</td>
+</tr>
+<tr>
+<td>AuctioneerFetchStatesDuration</td>
+<td>Time in nanoseconds that the auctioneer took to fetch state from all the cells when running its auction. Emitted every 30 seconds during each auction.</td>
+</tr>
+<tr>
+<td>AuctioneerLRPAuctionsFailed</td>
+<td>Cumulative number of LRP instances that the auctioneer failed to place on Diego Cells. Emitted every 30 seconds during each auction.</td>
+</tr>
+<tr>
+<td>AuctioneerLRPAuctionsStarted</td>
+<td>Cumulative number of LRP instances that the auctioneer successfully placed on Diego Cells. Emitted every 30 seconds during each auction.</td>
+</tr>
+<tr>
+<td>AuctioneerTaskAuctionsFailed</td>
+<td>Cumulative number of Tasks that the auctioneer failed to place on Diego Cells. Emitted every 30 seconds during each auction.</td>
+</tr>
+<tr>
+<td>AuctioneerTaskAuctionsStarted</td>
+<td>Cumulative number of Tasks that the auctioneer successfully placed on Diego Cells. Emitted every 30 seconds during each auction.</td>
+</tr>
+<tr>
+<td>LockHeld</td>
+<td>Whether an auctioneer holds the auctioneer lock (in locket): 1 means the lock is held, and 0 means the lock was lost. Emitted periodically by the active auctioneer.</td>
+</tr>
+<tr>
+<td>LockHeld.v1-locks-auctioneer_lock</td>
+<td>Whether an auctioneer holds the auctioneer lock: <code>1</code> means the lock is held, and <code>0</code> means the lock was lost. Emitted every 30 seconds by the active auctioneer.</td>
+</tr>
+<tr>
+<td>LockHeldDuration.v1-locks-auctioneer_lock</td>
+<td>Time in nanoseconds that the active auctioneer has held the auctioneer lock. Emitted every 30 seconds by the active auctioneer.</td>
+</tr>
+<tr>
+<td>memoryStats.lastGCPauseTimeNS</td>
+<td>Duration in nanoseconds of the last garbage collector pause.</td>
+</tr>
+<tr>
+<td>memoryStats.numBytesAllocatedHeap</td>
+<td>Instantaneous count of bytes allocated on the main heap and still in use.</td>
+</tr>
+<tr>
+<td>memoryStats.numBytesAllocatedStack</td>
+<td>Instantaneous count of bytes used by the stack allocator.</td>
+</tr>
+<tr>
+<td>numGoRoutines</td>
+<td>Instantaneous number of active goroutines in the process.</td>
+</tr>
+<tr>
+<td>RequestCount</td>
+<td>Cumulative number of requests the auctioneer has handled through its API. Emitted periodically.</td>
+</tr>
+<tr>
+<td>RequestLatency</td>
+<td>Time the auctioneer took to handle requests to its API endpoints. Emitted when the auctioneer handles requests<a id="bbs"></a>.</td>
+</tr>
+</tbody></table>
+
+<p>Default Origin Name: bbs</p>
+
+<table><thead>
+<tr>
+<th>Metric Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>BBSMasterElected</td>
+<td>Emitted once when the BBS is elected as master.</td>
+</tr>
+<tr>
+<td>ConvergenceLRPDuration</td>
+<td>Time in nanoseconds that the BBS took to run its LRP convergence pass. Emitted every 30 seconds when LRP convergence runs.</td>
+</tr>
+<tr>
+<td>ConvergenceLRPRuns</td>
+<td>Cumulative number of times BBS has run its LRP convergence pass. Emitted every 30 seconds.</td>
+</tr>
+<tr>
+<td>ConvergenceTaskDuration</td>
+<td>Time in nanoseconds that the BBS took to run its Task convergence pass. Emitted every 30 seconds when Task convergence runs.</td>
+</tr>
+<tr>
+<td>ConvergenceTaskRuns</td>
+<td>Cumulative number of times the BBS has run its Task convergence pass. Emitted every 30 seconds.</td>
+</tr>
+<tr>
+<td>ConvergenceTasksKicked</td>
+<td>Cumulative number of times the BBS has updated a Task during its Task convergence pass. Emitted every 30 seconds.</td>
+</tr>
+<tr>
+<td>ConvergenceTasksPruned</td>
+<td>Cumulative number of times the BBS has deleted a malformed Task during its Task convergence pass. Emitted every 30 seconds.</td>
+</tr>
+<tr>
+<td>CrashedActualLRPs</td>
+<td>Total number of LRP instances that have crashed. Emitted every 30 seconds.</td>
+</tr>
+<tr>
+<td>CrashingDesiredLRPs</td>
+<td>Total number of DesiredLRPs that have at least one crashed instance. Emitted every 30 seconds.</td>
+</tr>
+<tr>
+<td>DBOpenConnections</td>
+<td>Number of open connections to the SQL database. Emitted every 60 seconds.</td>
+</tr>
+<tr>
+<td>DBQueriesFailed</td>
+<td>Cumulative number of SQL queries that failed. Emitted every 60 seconds.</td>
+</tr>
+<tr>
+<td>DBQueriesInFlight</td>
+<td>Maximum number of concurrent in flight queries in the last 60 seconds. Emitted every 60 seconds.</td>
+</tr>
+<tr>
+<td>DBQueriesTotal</td>
+<td>Cumulative number of SQL queries executed, including <code>BEGIN</code>, <code>COMMIT</code>, and <code>ROLLBACK</code> statements. Emitted every 60 seconds.</td>
+</tr>
+<tr>
+<td>DBQueriesSucceeded</td>
+<td>Cumulative number of SQL queries that finished successfully. Emitted every 60 seconds.</td>
+</tr>
+<tr>
+<td>DBQueryDurationMax</td>
+<td>Maximum duration of all queries that have run in the last 60 seconds. Emitted every 60 seconds.</td>
+</tr>
+<tr>
+<td>DBWaitDuration</td>
+<td>The total time blocked waiting for a new connection. Emitted every 60 seconds.</td>
+</tr>
+<tr>
+<td>DBWaitCount</td>
+<td>The total number of connections waited for. Emitted every 60 seconds.</td>
+</tr>
+<tr>
+<td>Domain.<domain-name></td>
+<td>Whether the <code>&lt;domain-name&gt;</code> domain is up-to-date, so that instances from that domain have been synchronized with DesiredLRPs for Diego to run. 1 means the domain is up-to-date, no data means it is not. Emitted periodically.</td>
+</tr>
+<tr>
+<td>EncryptionDuration</td>
+<td>Time the BBS took to ensure all BBS records are encrypted with the current active encryption key. Emitted each time a BBS becomes the active master.</td>
+</tr>
+<tr>
+<td>LockHeld</td>
+<td>Whether a BBS holds the BBS lock (in locket): 1 means the lock is held, and 0 means the lock was lost. Emitted periodically by the active BBS server.</td>
+</tr>
+<tr>
+<td>LockHeld.v1-locks-bbs_lock</td>
+<td>Whether a BBS holds the BBS lock: <code>1</code> means the lock is held, and <code>0</code> means the lock was lost. Emitted every 30 seconds by the active BBS server.</td>
+</tr>
+<tr>
+<td>LockHeldDuration.v1-locks-bbs_lock</td>
+<td>Time in nanoseconds that the active BBS has held the BBS lock. Emitted every 30 seconds by the active BBS server.</td>
+</tr>
+<tr>
+<td>LRPsClaimed</td>
+<td>Total number of LRP instances that have been claimed by some cell. Emitted every 30 seconds.</td>
+</tr>
+<tr>
+<td>LRPsDesired</td>
+<td>Total number of LRP instances desired across all LRPs. Emitted periodically.</td>
+</tr>
+<tr>
+<td>LRPsExtra</td>
+<td>Total number of LRP instances that are no longer desired but still have a BBS record. Emitted every 30 seconds.</td>
+</tr>
+<tr>
+<td>LRPsMissing</td>
+<td>Total number of LRP instances that are desired but have no record in the BBS. Emitted every 30 seconds.</td>
+</tr>
+<tr>
+<td>LRPsRunning</td>
+<td>Total number of LRP instances that are running on cells. Emitted every 30 seconds.</td>
+</tr>
+<tr>
+<td>LRPsUnclaimed</td>
+<td>Total number of LRP instances that have not yet been claimed by a cell. Emitted every 30 seconds.</td>
+</tr>
+<tr>
+<td>memoryStats.lastGCPauseTimeNS</td>
+<td>Duration in nanoseconds of the last garbage collector pause.</td>
+</tr>
+<tr>
+<td>memoryStats.numBytesAllocatedHeap</td>
+<td>Instantaneous count of bytes allocated on the main heap and still in use.</td>
+</tr>
+<tr>
+<td>memoryStats.numBytesAllocatedStack</td>
+<td>Instantaneous count of bytes used by the stack allocator.</td>
+</tr>
+<tr>
+<td>MigrationDuration</td>
+<td>Time in nanoseconds that the BBS took to run migrations against its persistence store. Emitted each time a BBS becomes the active master.</td>
+</tr>
+<tr>
+<td>numGoRoutines</td>
+<td>Instantaneous number of active goroutines in the process.</td>
+</tr>
+<tr>
+<td>OpenFileDescriptors</td>
+<td>Current (non-cumulative) number of open file descriptors held by the BBS. Emitted periodically.</td>
+</tr>
+<tr>
+<td>PresentCells</td>
+<td>Total number of Diego Cells that are maintaining presence with Locket. Emitted periodically.</td>
+</tr>
+<tr>
+<td>RequestCount</td>
+<td>Cumulative number of requests the BBS has handled through its API. Emitted for each BBS request.</td>
+</tr>
+<tr>
+<td>RequestLatency</td>
+<td>Time in nanoseconds that the BBS took to handle requests to its API endpoints. Emitted when the BBS API handles requests.</td>
+</tr>
+<tr>
+<td>SuspectCells</td>
+<td>Total number of cells that are not maintaining their presences with Locket but for which the BBS has a record of at least one ActualLRP. Emitted periodically.</td>
+</tr>
+<tr>
+<td>SuspectClaimedActualLRPs</td>
+<td>Total number of Suspect LRP instances that have been claimed by some Diego Cell. Emitted periodically.</td>
+</tr>
+<tr>
+<td>SuspectRunningActualLRPs</td>
+<td>Total number of Suspect LRP instances that are running on Diego Cells. Emitted periodically.</td>
+</tr>
+<tr>
+<td>TasksCompleted</td>
+<td>Total number of Tasks that have completed. Emitted every 30 seconds.</td>
+</tr>
+<tr>
+<td>TasksPending</td>
+<td>Total number of Tasks that have not yet been placed on a Diego Cell. Emitted every 30 seconds.</td>
+</tr>
+<tr>
+<td>TasksResolving</td>
+<td>Total number of Tasks locked for deletion. Emitted every 30 seconds.</td>
+</tr>
+<tr>
+<td>TasksRunning</td>
+<td>Total number of Tasks running on Diego Cells. Emitted every 30 seconds.</td>
+</tr>
+<tr>
+<td>TasksSucceeded</td>
+<td>Cumulative number of tasks completed successfully. This metric has a <code>cell-id</code> tag that can be used to get the per Cell metric.</td>
+</tr>
+<tr>
+<td>TasksFailed</td>
+<td>Cumulative number of tasks that failed. This metric has a <code>cell-id</code> tag that can be used to get the per Cell metric.</td>
+</tr>
+<tr>
+<td>TasksStarted</td>
+<td>Cumulative number of tasks that has started so far. This metric has a <code>cell-id</code> tag that can be used to get the per Cell metric<a id="fileserver"></a>.</td>
+</tr>
+</tbody></table>
+
+<p>Default Origin Name: file_server</p>
+
+<table><thead>
+<tr>
+<th>Metric Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>memoryStats.lastGCPauseTimeNS</td>
+<td>Duration in nanoseconds of the last garbage collector pause.</td>
+</tr>
+<tr>
+<td>memoryStats.numBytesAllocatedHeap</td>
+<td>Instantaneous count of bytes allocated on the main heap and still in use.</td>
+</tr>
+<tr>
+<td>memoryStats.numBytesAllocatedStack</td>
+<td>Instantaneous count of bytes used by the stack allocator.</td>
+</tr>
+<tr>
+<td>numGoRoutines</td>
+<td>Instantaneous number of active goroutines in the process<a id="locket"></a>.</td>
+</tr>
+</tbody></table>
+
+<p>Default Origin Name: locket</p>
+
+<table><thead>
+<tr>
+<th>Metric Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ActiveLocks</td>
+<td>Total number of active locks. Emitted periodically.</td>
+</tr>
+<tr>
+<td>ActivePresences</td>
+<td>Total number of active presences. Emitted periodically.</td>
+</tr>
+<tr>
+<td>DBOpenConnections</td>
+<td>Number of open connections to the SQL database. Emitted every 60 seconds.</td>
+</tr>
+<tr>
+<td>DBQueriesFailed</td>
+<td>Cumulative number of SQL queries that failed. Emitted every 60 seconds.</td>
+</tr>
+<tr>
+<td>DBQueriesInFlight</td>
+<td>Maximum number of concurrent in flight queries in the last 60 seconds. Emitted every 60 seconds.</td>
+</tr>
+<tr>
+<td>DBQueriesTotal</td>
+<td>Cumulative number of SQL queries executed, including <code>BEGIN</code>, <code>COMMIT</code>, and <code>ROLLBACK</code> statements. Emitted every 60 seconds.</td>
+</tr>
+<tr>
+<td>DBQueriesSucceeded</td>
+<td>Cumulative number of SQL queries that finished successfully. Emitted every 60 seconds.</td>
+</tr>
+<tr>
+<td>DBQueryDurationMax</td>
+<td>Maximum duration of all queries that have run in the last 60 seconds. Emitted every 60 seconds.</td>
+</tr>
+<tr>
+<td>LocksExpired</td>
+<td>Cumulative number of locks that have expired. Emitted every 60 seconds.</td>
+</tr>
+<tr>
+<td>memoryStats.lastGCPauseTimeNS</td>
+<td>Duration in nanoseconds of the last garbage collector pause.</td>
+</tr>
+<tr>
+<td>memoryStats.numBytesAllocatedHeap</td>
+<td>Instantaneous count of bytes allocated on the main heap and still in use.</td>
+</tr>
+<tr>
+<td>memoryStats.numBytesAllocatedStack</td>
+<td>Instantaneous count of bytes used by the stack allocator.</td>
+</tr>
+<tr>
+<td>numGoRoutines</td>
+<td>Instantaneous number of active goroutines in the process.</td>
+</tr>
+<tr>
+<td>PresenceExpired</td>
+<td>Cumulative number of presences that have expired. Emitted every 60 seconds.</td>
+</tr>
+<tr>
+<td>RequestsCancelled</td>
+<td>Cumulative number of requests of a particular type that have been cancelled by the client. Currently tracking <code>Lock</code>, <code>Release</code>, <code>Fetch</code>, and <code>FetchAll</code> requests. Emitted every 60 seconds.</td>
+</tr>
+<tr>
+<td>RequestsStarted</td>
+<td>Cumulative number of requests of a particular type that have been made. Currently tracking <code>Lock</code>, <code>Release</code>, <code>Fetch</code>, and <code>FetchAll</code> requests. Emitted every 60 seconds.</td>
+</tr>
+<tr>
+<td>RequestsSucceeded</td>
+<td>Cumulative number of requests of a particular type that have completed successfully. Currently tracking <code>Lock</code>, <code>Release</code>, <code>Fetch</code>, and <code>FetchAll</code> requests. Emitted every 60 seconds.</td>
+</tr>
+<tr>
+<td>RequestsFailed</td>
+<td>Cumulative number of requests of a particular type that have failed for any reason. Currently tracking <code>Lock</code>, <code>Release</code>, <code>Fetch</code>, and <code>FetchAll</code> requests. Emitted every 60 seconds.</td>
+</tr>
+<tr>
+<td>RequestsInFlight</td>
+<td>Number of requests of a particular type currently being handled by locket. Currently tracking <code>Lock</code>, <code>Release</code>, <code>Fetch</code>, and <code>FetchAll</code> requests. Emitted every 60 seconds.</td>
+</tr>
+<tr>
+<td>RequestLatencyMax</td>
+<td>Maximum request latency emitted by a request of a particular type in the last 60 seconds. Currently tracking <code>Lock</code>, <code>Release</code>, <code>Fetch</code>, and <code>FetchAll</code> requests. Emitted every 60 seconds<a id="rep"></a>.</td>
+</tr>
+</tbody></table>
+
+<p>Default Origin Name: rep (applies to rep and rep_windows jobs)</p>
+
+<table><thead>
+<tr>
+<th>Metric Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>AppInstanceExceededLogRateLimitCount</td>
+<td>Number of application instances that have exceeded the app log rate limit. Emitted once for each application instance that exceeds the log rate limit within the last 5 minute interval. This metric is only emitted if an operator has configured an app log rate limit and an app instance has exceeded that limit.</td>
+</tr>
+<tr>
+<td>CapacityAllocatedDisk</td>
+<td>Amount of disk allocated to containers on this Diego Cell. Emitted periodically.</td>
+</tr>
+<tr>
+<td>CapacityAllocatedMemory</td>
+<td>Amount of memory allocated to containers on this Diego Cell. Emitted periodically.</td>
+</tr>
+<tr>
+<td>CapacityRemainingContainers</td>
+<td>Remaining number of containers this Diego Cell can host. Emitted periodically.</td>
+</tr>
+<tr>
+<td>CapacityRemainingDisk</td>
+<td>Remaining amount of disk available for this Diego Cell to allocate to containers. Emitted periodically.</td>
+</tr>
+<tr>
+<td>CapacityRemainingMemory</td>
+<td>Remaining amount of memory available for this Diego Cell to allocate to containers. Emitted periodically.</td>
+</tr>
+<tr>
+<td>CapacityTotalContainers</td>
+<td>Total number of containers this Diego Cell can host. Emitted periodically.</td>
+</tr>
+<tr>
+<td>CapacityTotalDisk</td>
+<td>Total amount of disk available for this Diego Cell to allocate to containers. Emitted periodically.</td>
+</tr>
+<tr>
+<td>CapacityTotalMemory</td>
+<td>Total amount of memory available for this Diego Cell to allocate to containers. Emitted periodically.</td>
+</tr>
+<tr>
+<td>ContainerCompletedCount</td>
+<td>Number of containers exited on this Diego Cell. Emitted after container exits.</td>
+</tr>
+<tr>
+<td>ContainerCount</td>
+<td>Number of containers hosted on the Diego Cell. Emitted periodically.</td>
+</tr>
+<tr>
+<td>ContainerExitedOnTimeoutCount</td>
+<td>Number of containers on this Diego Cell exited after graceful shutdown interval. Emitted after container exits.</td>
+</tr>
+<tr>
+<td>ContainerUsageDisk</td>
+<td>Amount of disk used by containers on this Diego Cell. Emitted periodically.</td>
+</tr>
+<tr>
+<td>ContainerUsageMemory</td>
+<td>Amount of memory used by containers on this Diego Cell. Emitted periodically.</td>
+</tr>
+<tr>
+<td>CredCreationFailedCount</td>
+<td>Count of failed instance identity credential creations. Emitted after every failed credential creation.</td>
+</tr>
+<tr>
+<td>CredCreationSucceededCount</td>
+<td>Count of successful instance identity credential creations. Emitted after every successful credential creation.</td>
+</tr>
+<tr>
+<td>CredCreationSucceededDuration</td>
+<td>Time the rep took to create instance identity credentials. Emitted after every successful credential creation.</td>
+</tr>
+<tr>
+<td>ContainerSetupSucceededDuration</td>
+<td>Time the rep took to setup a container with the Garden back end. Emitted after every successful container setup.</td>
+</tr>
+<tr>
+<td>ContainerSetupFailedDuration</td>
+<td>Time the rep took to setup a container with the Garden back end. Emitted after every failed container setup.</td>
+</tr>
+<tr>
+<td>GardenContainerCreationFailedDuration</td>
+<td>Time the rep&rsquo;s Garden back end took to create a container. Emitted after every failed container creation.</td>
+</tr>
+<tr>
+<td>GardenContainerCreationSucceededDuration</td>
+<td>Time the rep&rsquo;s Garden back end took to create a container. Emitted after every successful container creation.</td>
+</tr>
+<tr>
+<td>GardenContainerDestructionFailedDuration</td>
+<td>Time the rep&rsquo;s Garden back end took to destroy a container. Emitted after every failed container destruction.</td>
+</tr>
+<tr>
+<td>GardenContainerDestructionSucceededDuration</td>
+<td>Time the rep&rsquo;s Garden back end took to destroy a container. Emitted after every successful container destruction.</td>
+</tr>
+<tr>
+<td>GardenHealthCheckFailed</td>
+<td>Whether the cell has failed to pass its healthcheck against the garden back end. 0 signifies healthy, and 1 signifies unhealthy. Emitted periodically.</td>
+</tr>
+<tr>
+<td>memoryStats.lastGCPauseTimeNS</td>
+<td>Duration in nanoseconds of the last garbage collector pause.</td>
+</tr>
+<tr>
+<td>memoryStats.numBytesAllocatedHeap</td>
+<td>Instantaneous count of bytes allocated on the main heap and still in use.</td>
+</tr>
+<tr>
+<td>memoryStats.numBytesAllocatedStack</td>
+<td>Instantaneous count of bytes used by the stack allocator.</td>
+</tr>
+<tr>
+<td>numGoRoutines</td>
+<td>Instantaneous number of active goroutines in the process.</td>
+</tr>
+<tr>
+<td>RepBulkSyncDuration</td>
+<td>Time the Diego Cell rep took to synchronize the ActualLRPs it has claimed with its actual Garden containers. Emitted periodically by each rep.</td>
+</tr>
+<tr>
+<td>RequestsStarted</td>
+<td>Cumulative number of requests of a particular type that have been made. Currently tracking <code>CancelTask</code>, <code>ContainerMetrics</code>, <code>Perform</code>, <code>Reset</code>, <code>State</code>, and <code>StopLRPInstance</code> requests. Emitted every 60 seconds.</td>
+</tr>
+<tr>
+<td>RequestsSucceeded</td>
+<td>Cumulative number of requests of a particular type that have completed successfully. Currently tracking <code>CancelTask</code>, <code>ContainerMetrics</code>, <code>Perform</code>, <code>Reset</code>, <code>State</code>, and <code>StopLRPInstance</code> requests. Emitted every 60 seconds.</td>
+</tr>
+<tr>
+<td>RequestsFailed</td>
+<td>Cumulative number of requests of a particular type that have failed for any reason. Currently tracking <code>CancelTask</code>, <code>ContainerMetrics</code>, <code>Perform</code>, <code>Reset</code>, <code>State</code>, and <code>StopLRPInstance</code> requests. Emitted every 60 seconds.</td>
+</tr>
+<tr>
+<td>RequestsInFlight</td>
+<td>Cumulative number of requests of a particular type that are in-flight by rep. Currently tracking <code>CancelTask</code>, <code>ContainerMetrics</code>, <code>Perform</code>, <code>Reset</code>, <code>State</code>, and <code>StopLRPInstance</code> requests. Emitted every 60 seconds.</td>
+</tr>
+<tr>
+<td>RequestLatencyMax</td>
+<td>Maximum request latency emitted by a request of a particular type in the last 60 seconds. Currently tracking <code>CancelTask</code>, <code>ContainerMetrics</code>, <code>Perform</code>, <code>Reset</code>, <code>State</code>, and <code>StopLRPInstance</code> requests. Emitted every 60 seconds.</td>
+</tr>
+<tr>
+<td>StalledGardenDuration</td>
+<td>Time the rep is waiting on its Garden back end to become healthy during startup. Emitted only if garden not responsive when the rep starts up.</td>
+</tr>
+<tr>
+<td>StartingContainerCount</td>
+<td>Number of containers currently in a Reserved, Initializing, or Created state. Emitted periodically.</td>
+</tr>
+<tr>
+<td>StrandedEvacuatingActualLRPs</td>
+<td>Evacuating ActualLPRs that timed out during the evacuation process. Emitted when evacuation does not complete successfully.</td>
+</tr>
+<tr>
+<td>VolmanMountDuration</td>
+<td>Time volman took to mount a volume. Emitted by each rep when volumes are mounted.</td>
+</tr>
+<tr>
+<td>VolmanMountDurationFor</td>
+<td>Time volman took to mount a volume with a specific volume driver. Emitted by each rep when volumes are mounted.</td>
+</tr>
+<tr>
+<td>VolmanMountErrors</td>
+<td>Count of failed volume mounts. Emitted periodically by each rep.</td>
+</tr>
+<tr>
+<td>VolmanUnmountDuration</td>
+<td>Time volman took to unmount a volume. Emitted by each rep when volumes are mounted.</td>
+</tr>
+<tr>
+<td>VolmanUnmountDurationFor</td>
+<td>Time volman took to unmount a volume with a specific volume driver. Emitted by each rep when volumes are mounted.</td>
+</tr>
+<tr>
+<td>VolmanUnmountErrors</td>
+<td>Count of failed volume unmounts. Emitted periodically by each rep<a id="routeemitter"></a>.</td>
+</tr>
+</tbody></table>
+
+<p>Default Origin Name: route_emitter (applies to route_emitter and route_emitter_windows jobs)</p>
+
+<table><thead>
+<tr>
+<th>Metric Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>AddressCollisions</td>
+<td>Number of detected conflicting routes. A conflicting route is a set of two distinct instances with the same IP address on the routing table.</td>
+</tr>
+<tr>
+<td>HTTPRouteCount</td>
+<td>Number of HTTP route associations (route-endpoint pairs) in the route-emitter&rsquo;s routing table. Emitted periodically when emitter is in local mode.</td>
+</tr>
+<tr>
+<td>HTTPRouteNATSMessagesEmitted</td>
+<td>Cumulative number of HTTP routing messages the route-emitter sends over NATS to the gorouter.</td>
+</tr>
+<tr>
+<td>InternalRouteNATSMessagesEmitted</td>
+<td>Cumulative number of internal routing messages the route-emitter sends over NATS to the service discovery controller.</td>
+</tr>
+<tr>
+<td>LockHeld.v1-locks-route_emitter_lock</td>
+<td>Whether a route-emitter holds the route-emitter lock: <code>1</code> means the lock is held, and <code>0</code> means the lock was lost. Emitted every 30 seconds by the active route-emitter.</td>
+</tr>
+<tr>
+<td>LockHeldDuration.v1-locks-route_emitter_lock</td>
+<td>Time in nanoseconds that the active route-emitter has held the route-emitter lock. Emitted every 30 seconds by the active route-emitter.</td>
+</tr>
+<tr>
+<td>memoryStats.lastGCPauseTimeNS</td>
+<td>Duration in nanoseconds of the last garbage collector pause.</td>
+</tr>
+<tr>
+<td>memoryStats.numBytesAllocatedHeap</td>
+<td>Instantaneous count of bytes allocated on the main heap and still in use.</td>
+</tr>
+<tr>
+<td>memoryStats.numBytesAllocatedStack</td>
+<td>Instantaneous count of bytes used by the stack allocator.</td>
+</tr>
+<tr>
+<td>numGoRoutines</td>
+<td>Instantaneous number of active goroutines in the process.</td>
+</tr>
+<tr>
+<td>RouteEmitterSyncDuration</td>
+<td>Time in nanoseconds that the active route-emitter took to perform its synchronization pass. Emitted every 60 seconds.</td>
+</tr>
+<tr>
+<td>RoutesRegistered</td>
+<td>Cumulative number of route registrations emitted from the route-emitter as it reacts to changes to LRPs. Emitted every 30 seconds.</td>
+</tr>
+<tr>
+<td>RoutesSynced</td>
+<td>Cumulative number of route registrations emitted from the route-emitter during its periodic route-table synchronization. Emitted every 30 seconds.</td>
+</tr>
+<tr>
+<td>RoutesTotal</td>
+<td>Number of routes in the route-emitter&rsquo;s routing table. Emitted every 30 seconds.</td>
+</tr>
+<tr>
+<td>RoutesUnregistered</td>
+<td>Cumulative number of route unregistrations emitted from the route-emitter as it reacts to changes to LRPs. Emitted every 30 seconds.</td>
+</tr>
+<tr>
+<td>TCPRouteCount</td>
+<td>Number of TCP route associations (route-endpoint pairs) in the route-emitter&rsquo;s routing table. Emitted periodically when emitter is in local mode<a id="sshproxy"></a>.</td>
+</tr>
+</tbody></table>
+
+<p>Default Origin Name: ssh_proxy</p>
+
+<table><thead>
+<tr>
+<th>Metric Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ssh-connections</td>
+<td>Total number of SSH connections an SSH proxy has established. Emitted periodically by each SSH proxy.</td>
+</tr>
+<tr>
+<td>memoryStats.lastGCPauseTimeNS</td>
+<td>Duration in nanoseconds of the last garbage collector pause.</td>
+</tr>
+<tr>
+<td>memoryStats.numBytesAllocatedHeap</td>
+<td>Instantaneous count of bytes allocated on the main heap and still in use.</td>
+</tr>
+<tr>
+<td>memoryStats.numBytesAllocatedStack</td>
+<td>Instantaneous count of bytes used by the stack allocator.</td>
+</tr>
+<tr>
+<td>numGoRoutines</td>
+<td>Instantaneous number of active goroutines in the process.</td>
+</tr>
+</tbody></table>
+
+<p>Default Origin Name: garden-linux</p>
+
+<table><thead>
+<tr>
+<th>Metric Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>UnkillableContainers</td>
+<td>Total number of containers that could not be killed/cleaned up on a Diego Cell. If this is non-zero, that cell MUST be rebooted before the next BOSH deploy. Typically this is a result of apps losing connection to NFS when using volume services. Diego cell logs can be searched for <code>failed-deleting-container</code> to find App IDs responsible.</td>
+</tr>
+</tbody></table>
+
+<p><a href="#top">Top</a></p>
+
+<h2 id="-dopplerserver"><a id='doppler'></a> DopplerServer</h2>
+
+<p>Default Origin Name: DopplerServer</p>
+
+<table><thead>
+<tr>
+<th>Metric Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>dropsondeListener.currentBufferCount</td>
+<td>DEPRECATED</td>
+</tr>
+<tr>
+<td>dropsondeListener.receivedByteCount</td>
+<td>DEPRECATED in favor of DopplerServer.udpListener.receivedByteCount.</td>
+</tr>
+<tr>
+<td>dropsondeListener.receivedMessageCount</td>
+<td>DEPRECATED in favor of DopplerServer.udpListener.receivedMessageCount.</td>
+</tr>
+<tr>
+<td>dropsondeUnmarshaller.containerMetricReceived</td>
+<td>Lifetime number of ContainerMetric messages unmarshalled.</td>
+</tr>
+<tr>
+<td>dropsondeUnmarshaller.counterEventReceived</td>
+<td>Lifetime number of CounterEvent messages unmarshalled.</td>
+</tr>
+<tr>
+<td>dropsondeUnmarshaller.errorReceived</td>
+<td>Lifetime number of Error messages unmarshalled.</td>
+</tr>
+<tr>
+<td>dropsondeUnmarshaller.heartbeatReceived</td>
+<td>DEPRECATED</td>
+</tr>
+<tr>
+<td>dropsondeUnmarshaller.httpStartStopReceived</td>
+<td>Lifetime number of HttpStartStop messages unmarshalled.</td>
+</tr>
+<tr>
+<td>dropsondeUnmarshaller.logMessageTotal</td>
+<td>Lifetime number of LogMessage messages unmarshalled.</td>
+</tr>
+<tr>
+<td>dropsondeUnmarshaller.unmarshalErrors</td>
+<td>Lifetime number of errors when unmarshalling messages.</td>
+</tr>
+<tr>
+<td>dropsondeUnmarshaller.valueMetricReceived</td>
+<td>Lifetime number of ValueMetric messages unmarshalled.</td>
+</tr>
+<tr>
+<td>httpServer.receivedMessages</td>
+<td>Number of messages received by Doppler&rsquo;s internal MessageRouter. Emitted every 5 seconds.</td>
+</tr>
+<tr>
+<td>LinuxFileDescriptor</td>
+<td>Number of file handles for the Doppler&rsquo;s process.</td>
+</tr>
+<tr>
+<td>memoryStats.lastGCPauseTimeNS</td>
+<td>Duration of the last Garbage Collector pause in nanoseconds.</td>
+</tr>
+<tr>
+<td>memoryStats.numBytesAllocated</td>
+<td>Instantaneous count of bytes allocated and still in use.</td>
+</tr>
+<tr>
+<td>memoryStats.numBytesAllocatedHeap</td>
+<td>Instantaneous count of bytes allocated on the main heap and still in use.</td>
+</tr>
+<tr>
+<td>memoryStats.numBytesAllocatedStack</td>
+<td>Instantaneous count of bytes used by the stack allocator.</td>
+</tr>
+<tr>
+<td>memoryStats.numFrees</td>
+<td>Lifetime number of memory deallocations.</td>
+</tr>
+<tr>
+<td>memoryStats.numMallocs</td>
+<td>Lifetime number of memory allocations.</td>
+</tr>
+<tr>
+<td>messageRouter.numberOfContainerMetricSinks</td>
+<td>Instantaneous number of container metric sinks known to the SinkManager. Emitted every 5 seconds.</td>
+</tr>
+<tr>
+<td>messageRouter.numberOfDumpSinks</td>
+<td>Instantaneous number of dump sinks known to the SinkManager. Emitted every 5 seconds.</td>
+</tr>
+<tr>
+<td>messageRouter.numberOfFirehoseSinks</td>
+<td>Instantaneous number of Firehose sinks known to the SinkManager. Emitted every 5 seconds.</td>
+</tr>
+<tr>
+<td>messageRouter.numberOfSyslogSinks</td>
+<td>Instantaneous number of syslog sinks known to the SinkManager.</td>
+</tr>
+<tr>
+<td>messageRouter.numberOfWebsocketSinks</td>
+<td>Instantaneous number of WebSocket sinks known to the SinkManager. Emitted every 5 seconds.</td>
+</tr>
+<tr>
+<td>messageRouter.totalDroppedMessages</td>
+<td>Lifetime number of messages dropped inside Doppler for various reasons (downstream consumer cannot keep up internal object was not ready for message, etc.).</td>
+</tr>
+<tr>
+<td>sentMessagesFirehose.&lt;SUBSCRIPTION_ID&gt;</td>
+<td>Number of sent messages through the firehose per subscription ID. Emitted every 5 seconds.</td>
+</tr>
+<tr>
+<td>udpListener.receivedByteCount</td>
+<td>Lifetime number of bytes received by Doppler&rsquo;s UDP Listener.</td>
+</tr>
+<tr>
+<td>udpListener.receivedMessageCount</td>
+<td>Lifetime number of messages received by Doppler&rsquo;s UDP Listener.</td>
+</tr>
+<tr>
+<td>udpListener.receivedErrorCount</td>
+<td>Lifetime number of errors encountered by Doppler&rsquo;s UDP Listener while reading from the connection.</td>
+</tr>
+<tr>
+<td>tcpListener.receivedByteCount</td>
+<td>Lifetime number of bytes received by Doppler&rsquo;s TCP Listener. Emitted every 5 seconds.</td>
+</tr>
+<tr>
+<td>tcpListener.receivedMessageCount</td>
+<td>Lifetime number of messages received by Doppler&rsquo;s TCP Listener. Emitted every 5 seconds.</td>
+</tr>
+<tr>
+<td>tcpListener.receivedErrorCount</td>
+<td>Lifetime number of errors encountered by Doppler&rsquo;s TCP Listener while handshaking, decoding or reading from the connection.</td>
+</tr>
+<tr>
+<td>tlsListener.receivedByteCount</td>
+<td>Lifetime number of bytes received by Doppler&rsquo;s TLS Listener. Emitted every 5 seconds.</td>
+</tr>
+<tr>
+<td>tlsListener.receivedMessageCount</td>
+<td>Lifetime number of messages received by Doppler&rsquo;s TLS Listener. Emitted every 5 seconds.</td>
+</tr>
+<tr>
+<td>tlsListener.receivedErrorCount</td>
+<td>Lifetime number of errors encountered by Doppler&rsquo;s TLS Listener while handshaking, decoding or reading from the connection.</td>
+</tr>
+<tr>
+<td>TruncatingBuffer.DroppedMessages</td>
+<td>Number of messages intentionally dropped by Doppler from the sink for the specific sink. This counter event corresponds with log messages &ldquo;Log message output is too high.&rdquo; Emitted every 5 seconds.</td>
+</tr>
+<tr>
+<td>TruncatingBuffer.totalDroppedMessages</td>
+<td>Lifetime total number of messages intentionally dropped by Doppler from all of its sinks due to back pressure. Emitted every 5 seconds.</td>
+</tr>
+<tr>
+<td>listeners.totalReceivedMessageCount</td>
+<td>Total number of messages received across all of Doppler&rsquo;s listeners (UDP, TCP, TLS).</td>
+</tr>
+<tr>
+<td>numCpus</td>
+<td>Number of CPUs on the machine.</td>
+</tr>
+<tr>
+<td>numGoRoutines</td>
+<td>Instantaneous number of active goroutines in the Doppler process.</td>
+</tr>
+<tr>
+<td>signatureVerifier.invalidSignatureErrors</td>
+<td>Lifetime number of messages received with an invalid signature.</td>
+</tr>
+<tr>
+<td>signatureVerifier.missingSignatureErrors</td>
+<td>Lifetime number of messages received that are too small to contain a signature.</td>
+</tr>
+<tr>
+<td>signatureVerifier.validSignatures</td>
+<td>Lifetime number of messages received with valid signatures.</td>
+</tr>
+<tr>
+<td>Uptime</td>
+<td>Uptime for the Doppler&rsquo;s process.</td>
+</tr>
+</tbody></table>
+
+<p><a href="#top">Top</a></p>
+
+<h2 id="-metron-agent"><a id='metron'></a> Metron Agent</h2>
+
+<p>Default Origin Name: MetronAgent</p>
+
+<table><thead>
+<tr>
+<th>Metric Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>MessageAggregator.counterEventReceived</td>
+<td>Lifetime number of CounterEvents aggregated in Metron.</td>
+</tr>
+<tr>
+<td>MessageBuffer.droppedMessageCount</td>
+<td>Lifetime number of intentionally dropped messages from Metron&rsquo;s batch writer buffer. Batch writing is performed over TCP/TLS only.</td>
+</tr>
+<tr>
+<td>DopplerForwarder.sentMessages</td>
+<td>Lifetime number of messages sent to Doppler regardless of protocol. Emitted every 30 seconds.</td>
+</tr>
+<tr>
+<td>dropsondeAgentListener.currentBufferCount</td>
+<td>Instantaneous number of Dropsonde messages read by UDP socket  but not yet unmarshalled.</td>
+</tr>
+<tr>
+<td>dropsondeAgentListener.receivedByteCount</td>
+<td>Lifetime number of bytes of Dropsonde messages read by UDP socket.</td>
+</tr>
+<tr>
+<td>dropsondeAgentListener.receivedMessageCount</td>
+<td>Lifetime number of Dropsonde messages read by UDP socket.</td>
+</tr>
+<tr>
+<td>dropsondeMarshaller.containerMetricMarshalled</td>
+<td>Lifetime number of ContainerMetric messages marshalled.</td>
+</tr>
+<tr>
+<td>dropsondeMarshaller.counterEventMarshalled</td>
+<td>Lifetime number of CounterEvent messages marshalled.</td>
+</tr>
+<tr>
+<td>dropsondeMarshaller.errorMarshalled</td>
+<td>Lifetime number of Error messages marshalled.</td>
+</tr>
+<tr>
+<td>dropsondeMarshaller.heartbeatMarshalled</td>
+<td>Lifetime number of Heartbeat messages marshalled.</td>
+</tr>
+<tr>
+<td>dropsondeMarshaller.httpStartStopMarshalled</td>
+<td>Lifetime number of HttpStartStop messages marshalled.</td>
+</tr>
+<tr>
+<td>dropsondeMarshaller.logMessageMarshalled</td>
+<td>Lifetime number of LogMessage messages marshalled.</td>
+</tr>
+<tr>
+<td>dropsondeMarshaller.marshalErrors</td>
+<td>Lifetime number of errors when marshalling messages.</td>
+</tr>
+<tr>
+<td>dropsondeMarshaller.valueMetricMarshalled</td>
+<td>Lifetime number of ValueMetric messages marshalled.</td>
+</tr>
+<tr>
+<td>dropsondeUnmarshaller.containerMetricReceived</td>
+<td>Lifetime number of ContainerMetric messages unmarshalled.</td>
+</tr>
+<tr>
+<td>dropsondeUnmarshaller.counterEventReceived</td>
+<td>Lifetime number of CounterEvent messages unmarshalled.</td>
+</tr>
+<tr>
+<td>dropsondeUnmarshaller.errorReceived</td>
+<td>Lifetime number of Error messages unmarshalled.</td>
+</tr>
+<tr>
+<td>dropsondeUnmarshaller.heartbeatReceived</td>
+<td>DEPRECATED</td>
+</tr>
+<tr>
+<td>dropsondeUnmarshaller.httpStartStopReceived</td>
+<td>Lifetime number of HttpStartStop messages unmarshalled.</td>
+</tr>
+<tr>
+<td>dropsondeUnmarshaller.logMessageTotal</td>
+<td>Lifetime number of LogMessage messages unmarshalled.</td>
+</tr>
+<tr>
+<td>dropsondeUnmarshaller.unmarshalErrors</td>
+<td>Lifetime number of errors when unmarshalling messages.</td>
+</tr>
+<tr>
+<td>dropsondeUnmarshaller.valueMetricReceived</td>
+<td>Lifetime number of ValueMetric messages unmarshalled.</td>
+</tr>
+<tr>
+<td>legacyAgentListener.currentBufferCount</td>
+<td>Instantaneous number of Legacy messages read by UDP socket but not yet unmarshalled.</td>
+</tr>
+<tr>
+<td>legacyAgentListener.receivedByteCount</td>
+<td>Lifetime number of bytes of Legacy messages read by UDP socket.</td>
+</tr>
+<tr>
+<td>legacyAgentListener.receivedMessageCount</td>
+<td>Lifetime number of Legacy messages read by UDP socket.</td>
+</tr>
+<tr>
+<td>memoryStats.lastGCPauseTimeNS</td>
+<td>Duration of the last Garbage Collector pause in nanoseconds.</td>
+</tr>
+<tr>
+<td>memoryStats.numBytesAllocated</td>
+<td>Instantaneous count of bytes allocated and still in use.</td>
+</tr>
+<tr>
+<td>memoryStats.numBytesAllocatedHeap</td>
+<td>Instantaneous count of bytes allocated on the main heap and still in use.</td>
+</tr>
+<tr>
+<td>memoryStats.numBytesAllocatedStack</td>
+<td>Instantaneous count of bytes used by the stack allocator.</td>
+</tr>
+<tr>
+<td>memoryStats.numFrees</td>
+<td>Lifetime number of memory deallocations.</td>
+</tr>
+<tr>
+<td>memoryStats.numMallocs</td>
+<td>Lifetime number of memory allocations.</td>
+</tr>
+<tr>
+<td>numCpus</td>
+<td>Number of CPUs on the machine.</td>
+</tr>
+<tr>
+<td>numGoRoutines</td>
+<td>Instantaneous number of active goroutines in the Doppler process.</td>
+</tr>
+<tr>
+<td>tcp.sendErrorCount</td>
+<td>Lifetime number of errors if writing to Doppler over TCP fails.</td>
+</tr>
+<tr>
+<td>tcp.sentByteCount</td>
+<td>Lifetime number of sent bytes to Doppler over TCP.</td>
+</tr>
+<tr>
+<td>tcp.sentMessageCount</td>
+<td>Lifetime number of sent messages to Doppler over TCP.</td>
+</tr>
+<tr>
+<td>tls.sendErrorCount</td>
+<td>Lifetime number of errors if writing to Doppler over TLS fails.</td>
+</tr>
+<tr>
+<td>tls.sentByteCount</td>
+<td>Lifetime number of sent bytes to Doppler over TLS. Emitted every 30 seconds.</td>
+</tr>
+<tr>
+<td>tls.sentMessageCount</td>
+<td>Lifetime number of sent messages to Doppler over TLS. Emitted every 30 seconds.</td>
+</tr>
+<tr>
+<td>udp.sendErrorCount</td>
+<td>Lifetime number of errors if writing to Doppler over UDP fails.</td>
+</tr>
+<tr>
+<td>udp.sentByteCount</td>
+<td>Lifetime number of sent bytes to Doppler over UDP.</td>
+</tr>
+<tr>
+<td>udp.sentMessageCount</td>
+<td>Lifetime number of sent messages to Doppler over UDP.</td>
+</tr>
+</tbody></table>
+
+<p><a href="#top">Top</a></p>
+
+<h2 id="-routing"><a id='routing'></a> Routing</h2>
+
+<p>Routing Release metrics have following origin names:</p>
+
+<ul>
+<li><a href="#gorouter">gorouter</a></li>
+<li><a href="#routing_api">routing_api</a></li>
+<li><a href="#tcp_emitter">tcp_emitter</a></li>
+<li><a href="#tcp_router">tcp_router</a></li>
+</ul>
+
+<p><a id="gorouter"></a>Default Origin Name: gorouter</p>
+
+<table><thead>
+<tr>
+<th>Metric Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>memoryStats.lastGCPauseTimeNS</td>
+<td>Duration of the last Garbage Collector pause in nanoseconds. Emitted every 10 seconds.</td>
+</tr>
+<tr>
+<td>memoryStats.numBytesAllocated</td>
+<td>Instantaneous count of bytes allocated and still in use. Emitted every 10 seconds.</td>
+</tr>
+<tr>
+<td>memoryStats.numBytesAllocatedHeap</td>
+<td>Instantaneous count of bytes allocated on the main heap and still in use. Emitted every 10 seconds.</td>
+</tr>
+<tr>
+<td>memoryStats.numBytesAllocatedStack</td>
+<td>Instantaneous count of bytes used by the stack allocator. Emitted every 10 seconds.</td>
+</tr>
+<tr>
+<td>memoryStats.numFrees</td>
+<td>Lifetime number of memory deallocations. Emitted every 10 seconds.</td>
+</tr>
+<tr>
+<td>memoryStats.numMallocs</td>
+<td>Lifetime number of memory allocations. Emitted every 10 seconds.</td>
+</tr>
+<tr>
+<td>numCPUS</td>
+<td>Number of CPUs on the machine. Emitted every 10 seconds.</td>
+</tr>
+<tr>
+<td>numGoRoutines</td>
+<td>Instantaneous number of active goroutines in the gorouter process. Emitted every 10 seconds.</td>
+</tr>
+<tr>
+<td>logSenderTotalMessagesRead</td>
+<td>Lifetime number of application log messages. Emitted every 5 seconds.</td>
+</tr>
+<tr>
+<td>backend_exhausted_conns</td>
+<td>Lifetime number of requests that have been rejected due to the limit on number of connections per back end having been reached for all back ends tried. Emitted every 5 seconds.</td>
+</tr>
+<tr>
+<td>bad_gateways</td>
+<td>Lifetime number of bad gateways at the Gorouter. Emitted every 5 seconds.</td>
+</tr>
+<tr>
+<td>latency</td>
+<td>Total round trip time, in milliseconds, for requests through the Gorouter. This includes time spent by back end app to process requests. Emitted per router request.</td>
+</tr>
+<tr>
+<td>gorouter_time</td>
+<td>Total time, in seconds, that the Gorouter spent processing and forwarding the HTTP request. Emitted per router request.</td>
+</tr>
+<tr>
+<td>latency.{component}</td>
+<td>Time in milliseconds that the Gorouter took to handle requests from each component to its endpoints. Emitted per router request.</td>
+</tr>
+<tr>
+<td>route_registration_latency</td>
+<td>Time in milliseconds between when an actual LRP is started and when the app is routable via Gorouter. Emitted per route-register message of new LRPs. This metric might be a negative value up to ~30 ms due to clock skew between the machines this metric is derived from.</td>
+</tr>
+<tr>
+<td>registry_message.{component}</td>
+<td>Lifetime number of route register messages received for each component. Emitted per route-register message.</td>
+</tr>
+<tr>
+<td>unregistry_message.{component}</td>
+<td>Lifetime number of route unregister messages received for each component. Emitted per route-unregister message.</td>
+</tr>
+<tr>
+<td>rejected_requests</td>
+<td>Lifetime number of bad requests received on the Gorouter. Bad requests occur when the route does not exist, when the value of the <code>X-Cf-App-Instance</code> header is invalid, or when the host header on the request is empty. Emitted every 5 seconds.</td>
+</tr>
+<tr>
+<td>requests.{component}</td>
+<td>Lifetime number of requests received for each component. Emitted per router request.</td>
+</tr>
+<tr>
+<td>responses</td>
+<td>Lifetime number of HTTP responses returned by the back end app. Emitted every 5 seconds.</td>
+</tr>
+<tr>
+<td>responses.2xx</td>
+<td>Lifetime number of 2xx HTTP responses returned by the back end app. Emitted every 5 seconds.</td>
+</tr>
+<tr>
+<td>responses.3xx</td>
+<td>Lifetime number of 3xx HTTP responses returned by the back end app. Emitted every 5 seconds.</td>
+</tr>
+<tr>
+<td>responses.4xx</td>
+<td>Lifetime number of 4xx HTTP responses returned by the back end app. Emitted every 5 seconds.</td>
+</tr>
+<tr>
+<td>responses.5xx</td>
+<td>Lifetime number of 5xx HTTP responses returned by the back end app. Emitted every 5 seconds.</td>
+</tr>
+<tr>
+<td>responses.xxx</td>
+<td>Lifetime number of other(non-(2xx-5xx)) HTTP responses returned by the back end app. Emitted every 5 seconds.</td>
+</tr>
+<tr>
+<td>route_lookup_time</td>
+<td>Time in nanoseconds to look up a request URL in the route table. Emitted per router request.</td>
+</tr>
+<tr>
+<td>websocket_upgrades</td>
+<td>Lifetime number of WebSocket upgrades. Emitted every 5 seconds.</td>
+</tr>
+<tr>
+<td>websocket_failures</td>
+<td>Lifetime number of WebSocket failures. Emitted every 5 seconds.</td>
+</tr>
+<tr>
+<td>routed_app_requests</td>
+<td>The collector sums up requests for all dea-{index} components for its output metrics. Emitted every 5 seconds.</td>
+</tr>
+<tr>
+<td>total_requests</td>
+<td>Lifetime number of requests received. Emitted every 5 seconds.</td>
+</tr>
+<tr>
+<td>ms_since_last_registry_update</td>
+<td>Time in millisecond since the last route register has been been received. Emitted every 30 seconds.</td>
+</tr>
+<tr>
+<td>total_routes</td>
+<td>Current number of routes registered. Emitted every 30 seconds.</td>
+</tr>
+<tr>
+<td>uptime</td>
+<td>Uptime for router. Emitted every second.</td>
+</tr>
+<tr>
+<td>file_descriptors</td>
+<td>Number of file descriptors currently used by the Gorouter. Emitted every 5 seconds.</td>
+</tr>
+<tr>
+<td>routes_pruned</td>
+<td>Lifetime number of stale routes that have been automatically pruned by the Gorouter. Emitted every 5 seconds.</td>
+</tr>
+<tr>
+<td>backend_tls_handshake_failed</td>
+<td>Lifetime number of failed TLS handshakes when connecting to a back end registered with TLS port. Corresponds to HTTP 525 error response from the Gorouter. Emitted every 5 seconds.</td>
+</tr>
+<tr>
+<td>backend_invalid_id</td>
+<td>Lifetime number of requests that were rejected because the back end presents a certificate with an invalid ID. Corresponds to HTTP 503 error response from the Gorouter. Emitted every 5 seconds.</td>
+</tr>
+<tr>
+<td>backend_invalid_tls_cert</td>
+<td>Lifetime number of requests that were rejected because the back end presents a certificate that is not trusted by the Gorouter. Corresponds to HTTP 526 error response from Gorouter. Emitted every 5 seconds.</td>
+</tr>
+<tr>
+<td>buffered_messages</td>
+<td>Current number of messages in the Gorouter&rsquo;s NATS client&rsquo;s buffer. Emitted every 5 seconds.</td>
+</tr>
+<tr>
+<td>total_dropped_messages</td>
+<td>Lifetime number of messages that have been dropped by the Gorouter&rsquo;s NATS client due to a full buffer. Emitted every 5 seconds.</td>
+</tr>
+<tr>
+<td>endpoints_per_pool</td>
+<td>Current number of endpoints in a route pool using hash-based load balancing. Prometheus gauge with labels <code>route</code> and <code>lb_algorithm</code>. Only present for routes configured with hash-based routing. The gauge is updated on endpoint registration, unregistration, and pruning of stale endpoints.</td>
+</tr>
+</tbody></table>
+
+<p><a id="routing_api"></a>Default Origin Name: routing_api</p>
+
+<table><thead>
+<tr>
+<th>Metric Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>memoryStats.lastGCPauseTimeNS</td>
+<td>Duration of the last Garbage Collector pause in nanoseconds. Emitted every 10 seconds.</td>
+</tr>
+<tr>
+<td>memoryStats.numBytesAllocated</td>
+<td>Instantaneous count of bytes allocated and still in use. Emitted every 10 seconds.</td>
+</tr>
+<tr>
+<td>memoryStats.numBytesAllocatedHeap</td>
+<td>Instantaneous count of bytes allocated on the main heap and still in use. Emitted every 10 seconds.</td>
+</tr>
+<tr>
+<td>memoryStats.numBytesAllocatedStack</td>
+<td>Instantaneous count of bytes used by the stack allocator. Emitted every 10 seconds.</td>
+</tr>
+<tr>
+<td>memoryStats.numFrees</td>
+<td>Lifetime number of memory deallocations. Emitted every 10 seconds.</td>
+</tr>
+<tr>
+<td>memoryStats.numMallocs</td>
+<td>Lifetime number of memory allocations. Emitted every 10 seconds.</td>
+</tr>
+<tr>
+<td>numCPUS</td>
+<td>Number of CPUs on the machine. Emitted every 10 seconds.</td>
+</tr>
+<tr>
+<td>numGoRoutines</td>
+<td>Instantaneous number of active goroutines in the routing_api process. Emitted every 10 seconds.</td>
+</tr>
+<tr>
+<td>key_refresh_events</td>
+<td>Total number of events when fresh token was fetched from UAA. Emitted every 30 seconds.</td>
+</tr>
+<tr>
+<td>total_http_routes</td>
+<td>Number of HTTP routes in the routing table. Emitted every 30 seconds, or when there is a new HTTP route added. Interval for emitting this metric can be configured with manifest property <code>metrics_reporting_interval</code>.</td>
+</tr>
+<tr>
+<td>total_http_subscriptions</td>
+<td>Number of HTTP routes subscriptions. Emitted every 30 seconds. Interval for emitting this metric can be configured with manifest property <code>metrics_reporting_interval</code>.</td>
+</tr>
+<tr>
+<td>total_tcp_routes</td>
+<td>Number of TCP routes in the routing table. Emitted every 30 seconds, or when there is a new TCP route added. Interval for emitting this metric can be configured with manifest property <code>metrics_reporting_interval</code>.</td>
+</tr>
+<tr>
+<td>total_tcp_subscriptions</td>
+<td>Number of TCP routes subscriptions. Emitted every 30 seconds. Interval for emitting this metric can be configured with manifest property <code>metrics_reporting_interval</code>.</td>
+</tr>
+<tr>
+<td>total_token_errors</td>
+<td>Total number of UAA token errors. Emitted every 30 seconds. Interval for emitting this metric can be configured with manifest property <code>metrics_reporting_interval</code>.</td>
+</tr>
+</tbody></table>
+
+<p><a id="tcp_emitter"></a>Default Origin Name: tcp_emitter</p>
+
+<table><thead>
+<tr>
+<th>Metric Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>memoryStats.lastGCPauseTimeNS</td>
+<td>Duration of the last Garbage Collector pause in nanoseconds. Emitted every 10 seconds.</td>
+</tr>
+<tr>
+<td>memoryStats.numBytesAllocated</td>
+<td>Instantaneous count of bytes allocated and still in use. Emitted every 10 seconds.</td>
+</tr>
+<tr>
+<td>memoryStats.numBytesAllocatedHeap</td>
+<td>Instantaneous count of bytes allocated on the main heap and still in use. Emitted every 10 seconds.</td>
+</tr>
+<tr>
+<td>memoryStats.numBytesAllocatedStack</td>
+<td>Instantaneous count of bytes used by the stack allocator. Emitted every 10 seconds.</td>
+</tr>
+<tr>
+<td>memoryStats.numFrees</td>
+<td>Lifetime number of memory deallocations. Emitted every 10 seconds.</td>
+</tr>
+<tr>
+<td>memoryStats.numMallocs</td>
+<td>Lifetime number of memory allocations. Emitted every 10 seconds.</td>
+</tr>
+<tr>
+<td>numCPUS</td>
+<td>Number of CPUs on the machine. Emitted every 10 seconds.</td>
+</tr>
+<tr>
+<td>numGoRoutines</td>
+<td>Instantaneous number of active goroutines in the tcp_emitter process. Emitted every 10 seconds.</td>
+</tr>
+</tbody></table>
+
+<p><a id="tcp_router"></a>Default Origin Name: tcp-router</p>
+
+<table><thead>
+<tr>
+<th>Metric Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>memoryStats.lastGCPauseTimeNS</td>
+<td>Duration of the last Garbage Collector pause in nanoseconds. Emitted every 10 seconds.</td>
+</tr>
+<tr>
+<td>memoryStats.numBytesAllocated</td>
+<td>Instantaneous count of bytes allocated and still in use. Emitted every 10 seconds.</td>
+</tr>
+<tr>
+<td>memoryStats.numBytesAllocatedHeap</td>
+<td>Instantaneous count of bytes allocated on the main heap and still in use. Emitted every 10 seconds.</td>
+</tr>
+<tr>
+<td>memoryStats.numBytesAllocatedStack</td>
+<td>Instantaneous count of bytes used by the stack allocator. Emitted every 10 seconds.</td>
+</tr>
+<tr>
+<td>memoryStats.numFrees</td>
+<td>Lifetime number of memory deallocations. Emitted every 10 seconds.</td>
+</tr>
+<tr>
+<td>memoryStats.numMallocs</td>
+<td>Lifetime number of memory allocations. Emitted every 10 seconds.</td>
+</tr>
+<tr>
+<td>numCPUS</td>
+<td>Number of CPUs on the machine. Emitted every 10 seconds.</td>
+</tr>
+<tr>
+<td>numGoRoutines</td>
+<td>Instantaneous number of active goroutines in the tcp_router process. Emitted every 10 seconds.</td>
+</tr>
+<tr>
+<td>{session_id}.ConnectionTime</td>
+<td>Average connection time to back end in current session. Emitted every 60 seconds per session ID. Interval value for this metric can be configured with manifest property <code>tcp_router.tcp_stats_collection_interval</code>.</td>
+</tr>
+<tr>
+<td>{session_id}.CurrentSessions</td>
+<td>Total number of current sessions. Emitted every 60 seconds per session ID. Interval value for this metric can be configured with manifest property <code>tcp_router.tcp_stats_collection_interval</code>.</td>
+</tr>
+<tr>
+<td>AverageConnectTimeMs</td>
+<td>Average back end response time (in ms). Emitted every 60 seconds. Interval value for this metric can be configured with manifest property <code>tcp_router.tcp_stats_collection_interval</code>.</td>
+</tr>
+<tr>
+<td>AverageQueueTimeMs</td>
+<td>Average time spent in queue (in ms). Emitted every 60 seconds. Interval value for this metric can be configured with manifest property <code>tcp_router.tcp_stats_collection_interval</code>.</td>
+</tr>
+<tr>
+<td>TotalBackendConnectionErrors</td>
+<td>Total number of back end connection errors. Emitted every 60 seconds. Interval value for this metric can be configured with manifest property <code>tcp_router.tcp_stats_collection_interval</code>.</td>
+</tr>
+<tr>
+<td>TotalCurrentQueuedRequests</td>
+<td>Total number of requests unassigned in queue. Emitted every 60 seconds. Interval value for this metric can be configured with manifest property <code>tcp_router.tcp_stats_collection_interval</code>.</td>
+</tr>
+</tbody></table>
+
+<p><a href="#top">Top</a></p>
+
+<h2 id="-syslog-binding-cache"><a id='syslog'></a> Syslog Binding Cache</h2>
+
+<p>Default Origin Name: syslog_binding_cache</p>
+
+<table><thead>
+<tr>
+<th>Metric Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>binding_refresh_error</td>
+<td>Total number of failed requests to the binding provider.</td>
+</tr>
+<tr>
+<td>last_binding_refresh_count</td>
+<td>Current number of bindings received from binding provider during last refresh.</td>
+</tr>
+</tbody></table>
+
+<p><a href="#top">Top</a></p>
+
+<h2 id="-traffic-controller"><a id='traffic'></a> Traffic Controller</h2>
+
+<p>Default Origin Name: LoggregatorTrafficController</p>
+
+<table><thead>
+<tr>
+<th>Metric Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>dopplerProxy.containermetricsLatency</td>
+<td>Duration for serving container metrics via the containermetrics endpoint (milliseconds). Emitted every 30 seconds.</td>
+</tr>
+<tr>
+<td>dopplerProxy.recentlogsLatency</td>
+<td>Duration for serving recent logs via the recentLogs endpoint (milliseconds). Emitted every 30 seconds.</td>
+</tr>
+<tr>
+<td>memoryStats.lastGCPauseTimeNS</td>
+<td>Duration of the last Garbage Collector pause in nanoseconds.</td>
+</tr>
+<tr>
+<td>memoryStats.numBytesAllocated</td>
+<td>Instantaneous count of bytes allocated and still in use.</td>
+</tr>
+<tr>
+<td>memoryStats.numBytesAllocatedHeap</td>
+<td>Instantaneous count of bytes allocated on the main heap and still in use.</td>
+</tr>
+<tr>
+<td>memoryStats.numBytesAllocatedStack</td>
+<td>Instantaneous count of bytes used by the stack allocator.</td>
+</tr>
+<tr>
+<td>memoryStats.numFrees</td>
+<td>Lifetime number of memory deallocations.</td>
+</tr>
+<tr>
+<td>memoryStats.numMallocs</td>
+<td>Lifetime number of memory allocations.</td>
+</tr>
+<tr>
+<td>numCPUS</td>
+<td>Number of CPUs on the machine.</td>
+</tr>
+<tr>
+<td>numGoRoutines</td>
+<td>Instantaneous number of active goroutines in the Doppler process.</td>
+</tr>
+<tr>
+<td>Uptime</td>
+<td>Uptime for the Traffic Controller&rsquo;s process. Emitted every 30 seconds.</td>
+</tr>
+<tr>
+<td>LinuxFileDescriptor</td>
+<td>Number of file handles for the TrafficController&rsquo;s process.</td>
+</tr>
+</tbody></table>
+
+<p><a href="#top">Top</a></p>
+
+<h2 id="-user-account-and-authentication-(uaa)"><a id='uaa'></a> User Account and Authentication (UAA)</h2>
+
+<p>Default Origin Name: uaa</p>
+
+<table><thead>
+<tr>
+<th>Metric Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>audit_service.client_authentication_count</td>
+<td>Number of successful client authentication attempts since the last startup. Emitted every 30 seconds.</td>
+</tr>
+<tr>
+<td>audit_service.client_authentication_failure_count</td>
+<td>Number of failed client authentication attempts since the last startup. Emitted every 30 seconds.</td>
+</tr>
+<tr>
+<td>audit_service.principal_authentication_failure_count</td>
+<td>Number of failed non-user authentication attempts since the last startup. Emitted every 30 seconds.</td>
+</tr>
+<tr>
+<td>audit_service.principal_not_found_count</td>
+<td>Number of times non-user was not found since the last startup. Emitted every 30 seconds.</td>
+</tr>
+<tr>
+<td>audit_service.user_authentication_count</td>
+<td>Number of successful authentications by the user since the last startup. Emitted every 30 seconds.</td>
+</tr>
+<tr>
+<td>audit_service.user_authentication_failure_count</td>
+<td>Number of failed user authentication attempts since the last startup. Emitted every 30 seconds.</td>
+</tr>
+<tr>
+<td>audit_service.user_not_found_count</td>
+<td>Number of times the user was not found since the last startup. Emitted every 30 seconds.</td>
+</tr>
+<tr>
+<td>audit_service.user_password_changes</td>
+<td>Number of successful password changes by the user since the last startup. Emitted every 30 seconds.</td>
+</tr>
+<tr>
+<td>audit_service.user_password_failures</td>
+<td>Number of failed password changes by the user since the last startup. Emitted every 30 seconds.</td>
+</tr>
+</tbody></table>
+
+<p><a href="#top">Top</a></p>
+
+<p>For information about metrics related to UAA&rsquo;s performance, see <a href="/uaa/uaa-metrics.html">UAA performance metrics</a>.</p>
+
+        <a id='repo-link' href="https://github.com/cloudfoundry/docs-running-cf/tree/master/all_metrics.html.md.erb">Create a pull request or raise an issue on the source for this page in GitHub</a>
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    <div class="copyright">
+  <a href='/'>Cloud Foundry Documentation</a>
+  &copy; 2026 <a href='https://cloudfoundry.org'>Cloud Foundry Foundation</a>. All Rights Reserved.
+</div>
+<div class="support">
+  <a href="https://www.cloudfoundry.org/community/" target="_blank">Get Involved</a>
+</div>
+
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

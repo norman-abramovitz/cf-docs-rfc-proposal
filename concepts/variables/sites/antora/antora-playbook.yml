@@ -1,0 +1,31 @@
+# Antora playbook for the variables round: the notes round's playbook with
+# this round's components. `make build` writes two playbooks from it
+# (playbook.js), one per mode, each with the book's variables as AsciiDoc
+# attributes, and builds both into site/.
+site:
+  title: Variables round — Antora
+  start_page: ROOT::index.adoc
+content:
+  sources:
+  # This repository, read from its worktree, so pages need not be committed
+  - url: ./../../../..
+    branches: HEAD
+    start_paths:
+    - concepts/variables/sites/antora/home
+ui:
+  bundle:
+    # The default UI, pinned: `make` downloads one build and checks its hash
+    url: ./.cache/ui-bundle.zip
+urls:
+  html_extension_style: indexify
+asciidoc:
+  attributes:
+    # A heading without an id gets one with no prefix and words joined by
+    # hyphens, as on the published page and in the other tools
+    idprefix: ''
+    idseparator: '-'
+output:
+  dir: ./site
+runtime:
+  cache_dir: ./.cache/antora
+  fetch: false

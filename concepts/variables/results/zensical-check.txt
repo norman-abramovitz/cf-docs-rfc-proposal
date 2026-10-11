@@ -1,0 +1,74 @@
+$ ../../checks/check-site.sh site note=note,important=important,caution=caution
+== passthrough/app-ssh-overview
+ok    scan: no variable syntax left, no markup or Markdown shown as text
+ok    values: 9 of 9 in place
+ok    outline: 5 headings, same levels and text
+ok    anchors: all 4 exist
+info  published heading ids not on the built page (4): #-about-ssh-access #-ssh-access-control-hierarchy #-ssh-access-for-apps-and-spaces #-configuring-ssh-access-for-cloud-foundry
+== passthrough/routes-domains
+ok    scan: no variable syntax left, no markup or Markdown shown as text
+ok    values: 50 of 50 in place
+ok    outline: 18 headings, same levels and text
+ok    anchors: all 17 exist
+info  published heading ids not on the built page (12): #-domains #-list-domains-for-an-org #-http-versus-tcp-domains #-shared-domains #-private-domains #-delete-a-private-domain #-requirements-for-parent-and-child-domains #-dns-for-domains #-mapping-domains-to-your-custom-domain #-mapping-a-single-domain-to-your-custom-domain and 2 more
+ok    count: 5 notes
+ok    note 1: note -> note, title 'Note', 39 words, code=2 link=1, body
+ok    note 2: important -> important, title 'Important', 15 words, -, body
+ok    note 3: note -> note, title 'Note', 25 words, code=2 link=1, body
+ok    note 4: note -> note, title 'Note', 8 words, -, body
+ok    note 5: important -> important, title 'Important', 32 words, link=1, body
+== passthrough/troubleshooting-router-error-responses
+ok    scan: no variable syntax left, no markup or Markdown shown as text
+ok    values: 8 of 8 in place
+ok    outline: 17 headings, same levels and text
+ok    anchors: all 16 exist
+info  published heading ids not on the built page (14): #-outer-error-responses-overview #-general-debugging-steps #-levels #-message-contents #-access-logs #diagnose-gorouter-errors #gorouter-cannot-connect-to-the-app-container #gorouter-errors-after-connecting #-diagnose-stale-routes-in-gorouter #-causes-of-stale-routes and 4 more
+== passthrough/container-security
+ok    scan: no variable syntax left, no markup or Markdown shown as text
+ok    values: 16 of 16 in place
+ok    outline: 12 headings, same levels and text
+ok    anchors: all 11 exist
+info  published heading ids not on the built page (8): #-container-mechanics #-cpu #-inbound-and-outbound-traffic-from-cloud-foundry #-networking-overview #-network-traffic-rules #-container-security #-types #-hardening
+== passthrough/all_metrics
+ok    scan: no variable syntax left, no markup or Markdown shown as text
+ok    values: 2 of 2 in place
+ok    outline: 9 headings, same levels and text
+ok    anchors: all 8 exist
+info  published heading ids not on the built page (8): #-cloud-controller #-diego #-dopplerserver #-metron-agent #-routing #-syslog-binding-cache #-traffic-controller #-user-account-and-authentication-(uaa)
+== native/app-ssh-overview
+ok    scan: no variable syntax left, no markup or Markdown shown as text
+ok    values: 9 of 9 in place
+ok    outline: 5 headings, same levels and text
+ok    anchors: all 4 exist
+info  published heading ids not on the built page (4): #-about-ssh-access #-ssh-access-control-hierarchy #-ssh-access-for-apps-and-spaces #-configuring-ssh-access-for-cloud-foundry
+== native/routes-domains
+ok    scan: no variable syntax left, no markup or Markdown shown as text
+ok    values: 50 of 50 in place
+ok    outline: 18 headings, same levels and text
+ok    anchors: all 17 exist
+info  published heading ids not on the built page (12): #-domains #-list-domains-for-an-org #-http-versus-tcp-domains #-shared-domains #-private-domains #-delete-a-private-domain #-requirements-for-parent-and-child-domains #-dns-for-domains #-mapping-domains-to-your-custom-domain #-mapping-a-single-domain-to-your-custom-domain and 2 more
+ok    count: 5 notes
+ok    note 1: note -> note, title 'Note', 39 words, code=2 link=1, body
+ok    note 2: important -> important, title 'Important', 15 words, -, body
+ok    note 3: note -> note, title 'Note', 25 words, code=2 link=1, body
+ok    note 4: note -> note, title 'Note', 8 words, -, body
+ok    note 5: important -> important, title 'Important', 32 words, link=1, body
+== native/troubleshooting-router-error-responses
+ok    scan: no variable syntax left, no markup or Markdown shown as text
+ok    values: 8 of 8 in place
+ok    outline: 17 headings, same levels and text
+ok    anchors: all 16 exist
+info  published heading ids not on the built page (14): #-outer-error-responses-overview #-general-debugging-steps #-levels #-message-contents #-access-logs #diagnose-gorouter-errors #gorouter-cannot-connect-to-the-app-container #gorouter-errors-after-connecting #-diagnose-stale-routes-in-gorouter #-causes-of-stale-routes and 4 more
+== native/container-security
+ok    scan: no variable syntax left, no markup or Markdown shown as text
+ok    values: 16 of 16 in place
+ok    outline: 12 headings, same levels and text
+ok    anchors: all 11 exist
+info  published heading ids not on the built page (8): #-container-mechanics #-cpu #-inbound-and-outbound-traffic-from-cloud-foundry #-networking-overview #-network-traffic-rules #-container-security #-types #-hardening
+== native/all_metrics
+ok    scan: no variable syntax left, no markup or Markdown shown as text
+ok    values: 2 of 2 in place
+ok    outline: 9 headings, same levels and text
+ok    anchors: all 8 exist
+info  published heading ids not on the built page (8): #-cloud-controller #-diego #-dopplerserver #-metron-agent #-routing #-syslog-binding-cache #-traffic-controller #-user-account-and-authentication-(uaa)
+exit status 0

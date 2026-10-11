@@ -1,0 +1,33 @@
+# Zensical 0.0.69: make probe. probe/probe.md built once per setting of
+# on_undefined: a name the file does not define (no_such_name), a key with no
+# value (ssl, null in YAML), and a defined name, each between brackets.
+== on_undefined = silent
+exit status 0
+Undefined: [] empty: [None] defined: [Cloud Foundry]
+== on_undefined = keep
+exit status 0
+Undefined: [{{ no such element: dict object['no_such_name'] }}] empty: [None] defined: [Cloud Foundry]
+== on_undefined = lax
+exit status 0
+Undefined: [] empty: [None] defined: [Cloud Foundry]
+== on_undefined = strict
+exit status 1
+RuntimeError: Python error: UndefinedError: 'dict object' has no attribute 'no_such_name'
+(no page written)
+
+# The same extension with Jinja's own delimiters ({{ }}, {% %}, {# #}) instead
+# of the ERB ones: a heading id written {#id} (attr_list, the headings round's
+# form) and the nginx buildpack page's {{port}} (docs-buildpacks
+# nginx/index.html.md.erb L46-L54), each page built alone (scratch run, 2026-10-11).
+== Jinja's own delimiters, on_undefined = silent: heading.md
+exit status 1
+RuntimeError: Python error: TemplateSyntaxError: Missing end of comment tag
+== Jinja's own delimiters, on_undefined = silent: nginx.md
+exit status 0
+listen ;
+== Jinja's own delimiters, on_undefined = strict: heading.md
+exit status 1
+RuntimeError: Python error: TemplateSyntaxError: Missing end of comment tag
+== Jinja's own delimiters, on_undefined = strict: nginx.md
+exit status 1
+RuntimeError: Python error: UndefinedError: 'port' is undefined

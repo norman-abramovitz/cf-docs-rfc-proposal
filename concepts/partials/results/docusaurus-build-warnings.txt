@@ -1,0 +1,46 @@
+# make build, Docusaurus 3.10.2, 2026-10-11: the build log's warnings (the links that leave the excerpts)
+> build
+> docusaurus build
+[INFO] [en] Creating an optimized production build...
+(node:24741) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WARNING] Docusaurus found broken links!
+Please check the pages of your site in the list below, and make sure you don't reference any path that does not exist.
+Note: it's possible to ignore broken links with the 'onBrokenLinks' Docusaurus configuration, and let the build pass.
+Exhaustive list of all broken links found:
+- Broken link on source page path = /native/architecture:
+   -> linking to cli-plugin.html (resolved as: /native/cli-plugin.html)
+- Broken link on source page path = /native/enabling-tcp-routing:
+   -> linking to ../devguide/deploy-apps/routes-domains.html#domains (resolved as: /devguide/deploy-apps/routes-domains.html#domains)
+- Broken link on source page path = /native/routes-domains:
+   -> linking to ./blue-green.html (resolved as: /native/blue-green.html)
+   -> linking to troubleshoot-app-health.html#routing-conflict (resolved as: /native/troubleshoot-app-health.html#routing-conflict)
+- Broken link on source page path = /native/troubleshoot-app-health:
+   -> linking to ./blue-green.html (resolved as: /native/blue-green.html)
+- Broken link on source page path = /passthrough/architecture:
+   -> linking to cli-plugin.html (resolved as: /passthrough/cli-plugin.html)
+- Broken link on source page path = /passthrough/enabling-tcp-routing:
+   -> linking to ../devguide/deploy-apps/routes-domains.html#domains (resolved as: /devguide/deploy-apps/routes-domains.html#domains)
+- Broken link on source page path = /passthrough/routes-domains:
+   -> linking to ./blue-green.html (resolved as: /passthrough/blue-green.html)
+   -> linking to troubleshoot-app-health.html#routing-conflict (resolved as: /passthrough/troubleshoot-app-health.html#routing-conflict)
+- Broken link on source page path = /passthrough/troubleshoot-app-health:
+   -> linking to ./blue-green.html (resolved as: /passthrough/blue-green.html)
+[WARNING] Docusaurus found broken anchors!
+Please check the pages of your site in the list below, and make sure you don't reference any anchor that does not exist.
+Note: it's possible to ignore broken anchors with the 'onBrokenAnchors' Docusaurus configuration, and let the build pass.
+Exhaustive list of all broken anchors found:
+- Broken anchor on source page path = /native/architecture:
+   -> linking to #system-metrics-agents (resolved as: /native/architecture#system-metrics-agents)
+- Broken anchor on source page path = /native/enabling-tcp-routing:
+   -> linking to #modify-ports (resolved as: /native/enabling-tcp-routing#modify-ports)
+- Broken anchor on source page path = /native/using-vol-services:
+   -> linking to #migrate (resolved as: /native/using-vol-services#migrate)
+- Broken anchor on source page path = /passthrough/architecture:
+   -> linking to #system-metrics-agents (resolved as: /passthrough/architecture#system-metrics-agents)
+- Broken anchor on source page path = /passthrough/enabling-tcp-routing:
+   -> linking to #modify-ports (resolved as: /passthrough/enabling-tcp-routing#modify-ports)
+- Broken anchor on source page path = /passthrough/using-vol-services:
+   -> linking to #migrate (resolved as: /passthrough/using-vol-services#migrate)
+[SUCCESS] Generated static files in "build".
+[INFO] Use `npm run serve` command to test your build locally.

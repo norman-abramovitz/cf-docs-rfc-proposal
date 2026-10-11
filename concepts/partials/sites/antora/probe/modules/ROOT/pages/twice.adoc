@@ -1,0 +1,21 @@
+= One partial with a heading, included twice
+
+[[first]]
+== First inclusion, explicit id
+
+include::partial$old_collector.adoc[]
+
+[[second]]
+== Second inclusion, explicit id
+
+include::partial$old_collector.adoc[]
+
+[[third]]
+== First inclusion, generated id
+
+include::partial$old_collector_plain.adoc[]
+
+[[fourth]]
+== Second inclusion, generated id
+
+include::partial$old_collector_plain.adoc[]

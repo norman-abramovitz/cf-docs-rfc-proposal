@@ -1,0 +1,22 @@
+---
+title: One partial with a heading, included twice
+---
+
+import OldCollector from './_old_collector.mdx';
+import OldCollectorPlain from './_old_collector_plain.mdx';
+
+## First inclusion, explicit id {#first}
+
+<OldCollector />
+
+## Second inclusion, explicit id {#second}
+
+<OldCollector />
+
+## First inclusion, generated id {#third}
+
+<OldCollectorPlain />
+
+## Second inclusion, generated id {#fourth}
+
+<OldCollectorPlain />

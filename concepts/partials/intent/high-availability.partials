@@ -1,0 +1,5 @@
+# Partials on high-availability, section "Recommended instance counts for high availability".
+# The partial's name is held in a variable in the book (scale_table: "oss_scale_table"); the page names it directly.
+# Fields, separated by tabs: include, NAME, SECTION, PLACE, BEFORE, FIRST, LAST, AFTER
+# (see ../checks/partials.py). "-" means none.
+include	oss_scale_table	Recommended instance counts for high availability	body/table	Recommended instance counts for high availability	The following table provides recommended instance counts	regardless of the number of instances or AZs.	-

@@ -1,0 +1,8 @@
+# Starlight 0.42.6: the build's messages (make build), one build per mode, and
+# vars-check.mjs on the native pages first. No message concerns variables.
+$ MODE=native node vars-check.mjs src/content/docs/native/*.mdoc
+ok    every variable defined
+$ MODE=passthrough npx astro build; MODE=native npx astro build (the same three warnings each, none about variables)
+[WARN] [content] The collection "i18n" does not exist or is empty. Please check your content config file for errors.
+[WARN] [content] Entry docs → 404 was not found.
+[WARN] [@astrojs/sitemap] The Sitemap integration requires the `site` astro.config option. Skipping.

@@ -1,0 +1,43 @@
+# Native: the same macros extension and ERB delimiters (Jinja's own {{ }}
+# and {# #} clash with the book's content and with heading ids; see
+# CONVENTIONS.md), with every name required: a name that is not defined
+# stops the build (on_undefined = "strict"). vars-native.yml is the book's
+# file with empty values written as "" instead of null, which Jinja would
+# print as "None".
+[project]
+site_name = "Variables round — Zensical"
+docs_dir = "docs/native"
+site_dir = "site/native"
+
+# Defaults from a new project, plus `tables` for pipe tables.
+[project.markdown_extensions]
+abbr = {}
+admonition = {}
+attr_list = {}
+def_list = {}
+footnotes = {}
+md_in_html = {}
+tables = {}
+toc.permalink = true
+pymdownx.betterem = {}
+pymdownx.caret = {}
+pymdownx.details = {}
+pymdownx.highlight = { anchor_linenums = true, line_spans = "__span", pygments_lang_class = true }
+pymdownx.inlinehilite = {}
+pymdownx.keys = {}
+pymdownx.magiclink = {}
+pymdownx.mark = {}
+pymdownx.smartsymbols = {}
+pymdownx.superfences = {}
+pymdownx.tilde = {}
+
+[project.plugins.macros]
+include_yaml = ["vars-native.yml"]
+on_undefined = "strict"
+on_error_fail = true
+j2_variable_start_string = "<%="
+j2_variable_end_string = "%>"
+j2_block_start_string = "<%"
+j2_block_end_string = "%>"
+j2_comment_start_string = "<%#"
+j2_comment_end_string = "%>"

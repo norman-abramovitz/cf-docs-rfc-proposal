@@ -1,0 +1,27 @@
+# make check-probe and make probe-missing, Zensical 0.0.69, 2026-10-11
+## One partial with a heading included twice (docs/probe/twice.md)
+# site/probe/twice/index.html: 9 headings in article.md-content__inner
+h1 One partial with a heading, included twice
+  h2 First inclusion, explicit id   #first
+    h3 Metrics Collector   #old-metrics-collector
+  h2 Second inclusion, explicit id   #second
+    h3 Metrics Collector   #old-metrics-collector
+  h2 First inclusion, generated id   #third
+    h3 Metrics Collector   #metrics-collector
+  h2 Second inclusion, generated id   #fourth
+    h3 Metrics Collector   #metrics-collector_1
+toc: first old-metrics-collector second old-metrics-collector third metrics-collector fourth metrics-collector_1 first old-metrics-collector second old-metrics-collector third metrics-collector fourth metrics-collector_1
+
+## Pages that stop the build: the error line and exit status of each (full tracebacks omitted)
+## missing-include
+RuntimeError: Python error: TemplateNotFound: native/_does_not_exist.md
+exit status 1
+## missing-snippet
+RuntimeError: Python error: SnippetMissingError: Snippet at path '_does_not_exist.md' could not be found
+exit status 1
+## updir
+RuntimeError: Python error: TemplateNotFound: ../probes/_outside.md
+exit status 1
+## raw-high-availability
+RuntimeError: Python error: TemplateSyntaxError: expected token 'end of print statement', got 'string'
+exit status 1

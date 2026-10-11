@@ -1,0 +1,31 @@
+# The partials check on the published pages as docs.cloudfoundry.org served them on 2026-10-11
+# (published/, and the notes and headings rounds' copies of using-vol-services and routes-domains)
+== high-availability
+ok    oss_scale_table (The following table provides recommended…): in 'Recommended instance counts for high availability', body/table
+ok    no include syntax left
+ok    no id inside an included span is used twice
+== architecture
+ok    log_cache (Log Cache allows viewing of logs and met…): in 'Loggregator Firehose architecture', list
+ok    syslog_agents (Syslog Agents run on Cloud Foundry VMs…): in 'Shared-nothing architecture', list
+ok    log_cache (Log Cache allows viewing of logs and met…): in 'Shared-nothing architecture', list
+ok    no include syntax left
+ok    no id inside an included span is used twice
+== enabling-tcp-routing
+FAIL  tcp_modify_ports ((Optional) Configure the routing_api.rou…): its last words are in body, expected list
+ok    no include syntax left
+ok    no id inside an included span is used twice
+== troubleshoot-app-health
+ok    routing_conflict (Cloud Foundry allows multiple apps, or v…): in 'Routing conflict', body
+ok    no include syntax left
+ok    no id inside an included span is used twice
+== using-vol-services
+ok    using-vol-services (Here are instructions to help you read a…): in 'Using an external file system (volume services)', body/list
+ok    external_vol_win_note (a variable; a partial in native) (NFS and SMB volume services are availabl…): in 'Using an external file system (volume services)', body
+ok    no include syntax left
+ok    no id inside an included span is used twice
+info  other ids used more than once: #-deploy-and-bind-a-sample-app
+FAIL  toc: no table-of-contents links in the static HTML (wanted 2 ids)
+== routes-domains
+ok    routing_conflict (Cloud Foundry allows multiple apps, or v…): in 'Map a route to multiple apps', body
+ok    no include syntax left
+ok    no id inside an included span is used twice

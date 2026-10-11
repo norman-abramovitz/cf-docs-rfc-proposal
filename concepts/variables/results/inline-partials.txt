@@ -1,0 +1,18 @@
+# A partial used where an inline value sits (scratch pages, 2026-10-11): the partial holds
+# 'For more information, see [Configuring SSH Access](../../running/config-ssh.html).' and the
+# page uses it at the end of a table cell and inside a sentence.
+
+## Docusaurus 3.10.2: import Link from './_link.mdx'; <td>… (one-time). <Link /></td>; Text before <Link /> text after.
+<td>Configure the deployment (one-time). <p>For more information, see <a class="" href="/running/config-ssh.html">Configuring SSH Access</a>.</p></td></tr></tbody></table>
+<p>Text befor
+<p>Text before </p><p>For more information, see <a class="" href="/running/config-ssh.html">Configuring SSH Access</a>.</p> text after.<p></p></div></article><nav class="docusaurus
+
+## Starlight 0.42.6: {% partial file="./_link.mdoc" /%} in the cell and in the sentence: the build stops
+**src/content/docs/inline.mdoc** contains invalid content:
+- 'partial' tag should be block
+  Location:
+    src/content/docs/inline.mdoc:6:0
+  Stack trace:
+
+## Antora 3.2.1: an include directive is a line of its own (Asciidoctor 2.0.23, IncludeDirectiveRx, anchored at both ends):
+## https://github.com/asciidoctor/asciidoctor/blob/2c03d22eb9fe83d04ee452939581d1b842f6d8b4/lib/asciidoctor/rx.rb#L92 (not built)

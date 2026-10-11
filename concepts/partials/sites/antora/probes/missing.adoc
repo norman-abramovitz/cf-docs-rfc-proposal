@@ -1,0 +1,3 @@
+= A partial that does not exist
+
+include::partial$does_not_exist.adoc[]

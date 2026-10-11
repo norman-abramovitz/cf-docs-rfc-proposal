@@ -1,0 +1,170 @@
+# Browser check, 2026-10-11: Google Chrome through Playwright (checks/vars-browser.mjs).
+# Each built site served with python3 -m http.server from its build directory
+# (Zensical :8111, Docusaurus :8112, Starlight :8113, Antora :8114). For each page:
+# console errors, responses of 400 or more (favicons aside), the table of contents
+# after the page's scripts have run, and any variable syntax left in the page's text.
+# An earlier run, before <tbody> was added to the Docusaurus tables, also showed
+# React error #418 (a hydration mismatch) on app-ssh-overview and
+# troubleshooting-router-error-responses, in both modes: a <tr> directly in a <table>,
+# which the tables round already writes inside <tbody>.
+
+== http://localhost:8111/passthrough/app-ssh-overview/
+   title: Configuring SSH access for your deployment - Variables round — Zensical
+   table of contents: About SSH access | SSH access control hierarchy | SSH access for apps and spaces | Configuring SSH access for Cloud Foundry
+   ok: no errors, no variable syntax
+== http://localhost:8111/passthrough/routes-domains/
+   title: Configuring routes and domains - Variables round — Zensical
+   table of contents: Domains | List domains for an org | HTTP versus TCP domains | Shared domains | Create a shared domain | Delete a shared domain | Internal domain | Private domains | Create a private domain | Sharing a private domain with one or more orgs | Delete a private domain | Requirements for parent and child domains | DNS for domains | Mapping Domains to your custom domain | Mapping a single domain to your custom domain | Mapping multiple subdomains to your custom domain | Configuring DNS for your registered root domain
+   ok: no errors, no variable syntax
+== http://localhost:8111/passthrough/troubleshooting-router-error-responses/
+   title: Troubleshooting router error responses in Cloud Foundry - Variables round — Zensical
+   table of contents: Outer error responses overview | General debugging steps | Log formatting | Levels | Message contents | Access logs | Diagnose Gorouter errors | Gorouter cannot connect to the app container | Gorouter errors after connecting | Diagnose stale routes in Gorouter | Causes of stale routes | How to locate stale routes | How to fix stale routes | Gorouter error classification table | Diagnose app errors | Gorouter specific response headers
+   ok: no errors, no variable syntax
+== http://localhost:8111/passthrough/container-security/
+   title: Container security - Variables round — Zensical
+   table of contents: Container mechanics | CPU | CPU Shares Algorithm 1 | CPU Shares Algorithm 2 | CPU Share Interaction | Inbound and outbound traffic from Cloud Foundry | Networking overview | Network traffic rules | Container security | Types | Hardening
+   ok: no errors, no variable syntax
+== http://localhost:8111/passthrough/all_metrics/
+   title: Cloud Foundry Component Metrics - Variables round — Zensical
+   table of contents: Cloud Controller | Diego | DopplerServer | Metron Agent | Routing | Syslog Binding Cache | Traffic Controller | User Account and Authentication (UAA)
+   ok: no errors, no variable syntax
+== http://localhost:8111/native/app-ssh-overview/
+   title: Configuring SSH access for your deployment - Variables round — Zensical
+   table of contents: About SSH access | SSH access control hierarchy | SSH access for apps and spaces | Configuring SSH access for Cloud Foundry
+   ok: no errors, no variable syntax
+== http://localhost:8111/native/routes-domains/
+   title: Configuring routes and domains - Variables round — Zensical
+   table of contents: Domains | List domains for an org | HTTP versus TCP domains | Shared domains | Create a shared domain | Delete a shared domain | Internal domain | Private domains | Create a private domain | Sharing a private domain with one or more orgs | Delete a private domain | Requirements for parent and child domains | DNS for domains | Mapping Domains to your custom domain | Mapping a single domain to your custom domain | Mapping multiple subdomains to your custom domain | Configuring DNS for your registered root domain
+   ok: no errors, no variable syntax
+== http://localhost:8111/native/troubleshooting-router-error-responses/
+   title: Troubleshooting router error responses in Cloud Foundry - Variables round — Zensical
+   table of contents: Outer error responses overview | General debugging steps | Log formatting | Levels | Message contents | Access logs | Diagnose Gorouter errors | Gorouter cannot connect to the app container | Gorouter errors after connecting | Diagnose stale routes in Gorouter | Causes of stale routes | How to locate stale routes | How to fix stale routes | Gorouter error classification table | Diagnose app errors | Gorouter specific response headers
+   ok: no errors, no variable syntax
+== http://localhost:8111/native/container-security/
+   title: Container security - Variables round — Zensical
+   table of contents: Container mechanics | CPU | CPU Shares Algorithm 1 | CPU Shares Algorithm 2 | CPU Share Interaction | Inbound and outbound traffic from Cloud Foundry | Networking overview | Network traffic rules | Container security | Types | Hardening
+   ok: no errors, no variable syntax
+== http://localhost:8111/native/all_metrics/
+   title: Cloud Foundry Component Metrics - Variables round — Zensical
+   table of contents: Cloud Controller | Diego | DopplerServer | Metron Agent | Routing | Syslog Binding Cache | Traffic Controller | User Account and Authentication (UAA)
+   ok: no errors, no variable syntax
+== http://localhost:8112/passthrough/app-ssh-overview/
+   title: Configuring SSH access for your deployment | Variables round — Docusaurus
+   table of contents: About SSH access | SSH access control hierarchy | SSH access for apps and spaces | Configuring SSH access for vars.app_runtime_full
+   variable syntax in the text: Configuring SSH access for vars.app_runtime_full
+== http://localhost:8112/passthrough/routes-domains/
+   title: Configuring routes and domains | Variables round — Docusaurus
+   table of contents: Domains | List domains for an org | HTTP versus TCP domains | Shared domains | Private domains | Requirements for parent and child domains | DNS for domains
+   ok: no errors, no variable syntax
+== http://localhost:8112/passthrough/troubleshooting-router-error-responses/
+   title: Troubleshooting router error responses in Cloud Foundry | Variables round — Docusaurus
+   table of contents: Outer error responses overview | General debugging steps | Log formatting | Levels | Message contents | Access logs | Diagnose Gorouter errors | Gorouter cannot connect to the app container | Gorouter errors after connecting | Diagnose stale routes in Gorouter | Causes of stale routes | How to locate stale routes | How to fix stale routes | Gorouter error classification table | Diagnose app errors | Gorouter specific response headers
+   ok: no errors, no variable syntax
+== http://localhost:8112/passthrough/container-security/
+   title: Container security | Variables round — Docusaurus
+   table of contents: Container mechanics | CPU | Inbound and outbound traffic from vars.app_runtime_abbr | Networking overview | Network traffic rules | Container security | Types | Hardening
+   variable syntax in the text: Inbound and outbound traffic from vars.app_runtime_abbr
+== http://localhost:8112/passthrough/all_metrics/
+   title: Cloud Foundry component metrics | Variables round — Docusaurus
+   table of contents: Cloud Controller | Diego | DopplerServer | Metron Agent | Routing | Syslog Binding Cache | Traffic Controller | User Account and Authentication (UAA)
+   ok: no errors, no variable syntax
+== http://localhost:8112/native/app-ssh-overview/
+   title: Configuring SSH access for your deployment | Variables round — Docusaurus
+   table of contents: About SSH access | SSH access control hierarchy | SSH access for apps and spaces | Configuring SSH access for Cloud Foundry
+   ok: no errors, no variable syntax
+== http://localhost:8112/native/routes-domains/
+   title: Configuring routes and domains | Variables round — Docusaurus
+   table of contents: Domains | List domains for an org | HTTP versus TCP domains | Shared domains | Private domains | Requirements for parent and child domains | DNS for domains
+   ok: no errors, no variable syntax
+== http://localhost:8112/native/troubleshooting-router-error-responses/
+   title: Troubleshooting router error responses in Cloud Foundry | Variables round — Docusaurus
+   table of contents: Outer error responses overview | General debugging steps | Log formatting | Levels | Message contents | Access logs | Diagnose Gorouter errors | Gorouter cannot connect to the app container | Gorouter errors after connecting | Diagnose stale routes in Gorouter | Causes of stale routes | How to locate stale routes | How to fix stale routes | Gorouter error classification table | Diagnose app errors | Gorouter specific response headers
+   ok: no errors, no variable syntax
+== http://localhost:8112/native/container-security/
+   title: Container security | Variables round — Docusaurus
+   table of contents: Container mechanics | CPU | Inbound and outbound traffic from Cloud Foundry | Networking overview | Network traffic rules | Container security | Types | Hardening
+   ok: no errors, no variable syntax
+== http://localhost:8112/native/all_metrics/
+   title: Cloud Foundry Component Metrics | Variables round — Docusaurus
+   table of contents: Cloud Controller | Diego | DopplerServer | Metron Agent | Routing | Syslog Binding Cache | Traffic Controller | User Account and Authentication (UAA)
+   ok: no errors, no variable syntax
+== http://localhost:8113/passthrough/app-ssh-overview/
+   title: Configuring SSH access for your deployment | Variables round — Starlight
+   table of contents: Overview | About SSH access | SSH access control hierarchy | SSH access for apps and spaces | Configuring SSH access for Cloud Foundry
+   ok: no errors, no variable syntax
+== http://localhost:8113/passthrough/routes-domains/
+   title: Configuring routes and domains | Variables round — Starlight
+   table of contents: Overview | Domains | List domains for an org | HTTP versus TCP domains | Shared domains | Private domains | Requirements for parent and child domains | DNS for domains
+   ok: no errors, no variable syntax
+== http://localhost:8113/passthrough/troubleshooting-router-error-responses/
+   title: Troubleshooting router error responses in Cloud Foundry | Variables round — Starlight
+   table of contents: Overview | Outer error responses overview | General debugging steps | Log formatting | Levels | Message contents | Access logs | Diagnose Gorouter errors | Gorouter cannot connect to the app container | Gorouter errors after connecting | Diagnose stale routes in Gorouter | Causes of stale routes | How to locate stale routes | How to fix stale routes | Gorouter error classification table | Diagnose app errors | Gorouter specific response headers
+   ok: no errors, no variable syntax
+== http://localhost:8113/passthrough/container-security/
+   title: Container security | Variables round — Starlight
+   table of contents: Overview | Container mechanics | CPU | Inbound and outbound traffic from Cloud Foundry | Networking overview | Network traffic rules | Container security | Types | Hardening
+   ok: no errors, no variable syntax
+== http://localhost:8113/passthrough/all_metrics/
+   title: Cloud Foundry component metrics | Variables round — Starlight
+   table of contents: Overview | Cloud Controller | Diego | DopplerServer | Metron Agent | Routing | Syslog Binding Cache | Traffic Controller | User Account and Authentication (UAA)
+   ok: no errors, no variable syntax
+== http://localhost:8113/native/app-ssh-overview/
+   title: Configuring SSH access for your deployment | Variables round — Starlight
+   table of contents: Overview | About SSH access | SSH access control hierarchy | SSH access for apps and spaces | Configuring SSH access for Cloud Foundry
+   ok: no errors, no variable syntax
+== http://localhost:8113/native/routes-domains/
+   title: Configuring routes and domains | Variables round — Starlight
+   table of contents: Overview | Domains | List domains for an org | HTTP versus TCP domains | Shared domains | Private domains | Requirements for parent and child domains | DNS for domains
+   ok: no errors, no variable syntax
+== http://localhost:8113/native/troubleshooting-router-error-responses/
+   title: Troubleshooting router error responses in Cloud Foundry | Variables round — Starlight
+   table of contents: Overview | Outer error responses overview | General debugging steps | Log formatting | Levels | Message contents | Access logs | Diagnose Gorouter errors | Gorouter cannot connect to the app container | Gorouter errors after connecting | Diagnose stale routes in Gorouter | Causes of stale routes | How to locate stale routes | How to fix stale routes | Gorouter error classification table | Diagnose app errors | Gorouter specific response headers
+   ok: no errors, no variable syntax
+== http://localhost:8113/native/container-security/
+   title: Container security | Variables round — Starlight
+   table of contents: Overview | Container mechanics | CPU | Inbound and outbound traffic from Cloud Foundry | Networking overview | Network traffic rules | Container security | Types | Hardening
+   ok: no errors, no variable syntax
+== http://localhost:8113/native/all_metrics/
+   title: Cloud Foundry Component Metrics | Variables round — Starlight
+   table of contents: Overview | Cloud Controller | Diego | DopplerServer | Metron Agent | Routing | Syslog Binding Cache | Traffic Controller | User Account and Authentication (UAA)
+   ok: no errors, no variable syntax
+== http://localhost:8114/passthrough/app-ssh-overview/
+   title: Configuring SSH access for your deployment :: Variables round — Antora
+   table of contents: About SSH access | SSH access control hierarchy | SSH access for apps and spaces | Configuring SSH access for Cloud Foundry
+   ok: no errors, no variable syntax
+== http://localhost:8114/passthrough/routes-domains/
+   title: Configuring routes and domains :: Variables round — Antora
+   table of contents: Domains | List domains for an org | HTTP versus TCP domains | Shared domains | Private domains | Requirements for parent and child domains | DNS for domains
+   ok: no errors, no variable syntax
+== http://localhost:8114/passthrough/troubleshooting-router-error-responses/
+   title: Troubleshooting router error responses in Cloud Foundry :: Variables round — Antora
+   table of contents: Outer error responses overview | General debugging steps | Log formatting | Levels | Message contents | Access logs | Diagnose Gorouter errors | Gorouter cannot connect to the app container | Gorouter errors after connecting | Diagnose stale routes in Gorouter | Causes of stale routes | How to locate stale routes | How to fix stale routes | Gorouter error classification table | Diagnose app errors | Gorouter specific response headers
+   ok: no errors, no variable syntax
+== http://localhost:8114/passthrough/container-security/
+   title: Container security :: Variables round — Antora
+   table of contents: Container mechanics | CPU | Inbound and outbound traffic from Cloud Foundry | Networking overview | Network traffic rules | Container security | Types | Hardening
+   ok: no errors, no variable syntax
+== http://localhost:8114/passthrough/all_metrics/
+   title: Cloud Foundry Component Metrics :: Variables round — Antora
+   table of contents: Cloud Controller | Diego | DopplerServer | Metron Agent | Routing | Syslog Binding Cache | Traffic Controller | User Account and Authentication (UAA)
+   ok: no errors, no variable syntax
+== http://localhost:8114/native/app-ssh-overview/
+   title: Configuring SSH access for your deployment :: Variables round — Antora
+   table of contents: About SSH access | SSH access control hierarchy | SSH access for apps and spaces | Configuring SSH access for Cloud Foundry
+   ok: no errors, no variable syntax
+== http://localhost:8114/native/routes-domains/
+   title: Configuring routes and domains :: Variables round — Antora
+   table of contents: Domains | List domains for an org | HTTP versus TCP domains | Shared domains | Private domains | Requirements for parent and child domains | DNS for domains
+   ok: no errors, no variable syntax
+== http://localhost:8114/native/troubleshooting-router-error-responses/
+   title: Troubleshooting router error responses in Cloud Foundry :: Variables round — Antora
+   table of contents: Outer error responses overview | General debugging steps | Log formatting | Levels | Message contents | Access logs | Diagnose Gorouter errors | Gorouter cannot connect to the app container | Gorouter errors after connecting | Diagnose stale routes in Gorouter | Causes of stale routes | How to locate stale routes | How to fix stale routes | Gorouter error classification table | Diagnose app errors | Gorouter specific response headers
+   ok: no errors, no variable syntax
+== http://localhost:8114/native/container-security/
+   title: Container security :: Variables round — Antora
+   table of contents: Container mechanics | CPU | Inbound and outbound traffic from Cloud Foundry | Networking overview | Network traffic rules | Container security | Types | Hardening
+   ok: no errors, no variable syntax
+== http://localhost:8114/native/all_metrics/
+   title: Cloud Foundry Component Metrics :: Variables round — Antora
+   table of contents: Cloud Controller | Diego | DopplerServer | Metron Agent | Routing | Syslog Binding Cache | Traffic Controller | User Account and Authentication (UAA)
+   ok: no errors, no variable syntax

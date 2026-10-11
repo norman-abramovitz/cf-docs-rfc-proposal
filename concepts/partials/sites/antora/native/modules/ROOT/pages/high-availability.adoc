@@ -1,0 +1,8 @@
+= High Availability in Cloud Foundry
+
+[[instance-counts]]
+== Recommended instance counts for high availability
+
+{scaling_ert}
+
+include::partial$oss_scale_table.adoc[]

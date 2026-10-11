@@ -1,0 +1,6 @@
+# make build, Antora 3.2.1, 2026-10-11: Asciidoctor's warnings, one line per record (level, message, file, the file it was included from)
+warn  section title out of sequence: expected level 1, got level 3 | passthrough/modules/ROOT/pages/routes-domains.adoc:4
+warn  section title out of sequence: expected level 1, got level 2 | passthrough/modules/ROOT/pages/troubleshoot-app-health.adoc:4
+warn  section title out of sequence: expected level 1, got level 3 | native/modules/ROOT/pages/routes-domains.adoc:4
+warn  section title out of sequence: expected level 1, got level 2 | native/modules/ROOT/pages/troubleshoot-app-health.adoc:4
+warn  id assigned to section already in use: old-metrics-collector | probe/modules/ROOT/partials/old_collector.adoc:2 (included from probe/modules/ROOT/pages/twice.adoc:11)

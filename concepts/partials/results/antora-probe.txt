@@ -1,0 +1,30 @@
+# make check-probe and make probe-missing, Antora 3.2.1, 2026-10-11
+## One partial with a heading included twice (probe/modules/ROOT/pages/twice.adoc)
+# site/probe/twice/index.html: 9 headings in article.doc
+h1 One partial with a heading, included twice
+  h2 First inclusion, explicit id   #first
+    h3 Metrics Collector   #old-metrics-collector
+  h2 Second inclusion, explicit id   #second
+    h3 Metrics Collector   #old-metrics-collector
+  h2 First inclusion, generated id   #third
+    h3 Metrics Collector   #metrics-collector
+  h2 Second inclusion, generated id   #fourth
+    h3 Metrics Collector   #metrics-collector-2
+warn  id assigned to section already in use: old-metrics-collector | probe/modules/ROOT/partials/old_collector.adoc:2 (included from probe/modules/ROOT/pages/twice.adoc:11)
+
+## A missing partial: the log records about it and the exit status, per failure level
+## missing, failure level default
+error target of include not found: partial$does_not_exist.adoc | probe/modules/ROOT/pages/missing.adoc:3
+exit status 0
+## missing, failure level error
+error target of include not found: partial$does_not_exist.adoc | probe/modules/ROOT/pages/missing.adoc:3
+exit status 2
+## missing-shared, failure level default
+error target of include not found: shared::partial$does_not_exist.adoc | probe/modules/ROOT/pages/missing-shared.adoc:3
+exit status 0
+## missing-shared, failure level error
+error target of include not found: shared::partial$does_not_exist.adoc | probe/modules/ROOT/pages/missing-shared.adoc:3
+exit status 2
+
+## What the page shows in place of a missing partial (probe/missing)
+  Unresolved include directive in modules/ROOT/pages/missing.adoc - include::partial$does_not_exist.adoc[]

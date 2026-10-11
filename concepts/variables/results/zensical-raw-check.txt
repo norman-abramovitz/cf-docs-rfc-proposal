@@ -1,0 +1,10 @@
+# Zensical 0.0.69: make check-raw. all_metrics exactly as the book writes it,
+# with its ERB line <% current_page.data.title = vars.app_runtime_abbr + " Component Metrics" %>.
+== on_error_fail = true
+exit status 1
+RuntimeError: Python error: TemplateSyntaxError: Encountered unknown tag 'current_page'.
+(no page written)
+== on_error_fail = false
+exit status 0
+Macro rendering failed in all_metrics.md: Encountered unknown tag 'current_page'.
+<h1 id="macro-syntax-error"><em>Macro Syntax Error

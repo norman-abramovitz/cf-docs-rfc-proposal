@@ -1,0 +1,26 @@
+---
+title: Troubleshooting app deployment and health
+owner:
+  - CF for VMs Networking
+  - Release Integration
+---
+
+### Routing conflict {#routing-conflict}
+
+<% include "shared/_routing_conflict.md" %>
+
+If you suspect a routing conflict, run `cf routes` to verify the routes in your <%= vars.app_runtime_abbr %> deployment.
+
+If two apps share a route outside of a blue-green deployment strategy, choose one app to reassign to a different route and use the following procedure:
+
+1. Remove the existing route from that app by running:
+
+    ```console
+    cf unmap-route APP-NAME OLD-ROUTE
+    ```
+
+1. Map the app to a new, unique route by running:
+
+    ```console
+    cf map-route APP-NAME NEW-ROUTE
+    ```

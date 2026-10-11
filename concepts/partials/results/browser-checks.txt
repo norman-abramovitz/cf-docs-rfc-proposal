@@ -1,0 +1,92 @@
+# Browser check, 2026-10-11: Google Chrome through Playwright (checks/partials-browser.mjs), 1280 x 900 window.
+# Each built site served with python3 -m http.server from its build folder (Zensical :8201, Docusaurus :8202,
+# Starlight :8203, Antora :8204); the published pages as docs.cloudfoundry.org served them that day.
+# The table of contents is read after the page's scripts ran. The 404 on the first page of each site is the
+# browser's favicon request (the test sites have no favicon; /favicon.ico answers 404).
+
+http://localhost:8201/passthrough/architecture/
+  console errors: none
+  table of contents: #architecture-reference-diagrams #loggregator-firehose-architecture #shared-nothing-architecture
+http://localhost:8201/passthrough/using-vol-services/
+  console errors: none
+  table of contents: #create-and-use-nfs-volume-services #create-an-nfs-volume-service
+http://localhost:8201/passthrough/enabling-tcp-routing/
+  console errors: none
+  table of contents: #prerequisites-for-activating-tcp-routing
+http://localhost:8201/native/architecture/
+  console errors: none
+  table of contents: #architecture-references #firehose-architecture #shared-nothing-architecture
+http://localhost:8201/native/using-vol-services/
+  console errors: none
+  table of contents: #nfs #create-nfs
+http://localhost:8201/native/enabling-tcp-routing/
+  console errors: none
+  table of contents: #prerequisites
+http://localhost:8202/passthrough/architecture/
+  console errors: 
+    Docusaurus React Root onRecoverableError: Error: Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use t
+    Failed to load resource: the server responded with a status of 404 (File not found)
+  table of contents: #architecture-references #firehose-architecture #shared-nothing-architecture
+http://localhost:8202/passthrough/using-vol-services/
+  console errors: none
+  table of contents: #nfs #create-nfs
+http://localhost:8202/passthrough/enabling-tcp-routing/
+  console errors: none
+  table of contents: #prerequisites
+http://localhost:8202/native/architecture/
+  console errors: none
+  table of contents: #architecture-references #firehose-architecture #shared-nothing-architecture
+http://localhost:8202/native/using-vol-services/
+  console errors: none
+  table of contents: #nfs #create-nfs
+http://localhost:8202/native/enabling-tcp-routing/
+  console errors: none
+  table of contents: #prerequisites
+http://localhost:8203/passthrough/architecture/
+  console errors: 
+    (404 for http://localhost:8203/favicon.svg)
+    Failed to load resource: the server responded with a status of 404 (File not found)
+  table of contents: #_top #architecture-references #firehose-architecture #shared-nothing-architecture
+http://localhost:8203/passthrough/using-vol-services/
+  console errors: none
+  table of contents: #_top #nfs #create-nfs
+http://localhost:8203/passthrough/enabling-tcp-routing/
+  console errors: none
+  table of contents: #_top #prerequisites
+http://localhost:8203/native/architecture/
+  console errors: none
+  table of contents: #_top #architecture-references #firehose-architecture #shared-nothing-architecture
+http://localhost:8203/native/using-vol-services/
+  console errors: none
+  table of contents: #_top #nfs #create-nfs
+http://localhost:8203/native/enabling-tcp-routing/
+  console errors: none
+  table of contents: #_top #prerequisites
+http://localhost:8204/passthrough/architecture/
+  console errors: 
+    Failed to load resource: the server responded with a status of 404 (File not found)
+  table of contents: #architecture-references #firehose-architecture #shared-nothing-architecture
+http://localhost:8204/passthrough/using-vol-services/
+  console errors: none
+  table of contents: #nfs #create-nfs
+http://localhost:8204/passthrough/enabling-tcp-routing/
+  console errors: none
+  table of contents: #prerequisites
+http://localhost:8204/native/architecture/
+  console errors: none
+  table of contents: #architecture-references #firehose-architecture #shared-nothing-architecture
+http://localhost:8204/native/using-vol-services/
+  console errors: none
+  table of contents: #nfs #create-nfs
+http://localhost:8204/native/enabling-tcp-routing/
+  console errors: none
+  table of contents: #prerequisites
+http://localhost:8204/probe/twice/
+  console errors: none
+  table of contents: #first #old-metrics-collector #second #third #metrics-collector #fourth #metrics-collector-2
+https://docs.cloudfoundry.org/devguide/services/using-vol-services.html
+  console errors: none
+  table of contents: none
+https://docs.cloudfoundry.org/loggregator/architecture.html
+  console errors: none
+  table of contents: #architecture-references #firehose-architecture #shared-nothing-architecture #system-metrics-agents #data-flow #vms-egress #firehose #consumers #bosh-metrics

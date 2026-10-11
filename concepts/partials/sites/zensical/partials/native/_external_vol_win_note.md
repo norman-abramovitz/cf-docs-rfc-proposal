@@ -1,0 +1,3 @@
+!!! note
+
+    NFS and SMB volume services are available for Linux cells only. These services are not available for Windows cells.

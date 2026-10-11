@@ -1,0 +1,44 @@
+---
+title: Cloud Foundry component metrics
+owner: Logging and Metrics
+---
+
+<% current_page.data.title = vars.app_runtime_abbr + " Component Metrics" %>
+
+<a id='top'></a> This topic lists and describes the metrics available for Cloud Foundry system components. These metrics are streamed from the Loggregator Firehose. For more information about the Firehose, see [Loggregator architecture](../loggregator/architecture.html).
+
+The Cloud Foundry component metric names and descriptions listed in this topic may be out of date because Cloud Foundry component metrics change often. If you have questions about Cloud Foundry component metrics, consider contacting the component teams directly on their respective channels in the [Cloud Foundry Slack](https://cloudfoundry.slack.com) organization. For example, you can contact the Diego team at **#diego**.
+
+## <a id='cc'></a> Cloud Controller
+
+<%= partial './metrics/cloud_controller' %>
+
+## <a id='diego'></a> Diego
+
+<%= partial './metrics/diego' %>
+
+## <a id='doppler'></a> DopplerServer
+
+<%= partial './metrics/doppler' %>
+
+## <a id='metron'></a> Metron Agent
+
+<%= partial './metrics/metron_agent' %>
+
+## <a id='routing'></a> Routing
+
+<%= partial './metrics/routing' %>
+
+## <a id='syslog'></a> Syslog Binding Cache
+
+<%= partial './metrics/syslog_binding_cache' %>
+
+## <a id='traffic'></a> Traffic Controller
+
+<%= partial './metrics/traffic_controller' %>
+
+## <a id='uaa'></a> User Account and Authentication (UAA)
+
+<%= partial './metrics/uaa' %>
+
+For information about metrics related to UAA's performance, see [UAA performance metrics](../uaa/uaa-metrics.html).

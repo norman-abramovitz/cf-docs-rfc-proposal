@@ -158,10 +158,28 @@ and as written two tools damage them without a warning. A note held in a
 variable becomes a partial. The map from the book's kinds to each tool's
 types is still open ([notes results](../concepts/notes/results.md#summary)).
 
+### Variables
+
+Five pages' 85 variable uses were converted in the four hands-on tools.
+In each tool's own variable form every value appears in its place, in
+prose, code, headings, links, table cells, notes and the page title. With
+the book's syntax kept, Markdown values show as text in three tools. By
+default no tool reports a variable that is not defined. Each can be made
+to, Starlight only through a check run beside the build
+([variables results](../concepts/variables/results.md#summary)).
+
+### Partials
+
+Six pages that include partials were converted in the four hands-on
+tools. With each tool's own include every partial renders in its place,
+its headings in the table of contents. A partial placed after text in a
+list item, as the book places four, breaks in every tool; on its own line
+below the text it works. No page today picks its partial through
+a variable ([partials results](../concepts/partials/results.md#summary)).
+
 ### Other concepts
 
-**Not yet written:** variables, partials, code blocks, cross-repository
-links, and build-time values such as the
+**Not yet written:** code blocks, cross-repository links, and build-time values such as the
 copyright year. Each is listed in [Concepts](../concepts/README.md); none
 of them has been converted yet.
 

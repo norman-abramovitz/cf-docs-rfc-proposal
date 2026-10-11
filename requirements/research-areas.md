@@ -111,6 +111,12 @@ it link to their line, as in [L112] ([glossary](../glossary.md#rfc)).
   ([sources](../concepts/tables/source/SOURCES.md)).
 - **What answers it:** the downstream survey above, and a search of the
   content repositories for partials included through a variable.
+- **Found by the partials round (2026-10-11):** 10 variables name a
+  partial, and no page at the surveyed commits uses any of them; every
+  call names its partial directly. The form served an open-source and a
+  commercial edition, and the commercial branches were removed in July
+  2026. The round recommends resolving such names at conversion, for
+  review ([partials results](../concepts/partials/results.md#are-partial-names-in-variables-still-needed)).
 
 ### What should undefined variables show?
 
@@ -121,6 +127,11 @@ it link to their line, as in [L112] ([glossary](../glossary.md#rfc)).
   published pages show nothing in their place
   ([sources](../concepts/tables/source/SOURCES.md)). Other pages may have
   more.
+- **Found by the variables round (2026-10-11):** 28 names used on pages
+  are defined nowhere (38 uses), and 31 defined names that pages use are
+  empty (44 uses). All 82 render as nothing today. Each tool can be made
+  to report an undefined name, in different ways
+  ([variables results](../concepts/variables/results.md#names-that-are-not-defined-and-empty-values)).
 - **What answers it:** a scan of every page for variables missing from
   `template_variables.yml`, then the page owners say what each should be.
 
@@ -156,7 +167,10 @@ it link to their line, as in [L112] ([glossary](../glossary.md#rfc)).
   ([headings results](../concepts/headings/results.md#summary)). Notes
   and admonitions are converted in all four as well, with the map from the
   book's kinds to each tool's types still open
-  ([notes results](../concepts/notes/results.md#summary)). Variables, partials, code blocks,
+  ([notes results](../concepts/notes/results.md#summary)). Variables and
+  partials are converted in all four, with their conventions under review
+  ([variables results](../concepts/variables/results.md#summary),
+  [partials results](../concepts/partials/results.md#summary)). Code blocks,
   cross-repository links, and copyright and build-time values are proposed
   ([concepts](../concepts/README.md#concepts)). The tables round already
   found problems outside tables: heading anchors written as `<a id>`, terminal
