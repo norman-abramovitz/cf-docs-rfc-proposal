@@ -92,7 +92,7 @@ of table:
   delimiter line such as `---|---`, one row per line, `|` between cells
   ([glossary](../../../glossary.md#pipe-table)). Lines inside fenced code
   blocks are skipped. The script also looks next to each pipe table for an
-  attribute list (`{: .class }`), the syntax kramdown
+  attribute list (`{: .class }`). That is the syntax kramdown
   ([glossary](../../../glossary.md#kramdown)) and Python-Markdown's
   `attr_list` use to attach a class to a block. bosh.io turns `attr_list` on
   ([mkdocs.yml](https://github.com/cloudfoundry/docs-bosh/blob/20a41223a7ba87700424634c42e94a22a669b45e/mkdocs.yml#L370));
@@ -100,14 +100,19 @@ of table:
   ([Bookbinder's gemspec](https://github.com/pivotal-cf/bookbinder/blob/83bd2a57a8ba3d04c58a5be67607b243bdea0c64/bookbinder.gemspec#L24)),
   which has no such syntax. The survey found none.
 
-For each table it records, among other things: the `class` exactly as
-written, column widths from `<col>`, width, style or alignment set on cells,
-the number of rows and columns, whether there is a header row, row headers
-(a `<th>` that starts a body row), a spanning title row (a first row with one
-cell spanning every column), what the cells hold (code, lists, paragraphs,
-line breaks, images, links, bold, italic), cell lengths, ERB tags (`<%`,
-the template syntax the book uses for variables and partials;
-[glossary](../../../glossary.md#erb)), and a `<thead>` that is never closed.
+For each table it records, among other things:
+
+- the `class` exactly as written;
+- column widths from `<col>`, and width, style or alignment set on cells;
+- the number of rows and columns, and whether there is a header row;
+- row headers (a `<th>` that starts a body row) and a spanning title row (a
+  first row with one cell spanning every column);
+- what the cells hold (code, lists, paragraphs, line breaks, images, links,
+  bold, italic) and how long they are;
+- ERB tags (`<%`, the template syntax the book uses for variables and
+  partials; [glossary](../../../glossary.md#erb));
+- a `<thead>` that is never closed.
+
 Every row of [tables.csv](tables.csv) has a link to the table's first line
 at the surveyed commit.
 
@@ -133,6 +138,11 @@ The families come from the data, not from a list of style names.
 | bosh.io (`docs-bosh`) | 0 | 40 | 40 |
 | Tutorial repositories | 0 | 3 | 3 |
 | **All** | **123** | **115** | **238** |
+
+The book row counts every `docs-*` repository in the table above except
+`docs-bosh`. Two of them, `docs-book-cloudfoundry` and
+`docs-dotnet-core-tutorial`, are not sections in the book's `config.yml`;
+neither has a table, so the totals are the same either way.
 
 **Classes.** Of the 123 HTML tables, 70 have `class="table"`, 8 have
 `class=“table”` with typographic quotes (so the browser does not read
@@ -217,8 +227,8 @@ Every table on docs.cloudfoundry.org looks the same, whatever its family
 or class. The site's stylesheet
 ([`/stylesheets/all.css`](https://docs.cloudfoundry.org/stylesheets/all.css),
 as served on 2026-10-10; not pinned, as it is a built file) has one table
-style and no rule for any table class: tables are full width with a 1-pixel
-border, header cells are shaded (`#f8f8f8`), every cell is boxed
+style and no rule for any table class. Tables are full width with a 1-pixel
+border, and header cells are shaded (`#f8f8f8`). Every cell is boxed
 (`.content td, .content th, .content tr { border: solid 1px grey }`), and a
 row changes color on hover. The stylesheet has a striping rule, but it
 applies only under a `has-sidenav` class that no checked page carries
@@ -268,12 +278,16 @@ network type support, encryption, other features) repeated on the five
 provider pages `aws`, `azure`, `google`, `openstack` and `vsphere`.
 
 **The Markdown around them.** [bosh_tables.py](bosh_tables.py)
-`constructs` counted, outside code blocks: 302 admonitions (boxed callouts
-headed Note, Warning, and so on, written `!!! note`;
-[glossary](../../../glossary.md#admonition)) on 128 pages, 809 heading ids
-written `{: #id }` on 114 pages, and 221 fenced code blocks indented inside
-a list or an admonition on 48 pages. The `content/bpm` folder is a link into
-another repository and was not counted.
+`constructs` counted, outside code blocks:
+
+- 302 admonitions (boxed callouts headed Note, Warning, and so on, written
+  `!!! note`; [glossary](../../../glossary.md#admonition)) on 128 pages;
+- 809 heading ids written `{: #id }` on 114 pages;
+- 221 fenced code blocks indented inside a list or an admonition on 48
+  pages.
+
+The `content/bpm` folder is a link into another repository and was not
+counted.
 
 <details><summary>All 40 tables (T1–T40)</summary>
 
@@ -342,10 +356,10 @@ in a header cell renders in italics with a stray `*`
 **The look** (checked 2026-10-09 on
 [networks](https://bosh.io/docs/networks/) and
 [init-openstack](https://bosh.io/docs/init-openstack/)). bosh.io uses
-Material's default table: a thin outer border,
-rules between rows, no rules between columns, no header shading, no
-striping, text at 80% of body size, and tables sized to their content that
-scroll sideways in their own box when too wide. The book boxes every cell
+Material's default table. It has a thin outer border, rules between rows,
+no rules between columns, no header shading, no striping, and text at 80%
+of body size. Tables are sized to their content and scroll sideways in
+their own box when too wide. The book boxes every cell
 and shades the header (see [above](#how-the-book-renders-them-today)).
 
 **bpm pages.** Seven more tables publish under bosh.io/docs/bpm/ from the
@@ -364,8 +378,7 @@ commit `docs-bosh` pins at `20a4122`; it is an ancestor of `master`, which
 has moved on since. The seven tables and their families match. On the
 [live page](https://bosh.io/docs/bpm/config/)
 (checked 2026-10-09), eight Property names break in the middle of
-the identifier, because Material lets code text break anywhere; this is the
-strongest case so far for the "don't wrap" hint.
+the identifier, because Material lets code text break anywhere.
 
 ## How to rerun
 
