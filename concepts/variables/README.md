@@ -173,7 +173,8 @@ Each tool keeps the version and configuration of the earlier rounds.
    **Answer (Docs WG lead, 2026-10-11):** question 1 leaves few such
    headings. For those, test a remark plugin that writes the value into
    the heading before Docusaurus builds the table of contents, rather
-   than exporting it by hand.
+   than exporting it by hand. Tested the same day: the plugin works
+   ([results](results.md#docusaurus-3102)).
 5. **Where values that hold markup live.** Recommendation: one shared
    variables file, from which each site's build writes the tool's form
    (JSX, Markdoc trees, HTML); block values become partials, as the notes

@@ -6,19 +6,6 @@ description: This topic tells you about how Cloud Foundry secures the containers
 
 import vars from '@site/src/vars';
 
-{/* The table of contents, written out because a heading holds a variable:
-    the generated one would show the expression's source. */}
-export const toc = [
-  {value: 'Container mechanics', id: 'mechanics', level: 2},
-  {value: 'CPU', id: 'cpu', level: 3},
-  {value: `Inbound and outbound traffic from ${vars.app_runtime_abbr}`, id: 'networking', level: 2},
-  {value: 'Networking overview', id: 'net-overview', level: 3},
-  {value: 'Network traffic rules', id: 'config-traffic', level: 3},
-  {value: 'Container security', id: 'security', level: 2},
-  {value: 'Types', id: 'types', level: 3},
-  {value: 'Hardening', id: 'hardening', level: 3},
-];
-
 This topic tells you about how {vars.app_runtime_first} secures the containers
 that host app instances on Linux.
 

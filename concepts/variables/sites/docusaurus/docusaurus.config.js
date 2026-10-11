@@ -10,7 +10,12 @@ module.exports = {
   markdown: {format: 'detect'}, // .md as CommonMark, .mdx as MDX
   presets: [
     ['classic', {
-      docs: {routeBasePath: '/', path: process.env.DOCS_PATH || 'docs'},
+      docs: {
+        routeBasePath: '/',
+        path: process.env.DOCS_PATH || 'docs',
+        // Before Docusaurus's own plugins, so the table of contents gets the value
+        beforeDefaultRemarkPlugins: [require('./heading-vars.js')],
+      },
       blog: false,
       pages: false,
     }],

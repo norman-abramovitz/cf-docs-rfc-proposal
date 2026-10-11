@@ -37,7 +37,7 @@ variable, `<code>{vars.name}</code>` for inline code, and
 | text, link text, table cells, notes | the value, as in the book |
 | an HTML value through `dangerouslySetInnerHTML` | markup; as `{vars.name}` it would be escaped text |
 | a Markdown value, `{vars.platform_ssh_configuration}` | the Markdown as text: `see [Configuring SSH Access](../../running/config-ssh.html).` |
-| a heading, `## Configuring SSH access for {vars.app_runtime_full} {#platform-ssh-config}` | the heading shows the value; the table of contents shows the expression's source, "Configuring SSH access for vars.app_runtime_full" ([browser check](../../results/browser-checks.txt)) |
+| a heading, `## Configuring SSH access for {vars.app_runtime_full} {#platform-ssh-config}` | the heading shows the value, and so does the table of contents, through the site's heading plugin ([`heading-vars.js`](heading-vars.js)); without the plugin the table of contents shows the expression's source, "Configuring SSH access for vars.app_runtime_full" ([browser check](../../results/browser-checks.txt)) |
 | a Markdown link target, `[metrics]({vars.gorouter_metrics_link})` | MDX reads no expression in a link target: the link goes to `/passthrough/{vars.gorouter_metrics_link}`; the build's link check reports it as `%7Bvars.gorouter_metrics_link%7D` ([build warnings](../../results/docusaurus-build-warnings.txt)) |
 | an HTML `href="<%= vars.x %>"` | `href={vars.x}`, a JSX attribute: the value |
 | the first paragraph holds a variable | Docusaurus writes the page description from the source text, with the expression and without its underscores: `{vars.appruntimeabbr}` (the tables round's finding 7) |
@@ -65,15 +65,21 @@ Pages import a variables module, `import vars from '@site/src/vars'`
 - **A link whose target is a variable** is a JSX link:
   `<a href={vars.gorouter_metrics_link}>metrics</a>`. The build's link
   check does not read it, as it does not read other HTML links.
-- **A heading with a variable** keeps it, and the page writes its table of
-  contents itself: `export const toc = [{value: \`Configuring SSH access for ${vars.app_runtime_full}\`, id: 'platform-ssh-config', level: 2}, …]`.
-  Docusaurus makes the table of contents when it compiles the page, and
-  writes an expression in a heading as its source text
+- **A heading with a variable** keeps it, and the site's heading plugin
+  ([`heading-vars.js`](heading-vars.js), in `beforeDefaultRemarkPlugins`)
+  replaces `{vars.name}` in each heading with the value from `vars.json`
+  before Docusaurus makes the table of contents; a name with no text value
+  stops the build. Without it, Docusaurus makes the table of contents when
+  it compiles the page, and writes an expression in a heading as its
+  source text
   ([`utils.ts` L225-L248](https://github.com/facebook/docusaurus/blob/f37f9035584917a97a260b91fc2842cba4f8b94f/packages/docusaurus-mdx-loader/src/remark/toc/utils.ts#L225-L248));
-  a page that exports `toc` keeps its own
-  ([`index.ts` L165-L169](https://github.com/facebook/docusaurus/blob/f37f9035584917a97a260b91fc2842cba4f8b94f/packages/docusaurus-mdx-loader/src/remark/toc/index.ts#L165-L169)).
-  The export lists every heading at the levels the table of contents
-  shows (`h2`, `h3`). The other way is to write the value in the heading.
+  the plugin runs first because the site's `beforeDefaultRemarkPlugins`
+  come before the default ones
+  ([`processor.ts` L112-L118](https://github.com/facebook/docusaurus/blob/f37f9035584917a97a260b91fc2842cba4f8b94f/packages/docusaurus-mdx-loader/src/processor.ts#L112-L118)).
+  The other ways are a page that exports its own `toc`, which Docusaurus
+  keeps
+  ([`index.ts` L165-L169](https://github.com/facebook/docusaurus/blob/f37f9035584917a97a260b91fc2842cba4f8b94f/packages/docusaurus-mdx-loader/src/remark/toc/index.ts#L165-L169)),
+  and writing the value in the heading.
 - **The title and the description are written as values** in the front
   matter (`title: Cloud Foundry Component Metrics`,
   `description: Are your 502 errors the result of your infrastructure, Cloud Foundry, or an app? …`):
@@ -113,5 +119,5 @@ the line of its `<td>` and runs over several lines is written on one line
 <CodeBlock language="console">{`$ cf create-shared-domain ${vars.app_domain}`}</CodeBlock>
 ```
 
-Short in text; code blocks and link targets need JSX, and a page with a
-variable in a heading carries its table of contents as code.
+Short in text; code blocks and link targets need JSX. A heading with a
+variable needs no page code: the site's heading plugin handles it.

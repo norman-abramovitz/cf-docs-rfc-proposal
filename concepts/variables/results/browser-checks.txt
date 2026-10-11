@@ -7,6 +7,8 @@
 # React error #418 (a hydration mismatch) on app-ssh-overview and
 # troubleshooting-router-error-responses, in both modes: a <tr> directly in a <table>,
 # which the tables round already writes inside <tbody>.
+# Docusaurus rerun the same day after the site's heading plugin (heading-vars.js)
+# replaced the two pages' hand-written tables of contents.
 
 == http://localhost:8111/passthrough/app-ssh-overview/
    title: Configuring SSH access for your deployment - Variables round — Zensical
@@ -50,8 +52,8 @@
    ok: no errors, no variable syntax
 == http://localhost:8112/passthrough/app-ssh-overview/
    title: Configuring SSH access for your deployment | Variables round — Docusaurus
-   table of contents: About SSH access | SSH access control hierarchy | SSH access for apps and spaces | Configuring SSH access for vars.app_runtime_full
-   variable syntax in the text: Configuring SSH access for vars.app_runtime_full
+   table of contents: About SSH access | SSH access control hierarchy | SSH access for apps and spaces | Configuring SSH access for Cloud Foundry
+   ok: no errors, no variable syntax
 == http://localhost:8112/passthrough/routes-domains/
    title: Configuring routes and domains | Variables round — Docusaurus
    table of contents: Domains | List domains for an org | HTTP versus TCP domains | Shared domains | Private domains | Requirements for parent and child domains | DNS for domains
@@ -62,8 +64,8 @@
    ok: no errors, no variable syntax
 == http://localhost:8112/passthrough/container-security/
    title: Container security | Variables round — Docusaurus
-   table of contents: Container mechanics | CPU | Inbound and outbound traffic from vars.app_runtime_abbr | Networking overview | Network traffic rules | Container security | Types | Hardening
-   variable syntax in the text: Inbound and outbound traffic from vars.app_runtime_abbr
+   table of contents: Container mechanics | CPU | Inbound and outbound traffic from Cloud Foundry | Networking overview | Network traffic rules | Container security | Types | Hardening
+   ok: no errors, no variable syntax
 == http://localhost:8112/passthrough/all_metrics/
    title: Cloud Foundry component metrics | Variables round — Docusaurus
    table of contents: Cloud Controller | Diego | DopplerServer | Metron Agent | Routing | Syslog Binding Cache | Traffic Controller | User Account and Authentication (UAA)

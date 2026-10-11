@@ -15,3 +15,14 @@ Undefined: [<!-- -->] empty: [<!-- -->] defined: [
 # 2026-10-11): the heading shows the value, the <title> the expression's source.
 <title data-rh="true">{vars.app_runtime_abbr} Component Metrics | Notes round — Docusaurus
 <h1>Cloud Foundry<!-- --> Component Metrics</h1>
+
+# With the site's heading plugin (heading-vars.js), 2026-10-11, scratch pages built alone.
+# A heading '## About {vars.no_such_name} {#about}':
+exit status 1
+Error: MDX compilation failed for file ".../undef/undef.mdx"
+Cause: Variable not defined as text: vars.no_such_name in .../undef/undef.mdx
+# The page above with '# {vars.app_runtime_abbr} Component Metrics' as its title: the plugin
+# writes the value into the heading and the table of contents, but Docusaurus takes the title
+# from the source first, so the <title> and the sidebar still show the expression's source.
+<title data-rh="true">{vars.app_runtime_abbr} Component Metrics | Variables round — Docusaurus
+toc: About Cloud Foundry | Metrics in Cloud Foundry

@@ -40,7 +40,8 @@ In native mode every value is in place in every tool, on all five pages:
 ([checks](results/)). Passthrough shows what a mechanical translation of
 the tag gets: everything in Zensical; in the other three tools every
 text value but not Markdown values; in Docusaurus and Starlight not link
-targets or titles either, and in Docusaurus not the table of contents.
+targets or titles either, and in Docusaurus the table of contents only
+through the site's heading plugin.
 
 | | Docusaurus | Zensical | Starlight | Antora |
 |---|---|---|---|---|
@@ -51,7 +52,7 @@ targets or titles either, and in Docusaurus not the table of contents.
 | **Markdown value** | text, unless the module holds JSX | Markdown | text, unless the config holds a Markdoc tree | text, unless written as HTML |
 | **In a code block** | `<CodeBlock>` with a template string | as written | in a fence, as written | `subs=attributes+` on the block |
 | **As a link target** | `<a href={vars.name}>`; in a Markdown link, a broken link | as written | a `link` tag; in a Markdown link, no link and no message | `link:{name}[…]` |
-| **In a heading's table-of-contents entry** | the expression's source, unless the page exports its table of contents | the value | the value | the value |
+| **In a heading's table-of-contents entry** | the value, through the site's heading plugin; without it, the expression's source | the value | the value | the value |
 | **In the page title** | the value written in the front matter | the variable in the front matter | the value written in the front matter | `= {name} …` |
 | **A name not defined, as the book does** | nothing, silent | nothing, silent | nothing, silent | nothing, silent |
 | **A name not defined, reported** | build error, from a 10-line variables module | build error, `on_undefined = "strict"` (no page named) | a check before the build; the build drops the error | build fails, `attribute-missing: warn` and `failure_level: warn` |
@@ -95,15 +96,19 @@ Site: [sites/docusaurus/](sites/docusaurus/) — conventions:
   ([check](results/docusaurus-check.txt)).
 - **Passthrough, with the book's file as JSON**: Markdown values show as
   text; a Markdown link with a variable target links to
-  `/passthrough/{vars.gorouter_metrics_link}`; the table of contents shows
-  "Configuring SSH access for vars.app_runtime_full"; the description
+  `/passthrough/{vars.gorouter_metrics_link}`; the description
   Docusaurus writes from the first paragraph holds
   `{vars.appruntimeabbr}`; the page title set by ERB code cannot be
   written.
 - **The table of contents is made when the page compiles**, from the
-  heading's source. A page with a variable in a heading exports its own
-  `toc`, which Docusaurus keeps. All 27 headings with a variable in the
-  book read a product name.
+  heading's source, so without help it shows the expression's source.
+  The site's heading plugin ([`heading-vars.js`](sites/docusaurus/heading-vars.js),
+  about 30 lines, run before Docusaurus's own plugins) writes each text
+  value into its heading first, so the generated table of contents shows
+  the value, in both modes, and no page writes its own; a name with no
+  text value stops the build ([probe](results/docusaurus-probe.txt)). A
+  page title taken from an `# …` heading still shows the expression. All
+  27 headings with a variable in the book read a product name.
 - **Front matter cannot hold an expression**, so titles and descriptions
   are written as values. An `# …` heading with an expression shows the
   value but gives the page the `<title>` "{vars.app_runtime_abbr} Component
@@ -246,7 +251,7 @@ book's uses ([survey](survey/README.md#where-variables-sit)).
 | Text, link text, table cell, note (1,238) | `{vars.name}` | `<%= vars.name %>` | `{% $vars.name %}` | `{name}` |
 | Inline code (98) | `<code>{vars.name}</code>` | in backticks, as written | `<code>{% $vars.name %}</code>` | in backticks |
 | Fenced code (92), `<pre>` (44) | `<CodeBlock language="console">{\`… ${vars.name}\`}</CodeBlock>` | as written | in a fence | `[source,console,subs=attributes+]` |
-| Heading (27) | the reference, and `export const toc` | the reference | the reference | the reference |
+| Heading (27) | the reference; the site's heading plugin writes the value | the reference | the reference | the reference |
 | Link target (3) | `<a href={vars.name}>…</a>` | as written | `{% link href=$vars.name %}…{% /link %}` | `link:{name}[…]`; in HTML, `subs=attributes+` |
 | Page title (1, by ERB code) | the value, in front matter | the reference, in front matter | the value, in front matter | `= {name} …` |
 | Page description (none in the book; tools write one) | the value, in front matter, where the first paragraph holds a variable | not written | not written | not written |
@@ -376,11 +381,10 @@ For `cf-docs-migrate convert`. Decisions of this round, for review:
    [Each place a variable can sit](#each-place-a-variable-can-sit):
    code blocks keep their type; link targets use the tool's link form;
    titles and descriptions take the value where front matter cannot hold
-   a variable; in Docusaurus, a page with a variable in a heading exports
-   its table of contents. After convention 9 few such headings remain;
-   a remark plugin that writes the value into the heading before
-   Docusaurus builds the table of contents is to be tested in place of
-   hand-written ones.
+   a variable; in Docusaurus, the site's heading plugin writes a
+   heading's variable as its value before the table of contents is made
+   (tested 2026-10-11, in place of hand-written tables of contents).
+   After convention 9 few such headings remain.
 6. **Code that only computes text is evaluated by the converter**: the
    title line of `all_metrics` and the two conditions on the stacks pages
    become their result, listed for the owners.
@@ -412,8 +416,8 @@ For `cf-docs-migrate convert`. Decisions of this round, for review:
   blocks that hold a variable keep their type in native mode in every
   tool (Docusaurus through `<CodeBlock language>`).
 - [R-13](../../requirements/README.md#r-13) no per-WG extensions:
-  Docusaurus's variables module (a `Proxy` of about 10 lines) and
-  Starlight's config (a `link` tag, 3 lines that parse values) and check
+  Docusaurus's variables module (a `Proxy` of about 10 lines) and heading
+  plugin (about 30 lines), and Starlight's config (a `link` tag, 3 lines that parse values) and check
   script are site code the Docs WG would maintain once.
 - [R-24](../../requirements/README.md#r-24) markup cleanup before
   conversion: 82 references to undefined or empty names; `<tbody>` in
@@ -421,8 +425,7 @@ For `cf-docs-migrate convert`. Decisions of this round, for review:
 - [R-11](../../requirements/README.md#r-11) readable source: Zensical's
   pages read as the book's; Antora's references are the shortest;
   Docusaurus's and Starlight's need JSX or tags for link targets and
-  code, and Docusaurus a table of contents in code where a heading holds
-  a variable.
+  code.
 - [R-25](../../requirements/README.md#r-25) build-time values are
   expected differences: the copyright year is the only one; not
   converted.

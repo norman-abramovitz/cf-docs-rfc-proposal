@@ -5,15 +5,6 @@ owner: Diego
 
 import vars from '@site/src/vars';
 
-{/* The table of contents, written out because a heading holds a variable:
-    the generated one would show the expression's source. */}
-export const toc = [
-  {value: 'About SSH access', id: 'diego-ssh-concepts', level: 2},
-  {value: 'SSH access control hierarchy', id: 'ssh-access-control-hierarchy', level: 2},
-  {value: 'SSH access for apps and spaces', id: 'app-ssh-config', level: 2},
-  {value: `Configuring SSH access for ${vars.app_runtime_full}`, id: 'platform-ssh-config', level: 2},
-];
-
 If you need to troubleshoot an instance of an application, you can gain SSH access to the app using the SSH proxy and daemon.
 For example, one of the app instances might be unresponsive, or the log output from the app is inconsistent or incomplete. You can SSH into the individual VM to troubleshoot the problem instance.
 
