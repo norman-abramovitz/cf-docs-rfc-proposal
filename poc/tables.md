@@ -22,7 +22,7 @@ How to read the comparisons:
   offers. *Native-plain* is native with no width or alignment settings.
   *Extension* writes the table in a list-like syntax (one cell per line)
   and adds options for what the table asks for, such as row headers and
-  key columns that do not wrap; a small piece of code or CSS added to the
+  key columns that do not wrap. A small piece of code or CSS added to the
   site once, such as a plugin or a custom block, gives those options their
   effect. This file shows native, passthrough and extension; native-plain
   is linked.
@@ -31,6 +31,10 @@ How to read the comparisons:
   its row (a *row header*), and so on. Widths are hints, not exact values
   ([R-03](../requirements/README.md#r-03) column widths as hints; requirement IDs are listed in
   [requirements](../requirements/README.md)).
+- **Intent and spot checks.** Each page has an intent file: what each of
+  its tables asks for, the cleanup it needs, and its spot checks, which are
+  checkable statements such as "7 body rows, each with 2 cells", run on
+  every build ([glossary](../glossary.md#spot-check)).
 - **Screenshots.** Taken in a browser with a 1280-pixel window, each tool
   using its default *theme* (the fonts, colors, borders and spacing a tool
   ships with). Colors and fonts belong to the theme and are not compared;
@@ -845,7 +849,7 @@ is narrower. Passthrough keeps the widths as written; every other mode sets
 no widths and lets the column roles decide (variant C, decided).
 
 - Intent and spot checks: [intent/troubleshooting_slow_requests.md](../concepts/tables/intent/troubleshooting_slow_requests.md)
-- Width variants A, B, C: [results.md](../concepts/tables/results.md#docusaurus-3102)
+- Width variants A, B, C: [results.md](../concepts/tables/results.md#width-variants-for-troubleshooting_slow_requests)
 - Results per tool: [Docusaurus](../concepts/tables/results.md#docusaurus-3102),
   [Zensical](../concepts/tables/results.md#zensical-0069),
   [Starlight](../concepts/tables/results.md#starlight-0426),

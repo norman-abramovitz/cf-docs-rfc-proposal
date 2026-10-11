@@ -119,7 +119,8 @@ conversion tool to apply later
 
 ### Tables
 
-Done, with open items. Input and output side by side, page by page:
+The tables concept is done, with open items. Input and output side by
+side, page by page:
 [tables.md](tables.md). Full grids, measurements and findings:
 [results.md](../concepts/tables/results.md#summary).
 
@@ -169,9 +170,15 @@ Starlight and Antora 42 of 42 in every mode.
 Details: [results.md](../concepts/tables/results.md), section "Text compared
 with the published page" under each tool.
 
-**Not yet written:** the RFC's Phase 2 items (local preview, search,
-versioning, GitHub Pages deployment, redirects, contributor feedback) were
-not compared across these sites.
+Of the RFC's Phase 2 items, local preview is covered in part: every site
+builds and serves with one command, and what a contributor installs differs
+by tool ([what the PoC must cover](../tooling/poc-scope.md#local-development-search-and-versioning)).
+Every tool shows a wide table in its own scrolling box; Antora needed a
+short script for it ([results summary](../concepts/tables/results.md#summary)).
+
+**Not yet written:** the other Phase 2 items (search, versioning, GitHub
+Pages deployment, redirects, contributor feedback) were not compared across
+these sites.
 
 ## Files
 
