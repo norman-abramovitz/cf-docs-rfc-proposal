@@ -23,7 +23,8 @@ it link to their line, as in [L112] ([glossary](../glossary.md#rfc)).
   mapped to a URL directory, plus sample-code repositories with no pages. A
   survey of tables covered the 15 `docs-*` repositories that are not
   archived (this evaluation's [table survey](../concepts/tables/survey/README.md#scope), 2026-10-09). The book's own [`CODEOWNERS`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/CODEOWNERS) file
-  (which names who must review changes) lists one team for everything.
+  (which names who must review changes) lists one team for everything,
+  `@cloudfoundry/wg-app-runtime-platform-docs-approvers`.
 - **What answers it:** the inventory in the RFC's first phase ([L112],
   [L167]).
 
@@ -100,8 +101,9 @@ it link to their line, as in [L112] ([glossary](../glossary.md#rfc)).
   decided at build time. No tool has been tested with that yet.
 - **Known:** the book's `template_variables.yml` maps
   [`scale_table: "oss_scale_table"`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/config/template_variables.yml#L287)
-  and [`roles_table: "_oss_roles_table"`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/config/template_variables.yml#L231),
-  apparently so that another edition of the docs could swap in its own table.
+  and [`roles_table: "_oss_roles_table"`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/config/template_variables.yml#L231).
+  The `oss_` prefix suggests that another edition of the docs once swapped
+  in its own table; that is an inference, not documented anywhere found.
   Every tool in the tables round (the first concept, worked by hand in four
   candidate tools; [results](../concepts/tables/results.md#summary))
   included the scale-table partial when it was
@@ -193,9 +195,11 @@ it link to their line, as in [L112] ([glossary](../glossary.md#rfc)).
 
 - **Why it matters:** [R-18](README.md#r-18) full-text search. The RFC says "Search is broken
   or disabled" ([L21]).
-- **Known:** nothing recorded here yet.
-- **What answers it:** a check of `docs.cloudfoundry.org` and the book's
-  layout files.
+- **Known:** the book's own files do not provide search. None of its
+  [layouts](https://github.com/cloudfoundry/docs-book-cloudfoundry/tree/30dfa57692253a6ae1b3df0726444b1e32852c91/master_middleman/source/layouts) mentions it, and its
+  [`search.html.erb`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/master_middleman/source/search.html.erb) holds only a title and an
+  escaped `<%%= yield %>`, which prints as text (both at commit `30dfa57`).
+- **What answers it:** a check of `docs.cloudfoundry.org` today.
 
 ### How should versions work?
 
@@ -237,7 +241,11 @@ it link to their line, as in [L112] ([glossary](../glossary.md#rfc)).
   ([glossary](../glossary.md#extension)).
 - **Known:** in the tables round, Docusaurus, Zensical and Starlight each
   needed one small extension for column roles and "don't wrap"
-  ([list-table.mjs](../concepts/tables/sites/starlight/list-table.mjs)). Antora needed none
+  ([list-table.js](../concepts/tables/sites/docusaurus/plugins/list-table.js),
+  [list_table.py](../concepts/tables/sites/zensical/list_table.py),
+  [list-table.mjs](../concepts/tables/sites/starlight/list-table.mjs)).
+  Antora needed none for the hints; its 8-line script, which puts wide
+  tables in a scrolling box, is page layout, not a hint extension
   ([results](../concepts/tables/results.md#summary)). The RFC's wording at
   [L100] and [L104] does not allow for this yet.
 - **What answers it:** a Docs WG decision on ownership and a request

@@ -41,14 +41,14 @@ Leads to: [R-15](README.md#r-15) URL identifies the source.
 
 ### HTML where Markdown falls short
 
-Authors use Markdown where it is enough and HTML where it is not. The
-`metadata` page, one of the test pages (published pages with complex tables
-that the Docs WG lead chose for testing tools;
-[list](../concepts/tables/README.md#test-pages)), shows both: a simple three-column reference table
+Authors use Markdown where it is enough and HTML where it is not. The test
+pages are published pages with complex tables that the Docs WG lead chose
+for testing tools ([list](../concepts/tables/README.md#test-pages)). One of
+them, `metadata`, shows both: a simple three-column reference table
 written as a Markdown pipe table (one row per line, `|` between cells), and
 two HTML tables with a spanning title row and bulleted lists in cells
 ([source](../concepts/tables/source/metadata.html.md.erb)). Across the
-book's repositories, 123 of 195 tables are HTML (this evaluation's [table survey](../concepts/tables/survey/README.md#totals), 2026-10-09).
+book's repositories (those that feed `docs.cloudfoundry.org`), 123 of 195 tables are HTML (this evaluation's [table survey](../concepts/tables/survey/README.md#totals), 2026-10-09).
 
 Leads to: [R-10](README.md#r-10) simple text plus HTML where needed, [R-02](README.md#r-02) rich tables.
 
@@ -120,14 +120,19 @@ file and a small layout; every table matched the published page cell for
 cell ([Middleman probe](../concepts/tables/probes/middleman/README.md)). So
 the problem is Bookbinder and the old Ruby setup, not the page format.
 
-Leads to: [R-12](README.md#r-12) one-command local preview. More broadly, this is the reason
-to move at all, so it does not map to one requirement.
+Leads to: [R-12](README.md#r-12) one-command local preview. Beyond that
+requirement, it is the reason to move at all.
 
 ### Search
 
 The RFC states "Search is broken or disabled" ([L21]).
 
 Leads to: [R-18](README.md#r-18) full-text search.
+
+The book's own files do not provide search. None of its
+[layouts](https://github.com/cloudfoundry/docs-book-cloudfoundry/tree/30dfa57692253a6ae1b3df0726444b1e32852c91/master_middleman/source/layouts) mentions it, and its
+[`search.html.erb`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/master_middleman/source/search.html.erb) holds only a title and an escaped
+`<%%= yield %>`, which prints as text (both at commit `30dfa57`).
 
 **Not yet written:** what search does on `docs.cloudfoundry.org` today, and
 since when.
@@ -141,7 +146,8 @@ tag closed and nested properly, every attribute value quoted;
 `<td>` never closed, `class=“table”` with typographic quotes, a row ending in
 `</td>` instead of `</tr>`
 ([details](../concepts/tables/README.md#markup-that-only-browsers-tolerate)).
-A survey of all 238 tables in the docs and tutorial repositories found
+A survey of all 238 tables (the book's 195, bosh.io's 40 and 3 in tutorial
+repositories) found
 more (this evaluation's [table survey](../concepts/tables/survey/README.md#totals), 2026-10-09): 5 tables
 never close `<thead>`, 8 classes are in typographic quotes, and 1 class has
 a mismatched quote.

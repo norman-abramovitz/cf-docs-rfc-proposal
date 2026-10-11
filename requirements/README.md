@@ -177,16 +177,24 @@ Zensical and Starlight need a small extension to carry them; Antora and a
 one-page test in Sphinx (a Python documentation generator;
 [glossary](../glossary.md#sphinx)) carry them as classes with no code
 ([results](../concepts/tables/results.md#summary)). The rule should be about
-who writes extensions, not whether any exist: working groups do not write
-their own, the Docs WG maintains shared extensions that apply across all
+who writes extensions, not whether any exist. Working groups do not write
+their own. The Docs WG maintains shared extensions that apply across all
 documentation, and another working group adds one only with Docs WG approval
-([R-13](#r-13) no per-WG extensions). Suggested wording for both lines was posted on the pull request on 2026-10-09 ([L100 suggestion](https://github.com/cloudfoundry/community/pull/1642#discussion_r4228197509), [L104 suggestion](https://github.com/cloudfoundry/community/pull/1642#discussion_r4228197535)); as of 2026-10-10 neither has been applied.
+([R-13](#r-13) no per-WG extensions). Suggested wording for both lines was
+posted on the pull request on 2026-10-09
+([L100 suggestion](https://github.com/cloudfoundry/community/pull/1642#discussion_r4228197509),
+[L104 suggestion](https://github.com/cloudfoundry/community/pull/1642#discussion_r4228197535));
+as of 2026-10-10 neither has been applied.
 
 **History.** The rule at [L100] is recent. The RFC's first version (commit `4dbccd9`, 2025-06-30) said at [L77](https://github.com/cloudfoundry/community/blob/4dbccd9eba2cb1857f11a24b963f91ae24f56373/toc/rfc/rfc-draft-new-cf-docs-stack.md#L77):
 
 > The chosen framework SHOULD support a plugin or extension mechanism so that Working Groups can add custom components (e.g., interactive CLI examples, version-specific callouts) without forking the core tooling. Docusaurus MDX support covers this use case. Custom extensions MUST be documented and reviewed to avoid introducing new maintenance burdens.
 
-Commit `3dbd2c3` (2026-10-06) replaced it with the "MUST NOT" wording quoted above ([L97 at that commit](https://github.com/cloudfoundry/community/blob/3dbd2c3c3c149cae36bd059b7677a0b5295f3bda/toc/rfc/rfc-draft-new-cf-docs-stack.md#L97)). The position above is closer to the first version: extensions are allowed and reviewed, and the Docs WG owns them.
+Commit `3dbd2c3` (2026-10-06) replaced it with the "MUST NOT" wording
+quoted above
+([L97 at that commit](https://github.com/cloudfoundry/community/blob/3dbd2c3c3c149cae36bd059b7677a0b5295f3bda/toc/rfc/rfc-draft-new-cf-docs-stack.md#L97)).
+The position above is closer to the first version: extensions are allowed
+and reviewed, and the Docs WG owns them.
 
 ### Who does the conversion work (L160 vs L131)
 
@@ -257,11 +265,11 @@ restated as a hosting benefit.
   plain Markdown", while [L42] requires the "Ability to handle HTML". The
   position is [R-10](#r-10) simple text plus HTML where needed.
 - **Partials are partly answered.** [L179] asks "Are partials supported by
-  Docusaurus?" Every tool in the tables round included the scale-table
-  partial (`_oss_scale_table`, a table file that the `high-availability` page
-  includes; [sources](../concepts/tables/source/SOURCES.md))
-  from a host page, Docusaurus through an MDX import
-  (Docusaurus [conventions](../concepts/tables/sites/docusaurus/CONVENTIONS.md),
+  Docusaurus?" The scale-table partial is `_oss_scale_table`, a table file
+  that the `high-availability` page includes
+  ([sources](../concepts/tables/source/SOURCES.md)). Every tool in the
+  tables round included it from a host page, Docusaurus through an MDX
+  import (Docusaurus [conventions](../concepts/tables/sites/docusaurus/CONVENTIONS.md),
   "Partials"). Partials picked by a
   variable are still open ([R-05](#r-05) partials and reuse).
 - **bosh.io is not mentioned.** Its docs are a separate site with 40 tables

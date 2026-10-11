@@ -87,7 +87,7 @@ The Docs WG is the working group for the Cloud Foundry docs. Its
 [charter](https://github.com/cloudfoundry/community/blob/main/toc/working-groups/docs.md)
 lists in its scope ["Merge and edit all doc changes"](https://github.com/cloudfoundry/community/blob/9f189bfa613bb7a9c2da6616666661790d4410eb/toc/working-groups/docs.md#L17) and
 ["Maintain internal consistency of doc style, including Notes and
-tables"](https://github.com/cloudfoundry/community/blob/9f189bfa613bb7a9c2da6616666661790d4410eb/toc/working-groups/docs.md#L19). Today the Docs WG lead and the
+tables…"](https://github.com/cloudfoundry/community/blob/9f189bfa613bb7a9c2da6616666661790d4410eb/toc/working-groups/docs.md#L19). Today the Docs WG lead and the
 approvers can merge. The book's [`CODEOWNERS`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/CODEOWNERS#L1) file assigns every path to one team,
 `@cloudfoundry/wg-app-runtime-platform-docs-approvers`. The book's
 [README](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/README.md#L70)
@@ -158,9 +158,10 @@ Needs:
 
 ### UAA and CredHub API doc maintainers
 
-UAA (the Cloud Foundry login and token service; its
+UAA (the Cloud Foundry login and token service, in the project's own
+description: its
 [README](https://github.com/cloudfoundry/uaa/blob/f09cae02367b333bc17d58997c1ba8bf336b3fae/README.md#L5-L6)) and CredHub (the credential store deployed
-with BOSH; its [README](https://github.com/cloudfoundry/credhub/blob/c28c27a454a259f7506498390928713c9fd7f493/README.md#L5-L11)) publish API reference docs
+with BOSH, in the project's own description: its [README](https://github.com/cloudfoundry/credhub/blob/c28c27a454a259f7506498390928713c9fd7f493/README.md#L5-L11)) publish API reference docs
 built from their code, not from the book. The UAA API docs live in the
 `cloudfoundry/uaa` repository and are built with Slate, a generator for
 one-page API references ([glossary](../glossary.md#slate)), from examples
@@ -181,7 +182,8 @@ Its [build script](https://github.com/cloudfoundry/credhub-api-site/blob/83a509e
 combines two sources: hand-written docs for the CLI and older server
 versions, kept as branches of `cloudfoundry-incubator/credhub-api-docs`
 ([charter L77](https://github.com/cloudfoundry/community/blob/9f189bfa613bb7a9c2da6616666661790d4410eb/toc/working-groups/foundational-infrastructure.md#L77);
-last pushed in 2021), and docs generated from the `credhub` code for the
+the [repository](https://github.com/cloudfoundry-incubator/credhub-api-docs)
+was last pushed to on 2021-08-19, checked 2026-10-10), and docs generated from the `credhub` code for the
 current version. It builds the site with
 [Middleman 4.4](https://github.com/cloudfoundry/credhub-api-site/blob/83a509e99d2eb79350189ea99bda6bc3b41391ef/Gemfile#L4)
 ([build step](https://github.com/cloudfoundry/credhub-api-site/blob/83a509e99d2eb79350189ea99bda6bc3b41391ef/scripts/build#L56))

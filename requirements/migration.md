@@ -37,7 +37,7 @@ the [footer](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57
   every area).
 - Pages are in a simple text format, with HTML where it falls short ([R-10](README.md#r-10) simple
   text plus HTML where needed).
-  Which format and which tool is open.
+  Which format and which tool are open.
 - The Docs WG reviews and publishes ([R-14](README.md#r-14) Docs WG approves and publishes).
 
 ## Steps
@@ -56,8 +56,14 @@ old URLs keep working.
 Done so far: a survey of every table in the docs and tutorial repositories
 (238 tables), used to pick table styles (this evaluation's
 [table survey](../concepts/tables/survey/README.md#totals), 2026-10-09).
+The repository half of the inventory has a start: the book's
+[`config.yml`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/config.yml)
+lists 12 sections, and the survey recorded the 21 repositories it read,
+each with the commit it read
+([shas.txt](../concepts/tables/survey/shas.txt)).
 
-**Not yet written:** the full inventory, and whether bosh.io and the UAA and
+**Not yet written:** the rest of the inventory (pages, partials, variables,
+redirects and owners), and whether bosh.io and the UAA and
 CredHub API references are in it ([research areas](research-areas.md#scope)).
 
 ### 2. Markup cleanup
