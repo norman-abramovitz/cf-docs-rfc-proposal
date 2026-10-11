@@ -5,7 +5,9 @@ Status: draft, incomplete — covers what is known as of 2026-10-10.
 An input format is the kind of text an author writes and a tool reads to
 build a page. Each tool in this evaluation reads one or two formats. This
 page describes each format and shows one real table written in it, taken
-from the page sources built in the tables round. Nothing here is written
+from the page sources built in the tables round (the first concept of this
+evaluation: tables from real pages converted by hand into each candidate
+tool; [tables concept](../concepts/tables/README.md)). Nothing here is written
 for this page: every snippet is copied from a file in this repository, and
 each one links to that file.
 
@@ -25,7 +27,8 @@ table's width; the second column holds one or two sentences.
 
 What the table asks for, written as hints (tool-independent statements of
 intent, from its
-[intent file](../concepts/tables/intent/credential-types.md)):
+[intent file](../concepts/tables/intent/credential-types.md), the page's
+record of what each table needs, written once for all tools):
 
 | Hint | Value | Where the source says it |
 |------|-------|--------------------------|
@@ -61,7 +64,7 @@ cleanup), extension (the tool's extension point carries the hints), native
 | [Python-Markdown](#python-markdown) | The Markdown dialect Zensical reads; its attribute lists add widths to cells | Zensical native | [Python-Markdown](https://python-markdown.github.io/) |
 | [Markdoc](#markdoc) | Markdown with `{% %}` tags | Starlight (all modes) | [Markdoc](https://markdoc.dev/) |
 | [AsciiDoc](#asciidoc) | A plain-text format with its own table syntax | Antora (all modes) | [AsciiDoc](https://asciidoc.org/), [Asciidoctor](https://asciidoctor.org/) |
-| [List table](#list-table) | A table written as a nested list, one item per row and per cell | Docusaurus and Zensical extension | [MyST list-table](https://myst-parser.readthedocs.io/) |
+| [List table](#list-table) | A table written as a nested list, one item per row and per cell | Docusaurus and Zensical extension | [MyST list-table](https://myst-parser.readthedocs.io/en/latest/syntax/tables.html) |
 | [MyST](#myst) | Markdown with directives (named blocks with options) | Sphinx probe | [MyST](https://mystmd.org/), [MyST parser](https://myst-parser.readthedocs.io/) |
 
 ## HTML
@@ -533,17 +536,20 @@ written `{recommended_by}`, an AsciiDoc attribute.
 A list table writes a table as a nested list: each row is a list item, and
 each cell is an item inside it. Because a cell is a list item, it can hold
 lists and paragraphs. The form is the `list-table` directive of
-reStructuredText, defined in docutils
+reStructuredText (a plain-text markup format from the Python world),
+defined in docutils, the Python library that reads it
 ([`ListTable`, in the GitHub mirror of docutils](https://github.com/docutils/docutils/blob/f8602b0fc745405a2262872bebae9f343940adef/docutils/docutils/parsers/rst/directives/tables.py#L368-L381)),
 which MyST also reads (see [MyST](#myst)). The Docusaurus and Zensical
 extensions built for this evaluation use the same option names (`widths`,
 `header-rows`, `stub-columns`) plus the hint options (`roles`, `wrap`,
 `title`). Learn
-more: [MyST parser](https://myst-parser.readthedocs.io/); see also the
+more: [MyST parser, tables](https://myst-parser.readthedocs.io/en/latest/syntax/tables.html),
+[reStructuredText `list-table`](https://docutils.sourceforge.io/docs/ref/rst/directives.html#list-table); see also the
 [glossary](../glossary.md#list-table).
 
-Docusaurus extension, a `:::list-table` block read by a remark plugin
-written for this evaluation,
+Docusaurus extension, a `:::list-table` block read by a remark plugin (a
+step that Docusaurus's Markdown reader, remark, runs on each page; it can
+change the page before it is built) written for this evaluation,
 [plugins/list-table.js](../concepts/tables/sites/docusaurus/plugins/list-table.js)
 ([file](../concepts/tables/sites/docusaurus/docs/extension/credential-types.mdx)):
 

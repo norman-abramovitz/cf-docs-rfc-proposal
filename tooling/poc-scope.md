@@ -5,7 +5,10 @@ Status: draft, incomplete — covers what is known as of 2026-10-10.
 A PoC (proof of concept) is a small working build that tests whether an
 approach works before the full migration starts. RFC #1642 plans one as
 its Phase 2, in a new repository. This page quotes what the RFC asks that
-PoC to do and adds what the tables round found that bears on it. The
+PoC to do and adds what the tables round (the first concept of this
+evaluation: tables from real pages converted by hand into each candidate
+tool; [tables concept](../concepts/tables/README.md)) found that bears on
+it. The
 comparisons built in this repository are described in
 [poc/](../poc/README.md); the tools in [tools.md](tools.md).
 
@@ -48,7 +51,8 @@ Two other lines set what the PoC compares and what it must report.
 **What is known.** The Docs WG lead named five pages whose tables are hard
 to express outside HTML; they are the test pages of the tables round
 ([list](../concepts/tables/README.md#test-pages)). All five were built in
-the four hands-on tools and in the Middleman probe; the Eleventy probe
+the four hands-on tools and in the Middleman probe (a probe is a small test
+that answers one question in one tool; [tiers](README.md#tiers)); the Eleventy probe
 built two of them and the Sphinx probe one table. Every table renders correctly in every tool
 once the source is cleaned up; the tools differ in the cost of getting
 there ([results summary](../concepts/tables/results.md#summary)).
@@ -73,9 +77,12 @@ there ([results summary](../concepts/tables/results.md#summary)).
 
 ### MDX alone (L104)
 
-**What is known.** In Docusaurus the test tables render correctly as
-HTML in MDX after cleanup (passthrough), and as a list table through a
-remark plugin (extension). With Docusaurus's own Markdown table (native),
+**What is known.** Each test page was converted in several modes, from
+keeping its HTML to rewriting it in the tool's own syntax
+([modes](README.md#modes)). In Docusaurus the test tables render correctly
+as HTML in MDX after cleanup (the passthrough mode), and as a list table
+through a remark plugin, code that changes the page as Docusaurus reads it
+(the extension mode). With Docusaurus's own Markdown table (the native mode),
 the content survives but widths, row headers, top alignment and titles do
 not: the `credential-types` table comes out 18/82 where the source asks for
 20% ([grid](../concepts/tables/results.md#grid)). These are the gaps L104

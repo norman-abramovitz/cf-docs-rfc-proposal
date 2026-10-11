@@ -29,11 +29,16 @@ The CF documentation today is written as `.html.md.erb` files: Markdown
 (plain text with light formatting marks such as `#` for headings) mixed with
 HTML (the markup language of web pages) and ERB tags (`<%= … %>`, Ruby
 code that fills in variables and includes other files when the site is
-built). The test pages are examples
-([sources](../concepts/tables/source/SOURCES.md)). Bookbinder, a tool written for the CF docs, collects these files from the
-repositories listed in the book's
+built). The test pages (published pages with complex tables that the Docs
+WG lead chose for testing tools; listed below) are examples
+([sources](../concepts/tables/source/SOURCES.md)). Bookbinder, a Ruby
+command-line tool that "stitch[es] together" Markdown repositories into one
+site ([gemspec](https://github.com/pivotal-cf/bookbinder/blob/83bd2a57a8ba3d04c58a5be67607b243bdea0c64/bookbinder.gemspec#L7)),
+collects these files. It reads the list of repositories from
 [`config.yml`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/config.yml)
-and hands them to Middleman
+in the book, the repository
+[docs-book-cloudfoundry](https://github.com/cloudfoundry/docs-book-cloudfoundry)
+that holds the site's settings and layout, and hands the files to Middleman
 ([gemspec](https://github.com/pivotal-cf/bookbinder/blob/83bd2a57a8ba3d04c58a5be67607b243bdea0c64/bookbinder.gemspec#L20)),
 a Ruby static site generator (a program that turns source files into a set
 of web pages).

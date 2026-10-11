@@ -17,6 +17,26 @@ passthrough, extension, native, native-plain) are defined in the
 [Tooling README](README.md#modes). Each input format, with the same table
 written in it, is in [formats.md](formats.md).
 
+Terms used on this page:
+
+- **The book:** [docs-book-cloudfoundry](https://github.com/cloudfoundry/docs-book-cloudfoundry),
+  the repository that holds today's site settings, layout and the list of
+  content repositories.
+- **Test pages:** the published pages with complex tables that the Docs WG
+  lead chose for testing tools, five plus one added later
+  ([list](../concepts/tables/README.md#test-pages)).
+- **Hint:** a tool-independent statement of what a table asks for, such as
+  a column's width or "don't wrap" ([glossary](../glossary.md#hint)).
+- **Intent file:** one file per test page that lists each table's hints,
+  the markup cleanup it needs and its spot checks
+  ([glossary](../glossary.md#intent-file)).
+- **Spot check:** a checkable statement about a converted page, such as
+  "7 body rows, each with 2 cells", run against every built page
+  ([glossary](../glossary.md#spot-check)).
+- **Capped no-wrap:** the "don't wrap" hint with a limit: the column stays
+  on one line up to a set width (16em by default), then wraps between words
+  ([glossary](../glossary.md#no-wrap)).
+
 ## Summary
 
 | Tool | Reads | Tier | Version tested | License | Status |
@@ -59,7 +79,9 @@ reads. Not yet done.
 
 ### Bookbinder
 
-**What it is.** A Ruby tool written for the CF docs. It reads the book's
+**What it is.** A Ruby command-line tool that "stitch[es] together"
+Markdown repositories into one site
+([gemspec](https://github.com/pivotal-cf/bookbinder/blob/83bd2a57a8ba3d04c58a5be67607b243bdea0c64/bookbinder.gemspec#L7)). It reads the book's
 [`config.yml`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/config.yml)
 in docs-book-cloudfoundry, collects the `docs-*` content repositories it
 names, and builds them into one site with Middleman (a runtime dependency
@@ -596,6 +618,39 @@ turned on.
 **Evidence:** [Starlight finding 9](../concepts/tables/results.md#findings-2).
 
 **What would change it:** a setting that applies only to prose.
+
+### Eleventy's default template language
+
+**What was done:** not tried. The probe ran its Markdown pages through EJS;
+Eleventy's default for Markdown is Liquid
+([`defaultConfig.js` at v3.1.6](https://github.com/11ty/eleventy/blob/02ad90a2c85f6446d46bdcd231b6d5d3c5c17949/src/defaultConfig.js#L143)).
+
+**Why:** the probe's question was whether today's `<%= vars.name %>` tags
+can stay as they are. EJS uses the same tags; Liquid writes `{{ … }}`, so
+every variable would have to be rewritten
+([R-04](../requirements/README.md#r-04) variables everywhere).
+
+**Evidence:** [probes/eleventy](../concepts/tables/probes/eleventy/README.md).
+
+**What would change it:** a conversion that rewrites the variables in any
+case, which would make the tag shape no reason to pick EJS.
+
+### Typographic quotes in Zensical
+
+**What was done:** not tried. Zensical's quotes stay straight, while the
+published book shows typographic ones (`user’s`). Python-Markdown's
+[`smarty`](https://python-markdown.github.io/extensions/smarty/) extension
+would make them typographic; it is not turned on.
+
+**Why:** not tested in the tables round. Starlight's equivalent setting
+also changed quotes inside `<pre>` and `<code>`
+([Typographic quotes in Starlight](#typographic-quotes-in-starlight)),
+so the result would need checking ([R-01](../requirements/README.md#r-01)
+content and outline survive).
+
+**Evidence:** [Zensical, text compared with the published page](../concepts/tables/results.md#text-compared-with-the-published-page-1).
+
+**What would change it:** a test showing that `smarty` changes prose only.
 
 ### Snippet includes for partials in Zensical
 
