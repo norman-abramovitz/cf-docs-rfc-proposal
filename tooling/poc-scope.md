@@ -60,7 +60,7 @@ there ([results summary](../concepts/tables/results.md#summary)).
 **What it adds:**
 
 - **The subset needs the hard pages, not only typical ones.** Three of the
-  five first MDX errors are outside the tables (`{…}` in prose, an unclosed
+  five first MDX errors are outside the tables (`{…}` outside tables, an unclosed
   `<br>`), so a subset of simple pages would not show them
   ([raw passthrough errors](../concepts/tables/results.md#raw-passthrough-errors)).
   [R-02](../requirements/README.md#r-02) rich tables.
@@ -149,7 +149,7 @@ Found in the tables round and not in the RFC's list:
 |------|-----|-------------|----------|
 | A word-by-word comparison with the published page | It found content changes the per-table checks missed (`*/*`, dropped spaces) | [R-01](../requirements/README.md#r-01) content and outline survive | [checks/](../concepts/tables/checks/), [Starlight finding 2](../concepts/tables/results.md#findings-2) |
 | HTML-valued and undefined variables | MDX, Markdoc and EJS escape HTML values; two variables the pages use are defined nowhere and show as empty text today | [R-04](../requirements/README.md#r-04) variables everywhere | [progress](../concepts/tables/README.md#progress), [Eleventy probe](../concepts/tables/probes/eleventy/README.md) |
-| Partials | Each tool includes files differently; RFC L179 asks whether Docusaurus supports them | [R-05](../requirements/README.md#r-05) partials and reuse | [tools.md](tools.md#docusaurus) |
+| Partials | Each tool includes files differently; RFC [L179](https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L179) asks whether Docusaurus supports them | [R-05](../requirements/README.md#r-05) partials and reuse | [tools.md](tools.md#docusaurus) |
 | Code blocks in HTML (`<pre class="terminal">`) | MDX and Markdoc read their text as Markdown | [R-06](../requirements/README.md#r-06) typed code blocks | [Docusaurus finding 8](../concepts/tables/results.md#findings) |
 | Table styles named by a class | Themes disagree on which tables they style | [R-09](../requirements/README.md#r-09) table styles by class | [template conventions](../concepts/tables/README.md#template-conventions) |
 | Wide tables | A table wider than the column must scroll in its own box, not widen the page | [R-02](../requirements/README.md#r-02) rich tables | [results summary](../concepts/tables/results.md#summary) |

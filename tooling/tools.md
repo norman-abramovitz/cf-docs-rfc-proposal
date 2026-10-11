@@ -150,8 +150,8 @@ table, which carries no widths, row headers or titles.
   ([plugins/list-table.js](../concepts/tables/sites/docusaurus/plugins/list-table.js)).
   RFC [L104](https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L104)
   asks the PoC to validate "that the most complex existing pages (HTML
-  tables, CSS layouts) can be represented with MDX alone"; this is that
-  evidence. [R-02](../requirements/README.md#r-02) rich tables, [R-03](../requirements/README.md#r-03) column widths as hints, [R-13](../requirements/README.md#r-13) no per-WG
+  tables, CSS layouts) can be represented with MDX alone"; these are the
+  gaps L104 asks to be reported. [R-02](../requirements/README.md#r-02) rich tables, [R-03](../requirements/README.md#r-03) column widths as hints, [R-13](../requirements/README.md#r-13) no per-WG
   extensions.
 - **HTML-valued variables are escaped.** They need
   `<div dangerouslySetInnerHTML={{__html: vars.name}} />` to render as
@@ -228,8 +228,9 @@ capped no-wrap need HTML or the extension, a Python-Markdown block
   ([pricing](https://zensical.org/studio/pricing/)), and a membership,
   [Zensical Spark](https://zensical.org/spark/)
   ([pricing](https://zensical.org/spark/pricing/)), whose members get
-  early-access releases (the project's own pages, read 2026-10-10). Whether features stay behind it is to be
-  watched. [R-19](../requirements/README.md#r-19) open source only.
+  early-access releases (the project's own pages, read 2026-10-10). This
+  evaluation checked the license and those pages only; it did not check
+  whether any feature is limited to members. [R-19](../requirements/README.md#r-19) open source only.
 
 **Variables and partials.** Variables as written, through Zensical's
 template engine set to ERB-style tags; HTML values render as markup.
@@ -268,9 +269,9 @@ work.
 **Concerns, with evidence:**
 
 - **Markdoc reads the text inside HTML as Markdown, and changes content
-  with no error.** A lone `-` in a code span becomes an empty list; the
+  with no error.** A lone `-` in a code span becomes an empty list. The
   space next to an inline tag disappears when the cell spans lines
-  ("passwordrefers", 19 places on one page); a blank line inside `<pre>`
+  ("passwordrefers", 19 places on one page). A blank line inside `<pre>`
   in a list item stops the whole site from building
   ([findings 1–3](../concepts/tables/results.md#findings-2)). The fixes
   are character entities (`&#45;`, `&#32;`, `&#10;`) or one-line cells.
@@ -342,7 +343,7 @@ stylesheet. Every spot check passes in every mode.
 - **Multi-repository sites.** Antora builds from several repositories by
   design ([content aggregator](https://gitlab.com/antora/antora/-/blob/87797da7a7f337301ec9b1ad26aa291a28342d56/packages/content-aggregator/lib/aggregate-content.js#L84-L90)). RFC #1642 §3 proposes one docs repository
   ([L65–88](https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L65-L88)).
-  Read about, not tested here.
+  This was read about, not tested here.
 
 **Variables and partials.** Variables are AsciiDoc attributes, `{name}`; an
 undefined one shows as text unless `attribute-missing: drop` is set. HTML
@@ -404,7 +405,7 @@ Details: [probes/sphinx-myst](../concepts/tables/probes/sphinx-myst/README.md).
 
 **Concerns.** The default theme hyphenates words in cells (turned off in
 the stylesheet). Inline code is rewritten into one `<span>` per word, which
-a text comparison has to undo. One page only.
+a text comparison has to undo. The probe covered one table only.
 
 **Status:** under evaluation.
 
@@ -414,7 +415,9 @@ a text comparison has to undo. One page only.
 today. The book pins `bookbindery` 9.12.1
 ([Gemfile](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/Gemfile#L3)),
 which depends on Middleman 3.4
-([RubyGems](https://rubygems.org/gems/bookbindery/versions/9.12.1));
+([RubyGems](https://rubygems.org/gems/bookbindery/versions/9.12.1); the
+repository has no 9.12.1 gemspec, and its last 9.12.0 gemspec asks for
+[`~> 3.4.0`](https://github.com/pivotal-cf/bookbinder/blob/f608a441572def7787361842f05e42d163d78d54/bookbinder.gemspec#L20));
 the latest Bookbinder source depends on
 [Middleman 4.1.10](https://github.com/pivotal-cf/bookbinder/blob/83bd2a57a8ba3d04c58a5be67607b243bdea0c64/bookbinder.gemspec#L20). Learn more: [Middleman](https://middlemanapp.com/); see also the
 [glossary](../glossary.md#middleman).
@@ -582,9 +585,10 @@ owner who needs the exact source widths.
 **What was done:** the `metadata` title was built as a spanning row above
 the column headers, as a caption, and as a bold line above the table.
 
-**Why:** a bold line above the table. Markdown and Markdoc tables have one
-header row, so a spanning title row pushes the column headers into the body
-([R-02](../requirements/README.md#r-02) rich tables). Passthrough keeps the source's spanning row.
+**Why:** Markdown and Markdoc tables have one header row, so a spanning
+title row pushes the column headers into the body
+([R-02](../requirements/README.md#r-02) rich tables). The bold line above
+the table was kept. Passthrough keeps the source's spanning row.
 
 **Evidence:** [side by side](../concepts/tables/results.md#provisional-changes-side-by-side);
 [Starlight finding 4](../concepts/tables/results.md#findings-2).
@@ -612,8 +616,8 @@ rule.
 **What was done:** the Markdoc integration's `typographer` setting was
 turned on.
 
-**Why:** off. It also changes quotes inside `<pre>` blocks and HTML
-`<code>`, which changes content ([R-01](../requirements/README.md#r-01) content and outline survive).
+**Why:** besides prose, it changes quotes inside `<pre>` blocks and HTML
+`<code>`, which changes content, so the setting was left off ([R-01](../requirements/README.md#r-01) content and outline survive).
 
 **Evidence:** [Starlight finding 9](../concepts/tables/results.md#findings-2).
 

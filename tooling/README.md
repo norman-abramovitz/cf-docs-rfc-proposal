@@ -25,20 +25,20 @@ are first used; the [glossary](../glossary.md) has more on each.
 
 ## Why tooling first
 
-The CF documentation today is written as `.html.md.erb` files: Markdown
-(plain text with light formatting marks such as `#` for headings) mixed with
-HTML (the markup language of web pages) and ERB tags (`<%= … %>`, Ruby
-code that fills in variables and includes other files when the site is
-built). The test pages (published pages with complex tables that the Docs
+The CF documentation today is written as `.html.md.erb` files. Each mixes
+three things: Markdown (plain text with light formatting marks such as `#`
+for headings), HTML (the markup language of web pages) and ERB tags
+(`<%= … %>`, Ruby code that fills in variables and includes other files
+when the site is built). The test pages (published pages with complex tables that the Docs
 WG lead chose for testing tools; listed below) are examples
 ([sources](../concepts/tables/source/SOURCES.md)). Bookbinder, a Ruby
 command-line tool that "stitch[es] together" Markdown repositories into one
 site ([gemspec](https://github.com/pivotal-cf/bookbinder/blob/83bd2a57a8ba3d04c58a5be67607b243bdea0c64/bookbinder.gemspec#L7)),
-collects these files. It reads the list of repositories from
+collects these files. The list of repositories is in
 [`config.yml`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/config.yml)
 in the book, the repository
 [docs-book-cloudfoundry](https://github.com/cloudfoundry/docs-book-cloudfoundry)
-that holds the site's settings and layout, and hands the files to Middleman
+that holds the site's settings and layout. Bookbinder hands the files to Middleman
 ([gemspec](https://github.com/pivotal-cf/bookbinder/blob/83bd2a57a8ba3d04c58a5be67607b243bdea0c64/bookbinder.gemspec#L20)),
 a Ruby static site generator (a program that turns source files into a set
 of web pages).
@@ -59,8 +59,11 @@ content can be planned. Decision (evaluation framing): the format is open;
 Markdown is one candidate, not a requirement.
 
 The first test was tables, because complex HTML tables are the main reason
-the content is not plain Markdown today. The Docs WG lead picked five pages
-whose tables are hard to express outside HTML; they are listed in
+the content is not plain Markdown today: 123 of the book's 195 tables are
+HTML (this evaluation's
+[table survey](../concepts/tables/survey/README.md#totals), 2026-10-09). The
+Docs WG lead picked five pages whose tables are hard to express outside
+HTML; that choice is an input to this evaluation. They are listed in
 [concepts/tables/README.md](../concepts/tables/README.md#test-pages). The
 full record of that round is under [concepts/tables/](../concepts/tables/README.md);
 this document summarises it and links to it.
@@ -98,10 +101,10 @@ called modes. A mode is a choice of how much of the source's HTML to keep:
 - **Native-plain:** native without any width or alignment settings, as most
   Markdown tables are written. Built only where it differs from native.
 
-A hint is what a table asks for, written once and independent of any tool:
-a column's role (`key` for a short label, `value`, or `prose` for
-sentences), a width, whether a column avoids wrapping, whether the first
-column holds row headers, a title. Hints express intent, not exact values;
+A hint is what a table asks for, written once and independent of any tool.
+The hints are a column's role (`key` for a short label, `value`, or `prose`
+for sentences), a width, whether a column avoids wrapping, whether the
+first column holds row headers, and a title. Hints express intent, not exact values;
 each tool honors them as well as it can ([R-03](../requirements/README.md#r-03) column widths as hints). The
 full list: [Hints after the round](../concepts/tables/README.md#hints-after-the-round).
 
@@ -121,18 +124,18 @@ RFC #1642 asks for one conversion done centrally
 > consistency, not by each Working Group individually.
 
 The plan is to record, concept by concept, the conversion rules that worked
-when pages were converted by hand, and later build them into a migration
+when pages were converted by hand. Later they are built into a migration
 tool, `cf-docs-migrate`, with a `scan` command (find every instance of a
-concept across the docs) and a `convert` command (apply the rules) ([R-23](../requirements/README.md#r-23)
-one central conversion). The tool is not yet written. A concept is one kind
+concept across the docs) and a `convert` command (apply the rules)
+([R-23](../requirements/README.md#r-23) one central conversion). The tool is not yet written. A concept is one kind
 of thing the pages contain, such as tables, variables or code blocks; the
 list is in [concepts/README.md](../concepts/README.md#concepts).
 
 The steps seen in the tables round, in order:
 
 1. **Clean up the markup.** Five of the twelve HTML tables on the test pages
-   are not well-formed (an unclosed cell, a class written with typographic
-   quotes, a row closed with `</td>`). Browsers repair this silently;
+   are not well-formed (an unclosed `<col>`, an unclosed cell, a class
+   written with typographic quotes, a row closed with `</td>`). Browsers repair this silently;
    tools that read HTML strictly do not ([R-24](../requirements/README.md#r-24) markup cleanup before
    conversion). The defects are listed in
    [Markup that only browsers tolerate](../concepts/tables/README.md#markup-that-only-browsers-tolerate).
@@ -152,15 +155,16 @@ The steps seen in the tables round, in order:
    and the conversion failed silently in four ways
    ([Antora finding 1](../concepts/tables/results.md#findings-3)).
 5. **Build and check.** Three checks are shared by every site, in
-   [concepts/tables/checks/](../concepts/tables/checks/): spot
-   checks per table (row and cell counts, code spans, characters that must
-   not appear), a word-by-word comparison with the published page, and a
-   browser check that a wide table scrolls in its own box. The text
+   [concepts/tables/checks/](../concepts/tables/checks/). Spot checks test
+   each table (row and cell counts, code spans, characters that must not
+   appear). A text check compares the page word by word with the published
+   page. A browser check confirms that a wide table scrolls in its own box. The text
    comparison found content changes the spot checks missed. Build-time
    values such as the copyright year are expected differences ([R-25](../requirements/README.md#r-25)
    build-time values are expected differences).
 6. **Owner review.** Each converted area is reviewed by its owner ([R-26](../requirements/README.md#r-26)
-   owner review of migrated pages). Not part of the tables round.
+   owner review of migrated pages). This step was not part of the tables
+   round.
 
 **Not yet written:** the conversion steps for the other concepts (headings,
 variables, partials, notes, code blocks, cross-repository links), and how

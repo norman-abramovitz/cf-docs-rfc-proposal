@@ -12,7 +12,9 @@ for this page: every snippet is copied from a file in this repository, and
 each one links to that file.
 
 What these snippets look like once built, tool by tool, with screenshots:
-[poc/tables.md](../poc/tables.md#credential-types).
+[poc/tables.md](../poc/tables.md#credential-types). Requirements are cited by
+ID and a short phrase; the full list is in
+[requirements/](../requirements/README.md).
 
 ## The sample table
 
@@ -40,12 +42,12 @@ record of what each table needs, written once for all tools):
 | column 2 role | `prose` (sentences) | one or two sentences per cell |
 
 The source has one defect: `class=“table”` is written with typographic
-quotes, so browsers never apply the class: a typographic quote is not an
-attribute quote, so the value is read as an
+quotes. A typographic quote is not an attribute quote, so the value is read
+as an
 [unquoted attribute value](https://html.spec.whatwg.org/multipage/syntax.html#unquoted),
-`“table”` with the quotes in it. Every converted version makes
-the quotes straight ([R-24](../requirements/README.md#r-24) markup cleanup before conversion). Requirement
-IDs are listed in [requirements/](../requirements/README.md).
+`“table”` with the quotes in it, and browsers never apply the class. Every
+converted version makes the quotes straight
+([R-24](../requirements/README.md#r-24) markup cleanup before conversion).
 
 The modes named below are defined in the [Tooling README](README.md#modes):
 raw passthrough (HTML exactly as written), passthrough (HTML after
@@ -734,8 +736,8 @@ changed since:
 (GPL-3.0, last change 2026-09-19), preprocesses Markua for Pandoc to make
 Word files, not web pages.
 
-**Not yet written:** the other test pages in every format. Their sources
-are in each site folder under
+This page shows one table only, by design. The other test pages, in each
+tool and mode, are in each site folder under
 [concepts/tables/sites/](../concepts/tables/sites/), and the conventions
 for each tool are in its `CONVENTIONS.md`, for example
 [Docusaurus](../concepts/tables/sites/docusaurus/CONVENTIONS.md).
