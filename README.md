@@ -33,8 +33,8 @@ pull request adds. Read it at:
 
 ## Start here
 
-Three draft documents, each readable on its own. They cover what is known
-as of 2026-10-10 and mark what is not yet written.
+There are three draft documents, and each can be read on its own. They
+cover what is known as of 2026-10-10 and mark what is not yet written.
 
 1. [Requirements](requirements/README.md): the Docs WG's draft position on
    what it is looking for in a new documentation stack. Each requirement has
@@ -43,10 +43,10 @@ as of 2026-10-10 and mark what is not yet written.
    documents cite them that way.
 2. [Tooling](tooling/README.md): the tools evaluated, the input formats they
    read, how today's pages convert into them, and the extensions each needs.
-   Neutral evidence; it makes no choice.
+   It is neutral evidence and makes no choice.
 3. [Proof-of-concept results](poc/README.md): what each tool built from real
-   Cloud Foundry pages, next to the page as published today. Neutral
-   evidence.
+   Cloud Foundry pages, next to the page as published today. It is also
+   neutral evidence.
 
 The [glossary](glossary.md) explains the terms further. Each document
 defines its terms where it first uses them, so the glossary is optional.
