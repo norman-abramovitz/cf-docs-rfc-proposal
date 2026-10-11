@@ -126,7 +126,7 @@ failed as written
 Docusaurus 3 uses MDX 3
 ([mdx-loader package.json](https://github.com/facebook/docusaurus/blob/c245217563f6491fdb79bf5ac91bfa16536e5de9/packages/docusaurus-mdx-loader/package.json#L25)),
 which the RFC names as the replacement for ERB
-([RFC L31][L31], [L39][L39]), and RFC §5 says "The PoC MUST validate that the
+([RFC L31][L31], [L39][L39]). RFC §5 says "The PoC MUST validate that the
 most complex existing pages (HTML tables, CSS layouts) can be represented
 with MDX alone" ([RFC L104][L104]).
 
@@ -459,9 +459,9 @@ A tool, built on Middleman (the copy in UAA's repository pins it in its
 that turns Markdown into a single-page API reference with navigation,
 explanations and code samples side by side. The UAA API documentation is
 built with Slate from snippets that Spring REST Docs generates, outside the
-Bookbinder book: UAA's build runs the `*Docs` tests to write the snippets,
+Bookbinder book. UAA's build runs the `*Docs` tests to write the snippets,
 then `middleman build` in its Slate copy
-([uaa/build.gradle.kts](https://github.com/cloudfoundry/uaa/blob/f09cae02367b333bc17d58997c1ba8bf336b3fae/uaa/build.gradle.kts#L150-L193)), and RFC #1642's summary covers
+([uaa/build.gradle.kts](https://github.com/cloudfoundry/uaa/blob/f09cae02367b333bc17d58997c1ba8bf336b3fae/uaa/build.gradle.kts#L150-L193)). RFC #1642's summary covers
 "the Cloud Foundry documentation (CF, UAA API)" ([RFC L13][L13]). Who
 maintains these docs and what they need is in
 [requirements/audiences.md](requirements/audiences.md).
@@ -587,14 +587,16 @@ Learn more: [Raw passthrough errors in Docusaurus](concepts/tables/results.md#ra
 
 ### Extension
 
-A tool's own plug-in point, used to carry the hints its table syntax cannot:
-a remark plugin in Docusaurus, a Python-Markdown block in Zensical,
-attributes on Markdoc's table tag in Starlight ([83 lines](concepts/tables/sites/starlight/list-table.mjs)), and in Antora and
-the Sphinx probe only classes and a stylesheet, no code. RFC #1642 says
+A tool's own plug-in point, used to carry the hints its table syntax
+cannot. Docusaurus uses a remark plugin, Zensical a Python-Markdown block,
+and Starlight attributes on Markdoc's table tag
+([83 lines](concepts/tables/sites/starlight/list-table.mjs)). Antora and the
+Sphinx probe need only classes and a stylesheet, no code. RFC #1642 says
 "Working Groups MUST NOT need custom extensions, plugins, or JavaScript code
-to author documentation" ([RFC L100][L100]). Extension mode shows what one
-extension, maintained once for all documentation, closes ([R-13](requirements/README.md#r-13) no per-WG
-extensions, [requirements/README.md](requirements/README.md)).
+to author documentation" ([RFC L100][L100]). Extension mode shows which
+gaps such code closes. Who may write extensions is a separate question
+([R-13](requirements/README.md#r-13) no per-WG extensions,
+[requirements/README.md](requirements/README.md)).
 
 Learn more: [results.md](concepts/tables/results.md#summary),
 [remark](https://github.com/remarkjs/remark).
@@ -855,7 +857,7 @@ RFC #1642 names it as an example of "Built-in full-text search"
 should a self-hosted option (e.g., Pagefind, lunr.js) be used?"
 ([RFC L170][L170]). Pagefind runs over the built site and writes its search
 bundle into it
-([options.rs](https://github.com/Pagefind/pagefind/blob/b6185b2ec6f43c198299eccde2c4b05ffc0ec1e5/pagefind/src/options.rs#L34-L50)),
+([options.rs](https://github.com/Pagefind/pagefind/blob/b6185b2ec6f43c198299eccde2c4b05ffc0ec1e5/pagefind/src/options.rs#L34-L37)),
 so it needs no service. Because the index is hosted by Algolia, the choice
 touches the open question on open source
 ([concepts/tables/README.md](concepts/tables/README.md#open-questions);
