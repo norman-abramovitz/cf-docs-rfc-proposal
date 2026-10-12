@@ -203,6 +203,11 @@ it link to their line, as in [L112] ([glossary](../glossary.md#rfc)).
   ([build-time values results](../concepts/build-time-values/results.md#should-the-copyright-year-follow-content-changes)).
 - **What answers it:** a Docs WG decision, with the Cloud Foundry
   Foundation if it holds a view on copyright notices.
+- **Decided (Docs WG lead, 2026-10-11):** the newest content year on
+  the site, from the same helper that sets page dates; a fixed first
+  year if the Foundation prefers it. Holder: "CloudFoundry.org
+  Foundation, Inc.", as in the repositories' NOTICE files, to be
+  confirmed with the Foundation.
 
 ## Site and services
 

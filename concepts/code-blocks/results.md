@@ -389,12 +389,14 @@ For `cf-docs-migrate convert`. Decisions of this round, for review:
    JSON file is `yaml` or `json`; one or more commands are `bash`;
    anything else is `text`. Each type the converter chooses is listed
    for the page's owners ([question 2](#questions-for-the-docs-wg-lead)).
+   **Accepted** (Docs WG lead, 2026-10-11), with `text` as the fallback.
 4. **A code block's text is the published block's text**, without the
    list item's indentation, and with the published page's defects fixed:
    markup shown as text (`<span>@</span>` in a fence), character
    references written in a fence, fence lines shown in a block, blocks
    broken into paragraphs, and fences published as inline code. Each fix
    is listed ([question 3](#questions-for-the-docs-wg-lead)).
+   **Accepted** (Docs WG lead, 2026-10-11).
 5. **The book's odd fences are repaired before conversion** (R-24): a
    blank line before a fence that follows text, closing fences that match
    their opening, fences indented to their list item, `<pre>` not
@@ -408,7 +410,7 @@ For `cf-docs-migrate convert`. Decisions of this round, for review:
    Zensical turns on `content.code.copy`; Docusaurus adds Prism's
    `bash`, `shell-session` and `nginx` grammars and the `console` alias;
    the others as they come. What a console block's button copies follows
-   question 1.
+   question 1: each tool's default, **accepted** (Docs WG lead, 2026-10-11).
 8. **The code-block check runs on every converted page**, in the build
    and in the browser: [checks/codeblocks.py](checks/codeblocks.py) with
    a code file per page, and
@@ -426,12 +428,14 @@ For `cf-docs-migrate convert`. Decisions of this round, for review:
    each tool's default for now. Commands a reader runs are in `bash`
    blocks, which every tool copies whole; changing what three tools copy
    from `console` blocks would be site code (R-13).
+   **Answer (Docs WG lead, 2026-10-11):** accepted; each tool's default.
 2. **May the converter choose types?** Background: 807 fences have no
    type, 592 `<pre>` blocks have none, and 164 `console` fences hold
    commands without prompts, which Pygments and Prism draw as output.
    Question: should the converter type them from their text (convention
    3), listing each choice for the owners? Recommendation: yes, with
    `text` where no rule fits.
+   **Answer (Docs WG lead, 2026-10-11):** yes, with `text` as the fallback.
 3. **Are the published code-block defects defects?** Background: five of
    seven test pages show markup, character references or fence lines as
    text, break blocks into paragraphs, or publish a fence as inline code;
@@ -439,11 +443,13 @@ For `cf-docs-migrate convert`. Decisions of this round, for review:
    converted pages fix them, as the partials round's accepted decision
    did for its defects? Recommendation: yes, each fix listed (convention
    4).
+   **Answer (Docs WG lead, 2026-10-11):** yes, each fix listed.
 4. **Starlight's one-colour `console` blocks.** Background: Shiki's shell
    session grammar does not tokenize the command. Question: accept, or
    ask that Starlight be judged without it until the grammar changes?
    Recommendation: accept and record; the text, type and copy button are
    right, and the other three tools highlight `console`.
+   **Answer (Docs WG lead, 2026-10-11):** accepted and recorded.
 
 ## Requirements
 

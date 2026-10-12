@@ -1,8 +1,9 @@
 # Concept: Copyright and build-time values
 
-Status: **draft, incomplete — covers what is known as of 2026-10-11.**
-The survey, the checks and the builds are done; the conventions and the
-copyright-year question wait for review. Results: [results.md](results.md).
+Status: **Done, with open items** (listed under
+[Not yet written](results.md#not-yet-written)). The survey, the checks
+and the builds are done; the year rule and the holder's name are
+decided, the name to be confirmed with the Foundation. Results: [results.md](results.md).
 
 This round asks how each hands-on tool prints the two values the book's
 build computes today, the copyright year and the "Page last updated"
@@ -65,9 +66,12 @@ Terms used below:
   each, and the history variants. Every mode passes on every page in every
   tool; every tool's own Git date fails after conversion
   ([results](results.md#summary)).
-- [ ] **Conventions reviewed**: the ten proposals in
-  [results.md](results.md#conventions-to-record).
-- [ ] **The copyright-year question decided**: the answers and the
+- [x] **Conventions reviewed**: the ten proposals in
+  [results.md](results.md#conventions-to-record). Reviewed 2026-10-11:
+  conventions 4 and 5 accepted, convention 3 amended for pages that are
+  only an include.
+- [x] **The copyright-year question decided** (2026-10-11: B, the
+  newest content year on the site): the answers and the
   evidence are in [results.md](results.md#should-the-copyright-year-follow-content-changes).
 
 ## Test pages

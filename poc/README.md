@@ -186,7 +186,8 @@ prints each rule and shows a date written in the page. After conversion,
 each tool's own Git-based date shows the conversion commit, or nothing.
 A date written by the converter and updated from Git, skipping listed
 commits, is right in all four. A comparison helper masks these values.
-Whether the year should follow content is open
+The year follows content: the newest content year on the site, as the
+Docs WG lead decided on 2026-10-11
 ([build-time values results](../concepts/build-time-values/results.md#summary)).
 
 ### Cross-repository links

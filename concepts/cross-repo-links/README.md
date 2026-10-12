@@ -73,7 +73,9 @@ Terms used below:
   variables and partials at two depths, and redirects for old URLs, in
   every tool.
 - [ ] **Conventions reviewed.** The nine proposals in
-  [results.md](results.md#conventions-to-record).
+  [results.md](results.md#conventions-to-record). Accepted 2026-10-11:
+  conventions 1, 5, 6 and 7. Conventions 2 and 8 wait on whether the
+  single repository is settled.
 
 ## Test pages
 

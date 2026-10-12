@@ -1,8 +1,8 @@
 # Concept: Code blocks
 
-Status: **draft, incomplete — covers what is known as of 2026-10-11.**
-The survey, the conversions and the checks are done; the conventions are
-proposals for review. Results: [results.md](results.md).
+Status: **Done, with open items** (listed under
+[Not yet written](results.md#not-yet-written)). The survey, the conversions
+and the checks are done; the four questions are answered. Results: [results.md](results.md).
 
 This round asks whether the book's code blocks survive conversion into
 each hands-on tool: their text exactly, their type with matching
@@ -67,8 +67,9 @@ Terms used below:
 - [x] **Converted and built** in all four hands-on tools, passthrough and
   native, plus the raw checks and probes. Every block passes in native
   mode in every tool, 53 of 53: [results.md](results.md#summary).
-- [ ] **Conventions reviewed.** The eight proposals and four questions in
-  [results.md](results.md#conventions-to-record).
+- [x] **Conventions reviewed.** The eight proposals and four questions in
+  [results.md](results.md#conventions-to-record). The four questions
+  were answered 2026-10-11, each as recommended.
 
 ## Test pages
 

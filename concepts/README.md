@@ -40,10 +40,10 @@ written.
 | Concept | Status | Why it matters |
 |---------|--------|----------------|
 | [Tables](tables/) | Done, with open items: [results](tables/results.md#summary) | Complex HTML tables (widths, spans, lists and paragraphs in cells, variables in cells) are the main reason the content is not plain Markdown today |
-| [Copyright and build-time values](build-time-values/) | Conventions for review, year rule open: [results](build-time-values/results.md#summary) | The footer year and "Page last updated" are computed at build; comparisons must mask them, and converted pages need dates that survive conversion. Whether the year should follow content changes is an open question for the RFC. |
+| [Copyright and build-time values](build-time-values/) | Done, with open items: [results](build-time-values/results.md#not-yet-written) | The footer year and "Page last updated" are computed at build; comparisons must mask them, and converted pages need dates that survive conversion. The year follows content: the newest content year on the site. |
 | [Headings](headings/) | Done, with open items: [results](headings/results.md#not-yet-written) | Simplest concept; establishes the outline check |
 | [Variables](variables/) | Done, with open items: [results](variables/results.md#not-yet-written) | `<%= vars.* %>` from `template_variables.yml`; some values contain HTML or Markdown |
 | [Partials](partials/) | Done, with open items: [results](partials/results.md#not-yet-written) | `<%= partial '...' %>`; some partial names are themselves stored in variables |
 | [Notes and admonitions](notes/) | Done, with open items: [results](notes/results.md#not-yet-written) | `<p class="note">` with `note__title` spans |
-| [Code blocks](code-blocks/) | Conventions for review: [results](code-blocks/results.md#summary) | Shell, console, JSON, YAML; copy button. 592 of the book's 1,777 code blocks are HTML `<pre>`, which no tool types or gives a copy button |
-| [Cross-repository links](cross-repo-links/) | Conventions for review: [results](cross-repo-links/results.md#summary) | Links between content repositories must survive conversion |
+| [Code blocks](code-blocks/) | Done, with open items: [results](code-blocks/results.md#not-yet-written) | Shell, console, JSON, YAML; copy button. 592 of the book's 1,777 code blocks are HTML `<pre>`, which no tool types or gives a copy button |
+| [Cross-repository links](cross-repo-links/) | Conventions partly accepted, layout open: [results](cross-repo-links/results.md#conventions-to-record) | Links between content repositories must survive conversion |

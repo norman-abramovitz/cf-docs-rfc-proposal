@@ -345,7 +345,7 @@ For `cf-docs-migrate convert`. Decisions of this round, for review:
    (Zensical), `build.format: 'file'` (Starlight), `html_extension_style:
    default` (Antora). A folder's `index` page keeps `<folder>/index.html`
    where the tool allows (Docusaurus `slug: index`); in Starlight its old
-   URL gets a redirect.
+   URL gets a redirect. **Accepted** (Docs WG lead, 2026-10-11).
 2. **Each content repository keeps its URL directory as a top-level
    folder** (one repository) or as its component, instance or folder name
    (separate repositories), as the book's `config.yml` maps it
@@ -362,16 +362,23 @@ For `cf-docs-migrate convert`. Decisions of this round, for review:
    `port_limitations` and `port_limitations_1`, become one.
 5. **Links already broken in the book are listed and fixed at the source**,
    not changed silently by the converter; the list starts with the 55 in
-   the [survey](survey/links.csv) (status `broken`).
+   the [survey](survey/links.csv) (status `broken`). **Accepted**
+   (Docs WG lead, 2026-10-11): fixed at the source before conversion
+   ([R-24](../../requirements/README.md#r-24) markup cleanup before
+   conversion), and merged into the headings round's
+   [broken-links.md](../headings/broken-links.md) list.
 6. **The build checks internal links and anchors and fails on them in pull
    requests**: `onBrokenLinks` and `onBrokenAnchors: 'throw'` (Docusaurus),
    `--strict` (Zensical), `--log-failure-level=error` (Antora, which still
    does not check anchors in xrefs), and a link checker such as this
    round's [links.py](checks/links.py) run over the built site for what a
    tool does not check (Starlight entirely; anchors in Antora).
+   **Accepted** (Docs WG lead, 2026-10-11).
 7. **Every old URL that `redirects.rb` still serves gets the tool's redirect
    page**, and old URLs whose target is gone are listed for a decision
-   ([R-16](../../requirements/README.md#r-16)).
+   ([R-16](../../requirements/README.md#r-16)). Decided (Docs WG lead,
+   2026-10-11): the 30 rules whose target is gone are dropped or
+   retargeted in the cleanup before conversion.
 8. **Each page's edit link names its own repository and file**: an
    `editUrl` function (Docusaurus), `edit_url` per content source
    (Antora), `editUrl` front matter written by the converter (Starlight).

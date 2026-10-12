@@ -337,6 +337,20 @@ Public statements that bear on the question:
   Inc." (NOTICE files), "Cloud Foundry Foundation" (the book's footer),
   "The Linux Foundation" (cloudfoundry.org's footer)
   ([survey](survey/README.md#copyright-notices-in-the-repositories)).
+  Decision (Docs WG lead, 2026-10-11): **"CloudFoundry.org Foundation,
+  Inc."**, to be confirmed with the Foundation. Every NOTICE file checked
+  names it:
+  [cli](https://github.com/cloudfoundry/cli/blob/02b1dca168dd26039272a0bef62c24acea39b8d9/NOTICE#L1),
+  [bosh-cli](https://github.com/cloudfoundry/bosh-cli/blob/662a3c7dd84da27c05fd179de182f45493385a4c/NOTICE#L1),
+  [community](https://github.com/cloudfoundry/community/blob/9f189bfa613bb7a9c2da6616666661790d4410eb/NOTICE#L1)
+  and
+  [docs-book-cloudfoundry](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/NOTICE#L1).
+  None has changed the name since it was written (2016–2017; `community`
+  2020). The Foundation's charter, effective 2023-09-15, is a Linux
+  Foundation charter ([L1-L12](https://github.com/cloudfoundry/community/blob/9f189bfa613bb7a9c2da6616666661790d4410eb/governing-board/charter.md#L1-L12)), and
+  trademarks are held by LF Projects, LLC or the Linux Foundation
+  ([L263](https://github.com/cloudfoundry/community/blob/9f189bfa613bb7a9c2da6616666661790d4410eb/governing-board/charter.md#L263)), so whether that
+  company still holds the copyright is for the Foundation to say.
 
 Observations from this round's data:
 
@@ -347,6 +361,11 @@ Observations from this round's data:
   the candidates are skipped ([survey](survey/README.md#the-dates-of-todays-pages)).
 - A and D need no history; B and C need either the full history at every
   build or dates kept in the pages.
+
+Decision (Docs WG lead, 2026-10-11): **B, the newest content year on the
+site**, computed by the same helper that sets page dates, so a
+format-only conversion never moves the year; D if the Foundation
+prefers a fixed notice.
 
 ## Conventions to record
 
@@ -367,18 +386,27 @@ for review:
 3. **The date written by the converter is Bookbinder's rule**, the author
    date of the newest commit to the page's file, except commits the Docs
    WG lists as not content (convention 4). Partials do not move a page's
-   date, as today.
+   date, as today. Amended (Docs WG lead, 2026-10-11): **a page whose
+   text is all in a partial** (its file holds only the call) takes the
+   newer of the two dates. `using-vol-services` is such a page: its
+   file's date is 2023-05-31, its partial's 2025-03-27 with the
+   candidates skipped.
 4. **Commits that are not content are listed in `.git-blame-ignore-revs`**
    in the docs repository: the conversion commits, and bulk markup
    commits after review of [candidates.txt](survey/candidates.txt). Git
    ([`blame.ignoreRevsFile`](https://github.com/git/git/blob/777489f9e09c8d0dd6b12f9d90de6376330577a2/Documentation/config/blame.txt#L23-L26))
    and GitHub's blame view
    ([GitHub Docs](https://github.com/github/docs/blob/be38ec5d78e24172587e61b3c6ff40ace1865c71/content/repositories/working-with-files/using-files/viewing-and-understanding-files.md#L54))
-   read the same file.
+   read the same file. **Accepted** (Docs WG lead, 2026-10-11): the
+   central migration team reviews the list once before conversion; the
+   Docs WG owns it afterwards.
 5. **Before each build, the date is brought up to date from Git** by one
    shared script ([content-date.py](helpers/content-date.py) `--write`):
    the later of the written date and the newest listed-not-skipped
-   commit. The tools' own Git lookups are not relied on.
+   commit. The tools' own Git lookups are not relied on. Decision
+   (Docs WG lead, 2026-10-11): **compute the date at build first**;
+   whether the updated dates are also committed is decided after the
+   proof of concept.
 6. **The build fetches the full history**, and the script stops on a
    shallow clone (`fetch-depth: 0` for `actions/checkout`).
 7. **Dates and years are computed in UTC**, and dates are shown as
@@ -386,6 +414,7 @@ for review:
 8. **The copyright year comes from one setting** (`YEAR_MODE`: build,
    site or page), so the decision on the open question changes one value.
    Which value is the open question ([above](#should-the-copyright-year-follow-content-changes)).
+   Set to `site`, answer B (Docs WG lead, 2026-10-11).
 9. **A sitemap's `lastmod` is the content date or absent, never the build
    time** ([R-20](../../requirements/README.md#r-20)): Antora's default
    does not meet this; Docusaurus's sitemap plugin can take the content
@@ -429,15 +458,21 @@ for review:
   ([survey](survey/README.md#the-candidate-list)).
 - **Pages that are only an include.** `using-vol-services` takes the date
   of its six-line file; whether such a page should take its partial's
-  date, or the newest of both, is open.
+  date, or the newest of both, is open. Decided (Docs WG lead,
+  2026-10-11): the newer of both when the partial holds the text
+  ([convention 3](#conventions-to-record)); the helper does not do it
+  yet.
 - **The holder's name** in the notice was not decided or tested beyond
-  printing today's text.
+  printing today's text. Decided (Docs WG lead, 2026-10-11):
+  "CloudFoundry.org Foundation, Inc.", to be confirmed with the
+  Foundation; the sites still print today's text.
 - **Sitemaps with content dates**: Docusaurus's `lastmod` option and
   Starlight's sitemap integration were not tried; Zensical lists no page
   without `site_url` ([sitemaps](results/sitemaps.txt)).
 - **How authors keep the date**: the helper updates it at build; whether
   the updated date is also committed (by a bot, or by authors) was not
-  tried.
+  tried. Decided (Docs WG lead, 2026-10-11): compute at build first,
+  and decide after the proof of concept.
 - **Real conversions and rename detection**: only one whole page was
   converted; how many real pages Git would connect across the conversion
   was not measured.
