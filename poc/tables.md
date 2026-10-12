@@ -117,12 +117,11 @@ every build) pass in every mode of every tool.
 
 ### Published
 
-![Published scale table: Component, Total Instances and Notes columns, thirteen rows, every cell bordered, bold headers on the left, "Cloud Controller Worker" on two lines, a light blue band across the Diego Cell row](img/published-scale-table-host-t1.jpg)
+![Published scale table: Component, Total Instances and Notes columns, thirteen rows, every cell bordered, bold headers on the left, "Cloud Controller Worker" on two lines](img/published-scale-table-host-t1.jpg)
 
 The source asks for 25, 25 and 50%. Header cells are bold and on
 the left. Cells sit in the vertical middle of their row, and every cell has
-a border. "Cloud Controller Worker" wraps onto two lines. The light blue band across the Diego Cell row is in the screenshot;
-nothing in the table's source draws it.
+a border. "Cloud Controller Worker" wraps onto two lines.
 
 <details><summary>Source as written (HTML in an ERB partial; note the unclosed <code>&lt;col&gt;</code> elements)</summary>
 
@@ -5437,7 +5436,7 @@ visible gap, and the `name` row's link goes to `#clientid`.
 
 **Table 1:**
 
-![Published uaa-concepts table 1: Grant type, User and Details columns, five rows, every cell bordered, grant types as code and vertically centered; a light blue bar across the first body row hides part of its text](img/published-uaa-concepts-t1.jpg)
+![Published uaa-concepts table 1: Grant type, User and Details columns, five rows, every cell bordered, grant types as code and vertically centered](img/published-uaa-concepts-t1.jpg)
 
 **Table 2:**
 
@@ -5447,8 +5446,7 @@ Header cells are on the left on a gray background, and every cell has a
 border. A grant type or key sits in the vertical middle of its row. In
 table 2 the double break leaves a blank line between the two paragraphs of
 the `allowed providers` cell. The published build makes apostrophes
-typographic (`organization’s`). In the table 1 screenshot a light blue bar
-crosses the first body row and hides part of its text.
+typographic (`organization’s`).
 
 <details><summary>Source as written (HTML in an ERB page; note the <code>&lt;/td&gt;</code> that ends the <code>implicit</code> row)</summary>
 
