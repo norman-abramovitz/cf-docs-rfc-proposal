@@ -13,10 +13,26 @@ div.body table li { hyphens: none; }
 table.hinted th,
 table.hinted td { vertical-align: top; }
 /* wrap: avoid keeps a body cell on one line, up to the cap; longer text wraps
-   between words. The cell's paragraph is the inner box. */
+   between words. The cell's paragraph is the inner box. A selector cannot take
+   the column number from the role, so each column is listed, up to 18. */
 table.hinted.col1-nowrap > tbody > tr > :nth-child(1) > *,
 table.hinted.col2-nowrap > tbody > tr > :nth-child(2) > *,
-table.hinted.col3-nowrap > tbody > tr > :nth-child(3) > * {
+table.hinted.col3-nowrap > tbody > tr > :nth-child(3) > *,
+table.hinted.col4-nowrap > tbody > tr > :nth-child(4) > *,
+table.hinted.col5-nowrap > tbody > tr > :nth-child(5) > *,
+table.hinted.col6-nowrap > tbody > tr > :nth-child(6) > *,
+table.hinted.col7-nowrap > tbody > tr > :nth-child(7) > *,
+table.hinted.col8-nowrap > tbody > tr > :nth-child(8) > *,
+table.hinted.col9-nowrap > tbody > tr > :nth-child(9) > *,
+table.hinted.col10-nowrap > tbody > tr > :nth-child(10) > *,
+table.hinted.col11-nowrap > tbody > tr > :nth-child(11) > *,
+table.hinted.col12-nowrap > tbody > tr > :nth-child(12) > *,
+table.hinted.col13-nowrap > tbody > tr > :nth-child(13) > *,
+table.hinted.col14-nowrap > tbody > tr > :nth-child(14) > *,
+table.hinted.col15-nowrap > tbody > tr > :nth-child(15) > *,
+table.hinted.col16-nowrap > tbody > tr > :nth-child(16) > *,
+table.hinted.col17-nowrap > tbody > tr > :nth-child(17) > *,
+table.hinted.col18-nowrap > tbody > tr > :nth-child(18) > * {
   width: max-content;
   max-width: var(--table-nowrap-max, 16em);
 }
