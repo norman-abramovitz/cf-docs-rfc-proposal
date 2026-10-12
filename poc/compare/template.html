@@ -1,3 +1,6 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Table Conversion Comparison</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -146,16 +149,22 @@ figcaption { font-size: .82rem; color: var(--muted); display: flex; flex-wrap: w
     const t = b.dataset.tool; hidden.has(t) ? hidden.delete(t) : hidden.add(t);
     store.set('tcc-hidden', [...hidden].join(',')); render();
   }));
-  // Fit: each screenshot says how large it is shown, as a percent of its own width (Actual size is 100%)
+  // Each screenshot says how large it is shown (Fit; Actual size is 100%) and which ways its box scrolls
   const scale = img => {
     const head = img.closest('figure') ? img.closest('figure').querySelector('figcaption') : img.closest('.pane').querySelector('.pane-head');
     let s = head.querySelector('.scale');
     if (!s) { s = document.createElement('span'); s.className = 'scale'; head.append(s); }
     const fit = !document.body.classList.contains('size-actual');
-    s.textContent = fit && img.naturalWidth && img.clientWidth ? `shown at ${Math.round(img.clientWidth / img.naturalWidth * 100)}%` : '';
+    const parts = [];
+    if (fit && img.naturalWidth && img.clientWidth) parts.push(`shown at ${Math.round(img.clientWidth / img.naturalWidth * 100)}%`);
+    // Browsers with overlay scrollbars show none until the reader scrolls, so say which ways the box scrolls
+    const box = img.closest('.shot');
+    const across = box.scrollWidth > box.clientWidth + 1, down = box.scrollHeight > box.clientHeight + 1;
+    if (across || down) parts.push('scroll ' + [across && 'sideways', down && 'down'].filter(Boolean).join(' and '));
+    s.textContent = parts.join(' · ');
   };
-  const sizes = new ResizeObserver(es => es.forEach(e => scale(e.target)));
-  const watch = img => { sizes.observe(img); img.addEventListener('load', () => scale(img)); scale(img); };
+  const sizes = new ResizeObserver(es => es.forEach(e => scale(e.target.matches('img') ? e.target : e.target.querySelector('img'))));
+  const watch = img => { sizes.observe(img); sizes.observe(img.closest('.shot')); img.addEventListener('load', () => scale(img)); scale(img); };
   document.querySelectorAll('.shot img').forEach(watch);
   // Jump links land below the sticky bar, so each page and table title stays visible.
   const bar = document.querySelector('.bar');
