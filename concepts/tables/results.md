@@ -79,7 +79,9 @@ table syntax carries, and how much the rest of the page has to change.
   cuts a column through its text; in Zensical and Starlight it ends just
   after Org Billing Manager, and in Antora after Space Auditor, so
   nothing in view shows that more columns follow. The comparison pages
-  show it as seen and as the full table.
+  show it as seen and as the full table. Since 2026-10-12 a wide table's first
+  column keeps at least 24 characters' width and a shadow marks the side
+  with more columns ([wide tables](#wide-tables-prose-width-and-a-continuation-cue)).
 
 - **Widths, alignment and font size, checked after review.** Column 1 is
   sized by its content in Docusaurus passthrough and extension once the
@@ -997,3 +999,161 @@ Method and measurements:
   theme, or a page's, can set table font size, padding and alignment, and
   those decide how much room a column needs. The widths and screenshots
   here show the default themes, not limits of the tools.
+
+## Wide tables: prose width and a continuation cue
+
+Checked on 2026-10-12, after the roles table (`_oss_roles_table`) was found
+laid out at its narrowest in every tool (Summary, "A real wide table
+scrolls, but at its narrowest"). Measured in Chrome 155 at a 1280-pixel
+window, with the continuation cues also run in Firefox 155 and WebKit 26.6.
+Method and measurements:
+[wide-tables-prose-width-cue-2026-10-12.txt](results/wide-tables-prose-width-cue-2026-10-12.txt).
+
+- **Why the table is at its narrowest.** Docusaurus and Starlight show every
+  table as a block that scrolls
+  ([Infima `table.pcss` L24-L28](https://github.com/facebookincubator/infima/blob/205b8aedc62496839991b75a8bc2922350766fe4/packages/core/styles/content/table.pcss#L24-L28),
+  [Starlight `markdown.css` L135-L139](https://github.com/withastro/starlight/blob/afe57bbbc254b957b969d581d0f861925035bdcf/packages/starlight/src/style/markdown.css#L135-L139)).
+  The rows then sit in an anonymous table box
+  ([CSS 2.1, anonymous table objects](https://www.w3.org/TR/CSS21/tables.html#anonymous-boxes))
+  whose width is shrink-to-fit
+  ([CSS 2.1 §10.3.5](https://www.w3.org/TR/CSS21/visudet.html#shrink-to-fit-float)):
+  the larger of its min-content width and the column, capped at its
+  max-content width. The roles table's min-content width (1,053 to 1,092
+  pixels) is above the column, so that is what it gets. Antora's table is
+  `width: 100%`
+  ([`doc.css` L204-L206](https://gitlab.com/antora/antora-ui-default/-/blob/0e38223adfd81eb74d4b1779e158f8ad05ff8923/src/css/doc.css#L204-L206)),
+  and an auto-layout table is never narrower than its columns' minimum
+  ([CSS 2.1 §17.5.2.2](https://www.w3.org/TR/CSS21/tables.html#auto-table-layout)):
+  882 pixels in a 792-pixel box.
+- **Why Zensical's columns are equal.** Not `table-layout` (it is `auto` in
+  every mode) and not a rule of this round's for the classless tables. The
+  theme's script wraps every table without a class in a box that scrolls
+  ([`content/_/index.ts` L162-L163](https://github.com/zensical/ui/blob/5d58e34f4240394d78ab89d149fdb3437151bac1/src/assets/javascripts/components/content/_/index.ts#L162-L163),
+  [`templates/table/index.tsx` L39-L47](https://github.com/zensical/ui/blob/5d58e34f4240394d78ab89d149fdb3437151bac1/src/assets/javascripts/templates/table/index.tsx#L39-L47)),
+  whose inner box is shrink-to-fit
+  ([`_typeset.scss` L600-L611](https://github.com/zensical/ui/blob/5d58e34f4240394d78ab89d149fdb3437151bac1/src/assets/stylesheets/modern/main/_typeset.scss#L600-L611)),
+  so the table is again at min-content width. The theme gives every header
+  cell `min-width: 5rem`
+  ([`_typeset.scss` L533-L534](https://github.com/zensical/ui/blob/5d58e34f4240394d78ab89d149fdb3437151bac1/src/assets/stylesheets/modern/main/_typeset.scss#L533-L534)),
+  100 pixels with the theme's 20-pixel root size and border-box sizing. No
+  column of the roles table needs more than 100 pixels for its longest word,
+  so all twelve are 100. In passthrough, `table.table` gets the same from the
+  site's [hints.css](sites/zensical/docs/stylesheets/hints.css), which copies
+  the theme's rules, the 5rem included.
+- **A minimum width for the first column halves the table's height.** With
+  `min-width` on the Activity column, extension mode (passthrough and native
+  in the evidence file; at 24ch they are within 25 pixels of these heights):
+
+  | First column | Docusaurus | Zensical | Starlight | Antora | Activity lines per row (max / median) | Rows that wrap |
+  |---|---|---|---|---|---|---|
+  | none (today) | 1060 × 5518 | 1204 × 4811 | 1092 × 5442 | 883 × 4851 | 10 / 4 | 42 of 42 |
+  | 16ch | 1122 × 3752 | 1240 × 3648 | 1161 × 3316 | 924 × 3555 | 6 / 2 | 29–31 |
+  | 20ch | 1166 × 3198 | 1275 × 2917 | 1203 × 2924 | 958 × 2787 | 4 / 2 | 25 |
+  | 24ch | 1209 × 2859 | 1309 × 2688 | 1246 × 2621 | 992 × 2595 | 3 / 1–2 | 20–24 |
+  | 30ch | 1275 × 2629 | 1361 × 2443 | 1310 × 2376 | 1043 × 2331 | 3 / 1 | 12–17 |
+
+  Width × height in pixels. The column is 263, 207, 256 and 204 pixels at
+  24ch: `ch` follows each tool's table font, so the lines per row are almost
+  the same in every tool. Past 24ch the gain is small (64 lines in all rows
+  at 24ch, 55 at 30ch, against 165 today) and the box shows one column
+  fewer. At a 390-pixel window, 24ch takes 193 to 263 of the 356 to 390
+  pixels, so the box shows the Activity column and one or two role columns
+  before scrolling; `min(24ch, 45vw)` keeps it to 176 pixels there (4 to 6
+  lines at most, median 2).
+- **A floor on every prose column changes tables that fit.** The same
+  `min-width` on every `role-prose` column of the extension pages changes the
+  column widths of 10 or 11 other tables per tool at 24ch, and of 20 tables
+  across the four tools even at 12ch (the Result / Explanation / Action
+  tables shift by up to 23 pixels): a column's minimum also changes how the
+  browser shares out spare width. From 20ch
+  some tables no longer fit: `metadata` (two prose columns of four) is 734
+  pixels in 703 in Docusaurus and 713 in 632 in Starlight; at 24ch also
+  `uaa-concepts` and, in Starlight, two of the `troubleshooting_slow_requests`
+  tables. The same floor on the first column of every table changes 53 of
+  the 56 native tables, since most first columns are key columns. The floor
+  therefore needs a scope: tables that are wide.
+- **What says a table is wide.** Passthrough and native have no role
+  classes, and Docusaurus and Zensical pipe tables take no class at all
+  ([Template conventions](README.md#template-conventions)). A selector on
+  the number of columns needs neither:
+  `table:has(> thead > tr > :nth-child(8)) tr > :first-child`. In the
+  survey only three tables have more than six columns, all three role
+  matrices with the label column first (11 and 12 columns). Built into each
+  site's stylesheet, it gives the 24ch layout above in every mode of every
+  tool, and none of the other 210 test tables changes, at 1280 or 390
+  pixels; `make check-wide`'s check passes (90, 120, 120, 120). A table
+  class (a `table-*` style) would say the same where a table can carry one:
+  passthrough HTML, the list-table styles, Markdoc's
+  `{% table .name %}` (also in Starlight native), an AsciiDoc role; not a
+  Docusaurus or Zensical pipe table.
+- **A scroll shadow shows that more columns follow.** Two shadows fixed to
+  the box's edges, under two covers in the page colour that scroll with the
+  content (`background-attachment: local`;
+  [CSS Backgrounds 3](https://www.w3.org/TR/css-backgrounds-3/#background-attachment)):
+  a shadow shows on each side that has more columns and disappears at that
+  end. Measured at the box's edges in every mode of all four tools, light
+  and dark (Antora: light only), in Chrome, Firefox and WebKit: a mean change of 24 to 40
+  luminance levels at the right edge before scrolling, 0 at the end, and
+  the same on the left once scrolled. It runs down the whole box, so it is
+  in view wherever the reader is. It is the box's background, so an opaque
+  cell background would cover it: none of the default themes has one, but
+  Zensical gives a classless table the page colour, which the site makes
+  transparent inside the theme's wrapper. The cover needs a solid page
+  colour: Docusaurus's light `--ifm-background-color` is transparent, so the
+  surface colour is used there; Antora's default UI has no dark mode and no
+  colour variables, so its colour is written as white. Tables that fit show
+  no shadow (no visible change on the other test pages; pixels differ only
+  along text and border edges in Zensical, from antialiasing).
+- **A sticky first column works, with a fix per theme, and is not a cue by
+  itself.** `position: sticky; left: 0` on the first cells keeps the labels
+  in view while scrolling. It needs an opaque background in the page colour
+  (and, in Docusaurus, the row stripe laid over it), and a line drawn with
+  an inset `box-shadow`: the collapsed borders stay behind in Antora
+  (Chrome) and in Docusaurus (Firefox, WebKit), and Starlight has no
+  vertical lines. In Zensical, classless tables did not stick at all: the
+  theme makes the table a scroll container of its own (`overflow: auto`,
+  [`_typeset.scss` L486-L489](https://github.com/zensical/ui/blob/5d58e34f4240394d78ab89d149fdb3437151bac1/src/assets/stylesheets/modern/main/_typeset.scss#L486-L489)),
+  so the cells stuck to a box that never scrolls; `overflow: visible` on
+  the table inside the wrapper fixes it. With the 24ch floor the sticky
+  column holds 204 to 263 pixels of the box, and at 390 pixels most of it.
+- **A forced scrollbar is no cue for this table.** Overlay scrollbars take
+  no room in any of the four. `::-webkit-scrollbar` makes Chrome draw a
+  10-pixel scrollbar in Docusaurus, Zensical and Starlight, but not in
+  Antora, whose UI sets `scrollbar-width` and `scrollbar-color` on every
+  element
+  ([`base.css` L116-L126](https://gitlab.com/antora/antora-ui-default/-/blob/0e38223adfd81eb74d4b1779e158f8ad05ff8923/src/css/base.css#L116-L126);
+  that Chrome then ignores `::-webkit-scrollbar` is unverified). In
+  Firefox and WebKit, run headless, no scrollbar took room with or without
+  the rule; Safari itself was not tested. Either way the scrollbar is at the
+  bottom of the box: 4,000 to 4,700 pixels below the window when the top of
+  the table is in view, and still 1,750 to 2,040 with the 24ch floor.
+- **Compact does not make the Activity column wrap more.** With the table
+  text at 85% and half the cell padding, Docusaurus and Starlight wrap
+  exactly as before (165 lines, 10 at most): the table stays at min-content
+  width, and the column narrows with the font. Zensical wraps less (113 to 121
+  lines; the 100-pixel columns stay while the text shrinks), and Antora
+  much less: the table fits its 792 pixels and stops scrolling (83 or 84
+  lines), except in native-plain, where the equal widths then apply and the
+  column wraps as before. With the 24ch floor, compact keeps about the
+  floor's lines per row (63 to 67 in all rows, against 63 to 71) and cuts
+  the height to 2,078 (Docusaurus), 1,831 (Zensical), 2,002 (Starlight) and
+  1,859 pixels (Antora, where all twelve columns fit); 8, 6 and 7 columns
+  are in view instead of 6, 5 and 5.
+
+**Applied** (2026-10-12), from these measurements:
+
+- A wide table's first column gets `min-width: 24ch`, set by a
+  `--table-prose-min` variable and scoped by the number of columns (eight
+  or more), so pipe tables are covered. A `table-*` class can give the
+  same scope to a table that is wide for other reasons; that is not built
+  yet. The `prose` role alone is not a safe carrier, because it changes
+  tables that fit.
+- Every scroll box gets the scroll shadow. A sticky first column is left
+  as an option for a style, not the default.
+- A compact style is usable on the role matrices once the floor is in
+  place (compact itself is not built yet).
+
+The change is one rule for the floor and one for the shadow in each site's
+`hints.css` (Docusaurus, Zensical, Starlight, Antora); no page changes and
+no script. Screenshots before and after, extension and native mode:
+`results/<tool>-roles-<mode>-before.png` and `-after.png`.

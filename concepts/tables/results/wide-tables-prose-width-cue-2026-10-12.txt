@@ -1,0 +1,819 @@
+Wide tables: prose width and a continuation cue, 2026-10-12
+
+Method
+- The table: _oss_roles_table (12 columns: Activity, then 11 role columns
+  of Yes / Org / Space / note markers; 42 body rows). Activity texts are
+  11 to 80 characters, median 29; 17 of 42 are 24 characters or fewer,
+  23 are 30 or fewer. Longest: "View the status, number of instances,
+  service bindings, and resource use of apps".
+- Sites: an APFS clone of concepts/tables, built and served outside the
+  repository (python3 -m http.server, ports 4620-4627):
+    4620-4623  Docusaurus, Zensical, Starlight, Antora, patched builds
+    4624-4627  the same, copies of the repository's own builds (before)
+  Antora's playbook reads the repository root as a git content source;
+  the copy was built from a throwaway git repository in the scratch
+  folder holding the same five start paths and source/images.
+- Browser: Google Chrome 155.0.8059.39 through playwright-core 1.63.0,
+  1280 x 900 window (390 x 900 where noted). The continuation cues were
+  also run in Firefox 155.0 and WebKit 26.6 (Playwright's builds 1543 and
+  2359, already in the local cache). macOS 27.
+- Measured on the first table of roles-table-host in each mode, with CSS
+  injected into the built page (exploration) or built in (patched):
+    table WxH     the table's width (its scroll width when it is its own
+                  scroll box) and height
+    box           the scroll box's client width
+    col1          width of the Activity column (first header cell)
+    lines         text lines in each body row's Activity cell: line boxes
+                  counted from Range.getClientRects() over the cell's
+                  text nodes; max / median over 42 rows
+    wrapped       rows whose Activity cell has more than one line
+    total         sum of lines over the 42 rows
+    in view       header cells wholly inside the box at scrollLeft 0,
+                  and the column the box edge cuts (pixels shown / width)
+- "minw-Nch": `table[data-m] tr > :first-child { min-width: Nch }` on the
+  roles table only. "compact": every th/td of the roles table at
+  font-size 0.85em and half its computed padding.
+- Continuation cues: CSS injected into the page; at scrollLeft 0, 240 and
+  the end, a 10-pixel strip at the box's right edge and at its left edge
+  (right of a sticky column, if any) was compared with the same strip
+  without the cue: mean absolute difference of luminance (0-255).
+  "first col sticks": the first header cell and a body cell's left edge
+  stay at the box's left edge (within 1.5 px) after scrolling 240 px.
+- Dark mode: Docusaurus and Starlight by data-theme="dark" on <html>.
+  The Zensical site configures no dark palette; the theme's palette
+  stylesheet (modern/palette.b27955a4.min.css, shipped with 0.0.69) was
+  linked and data-md-color-scheme="slate" set on <body>. The Antora
+  default UI has no dark mode.
+- Regression: every top-level table on all seven test pages, in every
+  mode of every tool (225 tables), measured on the before and patched
+  builds at 1280 and 390 pixels: table size and the width of every cell
+  in the header row; any change over 1 px is listed.
+- Scripts (one-off, not kept in the repository): measure.mjs, cues.mjs,
+  regress.mjs, fit-noshadow.mjs, sbar.mjs, shots.mjs, probe-box.mjs.
+
+Versions
+  Docusaurus 3.10.2, Infima 0.2.0-alpha.45
+  Zensical 0.0.69 (zensical/ui 5d58e34f; stylesheet main.e15858d4.min.css)
+  Starlight 0.42.6, Markdoc 0.5.10
+  Antora 3.2.1, default UI bundle pinned by the site's Makefile
+    (antora-ui-default 0e38223a)
+
+Why the layout is at its narrowest (computed styles, 1280 px)
+  Docusaurus  table: display block, overflow-x auto; the table is the scroll
+              box (703 px). Its rows sit in an anonymous table that is
+              shrink-to-fit: min(max-content, max(min-content, available)),
+              so with min-content (1053) above the available 703 it takes
+              min-content. Infima table.pcss L24-L28.
+  Starlight   the same: table display block, overflow auto (632 px box).
+              markdown.css L135-L139. First and last cells have no start /
+              end padding (L145-L150).
+  Zensical    classless tables: the theme's script wraps each in
+              div.md-typeset__scrollwrap (overflow-x auto, 720 px) >
+              div.md-typeset__table (inline-block, shrink-to-fit); the table
+              itself is inline-block, overflow auto, max-width 100%.
+              Header cells: min-width 5rem = 100 px (root 20 px), border-box,
+              padding 16 px each side. Every column's min-content is under
+              100 px, so all twelve are 100 px: 1200-1204 px.
+              table.table (passthrough) gets the same from the site's
+              hints.css, which copies the theme's rules, min-width included.
+              table-layout is auto in every mode (computed); nothing sets
+              equal widths.
+  Antora      the site's table-scroll.js box (792 px, overflow-x auto);
+              table.tableblock.stretch is width 100%, and an auto-layout
+              table's used width is the larger of its width and the columns'
+              minimum: 882 px.
+
+Prose minimum width: roles table, 1280 px, every tool and mode
+  tool       mode         variant            table WxH    box  col1  lines max/med wrapped   total  in view at scroll 0
+  docusaurus passthrough  base               1053x5518    703   106  10/4          42/42       165  8; cuts 9 (34/93 px shown)
+  docusaurus passthrough  minw-16ch          1122x3488    703   175  6/2           28/42        88  7; cuts 8 (27/62 px shown)
+  docusaurus passthrough  minw-20ch          1166x3118    703   219  4/2           25/42        74  6; cuts 7 (76/93 px shown)
+  docusaurus passthrough  minw-24ch          1209x2835    703   263  3/1           19/42        63  6; cuts 7 (32/93 px shown)
+  docusaurus passthrough  minw-30ch          1275x2629    703   329  3/1           12/42        55  5; cuts 6 (49/83 px shown)
+  docusaurus passthrough  compact            808x4335     703    84  10/4          42/42       165  10; cuts 11 (39/63 px shown)
+  docusaurus passthrough  compact+minw-16ch  874x2499     703   149  4/2           26/42        83  9; cuts 10 (55/81 px shown)
+  docusaurus passthrough  compact+minw-20ch  911x2253     703   186  4/2           24/42        72  9; cuts 10 (18/81 px shown)
+  docusaurus passthrough  compact+minw-24ch  948x2059     703   223  3/1           19/42        63  8; cuts 9 (53/72 px shown)
+  docusaurus passthrough  compact+minw-30ch  1004x1884    703   279  3/1           12/42        55  7; cuts 8 (42/45 px shown)
+  docusaurus extension    base               1060x5518    703   113  10/4          42/42       165  8; cuts 9 (27/93 px shown)
+  docusaurus extension    minw-16ch          1122x3752    703   175  6/2           30/42        98  7; cuts 8 (27/62 px shown)
+  docusaurus extension    minw-20ch          1166x3198    703   219  4/2           25/42        77  6; cuts 7 (76/93 px shown)
+  docusaurus extension    minw-24ch          1209x2859    703   263  3/1           20/42        64  6; cuts 7 (32/93 px shown)
+  docusaurus extension    minw-30ch          1275x2629    703   329  3/1           12/42        55  5; cuts 6 (49/83 px shown)
+  docusaurus extension    compact            814x4335     703    90  10/4          42/42       165  10; cuts 11 (33/63 px shown)
+  docusaurus extension    compact+minw-16ch  874x2634     703   149  6/2           29/42        89  9; cuts 10 (55/81 px shown)
+  docusaurus extension    compact+minw-20ch  911x2342     703   186  4/2           25/42        76  9; cuts 10 (18/81 px shown)
+  docusaurus extension    compact+minw-24ch  948x2078     703   223  3/1           20/42        64  8; cuts 9 (53/72 px shown)
+  docusaurus extension    compact+minw-30ch  1004x1884    703   279  3/1           12/42        55  7; cuts 8 (42/45 px shown)
+  docusaurus native       base               1053x5518    703   106  10/4          42/42       165  8; cuts 9 (34/93 px shown)
+  docusaurus native       minw-16ch          1122x3488    703   175  6/2           28/42        88  7; cuts 8 (27/62 px shown)
+  docusaurus native       minw-20ch          1166x3118    703   219  4/2           25/42        74  6; cuts 7 (76/93 px shown)
+  docusaurus native       minw-24ch          1209x2835    703   263  3/1           19/42        63  6; cuts 7 (32/93 px shown)
+  docusaurus native       minw-30ch          1275x2629    703   329  3/1           12/42        55  5; cuts 6 (49/83 px shown)
+  docusaurus native       compact            808x4335     703    84  10/4          42/42       165  10; cuts 11 (39/63 px shown)
+  docusaurus native       compact+minw-16ch  874x2499     703   149  4/2           26/42        83  9; cuts 10 (55/81 px shown)
+  docusaurus native       compact+minw-20ch  911x2253     703   186  4/2           24/42        72  9; cuts 10 (18/81 px shown)
+  docusaurus native       compact+minw-24ch  948x2059     703   223  3/1           19/42        63  8; cuts 9 (53/72 px shown)
+  docusaurus native       compact+minw-30ch  1004x1884    703   279  3/1           12/42        55  7; cuts 8 (42/45 px shown)
+  zensical   passthrough  base               1200x4830    686   100  10/4          42/42       161  6; cuts 7 (85/100 px shown)
+  zensical   passthrough  minw-16ch          1238x3586    686   138  6/2           31/42       107  6; cuts 7 (47/100 px shown)
+  zensical   passthrough  minw-20ch          1273x2919    686   173  4/2           25/42        78  6; cuts 7 (12/100 px shown)
+  zensical   passthrough  minw-24ch          1307x2688    686   207  3/2           22/42        68  5; cuts 6 (78/100 px shown)
+  zensical   passthrough  minw-30ch          1359x2412    686   259  3/1           13/42        56  5; cuts 6 (26/100 px shown)
+  zensical   passthrough  compact            1200x2810    686   100  7/2           32/42       113  6; cuts 7 (85/100 px shown)
+  zensical   passthrough  compact+minw-16ch  1217x2340    686   117  6/2           29/42        89  6; cuts 7 (68/100 px shown)
+  zensical   passthrough  compact+minw-20ch  1247x2066    686   147  4/2           25/42        75  6; cuts 7 (38/100 px shown)
+  zensical   passthrough  compact+minw-24ch  1276x1851    686   176  3/1           20/42        64  6; cuts 7 (9/100 px shown)
+  zensical   passthrough  compact+minw-30ch  1320x1675    686   220  3/1           12/42        55  5; cuts 6 (65/100 px shown)
+  zensical   extension    base               1204x4811    720   102  10/4          42/42       162  7; cuts 8 (1/100 px shown)
+  zensical   extension    minw-16ch          1240x3648    720   138  6/2           31/42       111  6; cuts 7 (65/100 px shown)
+  zensical   extension    minw-20ch          1275x2917    720   173  4/2           25/42        79  6; cuts 7 (30/100 px shown)
+  zensical   extension    minw-24ch          1309x2688    720   207  3/2           23/42        69  5; cuts 6 (96/100 px shown)
+  zensical   extension    minw-30ch          1361x2443    720   259  3/1           15/42        58  5; cuts 6 (44/100 px shown)
+  zensical   extension    compact            1202x2934    720   100  7/3           32/42       121  7; cuts 8 (3/100 px shown)
+  zensical   extension    compact+minw-16ch  1219x2428    720   117  6/2           30/42        95  6; cuts 7 (86/100 px shown)
+  zensical   extension    compact+minw-20ch  1249x2080    720   147  4/2           25/42        77  6; cuts 7 (56/100 px shown)
+  zensical   extension    compact+minw-24ch  1278x1831    720   176  3/1           20/42        64  6; cuts 7 (27/100 px shown)
+  zensical   extension    compact+minw-30ch  1322x1663    720   220  3/1           12/42        55  5; cuts 6 (83/100 px shown)
+  zensical   native       base               1202x4830    720   100  10/4          42/42       161  7; cuts 8 (3/100 px shown)
+  zensical   native       minw-16ch          1240x3586    720   138  6/2           31/42       107  6; cuts 7 (65/100 px shown)
+  zensical   native       minw-20ch          1275x2919    720   173  4/2           25/42        78  6; cuts 7 (30/100 px shown)
+  zensical   native       minw-24ch          1309x2688    720   207  3/2           22/42        68  5; cuts 6 (96/100 px shown)
+  zensical   native       minw-30ch          1361x2412    720   259  3/1           13/42        56  5; cuts 6 (44/100 px shown)
+  zensical   native       compact            1202x2810    720   100  7/2           32/42       113  7; cuts 8 (3/100 px shown)
+  zensical   native       compact+minw-16ch  1219x2340    720   117  6/2           29/42        89  6; cuts 7 (86/100 px shown)
+  zensical   native       compact+minw-20ch  1249x2066    720   147  4/2           25/42        75  6; cuts 7 (56/100 px shown)
+  zensical   native       compact+minw-24ch  1278x1851    720   176  3/1           20/42        64  6; cuts 7 (27/100 px shown)
+  zensical   native       compact+minw-30ch  1322x1675    720   220  3/1           12/42        55  5; cuts 6 (83/100 px shown)
+  zensical   native-plain base               1202x4830    720   100  10/4          42/42       161  7; cuts 8 (3/100 px shown)
+  zensical   native-plain minw-16ch          1240x3586    720   138  6/2           31/42       107  6; cuts 7 (65/100 px shown)
+  zensical   native-plain minw-20ch          1275x2919    720   173  4/2           25/42        78  6; cuts 7 (30/100 px shown)
+  zensical   native-plain minw-24ch          1309x2688    720   207  3/2           22/42        68  5; cuts 6 (96/100 px shown)
+  zensical   native-plain minw-30ch          1361x2412    720   259  3/1           13/42        56  5; cuts 6 (44/100 px shown)
+  zensical   native-plain compact            1202x2810    720   100  7/2           32/42       113  7; cuts 8 (3/100 px shown)
+  zensical   native-plain compact+minw-16ch  1219x2340    720   117  6/2           29/42        89  6; cuts 7 (86/100 px shown)
+  zensical   native-plain compact+minw-20ch  1249x2066    720   147  4/2           25/42        75  6; cuts 7 (56/100 px shown)
+  zensical   native-plain compact+minw-24ch  1278x1851    720   176  3/1           20/42        64  6; cuts 7 (27/100 px shown)
+  zensical   native-plain compact+minw-30ch  1322x1675    720   220  3/1           12/42        55  5; cuts 6 (83/100 px shown)
+  starlight  passthrough  base               1087x5461    632    97  10/4          42/42       165  7; cuts 8 (1/68 px shown)
+  starlight  passthrough  minw-16ch          1161x3221    632   171  4/2           27/42        85  6; cuts 7 (26/99 px shown)
+  starlight  passthrough  minw-20ch          1203x2857    632   213  4/2           24/42        72  5; cuts 6 (71/88 px shown)
+  starlight  passthrough  minw-24ch          1246x2605    632   256  3/1           19/42        63  5; cuts 6 (29/88 px shown)
+  starlight  passthrough  minw-30ch          1310x2381    632   320  3/1           12/42        55  4; cuts 5 (64/99 px shown)
+  starlight  passthrough  compact            733x4421     632    79  10/4          42/42       165  10; cuts 11 (30/57 px shown)
+  starlight  passthrough  compact+minw-16ch  800x2447     632   145  4/2           25/42        82  9; cuts 10 (38/75 px shown)
+  starlight  passthrough  compact+minw-20ch  836x2209     632   181  4/2           24/42        72  9; cuts 10 (2/75 px shown)
+  starlight  passthrough  compact+minw-24ch  872x1995     632   217  3/1           19/42        63  8; cuts 9 (31/66 px shown)
+  starlight  passthrough  compact+minw-30ch  927x1805     632   272  3/1           12/42        55  7; cuts 8 (16/39 px shown)
+  starlight  extension    base               1092x5442    632   102  10/4          42/42       165  6; cuts 7 (95/99 px shown)
+  starlight  extension    minw-16ch          1161x3316    632   171  6/2           29/42        89  6; cuts 7 (26/99 px shown)
+  starlight  extension    minw-20ch          1203x2924    632   213  4/2           25/42        75  5; cuts 6 (71/88 px shown)
+  starlight  extension    minw-24ch          1246x2621    632   256  3/1           20/42        64  5; cuts 6 (29/88 px shown)
+  starlight  extension    minw-30ch          1310x2376    632   320  3/1           12/42        55  4; cuts 5 (64/99 px shown)
+  starlight  extension    compact            833x4393     632    91  10/4          42/42       165  9; cuts 10 (29/83 px shown)
+  starlight  extension    compact+minw-16ch  888x2708     632   145  6/2           30/42        94  8; cuts 9 (48/74 px shown)
+  starlight  extension    compact+minw-20ch  924x2304     632   181  4/2           25/42        77  8; cuts 9 (12/74 px shown)
+  starlight  extension    compact+minw-24ch  960x2002     632   217  3/1           20/42        64  7; cuts 8 (22/47 px shown)
+  starlight  extension    compact+minw-30ch  1015x1798    632   272  3/1           12/42        55  6; cuts 7 (42/74 px shown)
+  starlight  native       base               1087x5461    632    97  10/4          42/42       165  7; cuts 8 (1/68 px shown)
+  starlight  native       minw-16ch          1161x3221    632   171  4/2           27/42        85  6; cuts 7 (26/99 px shown)
+  starlight  native       minw-20ch          1203x2857    632   213  4/2           24/42        72  5; cuts 6 (71/88 px shown)
+  starlight  native       minw-24ch          1246x2605    632   256  3/1           19/42        63  5; cuts 6 (29/88 px shown)
+  starlight  native       minw-30ch          1310x2381    632   320  3/1           12/42        55  4; cuts 5 (64/99 px shown)
+  starlight  native       compact            733x4421     632    79  10/4          42/42       165  10; cuts 11 (30/57 px shown)
+  starlight  native       compact+minw-16ch  800x2447     632   145  4/2           25/42        82  9; cuts 10 (38/75 px shown)
+  starlight  native       compact+minw-20ch  836x2209     632   181  4/2           24/42        72  9; cuts 10 (2/75 px shown)
+  starlight  native       compact+minw-24ch  872x1995     632   217  3/1           19/42        63  8; cuts 9 (31/66 px shown)
+  starlight  native       compact+minw-30ch  927x1805     632   272  3/1           12/42        55  7; cuts 8 (16/39 px shown)
+  starlight  native-plain base               1087x5461    632    97  10/4          42/42       165  7; cuts 8 (1/68 px shown)
+  starlight  native-plain minw-16ch          1161x3221    632   171  4/2           27/42        85  6; cuts 7 (26/99 px shown)
+  starlight  native-plain minw-20ch          1203x2857    632   213  4/2           24/42        72  5; cuts 6 (71/88 px shown)
+  starlight  native-plain minw-24ch          1246x2605    632   256  3/1           19/42        63  5; cuts 6 (29/88 px shown)
+  starlight  native-plain minw-30ch          1310x2381    632   320  3/1           12/42        55  4; cuts 5 (64/99 px shown)
+  starlight  native-plain compact            733x4421     632    79  10/4          42/42       165  10; cuts 11 (30/57 px shown)
+  starlight  native-plain compact+minw-16ch  800x2447     632   145  4/2           25/42        82  9; cuts 10 (38/75 px shown)
+  starlight  native-plain compact+minw-20ch  836x2209     632   181  4/2           24/42        72  9; cuts 10 (2/75 px shown)
+  starlight  native-plain compact+minw-24ch  872x1995     632   217  3/1           19/42        63  8; cuts 9 (31/66 px shown)
+  starlight  native-plain compact+minw-30ch  927x1805     632   272  3/1           12/42        55  7; cuts 8 (16/39 px shown)
+  antora     passthrough  base               882x4851     792    94  10/4          42/42       165  10; cuts 11 (64/68 px shown)
+  antora     passthrough  minw-16ch          924x3555     792   136  6/2           31/42       111  10; cuts 11 (22/68 px shown)
+  antora     passthrough  minw-20ch          958x2763     792   170  4/2           25/42        78  9; cuts 10 (74/86 px shown)
+  antora     passthrough  minw-24ch          992x2571     792   204  3/2           24/42        70  9; cuts 10 (40/86 px shown)
+  antora     passthrough  minw-30ch          1043x2331    792   256  3/1           17/42        60  8; cuts 9 (68/78 px shown)
+  antora     passthrough  compact            792x2186           132  4/2           25/42        83  no box
+  antora     passthrough  compact+minw-16ch  792x2084           151  4/2           25/42        78  no box
+  antora     passthrough  compact+minw-20ch  792x1941           165  3/2           24/42        71  no box
+  antora     passthrough  compact+minw-24ch  792x1859           181  3/2           21/42        67  no box
+  antora     passthrough  compact+minw-30ch  819x1696     792   217  3/1           16/42        59  11; cuts 12 (40/67 px shown)
+  antora     extension    base               883x4851     792    95  10/4          42/42       165  10; cuts 11 (64/68 px shown)
+  antora     extension    minw-16ch          924x3555     792   136  6/2           31/42       111  10; cuts 11 (22/68 px shown)
+  antora     extension    minw-20ch          958x2787     792   170  4/2           25/42        79  9; cuts 10 (74/86 px shown)
+  antora     extension    minw-24ch          992x2595     792   204  3/2           24/42        71  9; cuts 10 (40/86 px shown)
+  antora     extension    minw-30ch          1043x2331    792   256  3/1           17/42        60  8; cuts 9 (68/78 px shown)
+  antora     extension    compact            792x2206           133  4/2           26/42        84  no box
+  antora     extension    compact+minw-16ch  792x2084           151  4/2           25/42        78  no box
+  antora     extension    compact+minw-20ch  792x1961           165  4/2           24/42        72  no box
+  antora     extension    compact+minw-24ch  792x1859           181  3/2           21/42        67  no box
+  antora     extension    compact+minw-30ch  819x1717     792   217  3/1           17/42        60  11; cuts 12 (40/67 px shown)
+  antora     native       base               883x4851     792    95  10/4          42/42       165  10; cuts 11 (64/68 px shown)
+  antora     native       minw-16ch          924x3555     792   136  6/2           31/42       111  10; cuts 11 (22/68 px shown)
+  antora     native       minw-20ch          958x2787     792   170  4/2           25/42        79  9; cuts 10 (74/86 px shown)
+  antora     native       minw-24ch          992x2595     792   204  3/2           24/42        71  9; cuts 10 (40/86 px shown)
+  antora     native       minw-30ch          1043x2331    792   256  3/1           17/42        60  8; cuts 9 (68/78 px shown)
+  antora     native       compact            792x2206           133  4/2           26/42        84  no box
+  antora     native       compact+minw-16ch  792x2084           151  4/2           25/42        78  no box
+  antora     native       compact+minw-20ch  792x1961           165  4/2           24/42        72  no box
+  antora     native       compact+minw-24ch  792x1859           181  3/2           21/42        67  no box
+  antora     native       compact+minw-30ch  819x1717     792   217  3/1           17/42        60  11; cuts 12 (40/67 px shown)
+  antora     native-plain base               882x4851     792    94  10/4          42/42       165  10; cuts 11 (64/68 px shown)
+  antora     native-plain minw-16ch          924x3555     792   136  6/2           31/42       111  10; cuts 11 (22/68 px shown)
+  antora     native-plain minw-20ch          958x2763     792   170  4/2           25/42        78  9; cuts 10 (74/86 px shown)
+  antora     native-plain minw-24ch          992x2571     792   204  3/2           24/42        70  9; cuts 10 (40/86 px shown)
+  antora     native-plain minw-30ch          1043x2331    792   256  3/1           17/42        60  8; cuts 9 (68/78 px shown)
+  antora     native-plain compact            792x3858            74  10/4          42/42       165  no box
+  antora     native-plain compact+minw-16ch  792x2573           116  6/2           31/42       102  no box
+  antora     native-plain compact+minw-20ch  792x2084           145  4/2           25/42        78  no box
+  antora     native-plain compact+minw-24ch  792x1880           174  3/2           22/42        68  no box
+  antora     native-plain compact+minw-30ch  819x1696     792   217  3/1           16/42        59  11; cuts 12 (40/67 px shown)
+
+  Antora compact rows have no box: the table (width 100%) fits in 792 px.
+  Antora native-plain compact: the equal widths (8.33%) apply once the
+  table fits, so the Activity column is 74 px and wraps as before.
+
+Prose minimum width at 390 px (extension mode)
+  docusaurus base                1060x5518    358   113  10/4          42/42       165  4 cols whole; cuts col 5 (12/93 px shown)
+  docusaurus minw 16ch           1122x3752    358   175  6/2           30/42        98  3 cols whole; cuts col 4 (33/83 px shown)
+  docusaurus minw 20ch           1166x3198    358   219  4/2           25/42        77  2 cols whole; cuts col 3 (64/75 px shown)
+  docusaurus minw 24ch           1209x2859    358   263  3/1           20/42        64  2 cols whole; cuts col 3 (20/75 px shown)
+  docusaurus minw min(24ch, 45vw)1122x3725    358   176  6/2           30/42        97  3 cols whole; cuts col 4 (33/83 px shown)
+  docusaurus minw min(24ch, 40vw)1103x4148    358   156  7/2           32/42       113  3 cols whole; cuts col 4 (52/83 px shown)
+  zensical   base                1204x4811    390   102  10/4          42/42       162  3 cols whole; cuts col 4 (71/100 px shown)
+  zensical   minw 16ch           1240x3648    390   138  6/2           31/42       111  3 cols whole; cuts col 4 (35/100 px shown)
+  zensical   minw 20ch           1275x2917    390   173  4/2           25/42        79  3 cols whole; between col 3 and 4
+  zensical   minw 24ch           1309x2688    390   207  3/2           23/42        69  2 cols whole; cuts col 3 (66/100 px shown)
+  zensical   minw min(24ch, 45vw)1278x2894    390   176  4/2           25/42        78  2 cols whole; cuts col 3 (98/100 px shown)
+  zensical   minw min(24ch, 40vw)1258x3143    390   156  6/2           29/42        89  3 cols whole; cuts col 4 (17/100 px shown)
+  starlight  base                1092x5442    358   102  10/4          42/42       165  4 cols whole; cuts col 5 (7/99 px shown)
+  starlight  minw 16ch           1161x3316    358   171  6/2           29/42        89  3 cols whole; cuts col 4 (27/88 px shown)
+  starlight  minw 20ch           1203x2924    358   213  4/2           25/42        75  2 cols whole; cuts col 3 (64/80 px shown)
+  starlight  minw 24ch           1246x2621    358   256  3/1           20/42        64  2 cols whole; cuts col 3 (22/80 px shown)
+  starlight  minw min(24ch, 45vw)1166x3232    358   176  5/2           27/42        86  3 cols whole; cuts col 4 (22/88 px shown)
+  starlight  minw min(24ch, 40vw)1146x3708    358   156  6/2           31/42       103  3 cols whole; cuts col 4 (41/88 px shown)
+  antora     base                834x4585     356    90  10/4          42/42       165  5 cols whole; cuts col 6 (9/64 px shown)
+  antora     minw 16ch           874x3361     356   129  6/2           31/42       111  4 cols whole; cuts col 5 (44/74 px shown)
+  antora     minw 20ch           906x2635     356   161  4/2           25/42        79  4 cols whole; cuts col 5 (12/74 px shown)
+  antora     minw 24ch           938x2454     356   193  3/2           24/42        71  3 cols whole; cuts col 4 (44/64 px shown)
+  antora     minw min(24ch, 45vw)920x2612     356   176  4/2           25/42        78  3 cols whole; cuts col 4 (62/64 px shown)
+  antora     minw min(24ch, 40vw)901x2703     356   156  4/2           25/42        82  4 cols whole; cuts col 5 (17/74 px shown)
+
+Patched builds (column-count rule, 24ch, plus the shadow), every mode
+  1280 px:
+  docusaurus passthrough  patched          1209x2835    703   263  3/1     19/42        63  6 cols whole; cuts col 7 (32/93 px shown)
+  docusaurus passthrough  patched+compact  948x2059     703   223  3/1     19/42        63  8 cols whole; cuts col 9 (53/72 px shown)
+  docusaurus extension    patched          1209x2859    703   263  3/1     20/42        64  6 cols whole; cuts col 7 (32/93 px shown)
+  docusaurus extension    patched+compact  948x2078     703   223  3/1     20/42        64  8 cols whole; cuts col 9 (53/72 px shown)
+  docusaurus native       patched          1209x2835    703   263  3/1     19/42        63  6 cols whole; cuts col 7 (32/93 px shown)
+  docusaurus native       patched+compact  948x2059     703   223  3/1     19/42        63  8 cols whole; cuts col 9 (53/72 px shown)
+  zensical   passthrough  patched          1307x2688    686   207  3/2     22/42        68  5 cols whole; cuts col 6 (78/100 px shown)
+  zensical   passthrough  patched+compact  1276x1851    686   176  3/1     20/42        64  6 cols whole; cuts col 7 (9/100 px shown)
+  zensical   extension    patched          1309x2688    720   207  3/2     23/42        69  5 cols whole; cuts col 6 (96/100 px shown)
+  zensical   extension    patched+compact  1278x1831    720   176  3/1     20/42        64  6 cols whole; cuts col 7 (27/100 px shown)
+  zensical   native       patched          1309x2688    720   207  3/2     22/42        68  5 cols whole; cuts col 6 (96/100 px shown)
+  zensical   native       patched+compact  1278x1851    720   176  3/1     20/42        64  6 cols whole; cuts col 7 (27/100 px shown)
+  zensical   native-plain patched          1309x2688    720   207  3/2     22/42        68  5 cols whole; cuts col 6 (96/100 px shown)
+  zensical   native-plain patched+compact  1278x1851    720   176  3/1     20/42        64  6 cols whole; cuts col 7 (27/100 px shown)
+  starlight  passthrough  patched          1246x2605    632   256  3/1     19/42        63  5 cols whole; cuts col 6 (29/88 px shown)
+  starlight  passthrough  patched+compact  872x1995     632   217  3/1     19/42        63  8 cols whole; cuts col 9 (31/66 px shown)
+  starlight  extension    patched          1246x2621    632   256  3/1     20/42        64  5 cols whole; cuts col 6 (29/88 px shown)
+  starlight  extension    patched+compact  960x2002     632   217  3/1     20/42        64  7 cols whole; cuts col 8 (22/47 px shown)
+  starlight  native       patched          1246x2605    632   256  3/1     19/42        63  5 cols whole; cuts col 6 (29/88 px shown)
+  starlight  native       patched+compact  872x1995     632   217  3/1     19/42        63  8 cols whole; cuts col 9 (31/66 px shown)
+  starlight  native-plain patched          1246x2605    632   256  3/1     19/42        63  5 cols whole; cuts col 6 (29/88 px shown)
+  starlight  native-plain patched+compact  872x1995     632   217  3/1     19/42        63  8 cols whole; cuts col 9 (31/66 px shown)
+  antora     passthrough  patched          992x2571     792   204  3/2     24/42        70  9 cols whole; cuts col 10 (40/86 px shown)
+  antora     passthrough  patched+compact  792x1859           181  3/2     21/42        67  no box
+  antora     extension    patched          992x2595     792   204  3/2     24/42        71  9 cols whole; cuts col 10 (40/86 px shown)
+  antora     extension    patched+compact  792x1859           181  3/2     21/42        67  no box
+  antora     native       patched          992x2595     792   204  3/2     24/42        71  9 cols whole; cuts col 10 (40/86 px shown)
+  antora     native       patched+compact  792x1859           181  3/2     21/42        67  no box
+  antora     native-plain patched          992x2571     792   204  3/2     24/42        70  9 cols whole; cuts col 10 (40/86 px shown)
+  antora     native-plain patched+compact  792x1880           174  3/2     22/42        68  no box
+  390 px:
+  docusaurus passthrough  patched          1209x2835    358   263  3/1     19/42        63  2 cols whole; cuts col 3 (20/75 px shown)
+  docusaurus passthrough  patched+compact  948x2059     358   223  3/1     19/42        63  3 cols whole; cuts col 4 (22/63 px shown)
+  docusaurus extension    patched          1209x2859    358   263  3/1     20/42        64  2 cols whole; cuts col 3 (20/75 px shown)
+  docusaurus extension    patched+compact  948x2078     358   223  3/1     20/42        64  3 cols whole; cuts col 4 (22/63 px shown)
+  docusaurus native       patched          1209x2835    358   263  3/1     19/42        63  2 cols whole; cuts col 3 (20/75 px shown)
+  docusaurus native       patched+compact  948x2059     358   223  3/1     19/42        63  3 cols whole; cuts col 4 (22/63 px shown)
+  zensical   passthrough  patched          1307x2688    356   207  3/2     22/42        68  2 cols whole; cuts col 3 (48/100 px shown)
+  zensical   passthrough  patched+compact  1276x1851    356   176  3/1     20/42        64  2 cols whole; cuts col 3 (79/100 px shown)
+  zensical   extension    patched          1309x2688    390   207  3/2     23/42        69  2 cols whole; cuts col 3 (66/100 px shown)
+  zensical   extension    patched+compact  1278x1831    390   176  3/1     20/42        64  2 cols whole; cuts col 3 (97/100 px shown)
+  zensical   native       patched          1309x2688    390   207  3/2     22/42        68  2 cols whole; cuts col 3 (66/100 px shown)
+  zensical   native       patched+compact  1278x1851    390   176  3/1     20/42        64  2 cols whole; cuts col 3 (97/100 px shown)
+  zensical   native-plain patched          1309x2688    390   207  3/2     22/42        68  2 cols whole; cuts col 3 (66/100 px shown)
+  zensical   native-plain patched+compact  1278x1851    390   176  3/1     20/42        64  2 cols whole; cuts col 3 (97/100 px shown)
+  starlight  passthrough  patched          1246x2605    358   256  3/1     19/42        63  2 cols whole; cuts col 3 (22/80 px shown)
+  starlight  passthrough  patched+compact  872x1995     358   217  3/1     19/42        63  3 cols whole; cuts col 4 (41/57 px shown)
+  starlight  extension    patched          1246x2621    358   256  3/1     20/42        64  2 cols whole; cuts col 3 (22/80 px shown)
+  starlight  extension    patched+compact  960x2002     358   217  3/1     20/42        64  3 cols whole; cuts col 4 (25/65 px shown)
+  starlight  native       patched          1246x2605    358   256  3/1     19/42        63  2 cols whole; cuts col 3 (22/80 px shown)
+  starlight  native       patched+compact  872x1995     358   217  3/1     19/42        63  3 cols whole; cuts col 4 (41/57 px shown)
+  starlight  native-plain patched          1246x2605    358   256  3/1     19/42        63  2 cols whole; cuts col 3 (22/80 px shown)
+  starlight  native-plain patched+compact  872x1995     358   217  3/1     19/42        63  3 cols whole; cuts col 4 (41/57 px shown)
+  antora     passthrough  patched          938x2431     356   193  3/2     24/42        70  3 cols whole; cuts col 4 (44/64 px shown)
+  antora     passthrough  patched+compact  734x1778     356   164  3/2     22/42        68  4 cols whole; cuts col 5 (53/57 px shown)
+  antora     extension    patched          938x2454     356   193  3/2     24/42        71  3 cols whole; cuts col 4 (44/64 px shown)
+  antora     extension    patched+compact  734x1798     356   164  3/2     23/42        69  4 cols whole; cuts col 5 (53/57 px shown)
+  antora     native       patched          938x2454     356   193  3/2     24/42        71  3 cols whole; cuts col 4 (44/64 px shown)
+  antora     native       patched+compact  734x1798     356   164  3/2     23/42        69  4 cols whole; cuts col 5 (53/57 px shown)
+  antora     native-plain patched          938x2431     356   193  3/2     24/42        70  3 cols whole; cuts col 4 (44/64 px shown)
+  antora     native-plain patched+compact  734x1778     356   164  3/2     22/42        68  4 cols whole; cuts col 5 (53/57 px shown)
+
+A floor on every prose column (extension mode, other test pages)
+  The same min-width on every role-prose column (Antora: colN-prose),
+  injected into the original builds; tables of the six other pages whose
+  size or column widths changed by more than 1 px. Lines: tool | page |
+  table | before WxH [header cell widths] | after.
+  ### role floor 12ch
+  docusaurus|troubleshooting_slow_requests|t1|before 703x577 [230,174,298]|after 703x551 [226,184,293]
+  docusaurus|troubleshooting_slow_requests|t2|before 671x760 [187,233,250]|after 671x760 [184,239,247]
+  docusaurus|troubleshooting_slow_requests|t3|before 703x262 [135,229,338]|after 703x262 [133,232,337]
+  docusaurus|troubleshooting_slow_requests|t4|before 703x315 [119,168,414]|after 703x315 [117,178,407]
+  docusaurus|troubleshooting_slow_requests|t5|before 703x262 [143,160,399]|after 703x262 [141,169,392]
+  docusaurus|troubleshooting_slow_requests|t6|before 703x315 [117,177,408]|after 703x315 [116,187,400]
+  zensical|uaa-concepts|t1|before 688x957 [206,181,299]|after 688x957 [206,184,297]
+  starlight|metadata|t3|before 632x539 [115,212,305]|after 632x539 [115,210,307]
+  starlight|troubleshooting_slow_requests|t1|before 632x589 [201,170,261]|after 632x617 [197,173,262]
+  starlight|troubleshooting_slow_requests|t2|before 592x925 [185,206,201]|after 592x869 [162,212,217]
+  starlight|troubleshooting_slow_requests|t3|before 632x275 [118,219,295]|after 632x275 [116,215,301]
+  starlight|troubleshooting_slow_requests|t4|before 632x303 [105,166,362]|after 632x303 [103,169,361]
+  starlight|troubleshooting_slow_requests|t5|before 632x247 [123,158,351]|after 632x247 [122,163,347]
+  starlight|troubleshooting_slow_requests|t6|before 632x303 [103,173,356]|after 632x303 [101,176,354]
+  antora|metadata|t1|before 686x510 [157,121,160,247]|after 686x510 [157,120,165,243]
+  antora|metadata|t2|before 686x435 [157,123,166,239]|after 686x411 [157,123,170,235]
+  antora|troubleshooting_slow_requests|t2|before 650x649 [184,222,243]|after 650x625 [183,224,241]
+  antora|troubleshooting_slow_requests|t4|before 686x251 [111,154,420]|after 686x251 [111,158,417]
+  antora|troubleshooting_slow_requests|t5|before 686x203 [137,147,401]|after 686x203 [137,150,399]
+  antora|troubleshooting_slow_requests|t6|before 686x251 [109,164,413]|after 686x251 [109,167,410]
+  == 1280px: 32 tables unchanged, 20 changed||||
+  ### role floor 16ch
+  docusaurus|metadata|t1|before 703x550 [186,124,180,212]|after 703x576 [186,119,188,210]
+  docusaurus|metadata|t2|before 703x466 [186,128,185,203]|after 703x440 [186,119,189,208]
+  docusaurus|metadata|t3|before 703x521 [126,225,351]|after 703x522 [126,220,356]
+  docusaurus|troubleshooting_slow_requests|t1|before 703x577 [230,174,298]|after 703x630 [207,208,287]
+  docusaurus|troubleshooting_slow_requests|t2|before 671x760 [187,233,250]|after 671x734 [172,246,251]
+  docusaurus|troubleshooting_slow_requests|t3|before 703x262 [135,229,338]|after 703x288 [123,247,332]
+  docusaurus|troubleshooting_slow_requests|t4|before 703x315 [119,168,414]|after 703x315 [110,205,387]
+  docusaurus|troubleshooting_slow_requests|t5|before 703x262 [143,160,399]|after 703x262 [134,197,372]
+  docusaurus|troubleshooting_slow_requests|t6|before 703x315 [117,177,408]|after 703x315 [108,213,381]
+  zensical|metadata|t2|before 688x409 [158,126,180,221]|after 688x409 [158,125,178,225]
+  zensical|metadata|t3|before 688x429 [113,182,391]|after 688x429 [113,180,394]
+  zensical|troubleshooting_slow_requests|t1|before 688x471 [194,174,318]|after 688x471 [182,192,312]
+  zensical|troubleshooting_slow_requests|t2|before 660x587 [150,245,263]|after 660x564 [143,254,262]
+  zensical|troubleshooting_slow_requests|t3|before 688x237 [146,216,324]|after 688x214 [141,224,321]
+  zensical|troubleshooting_slow_requests|t4|before 688x237 [132,156,398]|after 688x260 [128,176,382]
+  zensical|troubleshooting_slow_requests|t5|before 688x214 [154,149,383]|after 688x214 [150,168,368]
+  zensical|troubleshooting_slow_requests|t6|before 688x237 [131,164,391]|after 688x237 [127,184,375]
+  zensical|uaa-concepts|t1|before 688x957 [206,181,299]|after 688x980 [206,198,282]
+  starlight|scale-table-host|t1|before 632x2002 [199,149,284]|after 632x2002 [199,147,286]
+  starlight|metadata|t1|before 632x676 [173,117,177,166]|after 632x648 [173,114,173,172]
+  starlight|metadata|t2|before 632x560 [173,120,182,158]|after 632x532 [173,114,173,172]
+  starlight|metadata|t3|before 632x539 [115,212,305]|after 632x539 [115,206,312]
+  starlight|troubleshooting_slow_requests|t1|before 632x589 [201,170,261]|after 632x617 [178,197,257]
+  starlight|troubleshooting_slow_requests|t2|before 592x925 [185,206,201]|after 592x841 [151,219,222]
+  starlight|troubleshooting_slow_requests|t3|before 632x275 [118,219,295]|after 632x303 [106,230,296]
+  starlight|troubleshooting_slow_requests|t4|before 632x303 [105,166,362]|after 632x331 [95,196,341]
+  starlight|troubleshooting_slow_requests|t5|before 632x247 [123,158,351]|after 632x247 [114,190,328]
+  starlight|troubleshooting_slow_requests|t6|before 632x303 [103,173,356]|after 632x359 [94,202,336]
+  antora|metadata|t1|before 686x510 [157,121,160,247]|after 686x510 [157,115,176,237]
+  antora|metadata|t2|before 686x435 [157,123,166,239]|after 686x411 [157,118,180,231]
+  antora|metadata|t3|before 686x423 [107,225,353]|after 686x423 [107,222,356]
+  antora|troubleshooting_slow_requests|t1|before 686x457 [229,162,294]|after 686x481 [216,183,286]
+  antora|troubleshooting_slow_requests|t2|before 650x649 [184,222,243]|after 650x625 [176,233,240]
+  antora|troubleshooting_slow_requests|t3|before 686x227 [128,221,336]|after 686x227 [122,230,334]
+  antora|troubleshooting_slow_requests|t4|before 686x251 [111,154,420]|after 686x251 [105,178,402]
+  antora|troubleshooting_slow_requests|t5|before 686x203 [137,147,401]|after 686x227 [132,169,384]
+  antora|troubleshooting_slow_requests|t6|before 686x251 [109,164,413]|after 686x275 [104,186,395]
+  == 1280px: 15 tables unchanged, 37 changed||||
+  ### role floor 20ch
+  docusaurus|scale-table-host|t1|before 703x1909 [212,166,324]|after 703x1883 [212,162,328]
+  docusaurus|metadata|t1|before 703x550 [186,124,180,212]|after 734x532 [186,109,219,219]
+  docusaurus|metadata|t2|before 703x466 [186,128,185,203]|after 734x440 [186,109,219,219]
+  docusaurus|metadata|t3|before 703x521 [126,225,351]|after 703x522 [126,215,361]
+  docusaurus|troubleshooting_slow_requests|t1|before 703x577 [230,174,298]|after 703x630 [186,235,281]
+  docusaurus|troubleshooting_slow_requests|t2|before 671x760 [187,233,250]|after 671x708 [160,254,256]
+  docusaurus|troubleshooting_slow_requests|t3|before 703x262 [135,229,338]|after 703x315 [111,264,326]
+  docusaurus|troubleshooting_slow_requests|t4|before 703x315 [119,168,414]|after 703x341 [101,236,365]
+  docusaurus|troubleshooting_slow_requests|t5|before 703x262 [143,160,399]|after 703x288 [120,226,356]
+  docusaurus|troubleshooting_slow_requests|t6|before 703x315 [117,177,408]|after 703x341 [100,241,361]
+  docusaurus|uaa-concepts|t1|before 703x1316 [211,205,286]|after 703x1421 [211,228,264]
+  zensical|metadata|t1|before 688x498 [158,124,175,229]|after 688x498 [158,116,188,224]
+  zensical|metadata|t2|before 688x409 [158,126,180,221]|after 688x409 [158,117,189,222]
+  zensical|metadata|t3|before 688x429 [113,182,391]|after 688x406 [113,177,397]
+  zensical|troubleshooting_slow_requests|t1|before 688x471 [194,174,318]|after 688x495 [167,211,308]
+  zensical|troubleshooting_slow_requests|t2|before 660x587 [150,245,263]|after 660x587 [133,259,266]
+  zensical|troubleshooting_slow_requests|t3|before 688x237 [146,216,324]|after 688x237 [134,236,316]
+  zensical|troubleshooting_slow_requests|t4|before 688x237 [132,156,398]|after 688x283 [123,198,366]
+  zensical|troubleshooting_slow_requests|t5|before 688x214 [154,149,383]|after 688x214 [143,187,355]
+  zensical|troubleshooting_slow_requests|t6|before 688x237 [131,164,391]|after 688x260 [122,204,360]
+  zensical|uaa-concepts|t1|before 688x957 [206,181,299]|after 688x1072 [206,212,269]
+  starlight|scale-table-host|t1|before 632x2002 [199,149,284]|after 632x2030 [199,144,289]
+  starlight|metadata|t1|before 632x676 [173,117,177,166]|after 713x520 [173,113,213,213]
+  starlight|metadata|t2|before 632x560 [173,120,182,158]|after 713x424 [173,113,213,213]
+  starlight|metadata|t3|before 632x539 [115,212,305]|after 632x483 [115,200,317]
+  starlight|troubleshooting_slow_requests|t1|before 632x589 [201,170,261]|after 632x645 [157,224,251]
+  starlight|troubleshooting_slow_requests|t2|before 592x925 [185,206,201]|after 592x757 [139,226,227]
+  starlight|troubleshooting_slow_requests|t3|before 632x275 [118,219,295]|after 632x331 [94,247,291]
+  starlight|troubleshooting_slow_requests|t4|before 632x303 [105,166,362]|after 632x359 [87,226,319]
+  starlight|troubleshooting_slow_requests|t5|before 632x247 [123,158,351]|after 632x303 [100,220,312]
+  starlight|troubleshooting_slow_requests|t6|before 632x303 [103,173,356]|after 632x359 [86,230,316]
+  starlight|uaa-concepts|t1|before 632x1446 [190,196,246]|after 632x1614 [190,216,227]
+  antora|metadata|t1|before 686x510 [157,121,160,247]|after 686x510 [157,108,189,231]
+  antora|metadata|t2|before 686x435 [157,123,166,239]|after 686x411 [157,110,191,227]
+  antora|metadata|t3|before 686x423 [107,225,353]|after 686x399 [107,219,359]
+  antora|troubleshooting_slow_requests|t1|before 686x457 [229,162,294]|after 686x505 [201,202,282]
+  antora|troubleshooting_slow_requests|t2|before 650x649 [184,222,243]|after 650x625 [166,239,244]
+  antora|troubleshooting_slow_requests|t3|before 686x227 [128,221,336]|after 686x227 [114,241,330]
+  antora|troubleshooting_slow_requests|t4|before 686x251 [111,154,420]|after 686x275 [100,199,386]
+  antora|troubleshooting_slow_requests|t5|before 686x203 [137,147,401]|after 686x227 [125,189,371]
+  antora|troubleshooting_slow_requests|t6|before 686x251 [109,164,413]|after 686x275 [98,207,380]
+  == 1280px: 11 tables unchanged, 41 changed||||
+  ### role floor 24ch on every prose column (extension mode, injected into the original builds)
+  docusaurus|scale-table-host|t1|before 703x1909 [212,166,324]|after 703x1857 [212,159,331]
+  docusaurus|metadata|t1|before 703x550 [186,124,180,212]|after 821x532 [186,109,263,263]
+  docusaurus|metadata|t2|before 703x466 [186,128,185,203]|after 821x440 [186,109,263,263]
+  docusaurus|metadata|t3|before 703x521 [126,225,351]|after 703x522 [126,209,367]
+  docusaurus|troubleshooting_slow_requests|t1|before 703x577 [230,174,298]|after 703x683 [163,265,274]
+  docusaurus|troubleshooting_slow_requests|t2|before 671x760 [187,233,250]|after 674x708 [147,263,263]
+  docusaurus|troubleshooting_slow_requests|t3|before 703x262 [135,229,338]|after 703x341 [98,284,320]
+  docusaurus|troubleshooting_slow_requests|t4|before 703x315 [119,168,414]|after 703x367 [92,270,340]
+  docusaurus|troubleshooting_slow_requests|t5|before 703x262 [143,160,399]|after 703x341 [103,263,336]
+  docusaurus|troubleshooting_slow_requests|t6|before 703x315 [117,177,408]|after 703x367 [91,273,338]
+  docusaurus|uaa-concepts|t1|before 703x1316 [211,205,286]|after 713x1421 [186,263,263]
+  zensical|metadata|t1|before 688x498 [158,124,175,229]|after 688x498 [158,103,208,216]
+  zensical|metadata|t2|before 688x409 [158,126,180,221]|after 688x409 [158,104,208,216]
+  zensical|metadata|t3|before 688x429 [113,182,391]|after 688x406 [113,173,400]
+  zensical|troubleshooting_slow_requests|t1|before 688x471 [194,174,318]|after 688x518 [150,232,304]
+  zensical|troubleshooting_slow_requests|t2|before 660x587 [150,245,263]|after 660x656 [123,265,270]
+  zensical|troubleshooting_slow_requests|t3|before 688x237 [146,216,324]|after 688x237 [126,249,311]
+  zensical|troubleshooting_slow_requests|t4|before 688x237 [132,156,398]|after 688x283 [117,221,347]
+  zensical|troubleshooting_slow_requests|t5|before 688x214 [154,149,383]|after 688x237 [134,210,342]
+  zensical|troubleshooting_slow_requests|t6|before 688x237 [131,164,391]|after 688x283 [116,227,343]
+  zensical|uaa-concepts|t1|before 688x957 [206,181,299]|after 688x1095 [206,226,254]
+  starlight|scale-table-host|t1|before 632x2002 [199,149,284]|after 632x2002 [199,139,294]
+  starlight|metadata|t1|before 632x676 [173,117,177,166]|after 798x520 [173,113,256,256]
+  starlight|metadata|t2|before 632x560 [173,120,182,158]|after 798x424 [173,113,256,256]
+  starlight|metadata|t3|before 632x539 [115,212,305]|after 632x483 [115,194,323]
+  starlight|troubleshooting_slow_requests|t1|before 632x589 [201,170,261]|after 651x701 [139,256,256]
+  starlight|troubleshooting_slow_requests|t2|before 592x925 [185,206,201]|after 646x729 [134,256,256]
+  starlight|troubleshooting_slow_requests|t3|before 632x275 [118,219,295]|after 632x331 [80,267,284]
+  starlight|troubleshooting_slow_requests|t4|before 632x303 [105,166,362]|after 632x387 [77,260,295]
+  starlight|troubleshooting_slow_requests|t5|before 632x247 [123,158,351]|after 632x331 [83,256,293]
+  starlight|troubleshooting_slow_requests|t6|before 632x303 [103,173,356]|after 632x387 [77,261,294]
+  starlight|uaa-concepts|t1|before 632x1446 [190,196,246]|after 681x1446 [169,256,256]
+  antora|metadata|t1|before 686x510 [157,121,160,247]|after 686x510 [157,97,208,223]
+  antora|metadata|t2|before 686x435 [157,123,166,239]|after 686x411 [157,98,208,222]
+  antora|metadata|t3|before 686x423 [107,225,353]|after 686x399 [107,215,363]
+  antora|troubleshooting_slow_requests|t1|before 686x457 [229,162,294]|after 686x505 [185,223,277]
+  antora|troubleshooting_slow_requests|t2|before 650x649 [184,222,243]|after 650x625 [156,245,248]
+  antora|troubleshooting_slow_requests|t3|before 686x227 [128,221,336]|after 686x251 [105,255,325]
+  antora|troubleshooting_slow_requests|t4|before 686x251 [111,154,420]|after 686x275 [93,223,369]
+  antora|troubleshooting_slow_requests|t5|before 686x203 [137,147,401]|after 686x227 [115,211,359]
+  antora|troubleshooting_slow_requests|t6|before 686x251 [109,164,413]|after 686x275 [92,229,364]
+  antora|uaa-concepts|t1|before 686x1100 [206,200,280]|after 686x1172 [206,217,263]
+  == 1280px: 14 tables unchanged, 42 changed||||
+
+  At 12ch the Result / Explanation / Action tables already shift by up to
+  23 px; from 20ch some tables become wider than the column: metadata
+  t1/t2 in Docusaurus (734, at 24ch 821 in 703) and Starlight (713, at
+  24ch 798 in 632); at 24ch also uaa-concepts (Docusaurus 713, Starlight
+  681) and troubleshooting t1/t2 in Starlight (651, 646).
+
+A floor on the first column of every table (native mode, other test pages)
+  `article table tr > :first-child, .doc table tr > :first-child { min-width: 24ch }`,
+  injected into the original builds. The first column of most test tables
+  is a key column; it widens to 24ch, and some tables become wider than
+  the column (Starlight metadata 695 and 677 in 632, uaa-concepts 661).
+  docusaurus|scale-table-host|t1|before 703x1513 [124,105,473]|after 703x1857 [263,103,336]
+  docusaurus|credential-types|t1|before 703x572 [126,576]|after 703x730 [263,439]
+  docusaurus|metadata|t1|before 703x532 [124,134,195,249]|after 703x678 [263,112,161,166]
+  docusaurus|metadata|t2|before 703x440 [134,136,198,233]|after 703x568 [263,115,166,158]
+  docusaurus|metadata|t3|before 703x521 [125,225,352]|after 703x626 [263,205,235]
+  docusaurus|troubleshooting_slow_requests|t1|before 703x577 [230,174,298]|after 703x629 [302,156,244]
+  docusaurus|troubleshooting_slow_requests|t2|before 671x760 [187,233,250]|after 671x945 [281,188,202]
+  docusaurus|troubleshooting_slow_requests|t3|before 703x262 [135,229,338]|after 703x315 [265,186,251]
+  docusaurus|troubleshooting_slow_requests|t4|before 703x315 [119,168,414]|after 703x394 [264,147,291]
+  docusaurus|troubleshooting_slow_requests|t5|before 703x262 [143,160,399]|after 703x288 [265,141,296]
+  docusaurus|troubleshooting_slow_requests|t6|before 703x315 [117,177,408]|after 703x341 [264,151,287]
+  docusaurus|uaa-concepts|t1|before 703x1237 [186,212,303]|after 703x1527 [263,189,250]
+  docusaurus|uaa-concepts|t2|before 703x894 [178,524]|after 703x1052 [263,439]
+  docusaurus|uaa-performance|t1|before 703x622 [101,299,302]|after 703x492 [263,213,226]
+  zensical|scale-table-host|t1|before 688x1410 [172,172,343]|after 688x1480 [207,163,316]
+  zensical|credential-types|t1|before 688x523 [137,549]|after 688x523 [207,479]
+  zensical|metadata|t1|before 688x498 [126,128,183,248]|after 688x498 [207,116,163,199]
+  zensical|metadata|t2|before 688x409 [129,131,187,239]|after 688x409 [207,119,168,192]
+  zensical|metadata|t3|before 688x429 [110,183,393]|after 688x452 [207,161,318]
+  zensical|troubleshooting_slow_requests|t1|before 688x471 [194,174,318]|after 688x471 [260,157,269]
+  zensical|troubleshooting_slow_requests|t2|before 660x587 [150,245,263]|after 660x679 [233,205,221]
+  zensical|troubleshooting_slow_requests|t3|before 688x237 [146,216,324]|after 688x260 [215,194,278]
+  zensical|troubleshooting_slow_requests|t4|before 688x237 [132,156,398]|after 688x283 [212,144,330]
+  zensical|troubleshooting_slow_requests|t5|before 688x214 [154,149,383]|after 688x214 [216,139,331]
+  zensical|troubleshooting_slow_requests|t6|before 688x237 [131,164,391]|after 688x260 [212,150,324]
+  zensical|uaa-concepts|t2|before 688x704 [172,515]|after 688x727 [207,479]
+  zensical|uaa-performance|t1|before 688x596 [100,301,285]|after 688x501 [207,244,234]
+  starlight|scale-table-host|t1|before 632x1890 [158,158,316]|after 632x2450 [256,137,239]
+  starlight|credential-types|t1|before 632x556 [126,506]|after 632x724 [256,376]
+  starlight|metadata|t1|before 632x568 [103,128,194,207]|after 695x704 [256,113,172,154]
+  starlight|metadata|t2|before 632x424 [114,130,197,192]|after 677x588 [256,113,172,136]
+  starlight|metadata|t3|before 632x539 [113,212,307]|after 632x707 [256,192,184]
+  starlight|troubleshooting_slow_requests|t1|before 632x589 [201,170,261]|after 632x673 [283,149,200]
+  starlight|troubleshooting_slow_requests|t2|before 592x925 [185,206,201]|after 592x1233 [281,160,151]
+  starlight|troubleshooting_slow_requests|t3|before 632x275 [118,219,295]|after 632x331 [257,173,202]
+  starlight|troubleshooting_slow_requests|t4|before 632x303 [105,166,362]|after 632x471 [257,143,233]
+  starlight|troubleshooting_slow_requests|t5|before 632x247 [123,158,351]|after 632x303 [257,136,239]
+  starlight|troubleshooting_slow_requests|t6|before 632x303 [103,173,356]|after 632x415 [257,145,230]
+  starlight|uaa-concepts|t1|before 632x1446 [190,196,246]|after 661x1670 [256,185,220]
+  starlight|uaa-concepts|t2|before 632x958 [161,471]|after 632x1182 [256,376]
+  starlight|uaa-performance|t1|before 632x545 [90,276,266]|after 632x413 [256,188,188]
+  antora|scale-table-host|t1|before 792x1324 [198,198,396]|after 792x1324 [204,196,391]
+  antora|credential-types|t1|before 686x490 [137,548]|after 686x490 [204,481]
+  antora|metadata|t1|before 686x510 [124,125,170,265]|after 686x582 [204,115,146,219]
+  antora|metadata|t2|before 686x411 [129,127,175,254]|after 686x435 [204,117,151,213]
+  antora|metadata|t3|before 686x423 [106,225,354]|after 686x495 [204,209,271]
+  antora|troubleshooting_slow_requests|t1|before 686x457 [229,162,294]|after 686x505 [263,154,268]
+  antora|troubleshooting_slow_requests|t2|before 650x649 [184,222,243]|after 650x673 [234,198,217]
+  antora|troubleshooting_slow_requests|t3|before 686x227 [128,221,336]|after 686x251 [215,192,278]
+  antora|troubleshooting_slow_requests|t4|before 686x251 [111,154,420]|after 686x275 [212,139,334]
+  antora|troubleshooting_slow_requests|t5|before 686x203 [137,147,401]|after 686x203 [216,134,335]
+  antora|troubleshooting_slow_requests|t6|before 686x251 [109,164,413]|after 686x251 [211,145,329]
+  antora|uaa-concepts|t2|before 686x734 [171,514]|after 686x782 [204,481]
+  == 1280px: 3 tables unchanged, 53 changed||||
+
+Regression of the patch (before builds vs patched builds, all 225 tables)
+  docusaurus	passthrough	roles-table-host	t1	before 1053x5518 [106,75,75,83,93,83,93,62,93,104,83,104]	after 1209x2835 [263,75,75,83,93,83,93,62,93,104,83,104]
+  docusaurus	extension	roles-table-host	t1	before 1060x5518 [113,75,75,83,93,83,93,62,93,104,83,104]	after 1209x2859 [263,75,75,83,93,83,93,62,93,104,83,104]
+  docusaurus	native	roles-table-host	t1	before 1053x5518 [106,75,75,83,93,83,93,62,93,104,83,104]	after 1209x2835 [263,75,75,83,93,83,93,62,93,104,83,104]
+  zensical	passthrough	roles-table-host	t1	before 1200x4830 [100,100,100,100,100,100,100,100,100,100,100,100]	after 1307x2688 [207,100,100,100,100,100,100,100,100,100,100,100]
+  zensical	extension	roles-table-host	t1	before 1204x4811 [102,100,100,100,100,100,100,100,100,100,100,100]	after 1309x2688 [207,100,100,100,100,100,100,100,100,100,100,100]
+  zensical	native	roles-table-host	t1	before 1202x4830 [100,100,100,100,100,100,100,100,100,100,100,100]	after 1309x2688 [207,100,100,100,100,100,100,100,100,100,100,100]
+  zensical	native-plain	roles-table-host	t1	before 1202x4830 [100,100,100,100,100,100,100,100,100,100,100,100]	after 1309x2688 [207,100,100,100,100,100,100,100,100,100,100,100]
+  starlight	passthrough	roles-table-host	t1	before 1087x5461 [97,80,80,88,99,88,99,68,99,109,88,93]	after 1246x2605 [256,80,80,88,99,88,99,68,99,109,88,93]
+  starlight	extension	roles-table-host	t1	before 1092x5442 [102,80,80,88,99,88,99,68,99,109,88,93]	after 1246x2621 [256,80,80,88,99,88,99,68,99,109,88,93]
+  starlight	native	roles-table-host	t1	before 1087x5461 [97,80,80,88,99,88,99,68,99,109,88,93]	after 1246x2605 [256,80,80,88,99,88,99,68,99,109,88,93]
+  starlight	native-plain	roles-table-host	t1	before 1087x5461 [97,80,80,88,99,88,99,68,99,109,88,93]	after 1246x2605 [256,80,80,88,99,88,99,68,99,109,88,93]
+  antora	passthrough	roles-table-host	t1	before 882x4851 [94,63,63,68,78,68,79,50,78,86,68,86]	after 992x2571 [204,63,63,68,78,68,79,50,78,86,68,86]
+  antora	extension	roles-table-host	t1	before 883x4851 [95,63,63,68,78,68,79,50,78,86,68,86]	after 992x2595 [204,63,63,68,78,68,79,50,78,86,68,86]
+  antora	native	roles-table-host	t1	before 883x4851 [95,63,63,68,78,68,79,50,78,86,68,86]	after 992x2595 [204,63,63,68,78,68,79,50,78,86,68,86]
+  antora	native-plain	roles-table-host	t1	before 882x4851 [94,63,63,68,78,68,79,50,78,86,68,86]	after 992x2571 [204,63,63,68,78,68,79,50,78,86,68,86]
+  == 1280px: 210 tables unchanged, 15 changed
+  docusaurus	passthrough	roles-table-host	t1	before 1053x5518 [106,75,75,83,93,83,93,62,93,104,83,104]	after 1209x2835 [263,75,75,83,93,83,93,62,93,104,83,104]
+  docusaurus	extension	roles-table-host	t1	before 1060x5518 [113,75,75,83,93,83,93,62,93,104,83,104]	after 1209x2859 [263,75,75,83,93,83,93,62,93,104,83,104]
+  docusaurus	native	roles-table-host	t1	before 1053x5518 [106,75,75,83,93,83,93,62,93,104,83,104]	after 1209x2835 [263,75,75,83,93,83,93,62,93,104,83,104]
+  zensical	passthrough	roles-table-host	t1	before 1200x4830 [100,100,100,100,100,100,100,100,100,100,100,100]	after 1307x2688 [207,100,100,100,100,100,100,100,100,100,100,100]
+  zensical	extension	roles-table-host	t1	before 1204x4811 [102,100,100,100,100,100,100,100,100,100,100,100]	after 1309x2688 [207,100,100,100,100,100,100,100,100,100,100,100]
+  zensical	native	roles-table-host	t1	before 1202x4830 [100,100,100,100,100,100,100,100,100,100,100,100]	after 1309x2688 [207,100,100,100,100,100,100,100,100,100,100,100]
+  zensical	native-plain	roles-table-host	t1	before 1202x4830 [100,100,100,100,100,100,100,100,100,100,100,100]	after 1309x2688 [207,100,100,100,100,100,100,100,100,100,100,100]
+  starlight	passthrough	roles-table-host	t1	before 1087x5461 [97,80,80,88,99,88,99,68,99,109,88,93]	after 1246x2605 [256,80,80,88,99,88,99,68,99,109,88,93]
+  starlight	extension	roles-table-host	t1	before 1092x5442 [102,80,80,88,99,88,99,68,99,109,88,93]	after 1246x2621 [256,80,80,88,99,88,99,68,99,109,88,93]
+  starlight	native	roles-table-host	t1	before 1087x5461 [97,80,80,88,99,88,99,68,99,109,88,93]	after 1246x2605 [256,80,80,88,99,88,99,68,99,109,88,93]
+  starlight	native-plain	roles-table-host	t1	before 1087x5461 [97,80,80,88,99,88,99,68,99,109,88,93]	after 1246x2605 [256,80,80,88,99,88,99,68,99,109,88,93]
+  antora	passthrough	roles-table-host	t1	before 834x4585 [89,59,59,64,74,64,74,47,74,82,64,81]	after 938x2431 [193,59,59,64,74,64,74,47,74,82,64,81]
+  antora	extension	roles-table-host	t1	before 834x4585 [90,59,59,64,74,64,74,47,74,82,64,81]	after 938x2454 [193,59,59,64,74,64,74,47,74,82,64,81]
+  antora	native	roles-table-host	t1	before 834x4585 [90,59,59,64,74,64,74,47,74,82,64,81]	after 938x2454 [193,59,59,64,74,64,74,47,74,82,64,81]
+  antora	native-plain	roles-table-host	t1	before 834x4585 [89,59,59,64,74,64,74,47,74,82,64,81]	after 938x2431 [193,59,59,64,74,64,74,47,74,82,64,81]
+  == 390px: 210 tables unchanged, 15 changed
+  make check-wide equivalent on the patched builds (node
+  checks/wide-tables.mjs, 1280 and 390 px): Docusaurus 90 passed,
+  Zensical 120, Starlight 120, Antora 120; 0 failed.
+
+Continuation cues (exploration, CSS injected; files in cues/)
+  shadow    scroll-shadow on the scroll box: two covers in the page colour
+            (background-attachment local) over two 1rem shadows
+            (background-attachment scroll). Box: Docusaurus and Starlight
+            the table; Zensical .md-typeset__scrollwrap (classless tables,
+            whose own page-colour background is made transparent) and
+            table.table; Antora .table-scroll.
+  sticky    first column position: sticky; left: 0; z-index 1, with the
+            page colour as background.
+  scrollbar ::-webkit-scrollbar { height: 10px } and a thumb colour.
+
+  Strip differences (mean |luminance difference|; a range covers the
+  three modes passthrough, extension, native):
+  browser  tool        scheme  shadow: right@0  right@end  left@0  left@end   sticky@240
+  chrome   docusaurus  light        31.5-31.5    0.0-0.0 0.0-0.0 32.1-32.2   true
+  chrome   docusaurus  dark         27.3-27.4    0.0-0.0 0.0-0.0 27.9-27.9   true
+  chrome   zensical    light        34.0-36.5    0.0-0.0 0.0-0.0 33.2-36.5   true
+  chrome   zensical    dark         27.1-29.1    0.2-0.2 0.0-0.2 26.6-29.1   true
+  chrome   antora      light        39.6-39.7    0.0-0.0 0.0-0.0 35.7-35.7   true
+  chrome   starlight   light        29.9-29.9    0.0-0.0 0.0-0.0 29.5-29.5   true
+  chrome   starlight   dark         25.6-25.6    0.0-0.0 0.0-0.0 25.3-25.3   true
+  firefox  docusaurus  light        31.6-31.7    0.0-0.0 0.0-0.0 32.4-32.4   true
+  firefox  docusaurus  dark         27.1-27.1    0.0-0.0 0.0-0.0 27.8-27.8   true
+  firefox  zensical    light        34.3-36.9    0.0-0.0 0.0-0.0 33.5-36.9   true
+  firefox  zensical    dark         27.1-29.1    0.0-0.0 0.0-0.0 26.6-29.1   true
+  firefox  starlight   light        29.7-29.7    0.0-0.0 0.0-0.0 29.4-29.5   true
+  firefox  starlight   dark         25.7-25.7    0.0-0.0 0.0-0.0 25.4-25.5   true
+  firefox  antora      light        39.7-39.7    0.0-0.0 0.0-0.0 35.7-35.7   true
+  webkit   docusaurus  light        31.6-31.6    0.0-0.0 0.0-0.0 32.2-32.2   true
+  webkit   docusaurus  dark         27.5-27.5    0.0-0.0 0.0-0.0 28.0-28.0   true
+  webkit   zensical    light        34.0-36.6    0.0-0.0 0.0-0.0 33.4-36.6   true
+  webkit   zensical    dark         27.1-29.1    0.0-0.0 0.0-0.0 26.6-29.1   true
+  webkit   starlight   light        29.9-29.9    0.0-0.0 0.0-0.0 29.6-29.6   true
+  webkit   starlight   dark         25.7-25.7    0.0-0.0 0.0-0.0 25.4-25.4   true
+  webkit   antora      light        39.7-39.7    0.0-0.0 0.0-0.0 35.4-35.8   true
+  Sticky, what broke and the fix used for the rows above:
+    Zensical classless tables did not stick as first written: the theme
+    makes the table a scroll container of its own (overflow auto), so the
+    cells stick to the table, which never scrolls. Fixed with overflow:
+    visible on the table inside the wrapper.
+    Antora (Chrome): the sticky cells hid the collapsed borders of their
+    own cells. Docusaurus in Firefox and WebKit: no line between the sticky
+    column and the rest (Chrome kept the collapsed border). Starlight has
+    no vertical lines, so nothing separates the sticky column. Fixed with
+    an inset box-shadow line on the sticky cells (cues/sticky-*.css).
+    Docusaurus stripes rows with a translucent colour on the row; an opaque
+    sticky cell hides it, so the stripe is laid over the cell's background.
+    The Docusaurus fix was re-run in Firefox only (sticks in all modes,
+    light and dark; screenshot docusaurus-roles-sticky-firefox-with-separator.png).
+
+  Scrollbar (box height minus client height, px):
+    Chrome headless as Playwright starts it passes --hide-scrollbars, so
+    the cue runs report 0. Without that switch (sbar.mjs): default 0 in all
+    four (overlay); with ::-webkit-scrollbar 10 px in Docusaurus, Zensical
+    and Starlight, 0 in Antora, whose UI sets scrollbar-width: thin and
+    scrollbar-color on every element (base.css L116-L126). Firefox 155 and
+    WebKit 26.6 (headless): 0 with and without the rule.
+    Where the scrollbar would be: at the bottom of the box, which ends
+    4,010-4,700 px below the bottom of the window when the box's top is
+    80 px from the top of the window (before); about 1,750-2,040 px with
+    the 24ch floor.
+
+Patched builds: shadow, no injection (as built minus the shadow removed)
+  chrome|antora|light|0  extension:38.3/0.0 native-plain:38.3/0.0 native:38.3/0.0 passthrough:38.3/0.0
+  chrome|antora|light|240  extension:0.0/35.5 native-plain:0.0/35.5 native:0.0/35.5 passthrough:0.0/35.5
+  chrome|antora|light|end(200)  extension:0.0/35.5 native-plain:0.0/35.5 native:0.0/35.5 passthrough:0.0/35.5
+  chrome|docusaurus|dark|0  extension:27.1/0.0 native:27.1/0.0 passthrough:27.1/0.0
+  chrome|docusaurus|dark|240  extension:27.2/28.5 native:27.2/28.3 passthrough:27.2/28.3
+  chrome|docusaurus|dark|end(506)  extension:0.0/27.5 native:0.0/27.5 passthrough:0.0/27.5
+  chrome|docusaurus|light|0  extension:31.2/0.0 native:31.2/0.0 passthrough:31.2/0.0
+  chrome|docusaurus|light|240  extension:31.3/32.8 native:31.3/32.6 passthrough:31.3/32.6
+  chrome|docusaurus|light|end(506)  extension:0.0/31.7 native:0.0/31.7 passthrough:0.0/31.7
+  chrome|starlight|dark|0  extension:24.2/0.0 native-plain:24.2/0.0 native:24.2/0.0 passthrough:24.2/0.0
+  chrome|starlight|dark|240  extension:25.4/25.4 native-plain:25.4/25.3 native:25.4/25.3 passthrough:25.4/25.3
+  chrome|starlight|dark|end(614)  extension:0.0/25.0 native-plain:0.0/25.0 native:0.0/25.0 passthrough:0.0/25.0
+  chrome|starlight|light|0  extension:28.3/0.0 native-plain:28.2/0.0 native:28.2/0.0 passthrough:28.2/0.0
+  chrome|starlight|light|240  extension:29.6/29.5 native-plain:29.6/29.5 native:29.6/29.5 passthrough:29.6/29.5
+  chrome|starlight|light|end(614)  extension:0.0/29.1 native-plain:0.0/29.0 native:0.0/29.0 passthrough:0.0/29.0
+  chrome|zensical|dark|0  extension:29.1/0.2 native-plain:29.1/0.2 native:29.1/0.2 passthrough:27.2/0.0
+  chrome|zensical|dark|240  extension:28.1/27.9 native-plain:28.1/27.9 native:28.1/27.9 passthrough:27.0/26.2
+  chrome|zensical|dark|end(621)  extension:0.2/29.1 native-plain:0.2/29.1 native:0.2/29.1 passthrough:0.2/26.5
+  chrome|zensical|light|0  extension:36.4/0.0 native-plain:36.4/0.0 native:36.4/0.0 passthrough:34.0/0.0
+  chrome|zensical|light|240  extension:35.1/35.0 native-plain:35.1/35.0 native:35.1/35.0 passthrough:33.8/32.7
+  chrome|zensical|light|end(621)  extension:0.0/36.5 native-plain:0.0/36.5 native:0.0/36.5 passthrough:0.0/33.1
+  firefox|antora|light|0  extension:38.3/0.0 native-plain:38.3/0.0 native:38.3/0.0 passthrough:38.3/0.0
+  firefox|antora|light|240  extension:0.0/35.5 native-plain:0.0/35.5 native:0.0/35.5 passthrough:0.0/35.5
+  firefox|antora|light|end(201)  extension:0.0/35.5 native-plain:0.0/35.5 native:0.0/35.5 passthrough:0.0/35.5
+  firefox|docusaurus|dark|0  extension:26.8/0.0 native:26.8/0.0 passthrough:26.8/0.0
+  firefox|docusaurus|dark|240  extension:26.9/28.2 native:26.9/28.0 passthrough:26.9/28.0
+  firefox|docusaurus|dark|end(506)  extension:0.0/27.2 native:0.0/27.2 passthrough:0.0/27.2
+  firefox|docusaurus|light|0  extension:31.3/0.0 native:31.3/0.0 passthrough:31.3/0.0
+  firefox|docusaurus|light|240  extension:31.5/33.0 native:31.5/32.8 passthrough:31.5/32.8
+  firefox|docusaurus|light|end(506)  extension:0.0/31.8 native:0.0/31.8 passthrough:0.0/31.8
+  firefox|starlight|dark|0  extension:24.3/0.0 native-plain:24.3/0.0 native:24.3/0.0 passthrough:24.3/0.0
+  firefox|starlight|dark|240  extension:25.5/25.5 native-plain:25.4/25.4 native:25.4/25.4 passthrough:25.4/25.4
+  firefox|starlight|dark|end(614)  extension:0.0/25.1 native-plain:0.0/25.1 native:0.0/25.1 passthrough:0.0/25.1
+  firefox|starlight|light|0  extension:28.2/0.0 native-plain:28.1/0.0 native:28.1/0.0 passthrough:28.1/0.0
+  firefox|starlight|light|240  extension:29.5/29.5 native-plain:29.4/29.4 native:29.4/29.4 passthrough:29.4/29.4
+  firefox|starlight|light|end(614)  extension:0.0/29.1 native-plain:0.0/29.0 native:0.0/29.0 passthrough:0.0/29.0
+  firefox|zensical|dark|0  extension:29.1/0.0 native-plain:29.1/0.0 native:29.1/0.0 passthrough:27.2/0.0
+  firefox|zensical|dark|240  extension:28.1/28.0 native-plain:28.1/28.0 native:28.1/28.0 passthrough:27.0/26.2
+  firefox|zensical|dark|end(621)  extension:0.0/29.1 native-plain:0.0/29.1 native:0.0/29.1 passthrough:0.0/26.5
+  firefox|zensical|light|0  extension:36.8/0.0 native-plain:36.8/0.0 native:36.8/0.0 passthrough:34.3/0.0
+  firefox|zensical|light|240  extension:35.4/35.3 native-plain:35.4/35.3 native:35.4/35.3 passthrough:34.2/33.0
+  firefox|zensical|light|end(621)  extension:0.0/36.8 native-plain:0.0/36.8 native:0.0/36.8 passthrough:0.0/33.5
+  webkit|antora|light|0  extension:38.4/0.0 native-plain:38.4/0.0 native:38.4/0.0 passthrough:38.4/0.0
+  webkit|antora|light|240  extension:0.0/35.6 native-plain:0.0/35.6 native:0.0/35.6 passthrough:0.0/35.6
+  webkit|antora|light|end(201)  extension:0.0/35.6 native-plain:0.0/35.6 native:0.0/35.6 passthrough:0.0/35.6
+  webkit|docusaurus|dark|0  extension:27.1/0.0 native:27.1/0.0 passthrough:27.1/0.0
+  webkit|docusaurus|dark|240  extension:27.4/28.6 native:27.4/28.6 passthrough:27.4/28.6
+  webkit|docusaurus|dark|end(499)  extension:0.0/27.5 native:0.0/27.5 passthrough:0.0/27.5
+  webkit|docusaurus|light|0  extension:31.2/0.0 native:31.2/0.0 passthrough:31.2/0.0
+  webkit|docusaurus|light|240  extension:31.6/32.9 native:31.6/32.9 passthrough:31.6/32.9
+  webkit|docusaurus|light|end(499)  extension:0.0/31.7 native:0.0/31.7 passthrough:0.0/31.7
+  webkit|starlight|dark|0  extension:24.5/0.0 native-plain:24.5/0.0 native:24.5/0.0 passthrough:24.5/0.0
+  webkit|starlight|dark|240  extension:24.4/25.5 native-plain:24.4/25.5 native:24.4/25.5 passthrough:24.4/25.5
+  webkit|starlight|dark|end(606)  extension:0.0/25.1 native-plain:0.0/25.1 native:0.0/25.1 passthrough:0.0/25.1
+  webkit|starlight|light|0  extension:28.5/0.0 native-plain:28.5/0.0 native:28.5/0.0 passthrough:28.5/0.0
+  webkit|starlight|light|240  extension:28.5/29.7 native-plain:28.5/29.7 native:28.5/29.7 passthrough:28.5/29.7
+  webkit|starlight|light|end(606)  extension:0.0/29.3 native-plain:0.0/29.3 native:0.0/29.3 passthrough:0.0/29.3
+  webkit|zensical|dark|0  extension:29.1/0.0 native-plain:29.1/0.0 native:29.1/0.0 passthrough:27.2/0.0
+  webkit|zensical|dark|240  extension:28.1/27.9 native-plain:28.1/27.9 native:28.1/27.9 passthrough:27.0/26.2
+  webkit|zensical|dark|end(621)  extension:0.0/29.1 native-plain:0.0/29.1 native:0.0/29.1 passthrough:0.0/26.5
+  webkit|zensical|light|0  extension:36.5/0.0 native-plain:36.5/0.0 native:36.5/0.0 passthrough:34.1/0.0
+  webkit|zensical|light|240  extension:35.2/35.0 native-plain:35.2/35.0 native:35.2/35.0 passthrough:33.9/32.9
+  webkit|zensical|light|end(621)  extension:0.0/36.6 native-plain:0.0/36.6 native:0.0/36.6 passthrough:0.0/33.2
+  (right strip / left strip, per mode)
+
+  Tables that fit the column, as built vs with the shadow rules removed
+  (fit-noshadow.mjs, 1280 px, every mode): 152 of 210 screenshots
+  identical; the other 58 (Zensical, and Antora uaa-performance) differ in
+  0-246 pixels, up to 56 levels in one channel, along text and border
+  edges: antialiasing over a transparent rather than an opaque layer. No
+  gradient: a 1rem shadow over a table's height would be thousands of
+  pixels.
+  DIFF zensical passthrough scale-table-host t1: 0 px differ in the 24-px edge strips (corners excluded); 509 px differ in all, max channel diff 56, x 1-686 of 688
+  DIFF zensical passthrough credential-types t1: 0 px differ in the 24-px edge strips (corners excluded); 4 px differ in all, max channel diff 21, x 1-686 of 688
+  DIFF zensical passthrough metadata t1: 0 px differ in the 24-px edge strips (corners excluded); 59 px differ in all, max channel diff 56, x 1-686 of 688
+  DIFF zensical passthrough metadata t2: 0 px differ in the 24-px edge strips (corners excluded); 4 px differ in all, max channel diff 21, x 1-686 of 688
+  DIFF zensical passthrough metadata t3: 2 px differ in the 24-px edge strips (corners excluded); 125 px differ in all, max channel diff 56, x 17-702 of 720
+  DIFF zensical passthrough troubleshooting_slow_requests t1: 0 px differ in the 24-px edge strips (corners excluded); 4 px differ in all, max channel diff 21, x 1-686 of 688
+  DIFF zensical passthrough troubleshooting_slow_requests t2: 0 px differ in the 24-px edge strips (corners excluded); 177 px differ in all, max channel diff 56, x 1-658 of 659
+  DIFF zensical passthrough troubleshooting_slow_requests t3: 0 px differ in the 24-px edge strips (corners excluded); 4 px differ in all, max channel diff 21, x 1-686 of 688
+  DIFF zensical passthrough troubleshooting_slow_requests t4: 0 px differ in the 24-px edge strips (corners excluded); 171 px differ in all, max channel diff 56, x 1-686 of 688
+  DIFF zensical passthrough troubleshooting_slow_requests t5: 0 px differ in the 24-px edge strips (corners excluded); 5 px differ in all, max channel diff 21, x 1-686 of 688
+  DIFF zensical passthrough troubleshooting_slow_requests t6: 0 px differ in the 24-px edge strips (corners excluded); 11 px differ in all, max channel diff 21, x 1-687 of 688
+  DIFF zensical passthrough uaa-concepts t1: 0 px differ in the 24-px edge strips (corners excluded); 148 px differ in all, max channel diff 56, x 1-686 of 688
+  DIFF zensical passthrough uaa-concepts t2: 0 px differ in the 24-px edge strips (corners excluded); 5 px differ in all, max channel diff 21, x 1-686 of 688
+  DIFF zensical extension scale-table-host t1: 246 px differ in the 24-px edge strips (corners excluded); 798 px differ in all, max channel diff 56, x 0-702 of 720
+  DIFF zensical extension credential-types t1: 24 px differ in the 24-px edge strips (corners excluded); 108 px differ in all, max channel diff 56, x 0-702 of 720
+  DIFF zensical extension metadata t1: 2 px differ in the 24-px edge strips (corners excluded); 4 px differ in all, max channel diff 10, x 17-702 of 720
+  DIFF zensical extension metadata t2: 25 px differ in the 24-px edge strips (corners excluded); 27 px differ in all, max channel diff 10, x 0-702 of 720
+  DIFF zensical extension metadata t3: 14 px differ in the 24-px edge strips (corners excluded); 332 px differ in all, max channel diff 56, x 0-702 of 720
+  DIFF zensical extension troubleshooting_slow_requests t1: 5 px differ in the 24-px edge strips (corners excluded); 7 px differ in all, max channel diff 10, x 0-702 of 720
+  DIFF zensical extension troubleshooting_slow_requests t2: 2 px differ in the 24-px edge strips (corners excluded); 160 px differ in all, max channel diff 56, x 17-674 of 691
+  DIFF zensical extension troubleshooting_slow_requests t3: 2 px differ in the 24-px edge strips (corners excluded); 4 px differ in all, max channel diff 10, x 17-702 of 720
+  DIFF zensical extension troubleshooting_slow_requests t4: 2 px differ in the 24-px edge strips (corners excluded); 4 px differ in all, max channel diff 10, x 17-702 of 720
+  DIFF zensical extension troubleshooting_slow_requests t5: 2 px differ in the 24-px edge strips (corners excluded); 4 px differ in all, max channel diff 10, x 17-702 of 720
+  DIFF zensical extension troubleshooting_slow_requests t6: 11 px differ in the 24-px edge strips (corners excluded); 13 px differ in all, max channel diff 10, x 0-703 of 720
+  DIFF zensical extension uaa-concepts t1: 174 px differ in the 24-px edge strips (corners excluded); 176 px differ in all, max channel diff 10, x 0-702 of 720
+  DIFF zensical extension uaa-concepts t2: 2 px differ in the 24-px edge strips (corners excluded); 4 px differ in all, max channel diff 10, x 17-702 of 720
+  DIFF zensical extension uaa-performance t1: 0 px differ in the 24-px edge strips (corners excluded); 3 px differ in all, max channel diff 1, x 311-622 of 688
+  DIFF zensical native scale-table-host t1: 97 px differ in the 24-px edge strips (corners excluded); 99 px differ in all, max channel diff 10, x 0-702 of 720
+  DIFF zensical native credential-types t1: 24 px differ in the 24-px edge strips (corners excluded); 26 px differ in all, max channel diff 10, x 0-702 of 720
+  DIFF zensical native metadata t1: 2 px differ in the 24-px edge strips (corners excluded); 4 px differ in all, max channel diff 10, x 17-702 of 720
+  DIFF zensical native metadata t2: 25 px differ in the 24-px edge strips (corners excluded); 27 px differ in all, max channel diff 10, x 0-702 of 720
+  DIFF zensical native metadata t3: 14 px differ in the 24-px edge strips (corners excluded); 137 px differ in all, max channel diff 56, x 0-702 of 720
+  DIFF zensical native troubleshooting_slow_requests t1: 5 px differ in the 24-px edge strips (corners excluded); 7 px differ in all, max channel diff 10, x 0-702 of 720
+  DIFF zensical native troubleshooting_slow_requests t2: 2 px differ in the 24-px edge strips (corners excluded); 160 px differ in all, max channel diff 56, x 17-674 of 691
+  DIFF zensical native troubleshooting_slow_requests t3: 2 px differ in the 24-px edge strips (corners excluded); 4 px differ in all, max channel diff 10, x 17-702 of 720
+  DIFF zensical native troubleshooting_slow_requests t4: 2 px differ in the 24-px edge strips (corners excluded); 4 px differ in all, max channel diff 10, x 17-702 of 720
+  DIFF zensical native troubleshooting_slow_requests t5: 2 px differ in the 24-px edge strips (corners excluded); 4 px differ in all, max channel diff 10, x 17-702 of 720
+  DIFF zensical native troubleshooting_slow_requests t6: 11 px differ in the 24-px edge strips (corners excluded); 13 px differ in all, max channel diff 10, x 0-703 of 720
+  DIFF zensical native uaa-concepts t1: 174 px differ in the 24-px edge strips (corners excluded); 176 px differ in all, max channel diff 10, x 0-702 of 720
+  DIFF zensical native uaa-concepts t2: 34 px differ in the 24-px edge strips (corners excluded); 36 px differ in all, max channel diff 10, x 0-702 of 720
+  DIFF zensical native uaa-performance t1: 2 px differ in the 24-px edge strips (corners excluded); 4 px differ in all, max channel diff 10, x 17-702 of 720
+  DIFF zensical native-plain scale-table-host t1: 2 px differ in the 24-px edge strips (corners excluded); 4 px differ in all, max channel diff 10, x 17-702 of 720
+  DIFF zensical native-plain credential-types t1: 24 px differ in the 24-px edge strips (corners excluded); 111 px differ in all, max channel diff 56, x 0-702 of 720
+  DIFF zensical native-plain metadata t1: 2 px differ in the 24-px edge strips (corners excluded); 4 px differ in all, max channel diff 10, x 17-702 of 720
+  DIFF zensical native-plain metadata t2: 25 px differ in the 24-px edge strips (corners excluded); 27 px differ in all, max channel diff 10, x 0-702 of 720
+  DIFF zensical native-plain metadata t3: 14 px differ in the 24-px edge strips (corners excluded); 137 px differ in all, max channel diff 56, x 0-702 of 720
+  DIFF zensical native-plain troubleshooting_slow_requests t1: 5 px differ in the 24-px edge strips (corners excluded); 7 px differ in all, max channel diff 10, x 0-702 of 720
+  DIFF zensical native-plain troubleshooting_slow_requests t2: 2 px differ in the 24-px edge strips (corners excluded); 160 px differ in all, max channel diff 56, x 17-674 of 691
+  DIFF zensical native-plain troubleshooting_slow_requests t3: 2 px differ in the 24-px edge strips (corners excluded); 4 px differ in all, max channel diff 10, x 17-702 of 720
+  DIFF zensical native-plain troubleshooting_slow_requests t4: 2 px differ in the 24-px edge strips (corners excluded); 4 px differ in all, max channel diff 10, x 17-702 of 720
+  DIFF zensical native-plain troubleshooting_slow_requests t5: 2 px differ in the 24-px edge strips (corners excluded); 4 px differ in all, max channel diff 10, x 17-702 of 720
+  DIFF zensical native-plain troubleshooting_slow_requests t6: 11 px differ in the 24-px edge strips (corners excluded); 13 px differ in all, max channel diff 10, x 0-703 of 720
+  DIFF zensical native-plain uaa-concepts t1: 64 px differ in the 24-px edge strips (corners excluded); 66 px differ in all, max channel diff 10, x 0-702 of 720
+  DIFF zensical native-plain uaa-concepts t2: 2 px differ in the 24-px edge strips (corners excluded); 4 px differ in all, max channel diff 10, x 17-702 of 720
+  DIFF zensical native-plain uaa-performance t1: 2 px differ in the 24-px edge strips (corners excluded); 342 px differ in all, max channel diff 10, x 17-702 of 720
+  DIFF starlight native uaa-performance t1: 1 px differ in the 24-px edge strips (corners excluded); 10 px differ in all, max channel diff 1, x 162-609 of 632
+  DIFF antora passthrough uaa-performance t1: 15 px differ in the 24-px edge strips (corners excluded); 15 px differ in all, max channel diff 1, x 0-0 of 686
+  DIFF antora extension uaa-performance t1: 15 px differ in the 24-px edge strips (corners excluded); 15 px differ in all, max channel diff 1, x 0-0 of 686
+
+Commands (scratch folder; CHECKS points at the copy's checks/ for playwright-core)
+  cp -Rc <repo>/concepts/tables $SP/
+  (cd tables/sites/docusaurus && make build); (cd tables/sites/starlight && make build)
+  (cd tables/sites/zensical && make build)
+  (cd tables/sites/antora && npx antora scratch-playbook.yml)   # url: scratch git repo
+  python3 -m http.server 4620 -d tables/sites/docusaurus/build   # 4621 zensical/site,
+                                    # 4622 starlight/dist, 4623 antora/site, 4624-4627 orig/*
+  CHECKS=tables/checks node scripts/measure.mjs                    > measure-all.tsv
+  WIDTH=390 MODES=extension MINW_LIST='16ch;20ch;24ch;min(24ch, 45vw);min(24ch, 40vw)' \
+    CHECKS=tables/checks node scripts/measure.mjs                  > measure-390.tsv
+  ONLY=built [WIDTH=390] CHECKS=tables/checks node scripts/measure.mjs > measure-patched-*.tsv
+  [BROWSER=firefox|webkit] CHECKS=tables/checks node scripts/cues.mjs explore/<b>
+  PATCHED=1 BROWSER=<b> CHECKS=tables/checks node scripts/cues.mjs explore/patched
+  [WIDTH=390] CHECKS=tables/checks node scripts/regress.mjs
+  MODES=extension INJECT='<role floor>' CHECKS=tables/checks node scripts/regress.mjs
+  CHECKS=tables/checks node scripts/fit-noshadow.mjs
+  node tables/checks/wide-tables.mjs 'http://localhost:4620/%m/%p/' passthrough extension native  # and 4621-4623
+
+Screenshots (in this folder, PNG, top 600 px of the scroll box at 1280 px;
+before = the repository's builds, after = patched builds)
+  antora-roles-extension-after.png
+  antora-roles-extension-before.png
+  antora-roles-native-after.png
+  antora-roles-native-before.png
+  docusaurus-roles-extension-after.png
+  docusaurus-roles-extension-before.png
+  docusaurus-roles-native-after.png
+  docusaurus-roles-native-before.png
+  starlight-roles-extension-after.png
+  starlight-roles-extension-before.png
+  starlight-roles-native-after.png
+  starlight-roles-native-before.png
+  zensical-roles-extension-after.png
+  zensical-roles-extension-before.png
+  zensical-roles-native-after.png
+  zensical-roles-native-before.png

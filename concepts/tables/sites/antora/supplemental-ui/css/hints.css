@@ -68,3 +68,27 @@
 .doc table.table-media > thead > tr > th { border-bottom: 2.5px solid #e1e1e1; }
 .doc table.table-media > tbody > tr + tr > * { border-top: 1px solid #e1e1e1; }
 .doc table.table-media img { width: 100%; height: auto; }
+
+/* A wide table: a table of eight or more columns is wider than the content column,
+   and the browser lays it out at its narrowest, every column as narrow as its longest
+   word, so the label column wraps on every row. Its first column keeps room for a few
+   words on a line. Only the role matrices in the docs have that many columns; a floor on
+   every prose column would also change tables that fit, and push some past the column.
+     --table-prose-min   narrowest the first column of a wide table gets (default 24ch) */
+.doc table:has(> thead > tr > :nth-child(8)) > * > tr > :first-child {
+  min-width: var(--table-prose-min, 24ch);
+}
+/* A box that scrolls shows a shadow on each side that has more columns. The
+   shadows are the box's background, fixed to the box; covers in the page colour
+   scroll with the content and hide a shadow when that side is reached. The UI
+   has no dark mode and no colour variables; the page is white. */
+.doc .table-scroll {
+  --table-edge-bg: #fff;
+  --table-edge-shadow: rgb(0 0 0 / 22%);
+  background:
+    linear-gradient(to right, var(--table-edge-bg) 40%, transparent) left / 2.5rem 100% no-repeat local,
+    linear-gradient(to left, var(--table-edge-bg) 40%, transparent) right / 2.5rem 100% no-repeat local,
+    linear-gradient(to right, var(--table-edge-shadow), transparent) left / 1rem 100% no-repeat scroll,
+    linear-gradient(to left, var(--table-edge-shadow), transparent) right / 1rem 100% no-repeat scroll
+    var(--table-edge-bg);
+}
