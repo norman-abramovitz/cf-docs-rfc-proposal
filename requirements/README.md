@@ -144,7 +144,7 @@ Terms used in the table:
 | ID | Phrase | Statement | Source | Status |
 |---|---|---|---|---|
 | <a id="r-23"></a>R-23 | one central conversion | One central team converts all content the same way, with one set of rules, not each working group on its own. | [L131] | proposed |
-| <a id="r-24"></a>R-24 | markup cleanup before conversion | Markup that browsers accept but strict parsers reject is fixed before, or as the first step of, conversion, and each fix is recorded. | [Markup that only browsers tolerate](../concepts/tables/README.md#markup-that-only-browsers-tolerate) | proposed |
+| <a id="r-24"></a>R-24 | markup cleanup before conversion | Markup that browsers accept but strict parsers reject is fixed before, or as the first step of, conversion, and each fix is recorded. | [Markup that only browsers tolerate](../concepts/tables/README.md#markup-that-only-browsers-tolerate); cleanup lists: [variables](../concepts/variables/cleanup.md), [partials](../concepts/partials/cleanup.md), [links](../concepts/headings/broken-links.md), [code blocks](../concepts/code-blocks/cleanup.md) | proposed |
 | <a id="r-25"></a>R-25 | build-time values are expected differences | When a converted page is compared with the published page, values set at build or serve time (the copyright year in the footer, the "Page last updated" date, a sitemap's `lastmod`, response headers) count as expected differences and are listed apart. | [Copyright concept](../concepts/README.md#concepts); [build-time values results](../concepts/build-time-values/results.md#summary) | proposed |
 | <a id="r-26"></a>R-26 | owner review of migrated pages | The owning working group reviews every migrated section before cutover. | [L131] | proposed |
 

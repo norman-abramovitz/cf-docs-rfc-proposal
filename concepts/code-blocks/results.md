@@ -401,7 +401,8 @@ For `cf-docs-migrate convert`. Decisions of this round, for review:
    blank line before a fence that follows text, closing fences that match
    their opening, fences indented to their list item, `<pre>` not
    indented four spaces at the top level; the 14 files are in the
-   [survey](survey/README.md#fences-only-the-books-engine-closes-and-other-disagreements).
+   [survey](survey/README.md#fences-only-the-books-engine-closes-and-other-disagreements),
+   and each fix is in [cleanup.md](cleanup.md).
 6. **A variable inside a code block** uses each tool's form: as written
    (Zensical), `subs=attributes+` on the block (Antora), `<CodeBlock>`
    with a template literal (Docusaurus), and the site's fence node that

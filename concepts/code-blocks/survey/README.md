@@ -361,8 +361,12 @@ By cause:
   are code in CommonMark.
 - **An indented `<pre>`** (1 file, 2 blocks): CommonMark reads an indented
   code block that shows the `<pre class="terminal">` tag as text
-  ([`application-binding` L18-L25](https://github.com/cloudfoundry/docs-dev-guide/blob/9c8df63eb3823011e4e3aff9958c36e25d5190b7/services/application-binding.html.md.erb#L18-L25),
-  L168).
+  ([`application-binding` L253-L255](https://github.com/cloudfoundry/docs-dev-guide/blob/9c8df63eb3823011e4e3aff9958c36e25d5190b7/services/application-binding.html.md.erb#L253-L255),
+  [L259-L261](https://github.com/cloudfoundry/docs-dev-guide/blob/9c8df63eb3823011e4e3aff9958c36e25d5190b7/services/application-binding.html.md.erb#L259-L261)). The list items start two spaces in, so
+  their text starts at column 5; a `<pre>` indented four spaces ends the
+  item, and at the top level four spaces make an indented block.
+  Correction (2026-10-11): this item first cited L18-L25 and L168, which
+  are `<pre>` blocks at the margin.
 - **The book's home page** is HTML indented four spaces: CommonMark reads
   all 785 lines as one code block
   ([`index.html.md.erb` L42](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/master_middleman/source/index.html.md.erb#L42)).

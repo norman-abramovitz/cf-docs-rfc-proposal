@@ -387,7 +387,7 @@ For `cf-docs-migrate convert`. Decisions of this round, for review:
    (Docs WG lead, 2026-10-11): fixed at the source before conversion
    ([R-24](../../requirements/README.md#r-24) markup cleanup before
    conversion), and merged into the headings round's
-   [broken-links.md](../headings/broken-links.md) list.
+   [broken-links.md](../headings/broken-links.md#found-by-the-cross-repository-links-survey-2026-10-11) list.
 6. **The build checks internal links and anchors and fails on them in pull
    requests**: `onBrokenLinks` and `onBrokenAnchors: 'throw'` (Docusaurus),
    `--strict` (Zensical), `--log-failure-level=error` (Antora, which still
@@ -399,7 +399,8 @@ For `cf-docs-migrate convert`. Decisions of this round, for review:
    page**, and old URLs whose target is gone are listed for a decision
    ([R-16](../../requirements/README.md#r-16)). Decided (Docs WG lead,
    2026-10-11): the 30 rules whose target is gone are dropped or
-   retargeted in the cleanup before conversion.
+   retargeted in the cleanup before conversion; they are listed in
+   [broken-links.md](../headings/broken-links.md#found-by-the-cross-repository-links-survey-2026-10-11).
 8. **Each page's edit link names its own repository and file**: an
    `editUrl` function (Docusaurus), `edit_url` per content source
    (Antora), `editUrl` front matter written by the converter (Starlight).

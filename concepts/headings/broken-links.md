@@ -1,6 +1,8 @@
 # Links already broken today
 
-Status: draft, incomplete — covers what is known as of 2026-10-10.
+Status: draft, incomplete — covers what is known as of 2026-10-10. Updated
+2026-10-11 with the links the [cross-repository links survey](#found-by-the-cross-repository-links-survey-2026-10-11)
+found across the book, and the redirect rules whose target is gone.
 
 Links to the four test pages of the Headings round that point at a heading
 anchor which is not on today's published page. They are broken before any
@@ -178,3 +180,190 @@ still has the id.
 - Relative links were checked only inside the `cloudfoundry/docs-*`
   repositories. Copies of these pages on other sites, such as forks of
   `docs-dev-guide`, were not searched.
+
+## Found by the cross-repository links survey (2026-10-11)
+
+The [cross-repository links survey](../cross-repo-links/survey/README.md)
+resolved every link in the content of the 15 repositories the book
+collects, pages and partials, against a model of the book's site, at the
+commits in its [shas.txt](../cross-repo-links/survey/shas.txt). 55 links
+in content do not reach their target: 50 point at an id the target page
+does not have, 3 reach a redirect whose target is gone, and 2 point at an
+id bosh.io does not have. Two of them, the in-page links on
+`routes-domains`, are listed above and left out below.
+
+Decision (Docs WG lead, 2026-10-11): these links are fixed at the source
+before conversion, and the redirect rules whose target is gone are
+dropped or retargeted
+([R-24](../../requirements/README.md#r-24) markup cleanup before
+conversion; [cross-repository links convention 5](../cross-repo-links/results.md#conventions-to-record)).
+
+A **suggested fix** comes from the site model and needs checking before
+use: an id on the same page whose spelling is close (it may be a
+different section), the pages that now carry the id, or for a redirect
+rule the pages with the same file name. "Target page" is the page the
+link resolves to; a link in a partial is listed once.
+
+Regenerate the tables with
+[cleanup.py](../cross-repo-links/survey/cleanup.py) from a run of the
+survey.
+
+### Links, by repository
+
+#### docs-bbr
+
+| Source | Link as written | Target page | Problem | Suggested fix |
+|---|---|---|---|---|
+| [backup.html.md.erb L313](https://github.com/cloudfoundry/docs-bbr/blob/51465950ce3a2196d66a9339086b94feed280c3e/backup.html.md.erb#L313) | `#what-to-do-with-artifact` | `/bbr/backup.html` | no such id on the target page | no similar id found; remove the fragment or pick a heading |
+
+#### docs-book-cloudfoundry
+
+| Source | Link as written | Target page | Problem | Suggested fix |
+|---|---|---|---|---|
+| [master_middleman/source/contribute.html.md.erb L22](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/master_middleman/source/contribute.html.md.erb#L22) | `#raise-issue` | `/contribute.html` | no such id on the target page | `#issue` on the same page (similar id) |
+
+#### docs-buildpacks
+
+| Source | Link as written | Target page | Problem | Suggested fix |
+|---|---|---|---|---|
+| [dotnet-core/index.html.md.erb L157](https://github.com/cloudfoundry/docs-buildpacks/blob/239e5c8676200914c4d386970f9989e46de9e969/dotnet-core/index.html.md.erb#L157) | `../../devguide/deploy-apps/manifest.html#env-block` | `/devguide/deploy-apps/manifest.html` | no such id on the target page | the id is on `/devguide/deploy-apps/manifest-attributes.html` |
+| [go/index.html.md.erb L231](https://github.com/cloudfoundry/docs-buildpacks/blob/239e5c8676200914c4d386970f9989e46de9e969/go/index.html.md.erb#L231) | `https://docs.cloudfoundry.org/adminguide/trusted-system-certificates.html` | `/` | redirects to a page that is gone | the redirect's target is gone; link to the page that now covers it |
+| [hwc/extension-buildpack.html.md.erb L170](https://github.com/cloudfoundry/docs-buildpacks/blob/239e5c8676200914c4d386970f9989e46de9e969/hwc/extension-buildpack.html.md.erb#L170) | `../../devguide/deploy-apps/manifest.html#start-commands` | `/devguide/deploy-apps/manifest.html` | no such id on the target page | the id is on `/devguide/deploy-apps/manifest-attributes.html` |
+| [java/java-tips.html.md.erb L462](https://github.com/cloudfoundry/docs-buildpacks/blob/239e5c8676200914c4d386970f9989e46de9e969/java/java-tips.html.md.erb#L462) | `../../devguide/deploy-apps/manifest.html#env-block` | `/devguide/deploy-apps/manifest.html` | no such id on the target page | the id is on `/devguide/deploy-apps/manifest-attributes.html` |
+| [php/gsg-php-composer.html.md.erb L74](https://github.com/cloudfoundry/docs-buildpacks/blob/239e5c8676200914c4d386970f9989e46de9e969/php/gsg-php-composer.html.md.erb#L74) | `../../devguide/deploy-apps/manifest.html#env-block` | `/devguide/deploy-apps/manifest.html` | no such id on the target page | the id is on `/devguide/deploy-apps/manifest-attributes.html` |
+| [php/gsg-php-newrelic.html.md.erb L23](https://github.com/cloudfoundry/docs-buildpacks/blob/239e5c8676200914c4d386970f9989e46de9e969/php/gsg-php-newrelic.html.md.erb#L23) | `../../devguide/deploy-apps/manifest.html#env-block` | `/devguide/deploy-apps/manifest.html` | no such id on the target page | the id is on `/devguide/deploy-apps/manifest-attributes.html` |
+| [php/gsg-php-usage.html.md.erb L174](https://github.com/cloudfoundry/docs-buildpacks/blob/239e5c8676200914c4d386970f9989e46de9e969/php/gsg-php-usage.html.md.erb#L174) | `../../devguide/deploy-apps/manifest.html#env-block` | `/devguide/deploy-apps/manifest.html` | no such id on the target page | the id is on `/devguide/deploy-apps/manifest-attributes.html` |
+| [php/index.html.md.erb L106](https://github.com/cloudfoundry/docs-buildpacks/blob/239e5c8676200914c4d386970f9989e46de9e969/php/index.html.md.erb#L106) | `https://docs.cloudfoundry.org/adminguide/trusted-system-certificates.html` | `/` | redirects to a page that is gone | the redirect's target is gone; link to the page that now covers it |
+| [python/index.html.md.erb L81](https://github.com/cloudfoundry/docs-buildpacks/blob/239e5c8676200914c4d386970f9989e46de9e969/python/index.html.md.erb#L81) | `../../devguide/deploy-apps/manifest.html#start-commands` | `/devguide/deploy-apps/manifest.html` | no such id on the target page | the id is on `/devguide/deploy-apps/manifest-attributes.html` |
+| [python/index.html.md.erb L220](https://github.com/cloudfoundry/docs-buildpacks/blob/239e5c8676200914c4d386970f9989e46de9e969/python/index.html.md.erb#L220) | `https://docs.cloudfoundry.org/adminguide/trusted-system-certificates.html` | `/` | redirects to a page that is gone | the redirect's target is gone; link to the page that now covers it |
+| [r/index.html.md.erb L44](https://github.com/cloudfoundry/docs-buildpacks/blob/239e5c8676200914c4d386970f9989e46de9e969/r/index.html.md.erb#L44) | `../../devguide/deploy-apps/manifest.html#start-commands` | `/devguide/deploy-apps/manifest.html` | no such id on the target page | the id is on `/devguide/deploy-apps/manifest-attributes.html` |
+| [ruby/gsg-ror.html.md.erb L25](https://github.com/cloudfoundry/docs-buildpacks/blob/239e5c8676200914c4d386970f9989e46de9e969/ruby/gsg-ror.html.md.erb#L25) | `../../devguide/deploy-apps/manifest.html#minimal-manifest` | `/devguide/deploy-apps/manifest.html` | no such id on the target page | the id is on `/devguide/deploy-apps/manifest-attributes.html` |
+| [ruby/sample-ror.html.md.erb L24](https://github.com/cloudfoundry/docs-buildpacks/blob/239e5c8676200914c4d386970f9989e46de9e969/ruby/sample-ror.html.md.erb#L24) | `../../devguide/deploy-apps/manifest.html#minimal-manifest` | `/devguide/deploy-apps/manifest.html` | no such id on the target page | the id is on `/devguide/deploy-apps/manifest-attributes.html` |
+
+#### docs-cf-admin
+
+| Source | Link as written | Target page | Problem | Suggested fix |
+|---|---|---|---|---|
+| [cli-user-management.html.md.erb L106](https://github.com/cloudfoundry/docs-cf-admin/blob/13826fa7d93eee66902c4a2187a96b884137b58a/cli-user-management.html.md.erb#L106) | `../cf-cli/getting-started.html#multi-origin` | `/cf-cli/getting-started.html` | no such id on the target page | the id is on `/concepts/managing-roles.html` |
+| [cli-user-management.html.md.erb L145](https://github.com/cloudfoundry/docs-cf-admin/blob/13826fa7d93eee66902c4a2187a96b884137b58a/cli-user-management.html.md.erb#L145) | `../cf-cli/getting-started.html#multi-origin` | `/cf-cli/getting-started.html` | no such id on the target page | the id is on `/concepts/managing-roles.html` |
+| [quota-plans.html.md.erb L22](https://github.com/cloudfoundry/docs-cf-admin/blob/13826fa7d93eee66902c4a2187a96b884137b58a/quota-plans.html.md.erb#L22) | `../devguide/deploy-apps/cf-networking.html#policy-quotas` | `/devguide/deploy-apps/cf-networking.html` | no such id on the target page | no similar id found; remove the fragment or pick a heading |
+| [troubleshooting-router-error-responses.html.md.erb L17](https://github.com/cloudfoundry/docs-cf-admin/blob/13826fa7d93eee66902c4a2187a96b884137b58a/troubleshooting-router-error-responses.html.md.erb#L17) | `#gorouter-errors` | `/adminguide/troubleshooting-router-error-responses.html` | no such id on the target page | `#diagnose-gorouter-errors` on the same page (similar id) |
+| [troubleshooting-router-error-responses.html.md.erb L204](https://github.com/cloudfoundry/docs-cf-admin/blob/13826fa7d93eee66902c4a2187a96b884137b58a/troubleshooting-router-error-responses.html.md.erb#L204) | `#tls-to-back-end` | `/adminguide/troubleshooting-router-error-responses.html` | no such id on the target page | the id is on `/concepts/http-routing.html` |
+| [troubleshooting-router-error-responses.html.md.erb L291](https://github.com/cloudfoundry/docs-cf-admin/blob/13826fa7d93eee66902c4a2187a96b884137b58a/troubleshooting-router-error-responses.html.md.erb#L291) | `../concepts/http-routing.html#with-tls` | `/concepts/http-routing.html` | no such id on the target page | `#without-tls` on the same page (similar id) |
+
+#### docs-cloudfoundry-concepts
+
+| Source | Link as written | Target page | Problem | Suggested fix |
+|---|---|---|---|---|
+| [architecture/index.html.md.erb L83](https://github.com/cloudfoundry/docs-cloudfoundry-concepts/blob/97e0d0b25f059c06edd25e30355d26eb93dc560a/architecture/index.html.md.erb#L83) | `../diego/diego-architecture.html#bbs` | `/concepts/diego/diego-architecture.html` | no such id on the target page | the id is on `/concepts/architecture/index.html`, `/running/all_metrics.html` |
+| [architecture/index.html.md.erb L85](https://github.com/cloudfoundry/docs-cloudfoundry-concepts/blob/97e0d0b25f059c06edd25e30355d26eb93dc560a/architecture/index.html.md.erb#L85) | `../diego/diego-architecture.html#bbs` | `/concepts/diego/diego-architecture.html` | no such id on the target page | the id is on `/concepts/architecture/index.html`, `/running/all_metrics.html` |
+| [asg.html.md.erb L109](https://github.com/cloudfoundry/docs-cloudfoundry-concepts/blob/97e0d0b25f059c06edd25e30355d26eb93dc560a/asg.html.md.erb#L109) | `#unbinding-asgs` | `/concepts/asg.html` | no such id on the target page | `#-binding-asgs` on the same page (similar id) |
+| [contribute.html.md.erb L22](https://github.com/cloudfoundry/docs-cloudfoundry-concepts/blob/97e0d0b25f059c06edd25e30355d26eb93dc560a/contribute.html.md.erb#L22) | `#github-issue` | `/concepts/contribute.html` | no such id on the target page | `#-raising-a-github-issue` on the same page (similar id) |
+| [contribute.html.md.erb L22](https://github.com/cloudfoundry/docs-cloudfoundry-concepts/blob/97e0d0b25f059c06edd25e30355d26eb93dc560a/contribute.html.md.erb#L22) | `#github-pr` | `/concepts/contribute.html` | no such id on the target page | `#non-github` on the same page (similar id) |
+| [roles.html.md.erb L60](https://github.com/cloudfoundry/docs-cloudfoundry-concepts/blob/97e0d0b25f059c06edd25e30355d26eb93dc560a/roles.html.md.erb#L60) | `./architecture/uaa.html#scopes` | `/concepts/architecture/uaa.html` | no such id on the target page | the id is on `/uaa/uaa-concepts.html`, `/uaa/uaa-deploy.html` |
+
+#### docs-credhub
+
+| Source | Link as written | Target page | Problem | Suggested fix |
+|---|---|---|---|---|
+| [hsm-config.html.md.erb L383](https://github.com/cloudfoundry/docs-credhub/blob/21b0448736435cec0f5a1491e0b40bda9c4307eb/hsm-config.html.md.erb#L383) | `#establish-network-trust-link` | `/credhub/hsm-config.html` | no such id on the target page | `#network-trust-link` on the same page (similar id) |
+| [hsm-config.html.md.erb L385](https://github.com/cloudfoundry/docs-credhub/blob/21b0448736435cec0f5a1491e0b40bda9c4307eb/hsm-config.html.md.erb#L385) | `#establish-network-trust-link` | `/credhub/hsm-config.html` | no such id on the target page | `#network-trust-link` on the same page (similar id) |
+
+#### docs-deploying-cf
+
+| Source | Link as written | Target page | Problem | Suggested fix |
+|---|---|---|---|---|
+| [cf-deployment/gcp.html.md.erb L53](https://github.com/cloudfoundry/docs-deploying-cf/blob/1113cfaf3626931c653c91dc8d537d7f181d6762/cf-deployment/gcp.html.md.erb#L53) | `https://bosh.io/docs/cli-v2.html#install` | `/content/cli-v2.md` | no such id on bosh.io | check bosh.io for the heading's current id |
+| [common/aws.html.md.erb L50](https://github.com/cloudfoundry/docs-deploying-cf/blob/1113cfaf3626931c653c91dc8d537d7f181d6762/common/aws.html.md.erb#L50) | `https://bosh.io/docs/cli-v2.html#install` | `/content/cli-v2.md` | no such id on bosh.io | check bosh.io for the heading's current id |
+
+#### docs-dev-guide
+
+| Source | Link as written | Target page | Problem | Suggested fix |
+|---|---|---|---|---|
+| [deploy-apps/_c2c_oss_logging.html.md.erb L4](https://github.com/cloudfoundry/docs-dev-guide/blob/9c8df63eb3823011e4e3aff9958c36e25d5190b7/deploy-apps/_c2c_oss_logging.html.md.erb#L4) | `#iaas` | `/devguide/deploy-apps/cf-networking.html` | no such id on the target page | no similar id found; remove the fragment or pick a heading |
+| [deploy-apps/_c2c_oss_logging.html.md.erb L23](https://github.com/cloudfoundry/docs-dev-guide/blob/9c8df63eb3823011e4e3aff9958c36e25d5190b7/deploy-apps/_c2c_oss_logging.html.md.erb#L23) | `#iaas` | `/devguide/deploy-apps/cf-networking.html` | no such id on the target page | no similar id found; remove the fragment or pick a heading |
+| [deploy-apps/_c2c_oss_logging.html.md.erb L42](https://github.com/cloudfoundry/docs-dev-guide/blob/9c8df63eb3823011e4e3aff9958c36e25d5190b7/deploy-apps/_c2c_oss_logging.html.md.erb#L42) | `#iaas` | `/devguide/deploy-apps/cf-networking.html` | no such id on the target page | no similar id found; remove the fragment or pick a heading |
+| [deploy-apps/_c2c_oss_logging.html.md.erb L52](https://github.com/cloudfoundry/docs-dev-guide/blob/9c8df63eb3823011e4e3aff9958c36e25d5190b7/deploy-apps/_c2c_oss_logging.html.md.erb#L52) | `#iaas` | `/devguide/deploy-apps/cf-networking.html` | no such id on the target page | no similar id found; remove the fragment or pick a heading |
+| [deploy-apps/deploy-app.html.md.erb L51](https://github.com/cloudfoundry/docs-dev-guide/blob/9c8df63eb3823011e4e3aff9958c36e25d5190b7/deploy-apps/deploy-app.html.md.erb#L51) | `#custom-route` | `/devguide/deploy-apps/deploy-app.html` | no such id on the target page | `#custom-push` on the same page (similar id) |
+| [deploy-apps/deploy-app.html.md.erb L132](https://github.com/cloudfoundry/docs-dev-guide/blob/9c8df63eb3823011e4e3aff9958c36e25d5190b7/deploy-apps/deploy-app.html.md.erb#L132) | `#custom-route` | `/devguide/deploy-apps/deploy-app.html` | no such id on the target page | `#custom-push` on the same page (similar id) |
+| [deploy-apps/environment-variable.html.md.erb L8](https://github.com/cloudfoundry/docs-dev-guide/blob/9c8df63eb3823011e4e3aff9958c36e25d5190b7/deploy-apps/environment-variable.html.md.erb#L8) | `./manifest.html#env-block` | `/devguide/deploy-apps/manifest.html` | no such id on the target page | the id is on `/devguide/deploy-apps/manifest-attributes.html` |
+| [deploy-apps/manifest-attributes.html.md.erb L506](https://github.com/cloudfoundry/docs-dev-guide/blob/9c8df63eb3823011e4e3aff9958c36e25d5190b7/deploy-apps/manifest-attributes.html.md.erb#L506) | `../../cf-cli/getting-started.html#find-app` | `/cf-cli/getting-started.html` | no such id on the target page | no similar id found; remove the fragment or pick a heading |
+| [deploy-apps/routes-domains.html.md.erb L388](https://github.com/cloudfoundry/docs-dev-guide/blob/9c8df63eb3823011e4e3aff9958c36e25d5190b7/deploy-apps/routes-domains.html.md.erb#L388) | `#create-route-w-port` | `/devguide/deploy-apps/routes-domains.html` | no such id on the target page | `#create-route-with-port` on the same page (similar id) |
+| [deploy-apps/routes-domains.html.md.erb L397](https://github.com/cloudfoundry/docs-dev-guide/blob/9c8df63eb3823011e4e3aff9958c36e25d5190b7/deploy-apps/routes-domains.html.md.erb#L397) | `../deploy-apps/manifest.html#routes` | `/devguide/deploy-apps/manifest.html` | no such id on the target page | the id is on `/devguide/deploy-apps/manifest-attributes.html`, `/devguide/deploy-apps/routes-domains.html` |
+| [deploy-apps/ssh-apps.html.md.erb L11](https://github.com/cloudfoundry/docs-dev-guide/blob/9c8df63eb3823011e4e3aff9958c36e25d5190b7/deploy-apps/ssh-apps.html.md.erb#L11) | `../../cf-cli/http-proxy.html#v3-ssh-socks5` | `/cf-cli/http-proxy.html` | no such id on the target page | no similar id found; remove the fragment or pick a heading |
+| [services/_using-vol-services.html.md.erb L48](https://github.com/cloudfoundry/docs-dev-guide/blob/9c8df63eb3823011e4e3aff9958c36e25d5190b7/services/_using-vol-services.html.md.erb#L48) | `../deploy-apps/manifest.html#services-block` | `/devguide/deploy-apps/manifest.html` | no such id on the target page | the id is on `/devguide/deploy-apps/manifest-attributes.html` |
+| [services/application-binding.html.md.erb L213](https://github.com/cloudfoundry/docs-dev-guide/blob/9c8df63eb3823011e4e3aff9958c36e25d5190b7/services/application-binding.html.md.erb#L213) | `../deploy-apps/manifest.html#services-block` | `/devguide/deploy-apps/manifest.html` | no such id on the target page | the id is on `/devguide/deploy-apps/manifest-attributes.html` |
+| [services/managing-services.html.md.erb L213](https://github.com/cloudfoundry/docs-dev-guide/blob/9c8df63eb3823011e4e3aff9958c36e25d5190b7/services/managing-services.html.md.erb#L213) | `../deploy-apps/manifest.html#services-block` | `/devguide/deploy-apps/manifest.html` | no such id on the target page | the id is on `/devguide/deploy-apps/manifest-attributes.html` |
+
+#### docs-loggregator
+
+| Source | Link as written | Target page | Problem | Suggested fix |
+|---|---|---|---|---|
+| [container-metrics.html.md.erb L143](https://github.com/cloudfoundry/docs-loggregator/blob/8e027bac1099b737afe56afa1606b4fcf9d06c94/container-metrics.html.md.erb#L143) | `#cpu-mem-disk` | `/loggregator/container-metrics.html` | no such id on the target page | `#cf-mem-disk` on the same page (similar id) |
+| [log-ops-guide.html.md.erb L81](https://github.com/cloudfoundry/docs-loggregator/blob/8e027bac1099b737afe56afa1606b4fcf9d06c94/log-ops-guide.html.md.erb#L81) | `../running/managing-cf/logging-config.html#scaling` | `/running/managing-cf/logging-config.html` | no such id on the target page | the id is on `/devguide/deploy-apps/rolling-deploy.html`, `/devguide/services/oms-nozzle.html`, `/loggregator/log-ops-guide.html` |
+| [opentelemetry.html.md.erb L123](https://github.com/cloudfoundry/docs-loggregator/blob/8e027bac1099b737afe56afa1606b4fcf9d06c94/opentelemetry.html.md.erb#L123) | `#logging-and-metrics` | `/loggregator/opentelemetry.html` | no such id on the target page | no similar id found; remove the fragment or pick a heading |
+
+#### docs-running-cf
+
+| Source | Link as written | Target page | Problem | Suggested fix |
+|---|---|---|---|---|
+| [metrics/_cloud_controller.html.md.erb L4](https://github.com/cloudfoundry/docs-running-cf/blob/956acc86445d2f3cb29f031294f86f37f515b471/metrics/_cloud_controller.html.md.erb#L4) | `#cc_worker` | `/running/all_metrics.html` | no such id on the target page | no similar id found; remove the fragment or pick a heading |
+
+#### docs-services
+
+| Source | Link as written | Target page | Problem | Suggested fix |
+|---|---|---|---|---|
+| [binding-credentials.html.md.erb L15](https://github.com/cloudfoundry/docs-services/blob/ccb0036407e4c2eabbb61a3b3de008f821f41c5b/binding-credentials.html.md.erb#L15) | `../devguide/services/managing-services.html#use` | `/devguide/services/managing-services.html` | no such id on the target page | the id is on `/adminguide/stack-auditor.html` |
+
+#### docs-uaa
+
+| Source | Link as written | Target page | Problem | Suggested fix |
+|---|---|---|---|---|
+| [uaa-concepts.html.md.erb L12](https://github.com/cloudfoundry/docs-uaa/blob/216c797cfa1a971cf0f9e53eb3e4803aaf914a94/uaa-concepts.html.md.erb#L12) | `#user-groups` | `/uaa/uaa-concepts.html` | no such id on the target page | `#-user-groups` on the same page (similar id) |
+| [uaa-concepts.html.md.erb L88](https://github.com/cloudfoundry/docs-uaa/blob/216c797cfa1a971cf0f9e53eb3e4803aaf914a94/uaa-concepts.html.md.erb#L88) | `#shadow` | `/uaa/uaa-concepts.html` | no such id on the target page | `##shadow` on the same page (similar id) |
+| [uaa-deploy.html.md.erb L30](https://github.com/cloudfoundry/docs-uaa/blob/216c797cfa1a971cf0f9e53eb3e4803aaf914a94/uaa-deploy.html.md.erb#L30) | `#local` | `/uaa/uaa-deploy.html` | no such id on the target page | `#demo-local` on the same page (similar id) |
+
+### Redirect rules whose target is gone
+
+30 of the 85 rules in the book's
+[`redirects.rb`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/redirects.rb)
+send a reader to a page that no longer exists. A static host writes each
+rule as a page, so each is dropped or given a new target before
+conversion
+([R-16](../../requirements/README.md#r-16) old URLs keep working).
+Rule [L48](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/redirects.rb#L48)
+can never match, because its source holds a `#` part, which browsers do
+not send; it does nothing and can go with them.
+
+| Rule | From | To (missing) | Suggested target |
+|---|---|---|---|
+| [L7](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/redirects.rb#L7) | `/console/cf-api-endpoint.html` | `/running/cf-api-endpoint.html` | `/running/archive/cf-api-endpoint.html` |
+| [L9](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/redirects.rb#L9) | `%r{/deploying/ec2/.*}` | `/deploying/aws/index.html` | `/deploying/common/aws.html` |
+| [L11](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/redirects.rb#L11) | `/deploying/openstack/deploying_bosh.html` | `/deploying/openstack/index.html` | none by file name; drop the rule or pick a page |
+| [L12](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/redirects.rb#L12) | `/deploying/openstack/deploying_microbosh.html` | `/deploying/openstack/index.html` | none by file name; drop the rule or pick a page |
+| [L13](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/redirects.rb#L13) | `/deploying/openstack/uploading_bosh_stemcell.html` | `/deploying/openstack/index.html` | none by file name; drop the rule or pick a page |
+| [L15](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/redirects.rb#L15) | `/deploying/vsphere/bosh-example-manifest.html` | `/deploying/vsphere/index.html` | none by file name; drop the rule or pick a page |
+| [L16](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/redirects.rb#L16) | `/deploying/vsphere/deploying_bosh_with_micro_bosh.html` | `/deploying/vsphere/index.html` | none by file name; drop the rule or pick a page |
+| [L17](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/redirects.rb#L17) | `/deploying/vsphere/deploying_micro_bosh.html` | `/deploying/vsphere/index.html` | none by file name; drop the rule or pick a page |
+| [L18](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/redirects.rb#L18) | `/deploying/vsphere/install-and-prepare-vsphere.html` | `/deploying/vsphere/index.html` | none by file name; drop the rule or pick a page |
+| [L20](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/redirects.rb#L20) | `/deploying/vcloud/bosh-example-manifest.html` | `/deploying/vcloud/index.html` | none by file name; drop the rule or pick a page |
+| [L21](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/redirects.rb#L21) | `/deploying/vcloud/deploying_bosh_with_micro_bosh.html` | `/deploying/vcloud/index.html` | none by file name; drop the rule or pick a page |
+| [L22](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/redirects.rb#L22) | `/deploying/vcloud/deploying_micro_bosh.html` | `/deploying/vcloud/index.html` | none by file name; drop the rule or pick a page |
+| [L23](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/redirects.rb#L23) | `/deploying/vcloud/micro-bosh-example-manifest.html` | `/deploying/vcloud/index.html` | none by file name; drop the rule or pick a page |
+| [L25](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/redirects.rb#L25) | `/deploying/boshlite/deploy_cf_boshlite.html` | `/deploying/boshlite/index.html` | none by file name; drop the rule or pick a page |
+| [L27](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/redirects.rb#L27) | `/deploying/cf-stub-aws.html` | `/deploying/aws/cf-stub.html` | none by file name; drop the rule or pick a page |
+| [L28](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/redirects.rb#L28) | `/deploying/cf-stub-openstack.html` | `/deploying/openstack/cf-stub.html` | none by file name; drop the rule or pick a page |
+| [L29](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/redirects.rb#L29) | `/deploying/cf-stub-vsphere.html` | `/deploying/common/vsphere-vcloud-cf-stub.html` | none by file name; drop the rule or pick a page |
+| [L30](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/redirects.rb#L30) | `/deploying/cf-stub-vcloud.html` | `/deploying/common/vsphere-vcloud-cf-stub.html` | none by file name; drop the rule or pick a page |
+| [L40](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/redirects.rb#L40) | `/devguide/deploy-apps/api-endpoint.html` | `/running/cf-api-endpoint.html` | `/running/archive/cf-api-endpoint.html` |
+| [L43](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/redirects.rb#L43) | `%r{/devguide/installcf/(.*)}` | `/cf-cli/$1` | none by file name; drop the rule or pick a page |
+| [L44](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/redirects.rb#L44) | `%r{/devguide/cf-cli/(.*)}` | `/cf-cli/$1` | none by file name; drop the rule or pick a page |
+| [L57](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/redirects.rb#L57) | `/running/api/version.html` | `/running/cf-api-endpoint.html` | `/running/archive/cf-api-endpoint.html` |
+| [L78](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/redirects.rb#L78) | `/services/volume-services-v2.10.html` | `/devguide/services/volume-services.html` | none by file name; drop the rule or pick a page |
+| [L79](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/redirects.rb#L79) | `/services/volume-services-v2.9.html` | `/devguide/services/volume-services.html` | none by file name; drop the rule or pick a page |
+| [L85](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/redirects.rb#L85) | `/adminguide/trusted-system-certificates.html` | `/running/trusted-system-certificates.html` | `/devguide/deploy-apps/trusted-system-certificates.html`, `/running/archive/trusted-system-certificates.html` |
+| [L86](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/redirects.rb#L86) | `/adminguide/deploy-vol-services.html` | `/running/deploy-vol-services.html` | `/running/archive/deploy-vol-services.html` |
+| [L95](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/redirects.rb#L95) | `/deploying/aws/setup_aws.html` | `/deploying/aws/setup_bosh_aws.html` | none by file name; drop the rule or pick a page |
+| [L97](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/redirects.rb#L97) | `/concepts/architecture/execution-agent.html` | `/concepts/diego/dea-vs-diego.html` | none by file name; drop the rule or pick a page |
+| [L98](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/redirects.rb#L98) | `/concepts/architecture/dea-algorithm.html` | `/concepts/diego/dea-vs-diego.html` | none by file name; drop the rule or pick a page |
+| [L99](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/redirects.rb#L99) | `/concepts/architecture/warden.html` | `/concepts/diego/dea-vs-diego.html` | none by file name; drop the rule or pick a page |

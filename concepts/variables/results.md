@@ -376,7 +376,8 @@ For `cf-docs-migrate convert`. Decisions of this round, for review:
    ([R-24](../../requirements/README.md#r-24) markup cleanup before
    conversion). **Accepted** (Docs WG lead, 2026-10-11): the list stays
    with the Docs WG, which does the conversion, rather than going to page
-   owners.
+   owners. The list, with the empty keys to remove as well:
+   [cleanup.md](cleanup.md).
 5. **Each place has a rule per tool**, as in
    [Each place a variable can sit](#each-place-a-variable-can-sit):
    code blocks keep their type; link targets use the tool's link form;

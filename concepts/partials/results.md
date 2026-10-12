@@ -320,7 +320,7 @@ The converter resolves any such name when it converts and writes a plain
 include, and the ten unused variables are removed from the book's
 variables file in the cleanup before conversion
 ([R-24](../../requirements/README.md#r-24) markup cleanup before
-conversion). If a second edition returns, each tool's own mechanism (an
+conversion; list: [cleanup.md](cleanup.md)). If a second edition returns, each tool's own mechanism (an
 attribute in Antora, an expression in Zensical, a condition in the
 others) can be chosen then.
 
