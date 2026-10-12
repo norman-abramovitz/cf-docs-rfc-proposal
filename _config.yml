@@ -80,6 +80,8 @@ exclude:
   - concepts/code-blocks/survey/node_modules
   - poc/compare/build.py
   - poc/compare/template.html
+  - poc/pair/build.py
+  - poc/pair/template.html
   - Gemfile
   - Gemfile.lock
   - vendor

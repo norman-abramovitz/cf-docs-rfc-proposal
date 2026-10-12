@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Two Outputs Side by Side</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Two panes, one table: each pane picks Published or a tool and mode; the inputs follow in a section of their own. */
+:root {
+  --bg: #f6f8f9; --surface: #ffffff; --fg: #18232b; --muted: #5b6b76; --line: #d7dfe4;
+  --accent: #0b6e8a; --accent-soft: #e2f0f4; --same: #2f6b1f; --same-soft: #e4f2dc; --code: #f1f4f6;
+  --sans: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #11181d; --surface: #182229; --fg: #e3eaee; --muted: #93a4ae; --line: #2b3a44;
+  --accent: #5cc0dc; --accent-soft: #163541; --same: #9fd98a; --same-soft: #22351b; --code: #121b21; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #11181d; --surface: #182229; --fg: #e3eaee; --muted: #93a4ae; --line: #2b3a44;
+  --accent: #5cc0dc; --accent-soft: #163541; --same: #9fd98a; --same-soft: #22351b; --code: #121b21; color-scheme: dark }
+* { box-sizing: border-box }
+body { background: var(--bg); color: var(--fg); font: 15px/1.55 var(--sans); margin: 0; padding: 0 16px 48px }
+.wrap { max-width: 1840px; margin: 0 auto }
+a { color: var(--accent) }
+code { font-family: var(--mono); font-size: .88em }
+.intro { padding-block: 28px 8px; display: grid; gap: 10px; max-width: 80ch }
+.intro h1 { font-size: 1.75rem; line-height: 1.2; margin: 0; font-weight: 600 }
+.intro p { margin: 0; color: var(--muted) }
+.bar { position: sticky; top: 0; z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line);
+  padding-block: 10px; display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center }
+.ctl { display: flex; align-items: center; gap: 8px; flex-wrap: wrap }
+.ctl-label { font: 500 .72rem var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted) }
+select { font: 500 .9rem var(--sans); color: var(--fg); background: var(--surface); border: 1px solid var(--line);
+  border-radius: 6px; padding: 6px 8px; min-height: 36px; max-width: 100% }
+select:disabled { opacity: .5 }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: var(--surface) }
+.seg button { font: 500 .88rem var(--sans); color: var(--fg); background: none; border: 0; padding: 7px 12px; cursor: pointer; min-height: 36px }
+.seg button + button { border-left: 1px solid var(--line) }
+.seg button[aria-pressed="true"] { background: var(--accent); color: var(--surface) }
+button:focus-visible, a:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px }
+.meta { color: var(--muted); font-size: .9rem; margin: 14px 0 0 }
+.panes { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; align-items: start }
+@media (max-width: 760px) { .panes { grid-template-columns: 1fr } }
+.pane { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 14px; display: grid; gap: 10px; min-width: 0 }
+.pane-head { display: flex; flex-wrap: wrap; gap: 8px; align-items: center }
+.side { font: 600 .78rem var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin-right: 4px }
+.same { font: 500 .72rem var(--mono); text-transform: uppercase; letter-spacing: .05em; padding: 2px 7px; border-radius: 4px;
+  background: var(--same-soft); color: var(--same) }
+.note { margin: 0; color: var(--muted); font-size: .88rem }
+.shot { display: block; border: 1px solid var(--line); border-radius: 4px; overflow: auto; background: #fff; max-height: 80vh }
+.shot img { display: block; width: 100%; height: auto }
+.size-actual .shot img { width: auto; max-width: none }
+.inputs { margin-top: 30px }
+.inputs-head { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center }
+.inputs-head h2 { font-size: 1.2rem; margin: 0; font-weight: 600 }
+.src { font-size: .85rem; color: var(--muted); margin: 0; overflow-wrap: anywhere }
+pre { margin: 0; background: var(--code); border: 1px solid var(--line); border-radius: 4px; overflow: auto; max-height: 75vh;
+  font: .8rem/1.5 var(--mono); padding: 8px 0 }
+.ln { display: grid; grid-template-columns: max-content 1fr }
+.ln span { padding: 0 10px; white-space: pre }
+.ln .n { color: var(--muted); text-align: right; user-select: none; border-right: 1px solid var(--line) }
+.ln .hit { background: var(--accent-soft) }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="intro">
+    <h1>Two outputs side by side</h1>
+    <p>One table from the test pages, in two outputs you choose. Each side picks the published page or a tool and its mode; both sides may pick the same, and a label shows when the two screenshots are the same image. Screenshots are at a 1280-pixel window with each tool’s default theme. The inputs behind the two sides follow, the table alone or the whole file. For every tool at once, see the <a href="../compare/index.html">comparison page</a>; for each page written out, <a href="../tables.html">tables, page by page</a>.</p>
+  </header>
+
+  <div class="bar">
+    <div class="ctl"><label class="ctl-label" for="page">Page</label><select id="page"></select></div>
+    <div class="ctl"><label class="ctl-label" for="table">Table</label><select id="table"></select></div>
+    <div class="ctl"><span class="ctl-label" id="size-l">Size</span>
+      <div class="seg" role="group" aria-labelledby="size-l" id="sizes"><button type="button" data-size="fit">Fit</button><button type="button" data-size="actual">Actual size</button></div></div>
+  </div>
+  <p class="meta" id="meta"></p>
+
+  <div class="panes" id="outputs"></div>
+
+  <section class="inputs" aria-labelledby="inputs-h">
+    <div class="inputs-head"><h2 id="inputs-h">Input</h2>
+      <div class="ctl"><span class="ctl-label" id="span-l">Show</span>
+        <div class="seg" role="group" aria-labelledby="span-l" id="spans"><button type="button" data-span="table">The table</button><button type="button" data-span="file">Whole file</button></div></div></div>
+    <div class="panes" id="inputs"></div>
+  </section>
+</div>
+
+<script>
+const DATA = {{DATA}};
+(() => {
+  const $ = id => document.getElementById(id);
+  const esc = s => s.replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
+  const label = t => DATA.tools.find(x => x[0] === t)[1];
+  const modeLabel = m => DATA.modes.find(x => x[0] === m)[1];
+  // State lives in the URL fragment, so a chosen pair can be linked
+  const state = { page: DATA.pages[0].slug, t: 1, l: 'published/', r: 'docusaurus/passthrough', size: 'fit', span: 'table' };
+  const readHash = () => { for (const kv of location.hash.slice(1).split('&')) {
+    const [k, v] = kv.split('='); if (k in state && v) state[k] = k === 't' ? +v : decodeURIComponent(v);
+  } };
+  readHash();
+  window.addEventListener('hashchange', () => { readHash(); render(); });
+  const page = () => DATA.pages.find(p => p.slug === state.page) || DATA.pages[0];
+
+  function sideControls(which) {
+    const [tool, mode] = state[which].split('/');
+    const tools = DATA.tools.map(([t, l]) => `<option value="${t}"${t === tool ? ' selected' : ''}>${esc(l)}</option>`).join('');
+    const modes = DATA.modes.map(([m, l]) => `<option value="${m}"${m === mode ? ' selected' : ''}>${esc(l)}</option>`).join('');
+    const name = which === 'l' ? 'Left' : 'Right';
+    return `<div class="pane-head"><span class="side">${name}</span>
+      <label class="ctl-label" for="${which}-tool">Tool</label><select id="${which}-tool" data-side="${which}" data-part="tool">${tools}</select>
+      <label class="ctl-label" for="${which}-mode">Mode</label><select id="${which}-mode" data-side="${which}" data-part="mode"${tool === 'published' ? ' disabled' : ''}>${tool === 'published' ? '<option>—</option>' : modes}</select></div>`;
+  }
+
+  function lines(text, a, b, whole) {
+    const all = text.split('\n'), from = whole ? 1 : a, to = whole ? all.length : b;
+    let out = '';
+    for (let i = from; i <= to; i++) {
+      const hit = whole && i >= a && i <= b ? ' hit' : '';
+      out += `<span class="n">${i}</span><span class="${hit.trim()}">${esc(all[i - 1]) || ' '}</span>`;
+    }
+    return `<pre><code class="ln">${out}</code></pre>`;
+  }
+
+  function render() {
+    const p = page();
+    if (state.t > p.tables.length) state.t = 1;
+    const k = state.t - 1;
+    $('page').innerHTML = DATA.pages.map(x => `<option value="${x.slug}"${x.slug === p.slug ? ' selected' : ''}>${esc(x.name)}</option>`).join('');
+    $('table').innerHTML = p.tables.map((t, i) => `<option value="${i + 1}"${i === k ? ' selected' : ''}>${i + 1}: ${esc(t)}</option>`).join('');
+    $('meta').innerHTML = `${esc(p.repo)} · <a href="${p.url}">published page</a> · ${p.tables.length} table${p.tables.length > 1 ? 's' : ''}`;
+    document.querySelectorAll('#sizes button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.size === state.size)));
+    document.querySelectorAll('#spans button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.span === state.span)));
+    document.body.classList.toggle('size-actual', state.size === 'actual');
+    const sides = ['l', 'r'];
+    for (const w of sides) if (!p.sides[state[w]]) state[w] = 'published/';  // a bad link falls back to Published
+    const same = p.sides[state.l].hash[k] && p.sides[state.l].hash[k] === p.sides[state.r].hash[k];
+    $('outputs').innerHTML = sides.map(w => {
+      const s = p.sides[state[w]], [tool, mode] = state[w].split('/');
+      const shot = s.shots[k], what = tool === 'published' ? 'Published' : `${label(tool)}, ${modeLabel(mode).toLowerCase()}`;
+      const plain = tool === 'docusaurus' && mode === 'native-plain' ? '<p class="note">Docusaurus native is already plain: this is the native screenshot.</p>' : '';
+      return `<div class="pane">${sideControls(w)}${same ? '<div><span class="same">Same image on both sides</span></div>' : ''}${plain}
+        <a class="shot" href="../compare/img/${shot}" target="_blank" rel="noopener"><img src="../compare/img/${shot}" alt="${esc(what)}: ${esc(p.name)} table ${state.t}"></a></div>`;
+    }).join('');
+    $('inputs').innerHTML = sides.map(w => {
+      const s = p.sides[state[w]], [tool, mode] = state[w].split('/');
+      const [a, b] = s.spans[k], gh = `https://github.com/norman-abramovitz/cf-docs-rfc-proposal/blob/${DATA.sha}/${s.path}`;
+      const what = tool === 'published' ? 'Published: source as written' : `${label(tool)}, ${modeLabel(mode).toLowerCase()}`;
+      return `<div class="pane"><div class="pane-head"><span class="side">${w === 'l' ? 'Left' : 'Right'}</span><span>${esc(what)}</span></div>
+        <p class="src"><a href="${gh}#L${a}-L${b}">${esc(s.path)}</a>, table at lines ${a}–${b}</p>${lines(DATA.texts[s.path], a, b, state.span === 'file')}</div>`;
+    }).join('');
+    history.replaceState(null, '', '#' + Object.entries(state).map(([k, v]) => `${k}=${encodeURIComponent(v)}`).join('&'));
+    if (state.span === 'file') document.querySelectorAll('#inputs pre').forEach(pre => {
+      const hit = pre.querySelector('.hit'); if (hit) pre.scrollTop = hit.offsetTop - 40; });
+  }
+
+  $('page').addEventListener('change', e => { state.page = e.target.value; state.t = 1; render(); });
+  $('table').addEventListener('change', e => { state.t = +e.target.value; render(); });
+  $('sizes').addEventListener('click', e => { if (e.target.dataset.size) { state.size = e.target.dataset.size; render(); } });
+  $('spans').addEventListener('click', e => { if (e.target.dataset.span) { state.span = e.target.dataset.span; render(); } });
+  $('outputs').addEventListener('change', e => {
+    const w = e.target.dataset.side; if (!w) return;
+    let [tool, mode] = state[w].split('/');
+    if (e.target.dataset.part === 'tool') { tool = e.target.value; mode = tool === 'published' ? '' : (mode || 'passthrough'); }
+    else mode = e.target.value;
+    state[w] = `${tool}/${mode}`; render();
+  });
+  render();
+})();
+</script>
+</body>
+</html>
