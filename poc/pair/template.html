@@ -50,6 +50,8 @@ button:focus-visible, a:focus-visible, select:focus-visible { outline: 2px solid
 .same { font: 500 .72rem var(--mono); text-transform: uppercase; letter-spacing: .05em; padding: 2px 7px; border-radius: 4px;
   background: var(--same-soft); color: var(--same) }
 .note { margin: 0; color: var(--muted); font-size: .88rem }
+.legend { margin: 10px 0 0; color: var(--muted); font-size: .85rem }
+.desc { margin: 0; font-size: .88rem }
 .scale { font: 500 .72rem var(--mono); color: var(--muted); letter-spacing: .03em }
 .shot { display: block; border: 1px solid var(--line); border-radius: 4px; overflow: auto; background: #fff; max-height: 80vh }
 .shot img { display: block; width: 100%; height: auto }
@@ -70,7 +72,7 @@ pre { margin: 0; background: var(--code); border: 1px solid var(--line); border-
 <div class="wrap">
   <header class="intro">
     <h1>Two outputs side by side</h1>
-    <p>One table from the test pages, in two outputs you choose. Each side picks the published page or a tool and its mode; both sides may pick the same, and a label shows when the two screenshots are the same image. Screenshots are at a 1280-pixel window with each tool’s default theme. The inputs behind the two sides follow, the table alone or the whole file. For every tool at once, see the <a href="../compare/index.html">comparison page</a>; for each page written out, <a href="../tables.html">tables, page by page</a>.</p>
+    <p>One table from a <a href="../../glossary.html#test-pages">test page</a>, in two outputs: the published page, or a tool in one of its <a href="../../glossary.html#mode">modes</a>. The inputs follow below. Every tool at once: <a href="../compare/index.html">comparison page</a>. Each page written out: <a href="../tables.html">tables, page by page</a>.</p>
   </header>
 
   <div class="bar">
@@ -81,6 +83,8 @@ pre { margin: 0; background: var(--code); border: 1px solid var(--line); border-
     <div class="ctl" id="view-ctl"><span class="ctl-label" id="view-l">Wide table</span>
       <div class="seg" role="group" aria-labelledby="view-l" id="views"><button type="button" data-view="seen">As seen</button><button type="button" data-view="full">Full table</button></div></div>
   </div>
+  <p class="legend"><span><b>Fit</b> shrinks each screenshot to its pane; <b>Actual size</b> shows it pixel for pixel.</span>
+    <span id="view-legend"> <b>As seen</b> is the part of a wide table in view; <b>Full table</b> is all of it.</span></p>
   <p class="meta" id="meta"></p>
 
   <div class="panes" id="outputs"></div>
@@ -100,6 +104,17 @@ const DATA = {{DATA}};
   const esc = s => s.replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
   const label = t => DATA.tools.find(x => x[0] === t)[1];
   const modeLabel = m => DATA.modes.find(x => x[0] === m)[1];
+  // Short descriptions, each term linked to its glossary entry
+  const G = '../../glossary.html#';
+  const MODE_DESC = {
+    passthrough: 'the source HTML, with only the changes the tool forces',
+    extension: 'a plug-in carries the hints the table syntax cannot',
+    native: 'the tool’s own table syntax, with the hints it can carry',
+    'native-plain': 'the tool’s own table syntax, with no widths or alignment',
+  };
+  const describe = (tool, mode) => tool === 'published'
+    ? 'Published: the page on docs.cloudfoundry.org today.'
+    : `<a href="${G}${tool}">${esc(label(tool).split(' ')[0])}</a>, <a href="${G}${mode}">${esc(modeLabel(mode).toLowerCase())}</a>: ${MODE_DESC[mode]}.`;
   // State lives in the URL fragment, so a chosen pair can be linked
   const state = { page: DATA.pages[0].slug, t: 1, l: 'published/', r: 'docusaurus/passthrough', size: 'fit', span: 'table', view: 'seen' };
   const readHash = () => { for (const kv of location.hash.slice(1).split('&')) {
@@ -155,6 +170,7 @@ const DATA = {{DATA}};
     for (const w of sides) if (!p.sides[state[w]]) state[w] = 'published/';  // a bad link falls back to Published
     const wide = sides.some(w => p.sides[state[w]].full[k]);
     $('view-ctl').hidden = !wide;
+    $('view-legend').hidden = !wide;
     const full = w => wide && state.view === 'full' && p.sides[state[w]].full[k];
     const hashOf = w => full(w) ? p.sides[state[w]].fullhash[k] : p.sides[state[w]].hash[k];
     const same = hashOf('l') && hashOf('l') === hashOf('r');
@@ -163,7 +179,7 @@ const DATA = {{DATA}};
       const shot = full(w) || s.shots[k], what = tool === 'published' ? 'Published' : `${label(tool)}, ${modeLabel(mode).toLowerCase()}`;
       const plain = (tool === 'docusaurus' && mode === 'native-plain' ? '<p class="note">Docusaurus native is already plain: this is the native screenshot.</p>' : '')
         + (wide && state.view === 'full' && !s.full[k] ? '<p class="note">This output does not scroll: the whole table is already in view.</p>' : '');
-      return `<div class="pane">${sideControls(w)}${same ? '<div><span class="same">Same image on both sides</span></div>' : ''}${plain}
+      return `<div class="pane">${sideControls(w)}<p class="desc">${describe(tool, mode)}</p>${same ? '<div><span class="same">Same image on both sides</span></div>' : ''}${plain}
         <a class="shot" href="../compare/img/${shot}" target="_blank" rel="noopener"><img src="../compare/img/${shot}" alt="${esc(what)}: ${esc(p.name)} table ${state.t}"></a></div>`;
     }).join('');
     sizes.disconnect();  // the panes were just replaced

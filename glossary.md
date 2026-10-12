@@ -591,7 +591,7 @@ Learn more: [Raw passthrough errors in Docusaurus](concepts/tables/results.md#ra
 A tool's own plug-in point, used to carry the hints its table syntax
 cannot. Docusaurus uses a remark plugin, Zensical a Python-Markdown block,
 and Starlight attributes on Markdoc's table tag
-([83 lines](concepts/tables/sites/starlight/list-table.mjs)). Antora and the
+([85 lines](concepts/tables/sites/starlight/list-table.mjs)). Antora and the
 Sphinx probe need only classes and a stylesheet, no code. RFC #1642 says
 "Working Groups MUST NOT need custom extensions, plugins, or JavaScript code
 to author documentation" ([RFC L100][L100]). Extension mode shows which
