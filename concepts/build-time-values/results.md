@@ -272,8 +272,8 @@ author date, as Bookbinder does.
 
 ### Comparing converted and published pages
 
-[R-25](../../requirements/README.md#r-25) asks that build-time values
-count as expected differences. `buildtime.py --compare` lists the
+[R-25](../../requirements/README.md#r-25) build-time values are expected
+differences: `buildtime.py --compare` lists the
 copyright year and the date of both pages, then compares the main text
 without them ([comparison](results/compare-access-control.txt)):
 
@@ -377,7 +377,8 @@ for review:
    `<time datetime>`, as Bookbinder's `data-modified-date`), and date
    `<meta>` tags, listed apart as expected differences:
    [checks/buildtime.py](checks/buildtime.py) `--compare`
-   ([R-25](../../requirements/README.md#r-25)).
+   ([R-25](../../requirements/README.md#r-25) build-time values are expected
+   differences).
 2. **Every converted page carries its content date in the page**, in the
    tool's own field: `last_update.date` (Docusaurus), `revision_date`
    (Zensical), `lastUpdated` (Starlight), `:page-last-updated:` (Antora).
@@ -390,7 +391,11 @@ for review:
    text is all in a partial** (its file holds only the call) takes the
    newer of the two dates. `using-vol-services` is such a page: its
    file's date is 2023-05-31, its partial's 2025-03-27 with the
-   candidates skipped.
+   candidates skipped. [content-date.py](helpers/content-date.py) does
+   this with `--git`: a page whose body holds only include calls, in any
+   of the four tools' forms, also takes its partials' dates
+   ([test-content-date.py](helpers/test-content-date.py)). On the
+   round's history repositories it prints the same dates as before.
 4. **Commits that are not content are listed in `.git-blame-ignore-revs`**
    in the docs repository: the conversion commits, and bulk markup
    commits after review of [candidates.txt](survey/candidates.txt). Git
@@ -416,7 +421,8 @@ for review:
    Which value is the open question ([above](#should-the-copyright-year-follow-content-changes)).
    Set to `site`, answer B (Docs WG lead, 2026-10-11).
 9. **A sitemap's `lastmod` is the content date or absent, never the build
-   time** ([R-20](../../requirements/README.md#r-20)): Antora's default
+   time** ([R-20](../../requirements/README.md#r-20) search-engine and
+   AI-friendly output): Antora's default
    does not meet this; Docusaurus's sitemap plugin can take the content
    date (`lastmod` option), not tested.
 10. **The build-time values check runs on every converted page**: one
@@ -460,8 +466,8 @@ for review:
   of its six-line file; whether such a page should take its partial's
   date, or the newest of both, is open. Decided (Docs WG lead,
   2026-10-11): the newer of both when the partial holds the text
-  ([convention 3](#conventions-to-record)); the helper does not do it
-  yet.
+  ([convention 3](#conventions-to-record)); the helper does it as of
+  2026-10-11, checked by [test-content-date.py](helpers/test-content-date.py).
 - **The holder's name** in the notice was not decided or tested beyond
   printing today's text. Decided (Docs WG lead, 2026-10-11):
   "CloudFoundry.org Foundation, Inc.", to be confirmed with the

@@ -11,8 +11,8 @@ whether the content stays in separate repositories or moves into one
 ([R-08](../../requirements/README.md#r-08) cross-repository links). The RFC
 allows bulk conversion "as long as cross-repository links are preserved"
 ([L131]) and puts all content into one repository ([L69]);
-[R-15](../../requirements/README.md#r-15) asks that a URL still name its
-source, and [R-16](../../requirements/README.md#r-16) that old URLs keep
+two requirements apply, [R-15](../../requirements/README.md#r-15) URL identifies
+the source and [R-16](../../requirements/README.md#r-16) old URLs keep
 working. The round adds a links check beside the outline, notes, variables
 and partials checks, and answers the two open items the variables and
 partials rounds left on relative links.

@@ -2,7 +2,7 @@
 
 Usage:
   python3 -I content-date.py --key KEY [--git] [--ignore-revs FILE] [--marker TEXT]
-                             [--allow-shallow] [--write] [--year] PAGE...
+                             [--include-dir DIR] [--allow-shallow] [--write] [--year] PAGE...
 
 For each PAGE the content date is the later of:
   - the date written in the page under KEY (the converter writes it once,
@@ -12,6 +12,16 @@ For each PAGE the content date is the later of:
     id per line, # for comments: the format of git's blame.ignoreRevsFile
     and of GitHub's .git-blame-ignore-revs) and every commit whose message
     contains --marker (Bookbinder's "[exclude]", if given).
+  - with --git, for a page whose text is all in partials (its body holds
+    only include calls), the same date of each partial it includes.
+
+Include calls, one per tool (the partials round's native forms):
+  <X />                  with `import X from './_x.mdx'` (Docusaurus)
+  <% include "_x.md" %>  under --include-dir, Zensical's include_dir
+                         (default: the page's folder)
+  {% partial file="./_x.mdoc" /%}   (Starlight)
+  include::partial$x.adoc[]         the module's partials/ folder (Antora);
+                         another component's partial is not followed
 
 KEY names where the date is written:
   last_update.date      YAML front matter, nested (Docusaurus)
@@ -19,8 +29,8 @@ KEY names where the date is written:
   revision_date         YAML front matter (Zensical)
   :page-last-updated:   an AsciiDoc header attribute (Antora)
 
-Prints `PAGE<TAB>DATE<TAB>FROM` per page (FROM is `page`, `git <commit>` or
-`none`) and a last line `SITE_YEAR=YYYY`: the year of the newest date. With
+Prints `PAGE<TAB>DATE<TAB>FROM` per page (FROM is `page`, `git <commit>`,
+`git <commit> <partial>` or `none`) and a last line `SITE_YEAR=YYYY`: the year of the newest date. With
 --year it prints only the year. With --write it writes each date back under
 KEY, so the tool shows it; a build does this in its own checkout, not in a
 commit. With --git it stops if the repository is a shallow clone, where
@@ -104,6 +114,63 @@ def git(cwd, *a):
     return subprocess.run(['git', *a], cwd=cwd, capture_output=True, text=True, check=True).stdout
 
 
+def git_date(path):
+    """The author date (UTC) and id of the newest commit to path that is not skipped."""
+    d = os.path.dirname(os.path.abspath(path))
+    for line in git(d, 'log', '--format=%H%x09%at%x09%B%x00', '--', os.path.basename(path)).split('\0'):
+        line = line.strip()
+        if not line:
+            continue
+        h, at, msg = (line.split('\t', 2) + [''])[:3]
+        if h in ignore or (marker and marker in msg):
+            continue
+        return datetime.fromtimestamp(int(at), timezone.utc).strftime('%Y-%m-%d'), h
+    return None, None
+
+
+IMPORT = re.compile(r'^import\s+(\w+)\s+from\s+[\'"](.+?)[\'"];?\s*$')
+CALLS = [  # (pattern, how the path resolves)
+    (re.compile(r'<(\w+)\s*/>'), 'import'),
+    (re.compile(r'<%-?\s*include\s+["\'](.+?)["\']\s*-?%>'), 'include_dir'),
+    (re.compile(r'\{%\s*partial\s+file="(.+?)"\s*/%\}'), 'page'),
+    (re.compile(r'include::partial\$(.+?)\[\]'), 'partials'),
+]
+
+
+def partials_only(page, text):
+    """The partials a page includes when its body is only include calls, else []."""
+    span = front_matter_span(text)
+    body = text[span[1] + 4:] if span else text
+    here = os.path.dirname(os.path.abspath(page))
+    imports, found = {}, []
+    for line in body.splitlines():
+        line = line.strip()
+        m = IMPORT.match(line)
+        if m:
+            imports[m.group(1)] = m.group(2); continue
+        if not line or line.startswith('= ') or re.match(r':[\w-]+:', line):  # AsciiDoc header
+            continue
+        for pat, how in CALLS:
+            m = pat.fullmatch(line)
+            if m:
+                found.append((how, m.group(1))); break
+        else:
+            return []  # the page has text of its own
+    paths = []
+    for how, name in found:
+        if how == 'import':
+            if name not in imports:
+                return []
+            paths.append(os.path.join(here, imports[name]))
+        elif how == 'include_dir':
+            paths.append(os.path.join(opts.get('--include-dir', here), name))
+        elif how == 'page':
+            paths.append(os.path.join(here, name))
+        else:
+            paths.append(os.path.join(here, '..', 'partials', name))
+    return [p for p in paths if os.path.exists(p)]
+
+
 ignore = set()
 if opts.get('--ignore-revs'):
     for line in open(opts['--ignore-revs']):
@@ -124,19 +191,10 @@ for page in pages:
     text = open(page, encoding='utf-8').read()
     date, src = read_date(text), 'page'
     if opts.get('--git'):
-        d = os.path.dirname(os.path.abspath(page))
-        for line in git(d, 'log', '--format=%H%x09%at%x09%B%x00', '--', os.path.basename(page)).split('\0'):
-            line = line.strip()
-            if not line:
-                continue
-            h, at, msg = (line.split('\t', 2) + [''])[:3]
-            if h in ignore or (marker and marker in msg):
-                continue
-            # author date, in UTC, as a calendar date
-            g = datetime.fromtimestamp(int(at), timezone.utc).strftime('%Y-%m-%d')
-            if not date or g > date:
-                date, src = g, f'git {h[:10]}'
-            break
+        for path in [page] + partials_only(page, text):
+            g, h = git_date(path)
+            if g and (not date or g > date):
+                date, src = g, f'git {h[:10]}' + ('' if path == page else f' {os.path.basename(path)}')
     if date is None:
         src = 'none'
     elif opts.get('--write'):

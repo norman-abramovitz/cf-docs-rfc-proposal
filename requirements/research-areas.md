@@ -119,7 +119,8 @@ it link to their line, as in [L112] ([glossary](../glossary.md#rfc)).
   review ([partials results](../concepts/partials/results.md#are-partial-names-in-variables-still-needed)).
 - **Decided (Docs WG lead, 2026-10-11):** not needed. The converter
   resolves any such name, and the 10 variables are removed in the
-  cleanup before conversion ([R-24](README.md#r-24)).
+  cleanup before conversion ([R-24](README.md#r-24) markup cleanup
+  before conversion).
 
 ### What should undefined variables show?
 

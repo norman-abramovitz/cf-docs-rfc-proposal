@@ -212,8 +212,8 @@ Site: [sites/antora/](sites/antora/) — conventions:
 ### Separate sources or one repository
 
 The RFC puts all content into "ONE single documentation repository"
-([L69]); [R-15](../../requirements/README.md#r-15) asks that its
-directories keep the book's `config.yml` mapping. Both layouts were built
+([L69]); under [R-15](../../requirements/README.md#r-15) URL identifies the
+source, its directories keep the book's `config.yml` mapping. Both layouts were built
 in every tool:
 
 - **Every tool gives the same URLs in both layouts**, so the choice does
@@ -273,7 +273,8 @@ reads one repository.
 - **The book's 85 redirect rules** need moving too: 40 lead to a page, 30
   to a page that no longer exists, 3 to another redirect, 12 off the site,
   and one can never match ([survey](survey/README.md#findings)).
-  [R-16](../../requirements/README.md#r-16) applies to the live ones.
+  The live ones fall under [R-16](../../requirements/README.md#r-16) old URLs
+  keep working.
 
 ### What a link looks like after conversion
 
@@ -397,7 +398,8 @@ For `cf-docs-migrate convert`. Decisions of this round, for review:
    **Accepted** (Docs WG lead, 2026-10-11).
 7. **Every old URL that `redirects.rb` still serves gets the tool's redirect
    page**, and old URLs whose target is gone are listed for a decision
-   ([R-16](../../requirements/README.md#r-16)). Decided (Docs WG lead,
+   ([R-16](../../requirements/README.md#r-16) old URLs keep working).
+   Decided (Docs WG lead,
    2026-10-11): the 30 rules whose target is gone are dropped or
    retargeted in the cleanup before conversion; they are listed in
    [broken-links.md](../headings/broken-links.md#found-by-the-cross-repository-links-survey-2026-10-11).

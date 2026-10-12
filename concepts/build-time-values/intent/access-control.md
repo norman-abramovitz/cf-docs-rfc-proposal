@@ -41,7 +41,8 @@ Decision (this round): the content date in the converted modes skips the
 candidate commits of [survey/candidates.txt](../survey/candidates.txt),
 so it differs from the published date on purpose. The comparison helper
 lists both dates as expected differences
-([R-25](../../../requirements/README.md#r-25)).
+([R-25](../../../requirements/README.md#r-25) build-time values are
+expected differences).
 
 ## Cleanup and deviations
 

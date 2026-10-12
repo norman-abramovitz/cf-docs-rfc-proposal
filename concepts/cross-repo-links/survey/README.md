@@ -134,7 +134,8 @@ each Markdown heading. The model of generated ids is "the heading's text
 with tags removed and variables replaced, lowercased, each space a hyphen".
 Links on docs.cloudfoundry.org under `/api/` are the UAA and CredHub API
 references, published there by their own builds
-([R-29](../../../requirements/README.md#r-29)); they are not checked. Links
+([R-29](../../../requirements/README.md#r-29) API docs in the same
+pipeline); they are not checked. Links
 to bosh.io/docs are resolved against the docs-bosh clone. Other hosts are
 not checked.
 
