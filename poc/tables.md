@@ -249,9 +249,14 @@ Differences seen:
 - **Native has no column width.** A pipe table (a Markdown table written with
   `|` between cells; see the [glossary](../glossary.md#pipe-table)) carries
   no widths, so column 1 is sized by its content, 18% here. Passthrough keeps
-  the 20%.
+  the 20%. Without the 20%, passthrough and extension also size column 1
+  by its content, to the same 18%
+  ([checked after review](../concepts/tables/results.md#widths-alignment-and-font-size)).
 - **Header cells are centered**, in both modes; the published page has them
-  on the left.
+  on the left. The theme sets no alignment, so the browser's default shows.
+  Colons in the delimiter row (`| :--- | :--- |`) align a pipe table's
+  columns, and one rule in the site's stylesheet aligns every table
+  ([checked after review](../concepts/tables/results.md#widths-alignment-and-font-size)).
 - **Alternate body rows are shaded** (`json`, `password`, `rsa`), in both
   modes. The published table has no shading.
 - Body cells are vertically centered, as on the published page. No row
@@ -792,7 +797,18 @@ Differences seen:
 - Every converted table is taller than the published one (410 pixels in the
   screenshot): 498 pixels in Antora, 531 in Zensical, 564 in Starlight, 580
   in Docusaurus. Each theme's cell padding, line height and font size set
-  that; they belong to the template, not to the table.
+  that; they belong to the template, not to the table. Table text is
+  smaller than body text in Zensical (12.8 against 15 pixels) and Antora
+  (15 against 17), and the same size in Docusaurus and Starlight. A
+  smaller font narrows a column sized by its content, not one given a
+  fixed width
+  ([font size](../concepts/tables/results.md#widths-alignment-and-font-size)).
+- These are default themes. A site's or a page's theme can set table font
+  size, padding and alignment, so the widths and heights here are not
+  limits of the tools.
+- Pipe tables can align each column left, center or right with colons in
+  the delimiter row, the GitHub Flavored Markdown form, in Docusaurus,
+  Zensical and Starlight. Antora's AsciiDoc does the same in `cols`.
 - The width hint survives in passthrough everywhere, and in native wherever
   the tool's own table syntax takes a width: Zensical, Starlight and Antora.
   Docusaurus native, a pipe table, has none.

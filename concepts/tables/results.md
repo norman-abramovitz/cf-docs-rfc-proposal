@@ -27,7 +27,7 @@ table syntax carries, and how much the rest of the page has to change.
 | **HTML builds as written** | no: MDX fails on all five pages | yes, all five | four of five; Markdoc changes text inside HTML silently | yes, inside passthrough blocks, but the page around it is rewritten as AsciiDoc |
 | **Cleanup beyond the intent files** | close void elements, `style` as an object, `<tbody>` and `<colgroup>`, closing tags off the line start | one indent | entities and one-line cells where Markdoc would drop a dash or a space | the AsciiDoc rewrite, with four kinds of silent failure |
 | **Spot checks after cleanup** (six pages; 36 before `uaa-performance`) | 40/42 in every mode (the two misses are page descriptions, not tables) | 42/42 in every mode | 42/42 in every mode | 42/42 in every mode |
-| **Own table syntax carries** | nothing beyond a header row (pipe tables) | widths on header cells | widths, lists and paragraphs in cells, spanning cells | widths, row headers, top alignment, lists and paragraphs in cells, spanning cells |
+| **Own table syntax carries** | a header row and each column's horizontal alignment (pipe tables) | widths on header cells, horizontal alignment | widths, horizontal alignment, lists and paragraphs in cells, spanning cells | widths, row headers, horizontal and vertical alignment, lists and paragraphs in cells, spanning cells |
 | **Extension for the rest** | remark plugin | Python-Markdown block | attributes on Markdoc's table tag (83 lines) | none: roles on the table plus CSS |
 | **A second style** (`table-media`) | a class on the list-table directive, `{.table-media}`; a pipe table cannot take one | the list-table block's `style` option; a pipe table cannot take one | Markdoc's class shorthand, `{% table .table-media %}`, which the native table tag takes too | a role, `[.table-media]`: plain AsciiDoc |
 | **Wide tables** (wider than the column) | scroll in their own box: the theme shows every table as a block that scrolls | scroll in their own box: the theme's wrapper around Markdown tables; the site's `table.table` rule copies the theme's scrolling | scroll in their own box: the theme shows every table as a block that scrolls | the page widened; a short script in the site's UI files now puts each table in a box that scrolls |
@@ -67,6 +67,12 @@ table syntax carries, and how much the rest of the page has to change.
   `table-media` grid does not scroll: its rules make it a full-width
   table, so it shrinks its images to fit, and the check only asserts that
   it fits the column.
+
+- **Widths, alignment and font size, checked after review.** Column 1 is
+  sized by its content in Docusaurus passthrough and extension once the
+  source's 20% is left out. Docusaurus's centered headers can be set left
+  per table or for the site. Each tool's table font size is a stylesheet
+  setting ([widths, alignment and font size](#widths-alignment-and-font-size)).
 
 **Probes** (one question each; Eleventy built two test pages, Sphinx one
 table, Middleman all five test pages):
@@ -847,3 +853,64 @@ to AsciiDoc as in every mode). All five build without a message, and 32 of
 | `credential-types` | class with typographic quotes | intent cleanup |
 | `metadata` | two backslash checks | intent cleanup (decided fix) |
 | `troubleshooting_slow_requests` | the Experiment 2 table follows its list instead of sitting in step 4 | indenting it under the step |
+
+## Widths, alignment and font size
+
+Checked on 2026-10-11 after the Docs WG lead reviewed the
+[`credential-types` sample](../../poc/tables.md#credential-types).
+Method and measurements:
+[widths-alignment-fonts-2026-10-11.txt](results/widths-alignment-fonts-2026-10-11.txt).
+
+- **Column 1 sized by its content in Docusaurus passthrough and
+  extension.** Both modes keep the source's 20%: passthrough as
+  `style={{width: '20%'}}` on the first `<th>`, extension as
+  `widths="20 auto"`. Without it, column 1 measured 18% in both, the same
+  as native, which has no width. Widths are hints
+  ([principles](../README.md#principles)), so either form converts the
+  table.
+- **Docusaurus centers header cells because its theme does not align
+  them.** Infima sets the header's colour, background and weight, not its
+  alignment
+  ([`table.pcss` L54-L58](https://github.com/facebookincubator/infima/blob/205b8aedc62496839991b75a8bc2922350766fe4/packages/core/styles/content/table.pcss#L54-L58)),
+  so the browser's default for `th`, centered, shows
+  ([HTML standard, tables rendering](https://html.spec.whatwg.org/multipage/rendering.html#tables-2)).
+  Two ways change it, both checked: colons in the pipe table's delimiter
+  row (`| :--- | :--- |`) set each column per table; one rule in the
+  site's stylesheet, `.markdown th { text-align: start; }`, sets every
+  table.
+- **Pipe-table alignment colons**, the GitHub Flavored Markdown form
+  (`:---` left, `:---:` center, `---:` right;
+  [GFM spec, tables](https://github.github.com/gfm/#tables-extension-)):
+  - Docusaurus (MDX with remark-gfm 4.0.1): each cell gets
+    `style="text-align: …"`.
+  - Zensical (Python-Markdown 3.11 tables): each cell gets
+    `style="text-align: …"`
+    ([`tables.py` L141-L145](https://github.com/Python-Markdown/markdown/blob/0ffbf00cf667971d46f43aafba825e8d25098bc5/markdown/extensions/tables.py#L141-L145)).
+  - Starlight (Markdoc 0.5.10): each cell gets `align="…"`
+    ([`schema.ts` L139, L149](https://github.com/markdoc/markdoc/blob/16e1840c687e17c57d2b3664eac4edfbd01e7283/src/schema.ts#L139-L149)),
+    and Starlight's left alignment skips cells that have it
+    ([`markdown.css` L156-L158](https://github.com/withastro/starlight/blob/afe57bbbc254b957b969d581d0f861925035bdcf/packages/starlight/src/style/markdown.css#L156-L158)).
+  - Antora: AsciiDoc has no pipe tables. Its own form aligns by column in
+    `cols`, for example `[cols="<,^,>"]`
+    ([Asciidoctor, align by column](https://docs.asciidoctor.org/asciidoc/latest/tables/align-by-column/)).
+    Not built.
+
+  Horizontal alignment per column is therefore native syntax in all four
+  tools. Vertical alignment and padding are not, except in Antora.
+- **Table font size is a stylesheet setting in every tool**, measured on
+  `credential-types`:
+
+  | Tool | Body text | Table text | Set by |
+  |---|---|---|---|
+  | Docusaurus | 16px | 16px | the theme sets none; this round's `--table-font-size` ([hints.css](sites/docusaurus/src/css/hints.css)) |
+  | Zensical | 15px | 12.8px | the theme: `table:not([class])` at 12.8px ([`_typeset.scss` L486-L490](https://github.com/zensical/ui/blob/5d58e34f4240394d78ab89d149fdb3437151bac1/src/assets/stylesheets/modern/main/_typeset.scss#L486-L490); its build is the stylesheet Zensical 0.0.69 ships, `main.e15858d4.min.css`) |
+  | Starlight | 16px | 16px | the theme sets none ([`markdown.css` L135-L139](https://github.com/withastro/starlight/blob/afe57bbbc254b957b969d581d0f861925035bdcf/packages/starlight/src/style/markdown.css#L135-L139)); this round's `--table-font-size` ([hints.css](sites/starlight/src/styles/hints.css)) |
+  | Antora | 17px | 15px | the default UI: `.doc table.tableblock` at 15px ([`doc.css` L253-L255](https://gitlab.com/antora/antora-ui-default/-/blob/0e38223adfd81eb74d4b1779e158f8ad05ff8923/src/css/doc.css#L253-L255)) |
+
+  A smaller font makes content-sized columns narrower: Docusaurus native
+  at 85% text, Zensical's ratio, gave column 1 16% instead of 18%. A fixed
+  width such as 20% does not change.
+- **Theming.** This evaluation uses each tool's default theme. A site's
+  theme, or a page's, can set table font size, padding and alignment, and
+  those decide how much room a column needs. The widths and screenshots
+  here show the default themes, not limits of the tools.

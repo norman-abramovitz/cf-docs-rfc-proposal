@@ -1,0 +1,51 @@
+Widths, alignment and font size: follow-up checks, 2026-10-11
+
+Method
+- Docusaurus 3.10.2: a copy of sites/docusaurus built outside the
+  repository with four pages made from the credential-types pages:
+    native               docs/native/credential-types.mdx, unchanged
+    native-left          the same, delimiter row written | :--- | :--- |
+    passthrough-nowidth  docs/passthrough/credential-types.mdx without
+                         style={{width: '20%'}} on the first <th>
+    extension-nowidth    docs/extension/credential-types.mdx without
+                         widths="20 auto"
+  Served with `docusaurus serve`; measured in Chromium (playwright-core)
+  at a 1280 x 900 window. "col 1" is the first header cell's width in
+  percent of the table's width.
+- Zensical 0.0.69, Starlight 0.42.6, Antora 3.2.1: the built sites of
+  this round (native and passthrough credential-types), served locally
+  and measured the same way.
+- GFM alignment: the table below compiled with each tool's Markdown
+  library as installed in this round's sites.
+
+    | Left | Center | Right |
+    |:-----|:------:|------:|
+    | a | b | c |
+
+Docusaurus widths and header alignment (table 703 px wide)
+  page                  col 1   header text-align   cell font
+  native                18%     center/center       16px
+  native-left           18%     left/left           16px
+  passthrough-nowidth   18%     center/center       16px
+  extension-nowidth     18%     center/center       16px
+  native + site CSS     16%     start/start         13.6px
+    (site CSS added in the browser:
+     .markdown th { text-align: start; }
+     .markdown table { --table-font-size: 0.85em; })
+
+Body text and table text, credential-types
+  tool          mode          body p   table cell   header text-align
+  Docusaurus    native        16px     16px         center
+  Docusaurus    passthrough   16px     16px         center
+  Zensical      native        15px     12.8px       left
+  Zensical      passthrough   15px     12.8px       left
+  Starlight     native        16px     16px         start
+  Starlight     passthrough   16px     16px         start
+  Antora        native        17px     15px         left
+  Antora        passthrough   17px     15px         left
+
+GFM alignment colons
+  Docusaurus  @mdx-js/mdx + remark-gfm 4.0.1   th/td get style textAlign left/center/right
+  Zensical    Python-Markdown 3.11 tables       th/td get style="text-align: left;" etc.
+  Starlight   @markdoc/markdoc 0.5.10           th/td get align="left" etc.
+  Antora      AsciiDoc                          no pipe tables; not tested
