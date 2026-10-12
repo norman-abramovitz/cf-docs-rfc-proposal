@@ -46,6 +46,7 @@ How to read the comparisons:
   content included into other pages), included by the `high-availability`
   page, <https://docs.cloudfoundry.org/concepts/high-availability.html>
   ([include line](https://github.com/cloudfoundry/docs-cloudfoundry-concepts/blob/4ac2fb19a0a44534a8469de100af7dd91706e9b7/high-availability.html.md.erb#L108) in the host page's source).
+  The table on the page: [Recommended instance counts for high availability](https://docs.cloudfoundry.org/concepts/high-availability.html#instance-counts)
 - Upstream source: [`_oss_scale_table.html.md.erb` in cloudfoundry/docs-cloudfoundry-concepts, commit `4ac2fb1`](https://github.com/cloudfoundry/docs-cloudfoundry-concepts/blob/4ac2fb19a0a44534a8469de100af7dd91706e9b7/_oss_scale_table.html.md.erb)
 - Snapshot: [source/_oss_scale_table.html.md.erb](../concepts/tables/source/_oss_scale_table.html.md.erb) in this repo
   is a copy of that file at that commit. The per-tool versions are
@@ -1405,6 +1406,7 @@ Differences seen:
 ## `credential-types`
 
 - Published: <https://docs.cloudfoundry.org/credhub/credential-types.html>
+  The table on the page: [Credential types](https://docs.cloudfoundry.org/credhub/credential-types.html#cred-types)
 - Upstream source: [`credential-types.html.md.erb` in cloudfoundry/docs-credhub, commit `e074f74`](https://github.com/cloudfoundry/docs-credhub/blob/e074f74717422c0082ca24a2a6da7fbbf8114999/credential-types.html.md.erb)
 - Snapshot: [source/credential-types.html.md.erb](../concepts/tables/source/credential-types.html.md.erb) in this repo
   is a copy of that file at that commit. The per-tool versions are
@@ -2159,6 +2161,7 @@ Differences seen:
 ## `metadata`
 
 - Published: <https://docs.cloudfoundry.org/adminguide/metadata.html>
+  Tables on the page: [Requirements for labels](https://docs.cloudfoundry.org/adminguide/metadata.html#reqs-labels), [Requirements for annotations](https://docs.cloudfoundry.org/adminguide/metadata.html#reqs-annotations), [Selector requirement reference](https://docs.cloudfoundry.org/adminguide/metadata.html#requirements-reference)
 - Upstream source: [`metadata.html.md.erb` in cloudfoundry/docs-cf-admin, commit `19b0c9c`](https://github.com/cloudfoundry/docs-cf-admin/blob/19b0c9c5fabd93b33ba184c6eb541f3cafd3a1b9/metadata.html.md.erb)
 - Snapshot: [source/metadata.html.md.erb](../concepts/tables/source/metadata.html.md.erb) in this repo
   is a copy of that file at that commit. The per-tool versions are
@@ -4098,6 +4101,7 @@ Differences seen, against native:
 ## `troubleshooting_slow_requests`
 
 - Published: <https://docs.cloudfoundry.org/adminguide/troubleshooting_slow_requests.html>
+  Tables on the page: [Experiment 1](https://docs.cloudfoundry.org/adminguide/troubleshooting_slow_requests.html#total-latency), [Experiment 2](https://docs.cloudfoundry.org/adminguide/troubleshooting_slow_requests.html#within-cf), [Experiment 3](https://docs.cloudfoundry.org/adminguide/troubleshooting_slow_requests.html#duplicate-latency), [Experiment 4](https://docs.cloudfoundry.org/adminguide/troubleshooting_slow_requests.html#remove-the-load-balancer), [Experiment 5](https://docs.cloudfoundry.org/adminguide/troubleshooting_slow_requests.html#remove-the-gorouter), [Experiment 6](https://docs.cloudfoundry.org/adminguide/troubleshooting_slow_requests.html#test-internal-network)
 - Upstream source: [`troubleshooting_slow_requests.html.md.erb` in cloudfoundry/docs-cf-admin, commit `19b0c9c`](https://github.com/cloudfoundry/docs-cf-admin/blob/19b0c9c5fabd93b33ba184c6eb541f3cafd3a1b9/troubleshooting_slow_requests.html.md.erb)
 - Snapshot: [source/troubleshooting_slow_requests.html.md.erb](../concepts/tables/source/troubleshooting_slow_requests.html.md.erb) in this repo
   is a copy of that file at that commit. The per-tool versions are
@@ -5355,6 +5359,7 @@ Differences seen:
 ## `uaa-concepts`
 
 - Published: <https://docs.cloudfoundry.org/uaa/uaa-concepts.html>
+  Tables on the page: [Selecting the client grant type](https://docs.cloudfoundry.org/uaa/uaa-concepts.html#select-type), [client.additional_information](https://docs.cloudfoundry.org/uaa/uaa-concepts.html#additional-info)
 - Upstream source: [`uaa-concepts.html.md.erb` in cloudfoundry/docs-uaa, commit `0f43fb9`](https://github.com/cloudfoundry/docs-uaa/blob/0f43fb93af5aa378f940dd19fec7ee54c2c01ccd/uaa-concepts.html.md.erb)
 - Snapshot: [source/uaa-concepts.html.md.erb](../concepts/tables/source/uaa-concepts.html.md.erb) in this repo
   is a copy of that file at that commit. The per-tool versions are
@@ -6741,6 +6746,7 @@ Differences seen:
 ## `uaa-performance`
 
 - Published: <https://docs.cloudfoundry.org/running/uaa-performance.html>
+  The table on the page: [Client credentials grant type](https://docs.cloudfoundry.org/running/uaa-performance.html#client-credentials)
 - Upstream source: [`uaa-performance.html.md.erb` in cloudfoundry/docs-running-cf, commit `956acc8`](https://github.com/cloudfoundry/docs-running-cf/blob/956acc86445d2f3cb29f031294f86f37f515b471/uaa-performance.html.md.erb)
 - Snapshot: [source/uaa-performance.html.md.erb](../concepts/tables/source/uaa-performance.html.md.erb) in this repo
   is a copy of that file at that commit. The per-tool versions are

@@ -132,7 +132,7 @@ const DATA = {{DATA}};
     const k = state.t - 1;
     $('page').innerHTML = DATA.pages.map(x => `<option value="${x.slug}"${x.slug === p.slug ? ' selected' : ''}>${esc(x.name)}</option>`).join('');
     $('table').innerHTML = p.tables.map((t, i) => `<option value="${i + 1}"${i === k ? ' selected' : ''}>${i + 1}: ${esc(t)}</option>`).join('');
-    $('meta').innerHTML = `${esc(p.repo)} · <a href="${p.url}">published page</a> · ${p.tables.length} table${p.tables.length > 1 ? 's' : ''}`;
+    $('meta').innerHTML = `${esc(p.repo)} · <a href="${p.url}">published page</a> · <a href="${p.url}#${p.anchors[k]}">this table on the published page</a> · ${p.tables.length} table${p.tables.length > 1 ? 's' : ''}`;
     document.querySelectorAll('#sizes button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.size === state.size)));
     document.querySelectorAll('#spans button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.span === state.span)));
     document.body.classList.toggle('size-actual', state.size === 'actual');

@@ -42,6 +42,17 @@ PAGES = [
     ]),
 ]
 
+# Each table's nearest anchor on the published page: the id on the heading above it
+ANCHORS = {
+    "scale-table-host": ["instance-counts"],
+    "credential-types": ["cred-types"],
+    "metadata": ["reqs-labels", "reqs-annotations", "requirements-reference"],
+    "troubleshooting_slow_requests": ["total-latency", "within-cf", "duplicate-latency",
+                                      "remove-the-load-balancer", "remove-the-gorouter", "test-internal-network"],
+    "uaa-concepts": ["select-type", "additional-info"],
+    "uaa-performance": ["client-credentials"],
+}
+
 TOOLS = [("docusaurus", "Docusaurus 3.10.2"), ("zensical", "Zensical 0.0.69"), ("starlight", "Starlight 0.42.6"), ("antora", "Antora 3.2.1")]
 MODES = [
     ("passthrough", "Passthrough", "The source HTML with only the changes each tool forces: closed tags, style objects, tbody and colgroup for Docusaurus (MDX); none beyond the intent cleanup for Zensical; entities and one-line cells for Starlight, where Markdoc cannot take the HTML as is; in Antora the HTML sits in an AsciiDoc passthrough block, and the page around it is rewritten as AsciiDoc."),
@@ -71,7 +82,7 @@ for page, name, repo, url, tables in PAGES:
                 f'<a class="shot" href="{pub}" target="_blank" rel="noopener"><img src="{pub}" alt="Published {esc(name)} table {i}" loading="lazy"></a></figure>']
         figs += [figure(page, i, t, label) for t, label in TOOLS]
         pairs.append(f'''      <article class="pair" data-page="{page}" data-table="{i}">
-        <header class="pair-head"><h3><span class="tno">Table {i}</span> {esc(title)}</h3><p class="note">{note}</p></header>
+        <header class="pair-head"><h3><span class="tno">Table {i}</span> {esc(title)}</h3><p class="note">{note} <a href="{url}#{ANCHORS[page][i - 1]}">This table on the published page</a>.</p></header>
         <div class="cols">{''.join(figs)}</div>
       </article>''')
     n = len(tables)

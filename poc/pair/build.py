@@ -21,12 +21,12 @@ def compare_lists():
     tree = ast.parse(open(os.path.join(HERE, '..', 'compare', 'build.py'), encoding='utf-8').read())
     out = {}
     for node in tree.body:
-        if isinstance(node, ast.Assign) and isinstance(node.targets[0], ast.Name) and node.targets[0].id in ('PAGES', 'TOOLS', 'MODES'):
+        if isinstance(node, ast.Assign) and isinstance(node.targets[0], ast.Name) and node.targets[0].id in ('PAGES', 'TOOLS', 'MODES', 'ANCHORS'):
             out[node.targets[0].id] = ast.literal_eval(node.value)
-    return out['PAGES'], out['TOOLS'], out['MODES']
+    return out['PAGES'], out['TOOLS'], out['MODES'], out['ANCHORS']
 
 
-PAGES, TOOLS, MODES = compare_lists()
+PAGES, TOOLS, MODES, ANCHORS = compare_lists()
 
 
 def input_path(tool, mode, name):
@@ -117,7 +117,7 @@ def main():
                     'shots': [s if os.path.exists(os.path.join(IMG, s)) else None for s in shots],
                     'hash': [digest(os.path.join(IMG, s)) for s in shots]}
         pages.append({'slug': slug, 'name': name, 'repo': repo, 'url': url,
-                      'tables': [t for t, _ in tables], 'sides': sides})
+                      'tables': [t for t, _ in tables], 'anchors': ANCHORS[slug], 'sides': sides})
     if problems:
         sys.exit('\n'.join(problems))
     data = {'sha': sha, 'pages': pages, 'texts': texts,
