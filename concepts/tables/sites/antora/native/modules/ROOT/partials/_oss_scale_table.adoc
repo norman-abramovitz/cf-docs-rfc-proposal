@@ -4,7 +4,7 @@ single VM.
 
 [%header,cols=".<25%h,.<25%,.<50%"]
 |===
-|*Component* |*Total Instances* |*Notes*
+|Component |Total Instances |Notes
 
 |Diego Cell
 |&ge; 2

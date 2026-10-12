@@ -79,9 +79,10 @@ What the table asks for ([R-02](../requirements/README.md#r-02) rich tables):
   the standard style, as every HTML table names its style
   ([R-09](../requirements/README.md#r-09) table styles by class).
 - The header text is wrapped in `<strong>`. The intent file drops it, since
-  bold header cells are a template convention. The passthrough files keep
-  it, and Antora's AsciiDoc writes it as `*Component*`; only Starlight shows
-  a difference (below).
+  bold header cells are a template convention, and every converted input
+  drops it. (Until 2026-10-12 the passthrough inputs kept it and Antora's
+  AsciiDoc wrote it as `*Component*`; the inputs and screenshots were
+  corrected.)
 - The NATS Server row holds a variable, `<%= vars.recommended_by %>`, which
   renders as "Cloud Foundry"
   ([R-04](../requirements/README.md#r-04) variables everywhere).
@@ -284,9 +285,9 @@ The host page is the same in every mode.
 </colgroup>
 <thead>
         <tr>
-                <th><strong>Component</strong></th>
-                <th><strong>Total Instances</strong></th>
-                <th><strong>Notes</strong></th>
+                <th>Component</th>
+                <th>Total Instances</th>
+                <th>Notes</th>
         </tr>
 </thead>
 <tbody>
@@ -550,9 +551,9 @@ that said "Macro Syntax Error" while the build reported success
 <col width="50%" />
 <thead>
         <tr>
-                <th><strong>Component</strong></th>
-                <th><strong>Total Instances</strong></th>
-                <th><strong>Notes</strong></th>
+                <th>Component</th>
+                <th>Total Instances</th>
+                <th>Notes</th>
         </tr>
 </thead>
 <tbody>
@@ -657,8 +658,7 @@ Differences seen:
 - **Body cells are aligned to the top**; the published page centers them.
 - No row headers. The site's stylesheet gives `table.table` the theme's
   table look ([Zensical finding 1](../concepts/tables/results.md#zensical-0069)),
-  so the two modes look the same; the `<strong>` that passthrough keeps
-  changes nothing visible.
+  so the two modes look the same.
 
 **Extension mode.** A `/// list-table` block, read by a Python-Markdown
 extension added to the site,
@@ -859,9 +859,9 @@ The two empty Notes cells are written `* <!-- -->`.
 <col width="50%" />
 <thead>
         <tr>
-                <th><strong>Component</strong></th>
-                <th><strong>Total Instances</strong></th>
-                <th><strong>Notes</strong></th>
+                <th>Component</th>
+                <th>Total Instances</th>
+                <th>Notes</th>
         </tr>
 </thead>
 <tbody>
@@ -951,7 +951,7 @@ Files: [native](../concepts/tables/sites/starlight/src/content/docs/native/_oss_
 
 **Passthrough output:**
 
-![Starlight passthrough: the same as native except that the header text is heavier](img/starlight-passthrough-scale-table-host-t1.jpg)
+![Starlight passthrough: the same as native](img/starlight-passthrough-scale-table-host-t1.jpg)
 
 Differences seen:
 
@@ -960,10 +960,8 @@ Differences seen:
 - **The columns are 25/25/50 in both modes.** Native gets them from `width`
   on the header cells. Without them (native-plain, a pipe table), the
   columns are 18/17/65.
-- **The header text is heavier in passthrough.** Passthrough keeps the
-  source's `<strong>` inside each header cell; native has none, and the
-  theme draws header cells lighter than `<strong>`. Compared pixel by pixel,
-  the header row is the only difference between the two screenshots.
+- **Passthrough and native look the same.** Compared pixel by pixel, the
+  two screenshots match.
 - **"Cloud Controller API" and "Cloud Controller Worker" wrap onto two
   lines**; the content column is narrower here (632 pixels). The published
   page wraps only "Cloud Controller Worker".
@@ -1093,7 +1091,7 @@ The host page is the same in every mode.
 ```asciidoc
 [%header,cols=".<25%h,.<25%,.<50%"]
 |===
-|*Component* |*Total Instances* |*Notes*
+|Component |Total Instances |Notes
 
 |Diego Cell
 |&ge; 2
@@ -1151,8 +1149,7 @@ The host page is the same in every mode.
 
 `%header` makes the first row the header row. In `cols`, `.<` aligns a
 column to the top, the percentage is its width, and `h` styles column 1's
-cells as headers (row headers). The header text keeps the source's bold as
-`*…*`. The variable is the attribute `{recommended_by}`.
+cells as headers (row headers). The variable is the attribute `{recommended_by}`.
 
 </details>
 
@@ -1167,9 +1164,9 @@ cells as headers (row headers). The header text keeps the source's bold as
 <col width="50%" />
 <thead>
         <tr>
-                <th><strong>Component</strong></th>
-                <th><strong>Total Instances</strong></th>
-                <th><strong>Notes</strong></th>
+                <th>Component</th>
+                <th>Total Instances</th>
+                <th>Notes</th>
         </tr>
 </thead>
 <tbody>
@@ -1295,7 +1292,7 @@ get their meaning from the site's stylesheet,
 ```asciidoc
 [.hinted.col1-key.col2-value.col3-prose.col1-nowrap%header,cols=".<25%h,.<25%,.<50%"]
 |===
-|*Component* |*Total Instances* |*Notes*
+|Component |Total Instances |Notes
 
 |Diego Cell
 |&ge; 2
@@ -1357,7 +1354,8 @@ line, up to a cap. The rest is the native table.
 
 </details>
 
-**Extension output** (the same image as native, byte for byte):
+**Extension output** (the same as native; the two screenshots differ only
+by a one-pixel shift in where the table sits on the page):
 
 ![Antora extension: the same as native, columns at 25/25/50, component names bold as row headers on one line, cells aligned to the top](img/antora-extension-scale-table-host-t1.jpg)
 

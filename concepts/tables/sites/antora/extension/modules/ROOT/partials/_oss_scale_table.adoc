@@ -4,7 +4,7 @@ single VM.
 
 [.hinted.col1-key.col2-value.col3-prose.col1-nowrap%header,cols=".<25%h,.<25%,.<50%"]
 |===
-|*Component* |*Total Instances* |*Notes*
+|Component |Total Instances |Notes
 
 |Diego Cell
 |&ge; 2
