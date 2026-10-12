@@ -17,13 +17,13 @@ PAGES = [
         ("Label requirements",
          "Title: passthrough keeps the source’s spanning row; every other mode shows it as a bold line above the table, because Markdown tables have one header row (decided). The stray backslashes in <code>\\[a-z0-9A-Z\\]</code> are removed in every mode. Pipe tables hold the lists as inline HTML."),
         ("Annotation requirements", "Same shape and decisions as the label table."),
-        ("Selector requirement reference", "Already a Markdown table in the source. Extension adds row headers and roles."),
+        ("Selector requirement reference", "Already a Markdown table in the source. Extension adds row headers and roles; Antora native already has row headers (its <code>cols</code> marks column 1 with <code>h</code>)."),
     ]),
     ("troubleshooting_slow_requests", "troubleshooting_slow_requests", "docs-cf-admin",
      "https://docs.cloudfoundry.org/adminguide/troubleshooting_slow_requests.html", [
         ("Experiment 1: total round-trip requests",
          "Passthrough carries each table’s widths as written; every other mode uses no widths and lets the column roles decide (variant C, decided). This table sets no widths in the source."),
-        ("Experiment 2: request time in access logs", "Sits inside step 3 of a numbered list, so it is narrower. The source sets a width on column 1 only."),
+        ("Experiment 2: request time in access logs", "Sits inside step 4 of a numbered list, so it is narrower. The source sets a width on column 1 only."),
         ("Experiment 3: duplicate latency", "The source sets a width on column 1 only."),
         ("Experiment 4: remove the load balancer", "The source sets a width on column 1 only."),
         ("Experiment 5: remove Gorouter", "The source sets widths on columns 1 and 2."),
@@ -31,9 +31,9 @@ PAGES = [
     ]),
     ("uaa-concepts", "uaa-concepts", "docs-uaa", "https://docs.cloudfoundry.org/uaa/uaa-concepts.html", [
         ("Grant type / User / Details",
-         "The <code>implicit</code> row ended with <code>&lt;/td&gt;</code> instead of <code>&lt;/tr&gt;</code>; it is fixed. Column 1 is 30% wide, and its identifiers do not break."),
+         "The <code>implicit</code> row ended with <code>&lt;/td&gt;</code> instead of <code>&lt;/tr&gt;</code>; it is fixed. Column 1 is 30% wide wherever the mode carries widths. Without widths, columns are sized by content or made equal: column 1 is 27% in Docusaurus native, 16% in Zensical native-plain, 27% in Starlight native-plain and 33% in Antora native-plain. Its identifiers do not break."),
         ("Key / Value",
-         "In the <code>allowed providers</code> row, <code>&lt;br/&gt;&lt;br/&gt;</code> is a paragraph break (decided): two paragraphs in extension and in Starlight native; passthrough and pipe tables keep the breaks."),
+         "In the <code>allowed providers</code> row, <code>&lt;br/&gt;&lt;br/&gt;</code> is a paragraph break (decided): two paragraphs in extension, in Starlight native, and in Antora native and native-plain; passthrough and pipe tables keep the breaks."),
     ]),
     ("uaa-performance", "uaa-performance", "docs-running-cf · first section only; added after the round",
      "https://docs.cloudfoundry.org/running/uaa-performance.html", [

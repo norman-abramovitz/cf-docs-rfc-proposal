@@ -3,6 +3,7 @@
 Status: draft, incomplete — covers what is known as of 2026-10-10. Updated
 2026-10-11 with the links the [cross-repository links survey](#found-by-the-cross-repository-links-survey-2026-10-11)
 found across the book, and the redirect rules whose target is gone.
+Updated 2026-10-12 with [one anchor used four times](#one-anchor-used-four-times-uaa-performance-2026-10-12).
 
 Links to the four test pages of the Headings round that point at a heading
 anchor which is not on today's published page. They are broken before any
@@ -367,3 +368,25 @@ not send; it does nothing and can go with them.
 | [L97](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/redirects.rb#L97) | `/concepts/architecture/execution-agent.html` | `/concepts/diego/dea-vs-diego.html` | none by file name; drop the rule or pick a page |
 | [L98](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/redirects.rb#L98) | `/concepts/architecture/dea-algorithm.html` | `/concepts/diego/dea-vs-diego.html` | none by file name; drop the rule or pick a page |
 | [L99](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/redirects.rb#L99) | `/concepts/architecture/warden.html` | `/concepts/diego/dea-vs-diego.html` | none by file name; drop the rule or pick a page |
+
+## One anchor used four times: uaa-performance (2026-10-12)
+
+Page: <https://docs.cloudfoundry.org/running/uaa-performance.html>
+
+Found while linking the tables test pages to their tables on the
+published page. The source gives the headings of all four sections the
+same anchor, `<a id='client-credentials'></a>`, so `#client-credentials`
+reaches only the first section; the other three cannot be linked by an
+anchor of their own. Each heading also lacks the space after `###`, so
+the published page gives it a second, generated id that starts with a
+hyphen (`-password-grant-type`).
+
+| Source (docs-running-cf, pinned) | Heading | Ids on the published page | Suggested fix (to check) |
+|---|---|---|---|
+| [L84](https://github.com/cloudfoundry/docs-running-cf/blob/956acc86445d2f3cb29f031294f86f37f515b471/uaa-performance.html.md.erb#L84) | Client credentials grant type | `client-credentials`, `-client-credentials-grant-type` | keep `client-credentials`; add the space after `###` |
+| [L169](https://github.com/cloudfoundry/docs-running-cf/blob/956acc86445d2f3cb29f031294f86f37f515b471/uaa-performance.html.md.erb#L169) | Password grant type | `client-credentials` (again), `-password-grant-type` | a new id such as `password`; add the space |
+| [L254](https://github.com/cloudfoundry/docs-running-cf/blob/956acc86445d2f3cb29f031294f86f37f515b471/uaa-performance.html.md.erb#L254) | Authorization code grant type | `client-credentials` (again), `-authorization-code-grant-type` | a new id such as `authorization-code`; add the space |
+| [L305](https://github.com/cloudfoundry/docs-running-cf/blob/956acc86445d2f3cb29f031294f86f37f515b471/uaa-performance.html.md.erb#L305) | Implicit grant type | `client-credentials` (again), `-implicit-grant-type` | a new id such as `implicit`; add the space |
+
+Links to the hyphen-prefixed ids were not searched for; adding the space
+changes those ids, so a search should come before the fix.

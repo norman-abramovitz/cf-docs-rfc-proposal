@@ -332,17 +332,22 @@ sits inside a numbered list, so it is narrower (660 pixels).
 |-------|-------------|-----------|--------|
 | `_oss_scale_table` | 25/25/50 | 26/25/49 | 25/25/50 |
 | `credential-types` | 20/80 | 20/80 | 20/80 |
-| `metadata` T1 | 16/17/27/40 | 23/18/25/33 | 18/19/27/36 |
-| `metadata` T2 | 17/17/28/38 | 23/18/26/32 | 19/19/27/35 |
+| `metadata` T1 | 18/19/27/36 | 23/18/25/33 | 18/19/27/36 |
+| `metadata` T2 | 19/19/27/35 | 23/18/26/32 | 19/19/27/35 |
 | `metadata` T3 | 16/27/57 | 16/26/57 | 16/27/57 |
-| `troubleshooting` T1 | 26/25/49 | 28/25/46 | 28/25/46 |
+| `troubleshooting` T1 | 28/25/46 | 28/25/46 | 28/25/46 |
 | `troubleshooting` T2 | 25/36/39 | 23/37/40 | 23/37/40 |
 | `troubleshooting` T3 | 25/30/45 | 21/31/47 | 21/31/47 |
-| `troubleshooting` T4 | 25/20/55 | 19/23/58 | 19/23/58 |
+| `troubleshooting` T4 | 25/22/53 | 19/23/58 | 19/23/58 |
 | `troubleshooting` T5 | 25/25/50 | 22/22/56 | 22/22/56 |
 | `troubleshooting` T6 | 25/25/50 | 19/24/57 | 19/24/57 |
 | `uaa-concepts` T1 | 30/26/43 | 30/26/43 | 30/26/43 |
 | `uaa-concepts` T2 | 25/75 | 25/75 | 25/75 |
+
+Corrected 2026-10-12: four passthrough figures (`metadata` T1 and T2,
+`troubleshooting` T1 and T4) were remeasured on a fresh build, at a
+1280-pixel window, first body row, and replaced; the other figures
+measured the same.
 
 The scale table's key column stays on one line at 26%: "Cloud Controller
 Worker" fits the 16em cap here, so the no-wrap wins over the 25% width by one
@@ -549,7 +554,7 @@ sits inside a numbered list, so it is narrower (592 pixels).
 |-------|-------------|-----------|--------|--------------|
 | `_oss_scale_table` | 25/25/50 | 31/24/45 | 25/25/50 | 18/17/65 |
 | `credential-types` | 20/80 | 20/80 | 20/80 | 18/82 |
-| `metadata` T1 | 16/20/31/33 | 27/18/28/26 | 16/21/31/33 | 16/20/31/33 |
+| `metadata` T1 | 16/20/31/33 | 27/18/28/26 | 16/20/31/33 | 16/20/31/33 |
 | `metadata` T2 | 18/21/31/30 | 27/19/29/25 | 18/21/31/30 | 18/21/31/30 |
 | `metadata` T3 | 18/34/49 | 18/34/48 | 18/34/49 | 18/34/49 |
 | `troubleshooting` T1 | 32/27/41 | 32/27/41 | 32/27/41 | 32/27/41 |
@@ -560,6 +565,11 @@ sits inside a numbered list, so it is narrower (592 pixels).
 | `troubleshooting` T6 | 25/25/50 | 16/27/56 | 16/27/56 | 16/27/56 |
 | `uaa-concepts` T1 | 30/31/39 | 30/31/39 | 30/31/39 | 27/32/41 |
 | `uaa-concepts` T2 | 25/75 | 25/75 | 25/75 | 25/75 |
+
+Corrected 2026-10-12: the native figure for `metadata` T1 (was
+16/21/31/33) were remeasured on a fresh build, at a
+1280-pixel window, first body row, and replaced; the other figures
+measured the same.
 
 The scale table's key column stays on one line at 31%: "Cloud Controller
 Worker" fits the 16em cap, so the no-wrap wins over the 25% width, as in
