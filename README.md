@@ -50,6 +50,14 @@ cover what is known as of 2026-10-10 and mark what is not yet written.
    Cloud Foundry pages, next to the page as published today. It is also
    neutral evidence.
 
+**Only interested in the results?** Go straight to the side-by-side pages.
+[Two outputs side by side](poc/pair/index.html) puts any two versions of a
+test table next to each other, the published page or a tool in one of its
+modes, with the text an author writes for each below. The
+[comparison page](poc/compare/index.html) shows the published table next to
+all four tools at once. [Tables, page by page](poc/tables.md) writes each
+test page out with its inputs and the differences found.
+
 The [glossary](glossary.md) explains the terms further. Each document
 defines its terms where it first uses them, so the glossary is optional.
 
