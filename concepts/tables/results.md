@@ -1316,10 +1316,14 @@ The Sphinx probe marks its cells in the build too: a `doctree-read` hook
 in `conf.py` gives each cell of a hinted column its role class and
 `wrap-avoid`, and one rule replaces the list of 18 columns. It measures
 the same as the list in all three browsers at both widths, on the
-bpm-config tables and on a page with no-wrap on column 4. Antora still
-uses the list: Asciidoctor writes a cell's class from its alignment only
-(`tableblock halign-… valign-…`), so a tree processor has no clean way to
-add one.
+bpm-config tables and on a page with no-wrap on column 4. Antora does
+the same with an Asciidoctor tree processor (`hint-cells.js`, decision
+2026-10-12). Asciidoctor writes a cell's class from its alignment only
+(`tableblock halign-… valign-…`), so the marks are appended to the cell's
+`valign` attribute and reach the class through it; `make check` reports it
+if they stop. Measured against the list on the bpm-config, a|-cell,
+metadata, uaa-concepts and column-4 pages in all three browsers at both
+widths: identical (66 page measurements). No site lists columns any more.
 
 ## Paths in table cells
 

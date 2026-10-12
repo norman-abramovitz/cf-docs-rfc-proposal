@@ -23,6 +23,9 @@ ui:
 urls:
   html_extension_style: indexify
 asciidoc:
+  # Hint classes on a table mark that column's cells (hint-cells.js)
+  extensions:
+  - ./hint-cells.js
   attributes:
     # An undefined attribute renders as nothing, as an undefined ERB variable does
     attribute-missing: drop

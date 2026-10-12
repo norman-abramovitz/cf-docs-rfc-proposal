@@ -38,27 +38,9 @@
 
 /* Extension: the hints as roles on the table (.hinted.col1-key.col1-nowrap ...). */
 /* wrap: avoid keeps a body cell on one line, up to the cap; longer text wraps
-   between words. The cell's paragraph or content box is the inner box. A
-   selector cannot take the column number from the role, so each column is
-   listed, up to 18. */
-.doc table.hinted.col1-nowrap > tbody > tr > :nth-child(1) > *,
-.doc table.hinted.col2-nowrap > tbody > tr > :nth-child(2) > *,
-.doc table.hinted.col3-nowrap > tbody > tr > :nth-child(3) > *,
-.doc table.hinted.col4-nowrap > tbody > tr > :nth-child(4) > *,
-.doc table.hinted.col5-nowrap > tbody > tr > :nth-child(5) > *,
-.doc table.hinted.col6-nowrap > tbody > tr > :nth-child(6) > *,
-.doc table.hinted.col7-nowrap > tbody > tr > :nth-child(7) > *,
-.doc table.hinted.col8-nowrap > tbody > tr > :nth-child(8) > *,
-.doc table.hinted.col9-nowrap > tbody > tr > :nth-child(9) > *,
-.doc table.hinted.col10-nowrap > tbody > tr > :nth-child(10) > *,
-.doc table.hinted.col11-nowrap > tbody > tr > :nth-child(11) > *,
-.doc table.hinted.col12-nowrap > tbody > tr > :nth-child(12) > *,
-.doc table.hinted.col13-nowrap > tbody > tr > :nth-child(13) > *,
-.doc table.hinted.col14-nowrap > tbody > tr > :nth-child(14) > *,
-.doc table.hinted.col15-nowrap > tbody > tr > :nth-child(15) > *,
-.doc table.hinted.col16-nowrap > tbody > tr > :nth-child(16) > *,
-.doc table.hinted.col17-nowrap > tbody > tr > :nth-child(17) > *,
-.doc table.hinted.col18-nowrap > tbody > tr > :nth-child(18) > * {
+   between words. The cell's paragraph or content box is the inner box.
+   hint-cells.js marks the cells of each colN-nowrap column with wrap-avoid. */
+.doc table.hinted > tbody > tr > .wrap-avoid > * {
   width: max-content;
   max-width: var(--table-nowrap-max, 16em);
 }

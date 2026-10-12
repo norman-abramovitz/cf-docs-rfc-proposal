@@ -47,6 +47,9 @@ check: $(if $(filter passthrough-raw,$(MODES)),build-raw,build)
 	  echo "== $$m: $$(../../checks/spot-checks.sh .check/$$m | grep -c '^ok') passed"; \
 	  ../../checks/spot-checks.sh .check/$$m | grep -v '^ok' || true; \
 	done
+	@grep -q '<t[dh] class="tableblock [^"]*wrap-avoid' site/extension/scale-table-host/index.html \
+	  && echo "ok    hint-cells.js marks the cells of a colN-nowrap column" \
+	  || echo "FAIL  hint-cells.js marks no cell: the converter's cell class changed?"
 
 # Wide tables scroll in their own box (run while make serve is running)
 check-wide: ../../checks/node_modules

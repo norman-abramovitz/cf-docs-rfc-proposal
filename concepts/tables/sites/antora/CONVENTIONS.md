@@ -124,9 +124,15 @@ their content.
 
 ## Extension
 
-No custom code: the hints are roles on the native table, and
+The hints are roles on the native table, and
 [supplemental-ui/css/hints.css](supplemental-ui/css/hints.css) gives them
-their meaning.
+their meaning. A selector cannot take the column number from a role, so
+[hint-cells.js](hint-cells.js), an Asciidoctor tree processor the playbook
+loads, marks the cells of each hinted column (`role-key` ..., `wrap-avoid`)
+and adds `hinted`; one rule then serves any column, as in the other sites.
+The converter writes a cell's class from its alignment only, so the marks
+travel in the cell's `valign` attribute; `make check` reports it if they
+stop reaching the HTML. A native table may name the same roles.
 
 ```asciidoc
 [.hinted.col1-key.col2-prose.col3-prose.col1-nowrap%header,cols=".<30%h,.<~,.<~"]
@@ -141,7 +147,7 @@ their meaning.
 
 | Role | Meaning | Hint |
 |------|---------|------|
-| `hinted` | the table carries hints | — |
+| `hinted` | the table carries hints (added when a `colN-` role is there) | — |
 | `colN-key`, `colN-value`, `colN-prose` | the role of column N | column role |
 | `colN-nowrap` | column N avoids wrapping (`key` columns unless `wrap: normal`) | column wrap |
 
