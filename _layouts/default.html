@@ -27,5 +27,11 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
     <script>anchors.add();</script>
+    <script>
+      // POC pages: a link that leaves this site opens in a new tab
+      if (location.pathname.includes('/poc/'))
+        for (const a of document.querySelectorAll('a[href]'))
+          if (a.host && a.host !== location.host) { a.target = '_blank'; a.rel = 'noopener' }
+    </script>
   </body>
 </html>

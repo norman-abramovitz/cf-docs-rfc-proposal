@@ -57,6 +57,7 @@ figcaption { font-size: .82rem; color: var(--muted); display: flex; flex-wrap: w
 .shot img { display: block; width: 100%; height: auto }
 .size-actual .shot img { width: auto; max-width: none }
 .hint { color: var(--muted); font-size: .85rem; margin: 0 }
+.scale { font: 500 .72rem var(--mono); color: var(--muted); letter-spacing: .03em }
 .gaps { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 16px 18px; margin-block: 18px 6px; display: grid; gap: 10px }
 .gaps h2 { font-size: 1.05rem; margin: 0; font-weight: 600 }
 .gaps p { margin: 0; color: var(--muted); font-size: .92rem; max-width: 100ch }
@@ -138,6 +139,17 @@ figcaption { font-size: .82rem; color: var(--muted); display: flex; flex-wrap: w
     const t = b.dataset.tool; hidden.has(t) ? hidden.delete(t) : hidden.add(t);
     store.set('tcc-hidden', [...hidden].join(',')); render();
   }));
+  // Fit: each screenshot says how large it is shown, as a percent of its own width (Actual size is 100%)
+  const scale = img => {
+    const head = img.closest('figure') ? img.closest('figure').querySelector('figcaption') : img.closest('.pane').querySelector('.pane-head');
+    let s = head.querySelector('.scale');
+    if (!s) { s = document.createElement('span'); s.className = 'scale'; head.append(s); }
+    const fit = !document.body.classList.contains('size-actual');
+    s.textContent = fit && img.naturalWidth && img.clientWidth ? `shown at ${Math.round(img.clientWidth / img.naturalWidth * 100)}%` : '';
+  };
+  const sizes = new ResizeObserver(es => es.forEach(e => scale(e.target)));
+  const watch = img => { sizes.observe(img); img.addEventListener('load', () => scale(img)); scale(img); };
+  document.querySelectorAll('.shot img').forEach(watch);
   // Jump links land below the sticky bar, so each page and table title stays visible.
   const bar = document.querySelector('.bar');
   const pad = () => document.documentElement.style.setProperty('--bar-h', bar.offsetHeight + 12 + 'px');

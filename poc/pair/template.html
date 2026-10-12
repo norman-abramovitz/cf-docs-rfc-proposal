@@ -50,6 +50,7 @@ button:focus-visible, a:focus-visible, select:focus-visible { outline: 2px solid
 .same { font: 500 .72rem var(--mono); text-transform: uppercase; letter-spacing: .05em; padding: 2px 7px; border-radius: 4px;
   background: var(--same-soft); color: var(--same) }
 .note { margin: 0; color: var(--muted); font-size: .88rem }
+.scale { font: 500 .72rem var(--mono); color: var(--muted); letter-spacing: .03em }
 .shot { display: block; border: 1px solid var(--line); border-radius: 4px; overflow: auto; background: #fff; max-height: 80vh }
 .shot img { display: block; width: 100%; height: auto }
 .size-actual .shot img { width: auto; max-width: none }
@@ -126,13 +127,24 @@ const DATA = {{DATA}};
     return `<pre><code class="ln">${out}</code></pre>`;
   }
 
+  // Fit: each screenshot says how large it is shown, as a percent of its own width (Actual size is 100%)
+  const scale = img => {
+    const head = img.closest('figure') ? img.closest('figure').querySelector('figcaption') : img.closest('.pane').querySelector('.pane-head');
+    let s = head.querySelector('.scale');
+    if (!s) { s = document.createElement('span'); s.className = 'scale'; head.append(s); }
+    const fit = !document.body.classList.contains('size-actual');
+    s.textContent = fit && img.naturalWidth && img.clientWidth ? `shown at ${Math.round(img.clientWidth / img.naturalWidth * 100)}%` : '';
+  };
+  const sizes = new ResizeObserver(es => es.forEach(e => scale(e.target)));
+  const watch = img => { sizes.observe(img); img.addEventListener('load', () => scale(img)); scale(img); };
+
   function render() {
     const p = page();
     if (state.t > p.tables.length) state.t = 1;
     const k = state.t - 1;
     $('page').innerHTML = DATA.pages.map(x => `<option value="${x.slug}"${x.slug === p.slug ? ' selected' : ''}>${esc(x.name)}</option>`).join('');
     $('table').innerHTML = p.tables.map((t, i) => `<option value="${i + 1}"${i === k ? ' selected' : ''}>${i + 1}: ${esc(t)}</option>`).join('');
-    $('meta').innerHTML = `${esc(p.repo)} · <a href="${p.url}">published page</a> · <a href="${p.url}#${p.anchors[k]}">this table on the published page</a> · ${p.tables.length} table${p.tables.length > 1 ? 's' : ''}`;
+    $('meta').innerHTML = `${esc(p.repo)} · <a href="${p.url}" target="_blank" rel="noopener">published page</a> · <a href="${p.url}#${p.anchors[k]}" target="_blank" rel="noopener">this table on the published page</a> · ${p.tables.length} table${p.tables.length > 1 ? 's' : ''}`;
     document.querySelectorAll('#sizes button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.size === state.size)));
     document.querySelectorAll('#spans button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.span === state.span)));
     document.body.classList.toggle('size-actual', state.size === 'actual');
@@ -146,12 +158,14 @@ const DATA = {{DATA}};
       return `<div class="pane">${sideControls(w)}${same ? '<div><span class="same">Same image on both sides</span></div>' : ''}${plain}
         <a class="shot" href="../compare/img/${shot}" target="_blank" rel="noopener"><img src="../compare/img/${shot}" alt="${esc(what)}: ${esc(p.name)} table ${state.t}"></a></div>`;
     }).join('');
+    sizes.disconnect();  // the panes were just replaced
+    document.querySelectorAll('#outputs img').forEach(watch);
     $('inputs').innerHTML = sides.map(w => {
       const s = p.sides[state[w]], [tool, mode] = state[w].split('/');
       const [a, b] = s.spans[k], gh = `https://github.com/norman-abramovitz/cf-docs-rfc-proposal/blob/${DATA.sha}/${s.path}`;
       const what = tool === 'published' ? 'Published: source as written' : `${label(tool)}, ${modeLabel(mode).toLowerCase()}`;
       return `<div class="pane"><div class="pane-head"><span class="side">${w === 'l' ? 'Left' : 'Right'}</span><span>${esc(what)}</span></div>
-        <p class="src"><a href="${gh}#L${a}-L${b}">${esc(s.path)}</a>, table at lines ${a}–${b}</p>${lines(DATA.texts[s.path], a, b, state.span === 'file')}</div>`;
+        <p class="src"><a href="${gh}#L${a}-L${b}" target="_blank" rel="noopener">${esc(s.path)}</a>, table at lines ${a}–${b}</p>${lines(DATA.texts[s.path], a, b, state.span === 'file')}</div>`;
     }).join('');
     history.replaceState(null, '', '#' + Object.entries(state).map(([k, v]) => `${k}=${encodeURIComponent(v)}`).join('&'));
     if (state.span === 'file') document.querySelectorAll('#inputs pre').forEach(pre => {

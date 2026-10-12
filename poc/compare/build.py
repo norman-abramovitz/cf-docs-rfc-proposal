@@ -82,12 +82,12 @@ for page, name, repo, url, tables in PAGES:
                 f'<a class="shot" href="{pub}" target="_blank" rel="noopener"><img src="{pub}" alt="Published {esc(name)} table {i}" loading="lazy"></a></figure>']
         figs += [figure(page, i, t, label) for t, label in TOOLS]
         pairs.append(f'''      <article class="pair" data-page="{page}" data-table="{i}">
-        <header class="pair-head"><h3><span class="tno">Table {i}</span> {esc(title)}</h3><p class="note">{note} <a href="{url}#{ANCHORS[page][i - 1]}">This table on the published page</a>.</p></header>
+        <header class="pair-head"><h3><span class="tno">Table {i}</span> {esc(title)}</h3><p class="note">{note} <a href="{url}#{ANCHORS[page][i - 1]}" target="_blank" rel="noopener">This table on the published page</a>.</p></header>
         <div class="cols">{''.join(figs)}</div>
       </article>''')
     n = len(tables)
     sections.append(f'''    <section id="{page}" class="page">
-      <div class="page-head"><h2>{esc(name)}</h2><p class="meta"><span>{esc(repo)}</span> · <a href="{url}">published page</a> · {n} table{'s' if n > 1 else ''}</p></div>
+      <div class="page-head"><h2>{esc(name)}</h2><p class="meta"><span>{esc(repo)}</span> · <a href="{url}" target="_blank" rel="noopener">published page</a> · {n} table{'s' if n > 1 else ''}</p></div>
 {chr(10).join(pairs)}
     </section>''')
 
