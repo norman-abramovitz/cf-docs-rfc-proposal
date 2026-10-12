@@ -1,0 +1,177 @@
+Breaks inside identifiers, 2026-10-12
+
+Method
+- The page: bpm-config (intent/bpm-config.md), six tables B1-B6 with the
+  same four columns (Property, Type, Required, Description). 26 property
+  name cells, 25 distinct (`processes` is in B1 and B4). The published
+  page (bosh.io, Material for MkDocs) breaks 8 of them at 1280 x 900.
+- Sites: each tool's site copied outside the repository, pages generated
+  for the modes below, built and served with python3 -m http.server.
+    passthrough   the Markdown as written (Antora: the GFM HTML of the
+                  pipe tables in a passthrough block, class="table")
+    native        the tool's own table syntax, cleanup only
+    extension     the hints: column 1 role key, wrap: avoid on columns
+                  1 and 2 (Antora and Sphinx: roles on the table,
+                  .hinted.col1-key...col1-nowrap.col2-nowrap)
+  Extra pages: Docusaurus native with <!-- table: .table-ref -->;
+  Zensical native with class="table"; Antora native with columns 1-2 as
+  AsciiDoc (a|) cells, with [.nobreak]#...# and [.nowrap]#...# spans, and
+  a col4-nowrap page; Sphinx (MyST 5.1.0, Alabaster 1.0.0) passthrough,
+  extension (list-table :class:) and col4-nowrap.
+- Browsers: Google Chrome 155.0.8059.39, Firefox 155.0 and WebKit 26.6
+  (Playwright builds 1543 and 2359) through playwright-core 1.63.0; 1280 x
+  900 and 390 x 900. Node 26.2.0, Python 3.14.8, macOS 27.
+- A break: walking each cell's text one character at a time, a
+  non-space character whose Range top is more than 2-4 pixels below the
+  previous non-space character's. A name break is one inside a code span
+  in column 1. Pass = no name break and B2's `env` Type,
+  `string => string`, on one line.
+- Controls: CSS injected into the built page, R = { overflow-wrap:
+  normal; word-break: normal; hyphens: manual }:
+    a   every code in a table cell
+    b   the key column only (role class, or first child)
+    c   code inside the wrap: avoid box
+    d   per-tool markup (see each tool)
+  Provoke (Docusaurus, Starlight): a rule that lets code break, to show
+  the detector and the controls work where the theme does not break.
+- Versions: Docusaurus 3.10.2 (Infima 0.2.0-alpha.45); Zensical 0.0.69
+  (Python-Markdown 3.11, pymdown-extensions 12.1); Starlight 0.42.6;
+  Antora 3.2.1 with the default UI at 0e38223a (@asciidoctor/core 2.2.9);
+  Sphinx 9.1.0, docutils 0.22.4.
+
+Docusaurus
+- Baseline: 0 of 26 names break in any mode, width or browser.
+  passthrough, native: FAIL only on `string => string` (2 lines at 1280,
+  3 at 390; Type column 96 / 89 px). extension: PASS (Type 136 px).
+- 1280: tables 703 px, no scroll. 390: every table scrolls in its box
+  (client 358); B2 579 px (626 extension). Column 1: B2 186, B5 204,
+  B6 169 px in every mode.
+- Why: Infima sets overflow-wrap: break-word on body
+  (https://github.com/facebookincubator/infima/blob/205b8aedc62496839991b75a8bc2922350766fe4/packages/core/styles/common/base.pcss#L24-L27).
+  break-word does not lower a column's min-content width, so the column
+  is never squeezed below a name. Tables are display: block; overflow:
+  auto (table.pcss L24-L28), so a wide table scrolls instead.
+- Provoke, `.markdown code { word-break: break-word }`: 12 name breaks at
+  1280 (column 1 down to 122 px), 22 at 390 (93 px) in passthrough and
+  native; extension 0. With a, b or c added: 0.
+- d, native with <!-- table: .table-ref --> and
+  `.markdown table.table-ref tr > :nth-child(-n+2) { white-space: nowrap }`:
+  PASS in all three browsers at both widths (Type 136 px).
+- Prose code: control a changes no column width and adds no scrolling.
+
+Zensical
+- Baseline: passthrough, native and class="table" FAIL with name breaks.
+  Chrome 1280: 8, exactly the published page's (ephemeral_dis|k,
+  persistent_di|sk, additional_vo|lumes, shutdown_sign|al, open_file|s,
+  unrestricted_vo|lumes, host_pid_namesp|ace, allow_execut|ions); env on
+  2 lines. Firefox 1280: 8 at other split points. WebKit 1280: 11. 390:
+  13 in all three (unrestric|ted_volum|es twice). extension: PASS in all
+  three browsers at both widths.
+- Why: the theme sets `word-break: break-word` on inline code
+  (https://github.com/zensical/ui/blob/5d58e34f4240394d78ab89d149fdb3437151bac1/src/assets/stylesheets/modern/main/_typeset.scss#L220-L223;
+  the built CSS at that commit has the same sha256 as the installed one).
+  It acts like overflow-wrap: anywhere and lowers min-content, so column 1
+  drops to the header cell's 5rem floor (100 px; 121 px in Chrome at
+  1280). `overflow-wrap: break-word` on .md-typeset is inherited but is
+  not the cause.
+- Controls: `word-break: normal` alone removes every name break, in three
+  browsers at both widths; `overflow-wrap: normal` alone changes nothing.
+  a with `tr > :nth-child(2) { white-space: nowrap }`: PASS everywhere.
+- Cost of `.md-typeset :is(td, th) code { word-break: normal; }`: none at
+  1280 (B2 column 1 121 -> 156 px, column 4 357 -> 324, table width
+  unchanged). At 390, B2 412 -> 524 px in a table that already scrolls.
+
+Starlight
+- Baseline, same in all three browsers: names pass in every mode.
+  passthrough and native: env on 2 lines. extension: PASS (wrap: avoid
+  box 143 px).
+- 1280: tables 632 px, no scroll. 390: every table scrolls (box 358).
+- Why: `code { overflow-wrap: break-word }`
+  (https://github.com/withastro/starlight/blob/afe57bbbc254b957b969d581d0f861925035bdcf/packages/starlight/src/style/reset.css#L54-L63;
+  identical to the installed dist/style/reset.css), which does not lower
+  min-content; tables scroll (markdown.css L135-L139).
+  `.sl-markdown-content li { overflow-wrap: anywhere }` reaches no cell
+  here (no li or p in these tables).
+- Provoke, overflow-wrap: anywhere on cell code: 13-14 names break at
+  1280, 19-23 at 390; extension immune.
+- Controls a, b, c, d: identical to baseline to the pixel. A column 2
+  nowrap rule fixes env in passthrough and native.
+
+Antora
+- Baseline: 0 name breaks in every mode, both widths, three browsers.
+  passthrough FAIL / FAIL (env), extension PASS / PASS, native FAIL /
+  FAIL, native without widths PASS at 1280 / FAIL at 390.
+- 1280: tables 686 px, no scroll. 390: B2, B5, B6 scroll in the site's
+  table box.
+- Why: the UI sets word-wrap: anywhere on body
+  (https://gitlab.com/antora/antora-ui-default/-/blob/0e38223adfd81eb74d4b1779e158f8ad05ff8923/src/css/base.css#L27)
+  but word-wrap: normal on table (base.css#L100, "table widths aren't
+  computed as expected when word-wrap is enabled"), so ordinary cells
+  (p.tableblock) never break a name. AsciiDoc cells get word-wrap:
+  anywhere again (src/css/doc.css#L265-L266, `.doc td.tableblock >
+  .content`).
+- AsciiDoc-cell page (columns 1 and 2 as a|), Chrome: 12 name breaks at
+  1280, all 26 at 390, and Type words split (strin|g) 9 / 25 times.
+  extension with a| cells: 0. The repository's own metadata page, at 390,
+  today: 19 mid-word breaks (Alph|anumeric, subdom|ain, charact|er) in
+  extension, native and native without widths.
+- Controls: a and b: names whole on the a| page, Type words still split;
+  c: no effect there. d: [.nobreak]#...# on names and [.nowrap]#...# on
+  Type: PASS at both widths. e, `.doc td.tableblock > .content {
+  overflow-wrap: normal }`: on the a| page 21 -> 0 breaks at 1280, 51 ->
+  0 at 390, column widths equal plain native exactly. On the
+  repository's pages: uaa-concepts unchanged; metadata at 1280 columns
+  shift (table still 686 px, no scroll); at 390 the 19 split words are
+  gone and tables widen (extension T1 426 -> 512 px, native T1 359 ->
+  445) in boxes that already scroll.
+- UI rules for markup: `.doc :not(pre).nowrap { white-space: nowrap }`
+  (doc.css#L1044-L1045), `.doc .nobreak { hyphens: none; word-wrap:
+  normal }` (doc.css#L1048-L1050).
+
+Sphinx probe
+- Names cannot break: span.pre { hyphens: none; white-space: nowrap }
+  (https://github.com/sphinx-doc/sphinx/blob/v9.1.0/sphinx/themes/basic/static/basic.css.jinja#L755-L761;
+  the installed copy is byte-identical). passthrough FAIL / FAIL (env),
+  extension PASS / PASS, same in three browsers.
+- 1280: 660 px. 390: tables 446-654 px overflow the 330 px body and the
+  page scrolls; the probe has no scroll box.
+- A rule that lets everything break (break-all): Antora 24 name breaks
+  at 390, Sphinx 0.
+
+No-wrap past column 3 (Antora and Sphinx)
+- col4-nowrap has no rule today: column 4 takes 3-4 lines. With the rule
+  listed to column 12: one line in all three browsers. Antora stays
+  686 px with no scroll at 1280 (column 5 271 -> 185 px, 6 -> 9 lines);
+  at 390, 474 -> 570 px in its box. Sphinx 660 -> 763 px at 1280, wider
+  than the 660 px body; the page scrolls at 390, as it already did.
+
+Roles
+- A rule on the key role class changes 0 px in every tool: the
+  wrap: avoid box already makes a name its own min-content. It matters
+  only for a name wider than the 16em cap. Starlight, a 53-character
+  427 px name: breaks at the 256 px box with the theme; with a role-key
+  nowrap rule it stays whole and overlaps the Type column by 155 px.
+
+Paths in prose cells
+- Firefox breaks /var/vcap/... paths after a `/` in B2's Description in
+  every tool and mode; Chrome and WebKit do not, except in Zensical at
+  390 before the fix (Chrome inside a word, /var/vcap/j|obs/JOB; WebKit
+  after a `/`). A `/` is a line-break opportunity in Firefox;
+  overflow-wrap rules do not change it. All three browsers break after the hyphen
+  in /identity-|zones on Antora's uaa-concepts page at 390.
+  `table :is(td, th) code { white-space: nowrap }` removed it in Antora
+  at 1280 with no width change (390 not measured).
+- No prose is hyphenated in any table.
+
+Applied, and measured after building (2026-10-12)
+- Zensical hints.css: `.md-typeset :is(td, th) code { word-break: normal; }`.
+  passthrough, native, native class="table": 0 name breaks in Chrome,
+  Firefox and WebKit at 1280 and 390 (8 / 13 before); still FAIL on env
+  only. extension PASS.
+- Antora hints.css: `.doc td.tableblock > .content { overflow-wrap: normal; }`.
+  a| page: 0 name breaks in three browsers at both widths. metadata at
+  390: 0 split words (19 before), tables 512 / 445 / 444 px, as in
+  control e. Every other bpm-config result unchanged.
+- Antora and Sphinx hints.css: colN-nowrap listed to column 18. On an
+  18-column table each role colN-nowrap (1-18) sets the box on column N
+  only; col19-nowrap sets none.

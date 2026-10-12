@@ -1235,3 +1235,59 @@ With the extensions, the native roles table keeps
 table gets `id="label-requirements"` in Docusaurus, Zensical and
 Starlight; nothing else on any page changes. Spot checks and wide-table
 checks give the same results as before.
+
+## Breaks inside identifiers
+
+Checked on 2026-10-12 on the [`bpm-config`](intent/bpm-config.md) tables,
+whose published page breaks eight property names inside the identifier
+(`ephemeral_dis|k`). 26 name cells (25 distinct), in Chrome 155,
+Firefox 155 and WebKit 26.6 at 1280 and 390 pixels. Method and
+measurements:
+[breaks-inside-identifiers-2026-10-12.txt](results/breaks-inside-identifiers-2026-10-12.txt).
+
+| Tool | Names break? | Why |
+|---|---|---|
+| Docusaurus | no | Infima's `overflow-wrap: break-word` ([`base.pcss` L24-L27](https://github.com/facebookincubator/infima/blob/205b8aedc62496839991b75a8bc2922350766fe4/packages/core/styles/common/base.pcss#L24-L27)) breaks a word only when it cannot fit, so it never squeezes the column |
+| Zensical | yes, in passthrough and native: the published page's 8 at 1280 in Chrome, 13 at 390 | the theme's `word-break: break-word` on code ([`_typeset.scss` L220-L223](https://github.com/zensical/ui/blob/5d58e34f4240394d78ab89d149fdb3437151bac1/src/assets/stylesheets/modern/main/_typeset.scss#L220-L223)), the same rule as the published page's theme |
+| Starlight | no | `overflow-wrap: break-word` on code ([`reset.css` L54-L63](https://github.com/withastro/starlight/blob/afe57bbbc254b957b969d581d0f861925035bdcf/packages/starlight/src/style/reset.css#L54-L63)) |
+| Antora | not in ordinary cells; in AsciiDoc (`a\|`) cells, 12 at 1280 and all 26 at 390 | tables reset the UI's `word-wrap: anywhere` ([`base.css` L100](https://gitlab.com/antora/antora-ui-default/-/blob/0e38223adfd81eb74d4b1779e158f8ad05ff8923/src/css/base.css#L100)), but `a\|` cells set it again ([`doc.css` L265-L266](https://gitlab.com/antora/antora-ui-default/-/blob/0e38223adfd81eb74d4b1779e158f8ad05ff8923/src/css/doc.css#L265-L266)) |
+| Sphinx probe | no | inline code is `white-space: nowrap` ([`basic.css.jinja` L755-L761](https://github.com/sphinx-doc/sphinx/blob/v9.1.0/sphinx/themes/basic/static/basic.css.jinja#L755-L761)) |
+
+- **Extension mode passes in every tool.** The `wrap: avoid` box makes
+  each name its own minimum width.
+- **Every other failure is B2's `string => string`**, which wraps at its
+  spaces in passthrough and native. No CSS rule can keep a value column
+  on one line without knowing which column it is.
+- **Two fixes are in the sites' `hints.css`** (decision 2026-10-12):
+  - Zensical, `.md-typeset :is(td, th) code { word-break: normal; }`.
+    Measured after building: no name breaks in any mode, browser or
+    width. Width is unchanged at 1280; at 390, B2 grows from 412 to
+    524 pixels in a table that already scrolls. `overflow-wrap: normal`
+    alone changes nothing.
+  - Antora, `.doc td.tableblock > .content { overflow-wrap: normal; }`.
+    No name breaks in `a|` cells, whose columns now match plain native.
+    The repository's own metadata page had 19 words split mid-word at
+    390 (`Alph|anumeric`); it now has none, and its tables widen inside
+    boxes that already scroll.
+- **Docusaurus and Starlight get no rule.** A guard against a later
+  theme change was offered and declined: it changes nothing today.
+- **No-wrap past column 3.** In Antora and the Sphinx probe, the
+  `wrap: avoid` hint is a role on the table (`colN-nowrap`), and only
+  columns 1 to 3 had a rule. A selector cannot take the column number
+  from the role, so the rule now lists every column up to 18. Each role
+  was checked to hit only its own column. The widest surveyed table has
+  12 columns. On a test page, column 4 went from 3–4 lines to one in all
+  three browsers. Listing the columns is a stopgap: the other three
+  tools mark the cells in their build, and one rule covers any column.
+- **Roles need no rule of their own here.** A rule on the key role
+  changes 0 pixels in every tool. It matters only for a name wider than
+  the 16em cap, where it trades a break for an overlap.
+- **Firefox breaks paths after a `/`** (`/var/vcap/|store/JOB`) in prose
+  cells in every tool; Chrome and WebKit do not. A `/` is a line-break
+  opportunity there, which `overflow-wrap` does not govern. A path
+  class, to be marked in the source and styled, is the next step
+  (decision 2026-10-12).
+- **Passthrough takes no hints** (decision 2026-10-12): its HTML and the
+  site's CSS style it. Native tables may name hint classes such as
+  `col2-nowrap` where the tool can attach a class; how each tool turns
+  them into layout is the next step.

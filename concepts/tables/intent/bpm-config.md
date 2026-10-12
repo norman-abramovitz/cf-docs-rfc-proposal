@@ -60,7 +60,8 @@ The same check found B2's Type cell `string => string` on two lines.
 template sets, text wraps between words, and an identifier has none, so a
 name never breaks inside. Whether each tool can stop a break inside a code
 span (hyphenation, `word-break`, `overflow-wrap`) is the separate
-hyphenation and no-wrap work item.
+hyphenation and no-wrap work item: see results,
+[Breaks inside identifiers](../results.md#breaks-inside-identifiers).
 
 ## Table 1 (B1) — Schema (top level)
 
