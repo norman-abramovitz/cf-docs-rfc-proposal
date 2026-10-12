@@ -97,4 +97,9 @@ PY3
 )
 echo "$roles" | sed 's/^ok /ok    /; s/^FAIL /FAIL  /'
 echo "$roles" | grep -q '^FAIL' && fail=1
+# bosh.io pages (bosh-networks, bosh-cpi-api-v2, bosh-director-tasks,
+# bpm-config), added 2026-10-12; the checks live in bosh-pages.py
+bosh=$(python3 -I "$(dirname "$0")/bosh-pages.py" "$B")
+echo "$bosh"
+echo "$bosh" | grep -q '^FAIL' && fail=1
 exit $fail

@@ -18,7 +18,7 @@ serve: build
 check-raw: node_modules
 	node mdx-check.mjs docs/passthrough-raw/*.mdx
 
-PAGES = scale-table-host credential-types metadata troubleshooting_slow_requests uaa-concepts uaa-performance roles-table-host
+PAGES = scale-table-host credential-types metadata troubleshooting_slow_requests uaa-concepts uaa-performance roles-table-host bosh-networks bosh-cpi-api-v2 bosh-director-tasks bpm-config
 
 # Spot checks from the intent files, per mode; prints only failures
 check: build

@@ -33,7 +33,7 @@ build-raw: install
 serve: build
 	python3 -m http.server $(PORT) -d site
 
-PAGES = scale-table-host credential-types metadata troubleshooting_slow_requests uaa-concepts uaa-performance roles-table-host
+PAGES = scale-table-host credential-types metadata troubleshooting_slow_requests uaa-concepts uaa-performance roles-table-host bosh-networks bosh-cpi-api-v2 bosh-director-tasks bpm-config
 MODES ?= passthrough extension native native-plain
 
 # Spot checks from the intent files, per mode; prints only failures.
