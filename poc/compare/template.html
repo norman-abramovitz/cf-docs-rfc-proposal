@@ -106,7 +106,7 @@ figcaption { font-size: .82rem; color: var(--muted); display: flex; flex-wrap: w
     <div class="ctl"><span class="ctl-label" id="size-l">Size</span>
       <div class="seg" role="group" aria-labelledby="size-l" id="sizes"><button type="button" data-size="fit">Fit</button><button type="button" data-size="actual">Actual size</button></div></div>
     <div class="ctl"><span class="ctl-label" id="view-l">Wide tables</span>
-      <div class="seg" role="group" aria-labelledby="view-l" id="views"><button type="button" data-view="seen">As seen</button><button type="button" data-view="full">Full table</button></div></div>
+      <div class="seg" role="group" aria-labelledby="view-l" id="views"><button type="button" data-view="full">Full table</button><button type="button" data-view="seen">As seen</button></div></div>
     <p class="mode-desc" id="mode-desc"></p>
     <nav class="nav" aria-label="Pages">{{NAV}}</nav>
   </div>
@@ -124,7 +124,7 @@ figcaption { font-size: .82rem; color: var(--muted); display: flex; flex-wrap: w
   if (!desc[mode]) mode = 'passthrough';
   let hidden = new Set((store.get('tcc-hidden') || '').split(',').filter(Boolean));
   let size = store.get('tcc-size') === 'actual' ? 'actual' : 'fit';
-  let view = store.get('tcc-view') === 'full' ? 'full' : 'seen';
+  let view = store.get('tcc-view') === 'seen' ? 'seen' : 'full';
   function render() {
     document.querySelectorAll('#modes button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.mode === mode)));
     document.querySelectorAll('#tools button').forEach(b => b.setAttribute('aria-pressed', String(!hidden.has(b.dataset.tool))));

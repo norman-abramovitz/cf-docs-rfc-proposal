@@ -43,7 +43,7 @@ PAGES = [
     ("roles-table-host", "_oss_roles_table", "docs-cloudfoundry-concepts · partial included by roles; added 2026-10-12",
      "https://docs.cloudfoundry.org/concepts/roles.html", [
         ("Activity / eleven roles",
-         "Twelve columns, wider than the content column in every tool. Each tool scrolls it in a box of its own and lays it out at its narrowest, each column as wide as its longest word, so the activity column wraps on every row; Zensical gives every column the same 100 pixels. The published page has no box: the table spills 154 pixels into the margin. Choose <b>Full table</b> to see every column."),
+         "Twelve columns, wider than the content column in every tool. Each tool scrolls it in a box of its own and lays it out at its narrowest, each column as wide as its longest word, so the activity column wraps on every row; Zensical gives every column the same 100 pixels. The published page has no box: the table spills 154 pixels into the margin. <b>Full table</b> shows every column; <b>As seen</b> shows the part each tool’s box shows before the reader scrolls it."),
     ]),
 ]
 

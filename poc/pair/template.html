@@ -83,10 +83,10 @@ pre { margin: 0; background: var(--code); border: 1px solid var(--line); border-
     <div class="ctl"><span class="ctl-label" id="size-l">Size</span>
       <div class="seg" role="group" aria-labelledby="size-l" id="sizes"><button type="button" data-size="fit">Fit</button><button type="button" data-size="actual">Actual size</button></div></div>
     <div class="ctl" id="view-ctl"><span class="ctl-label" id="view-l">Wide table</span>
-      <div class="seg" role="group" aria-labelledby="view-l" id="views"><button type="button" data-view="seen">As seen</button><button type="button" data-view="full">Full table</button></div></div>
+      <div class="seg" role="group" aria-labelledby="view-l" id="views"><button type="button" data-view="full">Full table</button><button type="button" data-view="seen">As seen</button></div></div>
   </div>
   <p class="legend"><span><b>Fit</b> shrinks each screenshot to its pane; <b>Actual size</b> shows it pixel for pixel.</span>
-    <span id="view-legend"> <b>As seen</b> is the part of a wide table in view; <b>Full table</b> is all of it.</span></p>
+    <span id="view-legend"> <b>Full table</b> is all of a wide table; <b>As seen</b> is the part a tool shows in its box before the reader scrolls it.</span></p>
   <p class="meta" id="meta"></p>
 
   <div class="panes" id="outputs"></div>
@@ -118,7 +118,7 @@ const DATA = {{DATA}};
     ? 'Published: the page on docs.cloudfoundry.org today.'
     : `<a href="${G}${tool}">${esc(label(tool).split(' ')[0])}</a>, <a href="${G}${mode}">${esc(modeLabel(mode).toLowerCase())}</a>: ${MODE_DESC[mode]}.`;
   // State lives in the URL fragment, so a chosen pair can be linked
-  const state = { page: DATA.pages[0].slug, t: 1, l: 'published/', r: 'docusaurus/passthrough', size: 'fit', span: 'table', view: 'seen' };
+  const state = { page: DATA.pages[0].slug, t: 1, l: 'published/', r: 'docusaurus/passthrough', size: 'fit', span: 'table', view: 'full' };
   const readHash = () => { for (const kv of location.hash.slice(1).split('&')) {
     const [k, v] = kv.split('='); if (k in state && v) state[k] = k === 't' ? +v : decodeURIComponent(v);
   } };

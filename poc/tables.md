@@ -7517,8 +7517,8 @@ the rest of the table hidden past its right edge, and the *full table*, the whol
 table with nothing cut off. The other modes are shown only where they look
 clearly different, and linked otherwise. The
 [two-pane page](pair/index.html#page=roles-table-host) shows any two
-outputs side by side, as seen or full (its "As seen" and "Full table"
-buttons), and the [comparison page](compare/index.html#roles-table-host)
+outputs side by side, full or as seen (its "Full table" button, the
+default, and "As seen"), and the [comparison page](compare/index.html#roles-table-host)
 shows them all.
 
 **No scrollbar shows in the "as seen" images.** The scrollbars are overlay
