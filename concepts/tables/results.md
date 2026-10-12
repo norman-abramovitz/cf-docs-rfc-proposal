@@ -1279,6 +1279,8 @@ measurements:
   12 columns. On a test page, column 4 went from 3–4 lines to one in all
   three browsers. Listing the columns is a stopgap: the other three
   tools mark the cells in their build, and one rule covers any column.
+  Replaced the same day: Antora and Sphinx now mark the cells too (Hint
+  classes on native tables).
 - **Roles need no rule of their own here.** A rule on the key role
   changes 0 pixels in every tool. It matters only for a name wider than
   the 16em cap, where it trades a break for an overlap.
