@@ -21,7 +21,7 @@ the start were compact, boxed, plain and striped.
 | [tables.csv](tables.csv) | The data: one row per table, 238 rows, each with a GitHub link to the table at the surveyed commit |
 | [shas.txt](shas.txt) | The 21 repositories and the commit surveyed in each |
 | [survey.py](survey.py) | Finds and measures the tables in a set of clones |
-| [families.py](families.py) | Sorts the tables into families and prints a summary |
+| [families.py](families.py) | Sorts the tables into families, gives each a style, and prints a summary |
 | [bosh_tables.py](bosh_tables.py) | Extra measurements for the bosh.io tables and its Markdown |
 
 ## Scope
@@ -251,6 +251,44 @@ The evaluation's reading of the data, not a decision:
 
 Which styles to offer is open; see
 [Research areas](../../../requirements/research-areas.md#which-table-styles-beyond-the-standard-one).
+The style each table gets in a conversion is decided below.
+
+### The style each table gets
+
+Decision (2026-10-12): conversion gives every table one look and any
+modifiers, as classes on the `<table>`. A pipe table takes them from a
+`<!-- table: .name -->` comment
+([Classes and ids on pipe tables](../results.md#classes-and-ids-on-pipe-tables)).
+`table` is the tool's or theme's default look; `table-boxed` is a border on
+every cell, today's book look, kept only where the grid helps reading.
+[families.py](families.py) writes the classes into the `style` column of
+[tables.csv](tables.csv). The first rule that matches wins:
+
+1. **`table-output`**: command output laid out as a table. No survey
+   column marks it, so the two are listed by hand: bosh.io
+   [director-tasks.md L34](https://github.com/cloudfoundry/docs-bosh/blob/20a41223a7ba87700424634c42e94a22a669b45e/content/director-tasks.md#L34)
+   and
+   [vsphere-esxi-host-failure.md L21](https://github.com/cloudfoundry/docs-bosh/blob/20a41223a7ba87700424634c42e94a22a669b45e/content/vsphere-esxi-host-failure.md#L21);
+2. **`table-media`**: the media family;
+3. the look: **`table-boxed`** for the matrix family (a grid of short
+   cells, up to 12 columns, read across) and the titled family (spanning
+   cells and row headers); **`table`** for every other table;
+4. the modifier: **`table-compact`** added for the matrix family and for
+   any table of 15 or more body rows. The role matrices stay readable with
+   it once the wide-table first-column floor applies
+   ([Wide tables](../results.md#wide-tables-prose-width-and-a-continuation-cue)).
+
+| Style | Tables | HTML | Pipe |
+|---|---|---|---|
+| `table` | 197 | 103 | 94 |
+| `table table-compact` | 14 | 1 | 13 |
+| `table-media` | 12 | 12 | 0 |
+| `table-boxed table-compact` | 11 | 5 | 6 |
+| `table-boxed` | 2 | 2 | 0 |
+| `table-output` | 2 | 0 | 2 |
+
+No table gets `table-plain` or `table-striped`: nothing in the sources asks
+for either.
 
 ## bosh.io
 
@@ -408,7 +446,7 @@ cmp tables.csv SURVEY/tables.csv
 
 `survey.py` writes `raw.json` and `raw.csv` and prints the table count;
 `families.py` prints the family summary and writes `tables.json` and
-`tables.csv` with the `family` column. [tables.csv](tables.csv) holds 238
+`tables.csv` with the `family` and `style` columns. [tables.csv](tables.csv) holds 238
 tables. On 2026-10-10 `survey.py` was rerun on `docs-bbr`,
 `docs-book-cloudfoundry` and `docs-bosh`, and its rows for them match the
 file.

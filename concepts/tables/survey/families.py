@@ -5,8 +5,9 @@ Usage:
 
 TABLES is survey.py's OUT_PREFIX.json, or a CSV with the same columns
 (tables.csv). Prints one block per family and the traits that cut across
-families. With OUT_PREFIX, also writes OUT_PREFIX.json and OUT_PREFIX.csv
-with a `family` column added; the input is never changed.
+families, then the count per style. With OUT_PREFIX, also writes
+OUT_PREFIX.json and OUT_PREFIX.csv with `family` and `style` columns added;
+the input is never changed.
 """
 import csv, json, sys, collections as C
 
@@ -34,10 +35,23 @@ def fam(x):
     return 'wide'
 
 
+# Command output laid out as a table; no survey column marks it, so by hand.
+OUTPUT = {('docs-bosh', 'content/director-tasks.md', 34),
+          ('docs-bosh', 'content/vsphere-esxi-host-failure.md', 21)}
+
+
+def style(x):
+    """The table's classes: one look, then any modifier."""
+    if (x['repo'], x['file'], x['line']) in OUTPUT: return 'table-output'
+    if x['family'] == 'media': return 'table-media'
+    look = 'table-boxed' if x['family'] in ('matrix', 'titled') else 'table'
+    return look + (' table-compact' if x['family'] == 'matrix' or x['body_rows'] >= 15 else '')
+
+
 if len(sys.argv) not in (2, 3):
     sys.exit(__doc__)
 d = load(sys.argv[1])
-for x in d: x['family'] = fam(x)
+for x in d: x['family'] = fam(x); x['style'] = style(x)
 if len(sys.argv) == 3:
     out = sys.argv[2]
     json.dump(d, open(out + '.json', 'w'), indent=1)
@@ -55,3 +69,4 @@ for f, xs in sorted(by.items(), key=lambda kv: -len(kv[1])):
 # traits that cut across families
 print('row headers', sum(x['row_headers'] > 0 for x in d), '| cell styles', sum(x['cell_styles'] > 0 for x in d), '| col widths', sum(bool(x['cols']) for x in d), '| border attr', sum(x['border'] for x in d), '| unclosed thead', sum(x['unclosed_thead'] for x in d), '| erb', sum(bool(x['erb']) for x in d))
 print('long tables >=15 rows', [(x['repo'], x['file'], x['body_rows'], x['median_cell']) for x in d if x['body_rows'] >= 15])
+print('styles', dict(C.Counter(x['style'] for x in d).most_common()))
