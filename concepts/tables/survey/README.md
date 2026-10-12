@@ -288,7 +288,8 @@ every cell, today's book look, kept only where the grid helps reading.
 | `table-output` | 2 | 0 | 2 |
 
 No table gets `table-plain` or `table-striped`: nothing in the sources asks
-for either.
+for either. Both stay in the set for authors to name (decision,
+2026-10-12).
 
 ## bosh.io
 
