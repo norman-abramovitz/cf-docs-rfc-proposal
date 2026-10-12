@@ -136,6 +136,15 @@ on header cells, `colspan` and `align` on any cell, and `class` and `id` on
 anything. A pipe table (native-plain) takes them from `<!-- table: .name #id -->`
 on the line above it, or above its bold title line (`table-attrs.mjs`).
 
+A native table also takes the column hints as Antora's hint classes:
+`colN-key`, `colN-value`, `colN-prose` (the role of column N) and
+`colN-nowrap` (`wrap: avoid`), N from 1, in the class shorthand
+(`{% table .col1-key .col1-nowrap %}`) or the table comment. Each class
+means only what it names, so a key column that should not wrap takes both.
+The table node (`list-table.mjs`) marks that column's cells as it does for
+the `roles` and `wrap` attributes, and the table gets `hinted-table`, so
+one rule in `hints.css` serves any column.
+
 ```markdown
 {% table %}
 * Type {% width="20%" %}

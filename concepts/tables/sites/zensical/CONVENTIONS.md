@@ -174,3 +174,11 @@ with no cell borders, a rule under the header, and centered cells.
   `{: .class }` after a table becomes an extra row. `table_attrs.py` reads
   `<!-- table: .name #id -->` on the line above the table or above its bold
   title, and adds `table` with any class so the theme's look stays.
+- **Native names the column hints in the same comment**, as Antora's hint
+  classes: `colN-key`, `colN-value`, `colN-prose` (the role of column N)
+  and `colN-nowrap` (`wrap: avoid`), N from 1. Each class means only what
+  it names, so a key column that should not wrap takes both:
+  `<!-- table: .col1-key .col1-nowrap .col2-nowrap -->`. `table_attrs.py`
+  marks that column's cells as the list table does (`role-key`,
+  `wrap-avoid` and the `wrap-avoid-box`), and the table gets
+  `hinted-table`, so one rule in `hints.css` serves any column.

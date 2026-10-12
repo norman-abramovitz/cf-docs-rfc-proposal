@@ -126,5 +126,14 @@ A pipe table takes a class and an id from `<!-- table: .name #id -->` on the
 line above it, or above its bold title line; `plugins/table-attrs.js` reads it
 from the page source, since MDX drops comments.
 
+The comment also takes the column hints as Antora's hint classes:
+`colN-key`, `colN-value`, `colN-prose` (the role of column N) and
+`colN-nowrap` (`wrap: avoid`), N from 1. Each class means only what it
+names, so a key column that should not wrap takes both, as in Antora:
+`<!-- table: .col1-key .col1-nowrap .col2-nowrap -->`. The plugin marks that
+column's cells as the list table does (`role-key`, `wrap-avoid` and the
+`wrap-avoid-box`), and the table gets `hinted-table`, so one rule in
+`hints.css` serves any column.
+
 A cell can hold a linked image, `[![alt](./images/x.png)](./images/x.png)`;
 the build copies both targets into its assets.

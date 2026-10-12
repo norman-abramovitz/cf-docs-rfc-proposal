@@ -134,3 +134,12 @@ Case 14: the standard class named as well.
 | --- | --- | --- |
 | `a` | 1 | first |
 | `b` | 2 | second |
+
+Case 15: hint classes. Column 1 is the key and, with column 2, avoids
+wrapping; column 3 is prose. An unknown `colN-` class stays a plain class.
+
+<!-- table: .col1-key .col1-nowrap .col2-nowrap .col3-prose .col3-other #probe-fifteen -->
+| Property | Type | Description |
+| --- | --- | --- |
+| `env` | string => string | Any additional environment variables to be included in the environment of this process. |
+| `additional_volumes` | volume[] | A list of additional volumes to mount inside this process. The paths which can be used are restricted. |

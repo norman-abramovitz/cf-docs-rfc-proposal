@@ -16,6 +16,11 @@
 //
 // A style other than the standard one is a class, written with Markdoc's
 // class shorthand: {% table .table-media %}.
+//
+// Hint classes, as Antora writes them, set the column hints on a table
+// without hint attributes: colN-key, colN-value, colN-prose (role) and
+// colN-nowrap (wrap: avoid), N from 1. A pipe table takes them from the
+// table comment (table-attrs.mjs): <!-- table: .col1-key .col1-nowrap -->.
 import Markdoc from '@markdoc/markdoc';
 
 const {Tag} = Markdoc;
@@ -23,6 +28,14 @@ const words = (v) => (v ? String(v).trim().split(/\s+/) : []);
 // Markdoc keeps the class shorthand as an object ({'table-media': true}).
 const className = (v) => (v && typeof v === 'object' ? Object.keys(v).filter((k) => v[k]).join(' ') : v || '');
 const hints = ['widths', 'header-rows', 'stub-columns', 'roles', 'wrap', 'title'];
+const HINT = /^col([1-9][0-9]*)-(key|value|prose|nowrap)$/;
+
+function mark(cell, classes) {
+  if (!classes?.length) return;
+  cell.attributes.class = classes.join(' ');
+  // wrap: avoid needs a box inside the cell: a cell's own width cannot cap its no-wrap width.
+  if (classes.includes('wrap-avoid')) cell.children = [new Tag('div', {class: 'wrap-avoid-box'}, cell.children)];
+}
 
 export const table = {
   render: 'table',
@@ -41,7 +54,15 @@ export const table = {
     // The id shorthand ({% table #name %}) names the table, as an HTML table's id does.
     const id = a.id ? {id: a.id} : {};
     const style = cls ? {...id, class: cls} : id;
-    if (!hints.some((h) => h in a)) return new Tag('table', style, [thead, tbody]);
+    if (!hints.some((h) => h in a)) {
+      const cols = [];
+      for (const m of words(cls).map((c) => HINT.exec(c)).filter(Boolean)) {
+        (cols[m[1] - 1] ||= []).push(m[2] === 'nowrap' ? 'wrap-avoid' : `role-${m[2]}`);
+      }
+      if (!cols.length) return new Tag('table', style, [thead, tbody]);
+      [...thead.children, ...tbody.children].forEach((row) => row.children.forEach((cell, c) => mark(cell, cols[c])));
+      return new Tag('table', {...id, class: `hinted-table ${cls}`}, [thead, tbody]);
+    }
 
     const widths = words(a.widths);
     const roles = words(a.roles);
@@ -63,9 +84,7 @@ export const table = {
           cell.name = 'th';
           cell.attributes.scope = 'row';
         }
-        if (classes.length) cell.attributes.class = classes.join(' ');
-        // wrap: avoid needs a box inside the cell: a cell's own width cannot cap its no-wrap width.
-        if (classes.includes('wrap-avoid')) cell.children = [new Tag('div', {class: 'wrap-avoid-box'}, cell.children)];
+        mark(cell, classes);
       });
     };
     thead.children.forEach((row) => decorate(row, true));

@@ -1291,3 +1291,26 @@ measurements:
   site's CSS style it. Native tables may name hint classes such as
   `col2-nowrap` where the tool can attach a class; how each tool turns
   them into layout is the next step.
+
+## Hint classes on native tables
+
+Added on 2026-10-12 (decision: native tables may name hint classes). A
+native table in Docusaurus, Zensical and Starlight takes the column hints
+as Antora's hint classes, in the table comment
+(`<!-- table: .col1-key .col1-nowrap .col2-nowrap -->`) or, in Starlight,
+the class shorthand. `colN-key`, `colN-value` and `colN-prose` give column
+N its role, and `colN-nowrap` gives it `wrap: avoid`. Each class means
+only what it names, so one class string reads the same in all four tools.
+The code that reads the comment marks that column's cells as the list
+table does: a role class, `wrap-avoid`, and the `wrap-avoid-box` with its
+16em cap. One rule in `hints.css` then serves any column. An unknown
+`colN-` class stays a plain class.
+
+Checked on case 15 of each tool's `pipe-attrs` page, a pipe table with
+B2's `env` and `additional_volumes` rows. Every tool builds the same cells,
+and in Chrome 155, Firefox 155 and WebKit 26.6 at 1280 and 390 pixels the
+key and `string => string` stay on one line. Spot checks and wide-table
+checks are unchanged for the pages the sites build. Antora and the Sphinx
+probe still turn their roles into layout with the listed `colN-nowrap`
+rules (Breaks inside identifiers); marking their cells in the build is
+the next step.
