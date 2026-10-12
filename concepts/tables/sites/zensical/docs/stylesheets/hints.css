@@ -5,6 +5,9 @@
      --table-row-header-align   horizontal alignment of row headers */
 .hinted-table th,
 .hinted-table td { vertical-align: top; }
+/* The theme lets inline code break anywhere (word-break: break-word), so a column of
+   names shrinks until the names split mid-word; in a cell, code breaks only where text can. */
+.md-typeset :is(td, th) code { word-break: normal; }
 /* wrap: avoid keeps the cell on one line, up to the cap; longer text wraps between words. */
 .hinted-table .wrap-avoid-box { width: max-content; max-width: var(--table-nowrap-max, 16em); }
 /* Row headers are styled apart from column headers and body cells; the defaults keep the theme's header look.

@@ -14,6 +14,10 @@
 }
 /* The UI hyphenates body text; words in table cells are not split. */
 .doc table { hyphens: none; }
+/* The UI lets a word in an AsciiDoc (a|) cell break anywhere, so the column
+   shrinks until names and words split mid-word; there, as in other cells, a
+   word breaks only when it cannot fit. */
+.doc td.tableblock > .content { overflow-wrap: normal; }
 
 /* Wide tables: js/table-scroll.js puts each table in a box that scrolls
    sideways, so a table wider than the article never widens the page. */
