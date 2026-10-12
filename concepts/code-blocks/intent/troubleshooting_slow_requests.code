@@ -1,0 +1,52 @@
+# Expected code blocks for troubleshooting_slow_requests, the whole page (../../headings/published/troubleshooting_slow_requests.html)
+# Format: checks/codeblocks.py. Written with codeblocks.py --emit from the
+# published page, then edited by hand: types are the native mode's (see
+# the page's intent .md);
+# block 4 is the source's whole block, which the published page breaks
+# into paragraphs after its first line.
+=== type=bash place=body | Experiment 1: Measure total round-trip app requests
+time curl -v APP-ENDPOINT
+=== type=console place=body | Experiment 1: Measure total round-trip app requests
+$ time curl -v http://app1.app_domain.com
+
+GET /hello HTTP/1.1
+Host: app1.app_domain.com
+User-Agent: curl/7.43.0
+Accept: */*
+
+HTTP/1.1 200 OK
+Content-Type: application/json;charset=utf-8
+Date: Tue, 14 Dec 2019 00:31:32 GMT
+Server: nginx
+X-Content-Type-Options: nosniff
+X-Vcap-Request-Id: c30fad28-4972-46eb-7da6-9d07dc79b109
+Content-Length: 602
+hello world!
+
+real 2m0.707s
+user 0m0.005s
+sys  0m0.007s
+=== type=bash place=list | Experiment 2: View request time in access logs
+cf logs APP-NAME
+=== type=console place=list | Experiment 2: View request time in access logs
+$ cf logs app1
+
+2019-12-14T00:33:32.35-0800 [RTR/0] OUT app1.app_domain.com - [14/12/2019:00:31:32.348 +0000] "GET /hello HTTP/1.1" 200 0 60 "-" "HTTPClient/1.0 (2.7.1, ruby 2.3.3 (2019-11-21))" "10.0.4.207:20810" "10.0.48.67:61555" x_forwarded_for:"52.3.107.171" x_forwarded_proto:"http" vcap_request_id:"01144146-1e7a-4c77-77ab-49ae3e286fe9" response_time:120.00641734 gorouter_time:0.000217 app_id:"13ee085e-bdf5-4a48-aaaf-e854a8a975df" app_index:"0" x_b3_traceid:"3595985e7c34536a" x_b3_spanid:"3595985e7c34536a" x_b3_parentspanid:"-"
+2019-12-14T00:32:32.35-0800 [APP/PROC/WEB/0]OUT app1 received request at [14/12/2019:00:32:32.348 +0000] with "vcap_request_id": "01144146-1e7a-4c77-77ab-49ae3e286fe9"
+^C
+=== type=bash place=list | Experiment 3: Duplicate latency on another endpoint
+time curl -v TEST-APP-ENDPOINT
+=== type=bash place=list | Experiment 4: Remove the load balancer from request path
+bosh ssh router/ROUTER-GUID
+=== type=bash place=list | Experiment 4: Remove the load balancer from request path
+time curl ROUTER-IP -H "Host: TEST-APP-ENDPOINT"
+=== type=bash place=list | Experiment 5: Remove Gorouter from request path
+cf ssh TEST-APP -c "env | grep CF_INSTANCE_ADDR"
+=== type=console place=list | Experiment 5: Remove Gorouter from request path
+$ cf ssh my-app -c "env | grep CF_INSTANCE_ADDR"
+=== type=bash place=list | Experiment 5: Remove Gorouter from request path
+bosh ssh router/ROUTER-GUID
+=== type=text place=body | Use app logs to locate delays in Cloud Foundry
+2019-12-14T00:33:32.35-0800 [RTR/0] OUT app1.app_domain.com - [14/12/2019:00:31:32.348 +0000] "GET /hello HTTP/1.1" 200 0 60 "-" "HTTPClient/1.0 (2.7.1, ruby 2.3.3 (2019-11-21))" "10.0.4.207:20810" "10.0.48.67:61555" x_forwarded_for:"52.3.107.171" x_forwarded_proto:"http" vcap_request_id:"01144146-1e7a-4c77-77ab-49ae3e286fe9" response_time:120.00641734 app_id:"13ee085e-bdf5-4a48-aaaf-e854a8a975df" app_index:"0" x_b3_traceid:"3595985e7c34536a" x_b3_spanid:"3595985e7c34536a" x_b3_parentspanid:"-"
+2019-12-14T00:32:32.35-0800 [APP/PROC/WEB/0]OUT app1 received request at [14/12/2019:00:32:32.348 +0000] with "vcap_request_id": "01144146-1e7a-4c77-77ab-49ae3e286fe9"
+2019-12-14T00:32:32.50-0800 [APP/PROC/WEB/0]OUT app1 finished processing req at [14/12/2019:00:32:32.500 +0000] with "vcap_request_id": "01144146-1e7a-4c77-77ab-49ae3e286fe9"

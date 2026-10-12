@@ -1,0 +1,32 @@
+# Expected code blocks for the manual-clean section of backup (../published/backup.html)
+# Format: checks/codeblocks.py. Written with codeblocks.py --emit from the
+# published page, then edited by hand: types are the native mode's (see
+# the page's intent .md).
+=== type=bash place=list | Clean up after a failed backup
+bbr director \
+--private-key-path PATH-TO-PRIVATE-KEY \
+--username USER-NAME \
+--host BOSH-DIRECTOR-IP \
+backup-cleanup
+=== type=console place=list | Clean up after a failed backup
+$ bbr director \
+--private-key-path bosh.pem \
+--username bosh \
+--host bosh.example.com \
+backup-cleanup
+=== type=bash place=list | Clean up after a failed backup
+BOSH_CLIENT_SECRET=BOSH-CLIENT-SECRET \
+bbr deployment \
+--target BOSH-TARGET \
+--username BOSH-CLIENT \
+--deployment BOSH-DEPLOYMENT \
+--ca-cert PATH-TO-BOSH-CA-CERTIFICATE \
+backup-cleanup
+=== type=console place=list | Clean up after a failed backup
+$ BOSH_CLIENT_SECRET=p455w0rd \
+bbr deployment \
+--target bosh.example.com \
+--username jumpbox \
+--deployment cf-acceptance-0 \
+--ca-cert bosh.ca.crt \
+backup-cleanup

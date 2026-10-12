@@ -1,0 +1,7 @@
+# Excerpt of cloudfoundry/docs-book-cloudfoundry config/template_variables.yml
+# at commit 30dfa57692253a6ae1b3df0726444b1e32852c91: the keys the test
+# pages use inside code blocks. See SOURCES.md.
+template_variables:
+  app_domain: shared-domain.example.com
+  private_app_domain: private-domain.example.com
+  tcp_app_domain: tcp-domain.example.com

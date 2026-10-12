@@ -1,0 +1,4 @@
+# Notes on ../published/gsg-grails.html in the excerpt the sites convert: Step 5. Written with:
+# python3 -I ../../notes/checks/notes.py ../published/gsg-grails.html --emit (note 1 of its output; the e-mail address the published page hides behind a link is written as in the source, so the note holds no link)
+# Fields, separated by tabs: kind, title, holds, section, place, text
+note	Note	code=4 pre=1	Create a service instance	body	Run cf create-service cleardb spark mysql. This creates a service instance named mysql that uses the cleardb service and the spark plan, as the example below shows. $ cf create-service cleardb spark mysql Creating service mysql in org Cloud-Apps / space development as clouduser@example.com.... OK

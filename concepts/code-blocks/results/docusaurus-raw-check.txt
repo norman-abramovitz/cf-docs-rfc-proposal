@@ -1,0 +1,5 @@
+# make check-raw, Docusaurus 3.10.2, 2026-10-11: the NGINX page with <code>{{port}}</code> as the book writes it, compiled with @mdx-js/mdx and built
+OK    nginx.mdx
+build exit status 1
+Can't render static file for pathname "/nginx"
+ReferenceError: port is not defined

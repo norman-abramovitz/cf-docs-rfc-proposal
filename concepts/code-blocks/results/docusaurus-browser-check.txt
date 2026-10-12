@@ -1,0 +1,295 @@
+# make check-browser, Docusaurus 3.10.2, 2026-10-11: each page loaded in Google Chrome through Playwright (checks/codeblocks-browser.mjs),
+# served with python3 -m http.server from the build folder on port 4101; each copy button clicked and what it copied
+# written on its block; then the code-block, outline and notes checks on the saved pages (native requires a type and a
+# copy button that copies the block's text or its commands)
+mkdir -p .check
+set -o pipefail; npm run build 2>&1 | tee .check/build.log
+
+> build
+> docusaurus build
+
+[INFO] [en] Creating an optimized production build...
+[webpackbar] ℹ Compiling Client
+[webpackbar] ℹ Compiling Server
+[webpackbar] ✔ Client: Compiled successfully in 473.11ms
+[webpackbar] ✔ Server: Compiled successfully in 456.45ms
+(node:28101) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WARNING] Docusaurus found broken links!
+
+Please check the pages of your site in the list below, and make sure you don't reference any path that does not exist.
+Note: it's possible to ignore broken links with the 'onBrokenLinks' Docusaurus configuration, and let the build pass.
+
+Exhaustive list of all broken links found:
+- Broken link on source page path = /native/backup:
+   -> linking to installing.html (resolved as: /native/installing.html)
+- Broken link on source page path = /native/gsg-grails:
+   -> linking to ./../../../devguide/services/index.html (resolved as: /devguide/services/index.html)
+- Broken link on source page path = /native/multiple-processes:
+   -> linking to deploy-apps/manifest-attributes.html#processes (resolved as: /native/deploy-apps/manifest-attributes.html#processes)
+- Broken link on source page path = /native/troubleshooting_slow_requests:
+   -> linking to ../loggregator/nozzle-tutorial.html (resolved as: /loggregator/nozzle-tutorial.html)
+- Broken link on source page path = /passthrough/backup:
+   -> linking to installing.html (resolved as: /passthrough/installing.html)
+- Broken link on source page path = /passthrough/gsg-grails:
+   -> linking to ./../../../devguide/services/index.html (resolved as: /devguide/services/index.html)
+- Broken link on source page path = /passthrough/multiple-processes:
+   -> linking to deploy-apps/manifest-attributes.html#processes (resolved as: /passthrough/deploy-apps/manifest-attributes.html#processes)
+- Broken link on source page path = /passthrough/troubleshooting_slow_requests:
+   -> linking to ../loggregator/nozzle-tutorial.html (resolved as: /loggregator/nozzle-tutorial.html)
+
+[WARNING] Docusaurus found broken anchors!
+
+Please check the pages of your site in the list below, and make sure you don't reference any anchor that does not exist.
+Note: it's possible to ignore broken anchors with the 'onBrokenAnchors' Docusaurus configuration, and let the build pass.
+
+Exhaustive list of all broken anchors found:
+- Broken anchor on source page path = /native/routes-domains:
+   -> linking to #domains (resolved as: /native/routes-domains#domains)
+- Broken anchor on source page path = /passthrough/routes-domains:
+   -> linking to #domains (resolved as: /passthrough/routes-domains#domains)
+
+[SUCCESS] Generated static files in "build".
+[INFO] Use `npm run serve` command to test your build locally.
+== http://localhost:4101/passthrough/routes-domains/
+   9 pre elements, 3 copy buttons clicked; saved passthrough-routes-domains.html
+== http://localhost:4101/passthrough/troubleshooting_slow_requests/
+   11 pre elements, 7 copy buttons clicked; saved passthrough-troubleshooting_slow_requests.html
+== http://localhost:4101/passthrough/gsg-grails/
+   5 pre elements, 2 copy buttons clicked; saved passthrough-gsg-grails.html
+== http://localhost:4101/passthrough/backup/
+   4 pre elements, 4 copy buttons clicked; saved passthrough-backup.html
+== http://localhost:4101/passthrough/backup-clean/
+   3 pre elements, 2 copy buttons clicked; saved passthrough-backup-clean.html
+== http://localhost:4101/passthrough/nginx/
+   13 pre elements, 13 copy buttons clicked; saved passthrough-nginx.html
+== http://localhost:4101/passthrough/multiple-processes/
+   7 pre elements, 6 copy buttons clicked; saved passthrough-multiple-processes.html
+== http://localhost:4101/native/routes-domains/
+   9 pre elements, 9 copy buttons clicked; saved native-routes-domains.html
+== http://localhost:4101/native/troubleshooting_slow_requests/
+   11 pre elements, 11 copy buttons clicked; saved native-troubleshooting_slow_requests.html
+== http://localhost:4101/native/gsg-grails/
+   5 pre elements, 5 copy buttons clicked; saved native-gsg-grails.html
+== http://localhost:4101/native/backup/
+   4 pre elements, 4 copy buttons clicked; saved native-backup.html
+== http://localhost:4101/native/backup-clean/
+   4 pre elements, 4 copy buttons clicked; saved native-backup-clean.html
+== http://localhost:4101/native/nginx/
+   13 pre elements, 13 copy buttons clicked; saved native-nginx.html
+== http://localhost:4101/native/multiple-processes/
+   7 pre elements, 7 copy buttons clicked; saved native-multiple-processes.html
+== passthrough/routes-domains
+FAIL   1 body  text differs, line 2: expected 'Creating route example-app.shared-domain.example.com for org example-org / space example-space as username@example.com...', got 'Creating route example-app.shared-domain.example.com for org example-org / space example-space as username<span>@</span>example.com...'; shows HTML tag '<span>'; type console; highlighted; copy button, copies text   | $ cf create-route shared-domain.example.com --hos…
+FAIL   2 body  holds <p> (its text read as Markdown or HTML blocks); type (none) (expected console); not highlighted; no copy button   | $ cf create-route private-domain.example.com
+FAIL   3 body  holds <p> (its text read as Markdown or HTML blocks); type (none) (expected console); not highlighted; no copy button   | $ cf create-route foo.private-domain.example.com
+FAIL   4 body  holds <p> (its text read as Markdown or HTML blocks); type (none) (expected console); not highlighted; no copy button   | $ cf create-route foo.shared-domain.example.com -…
+FAIL   5 body  holds <p> (its text read as Markdown or HTML blocks); type (none) (expected console); not highlighted; no copy button   | $ cf create-route shared-domain.example.com --hos…
+FAIL   6 body  holds <p> (its text read as Markdown or HTML blocks); type (none) (expected console); not highlighted; no copy button   | $ cf create-route shared-domain.example.com --hos…
+FAIL   7 body  holds <p> (its text read as Markdown or HTML blocks); type (none) (expected console); not highlighted; no copy button   | $ cf create-route shared-domain.example.com --hos…
+ok     8 list  type console; highlighted; copy button, copies text   | $ cf create-route example-space tcp-domain.exampl…
+ok     9 body  type console; highlighted; copy button, copies text   | $ cf create-route example-space tcp-domain.exampl…
+FAIL  code blocks: 9 expected; text 8/9, type 3/9, highlighted 3/9, copy button 3/9 (copies: text 3)
+ok    outline: 7 headings, same levels and text
+ok    anchors: all 6 exist
+info  published heading ids not on the built page (2): #-create-a-route #-create-an-http-route-with-host-name
+ok    count: 2 notes
+ok    note 1: important -> warning, title 'Important', 20 words, code=1, body
+ok    note 2: important -> warning, title 'Important', 50 words, list=2, body
+== passthrough/troubleshooting_slow_requests
+ok     1 body  type text (expected bash); not highlighted; copy button, copies text   | time curl -v APP-ENDPOINT
+FAIL   2 body  text differs, line 2: expected '', got 'GET /hello HTTP/1.1'; holds <p> (its text read as Markdown or HTML blocks); type terminal; not highlighted; no copy button   | $ time curl -v http://app1.app_domain.com
+ok     3 list  type text (expected bash); not highlighted; copy button, copies text   | cf logs APP-NAME
+FAIL   4 list  text differs, line 2: expected '', got '2019-12-14T00:33:32.35-0800 [RTR/0] OUT app1.app_domain.com - [14/12/2019:00:31:32.348 +0000] "GET /hello HTTP/1.1" 200 0 60 "-" "HTTPClient/1.0 (2.7.1, ruby 2.3.3 (2019-11-21))" "10.0.4.207:20810" "10.0.48.67:61555" x_forwarded_for:"52.3.107.171" x_forwarded_proto:"http" vcap_request_id:"01144146-1e7a-4c77-77ab-49ae3e286fe9" response_time:120.00641734 gorouter_time:0.000217 app_id:"13ee085e-bdf5-4a48-aaaf-e854a8a975df" app_index:"0" x_b3_traceid:"3595985e7c34536a" x_b3_spanid:"3595985e7c34536a" x_b3_parentspanid:"-"'; holds <p> (its text read as Markdown or HTML blocks); type terminal; not highlighted; no copy button   | $ cf logs app1
+ok     5 list  type text (expected bash); not highlighted; copy button, copies text   | time curl -v TEST-APP-ENDPOINT
+ok     6 list  type text (expected bash); not highlighted; copy button, copies text   | bosh ssh router/ROUTER-GUID
+ok     7 list  type text (expected bash); not highlighted; copy button, copies text   | time curl ROUTER-IP -H "Host: TEST-APP-ENDPOINT"
+ok     8 list  type text (expected bash); not highlighted; copy button, copies text   | cf ssh TEST-APP -c "env | grep CF_INSTANCE_ADDR"
+FAIL   9 list  holds <p> (its text read as Markdown or HTML blocks); type terminal; not highlighted; no copy button   | $ cf ssh my-app -c "env | grep CF_INSTANCE_ADDR"
+ok    10 list  type text (expected bash); not highlighted; copy button, copies text   | bosh ssh router/ROUTER-GUID
+FAIL  11 body  holds <p> (its text read as Markdown or HTML blocks); type terminal (expected text); not highlighted; no copy button   | 2019-12-14T00:33:32.35-0800 [RTR/0] OUT app1.app_…
+FAIL  code blocks: 11 expected; text 9/11, type 3/11, highlighted 0/11, copy button 7/11 (copies: text 7)
+ok    outline: 13 headings, same levels and text
+ok    anchors: all 12 exist
+info  published heading ids not on the built page (12): #app-requests-overview #-find-the-cause-of-latency #-experiment-1:-measure-total-round-trip-app-requests #-experiment-2:-view-request-time-in-access-logs #-experiment-3:-duplicate-latency-on-another-endpoint #-experiment-4:-remove-the-load-balancer-from-request-path #-experiment-5:-remove-gorouter-from-request-path #-experiment-6:-test-the-network-between-the-router-and-the-app #-investigate-or-address-latency #-use-app-logs-to-locate-delays-in-cloud-foundry and 2 more
+== passthrough/gsg-grails
+ok     1 list  type console (expected bash); highlighted; copy button, copies text   | cf marketplace
+FAIL   2 list  text differs, line 4: expected '', got 'service             plans                                     description'; holds <p> (its text read as Markdown or HTML blocks); type terminal; not highlighted; no copy button   | $ cf marketplace
+ok     3 list  type console (expected bash); highlighted; copy button, copies text   | cf create-service SERVICE PLAN SERVICE-INSTANCE
+FAIL   4 note  holds <p> (its text read as Markdown or HTML blocks); type terminal; not highlighted; no copy button   | $ cf create-service cleardb spark mysql
+FAIL   5 body  text differs, line 1: expected '---', got 'applications:'; holds <hr> <li> <p> <ul> (its text read as Markdown or HTML blocks); type terminal (expected yaml); not highlighted; no copy button   | ---
+FAIL  code blocks: 5 expected; text 3/5, type 2/5, highlighted 2/5, copy button 2/5 (copies: text 2)
+ok    outline: 4 headings, same levels and text
+ok    anchors: all 0 exist
+info  published heading ids not on the built page (2): #step-5:-create-and-bind-a-service-instance-for-a-grails-application #(optional)-bind-a-service-instance
+ok    count: 1 notes
+FAIL  note 1 (note, docusaurus:note): holds code=4 pre=1 link=1, expected code=4 pre=1
+== passthrough/backup
+ok     1 body  type text (expected bash); not highlighted; copy button, copies text   | ssh -i PATH-TO-KEY JUMPBOX-USERNAME@JUMPBOX-ADDRE…
+ok     2 list  type text (expected bash); not highlighted; copy button, copies text   | ssh -4 -D SOCKS-PORT -fNC JUMPBOX-USERNAME@JUMPBO…
+FAIL   3 list  text differs, line 2: expected '(no line)', got '```<br>'; shows HTML tag '<br>', fence marker '```'; type text (expected bash); not highlighted; copy button, copies text   | export BOSH_ALL_PROXY=socks5://localhost:SOCKS-PO…
+FAIL   4 list  place body, expected list; type text (expected bash); not highlighted; copy button, copies text   | export BOSH_ALL_PROXY=ssh+socks5://JUMPBOX-USERNA…
+FAIL  code blocks: 4 expected; text 3/4, type 0/4, highlighted 0/4, copy button 4/4 (copies: text 4)
+ok    outline: 4 headings, same levels and text
+ok    anchors: all 3 exist
+info  published heading ids not on the built page (3): #-connect-to-your-jumpbox #-option-1:-connect-with-ssh #-option-2:-connect-with-bosh_all_proxy
+ok    count: 4 notes
+ok    note 1: note -> note, title 'note', 21 words, -, body
+ok    note 2: note -> note, title 'note', 21 words, -, body
+ok    note 3: note -> note, title 'note', 30 words, code=1, body
+ok    note 4: caution -> danger, title 'Caution', 46 words, code=2 link=1, body
+== passthrough/backup-clean
+FAIL   1 list  text differs, line 6: expected '(no line)', got '```'; shows HTML tag '<pre class="terminal">', fence marker '```'; type text (expected bash); not highlighted; copy button, copies text   | bbr director \
+FAIL   2 missing: no code block like '$ bbr director \\' in "Clean up after a failed backup"
+ok     3 list  type text (expected bash); not highlighted; copy button, copies text   | BOSH_CLIENT_SECRET=BOSH-CLIENT-SECRET \
+FAIL   4 list  text differs, line 1: expected '$ BOSH_CLIENT_SECRET=p455w0rd \\', got '$ BOSH_CLIENT_SECRET=p455w0rd'; holds <p> (its text read as Markdown or HTML blocks); type terminal; not highlighted; no copy button   | $ BOSH_CLIENT_SECRET=p455w0rd \
+FAIL  code blocks: 4 expected; text 1/4, type 1/4, highlighted 0/4, copy button 2/4 (copies: text 2)
+ok    outline: 2 headings, same levels and text
+ok    anchors: all 1 exist
+info  published heading ids not on the built page (1): #clean-up-after-a-failed-backup
+Traceback (most recent call last):
+  File "/Users/norm/Projects/CloudFoundry/cf-docs-wg/cf-docs-rfc-proposal/concepts/code-blocks/checks/../../notes/checks/notes.py", line 320, in <module>
+    sys.exit(main(sys.argv[1:]))
+  File "/Users/norm/Projects/CloudFoundry/cf-docs-wg/cf-docs-rfc-proposal/concepts/code-blocks/checks/../../notes/checks/notes.py", line 277, in main
+    for l in open(opts['expect'], encoding='utf-8'):
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/norm/Projects/CloudFoundry/cf-docs-wg/cf-docs-rfc-proposal/concepts/code-blocks/checks/../intent/backup-clean.notes'
+== passthrough/nginx
+ok     1 body  type text (expected nginx); not highlighted; copy button, copies text   | server {
+ok     2 body  type text (expected nginx); not highlighted; copy button, copies text   | gzip {{env "GZIP_DOWNLOADS"}};
+ok     3 body  type text (expected yaml); not highlighted; copy button, copies text   | ---
+ok     4 body  type text (expected nginx); not highlighted; copy button, copies text   | {{module "MODULE-NAME"}}
+ok     5 body  type text (expected nginx); not highlighted; copy button, copies text   | {{module "ngx_hello_module"}}
+ok     6 body  type text (expected nginx); not highlighted; copy button, copies text   | {{module "ngx_stream_module"}}
+FAIL   7 body  text differs, line 1: expected 'access_log <file> [format]', got 'access_log &lt;file&gt; [format]'; shows character reference '&lt;'; type text (expected nginx); not highlighted; copy button, copies text   | access_log <file> [format]
+ok     8 body  type text (expected nginx); not highlighted; copy button, copies text   | access_log /dev/stdout;
+FAIL   9 body  text differs, line 1: expected 'error_log <file> [level];', got 'error_log &lt;file&gt; [level];'; shows character reference '&lt;'; type text (expected nginx); not highlighted; copy button, copies text   | error_log <file> [level];
+ok    10 body  type text (expected nginx); not highlighted; copy button, copies text   | error_log stderr debug;
+ok    11 body  type text (expected nginx); not highlighted; copy button, copies text   | error_log stderr;
+ok    12 body  type text (expected nginx); not highlighted; copy button, copies text   | error_log memory:32m debug;
+ok    13 body  type text; not highlighted; copy button, copies text   | set $log = ngx_cycle->log
+FAIL  code blocks: 13 expected; text 11/13, type 1/13, highlighted 0/13, copy button 13/13 (copies: text 13)
+ok    outline: 12 headings, same levels and text
+ok    anchors: all 11 exist
+info  published heading ids not on the built page (11): #-create-the-nginx.conf-file #-port #-name-resolution #-environment-variables #-unescaped-environment-variables #-loading-dynamic-modules #-enable-logging #-logging-access #-logging-errors #-debug-logs-for-selected-clients and 1 more
+== passthrough/multiple-processes
+ok     1 list  type yaml; highlighted; copy button, copies text   | version: 1
+ok     2 list  type console (expected bash); highlighted; copy button, copies text   | cf push -f MANIFEST.yml
+ok     3 list  type text; not highlighted; copy button, copies text   | web: bundle exec rackup config.ru -p $PORT
+ok     4 list  type text (expected bash); not highlighted; copy button, copies text   | cf push APP-NAME
+ok     5 list  type text (expected bash); not highlighted; copy button, copies text   | cf scale APP-NAME --process PROCESS-NAME -i INSTA…
+ok     6 list  type console (expected bash); highlighted; copy button, copies text   | cf app APP-NAME
+FAIL   7 list  text differs, line 2: expected '', got 'name:              example-app'; holds <p> (its text read as Markdown or HTML blocks); type terminal (expected text); not highlighted; no copy button   | Showing health and status for app example-app in …
+FAIL  code blocks: 7 expected; text 6/7, type 2/7, highlighted 3/7, copy button 6/7 (copies: text 6)
+ok    outline: 5 headings, same levels and text
+ok    anchors: all 4 exist
+info  published heading ids not on the built page (4): #-push-an-app-with-multiple-processes-using-a-manifest #push-an-app-with-multiple-processes-using-a-procfile #-scale-a-process #-view-processes
+ok    count: 1 notes
+ok    note 1: important -> warning, title 'Important', 45 words, code=2, list
+== native/routes-domains
+ok     1 body  type console; highlighted; copy button, copies text   | $ cf create-route shared-domain.example.com --hos…
+ok     2 body  type console; highlighted; copy button, copies text   | $ cf create-route private-domain.example.com
+ok     3 body  type console; highlighted; copy button, copies text   | $ cf create-route foo.private-domain.example.com
+ok     4 body  type console; highlighted; copy button, copies text   | $ cf create-route foo.shared-domain.example.com -…
+ok     5 body  type console; highlighted; copy button, copies text   | $ cf create-route shared-domain.example.com --hos…
+ok     6 body  type console; highlighted; copy button, copies text   | $ cf create-route shared-domain.example.com --hos…
+ok     7 body  type console; highlighted; copy button, copies text   | $ cf create-route shared-domain.example.com --hos…
+ok     8 list  type console; highlighted; copy button, copies text   | $ cf create-route example-space tcp-domain.exampl…
+ok     9 body  type console; highlighted; copy button, copies text   | $ cf create-route example-space tcp-domain.exampl…
+ok    code blocks: 9 expected; text 9/9, type 9/9, highlighted 9/9, copy button 9/9 (copies: text 9)
+ok    outline: 7 headings, same levels and text
+ok    anchors: all 6 exist
+info  published heading ids not on the built page (2): #-create-a-route #-create-an-http-route-with-host-name
+ok    count: 2 notes
+ok    note 1: important -> warning, title 'Important', 20 words, code=1, body
+ok    note 2: important -> warning, title 'Important', 50 words, list=2, body
+== native/troubleshooting_slow_requests
+ok     1 body  type bash; highlighted; copy button, copies text   | time curl -v APP-ENDPOINT
+ok     2 body  type console; highlighted; copy button, copies text   | $ time curl -v http://app1.app_domain.com
+ok     3 list  type bash; not highlighted; copy button, copies text   | cf logs APP-NAME
+ok     4 list  type console; highlighted; copy button, copies text   | $ cf logs app1
+ok     5 list  type bash; highlighted; copy button, copies text   | time curl -v TEST-APP-ENDPOINT
+ok     6 list  type bash; highlighted; copy button, copies text   | bosh ssh router/ROUTER-GUID
+ok     7 list  type bash; highlighted; copy button, copies text   | time curl ROUTER-IP -H "Host: TEST-APP-ENDPOINT"
+ok     8 list  type bash; highlighted; copy button, copies text   | cf ssh TEST-APP -c "env | grep CF_INSTANCE_ADDR"
+ok     9 list  type console; highlighted; copy button, copies text   | $ cf ssh my-app -c "env | grep CF_INSTANCE_ADDR"
+ok    10 list  type bash; highlighted; copy button, copies text   | bosh ssh router/ROUTER-GUID
+ok    11 body  type text; not highlighted; copy button, copies text   | 2019-12-14T00:33:32.35-0800 [RTR/0] OUT app1.app_…
+ok    code blocks: 11 expected; text 11/11, type 11/11, highlighted 9/11, copy button 11/11 (copies: text 11)
+ok    outline: 13 headings, same levels and text
+ok    anchors: all 12 exist
+info  published heading ids not on the built page (12): #app-requests-overview #-find-the-cause-of-latency #-experiment-1:-measure-total-round-trip-app-requests #-experiment-2:-view-request-time-in-access-logs #-experiment-3:-duplicate-latency-on-another-endpoint #-experiment-4:-remove-the-load-balancer-from-request-path #-experiment-5:-remove-gorouter-from-request-path #-experiment-6:-test-the-network-between-the-router-and-the-app #-investigate-or-address-latency #-use-app-logs-to-locate-delays-in-cloud-foundry and 2 more
+== native/gsg-grails
+ok     1 list  type bash; not highlighted; copy button, copies text   | cf marketplace
+ok     2 list  type console; highlighted; copy button, copies text   | $ cf marketplace
+ok     3 list  type bash; highlighted; copy button, copies text   | cf create-service SERVICE PLAN SERVICE-INSTANCE
+ok     4 note  type console; highlighted; copy button, copies text   | $ cf create-service cleardb spark mysql
+ok     5 body  type yaml; highlighted; copy button, copies text   | ---
+ok    code blocks: 5 expected; text 5/5, type 5/5, highlighted 4/5, copy button 5/5 (copies: text 5)
+ok    outline: 4 headings, same levels and text
+ok    anchors: all 0 exist
+info  published heading ids not on the built page (2): #step-5:-create-and-bind-a-service-instance-for-a-grails-application #(optional)-bind-a-service-instance
+ok    count: 1 notes
+ok    note 1: note -> note, title 'note', 45 words, code=4 pre=1, body
+== native/backup
+ok     1 body  type bash; highlighted; copy button, copies text   | ssh -i PATH-TO-KEY JUMPBOX-USERNAME@JUMPBOX-ADDRE…
+ok     2 list  type bash; highlighted; copy button, copies text   | ssh -4 -D SOCKS-PORT -fNC JUMPBOX-USERNAME@JUMPBO…
+ok     3 list  type bash; highlighted; copy button, copies text   | export BOSH_ALL_PROXY=socks5://localhost:SOCKS-PO…
+ok     4 list  type bash; highlighted; copy button, copies text   | export BOSH_ALL_PROXY=ssh+socks5://JUMPBOX-USERNA…
+ok    code blocks: 4 expected; text 4/4, type 4/4, highlighted 4/4, copy button 4/4 (copies: text 4)
+ok    outline: 4 headings, same levels and text
+ok    anchors: all 3 exist
+info  published heading ids not on the built page (3): #-connect-to-your-jumpbox #-option-1:-connect-with-ssh #-option-2:-connect-with-bosh_all_proxy
+ok    count: 4 notes
+ok    note 1: note -> note, title 'note', 21 words, -, body
+ok    note 2: note -> note, title 'note', 21 words, -, body
+ok    note 3: note -> note, title 'note', 30 words, code=1, body
+ok    note 4: caution -> danger, title 'Caution', 46 words, code=2 link=1, body
+== native/backup-clean
+ok     1 list  type bash; highlighted; copy button, copies text   | bbr director \
+ok     2 list  type console; highlighted; copy button, copies text   | $ bbr director \
+ok     3 list  type bash; highlighted; copy button, copies text   | BOSH_CLIENT_SECRET=BOSH-CLIENT-SECRET \
+ok     4 list  type console; highlighted; copy button, copies text   | $ BOSH_CLIENT_SECRET=p455w0rd \
+ok    code blocks: 4 expected; text 4/4, type 4/4, highlighted 4/4, copy button 4/4 (copies: text 4)
+ok    outline: 2 headings, same levels and text
+ok    anchors: all 1 exist
+info  published heading ids not on the built page (1): #clean-up-after-a-failed-backup
+Traceback (most recent call last):
+  File "/Users/norm/Projects/CloudFoundry/cf-docs-wg/cf-docs-rfc-proposal/concepts/code-blocks/checks/../../notes/checks/notes.py", line 320, in <module>
+    sys.exit(main(sys.argv[1:]))
+  File "/Users/norm/Projects/CloudFoundry/cf-docs-wg/cf-docs-rfc-proposal/concepts/code-blocks/checks/../../notes/checks/notes.py", line 277, in main
+    for l in open(opts['expect'], encoding='utf-8'):
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/norm/Projects/CloudFoundry/cf-docs-wg/cf-docs-rfc-proposal/concepts/code-blocks/checks/../intent/backup-clean.notes'
+== native/nginx
+ok     1 body  type nginx; highlighted; copy button, copies text   | server {
+ok     2 body  type nginx; highlighted; copy button, copies text   | gzip {{env "GZIP_DOWNLOADS"}};
+ok     3 body  type yaml; highlighted; copy button, copies text   | ---
+ok     4 body  type nginx; highlighted; copy button, copies text   | {{module "MODULE-NAME"}}
+ok     5 body  type nginx; highlighted; copy button, copies text   | {{module "ngx_hello_module"}}
+ok     6 body  type nginx; highlighted; copy button, copies text   | {{module "ngx_stream_module"}}
+ok     7 body  type nginx; not highlighted; copy button, copies text   | access_log <file> [format]
+ok     8 body  type nginx; highlighted; copy button, copies text   | access_log /dev/stdout;
+ok     9 body  type nginx; highlighted; copy button, copies text   | error_log <file> [level];
+ok    10 body  type nginx; highlighted; copy button, copies text   | error_log stderr debug;
+ok    11 body  type nginx; highlighted; copy button, copies text   | error_log stderr;
+ok    12 body  type nginx; highlighted; copy button, copies text   | error_log memory:32m debug;
+ok    13 body  type text; not highlighted; copy button, copies text   | set $log = ngx_cycle->log
+ok    code blocks: 13 expected; text 13/13, type 13/13, highlighted 11/13, copy button 13/13 (copies: text 13)
+ok    outline: 12 headings, same levels and text
+ok    anchors: all 11 exist
+info  published heading ids not on the built page (11): #-create-the-nginx.conf-file #-port #-name-resolution #-environment-variables #-unescaped-environment-variables #-loading-dynamic-modules #-enable-logging #-logging-access #-logging-errors #-debug-logs-for-selected-clients and 1 more
+== native/multiple-processes
+ok     1 list  type yaml; highlighted; copy button, copies text   | version: 1
+ok     2 list  type bash; highlighted; copy button, copies text   | cf push -f MANIFEST.yml
+ok     3 list  type text; not highlighted; copy button, copies text   | web: bundle exec rackup config.ru -p $PORT
+ok     4 list  type bash; not highlighted; copy button, copies text   | cf push APP-NAME
+ok     5 list  type bash; highlighted; copy button, copies text   | cf scale APP-NAME --process PROCESS-NAME -i INSTA…
+ok     6 list  type bash; not highlighted; copy button, copies text   | cf app APP-NAME
+ok     7 list  type text; not highlighted; copy button, copies text   | Showing health and status for app example-app in …
+ok    code blocks: 7 expected; text 7/7, type 7/7, highlighted 3/7, copy button 7/7 (copies: text 7)
+ok    outline: 5 headings, same levels and text
+ok    anchors: all 4 exist
+info  published heading ids not on the built page (4): #-push-an-app-with-multiple-processes-using-a-manifest #push-an-app-with-multiple-processes-using-a-procfile #-scale-a-process #-view-processes
+ok    count: 1 notes
+ok    note 1: important -> warning, title 'Important', 45 words, code=2, list
+/bin/bash: line 1: 28217 Terminated: 15          python3 -m http.server 4101 -d build > /dev/null 2>&1
+make: *** [check-browser] Error 1

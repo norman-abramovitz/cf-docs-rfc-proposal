@@ -1,0 +1,27 @@
+# Expected code blocks for Step 5 of gsg-grails (../published/gsg-grails.html)
+# Format: checks/codeblocks.py. Written with codeblocks.py --emit from the
+# published page, then edited by hand: types are the native mode's (see
+# the page's intent .md).
+=== type=bash place=list | Create a service instance
+cf marketplace
+=== type=console place=list | Create a service instance
+$ cf marketplace
+Getting services from marketplace in org Cloud-Apps / space development as clouduser@example.com...
+OK
+
+service             plans                                     description
+
+cleardb             spark, boost, amp                         Highly available MySQL for your apps
+postgresql-10-odb   standalone, standalone-replica, general   PostgreSQL as a Service
+=== type=bash place=list | Create a service instance
+cf create-service SERVICE PLAN SERVICE-INSTANCE
+=== type=console place=note | Create a service instance
+$ cf create-service cleardb spark mysql
+Creating service mysql in org Cloud-Apps / space development as clouduser@example.com....
+OK
+=== type=yaml place=body | (Optional) Bind a service instance
+---
+applications:
+...
+  services:
+    - mysql

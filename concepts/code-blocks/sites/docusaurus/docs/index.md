@@ -1,0 +1,9 @@
+---
+title: Code blocks round
+slug: /
+---
+
+Test pages of the code blocks round, in two modes: passthrough (each code
+block as the book writes it: fences with their info string or none, `<pre>`
+blocks as HTML), and native (every code block a fence or `<CodeBlock>` with
+a language).

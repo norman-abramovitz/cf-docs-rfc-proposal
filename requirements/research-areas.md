@@ -179,12 +179,14 @@ it link to their line, as in [L112] ([glossary](../glossary.md#rfc)).
   Cross-repository links are converted in all four, with every link
   reaching its page and anchor when pages keep the book's `.html` URLs
   ([cross-repository links results](../concepts/cross-repo-links/results.md#summary)).
-  Code blocks are proposed
-  ([concepts](../concepts/README.md#concepts)). The tables round already
+  Code blocks are converted in all four; every block keeps its text, type
+  and copy button once written as the tool's own code block
+  ([code blocks results](../concepts/code-blocks/results.md#summary)). The tables round already
   found problems outside tables: heading anchors written as `<a id>`, terminal
   blocks, the `*` lost in `Accept: */*`, and HTML-valued variables
   ([open questions](../concepts/tables/README.md#open-questions)).
-- **What answers it:** the next concept rounds.
+- **What answers it:** the review of each round's conventions. Every
+  concept in the list now has a round.
 
 ### Should the copyright year follow content changes?
 

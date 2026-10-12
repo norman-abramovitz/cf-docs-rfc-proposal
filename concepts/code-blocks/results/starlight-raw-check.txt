@@ -1,0 +1,16 @@
+# make check-raw, Starlight 0.42.6, 2026-10-11: Markdoc's errors on the passthrough pages with <pre> blocks as the book writes them (raw/)
+backup-clean.mdoc: ok
+gsg-grails.mdoc: ok
+multiple-processes.mdoc: 5 error(s)
+  line 89: Node 'list' is missing closing
+  line 89: Node 'item' is missing closing
+  line 89: Node 'html-tag' is missing closing
+  line 89: Node 'item' is missing opening
+  line 89: Node 'list' is missing opening
+routes-domains.mdoc: ok
+troubleshooting_slow_requests.mdoc: 5 error(s)
+  line 86: Node 'list' is missing closing
+  line 97: Node 'item' is missing closing
+  line 97: Node 'html-tag' is missing closing
+  line 97: Node 'item' is missing opening
+  line 97: Node 'list' is missing opening

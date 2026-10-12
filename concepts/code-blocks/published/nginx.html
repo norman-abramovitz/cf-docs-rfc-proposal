@@ -1,0 +1,777 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+  <style type="text/css">@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic/300/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin/300/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek/300/normal.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic-ext/300/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin-ext/300/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/vietnamese/300/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek-ext/300/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek/300/italic.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin-ext/300/italic.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek-ext/300/italic.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/vietnamese/300/italic.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin/300/italic.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic-ext/300/italic.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic/300/italic.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin/400/italic.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic/400/italic.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek/400/italic.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek-ext/400/italic.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin-ext/400/italic.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic-ext/400/italic.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/vietnamese/400/italic.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin/400/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek/400/normal.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek-ext/400/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic-ext/400/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic/400/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin-ext/400/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/vietnamese/400/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek-ext/600/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/vietnamese/600/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic/600/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin/600/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic-ext/600/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin-ext/600/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek/600/normal.woff2);unicode-range:U+0370-03FF;font-display:swap;}</style>
+  <!-- Use title if it's in the page YAML frontmatter -->
+  <title>
+      NGINX buildpack |
+    Cloud Foundry Docs
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/all.css" rel="stylesheet" media="screen, print" />
+  <link href="/stylesheets/print.css" rel="stylesheet" media="print" />
+  <link href='/images/favicon.ico' rel='shortcut icon'>
+
+  <script src="/javascripts/all.js"></script>
+  <script type="text/javascript">
+if (window.location.host === 'docs.cloudfoundry.org') {
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22181585-2']);
+  _gaq.push(['_setDomainName', 'cloudfoundry.org']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script');
+    ga.type = 'text/javascript';
+    ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ga, s);
+  })();
+}
+</script>
+
+
+</head>
+
+<body class="buildpacks buildpacks_nginx buildpacks_nginx_index has-subnav">
+
+<div class="viewport">
+  <div class='wrap'>
+    <script type="text/javascript">
+      document.domain = "cloudfoundry.org";
+    </script>
+
+     
+  <header class="header header-layout">
+    <h1 class="logo">
+      <a href="/">Cloud Foundry Documentation</a>
+    </h1>
+    
+    <div class="header-links js-bar-links">
+      <div class="btn-menu" data-behavior="MenuMobile"></div>
+      
+      <div class="header-item">
+        <a href="https://www.cloudfoundry.org/community/" target="_blank">Get Involved</a>
+      </div>
+      
+    </div>
+  </header>
+
+
+    <div class="container">
+
+      <!--googleoff: index-->
+      <div id="sub-nav" class="js-sidenav collapsible nav-container" role="navigation" data-behavior="Collapsible">
+  <a class="sidenav-title" data-behavior="SubMenuMobile">
+  Doc Index
+  </a>
+  <div class="nav-content">
+    <ul>
+      <li><strong>General Information</strong></li>
+      <li class=""><a href="/concepts/contribute.html">Contribute to Cloud Foundry documentation</a></li>
+      <li class="has_submenu"><a href="/concepts/index.html">Cloud Foundry concepts</a>
+        <ul>
+          <li class=""><a href="/concepts/overview.html">Cloud Foundry overview</a></li>
+          <li class="has_submenu"><a href="/concepts/security-index.html">Security and networking</a>
+            <ul>
+              <li class=""><a href="/concepts/security.html">Cloud Foundry security</a></li>
+              <li class=""><a href="/concepts/container-security.html">Container security in Cloud Foundry</a></li>
+              <li class=""><a href="/concepts/understand-cf-networking.html">Container-to-container networking</a></li>
+              <li class=""><a href="/concepts/identity-aware-routing.html">Identity-aware routing</a></li>
+              <li class=""><a href="/concepts/roles.html">Orgs, spaces, roles, and permissions in Cloud Foundry</a></li>
+              <li class=""><a href="/concepts/managing-roles.html">Managing Roles</a></li>
+              <li class=""><a href="/concepts/orgs-and-spaces.html">Planning orgs and spaces in Cloud Foundry</a></li>
+              <li class=""><a href="/concepts/asg.html">App Security Groups in Cloud Foundry</a></li>
+              <li class=""><a href="/concepts/diego/ssh-conceptual.html">Cloud Foundry app SSH components and processes</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/concepts/ha-index.html">High availability</a>
+            <ul>
+              <li class=""><a href="/concepts/high-availability.html">High availability in Cloud Foundry</a></li>
+              <li class=""><a href="/concepts/maintaining-high-availability.html">How Cloud Foundry maintains high availability</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/concepts/apps-index.html">How Cloud Foundry manages apps</a>
+            <ul>
+              <li class=""><a href="/concepts/how-applications-are-staged.html">Staging your apps in Cloud Foundry</a></li>
+              <!-- file lives in docs-dev-guide, not docs-cloudfoundry-concepts -->
+              <li class=""><a href="/devguide/deploy-apps/app-lifecycle.html">The app container lifecycle on Diego architecture</a></li>
+              <li class=""><a href="/concepts/diego/diego-auction.html">How Diego balances app processes in Cloud Foundry</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/concepts/architecture/index.html">Cloud Foundry components</a>
+            <ul>
+              <li class=""><a href="/concepts/diego/diego-architecture.html">Diego components and architecture</a></li>
+              <li class=""><a href="/concepts/cf-routing-architecture.html">Cloud Foundry routing architecture</a></li>
+              <li class=""><a href="/concepts/architecture/cloud-controller.html">Cloud Controller</a></li>
+              <li class=""><a href="/concepts/cc-blobstore.html">Cloud Controller blobstore</a></li>
+              <li class=""><a href="/concepts/architecture/uaa.html">User Account and Authentication server</a></li>
+              <li class=""><a href="/concepts/architecture/garden.html">Garden component</a></li>
+              <li class=""><a href="/concepts/grootfs-disk.html">GrootFS disk usage in Cloud Foundry</a></li>
+              <li class=""><a href="/concepts/http-routing.html">HTTP routing</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="has_submenu"><span>Cloud Foundry Command Line Interface (cf CLI)</span>
+        <ul>
+          <li class=""><a href="/cf-cli/install-go-cli.html">Installing the cf CLI</a></li>
+          <li class=""><a href="/cf-cli/v8.html">Upgrading to cf CLI v8</a></li>
+          <li class=""><a href="/cf-cli/getting-started.html">Getting started with the cf CLI</a></li>
+          <li class=""><a href="/cf-cli/http-proxy.html">Using the cf CLI with a proxy server</a></li>
+          <li class=""><a href="/cf-cli/self-signed.html">Using the cf CLI with a self-signed certificate</a></li>
+          <li class=""><a href="/cf-cli/use-cli-plugins.html">Using cf CLI plug-ins</a></li>
+          <li class=""><a href="/cf-cli/develop-cli-plugins.html">Developing cf CLI plug-ins</a></li>
+        </ul>
+      </li>
+      <li>
+        <span>
+          <hr>
+        </span>
+      </li>
+      <li><strong>Information for Operators</strong></li>
+      <li class="has_submenu"><a href="/deploying/index.html">Deploying Cloud Foundry</a>
+        <ul>
+          <li class=""><a href="/deploying/common/dns_prereqs.html">Setting up DNS for your environment</a></li>
+          <li class="has_submenu"><a href="/deploying/cf-deployment/index.html">Deploying Cloud Foundry with cf-deployment</a>
+            <ul>
+              <li class=""><a href="/deploying/common/aws.html">Deploying BOSH on AWS</a></li>
+              <li class=""><a href="/deploying/cf-deployment/gcp.html">Deploying BOSH on GCP</a></li>
+              <li class=""><a href="/deploying/cf-deployment/deploy-cf.html">Deploying Cloud Foundry</a></li>
+              <li class=""><a href="/deploying/cf-deployment/enable-identity-aware-routing.html">Enabling identity-aware routing</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/bbr/index.html">Backing up and restoring with BBR</a></li>
+          <li class="has_submenu"><span>Additional configuration</span>
+            <ul>
+              <li class=""><a href="/deploying/common/cc-blobstore-config.html">Cloud Controller blobstore configuration</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="has_submenu"><a href="/adminguide/index.html">Administering Cloud Foundry</a>
+        <ul>
+          <li class="has_submenu"><a href="/adminguide/platform-index.html">Managing the runtime</a>
+            <ul>
+              <li class=""><a href="/adminguide/start-stop-vms.html">Stopping and starting virtual machines</a></li>
+              <li class=""><a href="/adminguide/quota-plans.html">Creating and modifying quota plans</a></li>
+              <li class=""><a href="/adminguide/listing-feature-flags.html">Using feature flags</a></li>
+              <li class=""><a href="/adminguide/examining_grootfs_disk.html">Examining GrootFS disk usage</a></li>
+              <li class=""><a href="/adminguide/metadata.html">Using metadata</a></li>
+              <li class=""><a href="/adminguide/buildpacks.html">Managing custom buildpacks</a></li>
+              <li class=""><a href="/adminguide/docker.html">Using Docker in Cloud Foundry</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/adminguide/user-accounts-index.html">User accounts and communications</a>
+            <ul>
+              <li class=""><a href="/adminguide/cli-user-management.html">Creating and managing users with the cf CLI</a></li>
+              <li class=""><a href="/uaa/uaa-user-management.html">Creating and managing users with the UAA CLI (UAAC)</a></li>
+              <li class=""><a href="/adminguide/notifications.html">Get started with the Notifications Service</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/adminguide/routing-index.html">Routing</a>
+            <ul>
+              <li class=""><a href="/adminguide/enabling_ipv6.html">Enabling IPv6 for hosted apps</a></li>
+              <li class=""><a href="/adminguide/distributed-tracing.html">Distributed tracing</a></li>
+              <li class=""><a href="/adminguide/zipkin_tracing.html">Enabling Zipkin tracing</a></li>
+              <li class=""><a href="/adminguide/w3c_tracing.html">Enabling W3C tracing</a></li>
+              <li class=""><a href="/adminguide/supporting-websockets.html">Supporting WebSockets</a></li>
+              <li class=""><a href="/adminguide/configure-lb-healthcheck.html">Configuring load balancer health checks for CF routers</a></li>
+              <li class=""><a href="/adminguide/troubleshooting_slow_requests.html">Troubleshooting slow requests</a></li>
+              <li class=""><a href="/adminguide/troubleshooting-router-error-responses.html">Troubleshooting router error responses</a></li>
+              <li class=""><a href="/adminguide/securing-traffic.html">Securing incoming traffic</a></li>
+              <li class=""><a href="/devguide/deploy-apps/trusted-system-certificates.html">Configuring trusted system certificates for apps</a></li>
+              <li class=""><a href="/adminguide/bbs-encryption-keys.html">Bulletin Board System data store encryption</a></li>
+              <li class=""><a href="/adminguide/enabling-tcp-routing.html">Enabling and configuring TCP routing</a></li>
+              <li class=""><a href="/adminguide/supporting-http2.html">Configuring HTTP/2 support</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/adminguide/isolation-segment-index.html">Isolation segments</a>
+            <ul>
+              <li class=""><a href="/adminguide/isolation-segments.html">Managing isolation segments</a></li>
+              <li class=""><a href="/adminguide/routing-is.html">Routing for isolation segments</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu">
+            <a href="/adminguide/delayed-jobs-index.html">Delayed jobs in Cloud Foundry</a>
+            <ul>
+              <li class="">
+                <a href="/adminguide/configuring-delayed-job-priorities.html">Configuring delayed job priorities with Cloud Controller</a>
+              </li>
+            </ul>
+          </li>
+          <li class="has_submenu">
+            <a href="/adminguide/managing-apps-stacks-index.html">Managing apps and their stacks</a>
+            <ul>
+              <li class=""><a href="/adminguide/stack-auditor.html">Using Stack Auditor</a></li>
+              <li class=""><a href="/adminguide/managing-stacks.html">Managing stack lifecycle</a></li>
+              <li class=""><a href="/devguide/deploy-apps/stacks.html">Changing stacks</a></li>
+              <li class=""><a href="/devguide/deploy-apps/windows-stacks.html">Restaging your apps on a Windows stack</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="has_submenu"><a href="/running/">Running and Troubleshooting Cloud Foundry</a>
+        <ul>
+          <li class=""><a href="/running/managing-cf/logging.html">Cloud Foundry logging</a></li>
+          <li class=""><a href="/running/managing-cf/logging-config.html">Configuring system logging</a></li>
+          <li class=""><a href="/running/diego-upgrades.html">Configuring Diego for upgrades</a></li>
+          <li class=""><a href="/running/managing-cf/audit-events.html">Audit Events</a></li>
+          <li class=""><a href="/running/managing-cf/uaa-audit-requirements.html">UAA audit requirements</a></li>
+          <li class=""><a href="/running/managing-cf/usage-events.html">Usage events and billing</a></li>
+          <li class=""><a href="/running/config-ssh.html">Configuring SSH access for Cloud Foundry</a></li>
+          <li class=""><a href="/running/config-cell-cleanup.html">Configuring Diego Cell disk cleanup scheduling</a></li>
+          <li class=""><a href="/running/hm-notifications.html">Configuring Health Monitor Notifications</a></li>
+          <li class=""><a href="/running/custom-stack.html">Adding a custom stack</a></li>
+          <li class=""><a href="/running/monitoring-test.html">Monitoring and testing Diego components</a></li>
+          <li class=""><a href="/running/troubleshooting.html">Troubleshooting Cloud Foundry</a></li>
+          <li class=""><a href="/running/uaa-performance.html">UAA performance</a></li>
+          <li class=""><a href="/uaa/uaa-metrics.html">UAA performance metrics</a></li>
+          <li class=""><a href="/running/managing-cf/scaling-cloud-controller.html">Scaling Cloud Controller</a></li>
+          <li class=""><a href="/running/managing-cf/multi-process-cloud-controller.html">Cloud Controller Multi-Process Mode (Puma)</a></li>
+          <li class=""><a href="/running/managing-cf/scaling-cloud-controller-k8s.html">Scaling Cloud Controller (cf-for-k8s)</a></li>
+        </ul>
+      </li>
+      <li class="has_submenu"><span>Logging and metrics in Cloud Foundry</span>
+        <ul>
+          <li class=""><a href="/loggregator/architecture.html">Logging and metrics architecture</a></li>
+          <li class=""><a href="/loggregator/cli-plugin.html">Installing the Loggregator plug-in for cf CLI</a></li>
+          <li class=""><a href="/loggregator/cc-uaa-logging.html">Security event logging</a></li>
+          <li class=""><a href="/devguide/deploy-apps/streaming-logs.html">App logging in Cloud Foundry</a></li>
+          <li class=""><a href="/loggregator/app-log-rate-limits.html">Limiting your app log rate in Cloud Foundry</a></li>
+          <li class=""><a href="/running/all_metrics.html">Cloud Foundry component metrics</a></li>
+          <li class=""><a href="/loggregator/container-metrics.html">Container metrics</a></li>
+          <li class=""><a href="/loggregator/log-ops-guide.html">Loggregator guide for Cloud Foundry operators</a></li>
+          <li class=""><a href="/loggregator/data-sources.html">Logging and metrics in Cloud Foundry</a></li>
+          <li class=""><a href="/loggregator/opentelemetry.html">Configuring the OpenTelemetry Collector</a></li>
+          <li class=""><a href="/loggregator/nozzle-tutorial.html">Deploying a nozzle to your Cloud Foundry Loggregator Firehose</a></li>
+        </ul>
+      </li>
+      <li class=""><a href="http://bosh.io/docs/">BOSH Documentation</a></li>
+      <li class="has_submenu"><a href="/bbr/index.html">BOSH Backup and Restore (BBR)</a>
+        <ul>
+          <li class=""><a href="/bbr/installing.html">Installing BBR</a></li>
+          <li class=""><a href="https://github.com/cloudfoundry-incubator/bosh-backup-and-restore/releases">Release notes for BBR</a></li>
+          <li class=""><a href="/bbr/backup.html">Backing up with BBR</a></li>
+          <li class=""><a href="/bbr/restore.html">Restoring with BBR</a></li>
+          <li class=""><a href="/bbr/cf-backup.html">Configuring Cloud Foundry for BOSH Backup and Restore</a></li>
+          <li class=""><a href="/bbr/external-blobstores.html">Backup and restore for external blobstores</a></li>
+          <li class=""><a href="/bbr/logging.html">BBR logging</a></li>
+          <li class=""><a href="/bbr/experimental-features.html">Advanced features</a></li>
+          <li class=""><a href="/bbr/bbr-devguide.html">BBR developer's guide</a></li>
+        </ul>
+      </li>
+      <li><span><hr></span></li>
+      <li><strong>Information for developers</strong></li>
+      <li class="has_submenu"><a href="/devguide/index.html">Developing and managing apps</a>
+        <ul>
+          <li class="has_submenu"><a href="/devguide/push.html">How to push your app with Cloud Foundry CLI (cf push)</a>
+            <ul>
+              <li class=""><a href="/devguide/deploy-apps/deploy-app.html">Pushing your app using Cloud Foundry CLI (cf push)</a></li>
+              <li class=""><a href="/devguide/deploy-apps/manifest.html">Deploying with app manifests</a></li>
+              <li class=""><a href="/devguide/deploy-apps/manifest-attributes.html">App manifest attribute reference</a></li>
+              <li class=""><a href="/devguide/deploy-apps/push-docker.html">Deploying an app with Docker</a></li>
+              <li class=""><a href="/devguide/deploy-apps/large-app-deploy.html">Deploying your large apps</a></li>
+              <li class=""><a href="/devguide/deploy-apps/start-restart-restage.html">Starting, restarting, and restaging apps</a></li>
+              <li class=""><a href="/devguide/multiple-processes.html">Pushing an app with multiple processes</a></li>
+              <li class=""><a href="/devguide/push-sub-commands.html">Running cf push sub-step commands</a></li>
+              <li class=""><a href="/devguide/deploy-apps/rolling-deploy.html">Configuring app deployments</a></li>
+              <li class=""><a href="/devguide/sidecars.html">Pushing apps with sidecar processes</a></li>
+              <li class=""><a href="/devguide/deploy-apps/blue-green.html">Using blue-green deployment to reduce downtime</a></li>
+              <li class=""><a href="/devguide/deploy-apps/troubleshoot-app-health.html">Troubleshooting app deployment and health</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/devguide/ssh-index.html">SSH for apps and services</a>
+            <ul>
+              <li class=""><a href="/devguide/deploy-apps/app-ssh-overview.html">Configuring SSH access for your deployment</a></li>
+              <li class=""><a href="/devguide/deploy-apps/ssh-apps.html">Accessing your apps with SSH</a></li>
+              <li class=""><a href="/devguide/deploy-apps/ssh-services.html">Accessing services with SSH</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/devguide/routing-index.html">Routes and domains</a>
+            <ul>
+              <li class=""><a href="/devguide/deploy-apps/routes-domains.html">Configuring routes and domains</a></li>
+              <li class=""><a href="/devguide/custom-per-route-options.html">Configuring per-route options</a></li>
+              <li class=""><a href="/devguide/deploy-apps/identity-aware-routing.html">Configuring identity-aware routing</a></li>
+              <li class=""><a href="/devguide/hash-based-routing.html">Hash-Based Routing</a></li>
+              <li class=""><a href="/devguide/custom-ports.html">Configuring CF to route traffic to apps on custom ports</a></li>
+              <li class=""><a href="/devguide/http2-protocol.html">Routing HTTP/2 and gRPC traffic to apps</a></li>
+              <!-- file lives in docs-cf-admin, not docs-dev-guide -->
+              <li class=""><a href="/adminguide/troubleshooting_tcp_routing.html">Troubleshooting TCP routing</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/devguide/services-index.html">Managing services</a>
+            <ul>
+              <li class=""><a href="/devguide/services/index.html">Provisioning and integrating service instances</a></li>
+              <li class=""><a href="/devguide/services/managing-services.html">Managing service instances</a></li>
+              <li class=""><a href="/devguide/services/sharing-instances.html">Sharing service instances</a></li>
+              <li class=""><a href="/devguide/services/application-binding.html">Delivering service credentials to an app</a></li>
+              <li class=""><a href="/devguide/services/service-keys.html">Managing service keys</a></li>
+              <li class=""><a href="/devguide/services/play-service-bindings.html">Configuring Play Framework service connections</a></li>
+              <li class=""><a href="/devguide/services/using-vol-services.html">Using an external file system (volume services)</a></li>
+              <li class=""><a href="/devguide/services/user-provided.html">User-provided service instances</a></li>
+              <li class=""><a href="/devguide/services/route-binding.html">Manage app requests with route services</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/devguide/streaming-logs-index.html">Streaming app logs</a>
+            <ul>
+              <li class=""><a href="/devguide/services/log-management.html">Streaming app logs to log management services</a></li>
+              <li class=""><a href="/devguide/services/log-management-thirdparty-svc.html">Streaming app logs to third-party services</a></li>
+              <li class=""><a href="/devguide/services/integrate-splunk.html">Streaming app logs to Splunk</a></li>
+              <li class=""><a href="/devguide/services/fluentd.html">Streaming app logs with Fluentd</a></li>
+              <li class=""><a href="/devguide/services/oms-nozzle.html">Streaming app logs to Azure OMS log analytics</a></li>
+              <li class=""><a href="/devguide/services/metrics.html">Using metrics with drain logs</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/devguide/managing-apps-index.html">Managing apps with the cf CLI</a>
+            <ul>
+              <li class=""><a href="/devguide/using-tasks.html">Running tasks in your apps</a></li>
+              <li class=""><a href="/devguide/deploy-apps/cf-scale.html">Scaling your app using Cloud Foundry CLI (cf scale)</a></li>
+              <li class=""><a href="/devguide/deploy-apps/healthchecks.html">Using Cloud Foundry health checks</a></li>
+              <!-- file lives in docs-running-cf, not docs-dev-guide -->
+              <li class=""><a href="/running/managing-cf/app-event.html">Retrieving app and event information</a></li>
+              <li class=""><a href="/devguide/deploy-apps/cf-networking.html">Configuring container-to-Container networking</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/devguide/deploy-apps/environment-variable.html">Cloud Foundry environment variables</a></li>
+          <li class=""><a href="/devguide/capi/client-libraries.html">Available Cloud Controller API client libraries</a></li>
+          <li class=""><a href="/devguide/deploy-apps/prepare-to-deploy.html">Designing and running your app in the cloud</a></li>
+          <li class=""><a href="/devguide/revisions.html">Cloud Foundry API app revisions</a></li>
+        </ul>
+      </li>
+
+
+      <li class="has_submenu"><a href="/buildpacks/index.html">Cloud Foundry Buildpacks</a>
+        <ul>
+          <li class="has_submenu"><a href="/buildpacks/cnb/index.html">Cloud Native Buildpacks</a>
+            <ul>
+              <li class=""><a href="/buildpacks/cnb/paketo.html">Paketo Buildpacks</a></li>
+            </ul>
+          </li>
+
+          <li class="has_submenu"><a href="/buildpacks/classic.html">Classic Buildpacks</a>
+          <ul>
+          <li class="has_submenu"><a href="/buildpacks/using-buildpacks.html">What are classic buildpacks?</a>
+            <ul>
+              <li class=""><a href="/buildpacks/understand-buildpacks.html">Working with buildpacks in Cloud Foundry </a></li>
+              <li class=""><a href="/buildpacks/stack-association.html">Stack association</a></li>
+              <li class=""><a href="/buildpacks/use-multiple-buildpacks.html">Pushing an app with multiple buildpacks</a></li>
+              <li class=""><a href="/buildpacks/proxy-usage.html">Using a proxy server</a></li>
+              <li class=""><a href="/buildpacks/supported-binary-dependencies.html">Supported binary dependencies</a></li>
+              <li class=""><a href="/buildpacks/prod-server.html">Configuring the production server</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/buildpacks/binary/index.html">Binary buildpack</a></li>
+          <li class=""><a href="/buildpacks/go/index.html">Go buildpack</a></li>
+          <li class="has_submenu"><a href="/buildpacks/hwc/index.html">Hosted Web Core buildpack</a>
+            <ul>
+              <li class=""><a href="/buildpacks/hwc/extension-buildpack.html">Creating an extension buildpack for .NET apps</a></li>
+              <li class=""><a href="/buildpacks/hwc/web-config-transform-buildpack.html">Using the .NET Framework Web Config Transform Extension Buildpack</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/buildpacks/java/index.html">Java buildpack</a>
+            <ul>
+              <li class=""><a href="/buildpacks/java/java-tips.html">Using Cloud Foundry Java buildpack</a></li>
+              <li class="has_submenu"><a href="/buildpacks/java/getting-started-deploying-apps/index.html">Getting started deploying Java apps to Cloud Foundry</a>
+                <ul>
+                  <li class=""><a href="/buildpacks/java/getting-started-deploying-apps/gsg-grails.html">Getting started deploying your Grails apps to Cloud Foundry</a></li>
+                  <li class=""><a href="/buildpacks/java/getting-started-deploying-apps/gsg-ratpack.html">Getting started deploying Ratpack apps to Cloud Foundry</a></li>
+                  <li class=""><a href="/buildpacks/java/getting-started-deploying-apps/gsg-spring.html">Getting started deploying Spring apps to Cloud Foundry</a></li>
+                </ul>
+              </li>
+              <li class=""><a href="/buildpacks/java/configuring-service-connections.html">Configuring service connections</a></li>
+              <li class=""><a href="/buildpacks/java/java-native-image.html">Using Java Native Image</a></li>
+              <li class=""><a href="/buildpacks/java/java-client.html">Cloud Foundry Java Client Library</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/buildpacks/dotnet-core/index.html">.NET Core buildpack</a></li>
+          <li class=""><a href="/buildpacks/nginx/index.html">NGINX buildpack</a></li>
+          <li class="has_submenu"><a href="/buildpacks/node/index.html">Node.js buildpack</a>
+            <ul>
+              <li class=""><a href="/buildpacks/node/node-tips.html">Node.js buildpack-specific information</a></li>
+              <li class=""><a href="/buildpacks/node/node-environment.html">Environment variables defined by Node buildpack</a></li>
+              <li class=""><a href="/buildpacks/node/node-service-bindings.html">Configuring service connections for Node.js application</a></li>
+            </ul>
+          </li>
+          <li class="has_submenu"><a href="/buildpacks/php/index.html">Using PHP buildpack with runtimes</a>
+            <ul>
+              <li class=""><a href="/buildpacks/php/gsg-php-tips.html">Additional information on PHP buildpacks in Cloud Foundry</a></li>
+              <li class=""><a href="/buildpacks/php/gsg-php-usage.html">Getting started deploying PHP apps to Cloud Foundry</a></li>
+              <li class=""><a href="/buildpacks/php/gsg-php-config.html">PHP buildpack configuration</a></li>
+              <li class=""><a href="/buildpacks/php/gsg-php-composer.html">Composer</a></li>
+              <li class=""><a href="/buildpacks/php/gsg-php-sessions.html">Sessions</a></li>
+              <li class=""><a href="/buildpacks/php/gsg-php-newrelic.html">New Relic</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/buildpacks/python/index.html">Python buildpack</a></li>
+          <li class=""><a href="/buildpacks/r/index.html">R buildpack</a></li>
+          <li class="has_submenu"><a href="/buildpacks/ruby/index.html">Ruby buildpack</a>
+            <ul>
+              <li class=""><a href="/buildpacks/ruby/ruby-tips.html">Additional information on Ruby buildpacks in Cloud Foundry</a></li>
+              <li class="has_submenu"><a href="/buildpacks/ruby/deploying-apps-index.html">Getting started deploying Ruby apps</a>
+                <ul>
+                  <li class=""><a href="/buildpacks/ruby/gsg-ruby.html">Getting started deploying Ruby apps</a></li>
+                  <li class=""><a href="/buildpacks/ruby/gsg-ror.html">Getting started deploying Ruby on Rails apps</a></li>
+                  <li class=""><a href="/buildpacks/ruby/sample-ror.html">Deploy a sample Ruby on Rails app</a></li>
+                </ul>
+              </li>
+              <li class=""><a href="/buildpacks/ruby/rake-config.html">Configuring Rake tasks for deployed apps</a></li>
+              <li class=""><a href="/buildpacks/ruby/ruby-environment.html">Environment variables defined by Ruby buildpack</a></li>
+              <li class=""><a href="/buildpacks/ruby/ruby-service-bindings.html">Configuring service connections for Ruby</a></li>
+              <li class=""><a href="/buildpacks/ruby/windows.html">Windows Gemfile support</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/buildpacks/staticfile/index.html">Staticfile buildpacks</a></li>
+          <li class="has_submenu"><a href="/buildpacks/custom.html">Creating custom buildpacks</a>
+            <ul>
+              <li class=""><a href="/buildpacks/depend-pkg-offline.html">Packaging dependencies for offline buildpacks</a></li>
+              <li class=""><a href="/buildpacks/merging_upstream.html">Merging from upstream buildpacks</a></li>
+              <li class=""><a href="/buildpacks/upgrading_dependency_versions.html">Upgrading dependency versions for Cloud Foundry</a></li>
+              <li class="has_submenu"><a href="/buildpacks/buildpack-ci-index.html">Using CI for buildpacks</a>
+                <ul>
+                  <li class=""><a href="/buildpacks/releasing_a_new_buildpack_version.html">Releasing a new Cloud Foundry buildpack version</a></li>
+                  <li class=""><a href="/buildpacks/updating-buildpack-related-gems.html">Updating buildpack-related gems in Cloud Foundry</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+        </ul>
+      </li>
+
+      <li><span><hr></span></li>
+      <li class="has_submenu"><span>Information for Managed Service Authors</span>
+        <ul>
+          <li class=""><a href="/services/overview.html">Services in Cloud Foundry</a></li>
+          <li class="has_submenu"><span>Service Broker API</span>
+            <ul>
+              <li class=""><a href="https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/spec.md">Open Service Broker API</a></li>
+              <li class=""><a href="https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/profile.md">Platform profiles</a></li>
+              <li class=""><a href="https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/profile.md#service-metadata">Catalog metadata</a></li>
+              <li class=""><a href="https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/spec.md#volume-mounts-object">Volume services</a></li>
+              <li class=""><a href="https://github.com/openservicebrokerapi/servicebroker/blob/v2.15/release-notes.md">Release Notes</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/services/managing-service-brokers.html">Managing service brokers in Cloud Foundry</a></li>
+          <li class=""><a href="/services/access-control.html">Managing access to service plans</a></li>
+          <li class=""><a href="/services/binding-credentials.html">Binding credentials in Cloud Foundry</a></li>
+          <li class="has_submenu"><a href="/credhub/index.html">CredHub</a>
+            <ul>
+              <li class=""><a href="/credhub/setup-credhub-bosh.html">Setting up and deploying CredHub with BOSH</a></li>
+              <li class=""><a href="/credhub/hsm-config.html">Configuring a hardware security module</a></li>
+              <li class=""><a href="/credhub/kms-plugin.html">Using a key management service with CredHub</a></li>
+              <li class=""><a href="/credhub/credential-types.html">CredHub credential types</a></li>
+              <li class=""><a href="/credhub/backup-restore.html">Backing up and restoring CredHub instances</a></li>
+              <li class=""><a href="/credhub/troubleshooting-credhub.html">Troubleshooting CredHub</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/services/dashboard-sso.html">Dashboard Single Sign-on</a></li>
+          <li class=""><a href="/services/enable-sharing.html">Service instance sharing in Cloud Foundry</a></li>
+          <li class=""><a href="/services/examples.html">Service broker examples</a></li>
+          <li class=""><a href="/services/app-log-streaming.html">App log streaming in Cloud Foundry</a></li>
+          <li class=""><a href="/services/route-services.html">Offering Route Services in Cloud Foundry</a></li>
+          <li class=""><a href="/services/supporting-multiple-cf-instances.html">Supporting multiple CF instances</a></li>
+        </ul>
+      </li>
+      <li><span><hr></span></li>
+      <li class="has_submenu"><span>User Account and Authentication</span>
+        <ul>
+          <li class=""><a href="/uaa/uaa-overview.html">UAA Overview</a></li>
+          <li class=""><a href="/uaa/uaa-concepts.html">UAA Concepts</a></li>
+          <li class=""><a href="/uaa/identity-providers.html">Identity Providers in UAA</a></li>
+          <li class=""><a href="/uaa/uaa-metrics.html">UAA Metrics</a></li>
+
+        </ul>
+      </li>
+      <li><strong>API Reference</strong></li>
+      <li class=""><a href="https://docs.cloudfoundry.org/api/uaa/index.html">UAA API</a></li>
+      <li class="has_submenu"><span>CAPI API</span>
+        <ul>
+          <li class=""><a href="/running/rate-limit-cloud-controller-api.html">Rate limit information returned by the Cloud Controller API</a></li>
+          <li class=""><a href="https://v2-apidocs.cloudfoundry.org">CAPI V2</a></li>
+          <li class=""><a href="https://v3-apidocs.cloudfoundry.org/index.html">CAPI V3</a></li>
+          <li class=""><a href="https://docs.cloudfoundry.org/api/credhub/">CredHub API documentation</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+
+      <!--googleon: index-->
+
+      <main class="content content-layout" id="js-content" role="main">
+        <a id="top"></a>
+        
+          <h1 class="title-container">
+    NGINX buildpack
+  </h1>
+
+          <div class="js-quick-links">
+            <div class="quick-links"><ul>
+<li><a href="#pushing-apps">Push an app</a></li>
+<li><a href="#nginx">Configure NGINX</a></li>
+<li>
+<a href="#templating">Create the nginx.conf file</a><ul>
+<li><a href="#port">Port</a></li>
+<li><a href="#nameservers">Name resolution</a></li>
+<li><a href="#env">Environment variables</a></li>
+<li><a href="#unescaped-env">Unescaped environment variables</a></li>
+<li><a href="#loading-modules">Loading dynamic modules</a></li>
+<li><a href="#enabling-logging">Enable logging</a></li>
+</ul>
+</li>
+<li><a href="#help">NGINX buildpack support</a></li>
+</ul></div>
+          </div>
+        <div class="to-top" id="js-to-top">
+          <a href="#top" title="back to top"></a>
+        </div>
+        <p id="modified-date"><strong>Page last updated: <span data-behavior="DisplayModifiedDate" data-modified-date="1707169850000"></span></strong></p>
+
+        <p>You can push your NGINX app to Cloud Foundry and configure your NGINX app to use the NGINX buildpack.</p>
+
+<h2 id="-push-an-app"><a id='pushing-apps'></a> Push an app</h2>
+
+<p>If your app contains an <code>nginx.conf</code> file, Cloud Foundry automatically uses the NGINX buildpack when you run <code>cf push</code> to deploy your app.</p>
+
+<p>If your Cloud Foundry deployment does not have the NGINX buildpack installed or the installed version is outdated, deploy your app with the current buildpack by running:</p>
+<pre class="highlight shell_session"><code>cf push YOUR-APP -b https://github.com/cloudfoundry/nginx-buildpack.git
+</code></pre>
+
+<p>Where <code>YOUR-APP</code> is the name of your app.</p>
+
+<p>For example:</p>
+
+<pre class="terminal">
+$ cf push my-app -b https://github.com/cloudfoundry/nginx-buildpack.git
+</pre>
+
+<h2 id="-configure-nginx"><a id='nginx'></a> Configure NGINX</h2>
+
+<p>Cloud Foundry recommends that you use the default NGINX  directory structure for your NGINX web server. You can view this directory structure in the <a href="https://github.com/cloudfoundry/nginx-buildpack/tree/master/fixtures/mainline">nginx-buildpack</a> repository in GitHub.</p>
+
+<p>Configure the NGINX web server. You need these elements.</p>
+
+<ul>
+<li>A root directory for all static web content</li>
+<li>A MIME type configuration file</li>
+<li>An NGINX configuration file</li>
+<li>A <code>buildpack.yml</code> YAML file that defines the version of NGINX to use. For example, see <a href="https://github.com/cloudfoundry/nginx-buildpack/blob/master/fixtures/mainline/buildpack.yml">buildpack.yml</a> Buildpack repository in GitHub.</li>
+</ul>
+
+<p>Make any custom configuration changes based on these default files to verify compatibility with the buildpack.</p>
+
+<h2 id="-create-the-nginx.conf-file"><a id='templating'></a> Create the nginx.conf file</h2>
+
+<p>Use the templating syntax when you create an <code>nginx.conf</code> file. This templating syntax loads modules and binds to ports
+based on values known at start time.</p>
+
+<h3 id="-port"><a id='port'></a> Port</h3>
+
+<p>Use <code>{{port}}</code> to set the port on which to listen. At start time, <code>{{port}}</code> interpolates in the value of <code>$PORT</code>.</p>
+
+<p>You must use <code>{{port}}</code> in your <code>nginx.conf</code> file.</p>
+
+<p>For example, to set an NGINX server to listen on <code>$PORT</code>, include the following in your <code>nginx.conf</code> file:</p>
+<pre class="highlight plaintext"><code>server {
+  listen {{port}};
+}
+</code></pre>
+
+<h3 id="-name-resolution"><a id='nameservers'></a> Name resolution</h3>
+
+<p>The NGINX buildpack does not resolve internal routes by default. To resolve internal routes, use <code>{{nameservers}}</code> to set the resolver IP address. At start time, <code>{{nameservers}}</code> interpolates the address of a platform-provided DNS service that includes information about internal routes.</p>
+
+<p>Connections to internal routes do not go through the Cloud Foundry routing tier. As a result, you might see errors
+  if you proxy an app on an internal route while it is restarting. There are some workarounds you might need to consider.</p>
+
+<p>For more information, see <a href="https://www.nginx.com/blog/dns-service-discovery-nginx-plus/">Using DNS for Service Discovery with NGINX and NGINX Plus</a> on the NGINX blog.</p>
+
+<h3 id="-environment-variables"><a id='env'></a> Environment variables</h3>
+
+<p>To use an environment variable, include <code>{{env &quot;YOUR-VARIABLE&quot;}}</code>, where <code>YOUR-VARIABLE</code> is the name of an environment variable. At staging and at startup, the current value of the environment variable is retrieved.</p>
+
+<p>For example, include the following in your <code>nginx.conf</code> file to activate or deactivate GZipping based on the value of <code>GZIP_DOWNLOADS</code>:</p>
+<pre class="highlight plaintext"><code>gzip {{env "GZIP_DOWNLOADS"}};
+</code></pre>
+
+<ul>
+<li>If you set <code>GZIP_DOWNLOADS</code> to <code>off</code>, NGINX does not GZip files.</li>
+<li>If you set <code>GZIP_DOWNLOADS</code> to <code>on</code>, NGINX GZips files.</li>
+</ul>
+
+<h3 id="-unescaped-environment-variables"><a id='unescaped-env'></a> Unescaped environment variables</h3>
+
+<p>To use unescaped environment variables, add an array of environment variable names to the <code>buildpack.yml</code>. See the following example:</p>
+<pre class="highlight plaintext"><code>---
+nginx:
+  version: stable
+  plaintext_env_vars:
+    - "OVERRIDE"
+</code></pre>
+
+<p>In this example, the <code>OVERRIDE</code> environment variable can contain <code>.json</code> content without being <code>html</code> escaped.
+You must properly quote such variables to appear as strings in the <code>nginx.conf</code> file.</p>
+
+<h3 id="-loading-dynamic-modules"><a id='loading-modules'></a> Loading dynamic modules</h3>
+
+<p>NGINX can dynamically load modules at runtime. These modules are shared-object files that can be dynamically loaded using the <code>load_module</code> directive. In addition to loading modules dynamically, the NGINX version provided by the buildpack has statically compiled the following modules into the NGINX binary:</p>
+
+<ul>
+<li><code>ngx_http_ssl_module</code></li>
+<li><code>ngx_http_realip_module</code></li>
+<li><code>ngx_http_gunzip_module</code></li>
+<li><code>ngx_http_gzip_static_module</code></li>
+<li><code>ngx_http_auth_request_module</code></li>
+<li><code>ngx_http_random_index_module</code></li>
+<li><code>ngx_http_secure_link_module</code></li>
+<li><code>ngx_http_stub_status_module</code></li>
+<li><code>ngx_http_sub_module</code></li>
+</ul>
+
+<p>These statically compiled modules do not need to be loaded at runtime and are already available for use.</p>
+
+<p>To load a dynamic NGINX module, use the following syntax in the app <code>nginx.conf</code> file for your app:</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="err">{module</span><span class="w"> </span><span class="nt">"MODULE-NAME"</span><span class="err">}}</span><span class="w">
+</span></code></pre>
+
+<p>If you have provided a module in a <code>modules</code> directory located at the root of your app, the buildpack instructs NGINX to load that module.
+If you have not provided a module, the buildpack instructs NGINX to search for a matching built in dynamic module.</p>
+
+<p>As of v0.0.5 of the buildpack, the <code>ngx_stream_module</code> is available as a dynamic module that is built into the buildpack.</p>
+
+<p>For example, to load a custom module named <code>ngx_hello_module</code>, provide a <code>modules/ngx_hello_module.so</code> file in your app directory and add the line below to the top of your <code>nginx.conf</code> file:</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="err">{module</span><span class="w"> </span><span class="nt">"ngx_hello_module"</span><span class="err">}}</span><span class="w">
+</span></code></pre>
+
+<p>To load a built in module like <code>ngx_stream_module</code>, add the following line to the top of your <code>nginx.conf</code> file. You do not need to provide an <code>ngx_stream_module.so</code> file:</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="err">{module</span><span class="w"> </span><span class="nt">"ngx_stream_module"</span><span class="err">}}</span><span class="w">
+</span></code></pre>
+
+<p>To name your modules directory something other than <code>modules</code>, use the NGINX <code>load_module</code> directive, providing a path to the module relative to the location of your <code>nginx.conf</code> file. For example:
+<code>load_module some_module_dir/my_module.so</code></p>
+
+<h3 id="-enable-logging"><a id='enabling-logging'></a> Enable logging</h3>
+
+<p>By default, logging is deactivated in the NGINX buildpack. This helps optimize performance.</p>
+
+<p>If you configure NGINX to log to stdout or stderr, the logs are captured by the Cloud Foundry logging subsystem.</p>
+
+<h4 id="-logging-access"><a id='enabling-access-logs'></a> Logging access</h4>
+
+<p>Use the <code>access_log</code> directive in the appropriate location in the <code>nginx.conf</code> to enable access logging. Use the following syntax:</p>
+<pre class="highlight plaintext"><code>access_log &amp;lt;file&amp;gt; [format]
+</code></pre>
+
+<p>Where:</p>
+
+<ul>
+<li><code>file</code> is the name of the file where the log is to be stored. The special value <code>/dev/stdout</code> selects the standard output.</li>
+<li><code>format</code> is the logging format to use. Refer to <a href="https://nginx.org/en/docs/http/ngx_http_log_module.html#log_format">the NGINX documentation for valid customization options</a>.</li>
+</ul>
+
+<p>Example:</p>
+<pre class="highlight plaintext"><code>access_log /dev/stdout;
+</code></pre>
+
+<h4 id="-logging-errors"><a id='enabling-debugging'></a> Logging errors</h4>
+
+<p>Set the debug level with the <code>error_log</code> directive in the <code>nginx.conf</code> to enable debug logging. Add the <code>error_log</code> entry to your <code>nginx.conf</code> file using the syntax below:</p>
+<pre class="highlight plaintext"><code>error_log &amp;lt;file&amp;gt; [level];
+</code></pre>
+
+<p>Where:</p>
+
+<ul>
+<li><code>file</code> is the name of the file where the log is to be stored. The special value <code>stderr</code> selects the standard error file. Logging to <code>syslog</code> can be configured by specifying the “<code>syslog:</code>” prefix.</li>
+<li><p><code>level</code> specifies the level of logging, and can be one of the following:</p>
+
+<ul>
+<li><code>debug</code></li>
+<li><code>info</code></li>
+<li><code>notice</code></li>
+<li><code>warn</code></li>
+<li><code>error</code> (default)</li>
+<li><code>crit</code></li>
+<li><code>alert</code></li>
+<li><code>emerg</code></li>
+</ul></li>
+</ul>
+
+<p>The log levels above are listed in the order of increasing severity. Setting a certain log level causes all messages of the specified and
+more severe log levels to be logged. For example, the default level <code>error</code> causes error, crit, alert, and emerg messages to be
+logged. If this parameter is omitted, then <code>error</code> is used.</p>
+
+<p>Example:</p>
+<pre class="highlight plaintext"><code>error_log stderr debug;
+</code></pre>
+
+<h4 id="-debug-logs-for-selected-clients"><a id='debugging-logs-selected-clients'></a> Debug logs for selected clients</h4>
+
+<p>To enable the debugging log for selected client addresses only, use the syntax below.</p>
+<pre class="highlight plaintext"><code>error_log stderr;
+
+events {
+debug_connection 192.168.1.1;
+debug_connection 192.168.10.0/24;
+}
+</code></pre>
+
+<h4 id="-logging-to-a-cyclic-memory-buffer"><a id='logging-to-a-cyclic-memory-buffer'></a> Logging to a cyclic memory buffer</h4>
+
+<p>The debugging log can be written to a cyclic memory buffer. Use the syntax shown below.</p>
+<pre class="highlight plaintext"><code>error_log memory:32m debug;
+</code></pre>
+
+<p>Logging to the memory buffer on the debug level does not have significant impact on performance, even under high load. In this case, the
+log can be extracted using a gdb script like the one in the following example:</p>
+<pre class="highlight plaintext"><code>set $log = ngx_cycle-&gt;log
+
+while $log-&gt;writer != ngx_log_memory_writer
+set $log = $log-&gt;next
+end
+
+set $buf = (ngx_log_memory_buf_t *) $log-&gt;wdata
+dump binary memory debug_log.txt $buf-&gt;start $buf-&gt;end
+</code></pre>
+
+<h2 id="nginx-buildpack-support"><a id='help'></a>NGINX buildpack support</h2>
+
+<p>The resources listed in this section can assist you when using the NGINX buildpack or when developing your own NGINX buildpack.</p>
+
+<ul>
+<li><p><strong>NGINX Buildpack Repository in GitHub</strong>: Find more information about using and extending the NGINX buildpack in the <a href="https://github.com/cloudfoundry/nginx-buildpack">NGINX buildpack</a> GitHub repository.</p></li>
+<li><p><strong>Release Notes</strong>: Find current information about this buildpack on the <a href="https://github.com/cloudfoundry/nginx-buildpack/releases">NGINX buildpack release page</a> in GitHub.</p></li>
+<li><p><strong>Slack</strong>: Join the #buildpacks channel in the <a href="http://slack.cloudfoundry.org/">Cloud Foundry Slack community</a>.</p></li>
+</ul>
+
+        <a id='repo-link' href="https://github.com/cloudfoundry/docs-buildpacks/tree/master/nginx/index.html.md.erb">Create a pull request or raise an issue on the source for this page in GitHub</a>
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+
+<div class="container">
+  <footer class="site-footer-links">
+    <div class="copyright">
+  <a href='/'>Cloud Foundry Documentation</a>
+  &copy; 2026 <a href='https://cloudfoundry.org'>Cloud Foundry Foundation</a>. All Rights Reserved.
+</div>
+<div class="support">
+  <a href="https://www.cloudfoundry.org/community/" target="_blank">Get Involved</a>
+</div>
+
+  </footer>
+</div><!--end of container-->
+
+</body>
+</html>

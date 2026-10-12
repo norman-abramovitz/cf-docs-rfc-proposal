@@ -45,5 +45,5 @@ written.
 | [Variables](variables/) | Done, with open items: [results](variables/results.md#not-yet-written) | `<%= vars.* %>` from `template_variables.yml`; some values contain HTML or Markdown |
 | [Partials](partials/) | Done, with open items: [results](partials/results.md#not-yet-written) | `<%= partial '...' %>`; some partial names are themselves stored in variables |
 | [Notes and admonitions](notes/) | Done, with open items: [results](notes/results.md#not-yet-written) | `<p class="note">` with `note__title` spans |
-| Code blocks | Proposed | Shell, console, JSON, YAML; copy button |
+| [Code blocks](code-blocks/) | Conventions for review: [results](code-blocks/results.md#summary) | Shell, console, JSON, YAML; copy button. 592 of the book's 1,777 code blocks are HTML `<pre>`, which no tool types or gives a copy button |
 | [Cross-repository links](cross-repo-links/) | Conventions for review: [results](cross-repo-links/results.md#summary) | Links between content repositories must survive conversion |

@@ -1,0 +1,12 @@
+# Ids in the excerpt that must exist on a built page
+templating
+port
+nameservers
+env
+unescaped-env
+loading-modules
+enabling-logging
+enabling-access-logs
+enabling-debugging
+debugging-logs-selected-clients
+logging-to-a-cyclic-memory-buffer

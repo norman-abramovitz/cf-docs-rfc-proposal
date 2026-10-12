@@ -1,0 +1,38 @@
+# Antora playbook for the code blocks round: the earlier rounds' playbook
+# with this round's components, both modes built into site/. The three
+# variables the test pages use inside code blocks are AsciiDoc attributes,
+# from ../../source/template_variables.yml.
+site:
+  title: Code blocks round — Antora
+  start_page: ROOT::index.adoc
+content:
+  sources:
+  # This repository, read from its worktree, so pages need not be committed
+  - url: ./../../../..
+    branches: HEAD
+    start_paths:
+    - concepts/code-blocks/sites/antora/home
+    - concepts/code-blocks/sites/antora/passthrough
+    - concepts/code-blocks/sites/antora/native
+ui:
+  bundle:
+    # The default UI, pinned: `make` downloads one build and checks its hash
+    url: ./.cache/ui-bundle.zip
+urls:
+  html_extension_style: indexify
+asciidoc:
+  attributes:
+    # A heading without an id gets one with no prefix and words joined by
+    # hyphens, as on the published page and in the other tools
+    idprefix: ''
+    idseparator: '-'
+    # A missing attribute is logged (the variables round's native setting)
+    attribute-missing: warn
+    app_domain: shared-domain.example.com
+    private_app_domain: private-domain.example.com
+    tcp_app_domain: tcp-domain.example.com
+output:
+  dir: ./site
+runtime:
+  cache_dir: ./.cache/antora
+  fetch: false

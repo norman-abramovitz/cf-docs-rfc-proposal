@@ -67,6 +67,17 @@ exclude:
   - concepts/cross-repo-links/survey/*.csv
   - concepts/cross-repo-links/survey/*.py
   - concepts/cross-repo-links/survey/*.txt
+  - concepts/code-blocks/sites
+  - concepts/code-blocks/checks
+  - concepts/code-blocks/source
+  - concepts/code-blocks/published
+  - concepts/code-blocks/survey/*.csv
+  - concepts/code-blocks/survey/*.py
+  - concepts/code-blocks/survey/*.txt
+  - concepts/code-blocks/survey/*.rb
+  - concepts/code-blocks/survey/*.mjs
+  - concepts/code-blocks/survey/package*.json
+  - concepts/code-blocks/survey/node_modules
   - Gemfile
   - Gemfile.lock
   - vendor

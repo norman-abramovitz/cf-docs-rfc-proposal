@@ -1,0 +1,130 @@
+---
+title: Pushing an app with multiple processes
+owner: CAPI
+---
+
+
+The Cloud Foundry API (CAPI) V3 supports using a single command to push apps that run multiple processes, such as a web app that has a UI process and a worker process. You can push an app with multiple processes using either a manifest or a Procfile.
+
+For more information about processes, see the [CAPI V3 documentation](http://v3-apidocs.cloudfoundry.org/index.html#processes).
+
+
+## Push an app with multiple processes using a manifest {% #manifest %}
+
+To push an app with multiple processes using a manifest:
+
+1. Create a file in YAML format that defines a manifest. Include each process with its start command.
+
+   This example manifest file defines the app `example-app` with two processes:
+
+    ```yaml
+    version: 1
+    - name: example-app
+      processes:
+      - type: web
+        command: bundle exec rackup config.ru -p $PORT
+        instances: 3
+      - type: worker
+        command: bundle exec rake worker:start
+        health-check-type: process
+        instances: 2
+    ```
+
+1. Push the app with your manifest by running:
+
+    ```console
+    cf push -f MANIFEST.yml
+    ```
+    Where `MANIFEST` is the filename of your manifest file.
+
+For more information about defining processes with manifests, see [processes](deploy-apps/manifest-attributes.html#processes) in _App Manifest Attribute Reference_.
+
+## Push an app with multiple processes using a Procfile {% #procfile %}
+
+Procfile support varies depending on the buildpack you use. For example, the Staticfile buildpack requires a Staticfile instead of a Procfile. For more information, see <a href="../buildpacks/staticfile/index.html">Staticfile Buildpack</a>
+
+To push an app with multiple processes using a Procfile:
+
+1. Create a file named `Procfile` in the root of your app directory. For more information about Procfiles, see the
+    <a href="https://v3-apidocs.cloudfoundry.org/index.html#procfiles">CAPI V3 documentation</a>.
+
+2. Add each process and its start command to the Procfile. For example:
+
+    ```
+    web: bundle exec rackup config.ru -p $PORT
+    worker: bundle exec rake worker:start
+    ```
+
+3. Push the app by running:
+
+    ```
+    cf push APP-NAME
+    ```
+    Where `APP-NAME` is the name of your app.
+
+By default, the web process has a route and one instance. Other processes have zero instances by default.
+
+
+## Scale a process {% #scale-a-process %}
+
+To scale an app process:
+
+1. Run:
+
+    ```
+    cf scale APP-NAME --process PROCESS-NAME -i INSTANCE-COUNT
+    ```
+
+    Where:
+    <ul>
+      <li><code>APP-NAME</code> is the name of your app.</li>
+      <li><code>PROCESS-NAME</code> is the name of the process you want to scale.</li>
+      <li><code>INSTANCE-COUNT</code> is the number of instances to which you want to scale the process.</li>
+    </ul>
+
+## View processes {% #view-processes %}
+
+To view the processes running as part of an app:
+
+1. Run:
+
+    ```console
+    cf app APP-NAME
+    ```
+
+    Where `APP-NAME` is the name of your app.
+
+    The following example shows return output for an app that has a `web` and a `worker` process:
+    <pre class="terminal">
+    Showing health and status for app example-app in org test / space test as admin...
+
+    name:              example-app
+    requested state:   started
+    routes:            example-app.cloudfoundry.example.com
+    last uploaded:     Wed 17 Jul 22:57:04 UTC 2024
+    stack:             cflinuxfs3
+    buildpacks:
+            name             version   detect output   buildpack name
+            ruby_buildpack   1.8.57    ruby            ruby
+
+    type:           web
+    sidecars:
+    instances:      1/1
+    memory usage:   1024M
+         state     since                  cpu    memory        disk           logging         cpu entitlement   details
+    &#35;0   running   2024-07-17T22:57:22Z   0.3%   49.5M of 1G   130.2M of 1G   0B/s of 16K/s   2.4%
+
+    type:           worker
+    sidecars:
+    instances:      2/2
+    memory usage:   1024M
+         state     since                  cpu    memory        disk           logging         cpu entitlement   details
+    &#35;0   running   2024-07-17T22:57:22Z   0.3%   49.5M of 1G   130.2M of 1G   0B/s of 16K/s   2.4%
+    &#35;0   running   2024-07-17T22:57:22Z   0.3%   49.5M of 1G   130.2M of 1G   0B/s of 16K/s   2.4%
+    </pre>
+
+    {% aside type="caution" title="Important" %}
+
+    To avoid security exposure, ensure that you migrated your apps and custom buildpacks to use the <code>cflinuxfs4</code> stack based on Ubuntu 22.04 LTS (Jammy Jellyfish). The <code>cflinuxfs3</code> stack is based on Ubuntu 18.04 (Bionic Beaver), which reaches end of standard support in April 2023.
+
+    {% /aside %}

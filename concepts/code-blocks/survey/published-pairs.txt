@@ -1,0 +1,24 @@
+# Pages whose <pre> elements compare-published.py compares: the model's page
+# (under book-render.rb's html/) and a published copy saved in this
+# repository on 2026-10-10 or 2026-10-11. enabling-tcp-routing is left out:
+# the model renders a partial apart from its page (see the README).
+docs-dev-guide/deploy-apps/routes-domains.html ../../headings/published/routes-domains.html
+docs-cf-admin/metadata.html ../../headings/published/metadata.html
+docs-services/access-control.html ../../headings/published/access-control.html
+docs-cf-admin/troubleshooting_slow_requests.html ../../headings/published/troubleshooting_slow_requests.html
+docs-bbr/cf-backup.html ../../notes/published/cf-backup.html
+docs-dev-guide/deploy-apps/healthchecks.html ../../notes/published/healthchecks.html
+docs-dev-guide/services/_using-vol-services.html ../../notes/published/using-vol-services.html
+docs-loggregator/architecture.html ../../partials/published/architecture.html
+docs-cloudfoundry-concepts/high-availability.html ../../partials/published/high-availability.html
+docs-dev-guide/deploy-apps/troubleshoot-app-health.html ../../partials/published/troubleshoot-app-health.html
+docs-dev-guide/deploy-apps/app-ssh-overview.html ../../variables/published/app-ssh-overview.html
+docs-cloudfoundry-concepts/container-security.html ../../variables/published/container-security.html
+docs-cf-admin/troubleshooting-router-error-responses.html ../../variables/published/troubleshooting-router-error-responses.html
+docs-cf-admin/configure-lb-healthcheck.html ../../variables/published/configure-lb-healthcheck.html
+docs-dev-guide/deploy-apps/stacks.html ../../variables/published/stacks.html
+docs-running-cf/all_metrics.html ../../variables/published/all_metrics.html
+docs-bbr/backup.html ../published/backup.html
+docs-buildpacks/java/getting-started-deploying-apps/gsg-grails.html ../published/gsg-grails.html
+docs-buildpacks/nginx/index.html ../published/nginx.html
+docs-dev-guide/multiple-processes.html ../published/multiple-processes.html

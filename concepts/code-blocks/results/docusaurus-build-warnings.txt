@@ -1,0 +1,28 @@
+# make build, Docusaurus 3.10.2, 2026-10-11: the build's warnings (broken links and anchors; links to pages outside the test set cannot resolve)
+[WARNING] Docusaurus found broken links!
+Note: it's possible to ignore broken links with the 'onBrokenLinks' Docusaurus configuration, and let the build pass.
+Exhaustive list of all broken links found:
+- Broken link on source page path = /native/backup:
+   -> linking to installing.html (resolved as: /native/installing.html)
+- Broken link on source page path = /native/gsg-grails:
+   -> linking to ./../../../devguide/services/index.html (resolved as: /devguide/services/index.html)
+- Broken link on source page path = /native/multiple-processes:
+   -> linking to deploy-apps/manifest-attributes.html#processes (resolved as: /native/deploy-apps/manifest-attributes.html#processes)
+- Broken link on source page path = /native/troubleshooting_slow_requests:
+   -> linking to ../loggregator/nozzle-tutorial.html (resolved as: /loggregator/nozzle-tutorial.html)
+- Broken link on source page path = /passthrough/backup:
+   -> linking to installing.html (resolved as: /passthrough/installing.html)
+- Broken link on source page path = /passthrough/gsg-grails:
+   -> linking to ./../../../devguide/services/index.html (resolved as: /devguide/services/index.html)
+- Broken link on source page path = /passthrough/multiple-processes:
+   -> linking to deploy-apps/manifest-attributes.html#processes (resolved as: /passthrough/deploy-apps/manifest-attributes.html#processes)
+- Broken link on source page path = /passthrough/troubleshooting_slow_requests:
+   -> linking to ../loggregator/nozzle-tutorial.html (resolved as: /loggregator/nozzle-tutorial.html)
+[WARNING] Docusaurus found broken anchors!
+Note: it's possible to ignore broken anchors with the 'onBrokenAnchors' Docusaurus configuration, and let the build pass.
+Exhaustive list of all broken anchors found:
+- Broken anchor on source page path = /native/routes-domains:
+   -> linking to #domains (resolved as: /native/routes-domains#domains)
+- Broken anchor on source page path = /passthrough/routes-domains:
+   -> linking to #domains (resolved as: /passthrough/routes-domains#domains)
+[SUCCESS] Generated static files in "build".

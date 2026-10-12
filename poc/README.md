@@ -202,10 +202,23 @@ build time; Starlight does not. A survey found 55 links already broken in
 the book
 ([cross-repository links results](../concepts/cross-repo-links/results.md#summary)).
 
+### Code blocks
+
+Seven page excerpts with 53 code blocks were converted in the four
+hands-on tools. Written as each tool's own code block with a type, every
+block keeps its exact text, its type and a working copy button in every
+tool, checked by a code-block check that compares each block with the
+published page. Kept as the book writes them, HTML `<pre>` blocks lose
+their type and copy button everywhere, and two tools change their text.
+The tools differ in highlighting (`console` needs an alias in Docusaurus
+and has one colour in Starlight) and in what a copy button copies (Antora
+copies only the commands). Five published pages show code-block defects
+that the converted pages fix
+([code blocks results](../concepts/code-blocks/results.md#summary)).
+
 ### Other concepts
 
-**Not yet written:** code blocks. Each is listed in [Concepts](../concepts/README.md); none
-of them has been converted yet.
+Every concept in [Concepts](../concepts/README.md) now has a round.
 
 ## Other comparisons
 

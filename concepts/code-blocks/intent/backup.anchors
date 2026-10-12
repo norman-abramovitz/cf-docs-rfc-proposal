@@ -1,0 +1,4 @@
+# Ids in the excerpt that must exist on a built page
+connect-to-jumpbox
+ssh
+bosh-all-proxy

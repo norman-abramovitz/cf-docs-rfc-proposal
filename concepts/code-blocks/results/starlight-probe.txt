@@ -1,0 +1,17 @@
+# make probe, Starlight 0.42.6 (Shiki 4.5.0 through Expressive Code 0.44.2), 2026-10-11: the tokens Shiki makes of a console line and a bash line
+== console
+   #D6DEEB  "$ cf create-route example-space tcp-domain.example.com --port 60035"  punctuation.separator.prompt.shell-session, text.shell-session, source.shell
+== shellsession
+   #D6DEEB  "$ cf create-route example-space tcp-domain.example.com --port 60035"  punctuation.separator.prompt.shell-session, text.shell-session, source.shell
+== bash
+   #82AAFF  "cf"  entity.name.command.shell
+   #D6DEEB  " "  meta.argument.shell
+   #ECC48D  "create-route"  string.unquoted.argument.shell
+   #D6DEEB  " "  meta.argument.shell
+   #ECC48D  "example-space"  string.unquoted.argument.shell
+   #D6DEEB  " "  meta.argument.shell
+   #ECC48D  "tcp-domain.example.com"  string.unquoted.argument.shell
+   #D6DEEB  " "  meta.statement.command.shell
+   #82AAFF  "--port"  constant.other.option.dash.shell, constant.other.option
+   #D6DEEB  " "  meta.argument.shell
+   #F78C6C  "60035"  constant.numeric.integer.shell

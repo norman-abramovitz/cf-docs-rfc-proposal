@@ -1,0 +1,14 @@
+# Expected code blocks for the connect-to-jumpbox section of backup (../published/backup.html)
+# Format: checks/codeblocks.py. Written with codeblocks.py --emit from the
+# published page, then edited by hand: types are the native mode's (see
+# the page's intent .md);
+# blocks 2 and 3 are code blocks in the source but inline code on the
+# published page, where a fence right after a line of text is not a fence.
+=== type=bash place=body | Option 1: Connect with SSH
+ssh -i PATH-TO-KEY JUMPBOX-USERNAME@JUMPBOX-ADDRESS
+=== type=bash place=list | Option 2: Connect with BOSH_ALL_PROXY
+ssh -4 -D SOCKS-PORT -fNC JUMPBOX-USERNAME@JUMPBOX-ADDRESS -i JUMPBOX-KEY-FILE -o ServerAliveInterval=60
+=== type=bash place=list | Option 2: Connect with BOSH_ALL_PROXY
+export BOSH_ALL_PROXY=socks5://localhost:SOCKS-PORT
+=== type=bash place=list | Option 2: Connect with BOSH_ALL_PROXY
+export BOSH_ALL_PROXY=ssh+socks5://JUMPBOX-USERNAME@JUMPBOX-ADDRESS:SOCKS-PORT?private-key=JUMPBOX-KEY-FILE

@@ -1,0 +1,45 @@
+# The code blocks round: the earlier rounds' site (variables keep their ERB
+# form, <%= vars.name %>, read by the built-in macros extension with ERB
+# delimiters) plus the theme feature that adds a copy button to code
+# blocks, which a new project turns on and the earlier rounds' sites did
+# not. Both modes are built from docs/ into site/.
+[project]
+site_name = "Code blocks round — Zensical"
+docs_dir = "docs"
+site_dir = "site"
+
+[project.theme]
+features = ["content.code.copy"]
+
+# Defaults from a new project, plus `tables` for pipe tables.
+[project.markdown_extensions]
+abbr = {}
+admonition = {}
+attr_list = {}
+def_list = {}
+footnotes = {}
+md_in_html = {}
+tables = {}
+toc.permalink = true
+pymdownx.betterem = {}
+pymdownx.caret = {}
+pymdownx.details = {}
+pymdownx.highlight = { anchor_linenums = true, line_spans = "__span", pygments_lang_class = true }
+pymdownx.inlinehilite = {}
+pymdownx.keys = {}
+pymdownx.magiclink = {}
+pymdownx.mark = {}
+pymdownx.smartsymbols = {}
+pymdownx.superfences = {}
+pymdownx.tilde = {}
+
+[project.plugins.macros]
+include_yaml = ["vars.yml"]
+on_undefined = "strict"
+on_error_fail = true
+j2_variable_start_string = "<%="
+j2_variable_end_string = "%>"
+j2_block_start_string = "<%"
+j2_block_end_string = "%>"
+j2_comment_start_string = "<%#"
+j2_comment_end_string = "%>"

@@ -1,0 +1,7 @@
+# Notes on ../published/backup.html in the excerpt the sites convert: the connect-to-jumpbox section. Written with:
+# python3 -I ../../notes/checks/notes.py ../published/backup.html --emit (notes 1 to 4 of its output)
+# Fields, separated by tabs: kind, title, holds, section, place, text
+note	Note	-	Option 1: Connect with SSH	body	If you connect to your jumpbox with SSH, you must run the BBR commands in this topic from inside your jumpbox.
+note	Note	-	Option 2: Connect with BOSH_ALL_PROXY	body	For the following procedures to work, ensure the SOCKS port is not already in use by a different tunnel or process.
+note	Note	code=1	Option 2: Connect with BOSH_ALL_PROXY	body	Using BOSH_ALL_PROXY can result in longer backup and restore times due to network performance degradation. All operations must pass through the proxy, which can make moving backup artifacts significantly slower.
+caution	Caution	code=2 link=1	Option 2: Connect with BOSH_ALL_PROXY	body	In the BBR v1.5.0 and earlier, the tunnel created by the BOSH CLI does not include the ServerAliveInterval flag. This might cause your SSH connection to timeout when transferring large artifacts. In BBR v1.5.1, the ServerAliveInterval flag is included. For more information, see bosh-backup-and-restore on GitHub.

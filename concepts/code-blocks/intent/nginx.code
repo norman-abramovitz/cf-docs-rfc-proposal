@@ -1,0 +1,50 @@
+# Expected code blocks for the templating section of the NGINX buildpack page (../published/nginx.html)
+# Format: checks/codeblocks.py. Written with codeblocks.py --emit from the
+# published page, then edited by hand: types are the native mode's (see
+# the page's intent .md);
+# blocks 7 and 9 show <file>, where the published page shows the
+# character references the source writes inside a fence.
+=== type=nginx place=body | Port
+server {
+  listen {{port}};
+}
+=== type=nginx place=body | Environment variables
+gzip {{env "GZIP_DOWNLOADS"}};
+=== type=yaml place=body | Unescaped environment variables
+---
+nginx:
+  version: stable
+  plaintext_env_vars:
+    - "OVERRIDE"
+=== type=nginx place=body | Loading dynamic modules
+{{module "MODULE-NAME"}}
+=== type=nginx place=body | Loading dynamic modules
+{{module "ngx_hello_module"}}
+=== type=nginx place=body | Loading dynamic modules
+{{module "ngx_stream_module"}}
+=== type=nginx place=body | Logging access
+access_log <file> [format]
+=== type=nginx place=body | Logging access
+access_log /dev/stdout;
+=== type=nginx place=body | Logging errors
+error_log <file> [level];
+=== type=nginx place=body | Logging errors
+error_log stderr debug;
+=== type=nginx place=body | Debug logs for selected clients
+error_log stderr;
+
+events {
+debug_connection 192.168.1.1;
+debug_connection 192.168.10.0/24;
+}
+=== type=nginx place=body | Logging to a cyclic memory buffer
+error_log memory:32m debug;
+=== type=text place=body | Logging to a cyclic memory buffer
+set $log = ngx_cycle->log
+
+while $log->writer != ngx_log_memory_writer
+set $log = $log->next
+end
+
+set $buf = (ngx_log_memory_buf_t *) $log->wdata
+dump binary memory debug_log.txt $buf->start $buf->end

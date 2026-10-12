@@ -753,6 +753,20 @@ Cleaning this up before conversion is [R-24](requirements/README.md#r-24) markup
 
 Learn more: [HTML standard](https://html.spec.whatwg.org/).
 
+### Code block
+
+Text shown as written, in a fixed-width font: commands, output,
+configuration. Markdown writes it as a fence, three backticks and an info
+string naming its type (```` ```console ````); the book also writes 592 as
+HTML `<pre>` blocks
+([code blocks survey](concepts/code-blocks/survey/README.md)). A `console`
+block holds commands with `$` prompts and their output; a `bash` block
+holds commands only. Why HTML `<pre>` blocks do not survive conversion:
+[code blocks results](concepts/code-blocks/results.md#pre-blocks)
+([R-06](requirements/README.md#r-06) typed code blocks).
+
+Learn more: [Fenced code blocks in the CommonMark spec](https://spec.commonmark.org/0.31.2/#fenced-code-blocks).
+
 ### Build-time value
 
 A value on a published page that the build computes instead of reading

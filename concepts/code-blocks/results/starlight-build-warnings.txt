@@ -1,0 +1,9 @@
+# make build, Starlight 0.42.6, 2026-10-11: the build's warnings and errors
+[build] ✓ Completed in 431ms.
+[WARN] [content] The collection "i18n" does not exist or is empty. Please check your content config file for errors.
+  ├─ /404.html17:57:24 [WARN] [content] Entry docs → 404 was not found.
+✓ Completed in 452ms.
+✓ Completed in 1ms.
+[build] ✓ Completed in 714ms.
+[WARN] [@astrojs/sitemap] The Sitemap integration requires the `site` astro.config option. Skipping.
+[build] Complete!

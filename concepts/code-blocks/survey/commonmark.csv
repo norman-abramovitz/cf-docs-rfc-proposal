@@ -1,0 +1,1181 @@
+repo,file,n,kind,info,lines,first_line
+docs-bbr,backup.html.md.erb,1,fenced,,1,ssh -i PATH-TO-KEY JUMPBOX-USERNAME@JUMPBOX-ADDRESS
+docs-bbr,backup.html.md.erb,2,fenced,,1,ssh -4 -D SOCKS-PORT -fNC JUMPBOX-USERNAME@JUMPBOX-ADDRESS -i JUMPBOX-KEY-FILE -
+docs-bbr,backup.html.md.erb,3,fenced,,4,export BOSH_ALL_PROXY=socks5://localhost:SOCKS-PORT
+docs-bbr,backup.html.md.erb,4,fenced,,1,export BOSH_ALL_PROXY=ssh+socks5://JUMPBOX-USERNAME@JUMPBOX-ADDRESS:SOCKS-PORT?p
+docs-bbr,backup.html.md.erb,5,fenced,,5,bbr director \
+docs-bbr,backup.html.md.erb,6,fenced,,1,bosh clean-up --all
+docs-bbr,backup.html.md.erb,7,fenced,,5,bbr director \
+docs-bbr,backup.html.md.erb,8,fenced,,7,BOSH_CLIENT_SECRET=BOSH-CLIENT-SECRET \
+docs-bbr,backup.html.md.erb,9,fenced,,7,BOSH_CLIENT_SECRET=BOSH-CLIENT-SECRET \
+docs-bbr,backup.html.md.erb,10,fenced,,17,bbr director \
+docs-bbr,backup.html.md.erb,11,fenced,,7,BOSH_CLIENT_SECRET=BOSH-CLIENT-SECRET \
+docs-bbr,bbr-devguide.html.md.erb,1,fenced,,22,acme-release
+docs-bbr,bbr-devguide.html.md.erb,2,indented,,2,a. The metadata script specifies that the current job must be locked before some
+docs-bbr,bbr-devguide.html.md.erb,3,indented,,1,b. Add an entry to the templates section of the release job spec file:
+docs-bbr,bbr-devguide.html.md.erb,4,fenced,,4,---
+docs-bbr,bbr-devguide.html.md.erb,5,fenced,,4,---
+docs-bbr,bbr-devguide.html.md.erb,6,fenced,,4,---
+docs-bbr,bbr-devguide.html.md.erb,7,fenced,,3,templates:
+docs-bbr,bbr-devguide.html.md.erb,8,fenced,yaml,4,---
+docs-bbr,bbr-devguide.html.md.erb,9,fenced,,4,---
+docs-bbr,bbr-devguide.html.md.erb,10,fenced,yaml,4,---
+docs-bbr,bbr-devguide.html.md.erb,11,fenced,json,8,{
+docs-bbr,bbr-devguide.html.md.erb,12,fenced,bash,3,/var/vcap/jobs/database-backup-restorer/bin/backup /path/to/config.json
+docs-bbr,bbr-devguide.html.md.erb,13,fenced,bash,3,cp $ARTIFACT_DIRECTORY <output_file>
+docs-bbr,external-blobstores.html.md.erb,1,indented,,2,If you do not use [cf-deployment](https://github.com/cloudfoundry/cf-deployment)
+docs-bbr,external-blobstores.html.md.erb,2,fenced,,1,aws s3 cp s3://BUCKET-NAME/ s3://BUCKET-NAME/ --recursive --metadata bump=true
+docs-bbr,external-blobstores.html.md.erb,3,fenced,,1,tar xvf BLOBSTORE-ARTIFACT.tar
+docs-bbr,external-blobstores.html.md.erb,4,fenced,,1,shasum -a 256 blobstore.json
+docs-bbr,external-blobstores.html.md.erb,5,fenced,,1,tar cvf BLOBSTORE-ARTIFACT.tar ./blobstore.json
+docs-bbr,index.html.md.erb,1,fenced,bash,1,bbr [command] [arguments...] [subcommand]
+docs-bbr,index.html.md.erb,2,fenced,bash,6,$ bbr director \
+docs-bbr,index.html.md.erb,3,fenced,bash,8,$ BOSH_CLIENT_SECRET=BOSH_CLIENT_SECRET \
+docs-bbr,installing.html.md.erb,1,fenced,,1,scp LOCAL-PATH-TO-BBR/bbr JUMPBOX-USER/JUMPBOX-ADDRESS
+docs-bbr,restore.html.md.erb,1,fenced,,1,scp LOCAL-PATH-TO-BACKUP-ARTIFACT JUMPBOX-USER/JUMPBOX-ADDRESS
+docs-bbr,restore.html.md.erb,2,fenced,,6,nohup bbr director \
+docs-bbr,restore.html.md.erb,3,fenced,,8,BOSH_CLIENT_SECRET=BOSH-CLIENT-SECRET \
+docs-bbr,restore.html.md.erb,4,fenced,,5,bbr director \
+docs-bbr,restore.html.md.erb,5,fenced,,7,BOSH_CLIENT_SECRET=BOSH-CLIENT-SECRET \
+docs-book-cloudfoundry,docker/README.md,1,fenced,yaml,2,volumes:
+docs-book-cloudfoundry,master_middleman/source/index.html.md.erb,1,indented,,785,"<div class=""docs-subsection"">"
+docs-buildpacks,archive/developing-buildpacks.html.md.erb,1,indented,,2,"+ <a href=""../custom.html"" class=""subnav"">Creating Custom Buildpacks</a>"
+docs-buildpacks,archive/sidecar-buildpacks.html.md.erb,1,fenced,yaml,9,---
+docs-buildpacks,archive/sidecar-buildpacks.html.md.erb,2,fenced,path,4,bin/
+docs-buildpacks,archive/sidecar-buildpacks.html.md.erb,3,fenced,path,26,#!/bin/bash
+docs-buildpacks,binary/index.html.md.erb,1,fenced,yaml,1,web: ./app
+docs-buildpacks,binary/index.html.md.erb,2,fenced,go,16,package main
+docs-buildpacks,binary/index.html.md.erb,3,fenced,,5,---
+docs-buildpacks,binary/index.html.md.erb,4,fenced,,4,applications:
+docs-buildpacks,cnb/index.html.md.erb,1,fenced,yaml,9,---
+docs-buildpacks,cnb/index.html.md.erb,2,fenced,yaml,9,---
+docs-buildpacks,cnb/index.html.md.erb,3,fenced,bash,2,"export CF_CNB_REGISTRY_CREDS='{""<registry>"": {""username"":""<username>"", ""password"
+docs-buildpacks,cnb/index.html.md.erb,4,fenced,yaml,10,---
+docs-buildpacks,cnb/index.html.md.erb,5,fenced,bash,2,"export CF_CNB_REGISTRY_CREDS='{""my-registry-a.corp"": {""token"":""aaaaaa""}, ""my-reg"
+docs-buildpacks,custom.html.md.erb,1,fenced,console,1,buildpack-packager build -cached -any-stack
+docs-buildpacks,custom.html.md.erb,2,fenced,console,5,default_versions:
+docs-buildpacks,custom.html.md.erb,3,fenced,,1,./compile-extensions/bin/default_version_for manifest.yml DEPENDENCY-NAME
+docs-buildpacks,custom.html.md.erb,4,fenced,,5,default_versions:
+docs-buildpacks,custom.html.md.erb,5,fenced,console,11,default_versions:
+docs-buildpacks,custom.html.md.erb,6,fenced,console,2,name: BUILDPACK
+docs-buildpacks,custom.html.md.erb,7,fenced,console,1,cf push YOUR-APP -b git://github.com/REPOSITORY/BUILDPACK.git
+docs-buildpacks,custom.html.md.erb,8,fenced,console,1,cf push YOUR-APP -b https://USERNAME:PASSWORD@github.com/REPOSITORY/BUILDPACK.gi
+docs-buildpacks,custom.html.md.erb,9,fenced,console,1,cf push YOUR-APP -b https://github.com/REPOSITORY/BUILDPACK.git#BRANCH
+docs-buildpacks,custom.html.md.erb,10,fenced,console,1,cf push YOUR-APP -b https://github.com/REPOSITORY/BUILDPACK#TAG
+docs-buildpacks,dotnet-core/index.html.md.erb,1,fenced,bash,1,cf push APP-NAME
+docs-buildpacks,dotnet-core/index.html.md.erb,2,fenced,bash,1,cf push APP-NAME -b https://github.com/cloudfoundry/dotnet-core-buildpack.git
+docs-buildpacks,dotnet-core/index.html.md.erb,3,fenced,text,2,[config]
+docs-buildpacks,dotnet-core/index.html.md.erb,4,fenced,text,2,[config]
+docs-buildpacks,dotnet-core/index.html.md.erb,5,fenced,console,6,---
+docs-buildpacks,dotnet-core/index.html.md.erb,6,fenced,console,1,cf set-env APP-NAME CACHE_NUGET_PACKAGES false
+docs-buildpacks,dotnet-core/index.html.md.erb,7,fenced,console,1,dotnet publish [-f FRAMEWORK-NAME] [-c Release]
+docs-buildpacks,dotnet-core/index.html.md.erb,8,fenced,console,1,dotnet publish -r ubuntu14.04-x64
+docs-buildpacks,dotnet-core/index.html.md.erb,9,fenced,yaml,2,dotnet-core:
+docs-buildpacks,dotnet-core/index.html.md.erb,10,fenced,yaml,2,dotnet-core:
+docs-buildpacks,dotnet-core/index.html.md.erb,11,fenced,yaml,2,dotnet-core:
+docs-buildpacks,dotnet-core/index.html.md.erb,12,fenced,xml,4,<PropertyGroup>
+docs-buildpacks,dotnet-core/index.html.md.erb,13,fenced,json,10,{
+docs-buildpacks,dotnet-core/index.html.md.erb,14,fenced,xml,3,<PropertyGroup>
+docs-buildpacks,dotnet-core/index.html.md.erb,15,fenced,yaml,3,---
+docs-buildpacks,dotnet-core/index.html.md.erb,16,fenced,csharp,1,using Microsoft.Extensions.Configuration;
+docs-buildpacks,dotnet-core/index.html.md.erb,17,fenced,csharp,3,var config = new ConfigurationBuilder()
+docs-buildpacks,dotnet-core/index.html.md.erb,18,fenced,csharp,1,.UseConfiguration(config)
+docs-buildpacks,dotnet-core/index.html.md.erb,19,fenced,csharp,13,public static void Main(string[] args)
+docs-buildpacks,dotnet-core/index.html.md.erb,20,fenced,xml,3,"<PackageReference Include=""Microsoft.Extensions.Configuration.CommandLine"">"
+docs-buildpacks,dotnet-core/index.html.md.erb,21,fenced,text,1,GSSAPI operation failed with error - Unspecified GSS failure. Minor code may pro
+docs-buildpacks,dotnet-core/index.html.md.erb,22,fenced,text,9,[provider_sect]
+docs-buildpacks,go/index.html.md.erb,1,fenced,,1,web: my-go-server
+docs-buildpacks,go/index.html.md.erb,2,fenced,yaml,4,---
+docs-buildpacks,go/index.html.md.erb,3,fenced,,6,module go-online
+docs-buildpacks,go/index.html.md.erb,4,fenced,bash,12,$ tree app-package-name
+docs-buildpacks,go/index.html.md.erb,5,fenced,yaml,5,---
+docs-buildpacks,go/index.html.md.erb,6,fenced,json,5,{
+docs-buildpacks,go/index.html.md.erb,7,fenced,yaml,5,package: go_app_with_glide
+docs-buildpacks,go/index.html.md.erb,8,fenced,yaml,5,---
+docs-buildpacks,go/index.html.md.erb,9,fenced,toml,3,[[constraint]]
+docs-buildpacks,go/index.html.md.erb,10,fenced,yaml,5,---
+docs-buildpacks,go/index.html.md.erb,11,fenced,yaml,6,---
+docs-buildpacks,hwc/extension-buildpack.html.md.erb,1,fenced,,2,go get github.com/cloudfoundry/libbuildpack/
+docs-buildpacks,hwc/extension-buildpack.html.md.erb,2,fenced,,1,buildpack-packager init --name BUILDPACK-NAME --path=BUILDPACK-DIRECTORY
+docs-buildpacks,hwc/extension-buildpack.html.md.erb,3,fenced,,2,cd BUILDPACK-DIRECTORY
+docs-buildpacks,hwc/extension-buildpack.html.md.erb,4,fenced,,1,shasum -a256 DLL-ZIP-FILE
+docs-buildpacks,hwc/extension-buildpack.html.md.erb,5,fenced,,7,dependencies:
+docs-buildpacks,hwc/extension-buildpack.html.md.erb,6,fenced,c#,7,"dep := libbuildpack.Dependency{Name: ""my-binary"", Version: ""0.0.1""}"
+docs-buildpacks,hwc/extension-buildpack.html.md.erb,7,fenced,,1,"GOOS=windows go build -ldflags=""-s -w"" -o bin/supply.exe mysql/supply/cli"
+docs-buildpacks,hwc/extension-buildpack.html.md.erb,8,fenced,,1,buildpack-packager build -cached -stack STACK-NAME
+docs-buildpacks,hwc/extension-buildpack.html.md.erb,9,fenced,,1,cf push APP-NAME -s windows -b EXT-BUILDPACK-URL -b hwc_buildpack
+docs-buildpacks,hwc/index.html.md.erb,1,fenced,shell,1,cf push APP-NAME -s windows -b hwc_buildpack
+docs-buildpacks,hwc/index.html.md.erb,2,fenced,shell,1,cf push TOP-LEVEL-APP-NAME -s windows -b hwc_buildpack
+docs-buildpacks,hwc/index.html.md.erb,3,fenced,shell,1,cf push LOWER-LEVEL-APP-NAME --no-start --no-route -s windows -b hwc_buildpack
+docs-buildpacks,hwc/index.html.md.erb,4,fenced,shell,1,cf map-route LOWER-LEVEL-APP-NAME APP-DOMAIN --hostname TOP-LEVEL-APP-NAME --pat
+docs-buildpacks,hwc/index.html.md.erb,5,fenced,shell,1,cf start LOWER-LEVEL-APP-NAME
+docs-buildpacks,hwc/web-config-transform-buildpack.html.md.erb,1,fenced,xml,4,<connectionStrings>
+docs-buildpacks,hwc/web-config-transform-buildpack.html.md.erb,2,indented,,8,```xml
+docs-buildpacks,hwc/web-config-transform-buildpack.html.md.erb,3,indented,,8,```xml
+docs-buildpacks,hwc/web-config-transform-buildpack.html.md.erb,4,indented,,5,```
+docs-buildpacks,hwc/web-config-transform-buildpack.html.md.erb,5,fenced,yaml,3,buildpacks:
+docs-buildpacks,hwc/web-config-transform-buildpack.html.md.erb,6,indented,,5,"<p class=""note important"">"
+docs-buildpacks,hwc/web-config-transform-buildpack.html.md.erb,7,fenced,yaml,8,applications:
+docs-buildpacks,hwc/web-config-transform-buildpack.html.md.erb,8,fenced,xml,21,"<?xml version=""1.0"" encoding=""utf-8""?>"
+docs-buildpacks,hwc/web-config-transform-buildpack.html.md.erb,9,fenced,script,1,cf push
+docs-buildpacks,hwc/web-config-transform-buildpack.html.md.erb,10,fenced,yaml,2,appSettings:
+docs-buildpacks,hwc/web-config-transform-buildpack.html.md.erb,11,indented,,4,```yaml
+docs-buildpacks,hwc/web-config-transform-buildpack.html.md.erb,12,indented,,4,```yaml
+docs-buildpacks,hwc/web-config-transform-buildpack.html.md.erb,13,indented,,2,The <code>manifest.yml</code> <code>env</code> section does not include
+docs-buildpacks,hwc/web-config-transform-buildpack.html.md.erb,14,fenced,,1,cf marketplace
+docs-buildpacks,hwc/web-config-transform-buildpack.html.md.erb,15,fenced,json,6,{
+docs-buildpacks,hwc/web-config-transform-buildpack.html.md.erb,16,fenced,script,1,cf create-service CONFIG-SERVER-MARKET standard SERVER-NAME  -c .\CONFIG-FILE
+docs-buildpacks,hwc/web-config-transform-buildpack.html.md.erb,17,fenced,yaml,2,services:
+docs-buildpacks,hwc/web-config-transform-buildpack.html.md.erb,18,fenced,yaml,9,---
+docs-buildpacks,hwc/web-config-transform-buildpack.html.md.erb,19,fenced,yaml,12,---
+docs-buildpacks,hwc/web-config-transform-buildpack.html.md.erb,20,fenced,script,1,cf push --var env=ENVIRONMENT
+docs-buildpacks,hwc/web-config-transform-buildpack.html.md.erb,21,indented,,3,```script
+docs-buildpacks,hwc/web-config-transform-buildpack.html.md.erb,22,fenced,,5,================================================================================
+docs-buildpacks,hwc/web-config-transform-buildpack.html.md.erb,23,fenced,yaml,4,appSettings:
+docs-buildpacks,hwc/web-config-transform-buildpack.html.md.erb,24,fenced,yaml,4,appSettings:
+docs-buildpacks,java/configuring-service-connections.html.md.erb,1,fenced,console,5,<dependency>
+docs-buildpacks,java/configuring-service-connections.html.md.erb,2,fenced,console,1,"implementation ""io.pivotal.cfenv:java-cfenv:4.0.2"""
+docs-buildpacks,java/configuring-service-connections.html.md.erb,3,fenced,json,20,CfEnv cfEnv = new CfEnv();
+docs-buildpacks,java/configuring-service-connections.html.md.erb,4,fenced,console,5,<dependency>
+docs-buildpacks,java/configuring-service-connections.html.md.erb,5,fenced,console,1,"implementation ""io.pivotal.cfenv:java-cfenv-jdbc:4.0.2"""
+docs-buildpacks,java/configuring-service-connections.html.md.erb,6,fenced,console,7,CfJdbcEnv cfJdbcEnv = new CfJdbcEnv()
+docs-buildpacks,java/configuring-service-connections.html.md.erb,7,fenced,java,4,@Bean
+docs-buildpacks,java/configuring-service-connections.html.md.erb,8,fenced,SQL,4,cassandra.contact-points=#{ cfEnv.findCredentialsByTag('cassandra').get('node_ip
+docs-buildpacks,java/configuring-service-connections.html.md.erb,9,fenced,java,4,@Bean
+docs-buildpacks,java/configuring-service-connections.html.md.erb,10,fenced,java,2,myDatasourceUrl=#{ cfJdbcEnv.findJdbcService().getUrl() }
+docs-buildpacks,java/configuring-service-connections.html.md.erb,11,fenced,java,5,<dependency>
+docs-buildpacks,java/configuring-service-connections.html.md.erb,12,fenced,java,1,"implementation ""io.pivotal.cfenv:java-cfenv-boot:4.0.2"""
+docs-buildpacks,java/configuring-service-connections.html.md.erb,13,fenced,,1,cfenv.service.{serviceName}.enabled=false
+docs-buildpacks,java/configuring-service-connections.html.md.erb,14,fenced,,1,org.springframework.boot:spring-boot-starter-cloud-connectors
+docs-buildpacks,java/configuring-service-connections.html.md.erb,15,fenced,,4,org.springframework.cloud:spring-cloud-core
+docs-buildpacks,java/configuring-service-connections.html.md.erb,16,fenced,,3,**WARNING** ATTENTION: The Spring Auto Reconfiguration and shaded Spring Cloud C
+docs-buildpacks,java/getting-started-deploying-apps/gsg-grails.html.md.erb,1,fenced,,7,dependencies {
+docs-buildpacks,java/getting-started-deploying-apps/gsg-grails.html.md.erb,2,fenced,,16,dataSource {
+docs-buildpacks,java/getting-started-deploying-apps/gsg-grails.html.md.erb,3,fenced,console,1,cf marketplace
+docs-buildpacks,java/getting-started-deploying-apps/gsg-grails.html.md.erb,4,fenced,console,1,cf create-service SERVICE PLAN SERVICE-INSTANCE
+docs-buildpacks,java/getting-started-deploying-apps/gsg-grails.html.md.erb,5,fenced,console,1,cf login -a API-ENDPOINT
+docs-buildpacks,java/getting-started-deploying-apps/gsg-grails.html.md.erb,6,fenced,console,1,cf push APP-NAME -p PATH-TO-FILE.war
+docs-buildpacks,java/getting-started-deploying-apps/gsg-ratpack.html.md.erb,1,fenced,,13,dependencies {
+docs-buildpacks,java/getting-started-deploying-apps/gsg-ratpack.html.md.erb,2,fenced,console,1,cf marketplace
+docs-buildpacks,java/getting-started-deploying-apps/gsg-ratpack.html.md.erb,3,fenced,console,1,cf create-service SERVICE PLAN SERVICE-INSTANCE
+docs-buildpacks,java/getting-started-deploying-apps/gsg-ratpack.html.md.erb,4,fenced,console,1,cf bind-service APPLICATION SERVICE_INSTANCE
+docs-buildpacks,java/getting-started-deploying-apps/gsg-ratpack.html.md.erb,5,fenced,console,1,cf login -a API-ENDPOINT
+docs-buildpacks,java/getting-started-deploying-apps/gsg-ratpack.html.md.erb,6,fenced,console,1,cf push APP-NAME -p PATH-TO-FILE.distZip
+docs-buildpacks,java/getting-started-deploying-apps/gsg-spring.html.md.erb,1,fenced,xml,33,<dependencies>
+docs-buildpacks,java/getting-started-deploying-apps/gsg-spring.html.md.erb,2,fenced,console,1,cf login -a API-ENDPOINT
+docs-buildpacks,java/getting-started-deploying-apps/gsg-spring.html.md.erb,3,fenced,console,1,cf push APP-NAME -p PATH-TO-FILE.jar
+docs-buildpacks,java/java-client.html.md.erb,1,fenced,,23,<dependencies>
+docs-buildpacks,java/java-client.html.md.erb,2,fenced,,8,<repositories>
+docs-buildpacks,java/java-client.html.md.erb,3,fenced,,11,<repositories>
+docs-buildpacks,java/java-client.html.md.erb,4,fenced,,7,dependencies {
+docs-buildpacks,java/java-client.html.md.erb,5,fenced,,4,repositories {
+docs-buildpacks,java/java-client.html.md.erb,6,fenced,,4,repositories {
+docs-buildpacks,java/java-client.html.md.erb,7,fenced,,46,import org.cloudfoundry.client.lib.CloudCredentials;
+docs-buildpacks,java/java-native-image.html.md.erb,1,fenced,bash,2,git clone https://github.com/paketo-buildpacks/samples
+docs-buildpacks,java/java-native-image.html.md.erb,2,fenced,bash,1,mvn -Pnative -DskipTests package
+docs-buildpacks,java/java-native-image.html.md.erb,3,fenced,console,1,cf push -b binary_buildpack -p demo.zip -c ./target/demo native-image
+docs-buildpacks,java/java-native-image.html.md.erb,4,fenced,java,18,"@NativeHint(trigger = ReactiveCloud FoundryActuatorAutoConfiguration.class, type"
+docs-buildpacks,java/java-tips.html.md.erb,1,fenced,,2,grails prod war
+docs-buildpacks,java/java-tips.html.md.erb,2,fenced,,2,gradle distZip
+docs-buildpacks,java/java-tips.html.md.erb,3,fenced,,1,cf push YOUR-APP
+docs-buildpacks,java/java-tips.html.md.erb,4,fenced,,6,---
+docs-buildpacks,java/java-tips.html.md.erb,5,fenced,,1,git clone https://github.com/cloudfoundry-samples/spring-music.git
+docs-buildpacks,java/java-tips.html.md.erb,6,fenced,,1,./gradle assemble
+docs-buildpacks,java/java-tips.html.md.erb,7,fenced,,1,cf push --no-route
+docs-buildpacks,java/java-tips.html.md.erb,8,fenced,,1,cf map-route spring-music EXAMPLE.COM --hostname spring-music --app-protocol htt
+docs-buildpacks,java/java-tips.html.md.erb,9,fenced,,1,curl https://spring-music.EXAMPLE.COM/request --http2 -s | jq .
+docs-buildpacks,java/java-tips.html.md.erb,10,indented,,9,```
+docs-buildpacks,java/java-tips.html.md.erb,11,fenced,,2,mvn package
+docs-buildpacks,java/java-tips.html.md.erb,12,fenced,,2,gradle build
+docs-buildpacks,java/java-tips.html.md.erb,13,fenced,,2,play dist
+docs-buildpacks,java/java-tips.html.md.erb,14,fenced,,2,spring grab *.groovy
+docs-buildpacks,java/java-tips.html.md.erb,15,fenced,,2,mvn package
+docs-buildpacks,java/java-tips.html.md.erb,16,fenced,,2,gradle build
+docs-buildpacks,java/java-tips.html.md.erb,17,fenced,,1,cf app YOUR-APP
+docs-buildpacks,java/java-tips.html.md.erb,18,fenced,,6,---
+docs-buildpacks,java/java-tips.html.md.erb,19,fenced,,7,---
+docs-buildpacks,java/java-tips.html.md.erb,20,fenced,,1,cf push YOUR-APP -p PATH/TO/WAR-FILE
+docs-buildpacks,java/java-tips.html.md.erb,21,fenced,,1,cf push
+docs-buildpacks,java/java-tips.html.md.erb,22,fenced,,1,$ cf push YOUR-APP -t TIMEOUT-THRESHOLD
+docs-buildpacks,java/java-tips.html.md.erb,23,fenced,,1,$ cf push YOUR-APP --app-start-timeout TIMEOUT-THRESHOLD
+docs-buildpacks,java/java-tips.html.md.erb,24,fenced,,1,"Server error, status code: 400, error code: 100001, message: The app is invalid:"
+docs-buildpacks,java/java-tips.html.md.erb,25,fenced,,10,type Framework interface {
+docs-buildpacks,java/java-tips.html.md.erb,26,fenced,,1,"System.getenv(""VCAP_SERVICES"");"
+docs-buildpacks,nginx/index.html.md.erb,1,fenced,console,1,cf push YOUR-APP -b https://github.com/cloudfoundry/nginx-buildpack.git
+docs-buildpacks,nginx/index.html.md.erb,2,fenced,,3,server {
+docs-buildpacks,nginx/index.html.md.erb,3,fenced,,1,"gzip {{env ""GZIP_DOWNLOADS""}};"
+docs-buildpacks,nginx/index.html.md.erb,4,fenced,,5,---
+docs-buildpacks,nginx/index.html.md.erb,5,fenced,,1,"{{module ""MODULE-NAME""}}"
+docs-buildpacks,nginx/index.html.md.erb,6,fenced,,1,"{{module ""ngx_hello_module""}}"
+docs-buildpacks,nginx/index.html.md.erb,7,fenced,,1,"{{module ""ngx_stream_module""}}"
+docs-buildpacks,nginx/index.html.md.erb,8,fenced,,1,access_log &lt;file&gt; [format]
+docs-buildpacks,nginx/index.html.md.erb,9,fenced,,1,access_log /dev/stdout;
+docs-buildpacks,nginx/index.html.md.erb,10,fenced,,1,error_log &lt;file&gt; [level];
+docs-buildpacks,nginx/index.html.md.erb,11,fenced,,1,error_log stderr debug;
+docs-buildpacks,nginx/index.html.md.erb,12,fenced,,6,error_log stderr;
+docs-buildpacks,nginx/index.html.md.erb,13,fenced,,1,error_log memory:32m debug;
+docs-buildpacks,nginx/index.html.md.erb,14,fenced,,8,set $log = ngx_cycle->log
+docs-buildpacks,node/index.html.md.erb,1,fenced,console,1,cf push APP-NAME -b https://github.com/cloudfoundry/nodejs-buildpack
+docs-buildpacks,node/index.html.md.erb,2,fenced,,3,"""engines"": {"
+docs-buildpacks,node/index.html.md.erb,3,fenced,,3,"""engines"": {"
+docs-buildpacks,node/index.html.md.erb,4,fenced,,4,"""engines"": {"
+docs-buildpacks,node/index.html.md.erb,5,fenced,,4,"""engines"": {"
+docs-buildpacks,node/node-service-bindings.html.md.erb,1,fenced,json,8,{
+docs-buildpacks,node/node-service-bindings.html.md.erb,2,fenced,,1,var vcap_services = JSON.parse(process.env.VCAP_SERVICES)
+docs-buildpacks,node/node-service-bindings.html.md.erb,3,fenced,,1,var uri = vcap_services.mypostgres[0].credentials.uri
+docs-buildpacks,node/node-service-bindings.html.md.erb,4,fenced,json,16,{
+docs-buildpacks,node/node-tips.html.md.erb,1,fenced,JSON,14,{
+docs-buildpacks,node/node-tips.html.md.erb,2,fenced,javascript,1,app.listen(process.env.PORT || 3000);
+docs-buildpacks,node/node-tips.html.md.erb,3,fenced,yaml,5,---
+docs-buildpacks,node/node-tips.html.md.erb,4,fenced,yaml,5,---
+docs-buildpacks,node/node-tips.html.md.erb,5,fenced,,1,process.env.VCAP_SERVICES
+docs-buildpacks,php/gsg-php-composer.html.md.erb,1,fenced,,1,"cf set-env YOUR_APP_NAME COMPOSER_GITHUB_OAUTH_TOKEN ""OAUTH_TOKEN_VALUE"""
+docs-buildpacks,php/gsg-php-config.html.md.erb,1,fenced,,4,.bp-config
+docs-buildpacks,php/gsg-php-config.html.md.erb,2,fenced,,3,ls -l .bp-config/httpd/extra/
+docs-buildpacks,php/gsg-php-config.html.md.erb,3,fenced,,14,"ServerRoot ""${HOME}/httpd"""
+docs-buildpacks,php/gsg-php-config.html.md.erb,4,fenced,,2,"default_charset=""UTF-8"""
+docs-buildpacks,php/gsg-php-config.html.md.erb,5,fenced,,3,; This option is specific to the `www` pool
+docs-buildpacks,php/gsg-php-config.html.md.erb,6,fenced,,3,extension=redis.so
+docs-buildpacks,php/gsg-php-config.html.md.erb,7,fenced,,3,php-fpm | [warn-ioncube] The example Loader is a Zend-Engine extension and not a
+docs-buildpacks,php/gsg-php-config.html.md.erb,8,fenced,,1,NOTICE: PHP message: PHP Warning: example MUST be loaded as a Zend extension in 
+docs-buildpacks,php/gsg-php-usage.html.md.erb,1,fenced,console,1,cf ssh APP-NAME
+docs-buildpacks,php/gsg-php-usage.html.md.erb,2,fenced,console,1,cat app/.bp/logs/bp.log
+docs-buildpacks,prod-server.html.md.erb,1,fenced,console,1,web: build/install/MY-PROJECT-NAME/bin/MY-PROJECT-NAME
+docs-buildpacks,proxy-usage.html.md.erb,1,fenced,yaml,4,---
+docs-buildpacks,proxy-usage.html.md.erb,2,fenced,console,1,"cf set-env YOUR-APP http_proxy ""http://YOUR-HTTP-PROXY:PORT"""
+docs-buildpacks,proxy-usage.html.md.erb,3,fenced,console,1,"cf set-env YOUR-APP https_proxy ""https://YOUR-HTTPS-PROXY:PORT"""
+docs-buildpacks,proxy-usage.html.md.erb,4,fenced,console,1,cf unset-env YOUR-APP ENV_VAR_NAME
+docs-buildpacks,proxy-usage.html.md.erb,5,fenced,console,1,cf unset-env YOUR-APP https_proxy
+docs-buildpacks,python/index.html.md.erb,1,fenced,,1,web: gunicorn SERVER-NAME:APP-NAME
+docs-buildpacks,python/index.html.md.erb,2,fenced,python,3,"if __name__ == ""__main__"":"
+docs-buildpacks,python/index.html.md.erb,3,fenced,,2,--index-url=https://example.com/api/pypi/ext_pypi/simple
+docs-buildpacks,python/index.html.md.erb,4,fenced,,3,---
+docs-buildpacks,python/index.html.md.erb,5,fenced,,3,channels:
+docs-buildpacks,python/index.html.md.erb,6,fenced,,3,---
+docs-buildpacks,python/index.html.md.erb,7,fenced,,2,brown
+docs-buildpacks,r/index.html.md.erb,1,fenced,,1,web: R -f simple.r
+docs-buildpacks,r/index.html.md.erb,2,fenced,,1,"$ cf push r-app -c ""R -f simple.r"""
+docs-buildpacks,r/index.html.md.erb,3,fenced,,10,---
+docs-buildpacks,r/index.html.md.erb,4,fenced,,9,├── r.yml
+docs-buildpacks,ruby/gsg-ror.html.md.erb,1,fenced,console,1,git clone https://github.com/cloudfoundry-samples/cf-sample-app-rails.git
+docs-buildpacks,ruby/gsg-ror.html.md.erb,2,fenced,console,1,cf login -a YOUR-API-ENDPOINT
+docs-buildpacks,ruby/gsg-ror.html.md.erb,3,fenced,console,1,cf create-service postgresql-10-odb standalone rails-postgres
+docs-buildpacks,ruby/gsg-ror.html.md.erb,4,fenced,console,1,cf push cf-sample-app-rails
+docs-buildpacks,ruby/gsg-ruby.html.md.erb,1,fenced,console,1,cf marketplace
+docs-buildpacks,ruby/gsg-ruby.html.md.erb,2,fenced,console,1,cf create-service SERVICE PLAN SERVICE-INSTANCE
+docs-buildpacks,ruby/gsg-ruby.html.md.erb,3,fenced,console,1,cf bind-service APPLICATION SERVICE-INSTANCE
+docs-buildpacks,ruby/gsg-ruby.html.md.erb,4,fenced,yaml,2,services:
+docs-buildpacks,ruby/gsg-ruby.html.md.erb,5,fenced,console,1,cf login -a API-ENDPOINT
+docs-buildpacks,ruby/gsg-ruby.html.md.erb,6,fenced,,1,cf push APP-NAME
+docs-buildpacks,ruby/index.html.md.erb,1,fenced,ruby,1,ruby '~> 2.2.3'
+docs-buildpacks,ruby/index.html.md.erb,2,fenced,ruby,1,"ruby '1.9.3', :engine => 'jruby', :engine_version => '1.7.25'"
+docs-buildpacks,ruby/index.html.md.erb,3,fenced,ruby,1,"ruby '2.0.0', :engine => 'jruby', :engine_version => '1.7.25'"
+docs-buildpacks,ruby/index.html.md.erb,4,fenced,ruby,1,"ruby '2.2.3', :engine => 'jruby', :engine_version => '9.0.5.0'"
+docs-buildpacks,ruby/index.html.md.erb,5,fenced,,5,"Could not get translated url, exited with: DEPENDENCY_MISSING_IN_MANIFEST: ..."
+docs-buildpacks,ruby/index.html.md.erb,6,fenced,shell,2,$ cd my-app-directory
+docs-buildpacks,ruby/rake-config.html.md.erb,1,fenced,ruby,7,namespace :cf do
+docs-buildpacks,ruby/rake-config.html.md.erb,2,fenced,yaml,3,applications:
+docs-buildpacks,ruby/ruby-service-bindings.html.md.erb,1,indented,,12,VCAP_SERVICES =
+docs-buildpacks,ruby/ruby-service-bindings.html.md.erb,2,indented,,1,DATABASE_URL = postgres://exampleuser:examplepass@babar.postgresql-10-odb.com:54
+docs-buildpacks,ruby/ruby-service-bindings.html.md.erb,3,indented,,9,{
+docs-buildpacks,ruby/ruby-service-bindings.html.md.erb,4,fenced,ruby,1,vcap_services = JSON.parse(ENV['VCAP_SERVICES'])
+docs-buildpacks,ruby/ruby-tips.html.md.erb,1,fenced,,2,require './hello_world'
+docs-buildpacks,ruby/ruby-tips.html.md.erb,2,fenced,,1,rake assets:precompile
+docs-buildpacks,ruby/ruby-tips.html.md.erb,3,fenced,,1,config.assets.initialize_on_precompile = false
+docs-buildpacks,ruby/ruby-tips.html.md.erb,4,fenced,,1,Rails.application.config.assets.compile = true
+docs-buildpacks,ruby/ruby-tips.html.md.erb,5,fenced,,7,namespace :cf do
+docs-buildpacks,ruby/ruby-tips.html.md.erb,6,fenced,,4,---
+docs-buildpacks,ruby/ruby-tips.html.md.erb,7,fenced,,1,cf push
+docs-buildpacks,ruby/ruby-tips.html.md.erb,8,fenced,,3,rails create rails-sidekiq
+docs-buildpacks,ruby/ruby-tips.html.md.erb,9,fenced,,14,source 'https://rubygems.org'
+docs-buildpacks,ruby/ruby-tips.html.md.erb,10,fenced,,1,bundle install
+docs-buildpacks,ruby/ruby-tips.html.md.erb,11,fenced,,1,touch app/workers/thing_worker.rb
+docs-buildpacks,ruby/ruby-tips.html.md.erb,12,fenced,,16,class ThingWorker
+docs-buildpacks,ruby/ruby-tips.html.md.erb,13,fenced,,1,rails g controller Thing
+docs-buildpacks,ruby/ruby-tips.html.md.erb,14,fenced,,12,class ThingController < ApplicationController
+docs-buildpacks,ruby/ruby-tips.html.md.erb,15,fenced,,2,mkdir app/views/things
+docs-buildpacks,ruby/ruby-tips.html.md.erb,16,fenced,,11,---
+docs-buildpacks,ruby/ruby-tips.html.md.erb,17,fenced,,11,---
+docs-buildpacks,ruby/ruby-tips.html.md.erb,18,fenced,,2,cf push -f web-manifest.yml
+docs-buildpacks,ruby/ruby-tips.html.md.erb,19,fenced,,1,cf scale sidekiq-worker -i WORKER-NUMBER
+docs-buildpacks,ruby/ruby-tips.html.md.erb,20,fenced,,1,ENV['VCAP_SERVICES']
+docs-buildpacks,ruby/ruby-tips.html.md.erb,21,fenced,,1,cf set-env my-app-name DATABASE_URL mysql://example-database-connection-string
+docs-buildpacks,ruby/windows.html.md.erb,1,fenced,,3,gem 'sinatra'
+docs-buildpacks,ruby/windows.html.md.erb,2,fenced,,16,GEM remote: http://rubygems.org/
+docs-buildpacks,stack-association.html.md.erb,1,fenced,console,1,cf update-buildpack BUILDPACK-NAME --assign-stack stack
+docs-buildpacks,staticfile/index.html.md.erb,1,fenced,,2,pat:$example1$DuUQEQp8$ZccZCHQElNSjrgerwSFC0
+docs-buildpacks,staticfile/index.html.md.erb,2,fenced,,4,...
+docs-buildpacks,staticfile/index.html.md.erb,3,fenced,,9,types {
+docs-buildpacks,staticfile/index.html.md.erb,4,fenced,,3,cf push APP-NAME
+docs-buildpacks,staticfile/index.html.md.erb,5,fenced,,3,cf push APP-NAME -b BUILDPACK-NAME-OR-PATH
+docs-buildpacks,understand-buildpacks.html.md.erb,1,fenced,,1,cf push APP-NAME -b FIRST-BUILDPACK -b SECOND-BUILDPACK -b FINAL-BUILDPACK
+docs-buildpacks,understand-buildpacks.html.md.erb,2,fenced,console,10,#!/usr/bin/env ruby
+docs-buildpacks,understand-buildpacks.html.md.erb,3,fenced,ssh,1,java-buildpack=v3.0-https://github.com/cloudfoundry/java-buildpack.git#3bd15e1 o
+docs-buildpacks,understand-buildpacks.html.md.erb,4,fenced,console,22,#!/usr/bin/env ruby
+docs-buildpacks,understand-buildpacks.html.md.erb,5,fenced,console,21,#!/usr/bin/env ruby
+docs-buildpacks,understand-buildpacks.html.md.erb,6,fenced,yaml,2,default_process_types:
+docs-buildpacks,understand-buildpacks.html.md.erb,7,fenced,bash,2,default_process_types:
+docs-buildpacks,understand-buildpacks.html.md.erb,8,fenced,,5,app/
+docs-buildpacks,upgrading_dependency_versions.html.md.erb,1,fenced,yaml,2,---
+docs-buildpacks,upgrading_dependency_versions.html.md.erb,2,fenced,yaml,4,---
+docs-buildpacks,upgrading_dependency_versions.html.md.erb,3,fenced,yaml,6,---
+docs-buildpacks,upgrading_dependency_versions.html.md.erb,4,fenced,yaml,7,dependencies:
+docs-buildpacks,use-multiple-buildpacks.html.md.erb,1,fenced,console,1,cf push YOUR-APP -b BUILDPACK-NAME-1 -b BUILDPACK-NAME-2 ... -b BUILDPACK-NAME-3
+docs-buildpacks,use-multiple-buildpacks.html.md.erb,2,fenced,console,1,cf buildpacks
+docs-cf-admin,_lock_buildpack.html.md.erb,1,fenced,console,1,cf update-buildpack BUILDPACK [-p PATH] [-i POSITION] [-s STACK] [--enable|--dis
+docs-cf-admin,_ssl_multicerts_gorouter.html.md.erb,1,fenced,,47,properties:
+docs-cf-admin,_ssl_termin_gorouter_lb_oss.html.md.erb,1,fenced,,12,properties:
+docs-cf-admin,_ssl_termin_gorouter_oss.html.md.erb,1,fenced,,12,properties:
+docs-cf-admin,bbs-encryption-keys.html.md.erb,1,fenced,yaml,7,properties:
+docs-cf-admin,bbs-encryption-keys.html.md.erb,2,fenced,yaml,9,properties:
+docs-cf-admin,buildpacks.html.md.erb,1,fenced,,1,cf create-buildpack BUILDPACK PATH POSITION [--lifecycle LIFECYCLE]
+docs-cf-admin,buildpacks.html.md.erb,2,fenced,,1,cf buildpacks [--lifecycle LIFECYCLE]
+docs-cf-admin,buildpacks.html.md.erb,3,fenced,console,1,cf update-buildpack BUILDPACK [-p PATH] [-i POSITION] [-s STACK][--enable|--disa
+docs-cf-admin,buildpacks.html.md.erb,4,fenced,console,1,cf rename-buildpack BUILDPACK NEW_NAME
+docs-cf-admin,buildpacks.html.md.erb,5,fenced,console,1,cf delete-buildpack BUILDPACK [-s STACK] [-f] [--lifecycle LIFECYCLE]
+docs-cf-admin,configuring-delayed-job-priorities.html.md.erb,1,fenced,,4,- type: replace
+docs-cf-admin,distributed-tracing.html.md.erb,1,fenced,bash,1,CF_TRACE=true cf scale myapp -i 2
+docs-cf-admin,distributed-tracing.html.md.erb,2,fenced,bash,16,Scaling app myapp in org myorg / space myspace as admin...
+docs-cf-admin,distributed-tracing.html.md.erb,3,fenced,bash,1,"cf curl -H ""X-B3-Traceid: 8c436ec437e545227fe76a3eba99ca21"" -H ""X-B3-Spanid: 7fe"
+docs-cf-admin,docker.html.md.erb,1,fenced,,1,cf enable-feature-flag diego_docker
+docs-cf-admin,docker.html.md.erb,2,fenced,,1,cf disable-feature-flag diego_docker
+docs-cf-admin,enabling-tcp-routing.html.md.erb,1,fenced,console,1,cf router-groups
+docs-cf-admin,enabling-tcp-routing.html.md.erb,2,fenced,console,1,cf create-shared-domain tcp.APP-DOMAIN.com --router-group default-tcp
+docs-cf-admin,enabling-tcp-routing.html.md.erb,3,fenced,console,1,cf domains
+docs-cf-admin,enabling-tcp-routing.html.md.erb,4,fenced,,1,cf update-org-quota QUOTA --reserved-route-ports NUMBER-OF-ROUTE-PORTS
+docs-cf-admin,enabling-tcp-routing.html.md.erb,5,fenced,,1,cf target -o ORG-NAME
+docs-cf-admin,enabling-tcp-routing.html.md.erb,6,fenced,,1,create-org-quota QUOTA --reserved-route-ports NUMBER-OF-ROUTE-PORTS
+docs-cf-admin,enabling-tcp-routing.html.md.erb,7,fenced,,1,cf target -s SPACE-NAME
+docs-cf-admin,enabling-tcp-routing.html.md.erb,8,fenced,,1,cf create-space-quota QUOTA --reserved-route-ports NUMBER-OF-ROUTE-PORTS
+docs-cf-admin,enabling-tcp-routing.html.md.erb,9,fenced,,1,cf curl /routing/v1/router_groups
+docs-cf-admin,enabling-tcp-routing.html.md.erb,10,fenced,,1,cf curl /routing/v1/router_groups/GUID
+docs-cf-admin,enabling-tcp-routing.html.md.erb,11,fenced,,3,cf curl \
+docs-cf-admin,encrypting-cc-db.html.md.erb,1,fenced,,4,database_encryption:
+docs-cf-admin,encrypting-cc-db.html.md.erb,2,fenced,,5,"db_encryption_key: ""example-random-key-string"""
+docs-cf-admin,encrypting-cc-db.html.md.erb,3,fenced,,14,- type: replace
+docs-cf-admin,encrypting-cc-db.html.md.erb,4,fenced,,21,instance_groups:
+docs-cf-admin,encrypting-cc-db.html.md.erb,5,fenced,,15,- type: replace
+docs-cf-admin,examining_grootfs_disk.html.md.erb,1,fenced,,1,ls /var/vcap/data/garden/depot/
+docs-cf-admin,examining_grootfs_disk.html.md.erb,2,fenced,,2,/var/vcap/packages/grootfs/bin/grootfs --config \
+docs-cf-admin,examining_grootfs_disk.html.md.erb,3,fenced,,2,/var/vcap/packages/grootfs/bin/grootfs --config \
+docs-cf-admin,examining_grootfs_disk.html.md.erb,4,fenced,,4,ls /var/vcap/data/garden/depot/ \
+docs-cf-admin,examining_grootfs_disk.html.md.erb,5,fenced,,4,ls /var/vcap/data/garden/depot/ \
+docs-cf-admin,examining_grootfs_disk.html.md.erb,6,fenced,,1,cat /var/vcap/data/grootfs/store/unprivileged/meta/volume-VOLUME-SHA
+docs-cf-admin,examining_grootfs_disk.html.md.erb,7,fenced,,1,cat /var/vcap/data/grootfs/store/privileged/meta/volume-VOLUME-SHA
+docs-cf-admin,examining_grootfs_disk.html.md.erb,8,fenced,,1,du -sch /var/vcap/data/grootfs/store/unprivileged/volumes/VOLUME-SHA/
+docs-cf-admin,examining_grootfs_disk.html.md.erb,9,fenced,,1,du -sch /var/vcap/data/grootfs/store/privileged/volumes/VOLUME-SHA/
+docs-cf-admin,examining_grootfs_disk.html.md.erb,10,fenced,,6,for image in $(ls /var/vcap/data/grootfs/store/unprivileged/meta/dependencies/im
+docs-cf-admin,examining_grootfs_disk.html.md.erb,11,fenced,,6,for image in $(ls /var/vcap/data/grootfs/store/privileged/meta/dependencies/imag
+docs-cf-admin,examining_grootfs_disk.html.md.erb,12,fenced,,2,"df | grep -E  ""/var/vcap/data/grootfs/store/(privileged|unprivileged)$"" \"
+docs-cf-admin,examining_grootfs_disk.html.md.erb,13,fenced,,1,Total disk store = 5607885 bytes
+docs-cf-admin,examining_grootfs_disk.html.md.erb,14,fenced,,1,Active volumes = 3212435 bytes
+docs-cf-admin,examining_grootfs_disk.html.md.erb,15,fenced,,1,5607885 - 3212435 = 2395450 bytes
+docs-cf-admin,isolation-segments.html.md.erb,1,fenced,,3,bosh -e BOSH-ENVIRONMENT -d cf deploy cf-deployment/cf-deployment.yml \
+docs-cf-admin,isolation-segments.html.md.erb,2,fenced,,1,cf login
+docs-cf-admin,isolation-segments.html.md.erb,3,fenced,,1,cf create-isolation-segment SEGMENT-NAME
+docs-cf-admin,isolation-segments.html.md.erb,4,fenced,,1,cf login
+docs-cf-admin,isolation-segments.html.md.erb,5,fenced,,1,cf isolation-segments
+docs-cf-admin,isolation-segments.html.md.erb,6,fenced,,1,cf login
+docs-cf-admin,isolation-segments.html.md.erb,7,fenced,,1,cf org ORG-NAME
+docs-cf-admin,isolation-segments.html.md.erb,8,fenced,,1,cf login
+docs-cf-admin,isolation-segments.html.md.erb,9,fenced,,1,cf space SPACE-NAME
+docs-cf-admin,isolation-segments.html.md.erb,10,fenced,,1,cf login
+docs-cf-admin,isolation-segments.html.md.erb,11,fenced,,1,cf delete-isolation-segment SEGMENT-NAME
+docs-cf-admin,isolation-segments.html.md.erb,12,fenced,,1,cf login
+docs-cf-admin,isolation-segments.html.md.erb,13,fenced,,1,cf enable-org-isolation ORG-NAME SEGMENT-NAME
+docs-cf-admin,isolation-segments.html.md.erb,14,fenced,,1,cf login
+docs-cf-admin,isolation-segments.html.md.erb,15,fenced,,1,cf disable-org-isolation ORG-NAME SEGMENT-NAME
+docs-cf-admin,isolation-segments.html.md.erb,16,fenced,,1,cf login
+docs-cf-admin,isolation-segments.html.md.erb,17,fenced,,1,cf set-org-default-isolation-segment ORG-NAME SEGMENT-NAME
+docs-cf-admin,isolation-segments.html.md.erb,18,fenced,,1,cf org
+docs-cf-admin,isolation-segments.html.md.erb,19,fenced,,1,cf login
+docs-cf-admin,isolation-segments.html.md.erb,20,fenced,,1,cf set-space-isolation-segment SPACE-NAME SEGMENT-NAME
+docs-cf-admin,isolation-segments.html.md.erb,21,fenced,,1,cf login
+docs-cf-admin,isolation-segments.html.md.erb,22,fenced,,1,cf reset-space-isolation-segment SPACE-NAME
+docs-cf-admin,listing-feature-flags.html.md.erb,1,fenced,,1,cf feature-flag FEATURE-FLAG-NAME
+docs-cf-admin,listing-feature-flags.html.md.erb,2,fenced,,1,cf enable-feature-flag FEATURE-FLAG-NAME
+docs-cf-admin,listing-feature-flags.html.md.erb,3,fenced,,1,cf disable-feature-flag FEATURE-FLAG-NAME
+docs-cf-admin,managing-stacks.html.md.erb,1,fenced,,3,"This stack is based on Ubuntu 18.04, which is no longer supported."
+docs-cf-admin,managing-stacks.html.md.erb,2,fenced,,1,cf stacks
+docs-cf-admin,managing-stacks.html.md.erb,3,fenced,,1,cf stack STACK_NAME
+docs-cf-admin,managing-stacks.html.md.erb,4,fenced,,1,cf update-stack STACK_NAME [--state STATE] [--reason REASON]
+docs-cf-admin,managing-stacks.html.md.erb,5,fenced,,3,$ cf update-stack cflinuxfs3 --state deprecated \
+docs-cf-admin,managing-stacks.html.md.erb,6,fenced,,3,$ cf update-stack cflinuxfs3 --state restricted \
+docs-cf-admin,managing-stacks.html.md.erb,7,fenced,,3,$ cf update-stack cflinuxfs3 --state disabled \
+docs-cf-admin,managing-stacks.html.md.erb,8,fenced,,1,$ cf update-stack cflinuxfs3 --state active
+docs-cf-admin,metadata.html.md.erb,1,fenced,,1,cf set-label RESOURCE RESOURCE-NAME KEY=VALUE
+docs-cf-admin,metadata.html.md.erb,2,fenced,,1,cf unset-label RESOURCE RESOURCE-NAME KEY
+docs-cf-admin,metadata.html.md.erb,3,fenced,,1,cf labels RESOURCE RESOURCE-NAME
+docs-cf-admin,metadata.html.md.erb,4,fenced,,1,"cf apps --labels 'environment in (production,staging),tier in (backend)'"
+docs-cf-admin,metadata.html.md.erb,5,fenced,,9,cf curl v3/RESOURCE-ENDPOINT/GUID \
+docs-cf-admin,metadata.html.md.erb,6,fenced,,9,cf curl v3/RESOURCE-ENDPOINT/GUID \
+docs-cf-admin,metadata.html.md.erb,7,fenced,,1,cf curl /v3/RESOURCE-ENDPOINT/GUID
+docs-cf-admin,metadata.html.md.erb,8,fenced,,1,cf curl /v3/RESOURCE-ENDPOINT/?label_selector=SELECTOR-REQUIREMENTS
+docs-cf-admin,metadata.html.md.erb,9,fenced,,1,cf app APP-NAME --guid
+docs-cf-admin,metadata.html.md.erb,10,fenced,,1,cf curl /v3/apps/APP-GUID/droplets/current
+docs-cf-admin,metadata.html.md.erb,11,fenced,,1,"cf curl /v3/apps/APP-GUID -X PATCH -d '{""metadata"": { ""labels"": { ""commit"": COMM"
+docs-cf-admin,metadata.html.md.erb,12,fenced,,1,"cf curl /v3/droplets/DROPLET-GUID -X PATCH -d '{""metadata"": { ""labels"": { ""commi"
+docs-cf-admin,metadata.html.md.erb,13,fenced,,1,"cf curl /v3/packages/PACKAGE-GUID -X PATCH -d '{""metadata"": { ""labels"": { ""commi"
+docs-cf-admin,metadata.html.md.erb,14,fenced,,19,#!/usr/bin/env bash
+docs-cf-admin,metadata.html.md.erb,15,fenced,,2,$ cf set-label app sample-app metric.tag.cloudfoundry.org/custom_tag=some_value
+docs-cf-admin,metadata.html.md.erb,16,fenced,,6,$ cf install-plugin -r CF-Community 'log-cache'
+docs-cf-admin,notifications.html.md.erb,1,fenced,,1,uaac target uaa.YOUR-DOMAIN
+docs-cf-admin,notifications.html.md.erb,2,fenced,,1,uaac token client get admin -s ADMIN-CLIENT-SECRET
+docs-cf-admin,notifications.html.md.erb,3,fenced,,2,uaac client add notifications-admin --authorized_grant_types client_credentials 
+docs-cf-admin,notifications.html.md.erb,4,fenced,,1,uaac token client get notifications-admin
+docs-cf-admin,notifications.html.md.erb,5,fenced,,6,uaac curl https://notifications.YOUR-SYSTEM-DOMAIN/notifications -X PUT --data '
+docs-cf-admin,notifications.html.md.erb,6,fenced,,2,uaac curl https://notifications.YOUR-SYSTEM-DOMAIN/templates -X POST --data \
+docs-cf-admin,notifications.html.md.erb,7,fenced,,1,"{""template-id"": ""E3710280-954B-4147-B7E2-AF5BF62772B5""}"
+docs-cf-admin,notifications.html.md.erb,8,fenced,,1,uaac curl https://notifications.YOUR-SYSTEM-DOMAIN/templates -X GET
+docs-cf-admin,notifications.html.md.erb,9,fenced,,2,uaac curl https://notifications.YOUR-SYSTEM-DOMAIN/clients/notifications-admin/n
+docs-cf-admin,notifications.html.md.erb,10,fenced,,2,uaac curl https://notifications.user.example.com/everyone -X POST --data \
+docs-cf-admin,quota-plans.html.md.erb,1,fenced,,15,quota_definitions:
+docs-cf-admin,quota-plans.html.md.erb,2,fenced,,1,bosh -e ENV -d DEPLOYMENT deploy MANIFEST.yml
+docs-cf-admin,quota-plans.html.md.erb,3,fenced,,1,cf create-org-quota QUOTA-NAME -m TOTAL-MEMORY -i INSTANCE-MEMORY -l LOG-RATE-LI
+docs-cf-admin,quota-plans.html.md.erb,4,fenced,,1,cf create-org-quota small -m 2048M -i 1024M -l 2K -r 10 -s 10 --allow-paid-servi
+docs-cf-admin,quota-plans.html.md.erb,5,fenced,,1,cf org-quotas
+docs-cf-admin,quota-plans.html.md.erb,6,fenced,,1,cf update-org-quota QUOTA-NAME -n NEW-QUOTA-NAME -m TOTAL-MEMORY -i INSTANCE-MEM
+docs-cf-admin,quota-plans.html.md.erb,7,fenced,,1,cf update-org-quota small -n medium -m 4096M -i 2048M -l 8K -r 20 -s 20 --allow-
+docs-cf-admin,quota-plans.html.md.erb,8,fenced,,1,cf set-org-quota ORG QUOTA-NAME
+docs-cf-admin,quota-plans.html.md.erb,9,fenced,,1,cf create-space-quota QUOTA-NAME -m TOTAL-MEMORY -i INSTANCE-MEMORY -l LOG-RATE-
+docs-cf-admin,quota-plans.html.md.erb,10,fenced,,1,cf create-space-quota big -m 4096M -i 1024M -l 16K -r 20 -s 20 --allow-paid-serv
+docs-cf-admin,quota-plans.html.md.erb,11,fenced,,1,cf space-quotas
+docs-cf-admin,quota-plans.html.md.erb,12,fenced,,1,cf update-space-quota QUOTA-NAME -n NEW-QUOTA-NAME -m TOTAL-MEMORY -i INSTANCE-M
+docs-cf-admin,quota-plans.html.md.erb,13,fenced,,1,cf update-space-quota big -n bigger -m 4096M -i 20 -l 32K -r 20 -s 20 --allow-pa
+docs-cf-admin,quota-plans.html.md.erb,14,fenced,,1,cf set-space-quota SPACE QUOTA-NAME
+docs-cf-admin,quota-plans.html.md.erb,15,fenced,,1,cf scale -l LOG-RATE-LIMIT APP-NAME
+docs-cf-admin,quota-plans.html.md.erb,16,fenced,,1,cf help -a
+docs-cf-admin,routing-is.html.md.erb,1,fenced,,5,IaaS network: sample-network
+docs-cf-admin,routing-is.html.md.erb,2,fenced,,10,IaaS network: sample-network
+docs-cf-admin,routing-is.html.md.erb,3,fenced,,73,azs:
+docs-cf-admin,routing-is.html.md.erb,4,fenced,,67,azs:
+docs-cf-admin,routing-is.html.md.erb,5,fenced,,25,instance_groups:
+docs-cf-admin,routing-is.html.md.erb,6,fenced,,8,instance_groups:
+docs-cf-admin,routing-is.html.md.erb,7,fenced,,6,vm_extensions:
+docs-cf-admin,routing-is.html.md.erb,8,fenced,,14,jobs:
+docs-cf-admin,routing-is.html.md.erb,9,fenced,,1,"origin:""gorouter"" eventType:ValueMetric timestamp:1491338040750977602 deployment"
+docs-cf-admin,stack-auditor.html.md.erb,1,fenced,,1,cf install-plugin PATH-TO-BINARY
+docs-cf-admin,stack-auditor.html.md.erb,2,fenced,,1,cf install-plugin StackAuditor
+docs-cf-admin,stack-auditor.html.md.erb,3,fenced,,1,cf audit-stack
+docs-cf-admin,stack-auditor.html.md.erb,4,fenced,,1,cf target -o ORG -s SPACE
+docs-cf-admin,stack-auditor.html.md.erb,5,fenced,,1,cf change-stack APP-NAME STACK-NAME
+docs-cf-admin,stack-auditor.html.md.erb,6,fenced,jq,1,"cf audit-stack --json | jq -r 'map(select(.stack == ""cflinuxfs3"")) | .[] |""cf ta"
+docs-cf-admin,stack-auditor.html.md.erb,7,fenced,,1,cf delete-stack STACK-NAME
+docs-cf-admin,stack-auditor.html.md.erb,8,fenced,,1,cf space-users ORG-NAME SPACE-NAME
+docs-cf-admin,start-stop-vms.html.md.erb,1,fenced,console,1,bosh -e MY-ENV -d MY-DEPLOYMENT stop --hard
+docs-cf-admin,start-stop-vms.html.md.erb,2,fenced,console,1,bosh -e MY-ENV -d MY-DEPLOYMENT start
+docs-cf-admin,start-stop-vms.html.md.erb,3,fenced,console,1,bosh -e MY-ENV -d MY-DEPLOYMENT stop VM-NAME
+docs-cf-admin,start-stop-vms.html.md.erb,4,fenced,console,1,bosh -e MY-ENV -d MY-DEPLOYMENT stop VM-NAME --hard
+docs-cf-admin,start-stop-vms.html.md.erb,5,fenced,console,1,bosh -e MY-ENV -d MY-DEPLOYMENT start VM-NAME
+docs-cf-admin,supporting-http2.html.md.erb,1,fenced,,1,cf login -a API-URL -u USERNAME -p PASSWORD -o ORG -s SPACE
+docs-cf-admin,supporting-http2.html.md.erb,2,fenced,,3,cf map-route MY-APP EXAMPLE.COM --app-protocol=http2
+docs-cf-admin,supporting-websockets.html.md.erb,1,fenced,,3,properties:
+docs-cf-admin,troubleshooting_slow_requests.html.md.erb,1,fenced,,1,time curl -v APP-ENDPOINT
+docs-cf-admin,troubleshooting_slow_requests.html.md.erb,2,fenced,,1,cf logs APP-NAME
+docs-cf-admin,troubleshooting_slow_requests.html.md.erb,3,fenced,,1,time curl -v TEST-APP-ENDPOINT
+docs-cf-admin,troubleshooting_slow_requests.html.md.erb,4,fenced,,1,bosh ssh router/ROUTER-GUID
+docs-cf-admin,troubleshooting_slow_requests.html.md.erb,5,fenced,,1,"time curl ROUTER-IP -H ""Host: TEST-APP-ENDPOINT"""
+docs-cf-admin,troubleshooting_slow_requests.html.md.erb,6,fenced,,1,"cf ssh TEST-APP -c ""env | grep CF_INSTANCE_ADDR"""
+docs-cf-admin,troubleshooting_slow_requests.html.md.erb,7,fenced,,1,bosh ssh router/ROUTER-GUID
+docs-cf-admin,troubleshooting-router-error-responses.html.md.erb,1,fenced,,1,"<Request Host> - [<Start Date>] ""<Request Method> <Request URL> <Request Protoco"
+docs-cf-admin,troubleshooting-router-error-responses.html.md.erb,2,fenced,,1,"<Request Host> - [<Start Date>] ""<Request Method> <Request URL> <Request Protoco"
+docs-cf-cli,develop-cli-plugins.html.md.erb,1,fenced,,1,plugin.Start(new(MyPluginStruct))
+docs-cf-cli,develop-cli-plugins.html.md.erb,2,fenced,,1,cliConnection.CliCommand([]args)
+docs-cf-cli,develop-cli-plugins.html.md.erb,3,fenced,,1,cf install-plugin PATH-TO-PLUGIN-BINARY
+docs-cf-cli,getting-started.html.md.erb,1,fenced,,1,cf login -a API-URL -u USERNAME -p PASSWORD -o ORG -s SPACE
+docs-cf-cli,getting-started.html.md.erb,2,fenced,,1,cf api API-URL
+docs-cf-cli,getting-started.html.md.erb,3,fenced,,1,cf auth USERNAME PASSWORD
+docs-cf-cli,getting-started.html.md.erb,4,fenced,,1,cf auth CLIENT-ID CLIENT-SECRET --client-credentials
+docs-cf-cli,getting-started.html.md.erb,5,fenced,,1,cf target -o ORG -s SPACE
+docs-cf-cli,getting-started.html.md.erb,6,fenced,,1,cf login
+docs-cf-cli,getting-started.html.md.erb,7,fenced,,1,cf push APP-NAME
+docs-cf-cli,getting-started.html.md.erb,8,fenced,,1,cf login
+docs-cf-cli,getting-started.html.md.erb,9,fenced,,1,cf push -f manifest.yml --var host=APP-HOSTNAME
+docs-cf-cli,getting-started.html.md.erb,10,fenced,,1,cf login
+docs-cf-cli,getting-started.html.md.erb,11,fenced,,1,"cf cups SERVICE -p ""PARAMETER, SECOND-PARAMETER, THIRD-PARAMETER"""
+docs-cf-cli,getting-started.html.md.erb,12,fenced,,1,cf login
+docs-cf-cli,getting-started.html.md.erb,13,fenced,,1,"cf cups SERVICE -p '{""host"":""HOSTNAME"", ""port"":""PORT""}'"
+docs-cf-cli,getting-started.html.md.erb,14,fenced,,1,cf login
+docs-cf-cli,getting-started.html.md.erb,15,fenced,,1,cf cups SERVICE -l THIRD-PARTY-DESTINATION-URL
+docs-cf-cli,getting-started.html.md.erb,16,fenced,,1,cf login
+docs-cf-cli,getting-started.html.md.erb,17,fenced,,1,echo $?
+docs-cf-cli,getting-started.html.md.erb,18,fenced,,1,echo %ERRORLEVEL%
+docs-cf-cli,http-proxy.html.md.erb,1,fenced,,1,https_proxy=http://proxy.example.com
+docs-cf-cli,http-proxy.html.md.erb,2,fenced,,1,https_proxy=http://username:password@proxy.example.com
+docs-cf-cli,http-proxy.html.md.erb,3,fenced,,1,https_proxy=http://username:password@proxy.example.com:8080
+docs-cf-cli,http-proxy.html.md.erb,4,fenced,,1,https_proxy=socks5://socks_proxy.example.com
+docs-cf-cli,http-proxy.html.md.erb,5,fenced,,1,export https_proxy=http://my.proxyserver.com:8080
+docs-cf-cli,http-proxy.html.md.erb,6,fenced,,2,https_proxy=http://username:password@hostname:port
+docs-cf-cli,install-go-cli.html.md.erb,1,indented,,1,gem uninstall cf
+docs-cf-cli,install-go-cli.html.md.erb,2,indented,,2,wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key |
+docs-cf-cli,install-go-cli.html.md.erb,3,indented,,1,sudo apt-get update
+docs-cf-cli,install-go-cli.html.md.erb,4,indented,,1,sudo apt-get install cf8-cli
+docs-cf-cli,install-go-cli.html.md.erb,5,indented,,1,sudo wget -O /etc/yum.repos.d/cloudfoundry-cli.repo https://packages.cloudfoundr
+docs-cf-cli,install-go-cli.html.md.erb,6,indented,,1,sudo yum install cf8-cli
+docs-cf-cli,install-go-cli.html.md.erb,7,indented,,1,brew install cloudfoundry/tap/cf-cli@8
+docs-cf-cli,install-go-cli.html.md.erb,8,indented,,1,cf --help
+docs-cf-cli,self-signed.html.md.erb,1,fenced,,1,sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keyc
+docs-cf-cli,self-signed.html.md.erb,2,fenced,,1,cat server.crt >> /etc/ssl/certs/ca-certificates.crt
+docs-cf-cli,self-signed.html.md.erb,3,fenced,,1,cat server.crt >> /etc/pki/tls/certs/ca-bundle.crt
+docs-cf-cli,self-signed.html.md.erb,4,fenced,console,1,export SSL_CERT_FILE=PATH-TO-SERVER.crt
+docs-cf-cli,self-signed.html.md.erb,5,fenced,console,1,export SSL_CERT_DIR=PATH-TO-SERVER-DIRECTORY
+docs-cf-cli,use-cli-plugins.html.md.erb,1,fenced,,1,cf install-plugin BINARY-FILENAME
+docs-cf-cli,use-cli-plugins.html.md.erb,2,fenced,,1,cf plugins
+docs-cf-cli,use-cli-plugins.html.md.erb,3,fenced,,1,cf PLUGIN-COMMAND
+docs-cf-cli,use-cli-plugins.html.md.erb,4,fenced,,1,cf plugins --outdated
+docs-cf-cli,use-cli-plugins.html.md.erb,5,fenced,,1,cf plugins
+docs-cf-cli,use-cli-plugins.html.md.erb,6,fenced,,1,cf uninstall-plugin PLUGIN-NAME
+docs-cf-cli,use-cli-plugins.html.md.erb,7,fenced,,1,cf add-plugin-repo REPOSITORY-NAME-URL
+docs-cf-cli,use-cli-plugins.html.md.erb,8,fenced,,1,cf list-plugin-repos
+docs-cf-cli,use-cli-plugins.html.md.erb,9,fenced,,1,cf repo-plugins
+docs-cloudfoundry-concepts,_default_asg_oss.html.md.erb,1,fenced,,21,security_group_definitions:
+docs-cloudfoundry-concepts,architecture/cloud-controller.html.md.erb,1,fenced,,2,"DB_CONNECTION=""postgres://postgres@localhost:5432/ccng"" rspec"
+docs-cloudfoundry-concepts,asg.html.md.erb,1,fenced,,21,[
+docs-cloudfoundry-concepts,asg.html.md.erb,2,fenced,,1,cf create-security-group ASG PATH-TO-RULES-FILE.json
+docs-cloudfoundry-concepts,asg.html.md.erb,3,fenced,,1,cf bind-staging-security-group ASG
+docs-cloudfoundry-concepts,asg.html.md.erb,4,fenced,,1,cf bind-running-security-group ASG
+docs-cloudfoundry-concepts,asg.html.md.erb,5,fenced,,1,cf bind-security-group ASG ORG --space SPACE
+docs-cloudfoundry-concepts,asg.html.md.erb,6,fenced,,1,cf bind-security-group ASG ORG --space SPACE --lifecycle staging
+docs-cloudfoundry-concepts,asg.html.md.erb,7,fenced,,1,cf update-security-group ASG PATH-TO-RULES-FILE.json
+docs-cloudfoundry-concepts,asg.html.md.erb,8,fenced,,1,cf update-security-group example-asg ~/workspace/example-asg-v2.json
+docs-cloudfoundry-concepts,asg.html.md.erb,9,fenced,,1,cf unbind-staging-security-group ASG
+docs-cloudfoundry-concepts,asg.html.md.erb,10,fenced,,1,cf unbind-running-security-group ASG
+docs-cloudfoundry-concepts,asg.html.md.erb,11,fenced,,1,cf unbind-security-group ASG ORG --space SPACE --lifecycle running
+docs-cloudfoundry-concepts,asg.html.md.erb,12,fenced,,1,cf delete-security-group ASG
+docs-cloudfoundry-concepts,asg.html.md.erb,13,fenced,,12,[
+docs-cloudfoundry-concepts,asg.html.md.erb,14,fenced,,26,[
+docs-cloudfoundry-concepts,asg.html.md.erb,15,fenced,,17,[
+docs-cloudfoundry-concepts,container-security.html.md.erb,1,fenced,,1,process_cpu_share_percent = cpu.shares / sum_cpu_shares * 100
+docs-cloudfoundry-concepts,container-security.html.md.erb,2,fenced,,3,"app_memory_for_calculation = min( max(cc.cpu_weight_min_memory, app_memory_in_mb"
+docs-cloudfoundry-concepts,container-security.html.md.erb,3,fenced,,14,cc.cpu_weight_min_memory = 128
+docs-cloudfoundry-concepts,container-security.html.md.erb,4,fenced,,1,process_cpu.shares = app_memory_in_mb + containers.proxy.additional_memory_alloc
+docs-cloudfoundry-concepts,contribute.html.md.erb,1,fenced,,1,mkdir ~/workspace
+docs-cloudfoundry-concepts,contribute.html.md.erb,2,fenced,,1,git clone git@=github.com:cloudfoundry/docs-cloudfoundry-concepts.git
+docs-cloudfoundry-concepts,contribute.html.md.erb,3,fenced,,1,git clone git@=github.com:cloudfoundry/docs-book-cloudfoundry.git
+docs-cloudfoundry-concepts,contribute.html.md.erb,4,fenced,,1,cd docs-book-cloudfoundry
+docs-cloudfoundry-concepts,contribute.html.md.erb,5,fenced,,1,bundle install
+docs-cloudfoundry-concepts,contribute.html.md.erb,6,fenced,,1,bundle exec bookbinder watch
+docs-cloudfoundry-concepts,grootfs-disk.html.md.erb,1,fenced,,11,- Image A
+docs-cloudfoundry-concepts,http-routing.html.md.erb,1,fenced,,1,cf logs APP-NAME
+docs-cloudfoundry-concepts,http-routing.html.md.erb,2,indented,,1,cf app APP-NAME --guid
+docs-cloudfoundry-concepts,http-routing.html.md.erb,3,indented,,1,cf app APP-NAME
+docs-cloudfoundry-concepts,http-routing.html.md.erb,4,indented,,1,"curl APP-FQDN -H ""X-Cf-App-Instance"":""APP-GUID:INSTANCE-INDEX-NUMBER"""
+docs-cloudfoundry-concepts,http-routing.html.md.erb,5,indented,,1,cf app APP-NAME --guid
+docs-cloudfoundry-concepts,http-routing.html.md.erb,6,indented,,1,cf curl /v3/apps/<APP-GUID/processes
+docs-cloudfoundry-concepts,http-routing.html.md.erb,7,indented,,2,"curl APP-FQDN -H ""X-Cf-Process-Instance"":""PROCESS-GUID"""
+docs-cloudfoundry-concepts,managing-roles.html.md.erb,1,fenced,,1,cf org-users ORG
+docs-cloudfoundry-concepts,managing-roles.html.md.erb,2,fenced,,1,cf space-users ORG SPACE
+docs-cloudfoundry-concepts,managing-roles.html.md.erb,3,fenced,,1,cf set-org-role USERNAME ORG ROLE
+docs-cloudfoundry-concepts,managing-roles.html.md.erb,4,fenced,,1,cf set-space-role USERNAME ORG SPACE ROLE
+docs-cloudfoundry-concepts,managing-roles.html.md.erb,5,fenced,,1,cf unset-org-role USERNAME ORG ROLE
+docs-cloudfoundry-concepts,managing-roles.html.md.erb,6,fenced,,1,cf unset-space-role USERNAME ORG SPACE ROLE
+docs-cloudfoundry-concepts,managing-roles.html.md.erb,7,fenced,,1,cf set-org-role CLIENT_ID ORG ROLE --client
+docs-cloudfoundry-concepts,managing-roles.html.md.erb,8,fenced,,1,cf set-space-role CLIENT_ID ORG SPACE ROLE --client
+docs-cloudfoundry-concepts,managing-roles.html.md.erb,9,fenced,,1,cf set-org-role USERNAME ORG ROLE --origin ORIGIN
+docs-credhub,backup-restore.html.md.erb,1,fenced,,1,bosh manifest -d DEPLOYMENT > MANIFEST.yml
+docs-credhub,credential-types.html.md.erb,1,fenced,console,5,{
+docs-credhub,credential-types.html.md.erb,2,fenced,yaml,12,ca: |
+docs-credhub,credential-types.html.md.erb,3,fenced,console,22,---
+docs-credhub,credential-types.html.md.erb,4,fenced,console,5,erb
+docs-credhub,credential-types.html.md.erb,5,fenced,console,29,---
+docs-credhub,hsm-config.html.md.erb,1,fenced,console,1,ssh-keygen -b 4096 -t rsa -N PASSWORD -f PATH-TO-SSH-KEY.pem
+docs-credhub,hsm-config.html.md.erb,2,fenced,console,3,aws_access_key_id=ACCESS-KEY-ID
+docs-credhub,hsm-config.html.md.erb,3,fenced,console,5,cloudhsm create-hsm \
+docs-credhub,hsm-config.html.md.erb,4,fenced,console,1,cloudhsm describe-hsm -H HSM-ARN -r AWS-REGION
+docs-credhub,hsm-config.html.md.erb,5,fenced,console,3,aws ec2 modify-network-interface-attribute \
+docs-credhub,hsm-config.html.md.erb,6,fenced,console,1,cloudhsm describe-hsm -H HSM-ARN -r AWS-REGION
+docs-credhub,hsm-config.html.md.erb,7,fenced,console,1,ssh -i path/to/ssh-key.pem manager@HSM-IP
+docs-credhub,hsm-config.html.md.erb,8,fenced,console,1,lunash:> hsm init -label LABEL
+docs-credhub,hsm-config.html.md.erb,9,fenced,console,1,lunash:> hsm login
+docs-credhub,hsm-config.html.md.erb,10,fenced,console,1,lunash:> hsm changePolicy -policy 12 -value 0
+docs-credhub,hsm-config.html.md.erb,11,fenced,,1,hsm showPolicies
+docs-credhub,hsm-config.html.md.erb,12,fenced,,1,lunash:> hsm changePolicy -policy POLICY-CODE -value 1
+docs-credhub,hsm-config.html.md.erb,13,fenced,,1,lunash:> hsm changePolicy -policy 15 -value 1
+docs-credhub,hsm-config.html.md.erb,14,fenced,,3,scp -i path/to/ssh-key.pem \
+docs-credhub,hsm-config.html.md.erb,15,fenced,console,1,lunash:> partition create -partition PARTITION-NAME -domain CLONING-DOMAIN
+docs-credhub,hsm-config.html.md.erb,16,fenced,console,1,lunash:> partition show -partition PARTITION-NAME
+docs-credhub,hsm-config.html.md.erb,17,fenced,,9,openssl req \
+docs-credhub,hsm-config.html.md.erb,18,fenced,console,3,scp -i path/to/ssh-key.pem \
+docs-credhub,hsm-config.html.md.erb,19,fenced,console,1,lunash:> client register -client CLIENT-NAME -hostname CLIENT-HOSTNAME
+docs-credhub,hsm-config.html.md.erb,20,fenced,console,1,lunash:> client register -client CLIENT-NAME -ip CLIENT-IP-ADDRESS
+docs-credhub,hsm-config.html.md.erb,21,fenced,console,1,lunash:> client assignPartition -client CLIENT-NAME -partition PARTITION-NAME
+docs-credhub,hsm-config.html.md.erb,22,fenced,console,1,lunash:> partition showContents -partition PARTITION-NAME
+docs-credhub,hsm-config.html.md.erb,23,fenced,console,23,credhub:
+docs-credhub,hsm-config.html.md.erb,24,fenced,console,9,openssl req \
+docs-credhub,hsm-config.html.md.erb,25,fenced,console,3,scp -i path/to/ssh-key.pem \
+docs-credhub,hsm-config.html.md.erb,26,fenced,console,1,lunash:> client show -client CLIENT-NAME
+docs-credhub,hsm-config.html.md.erb,27,fenced,console,1,lunash:> client delete -client CLIENT-NAME
+docs-credhub,hsm-config.html.md.erb,28,fenced,,1,lunash:> client register -client CLIENT-NAME -ip CLIENT-IP
+docs-credhub,hsm-config.html.md.erb,29,fenced,,1,lunash:> client assignPartition -client CLIENT-NAME -partition PARTITION-NAME
+docs-credhub,hsm-config.html.md.erb,30,fenced,,1,lunash:> client fingerprint -client CLIENT-NAME
+docs-credhub,hsm-config.html.md.erb,31,fenced,,1,openssl x509 -in clientcert.pem -outform DER | md5sum
+docs-credhub,kms-plugin.html.md.erb,1,fenced,go,11,// This service defines the public APIs for remote KMS provider.
+docs-credhub,kms-plugin.html.md.erb,2,fenced,,35,---
+docs-credhub,kms-plugin.html.md.erb,3,fenced,,1,bosh -e ENV log-in
+docs-credhub,kms-plugin.html.md.erb,4,fenced,,1,bosh -d DEPLOYMENT-NAME credhub-manifest.yml -o OPS-FILE.yml
+docs-credhub,setup-credhub-bosh.html.md.erb,1,fenced,,10,releases:
+docs-credhub,setup-credhub-bosh.html.md.erb,2,fenced,,14,instance_groups:
+docs-credhub,setup-credhub-bosh.html.md.erb,3,fenced,,16,variables:
+docs-credhub,setup-credhub-bosh.html.md.erb,4,fenced,,58,properties:
+docs-credhub,setup-credhub-bosh.html.md.erb,5,fenced,,10,...
+docs-credhub,setup-credhub-bosh.html.md.erb,6,fenced,,18,properties:
+docs-credhub,setup-credhub-bosh.html.md.erb,7,fenced,,19,properties:
+docs-credhub,setup-credhub-bosh.html.md.erb,8,fenced,,9,properties:
+docs-credhub,setup-credhub-bosh.html.md.erb,9,fenced,,14,properties:
+docs-credhub,setup-credhub-bosh.html.md.erb,10,fenced,,1,credhub api CREDHUB-API-TARGET
+docs-credhub,setup-credhub-bosh.html.md.erb,11,fenced,,1,credhub login --client-name= CLIENT-NAME --client-secret= CLIENT-SECRET
+docs-credhub,setup-credhub-bosh.html.md.erb,12,fenced,,1,credhub set --type ssh --name /static/ssh_key --public ~/ssh.pub --private ~/ssh
+docs-credhub,setup-credhub-bosh.html.md.erb,13,fenced,,1,credhub generate --type ssh --name /generated/ssh_key
+docs-credhub,setup-credhub-bosh.html.md.erb,14,fenced,,28,name: Sample-Manifest
+docs-credhub,troubleshooting-credhub.html.md.erb,1,fenced,,1,"Can't find property '[""credhub.data_storage.type""]'"
+docs-deploying-cf,archive/azure.html.md.erb,1,fenced,,2,tar xvf ~/Downloads/terraform*
+docs-deploying-cf,archive/azure.html.md.erb,2,fenced,,2,chmod +x ~/Downloads/bosh-cli-*
+docs-deploying-cf,archive/azure.html.md.erb,3,fenced,,1,brew install cloudfoundry/tap/bbl
+docs-deploying-cf,archive/azure.html.md.erb,4,fenced,,2,chmod +x ~/Downloads/bbl-*
+docs-deploying-cf,archive/azure.html.md.erb,5,fenced,,1,az login
+docs-deploying-cf,archive/azure.html.md.erb,6,fenced,,1,az account list
+docs-deploying-cf,archive/azure.html.md.erb,7,fenced,,1,az account set --subscription SUBSCRIPTION
+docs-deploying-cf,archive/azure.html.md.erb,8,fenced,,1,az ad sp create-for-rbac
+docs-deploying-cf,archive/azure.html.md.erb,9,fenced,,7,{
+docs-deploying-cf,archive/azure.html.md.erb,10,fenced,,12,bbl plan \
+docs-deploying-cf,archive/azure.html.md.erb,11,fenced,,1,bbl
+docs-deploying-cf,archive/azure.html.md.erb,12,fenced,,1,bbl ENVIRONMENT-DETAIL
+docs-deploying-cf,archive/azure.html.md.erb,13,fenced,,1,bbl director-address
+docs-deploying-cf,archive/azure.html.md.erb,14,fenced,,4,ns1-**.azure-dns.com.
+docs-deploying-cf,archive/azure.html.md.erb,15,fenced,,1,"eval ""$(bbl print-env)"""
+docs-deploying-cf,archive/azure.html.md.erb,16,fenced,,2,bbl plan
+docs-deploying-cf,archive/azure.html.md.erb,17,fenced,,1,bbl destroy
+docs-deploying-cf,archive/migrating.html.md.erb,1,fenced,yaml,4,---
+docs-deploying-cf,archive/migrating.html.md.erb,2,fenced,yaml,126,compilation:
+docs-deploying-cf,cf-deployment/deploy-cf.html.md.erb,1,fenced,yaml,4,stemcells:
+docs-deploying-cf,cf-deployment/deploy-cf.html.md.erb,2,fenced,yaml,4,stemcells:
+docs-deploying-cf,cf-deployment/gcp.html.md.erb,1,fenced,,3,ns-cloud-e1.googledomains.com.
+docs-deploying-cf,common/aws.html.md.erb,1,fenced,,5,aws configure
+docs-deploying-cf,common/aws.html.md.erb,2,fenced,,1,"aws iam create-user --user-name ""bbl-user"""
+docs-deploying-cf,common/aws.html.md.erb,3,fenced,,20,{
+docs-deploying-cf,common/aws.html.md.erb,4,fenced,,3,"aws iam put-user-policy --user-name ""bbl-user"" \"
+docs-deploying-cf,common/aws.html.md.erb,5,fenced,,1,"aws iam create-access-key --user-name ""bbl-user"""
+docs-deploying-cf,common/aws.html.md.erb,6,fenced,,11,bbl plan \
+docs-deploying-cf,common/aws.html.md.erb,7,fenced,,1,--lb-domain YOUR-ENV-NAME.YOUR-SYSTEM-DOMAIN
+docs-deploying-cf,common/aws.html.md.erb,8,fenced,,1,bbl outputs | yq .env_dns_zone_name_servers
+docs-deploying-cf,common/aws.html.md.erb,9,fenced,,1,bbl director-address
+docs-deploying-cf,common/aws.html.md.erb,10,fenced,,1,"eval ""$(bbl print-env)"""
+docs-deploying-cf,common/aws.html.md.erb,11,fenced,,2,bbl plan
+docs-deploying-cf,common/aws.html.md.erb,12,fenced,,1,bbl destroy
+docs-deploying-cf,common/cc-blobstore-config.html.md.erb,1,fenced,,37,cc:
+docs-deploying-cf,common/cc-blobstore-config.html.md.erb,2,fenced,,41,cc:
+docs-deploying-cf,common/cc-blobstore-config.html.md.erb,3,fenced,,45,cc:
+docs-deploying-cf,common/cc-blobstore-config.html.md.erb,4,fenced,,17,{
+docs-deploying-cf,common/cc-blobstore-config.html.md.erb,5,fenced,,4,vm_extensions:
+docs-deploying-cf,common/cc-blobstore-config.html.md.erb,6,fenced,,16,instance_groups:
+docs-deploying-cf,common/cc-blobstore-config.html.md.erb,7,fenced,,33,cc:
+docs-deploying-cf,common/cc-blobstore-config.html.md.erb,8,fenced,,6,storage.buckets.create
+docs-deploying-cf,common/cc-blobstore-config.html.md.erb,9,fenced,,49,cc:
+docs-deploying-cf,common/cc-blobstore-config.html.md.erb,10,fenced,,6,cc:
+docs-deploying-cf,common/cc-blobstore-config.html.md.erb,11,fenced,,37,cc:
+docs-deploying-cf,common/cc-blobstore-config.html.md.erb,12,fenced,,41,cc:
+docs-deploying-cf,common/cc-blobstore-config.html.md.erb,13,fenced,,45,cc:
+docs-deploying-cf,common/cc-blobstore-config.html.md.erb,14,fenced,,26,blobstore:
+docs-dev-guide,custom-per-route-options.html.md.erb,1,fenced,yaml,7,---
+docs-dev-guide,custom-per-route-options.html.md.erb,2,fenced,console,1,cf push -f manifest.yml
+docs-dev-guide,custom-per-route-options.html.md.erb,3,fenced,console,1,cf create-route EXAMPLE.COM --hostname MY-HOST --option loadbalancing=round-robi
+docs-dev-guide,custom-per-route-options.html.md.erb,4,fenced,console,1,cf map-route MY-APP EXAMPLE.COM --hostname MY-HOST --option loadbalancing=round-
+docs-dev-guide,custom-per-route-options.html.md.erb,5,fenced,console,1,cf update-route EXAMPLE.COM --hostname MY-HOST --option loadbalancing=round-robi
+docs-dev-guide,custom-per-route-options.html.md.erb,6,fenced,console,1,cf update-route EXAMPLE.COM --hostname MY-HOST -r loadbalancing
+docs-dev-guide,custom-per-route-options.html.md.erb,7,fenced,console,1,cf route EXAMPLE.COM --hostname MY-HOST
+docs-dev-guide,custom-per-route-options.html.md.erb,8,fenced,console,1,options: {loadbalancing=least-connection}
+docs-dev-guide,custom-per-route-options.html.md.erb,9,fenced,console,1,"options:    {hash_balance=1.2, hash_header=HASH-HEADER-NAME, loadbalancing=hash}"
+docs-dev-guide,custom-ports.html.md.erb,1,fenced,console,1,cf app APP-NAME --guid
+docs-dev-guide,custom-ports.html.md.erb,2,fenced,console,1,cf curl /v3/apps/APP-GUID/routes?hosts=ROUTE-HOSTNAME
+docs-dev-guide,custom-ports.html.md.erb,3,fenced,console,1,cf curl /v3/apps/APP-GUID/routes?port=PORT
+docs-dev-guide,custom-ports.html.md.erb,4,fenced,console,14,cf curl -X PATCH /v3/routes/ROUTE-GUID/destinations -d '{
+docs-dev-guide,deploy-apps/_c2c_oss_overlay.html.md.erb,1,fenced,,5,"A = the total number of IPs in the ""network"""
+docs-dev-guide,deploy-apps/_c2c_oss_overlay.html.md.erb,2,fenced,,8,"network = [""10.255.0.0/16""]"
+docs-dev-guide,deploy-apps/_c2c_oss_overlay.html.md.erb,3,fenced,,8,"network = [""10.255.0.0/20"", ""10.255.96.0/21""]"
+docs-dev-guide,deploy-apps/cf-networking.html.md.erb,1,fenced,,1,cf add-network-policy SOURCE-APP DESTINATION-APP -s DESTINATION-SPACE-NAME -o DE
+docs-dev-guide,deploy-apps/cf-networking.html.md.erb,2,fenced,,1,cf remove-network-policy SOURCE-APP DESTINATION-APP -s DESTINATION-SPACE-NAME -o
+docs-dev-guide,deploy-apps/deploy-app.html.md.erb,1,fenced,,1,cf push APP-NAME
+docs-dev-guide,deploy-apps/deploy-app.html.md.erb,2,fenced,bash,2,# Set the default LANG for your apps
+docs-dev-guide,deploy-apps/environment-variable.html.md.erb,1,indented,,9,{
+docs-dev-guide,deploy-apps/environment-variable.html.md.erb,2,indented,,12,VCAP_SERVICES =
+docs-dev-guide,deploy-apps/environment-variable.html.md.erb,3,indented,,1,DATABASE_URL = postgres://exampleuser:examplepass@babar.elephantsql.com:5432/exa
+docs-dev-guide,deploy-apps/environment-variable.html.md.erb,4,fenced,,45,VCAP_SERVICES=
+docs-dev-guide,deploy-apps/healthchecks.html.md.erb,1,fenced,,1,cf push APP-NAME --health-check-type LIVENESS-HEALTH-CHECK-TYPE --app-start-time
+docs-dev-guide,deploy-apps/healthchecks.html.md.erb,2,fenced,,1,cf set-health-check APP-NAME LIVENESS-HEALTH-CHECK-TYPE --endpoint CUSTOM-HTTP-E
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,1,fenced,console,6,---
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,2,fenced,,2,instances: 2
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,3,fenced,,10,---
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,4,fenced,,1,cf push --vars-file /PATH/vars.yml
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,5,fenced,,12,---
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,6,fenced,,4,---
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,7,fenced,,5,---
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,8,fenced,,3,---
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,9,fenced,,3,---
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,10,fenced,,3,---
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,11,fenced,,5,---
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,12,fenced,,7,---
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,13,fenced,,3,---
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,14,fenced,,4,---
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,15,fenced,,3,---
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,16,fenced,console,1,cf set-health-check APP-NAME http --invocation-timeout 10
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,17,fenced,,3,---
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,18,fenced,,3,---
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,19,fenced,,4,---
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,20,fenced,,3,---
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,21,fenced,,3,---
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,22,fenced,console,3,---
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,23,fenced,,3,---
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,24,fenced,,3,---
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,25,fenced,console,3,---
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,26,fenced,,5,metadata:
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,27,fenced,,3,---
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,28,fenced,console,1,cf set-health-check APP-NAME --process
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,29,fenced,,3,---
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,30,fenced,,17,processes:
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,31,fenced,,3,---
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,32,fenced,,7,---
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,33,fenced,,14,---
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,34,fenced,,9,sidecars:
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,35,fenced,,3,---
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,36,fenced,,3,---
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,37,fenced,,5,---
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,38,fenced,,1,cf env APP-NAME
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,39,fenced,,1,cf set-env APP-NAME VARIABLE-NAME VARIABLE-VALUE
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,40,fenced,,1,cf unset-env APP-NAME VARIABLE-NAME
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,41,fenced,,12,---
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,42,fenced,,5,---
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,43,fenced,,13,---
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,44,fenced,,12,---
+docs-dev-guide,deploy-apps/manifest-attributes.html.md.erb,45,fenced,,6,---
+docs-dev-guide,deploy-apps/manifest.html.md.erb,1,fenced,,3,---
+docs-dev-guide,deploy-apps/manifest.html.md.erb,2,fenced,,1,cf push
+docs-dev-guide,deploy-apps/manifest.html.md.erb,3,fenced,,6,---
+docs-dev-guide,deploy-apps/manifest.html.md.erb,4,fenced,,1,cf push
+docs-dev-guide,deploy-apps/push-docker.html.md.erb,1,fenced,,1,cf push APP-NAME --docker-image REPO/IMAGE:TAG
+docs-dev-guide,deploy-apps/push-docker.html.md.erb,2,fenced,,1,cf push your-app --docker-image cloudfoundry/your-image
+docs-dev-guide,deploy-apps/push-docker.html.md.erb,3,fenced,,1,cf push APP-NAME --docker-image YOUR-PRIVATE-REGISTRY.DOMAIN:PORT/REPO/IMAGE:TAG
+docs-dev-guide,deploy-apps/push-docker.html.md.erb,4,fenced,,1,cf push your-app --docker-image internal-registry.example.com:5000/your-repo/you
+docs-dev-guide,deploy-apps/push-docker.html.md.erb,5,fenced,,1,CF_DOCKER_PASSWORD=YOUR-PASSWORD cf push APP-NAME --docker-image REPO/IMAGE:TAG 
+docs-dev-guide,deploy-apps/push-docker.html.md.erb,6,fenced,,1,CF_DOCKER_PASSWORD=AWS-SECRET-ACCESS-KEY cf push APP-NAME --docker-image REPO/IM
+docs-dev-guide,deploy-apps/push-docker.html.md.erb,7,fenced,,1,"gcloud iam service-accounts create YOUR-ACCOUNT --display-name ""YOUR-DISPLAY-NAM"
+docs-dev-guide,deploy-apps/push-docker.html.md.erb,8,fenced,,1,gcloud config set project YOUR-PROJECT-ID
+docs-dev-guide,deploy-apps/push-docker.html.md.erb,9,fenced,,1,gcloud iam service-accounts keys create key.json --iam-account=YOUR-ACCOUNT@YOUR
+docs-dev-guide,deploy-apps/push-docker.html.md.erb,10,fenced,,1,gcloud projects add-iam-policy-binding YOUR-PROJECT --member serviceAccount:YOUR
+docs-dev-guide,deploy-apps/push-docker.html.md.erb,11,fenced,,1,"CF_DOCKER_PASSWORD=""$(cat key.json)"" cf push APP-NAME --docker-image docker://YO"
+docs-dev-guide,deploy-apps/rolling-deploy.html.md.erb,1,fenced,,1,"cf push APP-NAME --strategy canary --instance-steps 5,10,20"
+docs-dev-guide,deploy-apps/rolling-deploy.html.md.erb,2,fenced,,1,"cf push APP-NAME --strategy canary --instance-steps 1,20,45,80,100"
+docs-dev-guide,deploy-apps/rolling-deploy.html.md.erb,3,fenced,,1,cf push APP-NAME --strategy rolling
+docs-dev-guide,deploy-apps/rolling-deploy.html.md.erb,4,fenced,,1,cf push APP-NAME --strategy STRATEGY --max-in-flight MAX_IN_FLIGHT
+docs-dev-guide,deploy-apps/rolling-deploy.html.md.erb,5,fenced,,1,cf login
+docs-dev-guide,deploy-apps/rolling-deploy.html.md.erb,6,fenced,,13,cf curl /v3/apps \
+docs-dev-guide,deploy-apps/rolling-deploy.html.md.erb,7,fenced,,13,cf curl /v3/packages \
+docs-dev-guide,deploy-apps/rolling-deploy.html.md.erb,8,fenced,,3,cf curl /v3/packages/PACKAGE-GUID/upload \
+docs-dev-guide,deploy-apps/rolling-deploy.html.md.erb,9,fenced,,8,cf curl /v3/builds \
+docs-dev-guide,deploy-apps/rolling-deploy.html.md.erb,10,fenced,,19,cf curl /v3/deployments \
+docs-dev-guide,deploy-apps/rolling-deploy.html.md.erb,11,fenced,,1,cf cancel-deployment APP-NAME
+docs-dev-guide,deploy-apps/rolling-deploy.html.md.erb,12,fenced,,1,cf curl /v3/deployments/DEPLOYMENT-GUID/actions/cancel -X POST
+docs-dev-guide,deploy-apps/rolling-deploy.html.md.erb,13,fenced,,1,cf continue-deployment APP-NAME
+docs-dev-guide,deploy-apps/rolling-deploy.html.md.erb,14,fenced,,1,cf curl /v3/deployments/DEPLOYMENT-GUID/actions/continue -X POST
+docs-dev-guide,deploy-apps/rolling-deploy.html.md.erb,15,fenced,,1,cf restart APP-NAME --strategy STRATEGY
+docs-dev-guide,deploy-apps/rolling-deploy.html.md.erb,16,fenced,,1,cf restart APP-NAME --strategy STRATEGY --max-in-flight MAX_IN_FLIGHT
+docs-dev-guide,deploy-apps/rolling-deploy.html.md.erb,17,fenced,,19,cf curl /v3/deployments \
+docs-dev-guide,deploy-apps/rolling-deploy.html.md.erb,18,fenced,,1,cf login
+docs-dev-guide,deploy-apps/rolling-deploy.html.md.erb,19,fenced,,1,cf app APP-NAME --guid
+docs-dev-guide,deploy-apps/rolling-deploy.html.md.erb,20,fenced,,1,cf curl GET /v3/deployments?app_guids=APP-GUID&status_values=ACTIVE
+docs-dev-guide,deploy-apps/rolling-deploy.html.md.erb,21,fenced,,1,cf curl GET /v3/deployments/DEPLOYMENT-GUID
+docs-dev-guide,deploy-apps/rolling-deploy.html.md.erb,22,fenced,,1,cf push myapp --strategy=rolling -i 5 -m 256M -k 500M
+docs-dev-guide,deploy-apps/routes-domains.html.md.erb,1,fenced,console,1,$ cf map-route app apps.internal --hostname app
+docs-dev-guide,deploy-apps/routes-domains.html.md.erb,2,fenced,console,3,$ cf create-route shared-domain.example.com --hostname example-app
+docs-dev-guide,deploy-apps/routes-domains.html.md.erb,3,fenced,console,4,$ cf create-route example-space tcp-domain.example.com --random-port
+docs-dev-guide,deploy-apps/routes-domains.html.md.erb,4,fenced,console,3,$ cf create-route example-space tcp-domain.example.com --port 60035
+docs-dev-guide,deploy-apps/routes-domains.html.md.erb,5,fenced,console,10,$ cf routes
+docs-dev-guide,deploy-apps/routes-domains.html.md.erb,6,fenced,console,12,$ cf route shared-domain.example.com --hostname example-app
+docs-dev-guide,deploy-apps/routes-domains.html.md.erb,7,fenced,console,4,$ cf check-route shared-domain.example.com --hostname store --path /products
+docs-dev-guide,deploy-apps/routes-domains.html.md.erb,8,fenced,console,4,$ cf map-route products shared-domain.example.com --hostname store --path produc
+docs-dev-guide,deploy-apps/routes-domains.html.md.erb,9,fenced,console,1,$ cf map-route myfallbackapp foo.shared-domain.example.com --hostname '*'
+docs-dev-guide,deploy-apps/routes-domains.html.md.erb,10,fenced,console,1,$ cf map-route h2app shared-domain.example.com --hostname h2app --app-protocol h
+docs-dev-guide,deploy-apps/routes-domains.html.md.erb,11,fenced,console,1,$ cf push example-app
+docs-dev-guide,deploy-apps/routes-domains.html.md.erb,12,fenced,console,1,$ cf push example-app -d private-domain.example.com --hostname foo
+docs-dev-guide,deploy-apps/routes-domains.html.md.erb,13,fenced,console,1,$ cf push tcp-app -d tcp-domain.example.com --random-route
+docs-dev-guide,deploy-apps/routes-domains.html.md.erb,14,fenced,console,1,$ cf map-route example-app apps.internal --hostname foo
+docs-dev-guide,deploy-apps/routes-domains.html.md.erb,15,fenced,console,1,$ cf unmap-route tcp-app private-domain.example.com --hostname example-app --pat
+docs-dev-guide,deploy-apps/routes-domains.html.md.erb,16,fenced,console,1,$ cf unmap-route tcp-app tcp-domain.example.com --port 60000
+docs-dev-guide,deploy-apps/routes-domains.html.md.erb,17,fenced,,1,cf enable-feature-flag route_sharing
+docs-dev-guide,deploy-apps/routes-domains.html.md.erb,18,fenced,,1,cf share-route DOMAIN --hostname HOSTNAME --path PATH -s SPACE -o ORG
+docs-dev-guide,deploy-apps/routes-domains.html.md.erb,19,fenced,console,1,cf share-route example.com --hostname example-app --path example-path -s other-s
+docs-dev-guide,deploy-apps/routes-domains.html.md.erb,20,fenced,,1,cf target -s SPACE -o ORG
+docs-dev-guide,deploy-apps/routes-domains.html.md.erb,21,fenced,,1,cf move-route DOMAIN --hostname HOSTNAME --path PATH -s SPACE -o ORG
+docs-dev-guide,deploy-apps/routes-domains.html.md.erb,22,fenced,console,1,cf move-route example.com --hostname example-app --path example-path -s other-sp
+docs-dev-guide,deploy-apps/routes-domains.html.md.erb,23,fenced,console,1,$ cf delete-route private-domain.example.com --hostname example-app --path mypat
+docs-dev-guide,deploy-apps/routes-domains.html.md.erb,24,fenced,console,1,$ cf delete-route tcp.private-domain.example.com --port 60000
+docs-dev-guide,deploy-apps/routes-domains.html.md.erb,25,fenced,console,1,$ cf app example-app --guid
+docs-dev-guide,deploy-apps/routes-domains.html.md.erb,26,fenced,console,1,$ cf app example-app
+docs-dev-guide,deploy-apps/routes-domains.html.md.erb,27,fenced,console,1,"$ curl example-app.private-domain.example.com -H ""X-Cf-App-Instance: 5cdc7595-2e"
+docs-dev-guide,deploy-apps/routes-domains.html.md.erb,28,fenced,console,1,$ cf app example-app
+docs-dev-guide,deploy-apps/routes-domains.html.md.erb,29,fenced,console,1,"$ curl example-app.private-domain.example.com -H ""X-Cf-Process-Instance: 5cdc759"
+docs-dev-guide,deploy-apps/routes-domains.html.md.erb,30,fenced,console,1,"$ curl example-app.private-domain.example.com -H ""X-Cf-Process-Instance: 5cdc759"
+docs-dev-guide,deploy-apps/routes-domains.html.md.erb,31,fenced,console,6,$ cf domains
+docs-dev-guide,deploy-apps/routes-domains.html.md.erb,32,fenced,console,1,$ cf create-shared-domain shared-domain.example.com
+docs-dev-guide,deploy-apps/routes-domains.html.md.erb,33,fenced,console,1,$ cf delete-shared-domain example.com
+docs-dev-guide,deploy-apps/routes-domains.html.md.erb,34,fenced,console,1,$ cf create-shared-domain shared-domain.example.com --internal
+docs-dev-guide,deploy-apps/routes-domains.html.md.erb,35,fenced,console,1,$ cf create-private-domain example-org private-domain.example.com
+docs-dev-guide,deploy-apps/routes-domains.html.md.erb,36,fenced,console,1,$ cf create-private-domain example-org foo.private-domain.example.com
+docs-dev-guide,deploy-apps/routes-domains.html.md.erb,37,fenced,console,3,$ cf share-private-domain test-org private-domain.example.com
+docs-dev-guide,deploy-apps/routes-domains.html.md.erb,38,fenced,console,1,$ cf delete-private-domain private-domain.example.com
+docs-dev-guide,deploy-apps/ssh-apps.html.md.erb,1,fenced,,1,ssh -p PORT-NUMBER cf:$(cf curl /v3/apps/$(cf app APP-NAME --guid)/processes | j
+docs-dev-guide,deploy-apps/ssh-apps.html.md.erb,2,fenced,json,33,{
+docs-dev-guide,deploy-apps/ssh-apps.html.md.erb,3,fenced,,3,"""routes"": {"
+docs-dev-guide,deploy-apps/ssh-services.html.md.erb,1,fenced,console,1,cf push YOUR-HOST-APP
+docs-dev-guide,deploy-apps/ssh-services.html.md.erb,2,fenced,console,1,cf enable-ssh YOUR-HOST-APP
+docs-dev-guide,deploy-apps/ssh-services.html.md.erb,3,fenced,console,1,cf create-service-key MY-DB EXTERNAL-ACCESS-KEY
+docs-dev-guide,deploy-apps/ssh-services.html.md.erb,4,fenced,console,1,cf service-key MY-DB EXTERNAL-ACCESS-KEY
+docs-dev-guide,deploy-apps/start-restart-restage.html.md.erb,1,fenced,yaml,1,command: node YOUR-APP.js
+docs-dev-guide,deploy-apps/start-restart-restage.html.md.erb,2,fenced,console,1,command: null
+docs-dev-guide,deploy-apps/streaming-logs.html.md.erb,1,fenced,,1,cf logs APP-NAME
+docs-dev-guide,deploy-apps/streaming-logs.html.md.erb,2,fenced,,1,cf logs APP-NAME --recent
+docs-dev-guide,deploy-apps/troubleshoot-app-health.html.md.erb,1,fenced,,1,listen_here = ENV['PORT']
+docs-dev-guide,deploy-apps/troubleshoot-app-health.html.md.erb,2,fenced,console,1,cf unmap-route APP-NAME OLD-ROUTE
+docs-dev-guide,deploy-apps/troubleshoot-app-health.html.md.erb,3,fenced,console,1,cf map-route APP-NAME NEW-ROUTE
+docs-dev-guide,deploy-apps/troubleshoot-app-health.html.md.erb,4,fenced,,1,cf push APP-NAME -v
+docs-dev-guide,deploy-apps/troubleshoot-app-health.html.md.erb,5,fenced,,1,CF_TRACE=PATH-TO-TRACE.LOG cf push APP-NAME
+docs-dev-guide,deploy-apps/troubleshoot-app-health.html.md.erb,6,fenced,,2,export CF_TRACE=true
+docs-dev-guide,deploy-apps/windows-stacks.html.md.erb,1,fenced,,1,cf push MY-APP -s STACK-NAME
+docs-dev-guide,hash-based-routing.html.md.erb,1,fenced,yaml,9,---
+docs-dev-guide,hash-based-routing.html.md.erb,2,fenced,console,1,cf push -f manifest.yml
+docs-dev-guide,hash-based-routing.html.md.erb,3,fenced,console,1,cf create-route EXAMPLE.COM --hostname MY-HOST --option loadbalancing=hash --opt
+docs-dev-guide,hash-based-routing.html.md.erb,4,fenced,console,1,cf create-route EXAMPLE.COM --hostname MY-HOST -o loadbalancing=hash -o hash_hea
+docs-dev-guide,hash-based-routing.html.md.erb,5,fenced,console,1,cf map-route MY-APP EXAMPLE.COM --hostname MY-HOST -o loadbalancing=hash -o hash
+docs-dev-guide,hash-based-routing.html.md.erb,6,fenced,console,1,cf update-route EXAMPLE.COM --hostname MY-HOST -o loadbalancing=hash -o hash_hea
+docs-dev-guide,hash-based-routing.html.md.erb,7,fenced,console,1,cf update-route EXAMPLE.COM --hostname MY-HOST -o hash_balance=1.5
+docs-dev-guide,hash-based-routing.html.md.erb,8,fenced,console,1,cf update-route EXAMPLE.COM --hostname MY-HOST -r hash_balance
+docs-dev-guide,hash-based-routing.html.md.erb,9,fenced,console,1,cf update-route EXAMPLE.COM --hostname MY-HOST -r loadbalancing
+docs-dev-guide,hash-based-routing.html.md.erb,10,fenced,console,1,cf route EXAMPLE.COM --hostname MY-HOST
+docs-dev-guide,hash-based-routing.html.md.erb,11,fenced,console,1,"options:    {hash_balance=1.2, hash_header=HASH-HEADER-NAME, loadbalancing=hash}"
+docs-dev-guide,http2-protocol.html.md.erb,1,fenced,console,1,cf push MY-APP
+docs-dev-guide,http2-protocol.html.md.erb,2,fenced,,1,curl MY-APP.EXAMPLE.COM --http2 -v
+docs-dev-guide,http2-protocol.html.md.erb,3,fenced,,1,cf logs MY-APP
+docs-dev-guide,http2-protocol.html.md.erb,4,fenced,yaml,6,---
+docs-dev-guide,http2-protocol.html.md.erb,5,fenced,,1,cf push -f manifest.yml
+docs-dev-guide,http2-protocol.html.md.erb,6,fenced,,1,curl MY-APP.EXAMPLE.COM --http2 -v
+docs-dev-guide,http2-protocol.html.md.erb,7,fenced,,1,"Hello, /, TLS: false, Protocol: HTTP/2.0"
+docs-dev-guide,http2-protocol.html.md.erb,8,fenced,,1,grpcurl -vv -import-path ./test/ -proto test.proto MY-APP.EXAMPLE.COM:443 test.T
+docs-dev-guide,http2-protocol.html.md.erb,9,fenced,,4,Response contents:
+docs-dev-guide,multiple-processes.html.md.erb,1,fenced,yaml,10,version: 1
+docs-dev-guide,multiple-processes.html.md.erb,2,fenced,console,1,cf push -f MANIFEST.yml
+docs-dev-guide,multiple-processes.html.md.erb,3,fenced,,2,web: bundle exec rackup config.ru -p $PORT
+docs-dev-guide,multiple-processes.html.md.erb,4,fenced,,1,cf push APP-NAME
+docs-dev-guide,multiple-processes.html.md.erb,5,fenced,,1,cf scale APP-NAME --process PROCESS-NAME -i INSTANCE-COUNT
+docs-dev-guide,multiple-processes.html.md.erb,6,fenced,console,1,cf app APP-NAME
+docs-dev-guide,push-sub-commands.html.md.erb,1,fenced,,1,cf create-app APP-NAME
+docs-dev-guide,push-sub-commands.html.md.erb,2,fenced,,1,cf create-package APP-NAME
+docs-dev-guide,push-sub-commands.html.md.erb,3,fenced,,1,cf stage-package APP-NAME --package-guid PACKAGE-GUID
+docs-dev-guide,push-sub-commands.html.md.erb,4,fenced,,1,cf set-droplet APP-NAME DROPLET-GUID
+docs-dev-guide,push-sub-commands.html.md.erb,5,fenced,,1,cf start APP-NAME
+docs-dev-guide,push-sub-commands.html.md.erb,6,fenced,,1,cf droplets APP-NAME
+docs-dev-guide,push-sub-commands.html.md.erb,7,fenced,,1,cf stop APP-NAME
+docs-dev-guide,push-sub-commands.html.md.erb,8,fenced,,1,cf set-droplet APP-NAME PREVIOUS-DROPLET-GUID
+docs-dev-guide,push-sub-commands.html.md.erb,9,fenced,,1,cf start APP-NAME
+docs-dev-guide,push-sub-commands.html.md.erb,10,fenced,,1,cf download-droplet APP-NAME --path PATH
+docs-dev-guide,push-sub-commands.html.md.erb,11,fenced,,1,cf push APP-NAME --droplet PATH
+docs-dev-guide,revisions.html.md.erb,1,fenced,,1,cf revisions APP-NAME
+docs-dev-guide,revisions.html.md.erb,2,fenced,,1,cf app APP-NAME --guid
+docs-dev-guide,revisions.html.md.erb,3,fenced,,1,cf curl /v3/apps/GUID/revisions
+docs-dev-guide,revisions.html.md.erb,4,fenced,,1,cf revision APP-NAME
+docs-dev-guide,revisions.html.md.erb,5,fenced,,1,cf app APP-NAME --guid
+docs-dev-guide,revisions.html.md.erb,6,fenced,,1,cf curl /v3/apps/GUID/revisions/deployed
+docs-dev-guide,revisions.html.md.erb,7,fenced,,1,cf revision APP-NAME --version VERSION
+docs-dev-guide,revisions.html.md.erb,8,fenced,,1,cf curl /v3/revisions/GUID
+docs-dev-guide,revisions.html.md.erb,9,fenced,,1,cf rollback APP-NAME --version VERSION
+docs-dev-guide,revisions.html.md.erb,10,fenced,,1,cf app APP-NAME --guid
+docs-dev-guide,revisions.html.md.erb,11,fenced,,14,cf curl v3/deployments \
+docs-dev-guide,revisions.html.md.erb,12,fenced,,1,cf app APP-NAME --guid
+docs-dev-guide,revisions.html.md.erb,13,fenced,,1,"cf curl /v3/apps/GUID/features/revisions -X PATCH -d '{ ""enabled"": false }'"
+docs-dev-guide,services/_using-vol-services.html.md.erb,1,fenced,,1,cf login
+docs-dev-guide,services/_using-vol-services.html.md.erb,2,fenced,,1,cf marketplace
+docs-dev-guide,services/_using-vol-services.html.md.erb,3,fenced,,1,"cf bind-service YOUR-APP SERVICE-NAME -c '{""mount"":""OPTIONAL-MOUNT-PATH"",""readon"
+docs-dev-guide,services/_using-vol-services.html.md.erb,4,fenced,,1,"cf bind-service YOUR-APP SERVICE-NAME -c '{""uid"":""UID"",""gid"":""GID"",""mount"":""OPTI"
+docs-dev-guide,services/_using-vol-services.html.md.erb,5,fenced,,1,"cf bind-service YOUR-APP SERVICE-NAME -c '{""username"":""USERNAME"",""password"":""PAS"
+docs-dev-guide,services/_using-vol-services.html.md.erb,6,fenced,,1,cf restage YOUR-APP
+docs-dev-guide,services/_using-vol-services.html.md.erb,7,fenced,,1,cf env YOUR-APP
+docs-dev-guide,services/_using-vol-services.html.md.erb,8,fenced,,1,"cf push YOUR-APP -c ""ln -s /var/volume1 /app/volume1 && \$HOME/boot.sh"""
+docs-dev-guide,services/_using-vol-services.html.md.erb,9,fenced,,1,"cf create-service nfs Existing SERVICE-INSTANCE-NAME -c '{""share"":""SERVER/SHARE"""
+docs-dev-guide,services/_using-vol-services.html.md.erb,10,fenced,,1,cf services
+docs-dev-guide,services/_using-vol-services.html.md.erb,11,fenced,console,1,cd ~/workspace
+docs-dev-guide,services/_using-vol-services.html.md.erb,12,fenced,console,1,git clone https://github.com/cloudfoundry/cf-acceptance-tests.git
+docs-dev-guide,services/_using-vol-services.html.md.erb,13,fenced,console,1,cd ~/workspace/cf-acceptance-tests/assets/pora
+docs-dev-guide,services/_using-vol-services.html.md.erb,14,fenced,console,1,cf push pora --no-start
+docs-dev-guide,services/_using-vol-services.html.md.erb,15,fenced,,1,"cf bind-service pora SERVICE-INSTANCE-NAME -c '{""uid"":""UID"",""gid"":""GID""}'"
+docs-dev-guide,services/_using-vol-services.html.md.erb,16,fenced,,1,cf start pora
+docs-dev-guide,services/_using-vol-services.html.md.erb,17,fenced,,1,curl http://pora.YOUR-CF-DOMAIN.com
+docs-dev-guide,services/_using-vol-services.html.md.erb,18,fenced,,1,curl http://pora.YOUR-CF-DOMAIN.com/write
+docs-dev-guide,services/_using-vol-services.html.md.erb,19,fenced,,1,"cf create-service nfs PLAN SERVICE-INSTANCE-NAME -c '{""share"":""SERVER/SHARE"", ""u"
+docs-dev-guide,services/_using-vol-services.html.md.erb,20,fenced,,1,"cf create-service smb Existing SERVICE-INSTANCE-NAME -c '{""share"":""//SERVER/SHAR"
+docs-dev-guide,services/_using-vol-services.html.md.erb,21,fenced,,1,cf services
+docs-dev-guide,services/_using-vol-services.html.md.erb,22,fenced,console,1,cd ~/workspace
+docs-dev-guide,services/_using-vol-services.html.md.erb,23,fenced,console,1,git clone https://github.com/cloudfoundry/cf-acceptance-tests.git
+docs-dev-guide,services/_using-vol-services.html.md.erb,24,fenced,console,1,cd ~/workspace/cf-acceptance-tests/assets/pora
+docs-dev-guide,services/_using-vol-services.html.md.erb,25,fenced,console,1,cf push pora --no-start
+docs-dev-guide,services/_using-vol-services.html.md.erb,26,fenced,,1,"cf bind-service pora SERVICE-INSTANCE-NAME -c '{""username"":""USERNAME"",""password"""
+docs-dev-guide,services/_using-vol-services.html.md.erb,27,fenced,,1,cf start pora
+docs-dev-guide,services/_using-vol-services.html.md.erb,28,fenced,,1,curl http://pora.YOUR-CF-DOMAIN.com
+docs-dev-guide,services/_using-vol-services.html.md.erb,29,fenced,,1,curl http://pora.YOUR-CF-DOMAIN.com/write
+docs-dev-guide,services/application-binding.html.md.erb,1,fenced,,1,cf ssh <app_name> -c 'cat $VCAP_SERVICES_FILE_PATH'
+docs-dev-guide,services/application-binding.html.md.erb,2,fenced,,1,"cf ssh <app_name> -c 'find $SERVICE_BINDING_ROOT -type f -exec bash -c ""echo {}:"
+docs-dev-guide,services/application-binding.html.md.erb,3,fenced,,20,VCAP_SERVICES= {
+docs-dev-guide,services/application-binding.html.md.erb,4,fenced,,15,VCAP_SERVICES= {
+docs-dev-guide,services/application-binding.html.md.erb,5,fenced,,14,VCAP_SERVICES= {
+docs-dev-guide,services/application-binding.html.md.erb,6,fenced,,2,services:
+docs-dev-guide,services/application-binding.html.md.erb,7,fenced,,4,services:
+docs-dev-guide,services/application-binding.html.md.erb,8,fenced,,9,"""VCAP_SERVICES"": {"
+docs-dev-guide,services/application-binding.html.md.erb,9,indented,,3,"<pre class=""terminal"">"
+docs-dev-guide,services/application-binding.html.md.erb,10,indented,,3,"<pre class=""terminal"">"
+docs-dev-guide,services/fluentd.html.md.erb,1,fenced,,13,<source>
+docs-dev-guide,services/integrate-splunk.html.md.erb,1,fenced,,1,sourcetype=rfc5424_syslog index=-THE-INDEX-YOU-CREATED appname=APP-GUID
+docs-dev-guide,services/log-management.html.md.erb,1,fenced,console,1,cf bind-service YOUR-APP-NAME DRAIN-NAME
+docs-dev-guide,services/managing-services.html.md.erb,1,fenced,console,1,cf marketplace
+docs-dev-guide,services/managing-services.html.md.erb,2,fenced,console,1,cf create-service SERVICE PLAN SERVICE-INSTANCE-NAME
+docs-dev-guide,services/managing-services.html.md.erb,3,fenced,console,1,cf create-service SERVICE PLAN SERVICE-INSTANCE-NAME --wait
+docs-dev-guide,services/managing-services.html.md.erb,4,fenced,console,1,cf services
+docs-dev-guide,services/managing-services.html.md.erb,5,fenced,console,1,cf services --no-apps
+docs-dev-guide,services/managing-services.html.md.erb,6,fenced,console,1,cf services --wait
+docs-dev-guide,services/managing-services.html.md.erb,7,fenced,console,1,cf bind-service APP-NAME SERVICE-INSTANCE-NAME --wait
+docs-dev-guide,services/managing-services.html.md.erb,8,fenced,yaml,2,services:
+docs-dev-guide,services/managing-services.html.md.erb,9,fenced,console,1,cf unbind-service APP-NAME SERVICE-INSTANCE-NAME --wait
+docs-dev-guide,services/managing-services.html.md.erb,10,fenced,console,1,cf upgrade-service SERVICE-INSTANCE-NAME
+docs-dev-guide,services/managing-services.html.md.erb,11,fenced,console,1,cf upgrade-service SERVICE-INSTANCE-NAME --force
+docs-dev-guide,services/managing-services.html.md.erb,12,fenced,console,1,cf delete-service SERVICE-INSTANCE-NAME --wait
+docs-dev-guide,services/managing-services.html.md.erb,13,fenced,console,1,cf cleanup-outdated-service-bindings
+docs-dev-guide,services/oms-nozzle.html.md.erb,1,fenced,,1,cf login -a https://api.YOUR-DOMAIN -u YOUR-USERNAME --skip-ssl-validation
+docs-dev-guide,services/oms-nozzle.html.md.erb,2,fenced,,1,uaac target uaa.YOUR-DOMAIN --skip-ssl-validation
+docs-dev-guide,services/oms-nozzle.html.md.erb,3,fenced,,1,uaac token client get admin
+docs-dev-guide,services/oms-nozzle.html.md.erb,4,fenced,,1,uaac user add USERNAME -p PASSWORD  --email EMAIL
+docs-dev-guide,services/oms-nozzle.html.md.erb,5,fenced,,1,uaac member add cloud_controller.admin USERNAME
+docs-dev-guide,services/oms-nozzle.html.md.erb,6,fenced,,1,uaac member add doppler.firehose USERNAME
+docs-dev-guide,services/oms-nozzle.html.md.erb,7,fenced,,2,git clone https://github.com/Azure/oms-log-analytics-firehose-nozzle.git
+docs-dev-guide,services/oms-nozzle.html.md.erb,8,fenced,,1,cf push
+docs-dev-guide,services/oms-nozzle.html.md.erb,9,fenced,,1,Type=CF_ValueMetric_CL Name_s=slowConsumerAlert
+docs-dev-guide,services/oms-nozzle.html.md.erb,10,fenced,,1,Type=CF_LogMessage_CL SourceType_s=LGR MessageType_s=ERR
+docs-dev-guide,services/oms-nozzle.html.md.erb,11,fenced,,1,Type=CF_CounterEvent_CL Job_s=nozzle Name_s=eventsLost
+docs-dev-guide,services/oms-nozzle.html.md.erb,12,fenced,,1,"Type=CF_CounterEvent_CL Name_s=""TruncatingBuffer.DroppedMessages"""
+docs-dev-guide,services/sharing-instances.html.md.erb,1,fenced,,1,cf service SERVICE-INSTANCE-NAME
+docs-dev-guide,services/sharing-instances.html.md.erb,2,fenced,,18,#!/usr/bin/env bash
+docs-dev-guide,sidecars.html.md.erb,1,fenced,,5,sidecars:
+docs-dev-guide,sidecars.html.md.erb,2,fenced,,1,zip JAR -u SIDECAR-BINARY
+docs-dev-guide,sidecars.html.md.erb,3,fenced,,1,cf create-app APP-NAME
+docs-dev-guide,sidecars.html.md.erb,4,fenced,,4,sidecars:
+docs-dev-guide,sidecars.html.md.erb,5,fenced,,10,---
+docs-dev-guide,sidecars.html.md.erb,6,fenced,,1,cf apply-manifest -f PATH-TO-MANIFEST
+docs-dev-guide,sidecars.html.md.erb,7,fenced,,1,cf push APP-NAME
+docs-dev-guide,sidecars.html.md.erb,8,fenced,,6,get '/config' do
+docs-dev-guide,sidecars.html.md.erb,9,fenced,,1,git clone https://github.com/cloudfoundry-samples/capi-sidecar-samples.git
+docs-dev-guide,sidecars.html.md.erb,10,fenced,,1,GOOS=linux GOARCH=amd64 go build -o config-server .
+docs-dev-guide,sidecars.html.md.erb,11,fenced,,1,cf create-app sidecar-dependent-app
+docs-dev-guide,sidecars.html.md.erb,12,fenced,,1,cf apply-manifest
+docs-dev-guide,sidecars.html.md.erb,13,fenced,,1,cf push sidecar-dependent-app
+docs-dev-guide,sidecars.html.md.erb,14,fenced,,1,cf ssh sidecar-dependent-app
+docs-dev-guide,sidecars.html.md.erb,15,fenced,,1,ps aux
+docs-dev-guide,sidecars.html.md.erb,16,fenced,,1,lsof -i | grep $CONFIG_SERVER_PORT
+docs-dev-guide,sidecars.html.md.erb,17,fenced,,1,cf logs sidecar-dependent-app
+docs-dev-guide,sidecars.html.md.erb,18,fenced,,1,cf ssh sidecar-dependent-app
+docs-dev-guide,sidecars.html.md.erb,19,fenced,,1,kill -9 $(pgrep config-server)
+docs-dev-guide,sidecars.html.md.erb,20,fenced,,5,sidecars:
+docs-dev-guide,sidecars.html.md.erb,21,fenced,,1,cf push APP-NAME -f manifest.yml -m 1G
+docs-dev-guide,sidecars.html.md.erb,22,fenced,,14,cf curl -X PATCH /v3/routes/ROUTE-GUID/destinations -d '{
+docs-dev-guide,sidecars.html.md.erb,23,fenced,,1,cf restart APP_NAME
+docs-dev-guide,sidecars.html.md.erb,24,fenced,,1,cf logs APP_NAME
+docs-dev-guide,sidecars.html.md.erb,25,fenced,,1,curl https://debug-sidecar.example.com/threaddump
+docs-dev-guide,using-tasks.html.md.erb,1,fenced,,1,cf push APP-NAME --task
+docs-dev-guide,using-tasks.html.md.erb,2,fenced,,1,cf run-task APP-NAME --name TASK-NAME
+docs-dev-guide,using-tasks.html.md.erb,3,fenced,,1,cf logs APP-NAME --recent
+docs-dev-guide,using-tasks.html.md.erb,4,fenced,,1,cf task APP-NAME TASK-ID
+docs-dev-guide,using-tasks.html.md.erb,5,fenced,,1,cf tasks APP-NAME
+docs-dev-guide,using-tasks.html.md.erb,6,fenced,,1,cf terminate-task APP-NAME TASK-ID
+docs-dotnet-core-tutorial,docs/config-health-check.md,1,fenced,,1,cf push dotnet-core-sample -u http -t 60
+docs-dotnet-core-tutorial,docs/create-manifest.md,1,indented,,5,applications:
+docs-dotnet-core-tutorial,docs/deploy-app.md,1,indented,,2,:::shell
+docs-dotnet-core-tutorial,docs/deploy-app.md,2,indented,,1,cf push
+docs-dotnet-core-tutorial,docs/deploy-app.md,3,indented,,101,$ cf push
+docs-dotnet-core-tutorial,docs/prepare-app.md,1,indented,,1,git clone https://github.com/IBM-Cloud/aspnet-core-helloworld
+docs-dotnet-core-tutorial,docs/prepare-app.md,2,indented,,1,cd get-started-aspnet-core
+docs-dotnet-core-tutorial,docs/scale-horizontal.md,1,indented,,1,cf scale dotnet-core-sample -i 3
+docs-dotnet-core-tutorial,docs/scale-horizontal.md,2,indented,,3,$ cf scale dotnet-core-sample -i 3
+docs-dotnet-core-tutorial,docs/scale-horizontal.md,3,indented,,1,cf scale dotnet-core-sample -i 1
+docs-dotnet-core-tutorial,docs/scale-horizontal.md,4,indented,,3,$ cf scale dotnet-core-sample -i 1
+docs-dotnet-core-tutorial,docs/scale-vertical.md,1,indented,,1,cf scale dotnet-core-sample -k 1G
+docs-dotnet-core-tutorial,docs/scale-vertical.md,2,indented,,36,$ cf scale dotnet-core-sample -k 1G
+docs-dotnet-core-tutorial,docs/scale-vertical.md,3,indented,,1,cf scale dotnet-core-sample -m 3G
+docs-dotnet-core-tutorial,docs/scale-vertical.md,4,indented,,36,$ cf scale dotnet-core-sample -m 3G
+docs-dotnet-core-tutorial,docs/scale-vertical.md,5,indented,,1,cf scale dotnet-core-sample -k 512M
+docs-dotnet-core-tutorial,docs/scale-vertical.md,6,indented,,37,$ cf scale dotnet-core-sample -k 512M
+docs-dotnet-core-tutorial,docs/scale-vertical.md,7,indented,,1,cf scale dotnet-core-sample -m 512M
+docs-dotnet-core-tutorial,docs/scale-vertical.md,8,indented,,37,$ cf scale dotnet-core-sample -m 512M
+docs-dotnet-core-tutorial,docs/view-app-logs.md,1,fenced,shell,1,cf logs dotnet-core-sample --recent
+docs-dotnet-core-tutorial,docs/view-app-logs.md,2,indented,,88,$ cf logs dotnet-core-sample --recent
+docs-loggregator,_download_bosh_manifest.html.md.erb,1,fenced,,1,bosh -e BOSH-ENVIRONMENT deployments
+docs-loggregator,_download_bosh_manifest.html.md.erb,2,fenced,,1,bosh -e BOSH-ENVIRONMENT -d BOSH-DEPLOYMENT manifest > PATH-TO-MANIFEST.yml
+docs-loggregator,app-log-rate-limits.html.md.erb,1,fenced,,1,cf install-plugin 'Firehose Plugin'
+docs-loggregator,app-log-rate-limits.html.md.erb,2,fenced,,1,"cf nozzle -f LogMessage | grep ""app instance exceeded log rate limit"""
+docs-loggregator,cc-uaa-logging.html.md.erb,1,fenced,,1,CEF:Version|Device Vendor|Device Product|Device Version|Signature ID|Name|Severi
+docs-loggregator,cc-uaa-logging.html.md.erb,2,fenced,,7,CEF:CEF_VERSION|cloud_foundry|cloud_controller_ng|CC_API_VERSION|
+docs-loggregator,cc-uaa-logging.html.md.erb,3,fenced,,7,CEF:0|cloud_foundry|cloud_controller_ng|2.54.0|GET /v2/info|GET
+docs-loggregator,cc-uaa-logging.html.md.erb,4,fenced,,7,CEF:0|cloud_foundry|cloud_controller_ng|2.54.0|GET /v2/syslog_drain_urls|GET
+docs-loggregator,cc-uaa-logging.html.md.erb,5,fenced,,9,CEF:0|cloud_foundry|cloud_controller_ng|2.54.0|GET /v2/routes|GET
+docs-loggregator,cc-uaa-logging.html.md.erb,6,fenced,,9,CEF:0|cloud_foundry|cloud_controller_ng|2.54.0|GET /v2/apps/7f310103-
+docs-loggregator,cc-uaa-logging.html.md.erb,7,fenced,,8,CEF:0|cloud_foundry|cloud_controller_ng|2.54.0|POST /v2/apps|POST
+docs-loggregator,cc-uaa-logging.html.md.erb,8,fenced,,4,"Audit: TokenIssuedEvent ('[""openid"",""scim.read"",""uaa.user"","
+docs-loggregator,cc-uaa-logging.html.md.erb,9,fenced,,4,Audit: UserAuthenticationFailure ('bob@example.com'):
+docs-loggregator,cc-uaa-logging.html.md.erb,10,fenced,,7,"Audit: UserCreatedEvent ('[""user_id=61965469-c821-"
+docs-loggregator,cc-uaa-logging.html.md.erb,11,fenced,,6,"Audit: UserDeletedEvent ('[""user_id=61965469-c821-"
+docs-loggregator,cc-uaa-logging.html.md.erb,12,fenced,,1,CEF:Version|Device Vendor|Device Product|Device Version|Signature ID|Name|Severi
+docs-loggregator,cc-uaa-logging.html.md.erb,13,fenced,,9,CEF:0|cloud_foundry|credhub|CREDHUB_SERVER_VERSION|
+docs-loggregator,cc-uaa-logging.html.md.erb,14,fenced,,13,CEF:0|cloud_foundry|credhub|2.0.0-beta.28|GET /api/v1/data|
+docs-loggregator,cc-uaa-logging.html.md.erb,15,fenced,,13,CEF:0|cloud_foundry|credhub|2.0.0-beta.28|PUT /api/v1/data|
+docs-loggregator,cc-uaa-logging.html.md.erb,16,fenced,,13,CEF:0|cloud_foundry|credhub|2.0.0-beta.28|POST /api/v1/data|
+docs-loggregator,cli-plugin.html.md.erb,1,fenced,console,1,cf add-plugin-repo CF-Community https://plugins.cloudfoundry.org
+docs-loggregator,cli-plugin.html.md.erb,2,fenced,console,1,"cf install-plugin -r CF-Community ""Firehose Plugin"""
+docs-loggregator,cli-plugin.html.md.erb,3,fenced,console,1,cf nozzle --debug
+docs-loggregator,cli-plugin.html.md.erb,4,fenced,console,1,cf uninstall-plugin FirehosePlugin
+docs-loggregator,container-metrics.html.md.erb,1,fenced,,1,cf app APP-NAME
+docs-loggregator,container-metrics.html.md.erb,2,fenced,,1,"cf tail --name-filter=""bytes"" APP-NAME"
+docs-loggregator,data-sources.html.md.erb,1,fenced,,1,cf login -a API-URL -u USERNAME -p PASSWORD
+docs-loggregator,data-sources.html.md.erb,2,fenced,,1,"cf install-plug-in -r CF-Community ""log-cache"""
+docs-loggregator,data-sources.html.md.erb,3,fenced,,1,"cf query 'METRIC-NAME{source_id=""SOURCE-ID""}'"
+docs-loggregator,data-sources.html.md.erb,4,fenced,,1,cf login -a API-URL -u USERNAME -p PASSWORD
+docs-loggregator,data-sources.html.md.erb,5,fenced,,1,"cf install-plugin -r CF-Community ""Firehose Plugin"""
+docs-loggregator,data-sources.html.md.erb,6,fenced,,1,cf nozzle -no-filter | grep SOURCE-ID | grep -i METRIC-NAME
+docs-loggregator,data-sources.html.md.erb,7,fenced,,1,cf nozzle -no-filter | grep bbs | grep -i ConvergenceLRPDuration
+docs-loggregator,log-ops-guide.html.md.erb,1,fenced,,1,cf login
+docs-loggregator,log-ops-guide.html.md.erb,2,fenced,,1,apt-get install pv
+docs-loggregator,log-ops-guide.html.md.erb,3,fenced,,1,cf nozzle -n | pv -l -i 10 -r > /dev/null
+docs-loggregator,nozzle-tutorial.html.md.erb,1,fenced,,12,properties:
+docs-loggregator,nozzle-tutorial.html.md.erb,2,fenced,,1,bosh -e BOSH-ENVIRONMENT deploy
+docs-loggregator,nozzle-tutorial.html.md.erb,3,fenced,,1,git clone https://github.com/cloudfoundry-incubator/example-nozzle-release.git
+docs-loggregator,nozzle-tutorial.html.md.erb,4,fenced,,1,cd example-nozzle-release
+docs-loggregator,nozzle-tutorial.html.md.erb,5,fenced,,1,git submodule update --init --recursive
+docs-loggregator,nozzle-tutorial.html.md.erb,6,fenced,,1,cd templates
+docs-loggregator,nozzle-tutorial.html.md.erb,7,fenced,,1,spiff merge templates/template.yml templates/bosh-lite-stub.yml > tmp/manifest_b
+docs-loggregator,nozzle-tutorial.html.md.erb,8,fenced,,1,bosh -e BOSH-ENVIRONMENT deployments
+docs-loggregator,nozzle-tutorial.html.md.erb,9,fenced,,1,bosh -e BOSH-ENVIRONMENT env --column=uuid
+docs-loggregator,nozzle-tutorial.html.md.erb,10,fenced,,7,compilation:
+docs-loggregator,nozzle-tutorial.html.md.erb,11,fenced,,1,bosh -e BOSH-ENVIRONMENT create-release --name RELEASE-NAME
+docs-loggregator,nozzle-tutorial.html.md.erb,12,fenced,,1,bosh -e BOSH-ENVIRONMENT upload-release
+docs-loggregator,nozzle-tutorial.html.md.erb,13,fenced,console,1,bosh -e BOSH-ENVIRONMENT deploy
+docs-loggregator,nozzle-tutorial.html.md.erb,14,fenced,yml,1,bosh -e BOSH-ENVIRONMENT ssh
+docs-loggregator,opentelemetry.html.md.erb,1,fenced,,2,otlp_grpc:
+docs-loggregator,opentelemetry.html.md.erb,2,fenced,,9,otlp_grpc:
+docs-loggregator,opentelemetry.html.md.erb,3,fenced,,4,otlp_grpc:
+docs-loggregator,opentelemetry.html.md.erb,4,fenced,,3,otlp_grpc:
+docs-loggregator,opentelemetry.html.md.erb,5,fenced,,2,processors:
+docs-loggregator,opentelemetry.html.md.erb,6,fenced,,1,/var/vcap/packages/otel-collector/otel-collector components
+docs-loggregator,opentelemetry.html.md.erb,7,fenced,,2,service:
+docs-loggregator,opentelemetry.html.md.erb,8,fenced,,11,service:
+docs-loggregator,opentelemetry.html.md.erb,9,fenced,,26,receivers:
+docs-loggregator,opentelemetry.html.md.erb,10,fenced,,4,bosh deploy cf-deployment.yml \
+docs-running-cf,archive/deploy-vol-services.html.md.erb,1,fenced,,2,bosh -e MY-ENV -d MY-DEPLOYMENT deploy MANIFEST-YAML --vars-file VARIABLES-YAML 
+docs-running-cf,archive/deploy-vol-services.html.md.erb,2,fenced,,1,cf enable-service-access nfs
+docs-running-cf,archive/deploy-vol-services.html.md.erb,3,fenced,,2,bosh -e MY-ENV -d MY-DEPLOYMENT deploy MANIFEST-YAML -v VARIABLES-YAML \
+docs-running-cf,archive/deploy-vol-services.html.md.erb,4,fenced,,2,bosh -e MY-ENV -d MY-DEPLOYMENT deploy MANIFEST-YAML \
+docs-running-cf,archive/deploy-vol-services.html.md.erb,5,fenced,,2,bosh -e MY-ENV -d MY-DEPLOYMENT deploy MANIFEST-YAML --vars-file VARIABLES-YAML\
+docs-running-cf,archive/deploy-vol-services.html.md.erb,6,fenced,,2,bosh -e MY-ENV -d MY-DEPLOYMENT deploy MANIFEST-YAML --vars-file VARIABLES-YAML 
+docs-running-cf,archive/deploy-vol-services.html.md.erb,7,fenced,,1,cf enable-service-access smb
+docs-running-cf,archive/deploy-vol-services.html.md.erb,8,fenced,,2,bosh -e MY-ENV -d MY-DEPLOYMENT deploy MANIFEST-YAML \
+docs-running-cf,archive/setting-rate-limit-cloud-api.html.md.erb,1,fenced,,1,"uaac client update cf --scope ""<existing scopes> cloud_controller.v2_api_rate_li"
+docs-running-cf,diego-upgrades.html.md.erb,1,fenced,,3,diego.auctioneer.starting_container_count_maximum:
+docs-running-cf,hm-notifications.html.md.erb,1,fenced,,7,hm:
+docs-running-cf,hm-notifications.html.md.erb,2,fenced,,2,hm:
+docs-running-cf,hm-notifications.html.md.erb,3,fenced,,12,hm:
+docs-running-cf,hm-notifications.html.md.erb,4,fenced,,5,hm:
+docs-running-cf,hm-notifications.html.md.erb,5,fenced,,5,hm:
+docs-running-cf,hm-notifications.html.md.erb,6,fenced,,6,hm:
+docs-running-cf,managing-cf/audit-events.html.md.erb,1,fenced,,7,time                          event                      actor   description
+docs-running-cf,managing-cf/usage-events.html.md.erb,1,fenced,,1,GET /v2/app_usage_events
+docs-running-cf,managing-cf/usage-events.html.md.erb,2,fenced,,1,GET /v2/service_usage_events
+docs-running-cf,managing-cf/usage-events.html.md.erb,3,fenced,,1,GET /v2/app_usage_events?after_guid=7a63d717-3316-402f-bf12-a2a63211d1b9
+docs-running-cf,managing-cf/usage-events.html.md.erb,4,fenced,,1,POST /v2/app_usage_events/destructively_purge_all_and_reseed_started_apps
+docs-running-cf,managing-cf/usage-events.html.md.erb,5,fenced,,1,POST /v2/service_usage_events/destructively_purge_all_and_reseed_existing_instan
+docs-running-cf,rate-limit-cloud-controller-api.html.md.erb,1,fenced,,3,X-RateLimit-Limit: 60
+docs-running-cf,rate-limit-cloud-controller-api.html.md.erb,2,fenced,,3,X-Ratelimit-Limit-V2-Api: 60
+docs-running-cf,troubleshooting.html.md.erb,1,fenced,,11,"SELECT schema_name,"
+docs-services,binding-credentials.html.md.erb,1,fenced,,49,VCAP_SERVICES=
+docs-services,dashboard-sso.html.md.erb,1,fenced,,8,properties:
+docs-services,dashboard-sso.html.md.erb,2,fenced,,13,{
+docs-services,dashboard-sso.html.md.erb,3,fenced,,5,$ curl api.example.com/info
+docs-services,dashboard-sso.html.md.erb,4,fenced,console,2,HTTP/1.1 302 Found
+docs-services,dashboard-sso.html.md.erb,5,fenced,json,4,curl -H 'Content-Type: application/json' \
+docs-services,dashboard-sso.html.md.erb,6,fenced,,4,{
+docs-services,enable-sharing.html.md.erb,1,fenced,,9,{
+docs-services,route-services.html.md.erb,1,fenced,console,3,cf create-service BROKER-SERVICE-PLAN SERVICE-INSTANCE
+docs-services,route-services.html.md.erb,2,fenced,console,3,cf create-user-provided-service SERVICE-INSTANCE -r ROUTE-SERVICE-URL
+docs-services,route-services.html.md.erb,3,fenced,console,1,cf push logger
+docs-services,route-services.html.md.erb,4,fenced,console,1,cf create-user-provided-service mylogger -r https://logger.cf.example.com
+docs-services,route-services.html.md.erb,5,fenced,,1,cf push spring-music
+docs-services,route-services.html.md.erb,6,fenced,console,1,cf bind-route-service cf.example.com mylogger --hostname spring-music
+docs-services,route-services.html.md.erb,7,fenced,,1,cf logs logger
+docs-services,route-services.html.md.erb,8,fenced,console,1,curl spring-music.cf.example.com
+docs-uaa,uaa-concepts.html.md.erb,1,fenced,,3,"<saml2:NameID> Format=""urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified"">"
+docs-uaa,uaa-deploy.html.md.erb,1,fenced,,1,git clone git://github.com/cloudfoundry/uaa.git
+docs-uaa,uaa-deploy.html.md.erb,2,fenced,,1,./gradlew run
+docs-uaa,uaa-deploy.html.md.erb,3,fenced,,1,gem install cf-uaac
+docs-uaa,uaa-deploy.html.md.erb,4,fenced,,1,uaac target http://localhost:8080/uaa
+docs-uaa,uaa-deploy.html.md.erb,5,fenced,,1,uaac token client get admin -s adminsecret
+docs-uaa,uaa-deploy.html.md.erb,6,fenced,,1,gem install cf-uaac
+docs-uaa,uaa-deploy.html.md.erb,7,fenced,,1,uaac target APP-FQDN
+docs-uaa,uaa-deploy.html.md.erb,8,fenced,,1,uaac token get USERNAME PASSWORD
+docs-uaa,uaa-deploy.html.md.erb,9,fenced,,1,git clone git://github.com/cloudfoundry/uaa.git
+docs-uaa,uaa-deploy.html.md.erb,10,fenced,,1,./gradlew :cloudfoundry-identity-uaa:war
+docs-uaa,uaa-deploy.html.md.erb,11,fenced,,1,cf push MYUAA -m 512M -p uaa/build/libs/cloudfoundry-identity-uaa-1.8.0.war --no
+docs-uaa,uaa-deploy.html.md.erb,12,fenced,,1,cf set-env MYUAA SPRING_PROFILES_ACTIVE default
+docs-uaa,uaa-deploy.html.md.erb,13,fenced,,1,cf start MYUAA
+docs-uaa,uaa-deploy.html.md.erb,14,fenced,,1,./gradlew integrationTest
+docs-uaa,uaa-deploy.html.md.erb,15,fenced,,6,uaa:
+docs-uaa,uaa-deploy.html.md.erb,16,fenced,,1,CLOUD_FOUNDRY_CONFIG_PATH=/tmp ./gradlew test
+docs-uaa,uaa-deploy.html.md.erb,17,fenced,,4,classpath:uaa.yml
+docs-uaa,uaa-deploy.html.md.erb,18,fenced,,2,"echo ""spring_profiles: default,OTHER-DBMS"" > src/main/resources/uaa.yml"
+docs-uaa,uaa-deploy.html.md.erb,19,fenced,,2,"echo ""spring_profiles: postgresql,default"" > src/main/resources/uaa.yml"
+docs-uaa,uaa-deploy.html.md.erb,20,fenced,,9,oauth:
+docs-uaa,uaa-deploy.html.md.erb,21,fenced,,1,GET /app/apps
+docs-uaa,uaa-deploy.html.md.erb,22,fenced,,1,GET /app
+docs-uaa,uaa-deploy.html.md.erb,23,fenced,,6,uaa:
+docs-uaa,uaa-deploy.html.md.erb,24,fenced,,5,id: login
+docs-uaa,uaa-deploy.html.md.erb,25,fenced,,1,GET /login
+docs-uaa,uaa-deploy.html.md.erb,26,fenced,,1,GET /oauth/authorize?client_id=app&response_type=code...
+docs-uaa,uaa-deploy.html.md.erb,27,fenced,,1,POST /oauth/token
+docs-uaa,uaa-user-management.html.md.erb,1,fenced,,1,gem install cf-uaac
+docs-uaa,uaa-user-management.html.md.erb,2,fenced,,1,uaac target uaa.UAA-DOMAIN
+docs-uaa,uaa-user-management.html.md.erb,3,fenced,,1,uaac token client get admin -s ADMIN-CLIENT-SECRET
+docs-uaa,uaa-user-management.html.md.erb,4,fenced,,1,uaac contexts
+docs-uaa,uaa-user-management.html.md.erb,5,fenced,,1,"uaac client update admin --authorities ""EXISTING-PERMISSIONS scim.write"""
+docs-uaa,uaa-user-management.html.md.erb,6,fenced,,1,uaac token delete
+docs-uaa,uaa-user-management.html.md.erb,7,fenced,,1,uaac token client get admin
+docs-uaa,uaa-user-management.html.md.erb,8,fenced,,1,uaac user add NEW-ADMIN-USERNAME -p NEW-ADMIN-PASSWORD --emails NEW-ADMIN-EMAIL
+docs-uaa,uaa-user-management.html.md.erb,9,fenced,,1,uaac member add GROUP NEW-ADMIN-USERNAME
+docs-uaa,uaa-user-management.html.md.erb,10,fenced,,1,uaac token client get admin -s ADMIN-CLIENT-SECRET
+docs-uaa,uaa-user-management.html.md.erb,11,fenced,,1,uaac user add NEW-ADMIN-RO-USERNAME -p NEW-ADMIN-RO-PASSWORD --emails NEW-ADMIN-
+docs-uaa,uaa-user-management.html.md.erb,12,fenced,,1,uaac member add GROUP NEW-ADMIN-RO-USERNAME
+docs-uaa,uaa-user-management.html.md.erb,13,fenced,,1,uaac token client get admin -s ADMIN-CLIENT-SECRET
+docs-uaa,uaa-user-management.html.md.erb,14,fenced,,1,uaac user add NEW-GLOBAL-AUDITOR-USERNAME -p NEW-GLOBAL-AUDITOR-PASSWORD --email
+docs-uaa,uaa-user-management.html.md.erb,15,fenced,,1,uaac group add cloud_controller.global_auditor
+docs-uaa,uaa-user-management.html.md.erb,16,fenced,,1,uaac member add GROUP NEW-GLOBAL-AUDITOR-USERNAME
+docs-uaa,uaa-user-management.html.md.erb,17,fenced,,1,uaac token client get admin -s ADMIN-CLIENT-SECRET
+docs-uaa,uaa-user-management.html.md.erb,18,fenced,,1,"uaac group map --name scim.read ""GROUP-DISTINGUISHED-NAME"""
+docs-uaa,uaa-user-management.html.md.erb,19,fenced,,1,"uaac group map --name scim.write ""GROUP-DISTINGUISHED-NAME"""
+docs-uaa,uaa-user-management.html.md.erb,20,fenced,,1,"uaac group map --name cloud_controller.admin ""GROUP-DISTINGUISHED-NAME"""
+docs-uaa,uaa-user-management.html.md.erb,21,fenced,,3,"uaac group map --name scim.read ""GROUP-NAME"" --origin PROVIDER-NAME"
+docs-uaa,uaa-user-management.html.md.erb,22,fenced,,1,cf login -u ADMIN-USERNAME -p ADMIN-PASSWORD
+docs-uaa,uaa-user-management.html.md.erb,23,fenced,,1,cf create-user NEW-USERNAME NEW-USER-PASSWORD
+docs-uaa,uaa-user-management.html.md.erb,24,fenced,,1,uaac token client get admin -s ADMIN-CLIENT-SECRET
+docs-uaa,uaa-user-management.html.md.erb,25,fenced,,1,uaac contexts
+docs-uaa,uaa-user-management.html.md.erb,26,fenced,,1,"uaac client update admin --authorities ""EXISTING-PERMISSIONS password.write"""
+docs-uaa,uaa-user-management.html.md.erb,27,fenced,,1,uaac token delete
+docs-uaa,uaa-user-management.html.md.erb,28,fenced,,1,uaac token client get admin
+docs-uaa,uaa-user-management.html.md.erb,29,fenced,,1,uaac password set USERNAME -p TEMP-PASSWORD
+docs-uaa,uaa-user-management.html.md.erb,30,fenced,,3,cf target api.UAA-DOMAIN
+docs-uaa,uaa-user-management.html.md.erb,31,fenced,,1,uaac target uaa.UAA-DOMAIN
+docs-uaa,uaa-user-management.html.md.erb,32,fenced,,1,uaac token client get admin -s ADMIN-CLIENT-SECRET
+docs-uaa,uaa-user-management.html.md.erb,33,fenced,,1,uaac contexts
+docs-uaa,uaa-user-management.html.md.erb,34,fenced,,1,"uaac client update admin --authorities ""EXISTING-PERMISSIONS scim.write"""
+docs-uaa,uaa-user-management.html.md.erb,35,fenced,,1,uaac token delete
+docs-uaa,uaa-user-management.html.md.erb,36,fenced,,1,uaac token client get admin
+docs-uaa,uaa-user-management.html.md.erb,37,fenced,,1,uaac users
+docs-uaa,uaa-user-management.html.md.erb,38,fenced,,1,uaac users --attributes emails
+docs-uaa,uaa-user-management.html.md.erb,39,fenced,,1,"uaac users ""id eq GUID"" --attributes emails"

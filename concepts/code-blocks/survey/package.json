@@ -1,0 +1,9 @@
+{
+  "name": "code-blocks-survey",
+  "private": true,
+  "description": "The CommonMark reference parser, for the code-block survey's comparison",
+  "type": "module",
+  "dependencies": {
+    "commonmark": "0.31.2"
+  }
+}

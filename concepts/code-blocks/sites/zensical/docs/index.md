@@ -1,0 +1,5 @@
+# Code blocks round
+
+Test pages of the code blocks round, in two modes: passthrough (each code
+block as the book writes it: fences with their info string or none, `<pre>`
+blocks as HTML), and native (every code block a fence with a language).

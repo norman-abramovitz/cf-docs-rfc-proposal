@@ -1,0 +1,18 @@
+# make probe, Docusaurus 3.10.2, 2026-10-11: a console fence with and without the site's console alias, and a passthrough page in the CommonMark format (.md)
+== console fence, NO_CONSOLE_ALIAS=
+   token classes on line 1: ['token command', 'token command bash language-bash', 'token command bash language-bash number', 'token command bash language-bash parameter variable', 'token command shell-symbol important', 'token plain']
+== console fence, NO_CONSOLE_ALIAS=1
+   token classes on line 1: ['token plain']
+== md/troubleshooting_slow_requests (CommonMark format)
+ok     1 body  type text (expected shell); not highlighted; no copy button   | time curl -v APP-ENDPOINT
+FAIL   2 missing: no code block like '$ time curl -v http://app1.app_domain.com' in "Experiment 1: Measure total round-trip a"
+ok     3 list  type text (expected shell); not highlighted; no copy button   | cf logs APP-NAME
+FAIL   4 missing: no code block like '$ cf logs app1' in "Experiment 2: View request time in acces"
+ok     5 list  type text (expected shell); not highlighted; no copy button   | time curl -v TEST-APP-ENDPOINT
+ok     6 list  type text (expected shell); not highlighted; no copy button   | bosh ssh router/ROUTER-GUID
+ok     7 list  type text (expected shell); not highlighted; no copy button   | time curl ROUTER-IP -H "Host: TEST-APP-ENDPOINT"
+ok     8 list  type text (expected shell); not highlighted; no copy button   | cf ssh TEST-APP -c "env | grep CF_INSTANCE_ADDR"
+FAIL   9 missing: no code block like '$ cf ssh my-app -c "env | grep CF_INSTANCE_ADDR"' in "Experiment 5: Remove Gorouter from reque"
+ok    10 list  type text (expected shell); not highlighted; no copy button   | bosh ssh router/ROUTER-GUID
+FAIL  11 missing: no code block like '2019-12-14T00:33:32.35-0800 [RTR/0] OUT app1.app_domain.com…' in "Use app logs to locate delays in Cloud F"
+FAIL  code blocks: 11 expected; text 7/11, type 0/11, highlighted 0/11, copy button 0/11

@@ -1,0 +1,78 @@
+---
+title: Deploying your Grails apps to Cloud Foundry
+owner: Java
+---
+
+### Step 5: Create and bind a service instance for a Grails application
+
+This section describes using the cf CLI to configure a ClearDB managed service instance for an app.
+
+Cloud Foundry supports two types of service instances:
+
+* Managed services integrate with Cloud Foundry through service brokers that offer services and plans and manage the service calls between Cloud Foundry and a service provider.
+* User-provided service instances enable you to connect your application to pre-provisioned external service instances.
+
+For more information about creating and using service instances, refer to the [Services Overview](./../../../devguide/services/index.html) topic.
+
+#### Create a service instance
+
+1. View managed and user-provided services and plans available to you by running:
+
+    ```bash
+    cf marketplace
+    ```
+
+    The example shows two of the available managed database-as-a-service providers and their offered plans: `cleardb` database-as-a-service for MySQL-powered apps and `postgresql-10-odb` PostgreSQL as a Service.
+
+    ```console
+    $ cf marketplace
+    Getting services from marketplace in org Cloud-Apps / space development as clouduser@example.com...
+    OK
+
+    service             plans                                     description
+
+    cleardb             spark, boost, amp                         Highly available MySQL for your apps
+    postgresql-10-odb   standalone, standalone-replica, general   PostgreSQL as a Service
+    ```
+
+1. Create a service instance for your app by running:
+
+    ```bash
+    cf create-service SERVICE PLAN SERVICE-INSTANCE
+    ```
+
+    Where:
+    <ul>
+      <li><code>SERVICE</code> and <code>PLAN</code> are chosen from the output of the previous step.</li>
+      <li><code>SERVICE-INSTANCE</code> is a unique name you provide for the service instance.</li>
+    </ul>
+
+!!! note
+
+    Run <code>cf create-service cleardb spark mysql</code>. This creates a service instance named <code>mysql</code> that uses the <code>cleardb</code> service and the <code>spark</code> plan, as the example below shows.
+
+    ```console
+    $ cf create-service cleardb spark mysql
+    Creating service mysql in org Cloud-Apps / space development as clouduser@example.com....
+    OK
+    ```
+
+#### (Optional) Bind a service instance
+
+When you bind an app to a service instance, Cloud Foundry writes information about the service instance to the `VCAP_SERVICES` app environment variable. The app can use this information to integrate with the service instance.
+
+Most services support bindable service instances. Refer to your service provider's documentation to confirm if they support this functionality.
+
+You can bind a service to an application with the command `cf bind-service APPLICATION SERVICE-INSTANCE`.
+
+Alternately, you can configure the deployment manifest file by adding a `services` sub-block to the `applications` block and specifying the service instance. For more information and an example on service binding using a manifest, see the Sample App step.
+
+You can skip this step because the service instance is already bound. Open the <code>manifest.yml</code> file in a text editor to view the bound service instance information. Locate the file in the app root directory and search for the <code>services</code> sub-block in the <code>applications</code> block, as the example below shows.
+
+```yaml
+---
+applications:
+...
+  services:
+    - mysql
+```

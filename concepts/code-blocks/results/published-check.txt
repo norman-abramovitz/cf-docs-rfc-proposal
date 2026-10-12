@@ -1,0 +1,69 @@
+# The code-block check on the published pages as docs.cloudfoundry.org served them on 2026-10-11
+# (published/, and the headings round's copies of routes-domains and troubleshooting_slow_requests)
+== routes-domains
+FAIL   1 body  text differs, line 2: expected 'Creating route example-app.shared-domain.example.com for org example-org / space example-space as username@example.com...', got 'Creating route example-app.shared-domain.example.com for org example-org / space example-space as username<span>@</span>example.com...'; shows HTML tag '<span>'; type shell_session; highlighted; no copy button   | $ cf create-route shared-domain.example.com --hos…
+ok     2 body  type (none) (expected console); not highlighted; no copy button   | $ cf create-route private-domain.example.com
+ok     3 body  type (none) (expected console); not highlighted; no copy button   | $ cf create-route foo.private-domain.example.com
+ok     4 body  type (none) (expected console); not highlighted; no copy button   | $ cf create-route foo.shared-domain.example.com -…
+ok     5 body  type (none) (expected console); not highlighted; no copy button   | $ cf create-route shared-domain.example.com --hos…
+ok     6 body  type (none) (expected console); not highlighted; no copy button   | $ cf create-route shared-domain.example.com --hos…
+ok     7 body  type (none) (expected console); not highlighted; no copy button   | $ cf create-route shared-domain.example.com --hos…
+FAIL   8 list  text differs, line 1: expected '$ cf create-route example-space tcp-domain.example.com --random-port', got '  $ cf create-route example-space tcp-domain.example.com --random-port'; place body, expected list; type shell_session; not highlighted; no copy button   | $ cf create-route example-space tcp-domain.exampl…
+ok     9 body  type shell_session; highlighted; no copy button   | $ cf create-route example-space tcp-domain.exampl…
+FAIL  code blocks: 9 expected; text 7/9, type 3/9, highlighted 2/9, copy button 0/9
+== troubleshooting_slow_requests
+ok     1 body  type plaintext (expected shell); not highlighted; no copy button   | time curl -v APP-ENDPOINT
+ok     2 body  type terminal; not highlighted; no copy button   | $ time curl -v http://app1.app_domain.com
+ok     3 list  type plaintext (expected shell); not highlighted; no copy button   | cf logs APP-NAME
+FAIL   4 list  holds <p> (its text read as Markdown or HTML blocks); type terminal; not highlighted; no copy button   | $ cf logs app1
+ok     5 list  type plaintext (expected shell); not highlighted; no copy button   | time curl -v TEST-APP-ENDPOINT
+ok     6 list  type plaintext (expected shell); not highlighted; no copy button   | bosh ssh router/ROUTER-GUID
+ok     7 list  type plaintext (expected shell); not highlighted; no copy button   | time curl ROUTER-IP -H "Host: TEST-APP-ENDPOINT"
+ok     8 list  type plaintext (expected shell); not highlighted; no copy button   | cf ssh TEST-APP -c "env | grep CF_INSTANCE_ADDR"
+ok     9 list  type terminal; not highlighted; no copy button   | $ cf ssh my-app -c "env | grep CF_INSTANCE_ADDR"
+ok    10 list  type plaintext (expected shell); not highlighted; no copy button   | bosh ssh router/ROUTER-GUID
+ok    11 body  type terminal (expected text); not highlighted; no copy button   | 2019-12-14T00:33:32.35-0800 [RTR/0] OUT app1.app_…
+FAIL  code blocks: 11 expected; text 11/11, type 3/11, highlighted 0/11, copy button 0/11
+== gsg-grails
+ok     1 list  type shell_session (expected shell); not highlighted; no copy button   | cf marketplace
+ok     2 list  type terminal; not highlighted; no copy button   | $ cf marketplace
+ok     3 list  type shell_session (expected shell); not highlighted; no copy button   | cf create-service SERVICE PLAN SERVICE-INSTANCE
+ok     4 note  type terminal; not highlighted; no copy button   | $ cf create-service cleardb spark mysql
+ok     5 body  type terminal (expected yaml); not highlighted; no copy button   | ---
+ok    code blocks: 5 expected; text 5/5, type 2/5, highlighted 0/5, copy button 0/5
+== backup
+ok     1 body  type plaintext (expected shell); not highlighted; no copy button   | ssh -i PATH-TO-KEY JUMPBOX-USERNAME@JUMPBOX-ADDRE…
+FAIL   2 list  text differs, line 1: expected 'ssh -4 -D SOCKS-PORT -fNC JUMPBOX-USERNAME@JUMPBOX-ADDRESS -i JUMPBOX-KEY-FILE -o ServerAliveInterval=60', got 'export BOSH_ALL_PROXY=ssh+socks5://JUMPBOX-USERNAME@JUMPBOX-ADDRESS:SOCKS-PORT?private-key=JUMPBOX-KEY-FILE'; type plaintext (expected shell); not highlighted; no copy button   | ssh -4 -D SOCKS-PORT -fNC JUMPBOX-USERNAME@JUMPBO…
+FAIL   3 missing: no code block like 'export BOSH_ALL_PROXY=socks5://localhost:SOCKS-PORT' in "Option 2: Connect with BOSH_ALL_PROXY"
+FAIL   4 missing: no code block like 'export BOSH_ALL_PROXY=ssh+socks5://JUMPBOX-USERNAME@JUMPBOX…' in "Option 2: Connect with BOSH_ALL_PROXY"
+FAIL  code blocks: 4 expected; text 1/4, type 0/4, highlighted 0/4, copy button 0/4
+== backup-clean
+ok     1 list  type plaintext (expected shell); not highlighted; no copy button   | bbr director \
+ok     2 list  type terminal; not highlighted; no copy button   | $ bbr director \
+ok     3 list  type plaintext (expected shell); not highlighted; no copy button   | BOSH_CLIENT_SECRET=BOSH-CLIENT-SECRET \
+ok     4 list  type terminal; not highlighted; no copy button   | $ BOSH_CLIENT_SECRET=p455w0rd \
+ok    code blocks: 4 expected; text 4/4, type 2/4, highlighted 0/4, copy button 0/4
+== nginx
+ok     1 body  type plaintext (expected nginx); not highlighted; no copy button   | server {
+ok     2 body  type plaintext (expected nginx); not highlighted; no copy button   | gzip {{env "GZIP_DOWNLOADS"}};
+ok     3 body  type plaintext (expected yaml); not highlighted; no copy button   | ---
+ok     4 body  type json (expected nginx); highlighted; no copy button   | {{module "MODULE-NAME"}}
+ok     5 body  type json (expected nginx); highlighted; no copy button   | {{module "ngx_hello_module"}}
+ok     6 body  type json (expected nginx); highlighted; no copy button   | {{module "ngx_stream_module"}}
+FAIL   7 body  text differs, line 1: expected 'access_log <file> [format]', got 'access_log &lt;file&gt; [format]'; shows character reference '&lt;'; type plaintext (expected nginx); not highlighted; no copy button   | access_log <file> [format]
+ok     8 body  type plaintext (expected nginx); not highlighted; no copy button   | access_log /dev/stdout;
+FAIL   9 body  text differs, line 1: expected 'error_log <file> [level];', got 'error_log &lt;file&gt; [level];'; shows character reference '&lt;'; type plaintext (expected nginx); not highlighted; no copy button   | error_log <file> [level];
+ok    10 body  type plaintext (expected nginx); not highlighted; no copy button   | error_log stderr debug;
+ok    11 body  type plaintext (expected nginx); not highlighted; no copy button   | error_log stderr;
+ok    12 body  type plaintext (expected nginx); not highlighted; no copy button   | error_log memory:32m debug;
+ok    13 body  type plaintext; not highlighted; no copy button   | set $log = ngx_cycle->log
+FAIL  code blocks: 13 expected; text 11/13, type 1/13, highlighted 3/13, copy button 0/13
+== multiple-processes
+FAIL   1 list  text differs, line 1: expected 'version: 1', got '```yaml'; shows fence marker '```'; place body, expected list; type plaintext (expected yaml); not highlighted; no copy button   | version: 1
+ok     2 list  type shell_session (expected shell); not highlighted; no copy button   | cf push -f MANIFEST.yml
+ok     3 list  type plaintext; not highlighted; no copy button   | web: bundle exec rackup config.ru -p $PORT
+ok     4 list  type plaintext (expected shell); not highlighted; no copy button   | cf push APP-NAME
+ok     5 list  type plaintext (expected shell); not highlighted; no copy button   | cf scale APP-NAME --process PROCESS-NAME -i INSTA…
+ok     6 list  type shell_session (expected shell); not highlighted; no copy button   | cf app APP-NAME
+FAIL   7 list  text differs, line 12: expected 'type:           web', got ''; holds <p> (its text read as Markdown or HTML blocks); type terminal (expected text); not highlighted; no copy button   | Showing health and status for app example-app in …
+FAIL  code blocks: 7 expected; text 5/7, type 1/7, highlighted 0/7, copy button 0/7

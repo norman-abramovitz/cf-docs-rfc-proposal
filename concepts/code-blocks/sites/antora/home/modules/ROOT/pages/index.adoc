@@ -1,0 +1,5 @@
+= Code blocks round
+
+Test pages of the code blocks round, in two modes: passthrough (each code
+block as the book writes it, HTML `<pre>` blocks in passthrough blocks),
+and native (every code block a source block with a language).

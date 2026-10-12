@@ -1,0 +1,22 @@
+# python3 -I compare-published.py WORK_DIR published-pairs.txt, 2026-10-11 (WORK_DIR: book-render.rb's output for the surveyed commits)
+same  docs-dev-guide/deploy-apps/routes-domains.html: model 46, published 46 <pre>
+same  docs-cf-admin/metadata.html: model 17, published 17 <pre>
+same  docs-services/access-control.html: model 5, published 5 <pre>
+same  docs-cf-admin/troubleshooting_slow_requests.html: model 11, published 11 <pre>
+same  docs-bbr/cf-backup.html: model 0, published 0 <pre>
+same  docs-dev-guide/deploy-apps/healthchecks.html: model 2, published 2 <pre>
+same  docs-dev-guide/services/_using-vol-services.html: model 33, published 33 <pre>
+same  docs-loggregator/architecture.html: model 0, published 0 <pre>
+same  docs-cloudfoundry-concepts/high-availability.html: model 0, published 0 <pre>
+same  docs-dev-guide/deploy-apps/troubleshoot-app-health.html: model 10, published 10 <pre>
+same  docs-dev-guide/deploy-apps/app-ssh-overview.html: model 0, published 0 <pre>
+same  docs-cloudfoundry-concepts/container-security.html: model 4, published 4 <pre>
+same  docs-cf-admin/troubleshooting-router-error-responses.html: model 4, published 4 <pre>
+same  docs-cf-admin/configure-lb-healthcheck.html: model 0, published 0 <pre>
+same  docs-dev-guide/deploy-apps/stacks.html: model 5, published 5 <pre>
+same  docs-running-cf/all_metrics.html: model 0, published 0 <pre>
+same  docs-bbr/backup.html: model 15, published 15 <pre>
+same  docs-buildpacks/java/getting-started-deploying-apps/gsg-grails.html: model 12, published 12 <pre>
+same  docs-buildpacks/nginx/index.html: model 15, published 15 <pre>
+same  docs-dev-guide/multiple-processes.html: model 7, published 7 <pre>
+20 of 20 pages: every <pre> the same

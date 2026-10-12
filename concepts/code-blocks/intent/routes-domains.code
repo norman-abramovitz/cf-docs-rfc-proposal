@@ -1,0 +1,43 @@
+# Expected code blocks for the create-route section of routes-domains (../../headings/published/routes-domains.html)
+# Format: checks/codeblocks.py. Written with codeblocks.py --emit from the
+# published page, then edited by hand: types are the native mode's (see
+# the page's intent .md);
+# block 1 shows "username@example.com", not the published "<span>@</span>";
+# block 8 is in the list item, without the fence's two spaces of indentation.
+=== type=console place=body | Create an HTTP route with host name
+$ cf create-route shared-domain.example.com --hostname example-app
+Creating route example-app.shared-domain.example.com for org example-org / space example-space as username@example.com...
+OK
+=== type=console place=body | Create an HTTP route without host name
+$ cf create-route private-domain.example.com
+Creating route private-domain.example.com for org example-org / space example-space as username@example.com...
+OK
+=== type=console place=body | Create an HTTP route without host name
+$ cf create-route foo.private-domain.example.com
+Creating route foo.private-domain.example.com for org example-org / space example-space as username@example.com...
+OK
+=== type=console place=body | Create an HTTP route with wildcard host name
+$ cf create-route foo.shared-domain.example.com --hostname '*'
+Creating route *.foo.shared-domain.example.com for org example-org / space example-space as username@example.com...
+OK
+=== type=console place=body | Create an HTTP route with a path
+$ cf create-route shared-domain.example.com --hostname store --path products
+Creating route store.shared-domain.example.com/products for org example-org / space example-space as username@example.com...
+OK
+=== type=console place=body | Create an HTTP route with a path
+$ cf create-route shared-domain.example.com --hostname store --path orders
+Creating route store.shared-domain.example.com/orders for org example-org / space example-space as username@example.com...
+OK
+=== type=console place=body | Create an HTTP route with a path
+$ cf create-route shared-domain.example.com --hostname store
+Creating route store.shared-domain.example.com for org example-org / space example-space as username@example.com...
+OK
+=== type=console place=list | Create a TCP route with a port
+$ cf create-route example-space tcp-domain.example.com --random-port
+Creating route tcp-domain.example.com for org example-org / space example-space as user@example.com...
+OK
+Route tcp-domain.example.com:60034 has been created
+=== type=console place=body | Create a TCP route with a port
+$ cf create-route example-space tcp-domain.example.com --port 60035
+Creating route tcp-domain.example.com:60035 for org example-org / space example-space as user@example.com...
+OK

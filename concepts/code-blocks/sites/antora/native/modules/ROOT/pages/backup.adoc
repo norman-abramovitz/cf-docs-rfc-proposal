@@ -1,0 +1,110 @@
+= Backing up with BOSH Backup and Restore
+
+[[connect-to-jumpbox]]
+== Connect to your jumpbox
+
+To back up a BOSH Director or BOSH deployment using BBR, you need to establish a
+connection to your jumpbox in one of the ways below:
+
+* link:#ssh[Option 1: Connect with SSH]
+* link:#bosh-all-proxy[Option 2: Connect with BOSH++_++ALL++_++PROXY]
+
+For more information about the jumpbox, see link:installing.html[Installing BOSH Backup and Restore].
+
+[[ssh]]
+=== Option 1: Connect with SSH
+
+To connect to your jumpbox using the command line interface (CLI), run:
+
+[source,bash]
+----
+ssh -i PATH-TO-KEY JUMPBOX-USERNAME@JUMPBOX-ADDRESS
+----
+
+Where:
+
+* `PATH-TO-KEY` is the local path to your private key file for the jumpbox host.
+* `JUMPBOX-USERNAME` is your jumpbox username.
+* `JUMPBOX-ADDRESS` is the IP address or hostname of the jumpbox.
+
+[NOTE]
+====
+If you connect to your jumpbox with SSH, you must run the BBR commands in this topic from inside your jumpbox.
+====
+
+[[bosh-all-proxy]]
+=== Option 2: Connect with BOSH++_++ALL++_++PROXY
+
+You can use the environment variable `BOSH++_++ALL++_++PROXY` to open an SSH tunnel with
+SOCKS5 to the jumpbox.
+This tunnel enables you to forward requests from your local machine to the BOSH
+Director through the jumpbox.
+When `BOSH++_++ALL++_++PROXY` is set, the BBR CLI uses its value to forward
+requests to the BOSH Director.
+
+[NOTE]
+====
+For the following procedures to work, ensure the SOCKS port is not already in use by a different tunnel or process.
+====
+
+To connect with `BOSH++_++ALL++_++PROXY`, follow one of the below procedures:
+
+* *To establish the tunnel separate from the BOSH CLI:*
+[arabic]
+. Establish the tunnel and make it available on a local port by running:
++
+[source,bash]
+----
+ssh -4 -D SOCKS-PORT -fNC JUMPBOX-USERNAME@JUMPBOX-ADDRESS -i JUMPBOX-KEY-FILE -o ServerAliveInterval=60
+----
++
+Where:
+
+** `SOCKS-PORT` is the local SOCKS port.
+** `JUMPBOX-USERNAME` is your jumpbox username.
+** `JUMPBOX-ADDRESS` is the IP address or hostname of the jumpbox.
+** `JUMPBOX-KEY-FILE` is the local SSH private key for accessing the jumpbox.
+. Provide the BOSH CLI with access to the tunnel using the `BOSH++_++ALL++_++PROXY` environment variable
+by running:
++
+[source,bash]
+----
+export BOSH_ALL_PROXY=socks5://localhost:SOCKS-PORT
+----
++
+Where `SOCKS-PORT` is your local SOCKS port.
+* *To establish the tunnel using the BOSH CLI:*
++
+Provide the BOSH CLI with the necessary SSH credentials to create the tunnel by
+running:
++
+[source,bash]
+----
+export BOSH_ALL_PROXY=ssh+socks5://JUMPBOX-USERNAME@JUMPBOX-ADDRESS:SOCKS-PORT?private-key=JUMPBOX-KEY-FILE
+----
++
+Where:
+
+** `JUMPBOX-USERNAME` is your jumpbox username.
+** `JUMPBOX-ADDRESS` is the IP address or hostname of the jumpbox.
+** `SOCKS-PORT` is the local SOCKS port.
+** `JUMPBOX-KEY-FILE` is the local SSH private key for accessing the jumpbox.
+
+[NOTE]
+====
+Using `BOSH++_++ALL++_++PROXY` can result in longer backup and restore
+times due to network performance degradation.
+All operations must pass through the proxy, which can make moving backup artifacts significantly
+slower.
+====
+
+[CAUTION]
+====
+In the BBR v1.5.0 and earlier, the tunnel created by the BOSH CLI does
+not include the `ServerAliveInterval` flag.
+This might cause your SSH connection to timeout when transferring large artifacts.
+In BBR v1.5.1, the `ServerAliveInterval` flag is included.
+For more information, see
+https://github.com/cloudfoundry-incubator/bosh-backup-and-restore/releases/tag/v1.5.1[bosh-backup-and-restore]
+on GitHub.
+====

@@ -1,0 +1,5 @@
+# Notes on ../../headings/published/routes-domains.html in the excerpt the sites convert: the create-route section. Written with:
+# python3 -I ../../notes/checks/notes.py ../../headings/published/routes-domains.html --emit (notes 1 and 2 of its output)
+# Fields, separated by tabs: kind, title, holds, section, place, text
+important	Important	code=1	Create an HTTP route with host name	body	The cf CLI create-route command does not require the space as an argument. It uses the space you are targeting.
+important	Important	list=2	Create an HTTP route with a path	body	Routes with the same domain and host name but different paths can only be created in the same space. Private domains do not have this limitation. Cloud Foundry does not route requests for context paths to the root context of an app. Apps must serve requests on the context path.

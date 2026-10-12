@@ -1,0 +1,55 @@
+# Expected code blocks for multiple-processes, the whole page (../published/multiple-processes.html)
+# Format: checks/codeblocks.py. Written with codeblocks.py --emit from the
+# published page, then edited by hand: types are the native mode's (see
+# the page's intent .md);
+# block 1 is the YAML without the fence lines the published page shows;
+# block 7 is the source's whole block, which the published page breaks
+# into paragraphs after its first line.
+=== type=yaml place=list | Push an app with multiple processes using a manifest
+version: 1
+- name: example-app
+  processes:
+  - type: web
+    command: bundle exec rackup config.ru -p $PORT
+    instances: 3
+  - type: worker
+    command: bundle exec rake worker:start
+    health-check-type: process
+    instances: 2
+=== type=bash place=list | Push an app with multiple processes using a manifest
+cf push -f MANIFEST.yml
+=== type=text place=list | Push an app with multiple processes using a Procfile
+web: bundle exec rackup config.ru -p $PORT
+worker: bundle exec rake worker:start
+=== type=bash place=list | Push an app with multiple processes using a Procfile
+cf push APP-NAME
+=== type=bash place=list | Scale a process
+cf scale APP-NAME --process PROCESS-NAME -i INSTANCE-COUNT
+=== type=bash place=list | View processes
+cf app APP-NAME
+=== type=text place=list | View processes
+Showing health and status for app example-app in org test / space test as admin...
+
+name:              example-app
+requested state:   started
+routes:            example-app.cloudfoundry.example.com
+last uploaded:     Wed 17 Jul 22:57:04 UTC 2024
+stack:             cflinuxfs3
+buildpacks:
+        name             version   detect output   buildpack name
+        ruby_buildpack   1.8.57    ruby            ruby
+
+type:           web
+sidecars:
+instances:      1/1
+memory usage:   1024M
+     state     since                  cpu    memory        disk           logging         cpu entitlement   details
+#0   running   2024-07-17T22:57:22Z   0.3%   49.5M of 1G   130.2M of 1G   0B/s of 16K/s   2.4%
+
+type:           worker
+sidecars:
+instances:      2/2
+memory usage:   1024M
+     state     since                  cpu    memory        disk           logging         cpu entitlement   details
+#0   running   2024-07-17T22:57:22Z   0.3%   49.5M of 1G   130.2M of 1G   0B/s of 16K/s   2.4%
+#0   running   2024-07-17T22:57:22Z   0.3%   49.5M of 1G   130.2M of 1G   0B/s of 16K/s   2.4%

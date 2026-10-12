@@ -1,0 +1,46 @@
+# make build, Zensical 0.0.69, 2026-10-11: the build log (colour codes removed)
+Build started
+Warning: anchor does not exist
+    ╭─[ native/routes-domains.md:10:211 ]
+    │
+ 10 │ Domains in Cloud Foundry provide a namespace from which to create routes. To list available domains for a targeted organization, use the `cf domains` command. For more information about domains, see [Domains](#domains).
+    │                                                                                                                                                                                                                   ───┬───  
+    │                                                                                                                                                                                                                      ╰───── anchor does not exist
+────╯
+Warning: anchor does not exist
+    ╭─[ native/routes-domains.md:42:11 ]
+    │
+ 42 │ <a href="#private-domains">Private Domains</a>.
+    │           ───────┬───────  
+    │                  ╰───────── anchor does not exist
+────╯
+Warning: anchor does not exist
+     ╭─[ native/routes-domains.md:120:11 ]
+     │
+ 120 │ <a href="#map-route">Map a route to your app</a>.
+     │           ────┬────  
+     │               ╰────── anchor does not exist
+─────╯
+Warning: anchor does not exist
+    ╭─[ passthrough/routes-domains.md:10:211 ]
+    │
+ 10 │ Domains in Cloud Foundry provide a namespace from which to create routes. To list available domains for a targeted organization, use the `cf domains` command. For more information about domains, see [Domains](#domains).
+    │                                                                                                                                                                                                                   ───┬───  
+    │                                                                                                                                                                                                                      ╰───── anchor does not exist
+────╯
+Warning: anchor does not exist
+    ╭─[ passthrough/routes-domains.md:42:11 ]
+    │
+ 42 │ <a href="#private-domains">Private Domains</a>.
+    │           ───────┬───────  
+    │                  ╰───────── anchor does not exist
+────╯
+Warning: anchor does not exist
+     ╭─[ passthrough/routes-domains.md:120:11 ]
+     │
+ 120 │ <a href="#map-route">Map a route to your app</a>.
+     │           ────┬────  
+     │               ╰────── anchor does not exist
+─────╯
+6 issues found
+Build finished in 0.52s

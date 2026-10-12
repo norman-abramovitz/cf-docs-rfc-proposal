@@ -1,0 +1,5 @@
+# make build, Antora 3.2.1, 2026-10-11: Asciidoctor's warnings, one line per record (level, message, file:line)
+warn   section title out of sequence: expected level 1, got level 2 | passthrough/modules/ROOT/pages/gsg-grails.adoc:3
+warn   section title out of sequence: expected level 1, got level 2 | passthrough/modules/ROOT/pages/routes-domains.adoc:4
+warn   section title out of sequence: expected level 1, got level 2 | native/modules/ROOT/pages/gsg-grails.adoc:3
+warn   section title out of sequence: expected level 1, got level 2 | native/modules/ROOT/pages/routes-domains.adoc:4

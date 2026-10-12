@@ -102,7 +102,7 @@ Terms used in the table:
 | <a id="r-03"></a>R-03 | column widths as hints | An author can say how wide a column should be and whether it should avoid wrapping. The site honors this as intent, not as an exact value: a column's role (a short key, a value, or prose) decides most widths. | [L42]; [hints](../concepts/tables/README.md#hints-after-the-round) | proposed |
 | <a id="r-04"></a>R-04 | variables everywhere | Variables work in prose, in table cells, inside HTML and in page descriptions. A variable whose value is HTML renders as markup, not as escaped text. A variable that is not defined is reported when the site builds, instead of showing as empty text. | [L43]; [variables in cells](../concepts/tables/README.md#what-the-pages-have-in-common) | proposed |
 | <a id="r-05"></a>R-05 | partials and reuse | A page can include a partial, and the partial renders inside it. The book can also hold a partial's name in a variable (`scale_table: "oss_scale_table"`), but no page uses that form; it is [not needed](research-areas.md#are-partial-names-in-variables-still-needed), and the converter resolves any such name. | [L179]; [`_oss_scale_table`](../concepts/tables/source/SOURCES.md) | proposed |
-| <a id="r-06"></a>R-06 | typed code blocks | Code blocks show their type (shell, console, JSON, YAML) with matching highlighting, keep their text exactly, and have a copy button. | [L44]; [tables findings](../concepts/tables/README.md#what-we-learned) | proposed |
+| <a id="r-06"></a>R-06 | typed code blocks | Code blocks show their type (bash, console, JSON, YAML) with matching highlighting, keep their text exactly, and have a copy button. | [L44]; [tables findings](../concepts/tables/README.md#what-we-learned); [code blocks results](../concepts/code-blocks/results.md#summary) | proposed |
 | <a id="r-07"></a>R-07 | notes and admonitions | A note, today `<p class="note">` with a `note__title` span, becomes an admonition (a boxed callout headed Note, Warning, and so on; [glossary](../glossary.md#admonition)) with the same text, including notes held in a variable. | [Concepts list](../concepts/README.md#concepts); [L100] | proposed |
 | <a id="r-08"></a>R-08 | cross-repository links | Links between pages that come from different content repositories keep working after conversion, whatever the new repository layout, and the build reports a link whose page or anchor is missing. | [L131]; [cross-repository links results](../concepts/cross-repo-links/results.md#summary) | proposed |
 | <a id="r-09"></a>R-09 | table styles by class | Each table names its look with a style class (a name the site's stylesheet gives a look to; [glossary](../glossary.md#style-class)). `table` is the standard style. A further style is one more class and a few stylesheet rules, maintained by the Docs WG. Which further styles to offer is open. | [Template conventions](../concepts/tables/README.md#template-conventions) | proposed |
@@ -276,9 +276,9 @@ restated as a hosting benefit.
   (counted by this evaluation at docs-bosh commit `20a4122`:
   [table survey, bosh.io](../concepts/tables/survey/README.md#boshio)); see [Research areas](research-areas.md#is-boshio-in-scope).
 
-**Not yet written:** requirements that come out of the concepts not yet
-worked (code blocks;
-[concepts](../concepts/README.md#concepts)). The headings round bears on
+**From the concept rounds:** every concept in the
+[concepts list](../concepts/README.md#concepts) now has a round, and each
+round's conventions are under review. The headings round bears on
 [R-01](#r-01) content and outline survive and [R-16](#r-16) old URLs keep
 working; its conventions are under review
 ([headings results](../concepts/headings/results.md#requirements)). The
@@ -295,9 +295,14 @@ expected differences
 The cross-repository links round bears on [R-08](#r-08) cross-repository
 links, [R-15](#r-15) URL identifies the source and [R-16](#r-16) old URLs
 keep working
-([cross-repository links results](../concepts/cross-repo-links/results.md#requirements)). They will sharpen
-the requirements from [R-04](#r-04) variables everywhere to [R-08](#r-08)
-cross-repository links.
+([cross-repository links results](../concepts/cross-repo-links/results.md#requirements)).
+The code blocks round bears on [R-06](#r-06) typed code blocks and
+[R-24](#r-24) markup cleanup before conversion: every tool meets R-06 once
+blocks are written as its own code blocks with a type, `bash` for commands
+and `console` for sessions
+([code blocks results](../concepts/code-blocks/results.md#requirements)). The
+reviews will sharpen the requirements from [R-04](#r-04) variables
+everywhere to [R-08](#r-08) cross-repository links.
 
 [L13]: https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L13
 [L17]: https://github.com/cloudfoundry/community/blob/c7375390fad8afff5a4c5f1b6c85749f2d649045/toc/rfc/rfc-draft-new-cf-docs-stack.md#L17

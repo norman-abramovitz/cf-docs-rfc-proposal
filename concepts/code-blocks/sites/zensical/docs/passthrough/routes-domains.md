@@ -1,0 +1,159 @@
+---
+title: Configuring routes and domains
+owner: CF for VMs Networking
+---
+
+### Create a route {#create-route}
+
+When a developer creates a route using the cf CLI, Cloud Foundry determines whether the route is an HTTP or a TCP route based on the domain. To create a HTTP route, a developer must choose an HTTP domain. To create a TCP route, a developer must choose a TCP domain.
+
+Domains in Cloud Foundry provide a namespace from which to create routes. To list available domains for a targeted organization, use the `cf domains` command. For more information about domains, see [Domains](#domains).
+
+The following sections describe how developers can create HTTP and TCP routes for different use cases.
+
+#### Create an HTTP route with host name {#create-route-w-hostname}
+
+In Cloud Foundry, a host name is the label that indicates a subdomain of the domain associated with the route.
+Given a domain
+`<%= vars.app_domain %>`, a developer can create the route `example-app.<%= vars.app_domain %>` by specifying the host name `example-app` with the
+`cf create-route` command as shown in this example:
+
+```console
+$ cf create-route shared-domain.example.com --hostname example-app
+Creating route example-app.shared-domain.example.com for org example-org / space example-space as username<span>@</span>example.com...
+OK
+```
+
+!!! important
+
+    The cf CLI <code>create-route</code> command does not require the space as an argument. It uses the space you are targeting.
+
+This command instructs Cloud Foundry to only route requests to apps mapped to this route for these URLs:
+
+<ul>
+  <li><code>http://example-app.<%= vars.app_domain %></code></li>
+  <li><code>https://example-app.<%= vars.app_domain %></code></li>
+  <li>Any path under either of the these URLs, such as <code>http://example-app.<%= vars.app_domain %>/bar</code></li>
+</ul>
+
+#### Create an HTTP route without host name {#create-route-wo-hostname}
+
+This approach creates a route with the same address as the domain itself and is permitted for private domains only. For more information, see
+<a href="#private-domains">Private Domains</a>.
+<br>
+A developer can create a route from the domain <code><%= vars.private_app_domain %></code> with no host name with the <code>cf create-route</code> command:
+
+<pre><code>
+$ cf create-route <%= vars.private_app_domain %>
+Creating route <%= vars.private_app_domain %> for org example-org / space example-space as username<span>@</span>example.com...
+OK
+</code></pre>
+
+If DNS is configured correctly, this command instructs Cloud Foundry to route requests to apps mapped to this route from these URLs:
+
+<ul>
+  <li><code>http://<%= vars.private_app_domain %></code></li>
+  <li><code>https://<%= vars.private_app_domain %></code></li>
+  <li>Any path under either of these URLs, such as <code>http://<%= vars.private_app_domain %>/foo</code></li>
+</ul>
+
+If there are no other routes for the domain, requests to any subdomain, such as `http://foo.<%= vars.private_app_domain %>`, fail.
+
+A developer can also create routes for subdomains with no host names. The following command creates a route from the subdomain
+<code>foo.<%= vars.private_app_domain %></code>:
+
+<pre><code>
+$ cf create-route foo.<%= vars.private_app_domain %>
+Creating route foo.<%= vars.private_app_domain %> for org example-org / space example-space as username<span>@</span>example.com...
+OK
+</code></pre>
+
+If DNS is configured for this subdomain, this command instructs Cloud Foundry to route requests to apps mapped to this route from these URLs:
+
+<ul>
+   <li><code>http://foo.<%= vars.private_app_domain %></code></li>
+   <li><code>https://foo.<%= vars.private_app_domain %></code></li>
+   <li>Any path under either of these URLs, such as <code>http://foo.<%= vars.private_app_domain %>/foo</code></li>
+</ul>
+
+#### Create an HTTP route with wildcard host name {#create-route-w-wildcard-hostname}
+
+An app mapped to a wildcard route acts as a fallback app for route requests if the requested route does not exist. To create a wildcard route, use an asterisk for the host name.
+<br>
+A developer can create a wildcard route from the domain `foo.<%= vars.app_domain %>` by running:
+
+<pre><code>
+$ cf create-route foo.<%= vars.app_domain %> --hostname '*'
+Creating route *.foo.<%= vars.app_domain %> for org example-org / space example-space as username<span>@</span>example.com...
+OK
+</code></pre>
+
+If a client sends a request to `http://app.foo.<%= vars.app_domain %>` by accident, attempting to reach `example-app.foo.<%= vars.app_domain %>`,
+Cloud Foundry routes the request to the app mapped to the route `*.foo.<%= vars.app_domain %>`.
+
+#### Create an HTTP route with a path {#create-route-w-path}
+
+Developers can use paths to route requests for the same host name and domain to different apps.
+<br>
+A developer can create three routes using the same host name and domain in the space `example-space` by running:
+<br>
+
+<pre><code>
+$ cf create-route <%= vars.app_domain %> --hostname store --path products
+Creating route store.<%= vars.app_domain %>/products for org example-org / space example-space as username<span>@</span>example.com...
+OK
+</code></pre>
+
+<pre><code>
+$ cf create-route <%= vars.app_domain %> --hostname store --path orders
+Creating route store.<%= vars.app_domain %>/orders for org example-org / space example-space as username<span>@</span>example.com...
+OK
+</code></pre>
+
+<pre><code>
+$ cf create-route <%= vars.app_domain %> --hostname store
+Creating route store.<%= vars.app_domain %> for org example-org / space example-space as username<span>@</span>example.com...
+OK
+</code></pre>
+
+The developer can then map the new routes to different apps by following the procedure in
+<a href="#map-route">Map a route to your app</a>.
+
+If the developer maps the first route with path <code>products</code> to the <code>products</code> app, the second route with path <code>orders</code> to the <code>orders</code> app, and the last route to the <code>storefront</code> app. After this:
+
+<ul>
+  <li>Cloud Foundry routes requests to <code>http://store.<%= vars.app_domain %>/products</code> to the <code>products</code> app.</li>
+  <li>Cloud Foundry routes requests to <code>http://store.<%= vars.app_domain %>/orders</code> to the <code>orders</code> app.</li>
+  <li>Cloud Foundry routes requests to <code>http://store.<%= vars.app_domain %></code> to the <code>storefront</code> app.</li>
+</ul>
+
+Cloud Foundry attempts to match routes with a path, and then attempts to match host and domain.
+
+!!! important
+
+    - Routes with the same domain and host name but different paths can only be created in the same space. Private domains do not have this limitation.
+    - Cloud Foundry does not route requests for context paths to the root context of an app. Apps must serve requests on the context path.
+
+#### Create a TCP route with a port {#create-route-with-port}
+
+A developer can create a TCP route for `<%= vars.tcp_app_domain %>` on an arbitrary port. This is the default in the cf CLI.
+
+* An arbitrary (random) port is the default. The `--random port` flag is not supported.
+
+  ```console
+  $ cf create-route example-space <%= vars.tcp_app_domain %> --random-port
+  Creating route <%= vars.tcp_app_domain %> for org example-org / space example-space as user@example.com...
+  OK
+  Route <%= vars.tcp_app_domain %>:60034 has been created
+  ```
+
+In this example, Cloud Foundry routes requests to `<%= vars.tcp_app_domain %>:60034` to apps mapped to this route.
+
+To request a specific port, a developer can use the `--port` flag, so long as the port is not reserved for another space. To create a TCP route for
+`<%= vars.tcp_app_domain %>` on port 60035, run:
+
+```console
+$ cf create-route example-space <%= vars.tcp_app_domain %> --port 60035
+Creating route <%= vars.tcp_app_domain %>:60035 for org example-org / space example-space as user@example.com...
+OK
+```
