@@ -100,6 +100,8 @@ figcaption { font-size: .82rem; color: var(--muted); display: flex; flex-wrap: w
       <div class="seg" role="group" aria-labelledby="tool-l" id="tools">{{TOOL_BUTTONS}}</div></div>
     <div class="ctl"><span class="ctl-label" id="size-l">Size</span>
       <div class="seg" role="group" aria-labelledby="size-l" id="sizes"><button type="button" data-size="fit">Fit</button><button type="button" data-size="actual">Actual size</button></div></div>
+    <div class="ctl"><span class="ctl-label" id="view-l">Wide tables</span>
+      <div class="seg" role="group" aria-labelledby="view-l" id="views"><button type="button" data-view="seen">As seen</button><button type="button" data-view="full">Full table</button></div></div>
     <p class="mode-desc" id="mode-desc"></p>
     <nav class="nav" aria-label="Pages">{{NAV}}</nav>
   </div>
@@ -110,23 +112,27 @@ figcaption { font-size: .82rem; color: var(--muted); display: flex; flex-wrap: w
 <script>
 (() => {
   const desc = {{DESC}};
+  const FULL = new Set({{FULL}});  // screenshots that also exist as -full.jpg
   const store = { get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
                   set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} } };
   let mode = store.get('tcc-mode') || 'passthrough';
   if (!desc[mode]) mode = 'passthrough';
   let hidden = new Set((store.get('tcc-hidden') || '').split(',').filter(Boolean));
   let size = store.get('tcc-size') === 'actual' ? 'actual' : 'fit';
+  let view = store.get('tcc-view') === 'full' ? 'full' : 'seen';
   function render() {
     document.querySelectorAll('#modes button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.mode === mode)));
     document.querySelectorAll('#tools button').forEach(b => b.setAttribute('aria-pressed', String(!hidden.has(b.dataset.tool))));
     document.querySelectorAll('#sizes button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.size === size)));
+    document.querySelectorAll('#views button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.view === view)));
     document.body.classList.toggle('size-actual', size === 'actual');
     document.getElementById('mode-desc').innerHTML = desc[mode];
     document.querySelectorAll('figure[data-tool]').forEach(f => {
       const tool = f.dataset.tool, pair = f.closest('.pair');
       // Docusaurus native is already plain pipe tables.
       const m = tool === 'docusaurus' && mode === 'native-plain' ? 'native' : mode;
-      const file = `img/${tool}-${m}-${pair.dataset.page}-t${pair.dataset.table}.jpg`;
+      const base = `${tool}-${m}-${pair.dataset.page}-t${pair.dataset.table}`;
+      const file = `img/${base}${view === 'full' && FULL.has(base) ? '-full' : ''}.jpg`;
       const img = f.querySelector('img'), link = f.querySelector('a');
       if (!img.src.endsWith(file)) { img.src = file; link.href = file; }
       f.querySelector('.mode-name').textContent = m === mode ? mode : `${m} (pipe tables)`;
@@ -135,6 +141,7 @@ figcaption { font-size: .82rem; color: var(--muted); display: flex; flex-wrap: w
   }
   document.querySelectorAll('#modes button').forEach(b => b.addEventListener('click', () => { mode = b.dataset.mode; store.set('tcc-mode', mode); render(); }));
   document.querySelectorAll('#sizes button').forEach(b => b.addEventListener('click', () => { size = b.dataset.size; store.set('tcc-size', size); render(); }));
+  document.querySelectorAll('#views button').forEach(b => b.addEventListener('click', () => { view = b.dataset.view; store.set('tcc-view', view); render(); }));
   document.querySelectorAll('#tools button').forEach(b => b.addEventListener('click', () => {
     const t = b.dataset.tool; hidden.has(t) ? hidden.delete(t) : hidden.add(t);
     store.set('tcc-hidden', [...hidden].join(',')); render();

@@ -236,9 +236,9 @@ These come from the tables round but are about the pages as a whole.
 |---|---|---|---|
 | none: MDX stops on all five; three of the five first errors are outside the tables | all five | four of five; Markdoc changes some text inside HTML without an error | all five, inside passthrough blocks; the page around them is rewritten as AsciiDoc |
 
-**Spot checks after cleanup** (six pages, 42 checks): Docusaurus 40 of 42 in
-every mode (the two misses are page descriptions, not tables); Zensical,
-Starlight and Antora 42 of 42 in every mode.
+**Spot checks after cleanup** (seven pages, 51 checks): Docusaurus 49 of 51
+in every mode (the two misses are page descriptions, not tables); Zensical,
+Starlight and Antora 51 of 51 in every mode.
 
 **Text comparison, outside the tables:**
 

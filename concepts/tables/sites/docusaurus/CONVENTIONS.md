@@ -9,6 +9,7 @@ make serve      # serve build/ at http://localhost:3000
 make check      # build, then run the spot checks for each mode
 make check-raw  # first MDX error on each unchanged-HTML page
 make check-wide # while make serve runs: wide tables scroll in their own box
+                # (PORT=N when the site is served on another port)
 ```
 
 ## Every mode
@@ -75,6 +76,7 @@ is a list item inside it, so a cell can hold lists and paragraphs.
 | `roles` | `key`, `value`, or `prose` per column | column role |
 | `wrap` | `avoid` or `normal` per column; `key` defaults to `avoid` | column wrap |
 | `{.name}` | the table's style, as a class (`{.table-media}`); none means the standard style | style |
+| `{#name}` | the table's id (`{#oss-roles-permissions}`) | — |
 | `caption` | caption text | caption |
 | `title` | title text, shown as a header row spanning every column | title |
 
@@ -116,7 +118,7 @@ fit the column instead.
 
 GFM pipe tables. In `.mdx`, a cell can hold an inline HTML list
 (`<ul><li>…</li></ul>` on one line) and `<br /><br />`. No widths, alignment
-other than left/center/right per column, row headers, captions, or spanning
+other than left/center/right per column, row headers, captions, ids, or spanning
 rows. A title row becomes a bold line above the table. A pipe table needs a blank
 line before it.
 

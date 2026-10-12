@@ -167,10 +167,14 @@ not address that concern.
 | `uaa-concepts.html.md.erb` | cloudfoundry/docs-uaa | 2 |
 | `credential-types.html.md.erb` | cloudfoundry/docs-credhub | 1 |
 | `uaa-performance.html.md.erb` (first section) | cloudfoundry/docs-running-cf | 1 of 12 |
+| `_oss_roles_table.html.md.erb` (partial) | cloudfoundry/docs-cloudfoundry-concepts | 1 |
 
 `uaa-performance` was added after the round, as the example for a second
-table style (see [Template conventions](#template-conventions)). The traits
-below are the first five pages'.
+table style (see [Template conventions](#template-conventions)).
+`_oss_roles_table` was added on 2026-10-12 as a real wide table: 12
+columns, wider than the content column, with note markers in its cells
+([intent](intent/_oss_roles_table.md)). The traits below are the first
+five pages'.
 
 ### What the pages have in common
 

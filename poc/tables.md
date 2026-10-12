@@ -1,13 +1,14 @@
 # Tables: input and output, page by page
 
-Status: draft — all six test pages written as of 2026-10-11, for review.
+Status: draft — all seven test pages written as of 2026-10-12, for review.
 
 This file puts each test page's tables next to what the candidate tools
 made of them. For each page: the table as published on docs.cloudfoundry.org
 today, the text an author writes in each tool, and the page that tool builds
 from it. The *test pages* are five pages the Docs WG lead picked because
-their tables are hard to express outside HTML, plus one page added later
-(see the [glossary](../glossary.md#test-pages)). How the work was done is in
+their tables are hard to express outside HTML, plus two pages added later:
+`uaa-performance`, a second table style, and `_oss_roles_table`, a table
+wider than the content column (see the [glossary](../glossary.md#test-pages)). How the work was done is in
 the [README](README.md); the full grids and measurements are in
 [results.md](../concepts/tables/results.md).
 
@@ -7409,3 +7410,1396 @@ Differences seen:
   rules; in Docusaurus, Zensical and Starlight they use the theme's own
   color variables. A further style is one more class and a few rules
   ([R-09](../requirements/README.md#r-09) table styles by class).
+
+## `_oss_roles_table`
+
+- Published: not a page of its own. Like `_oss_scale_table`, it is a
+  partial, included by the `roles` page,
+  <https://docs.cloudfoundry.org/concepts/roles.html>
+  ([include line](https://github.com/cloudfoundry/docs-cloudfoundry-concepts/blob/97e0d0b25f059c06edd25e30355d26eb93dc560a/roles.html.md.erb#L115) in the host page's source).
+  The table on the page: [Roles and permissions for active orgs](https://docs.cloudfoundry.org/concepts/roles.html#activeroles)
+- Upstream source: [`_oss_roles_table.html.md.erb` in cloudfoundry/docs-cloudfoundry-concepts, commit `97e0d0b`](https://github.com/cloudfoundry/docs-cloudfoundry-concepts/blob/97e0d0b25f059c06edd25e30355d26eb93dc560a/_oss_roles_table.html.md.erb)
+- Snapshot: [source/_oss_roles_table.html.md.erb](../concepts/tables/source/_oss_roles_table.html.md.erb) in this repo
+  is a copy of that file at that commit, taken on 2026-10-12. The per-tool
+  versions are modified from it. Details: [SOURCES.md](../concepts/tables/source/SOURCES.md).
+
+The seventh test page, added on 2026-10-12 as a real wide table. The
+partial, from docs-cloudfoundry-concepts, holds one table of 12 columns and
+42 rows: Activity, then one column per role, from Admin to Space Supporter.
+Each row is an activity. Its cells hold `Yes`, `Org`, `Space` or nothing,
+some with a note marker: a superscript number that points to one of nine
+notes below the table. The source sets no widths.
+
+- Intent and spot checks: [intent/_oss_roles_table.md](../concepts/tables/intent/_oss_roles_table.md)
+- Results per tool: [Docusaurus](../concepts/tables/results.md#docusaurus-3102),
+  [Zensical](../concepts/tables/results.md#zensical-0069),
+  [Starlight](../concepts/tables/results.md#starlight-0426),
+  [Antora](../concepts/tables/results.md#antora-321); across the tools, the
+  [Summary](../concepts/tables/results.md#summary) bullet "A real wide
+  table scrolls, but at its narrowest"
+
+What the table asks for ([R-02](../requirements/README.md#r-02) rich tables):
+
+- **A box of its own.** The table is wider than the content column, so it
+  scrolls sideways in a box of its own and the page does not. R-02 says it
+  in one line: "A table wider than the page scrolls in its own box." It is
+  also a template convention
+  ([tables README](../concepts/tables/README.md#template-conventions)).
+  The published page has no such box: at a 1280-pixel window it draws the
+  table 874 pixels wide in a 720-pixel column, so the table spills 154
+  pixels into the right margin.
+- **A header row, and an activity column that could be row headers.**
+  Column 1 names the activity each row is about. It is a *prose* column:
+  activities run up to about 15 words ("View the status, number of
+  instances, service bindings, and resource use of apps"). Columns 2–12
+  are *value* columns, sized by their content
+  ([R-03](../requirements/README.md#r-03) column widths as hints). Header
+  cells may wrap: role names run up to three words ("Org Billing Manager").
+- **Note markers are kept.** The source writes them
+  `<sup><strong>N</strong></sup>`, numbers 1 to 9: 36 in the table and 9 in
+  front of the notes.
+- **Two empty markers are removed.** In the "Create orgs" row, the Admin
+  Read-Only and Global Auditor cells hold `<sup><strong></strong></sup>`,
+  which shows nothing. The intent file lists them as cleanup, and every
+  converted input leaves the two cells empty
+  ([R-24](../requirements/README.md#r-24) markup cleanup before conversion).
+- **The table has no class.** Every passthrough version adds
+  `class="table"`, the standard style, as every HTML table names its style
+  ([R-09](../requirements/README.md#r-09) table styles by class).
+- **The table's id, `oss-roles-permissions`, is kept** where the tool's
+  syntax can carry one. The published page uses the same id on a second
+  table, the one for suspended orgs, so `#oss-roles-permissions` reaches
+  only the first. That is listed for cleanup in the
+  [broken links list](../concepts/headings/broken-links.md#one-id-on-two-tables-roles-2026-10-12).
+- **The table reaches readers only through a host page.** As for the scale
+  table, each site includes the partial from a small host page,
+  `roles-table-host`, instead of copying all of `roles`. The host page
+  also carries the sentence before the table, with its variable,
+  `vars.app_runtime_abbr` ([R-04](../requirements/README.md#r-04) variables everywhere;
+  [R-05](../requirements/README.md#r-05) partials and reuse;
+  [SOURCES.md](../concepts/tables/source/SOURCES.md)).
+
+At a glance, from the screenshots below. Column widths are the measured
+values in [results.md](../concepts/tables/results.md), percent of the
+table, first body row; results.md has no column-width figures for
+Docusaurus or the published page, so those cells are empty. Table and box
+widths are results.md's, in pixels:
+
+| Output | Column widths | Table in its box | Header cells | Body cells, vertically | Activity cells as row headers | Rule between the columns |
+|---|---|---|---|---|---|---|
+| Published | | 874 in a 720 column, no box | left | centered | no | yes |
+| Docusaurus native and passthrough | | 1053 in 703 | centered | centered | no | yes |
+| Docusaurus extension | | 1060 in 703 | centered | top | yes (bold, centered) | yes |
+| Zensical native, native-plain and passthrough | 8 × 12 (100 pixels each) | 1202 in 688 | left | top | no | no |
+| Zensical extension | 8 × 12 | 1202 in 688 | left | top | yes (bold) | no |
+| Starlight native, native-plain and passthrough | 9/7/7/8/9/8/9/6/9/10/8/9 | 1087 in 632 | left | top | no | no |
+| Starlight extension | 9/7/7/8/9/8/9/6/9/10/8/9 | 1092 in 632 | left | top | yes (bold) | no |
+| Antora native and extension | 11/7/7/8/9/8/9/6/9/10/8/10 | 882 in 792 | left | top | yes (bold) | yes |
+| Antora native-plain | 11/7/7/8/9/8/9/6/9/10/8/10 | 882 in 792 | left | top | no | yes |
+| Antora passthrough | 11/7/7/8/9/8/9/6/9/10/8/10 | 882 in 792 | left | centered | no | yes |
+
+All 42 rows and 12 columns are present in every output. `Yes` appears 160
+times, the 45 note markers and the nine notes are there with their three
+links, no empty marker is left, and the table renders inside its host
+page: the spot checks (listed in the intent file and run on every build)
+pass in every mode of every tool. The [proof of concept's
+summary](README.md#other-comparisons) counts seven pages and 51 checks;
+Docusaurus misses two in every mode, as before this page was added, and
+both are page descriptions on other pages. At 1280 and 390 pixels the table
+scrolls in its own box in every tool and every converted mode, as decided,
+and the page does not scroll sideways
+([Summary](../concepts/tables/results.md#summary)).
+
+**How the screenshots are shown.** The tables are 4,200 to 5,500 pixels
+tall, because the activity column wraps on almost every row. Each tool below
+shows its passthrough output twice: *as seen*, the box a reader sees, with
+the rest of the table hidden past its right edge, and the *full table*, the whole
+table with nothing cut off. The other modes are shown only where they look
+clearly different, and linked otherwise. The
+[two-pane page](pair/index.html#page=roles-table-host) shows any two
+outputs side by side, as seen or full (its "As seen" and "Full table"
+buttons), and the [comparison page](compare/index.html#roles-table-host)
+shows them all.
+
+**No scrollbar shows in the "as seen" images.** The scrollbars are overlay
+scrollbars, which appear only while the reader scrolls. Only Docusaurus
+cuts a column through its text at the box's edge; in the other tools the
+box ends between columns, so nothing in view shows that more follow
+([Summary](../concepts/tables/results.md#summary)); see each tool.
+
+### Published
+
+![Published roles table, the whole table in one image: twelve columns from Activity to Space Supporter, every cell bordered, bold headers on the left, "Admin Read-Only" broken after its hyphen, most activities wrapping, up to eight lines, "Yes" and the superscript note numbers vertically centered](compare/img/published-roles-table-host-t1.jpg)
+
+The page draws no box around the table, so this one image is the whole
+table. It runs past the 720-pixel column into the right margin. Header
+cells are bold and on the left. Cells sit in the vertical middle of their
+row, and every cell has a border. The activity column is narrow, so most
+activities wrap: "Create, delete, and list container-to-container
+networking policies" takes eight lines. "Admin Read-Only" breaks after its
+hyphen.
+
+<details><summary>Source as written (HTML in an ERB partial; excerpt: lines 1–46, 89–102 and 610–612 of 626; note the two empty markers in the "Create orgs" row)</summary>
+
+Lines 1–46: the table's opening, the header row and the first two body
+rows.
+
+```html
+<table id='oss-roles-permissions'>
+<thead>
+  <tr>
+    <th>Activity</th>
+    <th>Admin</th>
+    <th>Admin Read-Only</th>
+    <th>Global Auditor</th>
+    <th>Org Manager</th>
+    <th>Org Auditor</th>
+    <th>Org Billing Manager</th>
+    <th>Org User</th>
+    <th>Space Manager</th>
+    <th>Space Developer</th>
+    <th>Space Auditor</th>
+    <th>Space Supporter</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Scope of operation</td>
+    <td>Org</td>
+    <td>Org</td>
+    <td>Org</td>
+    <td>Org</td>
+    <td>Org</td>
+    <td>Org</td>
+    <td>Org</td>
+    <td>Space</td>
+    <td>Space</td>
+    <td>Space</td>
+    <td>Space</td>
+  </tr>
+  <tr>
+    <td>Assign user roles</td>
+    <td>Yes</td>
+    <td></td>
+    <td></td>
+    <td>Yes</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>Yes</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+```
+
+Lines 89–102: the "Create orgs" row.
+
+```html
+  <tr>
+    <td>Create orgs</td>
+    <td>Yes</td>
+    <td><sup><strong></strong></sup></td>
+    <td><sup><strong></strong></sup></td>
+    <td><sup><strong>1</strong></sup></td>
+    <td><sup><strong>1</strong></sup></td>
+    <td><sup><strong>1</strong></sup></td>
+    <td><sup><strong>1</strong></sup></td>
+    <td><sup><strong>1</strong></sup></td>
+    <td><sup><strong>1</strong></sup></td>
+    <td><sup><strong>1</strong></sup></td>
+    <td><sup><strong>1</strong></sup></td>
+  </tr>
+```
+
+Lines 610–612: the first two notes, after the table.
+
+```html
+<sup><strong>1</strong></sup>Not by default, unless feature flag `user_org_creation` is set to `true`.
+
+<sup><strong>2</strong></sup>Admin, admin read-only, and global auditor roles do not need to be added as members of orgs or spaces to view resources.
+```
+
+The whole file: [source/_oss_roles_table.html.md.erb](../concepts/tables/source/_oss_roles_table.html.md.erb).
+
+</details>
+
+ERB (Embedded Ruby, `<%= … %>` tags in a page; see the
+[glossary](../glossary.md#erb)) is how today's pages insert variables and
+partials. This partial uses neither; the notes are Markdown, with three
+links and two italic titles. The `roles` page includes it with
+`<%= partial 'oss_roles_table' %>`
+([SOURCES.md](../concepts/tables/source/SOURCES.md)).
+
+### Docusaurus 3.10.2
+
+Pages are MDX: Markdown that also accepts JSX, the HTML-like syntax of
+React components (see the [glossary](../glossary.md#mdx)). As for the scale
+table, the partial is an MDX file whose name starts with `_`; the host page
+imports it and uses it as a component. Here the host page also imports the
+variables, for its own sentence before the table.
+
+<details><summary>Host page: the partial imported as a component</summary>
+
+```mdx
+---
+title: Roles table host
+---
+
+import vars from '@site/vars.json';
+import OssRolesTable from './_oss_roles_table.mdx';
+
+Host page for the `_oss_roles_table` partial, standing in for `roles.html.md.erb`, which includes it with an ERB `partial 'oss_roles_table'` call.
+
+The following table describes the default permissions for various {vars.app_runtime_abbr} roles in active orgs.
+
+<OssRolesTable />
+```
+
+The host page is the same in every mode.
+
+</details>
+
+<details><summary>Native input: a pipe table in MDX (excerpt: lines 1–4, 8 and 46–48 of 62)</summary>
+
+Lines 1–4: the header row, the delimiter row and the first two body rows.
+
+```markdown
+| Activity | Admin | Admin Read-Only | Global Auditor | Org Manager | Org Auditor | Org Billing Manager | Org User | Space Manager | Space Developer | Space Auditor | Space Supporter |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Scope of operation | Org | Org | Org | Org | Org | Org | Org | Space | Space | Space | Space |
+| Assign user roles | Yes |  |  | Yes |  |  |  | Yes |  |  |  |
+```
+
+Line 8: the "Create orgs" row.
+
+```markdown
+| Create orgs | Yes |  |  | <sup><strong>1</strong></sup> | <sup><strong>1</strong></sup> | <sup><strong>1</strong></sup> | <sup><strong>1</strong></sup> | <sup><strong>1</strong></sup> | <sup><strong>1</strong></sup> | <sup><strong>1</strong></sup> | <sup><strong>1</strong></sup> |
+```
+
+Lines 46–48: the first two notes.
+
+```markdown
+<sup><strong>1</strong></sup>Not by default, unless feature flag `user_org_creation` is set to `true`.
+
+<sup><strong>2</strong></sup>Admin, admin read-only, and global auditor roles do not need to be added as members of orgs or spaces to view resources.
+```
+
+The whole file: [native/_oss_roles_table.mdx](../concepts/tables/sites/docusaurus/docs/native/_oss_roles_table.mdx).
+The note markers stay inline HTML. A pipe table cannot carry an id, so
+`oss-roles-permissions` is gone.
+
+</details>
+
+<details><summary>Passthrough input: the HTML with the class added and the empty markers removed (excerpt: lines 1–46, 89–102 and 610–612 of 626)</summary>
+
+Lines 1–46: the table's opening, the header row and the first two body
+rows.
+
+```html
+<table id='oss-roles-permissions' class="table">
+<thead>
+  <tr>
+    <th>Activity</th>
+    <th>Admin</th>
+    <th>Admin Read-Only</th>
+    <th>Global Auditor</th>
+    <th>Org Manager</th>
+    <th>Org Auditor</th>
+    <th>Org Billing Manager</th>
+    <th>Org User</th>
+    <th>Space Manager</th>
+    <th>Space Developer</th>
+    <th>Space Auditor</th>
+    <th>Space Supporter</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Scope of operation</td>
+    <td>Org</td>
+    <td>Org</td>
+    <td>Org</td>
+    <td>Org</td>
+    <td>Org</td>
+    <td>Org</td>
+    <td>Org</td>
+    <td>Space</td>
+    <td>Space</td>
+    <td>Space</td>
+    <td>Space</td>
+  </tr>
+  <tr>
+    <td>Assign user roles</td>
+    <td>Yes</td>
+    <td></td>
+    <td></td>
+    <td>Yes</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>Yes</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+```
+
+Lines 89–102: the "Create orgs" row.
+
+```html
+  <tr>
+    <td>Create orgs</td>
+    <td>Yes</td>
+    <td></td>
+    <td></td>
+    <td><sup><strong>1</strong></sup></td>
+    <td><sup><strong>1</strong></sup></td>
+    <td><sup><strong>1</strong></sup></td>
+    <td><sup><strong>1</strong></sup></td>
+    <td><sup><strong>1</strong></sup></td>
+    <td><sup><strong>1</strong></sup></td>
+    <td><sup><strong>1</strong></sup></td>
+    <td><sup><strong>1</strong></sup></td>
+  </tr>
+```
+
+Lines 610–612: the first two notes.
+
+```html
+<sup><strong>1</strong></sup>Not by default, unless feature flag `user_org_creation` is set to `true`.
+
+<sup><strong>2</strong></sup>Admin, admin read-only, and global auditor roles do not need to be added as members of orgs or spaces to view resources.
+```
+
+The whole file: [passthrough/_oss_roles_table.mdx](../concepts/tables/sites/docusaurus/docs/passthrough/_oss_roles_table.mdx).
+Line 1 and lines 92–93 are the only lines that differ from the source.
+
+</details>
+
+Files: [native](../concepts/tables/sites/docusaurus/docs/native/_oss_roles_table.mdx),
+[passthrough](../concepts/tables/sites/docusaurus/docs/passthrough/_oss_roles_table.mdx),
+[passthrough as written](../concepts/tables/sites/docusaurus/docs/passthrough-raw/_oss_roles_table.mdx),
+[extension](../concepts/tables/sites/docusaurus/docs/extension/_oss_roles_table.mdx);
+[host page](../concepts/tables/sites/docusaurus/docs/native/roles-table-host.mdx).
+Docusaurus has no native-plain page: its native page already has no width
+settings.
+
+**Passthrough output, as seen:**
+
+![Docusaurus passthrough as seen: the box shows Activity to Org User, with the Space Manager column cut through its text at the right edge and no scrollbar; centered bold headers, alternate rows shaded, cells vertically centered, every activity wrapping](compare/img/docusaurus-passthrough-roles-table-host-t1.jpg)
+
+**Passthrough output, full table:**
+
+![Docusaurus passthrough, full table: all twelve columns, centered bold headers, alternate rows shaded, cells vertically centered, every activity wrapping onto two to eight lines, bold superscript note numbers](compare/img/docusaurus-passthrough-roles-table-host-t1-full.jpg)
+
+Native looks the same: its screenshots are the passthrough ones, byte for
+byte ([as seen](compare/img/docusaurus-native-roles-table-host-t1.jpg),
+[full table](compare/img/docusaurus-native-roles-table-host-t1-full.jpg)).
+
+Differences seen:
+
+- **The page builds with the HTML as written.** The source compiles in MDX
+  unchanged; the class and the two empty markers are the intent file's
+  cleanup, not something MDX forces
+  ([raw passthrough errors](../concepts/tables/results.md#raw-passthrough-errors)).
+- **The table is laid out at its narrowest.** The theme shows every table
+  as a block that scrolls (`display: block; overflow-x: auto`), so a table
+  wider than the column is drawn at its min-content width: every column as
+  narrow as its longest word. The table is 1053 by 5518 pixels in a
+  703-pixel box; at its natural width it would be 2087 by 2237. The
+  activity column, 106 pixels, wraps on all 42 rows
+  ([Docusaurus finding 10](../concepts/tables/results.md#docusaurus-3102)).
+- **The box cuts the Space Manager column through its text.** The reader
+  sees Activity to Org User and the first letters of Space Manager.
+- **Header cells are centered, alternate body rows are shaded, and body
+  cells are vertically centered**, as for the scale table. No row headers.
+  The note markers are bold.
+- **Native drops the id.** It looks the same as passthrough, but a pipe
+  table cannot carry `oss-roles-permissions`. Its rows run up to 377
+  characters (Docusaurus grid).
+- **The relative links in notes 6 and 8 are rewritten root-absolute and
+  reported as broken**, as in Docusaurus finding 5.
+- The sticky navbar and the off-screen "Skip to main content" link are
+  hidden for the screenshots.
+
+**Extension mode.** A `:::list-table` block, read by the remark plugin
+added to the site:
+[plugins/list-table.js](../concepts/tables/sites/docusaurus/plugins/list-table.js),
+with [hints.css](../concepts/tables/sites/docusaurus/src/css/hints.css).
+For this table the plugin was changed to pass an id, written `{#name}`,
+on to the table
+([conventions](../concepts/tables/sites/docusaurus/CONVENTIONS.md);
+Docusaurus finding 10).
+
+<details><summary>Extension input: a list-table directive (excerpt: lines 1–37, 74–85 and 520–522 of 536)</summary>
+
+Lines 1–37: the directive's opening, the header row and the first two body
+rows.
+
+```markdown
+:::list-table{#oss-roles-permissions header-rows="1" stub-columns="1" roles="prose value value value value value value value value value value value"}
+- - Activity
+  - Admin
+  - Admin Read-Only
+  - Global Auditor
+  - Org Manager
+  - Org Auditor
+  - Org Billing Manager
+  - Org User
+  - Space Manager
+  - Space Developer
+  - Space Auditor
+  - Space Supporter
+- - Scope of operation
+  - Org
+  - Org
+  - Org
+  - Org
+  - Org
+  - Org
+  - Org
+  - Space
+  - Space
+  - Space
+  - Space
+- - Assign user roles
+  - Yes
+  -
+  -
+  - Yes
+  -
+  -
+  -
+  - Yes
+  -
+  -
+  -
+```
+
+Lines 74–85: the "Create orgs" row.
+
+```markdown
+- - Create orgs
+  - Yes
+  -
+  -
+  - <sup><strong>1</strong></sup>
+  - <sup><strong>1</strong></sup>
+  - <sup><strong>1</strong></sup>
+  - <sup><strong>1</strong></sup>
+  - <sup><strong>1</strong></sup>
+  - <sup><strong>1</strong></sup>
+  - <sup><strong>1</strong></sup>
+  - <sup><strong>1</strong></sup>
+```
+
+Lines 520–522: the first two notes, after the block.
+
+```markdown
+<sup><strong>1</strong></sup>Not by default, unless feature flag `user_org_creation` is set to `true`.
+
+<sup><strong>2</strong></sup>Admin, admin read-only, and global auditor roles do not need to be added as members of orgs or spaces to view resources.
+```
+
+The whole file: [extension/_oss_roles_table.mdx](../concepts/tables/sites/docusaurus/docs/extension/_oss_roles_table.mdx).
+`{#oss-roles-permissions}` is the table's id, `header-rows="1"` makes the
+first row the header, `stub-columns="1"` makes column 1 row headers, and
+`roles` names column 1 prose and the other eleven value columns. There are
+no widths. An empty cell is a bare `-`. The notes are the native file's.
+
+</details>
+
+**Extension output, as seen** (the
+[full table](compare/img/docusaurus-extension-roles-table-host-t1-full.jpg)
+is linked):
+
+![Docusaurus extension as seen: activities bold and centered as row headers, cells and headers aligned to the top, alternate rows shaded, the Space Manager column cut through its text at the right edge](compare/img/docusaurus-extension-roles-table-host-t1.jpg)
+
+Differences seen, against passthrough:
+
+- **The activity cells are row headers**, bold and centered in their cells.
+- **Body cells and header cells are aligned to the top.**
+- **The same narrowest layout**, 1060 pixels wide in the 703-pixel box.
+  The prose role gives the activity column no more room (Docusaurus
+  finding 10).
+- The id is kept. Alternate body rows are still shaded.
+
+### Zensical 0.0.69
+
+Pages are Markdown read by Python-Markdown, which passes HTML blocks through
+unchanged (see the [glossary](../glossary.md#python-markdown)). As for the
+scale table, the partial lives in `partials/<mode>/`, outside `docs/`, and
+the host page includes it with the template engine's `include`. The host's
+sentence before the table keeps the variable's ERB form,
+`<%= vars.app_runtime_abbr %>`.
+
+<details><summary>Host page: the partial included by the template engine</summary>
+
+```markdown
+---
+title: Roles table host
+---
+
+Host page for the `_oss_roles_table` partial, standing in for
+`roles.html.md.erb`, which includes it with
+an ERB `partial 'oss_roles_table'` call.
+
+The following table describes the default permissions for various <%= vars.app_runtime_abbr %> roles in active orgs.
+
+<% include "native/_oss_roles_table.md" %>
+```
+
+Each mode's host page includes that mode's partial.
+
+</details>
+
+<details><summary>Native input: a pipe table with <code>^N^</code> markers (excerpt: lines 1–4, 8 and 46–48 of 62)</summary>
+
+Lines 1–4: the header row, the delimiter row and the first two body rows.
+
+```markdown
+| Activity | Admin | Admin Read-Only | Global Auditor | Org Manager | Org Auditor | Org Billing Manager | Org User | Space Manager | Space Developer | Space Auditor | Space Supporter |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Scope of operation | Org | Org | Org | Org | Org | Org | Org | Space | Space | Space | Space |
+| Assign user roles | Yes |  |  | Yes |  |  |  | Yes |  |  |  |
+```
+
+Line 8: the "Create orgs" row.
+
+```markdown
+| Create orgs | Yes |  |  | ^1^ | ^1^ | ^1^ | ^1^ | ^1^ | ^1^ | ^1^ | ^1^ |
+```
+
+Lines 46–48: the first two notes.
+
+```markdown
+^1^Not by default, unless feature flag `user_org_creation` is set to `true`.
+
+^2^Admin, admin read-only, and global auditor roles do not need to be added as members of orgs or spaces to view resources.
+```
+
+The whole file: [native/_oss_roles_table.md](../concepts/tables/sites/zensical/partials/native/_oss_roles_table.md).
+`^1^` is a superscript, written with the `pymdownx.caret` extension. The
+native-plain file is the same, byte for byte: the source sets no widths,
+so there is nothing to leave out.
+
+</details>
+
+<details><summary>Passthrough input: the HTML with the class added and the empty markers removed (excerpt: lines 1–46, 89–102 and 610–612 of 626)</summary>
+
+Lines 1–46: the table's opening, the header row and the first two body
+rows.
+
+```html
+<table id='oss-roles-permissions' class="table">
+<thead>
+  <tr>
+    <th>Activity</th>
+    <th>Admin</th>
+    <th>Admin Read-Only</th>
+    <th>Global Auditor</th>
+    <th>Org Manager</th>
+    <th>Org Auditor</th>
+    <th>Org Billing Manager</th>
+    <th>Org User</th>
+    <th>Space Manager</th>
+    <th>Space Developer</th>
+    <th>Space Auditor</th>
+    <th>Space Supporter</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Scope of operation</td>
+    <td>Org</td>
+    <td>Org</td>
+    <td>Org</td>
+    <td>Org</td>
+    <td>Org</td>
+    <td>Org</td>
+    <td>Org</td>
+    <td>Space</td>
+    <td>Space</td>
+    <td>Space</td>
+    <td>Space</td>
+  </tr>
+  <tr>
+    <td>Assign user roles</td>
+    <td>Yes</td>
+    <td></td>
+    <td></td>
+    <td>Yes</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>Yes</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+```
+
+Lines 89–102: the "Create orgs" row.
+
+```html
+  <tr>
+    <td>Create orgs</td>
+    <td>Yes</td>
+    <td></td>
+    <td></td>
+    <td><sup><strong>1</strong></sup></td>
+    <td><sup><strong>1</strong></sup></td>
+    <td><sup><strong>1</strong></sup></td>
+    <td><sup><strong>1</strong></sup></td>
+    <td><sup><strong>1</strong></sup></td>
+    <td><sup><strong>1</strong></sup></td>
+    <td><sup><strong>1</strong></sup></td>
+    <td><sup><strong>1</strong></sup></td>
+  </tr>
+```
+
+Lines 610–612: the first two notes.
+
+```html
+<sup><strong>1</strong></sup>Not by default, unless feature flag `user_org_creation` is set to `true`.
+
+<sup><strong>2</strong></sup>Admin, admin read-only, and global auditor roles do not need to be added as members of orgs or spaces to view resources.
+```
+
+The whole file: [passthrough/_oss_roles_table.md](../concepts/tables/sites/zensical/partials/passthrough/_oss_roles_table.md).
+Line 1 and lines 92–93 are the only lines that differ from the source.
+
+</details>
+
+Files: [native](../concepts/tables/sites/zensical/partials/native/_oss_roles_table.md),
+[native-plain](../concepts/tables/sites/zensical/partials/native-plain/_oss_roles_table.md),
+[passthrough](../concepts/tables/sites/zensical/partials/passthrough/_oss_roles_table.md),
+[passthrough as written](../concepts/tables/sites/zensical/partials/passthrough-raw/_oss_roles_table.md),
+[extension](../concepts/tables/sites/zensical/partials/extension/_oss_roles_table.md);
+[host page](../concepts/tables/sites/zensical/docs/native/roles-table-host.md).
+
+**Passthrough output, as seen:**
+
+![Zensical passthrough as seen: seven columns, Activity to Org Billing Manager, inside a thin frame that closes at the right edge, so nothing looks cut off and no scrollbar shows; bold headers on the left, cells aligned to the top, horizontal rules only](compare/img/zensical-passthrough-roles-table-host-t1.jpg)
+
+**Passthrough output, full table:**
+
+![Zensical passthrough, full table: twelve columns of equal width, bold headers on the left, cells aligned to the top, horizontal rules only, activities wrapping onto up to eight lines, and a vertical line after the Org Billing Manager column where the frame of the box ends](compare/img/zensical-passthrough-roles-table-host-t1-full.jpg)
+
+Native and native-plain look like passthrough. Their screenshots are the
+same as each other, byte for byte, but not as passthrough's
+([as seen](compare/img/zensical-native-roles-table-host-t1.jpg),
+[full table](compare/img/zensical-native-roles-table-host-t1-full.jpg)): in
+the theme's wrapper the table sits a little further right, its note
+markers are not bold, and its frame has no right edge.
+
+Differences seen:
+
+- **The page builds with the HTML as written.** The class and the empty
+  markers are the intent file's cleanup
+  ([raw passthrough](../concepts/tables/results.md#raw-passthrough)).
+- **Twelve equal columns.** The theme gives header cells `min-width: 5rem`.
+  Twelve of them do not fit the 688-pixel column, so every column is 100
+  pixels and the table is 1202 pixels wide. The activity column wraps onto
+  up to eight lines
+  ([Zensical finding 9](../concepts/tables/results.md#zensical-0069)).
+- **Nothing looks cut off.** The box ends just after the Org Billing
+  Manager column. In passthrough the frame closes there, so the reader
+  sees what looks like a whole table of seven columns. In native the row
+  rules run to the box's edge, with no right border. The table scrolls in
+  `table.table` itself in passthrough and in the theme's wrapper in the
+  other modes (Zensical grid).
+- **Header cells on the left, body cells aligned to the top, no rule
+  between the columns**, as for the scale table. No row headers.
+- **The markers are not bold outside passthrough.** They are `^N^`.
+  `^**N**^` next to text stays literal, because the delimiter follows
+  CommonMark's flanking rules (Zensical finding 9).
+- **Native drops the id**: a pipe table cannot carry one. Its rows are
+  about 140 characters, mostly empty cells (Zensical grid).
+- The sticky header is hidden for the screenshots.
+
+**Extension mode.** A `/// list-table` block, read by a Python-Markdown
+extension added to the site,
+[list_table.py](../concepts/tables/sites/zensical/list_table.py), with
+[hints.css](../concepts/tables/sites/zensical/docs/stylesheets/hints.css).
+
+<details><summary>Extension input: a list-table block (excerpt: lines 1–44, 85–96 and 567–569 of 583)</summary>
+
+Lines 1–44: the block's opening, the header row and the first two body
+rows.
+
+```markdown
+/// list-table
+    header-rows: 1
+    stub-columns: 1
+    roles: prose value value value value value value value value value value value
+    attrs: {id: oss-roles-permissions}
+
+-   - Activity
+    - Admin
+    - Admin Read-Only
+    - Global Auditor
+    - Org Manager
+    - Org Auditor
+    - Org Billing Manager
+    - Org User
+    - Space Manager
+    - Space Developer
+    - Space Auditor
+    - Space Supporter
+
+-   - Scope of operation
+    - Org
+    - Org
+    - Org
+    - Org
+    - Org
+    - Org
+    - Org
+    - Space
+    - Space
+    - Space
+    - Space
+
+-   - Assign user roles
+    - Yes
+    - <!-- -->
+    - <!-- -->
+    - Yes
+    - <!-- -->
+    - <!-- -->
+    - <!-- -->
+    - Yes
+    - <!-- -->
+    - <!-- -->
+    - <!-- -->
+```
+
+Lines 85–96: the "Create orgs" row.
+
+```markdown
+-   - Create orgs
+    - Yes
+    - <!-- -->
+    - <!-- -->
+    - ^1^
+    - ^1^
+    - ^1^
+    - ^1^
+    - ^1^
+    - ^1^
+    - ^1^
+    - ^1^
+```
+
+Lines 567–569: the first two notes, after the block.
+
+```markdown
+^1^Not by default, unless feature flag `user_org_creation` is set to `true`.
+
+^2^Admin, admin read-only, and global auditor roles do not need to be added as members of orgs or spaces to view resources.
+```
+
+The whole file: [extension/_oss_roles_table.md](../concepts/tables/sites/zensical/partials/extension/_oss_roles_table.md).
+The options mean the same as in the Docusaurus directive. `attrs` sets the
+id, but on the `div` around the table, not on the table (Zensical finding
+9). An empty cell is written `- <!-- -->`. The notes are the native file's.
+
+</details>
+
+**Extension output, as seen** (the
+[full table](compare/img/zensical-extension-roles-table-host-t1-full.jpg)
+is linked):
+
+![Zensical extension as seen: activities bold as row headers, the row rules starting after the activity column, cells aligned to the top, seven columns in the box with nothing cut off](compare/img/zensical-extension-roles-table-host-t1.jpg)
+
+Differences seen, against native:
+
+- **The activity cells are bold**: they are row headers.
+- **The row rules start after the activity column**; in the other modes
+  they run under it too.
+- The same twelve equal columns. The column roles become classes
+  (Zensical grid).
+
+### Starlight 0.42.6
+
+Starlight is a documentation theme for the Astro site builder
+([depends on `astro`](https://github.com/withastro/starlight/blob/67de74077524001c79ec233e1b113e86b2b800b0/packages/starlight/package.json#L51)).
+These pages are Markdoc, Markdown with `{% %}` tags, with HTML allowed (see
+the [glossary](../glossary.md#markdoc)). As for the scale table, the host
+includes the partial with Markdoc's `partial` tag. Markdoc has no
+superscript syntax; inline `<sup><strong>` works in table-tag cells, pipe
+cells and paragraphs
+([Starlight finding 10](../concepts/tables/results.md#starlight-0426)).
+
+<details><summary>Host page: the partial included by Markdoc's partial tag</summary>
+
+```markdown
+---
+title: Roles table host
+---
+
+Host page for the `_oss_roles_table` partial, standing in for
+`roles.html.md.erb`, which includes it with
+an ERB `partial 'oss_roles_table'` call.
+
+The following table describes the default permissions for various {% $vars.app_runtime_abbr %} roles in active orgs.
+
+{% partial file="./_oss_roles_table.mdoc" /%}
+```
+
+The host page is the same in every mode.
+
+</details>
+
+<details><summary>Native input: Markdoc's table tag with the id (excerpt: lines 1–39, 80–91 and 562–564 of 578)</summary>
+
+Lines 1–39: the tag's opening, the header row and the first two body rows.
+
+```markdown
+{% table #oss-roles-permissions %}
+* Activity
+* Admin
+* Admin Read-Only
+* Global Auditor
+* Org Manager
+* Org Auditor
+* Org Billing Manager
+* Org User
+* Space Manager
+* Space Developer
+* Space Auditor
+* Space Supporter
+---
+* Scope of operation
+* Org
+* Org
+* Org
+* Org
+* Org
+* Org
+* Org
+* Space
+* Space
+* Space
+* Space
+---
+* Assign user roles
+* Yes
+* <!-- -->
+* <!-- -->
+* Yes
+* <!-- -->
+* <!-- -->
+* <!-- -->
+* Yes
+* <!-- -->
+* <!-- -->
+* <!-- -->
+```
+
+Lines 80–91: the "Create orgs" row.
+
+```markdown
+* Create orgs
+* Yes
+* <!-- -->
+* <!-- -->
+* <sup><strong>1</strong></sup>
+* <sup><strong>1</strong></sup>
+* <sup><strong>1</strong></sup>
+* <sup><strong>1</strong></sup>
+* <sup><strong>1</strong></sup>
+* <sup><strong>1</strong></sup>
+* <sup><strong>1</strong></sup>
+* <sup><strong>1</strong></sup>
+```
+
+Lines 562–564: the first two notes, after the table.
+
+```markdown
+<sup><strong>1</strong></sup>Not by default, unless feature flag `user_org_creation` is set to `true`.
+
+<sup><strong>2</strong></sup>Admin, admin read-only, and global auditor roles do not need to be added as members of orgs or spaces to view resources.
+```
+
+The whole file: [native/_oss_roles_table.mdoc](../concepts/tables/sites/starlight/src/content/docs/native/_oss_roles_table.mdoc).
+`#oss-roles-permissions` is Markdoc's id shorthand. Empty cells are
+written `* <!-- -->`. Native-plain is a pipe table, one line per row, and
+drops the id.
+
+</details>
+
+<details><summary>Passthrough input: the HTML with the class added and the empty markers removed (excerpt: lines 1–46, 89–102 and 610–612 of 626)</summary>
+
+Lines 1–46: the table's opening, the header row and the first two body
+rows.
+
+```html
+<table id='oss-roles-permissions' class="table">
+<thead>
+  <tr>
+    <th>Activity</th>
+    <th>Admin</th>
+    <th>Admin Read-Only</th>
+    <th>Global Auditor</th>
+    <th>Org Manager</th>
+    <th>Org Auditor</th>
+    <th>Org Billing Manager</th>
+    <th>Org User</th>
+    <th>Space Manager</th>
+    <th>Space Developer</th>
+    <th>Space Auditor</th>
+    <th>Space Supporter</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Scope of operation</td>
+    <td>Org</td>
+    <td>Org</td>
+    <td>Org</td>
+    <td>Org</td>
+    <td>Org</td>
+    <td>Org</td>
+    <td>Org</td>
+    <td>Space</td>
+    <td>Space</td>
+    <td>Space</td>
+    <td>Space</td>
+  </tr>
+  <tr>
+    <td>Assign user roles</td>
+    <td>Yes</td>
+    <td></td>
+    <td></td>
+    <td>Yes</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>Yes</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+```
+
+Lines 89–102: the "Create orgs" row.
+
+```html
+  <tr>
+    <td>Create orgs</td>
+    <td>Yes</td>
+    <td></td>
+    <td></td>
+    <td><sup><strong>1</strong></sup></td>
+    <td><sup><strong>1</strong></sup></td>
+    <td><sup><strong>1</strong></sup></td>
+    <td><sup><strong>1</strong></sup></td>
+    <td><sup><strong>1</strong></sup></td>
+    <td><sup><strong>1</strong></sup></td>
+    <td><sup><strong>1</strong></sup></td>
+    <td><sup><strong>1</strong></sup></td>
+  </tr>
+```
+
+Lines 610–612: the first two notes.
+
+```html
+<sup><strong>1</strong></sup>Not by default, unless feature flag `user_org_creation` is set to `true`.
+
+<sup><strong>2</strong></sup>Admin, admin read-only, and global auditor roles do not need to be added as members of orgs or spaces to view resources.
+```
+
+The whole file: [passthrough/_oss_roles_table.mdoc](../concepts/tables/sites/starlight/src/content/docs/passthrough/_oss_roles_table.mdoc).
+Line 1 and lines 92–93 are the only lines that differ from the source.
+
+</details>
+
+Files: [native](../concepts/tables/sites/starlight/src/content/docs/native/_oss_roles_table.mdoc),
+[native-plain](../concepts/tables/sites/starlight/src/content/docs/native-plain/_oss_roles_table.mdoc),
+[passthrough](../concepts/tables/sites/starlight/src/content/docs/passthrough/_oss_roles_table.mdoc),
+[passthrough as written](../concepts/tables/sites/starlight/src/content/docs/passthrough-raw/_oss_roles_table.mdoc),
+[extension](../concepts/tables/sites/starlight/src/content/docs/extension/_oss_roles_table.mdoc);
+[host page](../concepts/tables/sites/starlight/src/content/docs/native/roles-table-host.mdoc).
+
+**Passthrough output, as seen:**
+
+![Starlight passthrough as seen: seven columns, Activity to Org Billing Manager, with the row rules ending at the box's edge and nothing cut through; bold headers on the left, cells aligned to the top, horizontal rules only, no scrollbar](compare/img/starlight-passthrough-roles-table-host-t1.jpg)
+
+**Passthrough output, full table:**
+
+![Starlight passthrough, full table: all twelve columns, bold headers on the left, cells aligned to the top, horizontal rules only, activities wrapping onto up to eight lines, bold superscript note numbers](compare/img/starlight-passthrough-roles-table-host-t1-full.jpg)
+
+Native and native-plain look the same: all three modes' screenshots are
+the same, byte for byte
+([native as seen](compare/img/starlight-native-roles-table-host-t1.jpg),
+[native full table](compare/img/starlight-native-roles-table-host-t1-full.jpg);
+[native-plain as seen](compare/img/starlight-native-plain-roles-table-host-t1.jpg),
+[native-plain full table](compare/img/starlight-native-plain-roles-table-host-t1-full.jpg)).
+
+Differences seen:
+
+- **The page builds with the HTML as written.** Markdoc forces nothing
+  here; the class and the empty markers are the intent file's cleanup
+  (Starlight grid).
+- **The table is laid out at its narrowest.** The theme shows a table as a
+  block that scrolls, so it is drawn at its min-content width: 1087 by 5461
+  pixels in a 632-pixel column. At its natural width it would be 2113 by
+  1961 (Starlight finding 10).
+- **Nothing is cut through.** The box ends just after the Org Billing
+  Manager column, before Org User's text, so no cut-off text shows.
+- **Header cells on the left, body cells aligned to the top, only
+  horizontal rules**, as for the scale table. No row headers. The note
+  markers are bold.
+- The id is kept in passthrough and native; native-plain, a pipe table,
+  drops it.
+- The sticky "On this page" sidebar is hidden for the full-table
+  screenshot, which runs under it.
+
+**Extension mode.** Markdoc's own `{% table %}` tag with extra attributes,
+declared for the site in
+[list-table.mjs](../concepts/tables/sites/starlight/list-table.mjs), with
+[hints.css](../concepts/tables/sites/starlight/src/styles/hints.css). For
+this table `list-table.mjs` was changed to keep the id; it grew from 83 to
+85 lines (Starlight finding 10;
+[Summary](../concepts/tables/results.md#summary)).
+
+<details><summary>Extension input: the table tag with hint attributes (line 1 of 578; the rest is the native file)</summary>
+
+```markdown
+{% table #oss-roles-permissions header-rows=1 stub-columns=1 roles="prose value value value value value value value value value value value" %}
+```
+
+Line 1 is the only line that differs from the native file. The attributes
+mean the same as in the Docusaurus directive.
+The whole file: [extension/_oss_roles_table.mdoc](../concepts/tables/sites/starlight/src/content/docs/extension/_oss_roles_table.mdoc).
+
+</details>
+
+**Extension output, as seen** (the
+[full table](compare/img/starlight-extension-roles-table-host-t1-full.jpg)
+is linked):
+
+![Starlight extension as seen: activities bold as row headers, cells aligned to the top, horizontal rules only, seven columns in the box](compare/img/starlight-extension-roles-table-host-t1.jpg)
+
+Differences seen, against native:
+
+- **The activity cells are bold**: they are row headers.
+- The same narrowest layout, 1092 pixels wide (Starlight grid).
+
+### Antora 3.2.1
+
+Antora builds sites from AsciiDoc, a plain-text markup with its own table
+syntax (see the [glossary](../glossary.md#asciidoc)). The whole page is
+rewritten from Markdown to AsciiDoc in every mode, including passthrough. In
+passthrough the HTML sits inside a passthrough block (`++++`), which
+AsciiDoc hands to the browser without reading it. As for the scale table,
+the partial lives in `modules/ROOT/partials/` and the host page includes
+it with `include::`. The site's script puts each table in a box that
+scrolls, 792 pixels wide on this host page
+([Antora finding 11](../concepts/tables/results.md#antora-321)).
+
+<details><summary>Host page: the partial included with include::</summary>
+
+```asciidoc
+= Roles table host
+
+Host page for the `+_oss_roles_table+` partial, standing in for
+`roles.html.md.erb`, which includes it with
+an ERB `partial 'oss_roles_table'` call.
+
+The following table describes the default permissions for various {app_runtime_abbr} roles in active orgs.
+
+include::partial$_oss_roles_table.adoc[]
+```
+
+The host page is the same in every mode.
+
+</details>
+
+<details><summary>Native input: an AsciiDoc table with column specs (excerpt: lines 1–29, 70–81 and 552–554 of 568)</summary>
+
+Lines 1–29: the table's opening, the header row and the first two body
+rows.
+
+```asciidoc
+[#oss-roles-permissions%header,cols=".<~h,11*.<~"]
+|===
+|Activity |Admin |Admin Read-Only |Global Auditor |Org Manager |Org Auditor |Org Billing Manager |Org User |Space Manager |Space Developer |Space Auditor |Space Supporter
+
+|Scope of operation
+|Org
+|Org
+|Org
+|Org
+|Org
+|Org
+|Org
+|Space
+|Space
+|Space
+|Space
+
+|Assign user roles
+|Yes
+|
+|
+|Yes
+|
+|
+|
+|Yes
+|
+|
+|
+```
+
+Lines 70–81: the "Create orgs" row.
+
+```asciidoc
+|Create orgs
+|Yes
+|
+|
+|^1^
+|^1^
+|^1^
+|^1^
+|^1^
+|^1^
+|^1^
+|^1^
+```
+
+Lines 552–554: the first two notes, after the table.
+
+```asciidoc
+^1^Not by default, unless feature flag `+user_org_creation+` is set to `true`.
+
+^2^Admin, admin read-only, and global auditor roles do not need to be added as members of orgs or spaces to view resources.
+```
+
+The whole file: [native/…/_oss_roles_table.adoc](../concepts/tables/sites/antora/native/modules/ROOT/partials/_oss_roles_table.adoc).
+`#oss-roles-permissions` sets the id and `%header` makes the first row the
+header row. In `cols`, `.<~h` aligns column 1 to the top (`.<`), sizes it
+by its content (`~`) and styles its cells as headers (`h`), and `11*.<~`
+gives the other eleven columns the same spec without `h` (Asciidoctor:
+[`cols` parsing](https://github.com/asciidoctor/asciidoctor/blob/30fb8cd5f7145c57274b04524ceaa99812f830e0/lib/asciidoctor/parser.rb#L2469-L2513)).
+The markers are `^N^`. Native-plain is the same file with line 1 cut to
+`[#oss-roles-permissions%header]`.
+
+</details>
+
+<details><summary>Passthrough input: the HTML inside a passthrough block (excerpt: lines 1–47, 90–103 and 612–614 of 628)</summary>
+
+Lines 1–47: the block's opening, the table's opening, the header row and
+the first two body rows.
+
+```asciidoc
+++++
+<table id='oss-roles-permissions' class="table">
+<thead>
+  <tr>
+    <th>Activity</th>
+    <th>Admin</th>
+    <th>Admin Read-Only</th>
+    <th>Global Auditor</th>
+    <th>Org Manager</th>
+    <th>Org Auditor</th>
+    <th>Org Billing Manager</th>
+    <th>Org User</th>
+    <th>Space Manager</th>
+    <th>Space Developer</th>
+    <th>Space Auditor</th>
+    <th>Space Supporter</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Scope of operation</td>
+    <td>Org</td>
+    <td>Org</td>
+    <td>Org</td>
+    <td>Org</td>
+    <td>Org</td>
+    <td>Org</td>
+    <td>Org</td>
+    <td>Space</td>
+    <td>Space</td>
+    <td>Space</td>
+    <td>Space</td>
+  </tr>
+  <tr>
+    <td>Assign user roles</td>
+    <td>Yes</td>
+    <td></td>
+    <td></td>
+    <td>Yes</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>Yes</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+```
+
+Lines 90–103: the "Create orgs" row.
+
+```asciidoc
+  <tr>
+    <td>Create orgs</td>
+    <td>Yes</td>
+    <td></td>
+    <td></td>
+    <td><sup><strong>1</strong></sup></td>
+    <td><sup><strong>1</strong></sup></td>
+    <td><sup><strong>1</strong></sup></td>
+    <td><sup><strong>1</strong></sup></td>
+    <td><sup><strong>1</strong></sup></td>
+    <td><sup><strong>1</strong></sup></td>
+    <td><sup><strong>1</strong></sup></td>
+    <td><sup><strong>1</strong></sup></td>
+  </tr>
+```
+
+Lines 612–614: the first two notes, after the block, in AsciiDoc.
+
+```asciidoc
+^*1*^Not by default, unless feature flag `+user_org_creation+` is set to `true`.
+
+^*2*^Admin, admin read-only, and global auditor roles do not need to be added as members of orgs or spaces to view resources.
+```
+
+The whole file: [passthrough/…/_oss_roles_table.adoc](../concepts/tables/sites/antora/passthrough/modules/ROOT/partials/_oss_roles_table.adoc).
+The partial has no variable, so the block needs no `[subs=attributes+]`,
+unlike the scale table's. The notes are rewritten as AsciiDoc, with bold
+markers, `^*N*^`, and AsciiDoc links.
+
+</details>
+
+Files: [native](../concepts/tables/sites/antora/native/modules/ROOT/partials/_oss_roles_table.adoc),
+[native-plain](../concepts/tables/sites/antora/native-plain/modules/ROOT/partials/_oss_roles_table.adoc),
+[passthrough](../concepts/tables/sites/antora/passthrough/modules/ROOT/partials/_oss_roles_table.adoc),
+[passthrough as written](../concepts/tables/sites/antora/passthrough-raw/modules/ROOT/partials/_oss_roles_table.adoc),
+[extension](../concepts/tables/sites/antora/extension/modules/ROOT/partials/_oss_roles_table.adoc);
+[host page](../concepts/tables/sites/antora/native/modules/ROOT/pages/roles-table-host.adoc).
+
+**Passthrough output, as seen:**
+
+![Antora passthrough as seen: eleven columns, Activity to Space Auditor, every cell bordered except the right edge of Space Auditor, Space Supporter out of sight, no scrollbar; bold headers on the left, cells vertically centered](compare/img/antora-passthrough-roles-table-host-t1.jpg)
+
+**Passthrough output, full table:**
+
+![Antora passthrough, full table: all twelve columns, every cell bordered, bold headers on the left, cells vertically centered, activities in regular weight wrapping onto two to eight lines](compare/img/antora-passthrough-roles-table-host-t1-full.jpg)
+
+**Native output, as seen** (the same as extension, byte for byte; the
+[full table](compare/img/antora-native-roles-table-host-t1-full.jpg) is
+linked):
+
+![Antora native as seen: activities bold as row headers, cells aligned to the top, every cell bordered, eleven columns in the box](compare/img/antora-native-roles-table-host-t1.jpg)
+
+Native-plain is linked
+([as seen](compare/img/antora-native-plain-roles-table-host-t1.jpg),
+[full table](compare/img/antora-native-plain-roles-table-host-t1-full.jpg)):
+it has the native layout without row headers.
+
+Differences seen:
+
+- **The table is drawn at its narrowest.** At auto width the columns shrink
+  to their longest words, 882 pixels in all, so the 792-pixel box scrolls.
+  The activity column is about 95 pixels and wraps on every row; the table
+  is 4851 pixels tall (Antora finding 11).
+- **Nothing is cut through.** The box ends at Space Auditor's right
+  border, which it hides; Space Supporter is out of sight.
+- **Native makes the activity cells row headers**, drawn in bold, from the
+  `h` in `cols`. Passthrough and native-plain keep them ordinary cells.
+- **Passthrough cells are vertically centered**, as on the published page;
+  the AsciiDoc modes align them to the top.
+- **Native-plain's equal widths give way.** It writes 8.33% per column,
+  but the widths give way to the table's narrowest width, so its columns
+  match native's, unlike on the other pages (Antora finding 6).
+- **The markers are not bold in the AsciiDoc modes** (`^N^`). Passthrough
+  keeps `<sup><strong>` in the table.
+- **No report for the notes' links.** Antora reports nothing for links to
+  pages that are not in the site (Antora finding 8).
+- **The source around the table changes.** The host page and the notes are
+  AsciiDoc in every mode
+  ([Antora finding 1](../concepts/tables/results.md#antora-321)).
+
+**Extension mode.** The native AsciiDoc table with *roles* (AsciiDoc's
+names for classes, written `[.name]`) added before it. No code: the roles
+get their meaning from the site's stylesheet,
+[hints.css](../concepts/tables/sites/antora/supplemental-ui/css/hints.css).
+
+<details><summary>Extension input: the AsciiDoc table with roles (line 1 of 568; the rest is the native file)</summary>
+
+```asciidoc
+[#oss-roles-permissions.hinted.col1-prose.col2-value.col3-value.col4-value.col5-value.col6-value.col7-value.col8-value.col9-value.col10-value.col11-value.col12-value%header,cols=".<~h,11*.<~"]
+```
+
+Line 1 is the only line that differs from the native file. `.hinted`
+marks the table as carrying hints, and `.col1-prose` to `.col12-value` name
+the column roles.
+The whole file: [extension/…/_oss_roles_table.adoc](../concepts/tables/sites/antora/extension/modules/ROOT/partials/_oss_roles_table.adoc).
+
+</details>
+
+Differences seen:
+
+- **None against native.** The screenshots are the same, byte for byte.
+  results.md: "the column roles are classes with no CSS, so they change
+  nothing" (Antora grid).
+
+### Across the tools
+
+- **Every converted table scrolls in its own box**
+  ([R-02](../requirements/README.md#r-02) rich tables), in every mode of
+  every tool, at 1280 and 390 pixels. The published page has no box; its
+  table spills 154 pixels past the column
+  ([Summary](../concepts/tables/results.md#summary)).
+- **The box hides the table's width.** No scrollbar shows until the reader
+  scrolls, and only Docusaurus cuts a column through its text. In
+  Zensical and Starlight the box ends just after Org Billing Manager, and
+  in Antora just after Space Auditor, so there the table can look
+  complete.
+- **The table is laid out at its narrowest.** Docusaurus, Starlight and
+  Antora draw it at its min-content width; Zensical gives every column 100
+  pixels. The activity column wraps on almost every row, as it does on the
+  published page. The full-table screenshots are 4197 pixels tall for the
+  published page, 4859 for Antora, 4838 for Zensical (4819 in extension),
+  5468 for Starlight (5450 in extension) and 5525 for Docusaurus. At its
+  natural width the table would be 2087 by 2237 pixels in Docusaurus and
+  2113 by 1961 in Starlight (findings 10). No extension mode changes
+  the layout (the grids); in Docusaurus the prose role gives the activity
+  column no more room.
+- **The id survives where the syntax has one.** Passthrough keeps it in
+  every tool; Starlight native (`{% table #… %}`) and Antora's AsciiDoc
+  (`[#…]`) carry it too. Pipe tables drop it: Docusaurus native, Zensical
+  native and native-plain, Starlight native-plain. The Docusaurus and
+  Starlight extensions needed a small code change to keep it; Zensical's
+  extension puts it on the `div` around the table. The published page has
+  the same id twice, listed for cleanup
+  ([R-24](../requirements/README.md#r-24) markup cleanup before conversion;
+  [broken links list](../concepts/headings/broken-links.md#one-id-on-two-tables-roles-2026-10-12)).
+- **Note markers.** Docusaurus and Starlight keep `<sup><strong>` as
+  inline HTML in every mode, so the markers stay bold. Zensical and
+  Antora write them in their own syntax, `^N^`, outside passthrough, and
+  there they are not bold. The two empty markers are removed in every
+  mode, as the intent file asks.
+- **Row headers.** Only Antora native shows them without an extension.
+  Extension mode adds them in every tool, in bold, and also aligns cells
+  to the top in Docusaurus.
+- **Links in the notes.** Docusaurus rewrites the two relative links and
+  reports them as broken; Antora reports nothing
+  ([R-08](../requirements/README.md#r-08) cross-repository links).
+- Source readability ([R-11](../requirements/README.md#r-11) readable source):
+  results.md notes rows up to 377 characters in the Docusaurus pipe table
+  and about 140 characters, mostly empty cells, in Zensical's. The
+  list-table forms take 12 lines per row in Docusaurus and 12 `*` lines per
+  row in Starlight; Antora's AsciiDoc table is one cell per line.
+  Passthrough is HTML in every tool, 608 lines of it in Antora's
+  passthrough block.

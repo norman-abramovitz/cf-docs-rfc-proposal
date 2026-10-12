@@ -18,7 +18,7 @@ serve: build
 check-raw: node_modules
 	node mdx-check.mjs docs/passthrough-raw/*.mdx
 
-PAGES = scale-table-host credential-types metadata troubleshooting_slow_requests uaa-concepts uaa-performance
+PAGES = scale-table-host credential-types metadata troubleshooting_slow_requests uaa-concepts uaa-performance roles-table-host
 
 # Spot checks from the intent files, per mode; prints only failures
 check: build
@@ -29,9 +29,11 @@ check: build
 	  ../../checks/spot-checks.sh .check/$$m | grep -v '^ok' || true; \
 	done
 
-# Wide tables scroll in their own box (run while make serve is running)
+# Wide tables scroll in their own box (run while make serve is running;
+# PORT=N when the site is served on another port)
+PORT ?= 3000
 check-wide: ../../checks/node_modules
-	node ../../checks/wide-tables.mjs 'http://localhost:3000/%m/%p' passthrough extension native
+	node ../../checks/wide-tables.mjs 'http://localhost:$(PORT)/%m/%p' passthrough extension native
 
 ../../checks/node_modules: ../../checks/package.json
 	npm --prefix ../../checks install --no-audit --no-fund

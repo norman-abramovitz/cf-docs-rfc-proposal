@@ -38,7 +38,9 @@ export const table = {
     const a = node.attributes;
     const [thead, tbody] = node.transformChildren(config);
     const cls = className(a.class);
-    const style = cls ? {class: cls} : {};
+    // The id shorthand ({% table #name %}) names the table, as an HTML table's id does.
+    const id = a.id ? {id: a.id} : {};
+    const style = cls ? {...id, class: cls} : id;
     if (!hints.some((h) => h in a)) return new Tag('table', style, [thead, tbody]);
 
     const widths = words(a.widths);
@@ -78,6 +80,6 @@ export const table = {
       const cols = widths.map((w) => new Tag('col', w === 'auto' ? {} : {style: `width:${w}%`}));
       children.unshift(new Tag('colgroup', {}, cols));
     }
-    return new Tag('table', {class: ['hinted-table', cls].filter(Boolean).join(' ')}, children);
+    return new Tag('table', {...id, class: ['hinted-table', cls].filter(Boolean).join(' ')}, children);
   },
 };

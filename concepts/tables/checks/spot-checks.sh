@@ -77,4 +77,24 @@ echo "$media" | sed 's/^ok /ok    /; s/^FAIL /FAIL  /'
 echo "$media" | grep -q '^FAIL' && fail=1
 chk uaa-performance "id=[\"']client-credentials[\"']" 'client-credentials anchor'
 chk uaa-performance '<h3[^>]*>.*Client credentials grant type' 'heading h3'
+# _oss_roles_table (host page), added 2026-10-12
+chk roles-table-host 'default permissions for various Cloud Foundry roles in active orgs' 'partial inside host, app_runtime_abbr var'
+cnt roles-table-host '>Yes<' 160 'Yes cells'
+cnt roles-table-host '<sup>\(<strong>\)\?[0-9]' 45 'note markers, table and notes'
+nchk roles-table-host '<sup>\(<strong>\)\?\(</strong>\)\?</sup>' 'no empty note markers'
+chk roles-table-host 'Not by default, unless feature flag' 'notes after the table'
+chk roles-table-host 'app-ssh-overview[^"]*#ssh-access-control-hierarchy' 'note link to app-ssh-overview'
+chk roles-table-host 'cf-networking[^"]*#-grant-permissions' 'note link to cf-networking'
+chk roles-table-host 'v3-apidocs.cloudfoundry.org' 'note link to the V3 API docs'
+roles=$(python3 -I - "$B/roles-table-host.html" <<'PY3'
+import sys, re
+s = open(sys.argv[1]).read()
+t = next((m.group(0) for m in re.finditer(r'<table\b.*?</table>', s, re.S) if 'Assign user roles' in m.group(0)), '')
+cells = [len(re.findall(r'<t[dh]\b', r)) for r in re.findall(r'<tr\b.*?</tr>', t, re.S)]
+ok = len(cells) == 43 and set(cells) == {12}
+print('ok' if ok else 'FAIL', 'roles-table-host: header row and 42 body rows of 12 cells', len(cells), sorted(set(cells)))
+PY3
+)
+echo "$roles" | sed 's/^ok /ok    /; s/^FAIL /FAIL  /'
+echo "$roles" | grep -q '^FAIL' && fail=1
 exit $fail

@@ -78,6 +78,8 @@ pre { margin: 0; background: var(--code); border: 1px solid var(--line); border-
     <div class="ctl"><label class="ctl-label" for="table">Table</label><select id="table"></select></div>
     <div class="ctl"><span class="ctl-label" id="size-l">Size</span>
       <div class="seg" role="group" aria-labelledby="size-l" id="sizes"><button type="button" data-size="fit">Fit</button><button type="button" data-size="actual">Actual size</button></div></div>
+    <div class="ctl" id="view-ctl"><span class="ctl-label" id="view-l">Wide table</span>
+      <div class="seg" role="group" aria-labelledby="view-l" id="views"><button type="button" data-view="seen">As seen</button><button type="button" data-view="full">Full table</button></div></div>
   </div>
   <p class="meta" id="meta"></p>
 
@@ -99,7 +101,7 @@ const DATA = {{DATA}};
   const label = t => DATA.tools.find(x => x[0] === t)[1];
   const modeLabel = m => DATA.modes.find(x => x[0] === m)[1];
   // State lives in the URL fragment, so a chosen pair can be linked
-  const state = { page: DATA.pages[0].slug, t: 1, l: 'published/', r: 'docusaurus/passthrough', size: 'fit', span: 'table' };
+  const state = { page: DATA.pages[0].slug, t: 1, l: 'published/', r: 'docusaurus/passthrough', size: 'fit', span: 'table', view: 'seen' };
   const readHash = () => { for (const kv of location.hash.slice(1).split('&')) {
     const [k, v] = kv.split('='); if (k in state && v) state[k] = k === 't' ? +v : decodeURIComponent(v);
   } };
@@ -147,14 +149,20 @@ const DATA = {{DATA}};
     $('meta').innerHTML = `${esc(p.repo)} · <a href="${p.url}" target="_blank" rel="noopener">published page</a> · <a href="${p.url}#${p.anchors[k]}" target="_blank" rel="noopener">this table on the published page</a> · ${p.tables.length} table${p.tables.length > 1 ? 's' : ''}`;
     document.querySelectorAll('#sizes button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.size === state.size)));
     document.querySelectorAll('#spans button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.span === state.span)));
+    document.querySelectorAll('#views button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.view === state.view)));
     document.body.classList.toggle('size-actual', state.size === 'actual');
     const sides = ['l', 'r'];
     for (const w of sides) if (!p.sides[state[w]]) state[w] = 'published/';  // a bad link falls back to Published
-    const same = p.sides[state.l].hash[k] && p.sides[state.l].hash[k] === p.sides[state.r].hash[k];
+    const wide = sides.some(w => p.sides[state[w]].full[k]);
+    $('view-ctl').hidden = !wide;
+    const full = w => wide && state.view === 'full' && p.sides[state[w]].full[k];
+    const hashOf = w => full(w) ? p.sides[state[w]].fullhash[k] : p.sides[state[w]].hash[k];
+    const same = hashOf('l') && hashOf('l') === hashOf('r');
     $('outputs').innerHTML = sides.map(w => {
       const s = p.sides[state[w]], [tool, mode] = state[w].split('/');
-      const shot = s.shots[k], what = tool === 'published' ? 'Published' : `${label(tool)}, ${modeLabel(mode).toLowerCase()}`;
-      const plain = tool === 'docusaurus' && mode === 'native-plain' ? '<p class="note">Docusaurus native is already plain: this is the native screenshot.</p>' : '';
+      const shot = full(w) || s.shots[k], what = tool === 'published' ? 'Published' : `${label(tool)}, ${modeLabel(mode).toLowerCase()}`;
+      const plain = (tool === 'docusaurus' && mode === 'native-plain' ? '<p class="note">Docusaurus native is already plain: this is the native screenshot.</p>' : '')
+        + (wide && state.view === 'full' && !s.full[k] ? '<p class="note">This output does not scroll: the whole table is already in view.</p>' : '');
       return `<div class="pane">${sideControls(w)}${same ? '<div><span class="same">Same image on both sides</span></div>' : ''}${plain}
         <a class="shot" href="../compare/img/${shot}" target="_blank" rel="noopener"><img src="../compare/img/${shot}" alt="${esc(what)}: ${esc(p.name)} table ${state.t}"></a></div>`;
     }).join('');
@@ -176,6 +184,7 @@ const DATA = {{DATA}};
   $('table').addEventListener('change', e => { state.t = +e.target.value; render(); });
   $('sizes').addEventListener('click', e => { if (e.target.dataset.size) { state.size = e.target.dataset.size; render(); } });
   $('spans').addEventListener('click', e => { if (e.target.dataset.span) { state.span = e.target.dataset.span; render(); } });
+  $('views').addEventListener('click', e => { if (e.target.dataset.view) { state.view = e.target.dataset.view; render(); } });
   $('outputs').addEventListener('change', e => {
     const w = e.target.dataset.side; if (!w) return;
     let [tool, mode] = state[w].split('/');

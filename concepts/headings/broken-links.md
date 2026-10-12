@@ -3,7 +3,8 @@
 Status: draft, incomplete — covers what is known as of 2026-10-10. Updated
 2026-10-11 with the links the [cross-repository links survey](#found-by-the-cross-repository-links-survey-2026-10-11)
 found across the book, and the redirect rules whose target is gone.
-Updated 2026-10-12 with [one anchor used four times](#one-anchor-used-four-times-uaa-performance-2026-10-12).
+Updated 2026-10-12 with [one anchor used four times](#one-anchor-used-four-times-uaa-performance-2026-10-12)
+and [one id on two tables](#one-id-on-two-tables-roles-2026-10-12).
 
 Links to the four test pages of the Headings round that point at a heading
 anchor which is not on today's published page. They are broken before any
@@ -390,3 +391,19 @@ hyphen (`-password-grant-type`).
 
 Links to the hyphen-prefixed ids were not searched for; adding the space
 changes those ids, so a search should come before the fix.
+
+## One id on two tables: roles (2026-10-12)
+
+Page: <https://docs.cloudfoundry.org/concepts/roles.html>
+
+Found while adding the roles table as a test page. Two partials included by
+`roles.html.md.erb` open their table with the same id, so the published
+page has `oss-roles-permissions` twice; `#oss-roles-permissions` reaches
+only the first table, and the second has no id of its own.
+
+| Source (docs-cloudfoundry-concepts, pinned) | Table | Suggested fix (to check) |
+|---|---|---|
+| [`_oss_roles_table.html.md.erb` L1](https://github.com/cloudfoundry/docs-cloudfoundry-concepts/blob/97e0d0b25f059c06edd25e30355d26eb93dc560a/_oss_roles_table.html.md.erb#L1) | Roles and permissions for active orgs | keep `oss-roles-permissions` |
+| [`_suspended_org_roles_table.html.md.erb` L1](https://github.com/cloudfoundry/docs-cloudfoundry-concepts/blob/97e0d0b25f059c06edd25e30355d26eb93dc560a/_suspended_org_roles_table.html.md.erb#L1) | Roles and permissions for suspended orgs | a new id such as `oss-suspended-org-roles-permissions`, in the pattern of the suspended spaces table's `oss-suspended-space-roles-permissions` |
+
+Links to `#oss-roles-permissions` were not searched for.

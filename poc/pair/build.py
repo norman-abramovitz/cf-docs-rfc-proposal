@@ -115,7 +115,10 @@ def main():
                 sides[f'{tool}/{mode or ""}'] = {
                     'path': path, 'spans': spans,
                     'shots': [s if os.path.exists(os.path.join(IMG, s)) else None for s in shots],
-                    'hash': [digest(os.path.join(IMG, s)) for s in shots]}
+                    'hash': [digest(os.path.join(IMG, s)) for s in shots],
+                    # a table that scrolls in its box also has a screenshot of the whole table
+                    'full': [s[:-4] + '-full.jpg' if os.path.exists(os.path.join(IMG, s[:-4] + '-full.jpg')) else None for s in shots],
+                    'fullhash': [digest(os.path.join(IMG, s[:-4] + '-full.jpg')) for s in shots]}
         pages.append({'slug': slug, 'name': name, 'repo': repo, 'url': url,
                       'tables': [t for t, _ in tables], 'anchors': ANCHORS[slug], 'sides': sides})
     if problems:

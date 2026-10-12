@@ -500,7 +500,8 @@ Learn more: [concepts/README.md](concepts/README.md).
 
 The real CF pages used for the tables concept: five pages the Docs WG lead
 picked because their tables are hard to express outside HTML, plus a sixth,
-`uaa-performance`, added later as the example of a second table style. They
+`uaa-performance`, added later as the example of a second table style, and a
+seventh, `_oss_roles_table`, added on 2026-10-12 as a real wide table. They
 are copied verbatim with their commits and licenses
 ([source/SOURCES.md](concepts/tables/source/SOURCES.md)).
 

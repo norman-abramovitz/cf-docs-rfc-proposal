@@ -7,6 +7,7 @@ in `../sites/` and `../probes/`.
 | File | Repository | Path | Commit | License |
 |------|------------|------|--------|---------|
 | `_oss_scale_table.html.md.erb` | [cloudfoundry/docs-cloudfoundry-concepts](https://github.com/cloudfoundry/docs-cloudfoundry-concepts) | `_oss_scale_table.html.md.erb` | `4ac2fb19a0a44534a8469de100af7dd91706e9b7` | Apache-2.0 |
+| `_oss_roles_table.html.md.erb` | [cloudfoundry/docs-cloudfoundry-concepts](https://github.com/cloudfoundry/docs-cloudfoundry-concepts) | `_oss_roles_table.html.md.erb` | `97e0d0b25f059c06edd25e30355d26eb93dc560a` | Apache-2.0 |
 | `metadata.html.md.erb` | [cloudfoundry/docs-cf-admin](https://github.com/cloudfoundry/docs-cf-admin) | `metadata.html.md.erb` | `19b0c9c5fabd93b33ba184c6eb541f3cafd3a1b9` | Apache-2.0 |
 | `troubleshooting_slow_requests.html.md.erb` | [cloudfoundry/docs-cf-admin](https://github.com/cloudfoundry/docs-cf-admin) | `troubleshooting_slow_requests.html.md.erb` | `19b0c9c5fabd93b33ba184c6eb541f3cafd3a1b9` | Apache-2.0 |
 | `uaa-concepts.html.md.erb` | [cloudfoundry/docs-uaa](https://github.com/cloudfoundry/docs-uaa) | `uaa-concepts.html.md.erb` | `0f43fb93af5aa378f940dd19fec7ee54c2c01ccd` | Apache-2.0 (stated in the repository's `NOTICE` file; no `LICENSE` file) |
@@ -24,6 +25,12 @@ in `../sites/` and `../probes/`.
   `scale_table: "oss_scale_table"` as a variable. Each site in this round
   includes the partial from a small host page instead of copying the whole
   host page.
+- **The roles table, added 2026-10-12** as the seventh test page: a wide
+  table, 12 columns, wider than the content column. `_oss_roles_table` is
+  also a partial; `roles.html.md.erb` includes it at line 115 with
+  `<%= partial 'oss_roles_table' %>`, and each site shows it in a host page,
+  `roles-table-host`, as for the scale table. Copied from the clone at that
+  commit on 2026-10-12.
 - **Image.** `troubleshooting_slow_requests` shows one image, copied to
   `images/` so pages can keep its relative path `./images/request_lifecycle.png`.
 - **Variables excerpt.** `template_variables.yml` keeps only the

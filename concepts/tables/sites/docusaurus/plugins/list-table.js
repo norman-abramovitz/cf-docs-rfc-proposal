@@ -5,7 +5,7 @@
 // table hints from the tables concept (roles, wrap, caption, title). A title is
 // a header row spanning every column, above the column headers. A class names
 // the table's style, as `{.table-media}`; without one the table gets the
-// standard style.
+// standard style. An id, as `{#name}`, becomes the table's id.
 //
 //   :::list-table{widths="25 75" header-rows="1" stub-columns="1" roles="key prose" title="..."}
 //   - - Key
@@ -82,7 +82,9 @@ function toTable(node, file) {
   if (head.length) children.push({type: 'listTableSection', data: {hName: 'thead'}, children: head});
   children.push({type: 'listTableSection', data: {hName: 'tbody'}, children: rows.slice(headerRows)});
 
-  node.data = {hName: 'table', hProperties: {className: ['hinted-table', ...words(a.class)]}};
+  const props = {className: ['hinted-table', ...words(a.class)]};
+  if (a.id) props.id = a.id;
+  node.data = {hName: 'table', hProperties: props};
   node.children = children;
 }
 

@@ -26,9 +26,9 @@ table syntax carries, and how much the rest of the page has to change.
 |---|---|---|---|---|
 | **HTML builds as written** | no: MDX fails on all five pages | yes, all five | four of five; Markdoc changes text inside HTML silently | yes, inside passthrough blocks, but the page around it is rewritten as AsciiDoc |
 | **Cleanup beyond the intent files** | close void elements, `style` as an object, `<tbody>` and `<colgroup>`, closing tags off the line start | one indent | entities and one-line cells where Markdoc would drop a dash or a space | the AsciiDoc rewrite, with four kinds of silent failure |
-| **Spot checks after cleanup** (six pages; 36 before `uaa-performance`) | 40/42 in every mode (the two misses are page descriptions, not tables) | 42/42 in every mode | 42/42 in every mode | 42/42 in every mode |
+| **Spot checks after cleanup** (seven pages; 36 before `uaa-performance`, 42 before `_oss_roles_table`) | 49/51 in every mode (the two misses are page descriptions, not tables) | 51/51 in every mode | 51/51 in every mode | 51/51 in every mode |
 | **Own table syntax carries** | a header row and each column's horizontal alignment (pipe tables) | widths on header cells, horizontal alignment | widths, horizontal alignment, lists and paragraphs in cells, spanning cells | widths, row headers, horizontal and vertical alignment, lists and paragraphs in cells, spanning cells |
-| **Extension for the rest** | remark plugin | Python-Markdown block | attributes on Markdoc's table tag (83 lines) | none: roles on the table plus CSS |
+| **Extension for the rest** | remark plugin | Python-Markdown block | attributes on Markdoc's table tag (85 lines) | none: roles on the table plus CSS |
 | **A second style** (`table-media`) | a class on the list-table directive, `{.table-media}`; a pipe table cannot take one | the list-table block's `style` option; a pipe table cannot take one | Markdoc's class shorthand, `{% table .table-media %}`, which the native table tag takes too | a role, `[.table-media]`: plain AsciiDoc |
 | **Wide tables** (wider than the column) | scroll in their own box: the theme shows every table as a block that scrolls | scroll in their own box: the theme's wrapper around Markdown tables; the site's `table.table` rule copies the theme's scrolling | scroll in their own box: the theme shows every table as a block that scrolls | the page widened; a short script in the site's UI files now puts each table in a box that scrolls |
 | **Variables** | one import per page; HTML values escaped | ERB form kept as written | `{% $vars.name %}`; HTML values escaped | `{name}` attributes |
@@ -62,11 +62,24 @@ table syntax carries, and how much the rest of the page has to change.
 - **A wide table scrolls in its own box.** Checked in a browser at 1280
   and 390 pixels by giving each table an unbreakable 200-character line
   (`make check-wide`; 84 tables in Docusaurus, 112 in each of the others,
-  all pass). Antora's default UI gives a table no box, so the page
+  all pass; with the roles table, 90 and 120, all pass). Antora's default UI gives a table no box, so the page
   widened until the site added a script that wraps each table. A
   `table-media` grid does not scroll: its rules make it a full-width
   table, so it shrinks its images to fit, and the check only asserts that
   it fits the column.
+- **A real wide table scrolls, but at its narrowest.** The roles table
+  (`_oss_roles_table`, 12 columns, added 2026-10-12) scrolls in a box of
+  its own in every tool and every converted mode, as decided. Docusaurus,
+  Starlight and Antora lay it out at its min-content width, every column
+  as narrow as its longest word, so the activity column wraps on every
+  row and the table is 4,850 to 5,500 pixels tall; Zensical gives all
+  twelve columns the same 100 pixels. The published page has no box: the
+  table spills 154 pixels past its 720-pixel column. No scrollbar shows
+  until the reader scrolls (overlay scrollbars). In Docusaurus the box
+  cuts a column through its text; in Zensical and Starlight it ends just
+  after Org Billing Manager, and in Antora after Space Auditor, so
+  nothing in view shows that more columns follow. The comparison pages
+  show it as seen and as the full table.
 
 - **Widths, alignment and font size, checked after review.** Column 1 is
   sized by its content in Docusaurus passthrough and extension once the
@@ -143,6 +156,9 @@ Site: [sites/docusaurus/](sites/docusaurus/) — conventions:
 | `uaa-concepts` | passthrough | after cleanup: `</td>` → `</tr>`, plus `{…}` placeholders escaped in prose | preserved | widths 30% and 25% | HTML |
 | | extension | yes | preserved; `<br/><br/>` became two paragraphs (decided) | widths, row headers, no wrap | list-table; paragraphs as in Markdown |
 | | native | yes | preserved, `<br /><br />` kept | none (27/30/43, 25/74) | pipe table |
+| `_oss_roles_table` (added 2026-10-12) | passthrough | yes; the source compiles unchanged; only the intent cleanup (two empty markers) and `class="table"` | preserved; id kept | header row; scrolls in its own box (the theme's block table), laid out at its narrowest: 1053 pixels in 703, every activity wrapping to its longest word | HTML, one cell per line |
+| | extension | yes; the list-table plugin now passes `{#id}` to the table | preserved; id kept | header row, row headers, roles, top alignment; the same narrowest layout (1060 pixels) | list-table, 12 lines per row |
+| | native | yes | preserved except the id: a pipe table cannot carry one | header row; the same narrowest layout | pipe table, rows up to 377 characters; markers as inline `<sup><strong>` |
 
 ### Width variants for `troubleshooting_slow_requests`
 
@@ -240,6 +256,17 @@ source's spanning row.
   defaults keep the theme's look. Padding, borders, and header and stripe
   colors are the theme's own variables (`--ifm-table-cell-padding` and
   others). There is no theme variable for the font size of tables.
+10. **The wide table is laid out at its narrowest** (`_oss_roles_table`,
+   added 2026-10-12). The theme shows every table as a block that scrolls
+   (`display: block; overflow-x: auto`), so a table wider than the column
+   is drawn at its min-content width: every column as narrow as its longest
+   word. The roles table is 1053 by 5518 pixels in a 703-pixel box (2087 by
+   2237 at its natural width); the activity column (106 pixels) wraps on
+   all 42 rows, and the prose role gives it no more room. The sticky navbar
+   and the off-screen "Skip to main content" link are hidden for the
+   screenshots. Relative links in the notes are rewritten root-absolute and
+   reported as broken, as in finding 5; a pipe table cannot carry the
+   table's id, and the list-table plugin was changed to pass it.
 
 ### Text compared with the published page
 
@@ -269,6 +296,7 @@ in the grid above.
 | `metadata` | `{` in JSON inside `<pre>` parsed as an expression | no |
 | `troubleshooting_slow_requests` | `<br>` is not closed | no |
 | `uaa-concepts` | `{OIDC provider alias}` in a list parsed as an expression | no |
+| `_oss_roles_table` (added 2026-10-12) | none: compiles unchanged | — |
 
 ## Zensical 0.0.69
 
@@ -322,6 +350,10 @@ Site: [sites/zensical/](sites/zensical/) — conventions:
 | `uaa-concepts` | passthrough | yes; `</td>` → `</tr>` (intent cleanup) | preserved | widths 30% and 25% | HTML |
 | | extension | yes | preserved; `<br/><br/>` became two paragraphs (decided) | widths, row headers, no wrap | list-table; paragraphs as in Markdown |
 | | native | yes | preserved, `<br /><br />` kept | widths through header-cell attributes | pipe table |
+| `_oss_roles_table` (added 2026-10-12) | passthrough | yes; `class="table"` and the two empty markers removed (intent cleanup) | preserved; id kept | header row; scrolls in its own box (`table.table` itself); 12 equal columns of 100 pixels | HTML |
+| | extension | yes | preserved; markers `^N^`, not bold (finding 9); the id lands on the wrapper `div` | header row, row headers, roles as classes; scrolls in the theme's wrapper; equal columns | list-table, one item per cell (a 565-line block) |
+| | native | yes | preserved; markers `^N^`; no id (a pipe table cannot carry one) | header row; scrolls in the theme's wrapper; equal columns | pipe table, about 140-character rows of mostly empty cells |
+| | native-plain | yes (the same file as native: the source sets no widths) | as native | as native | as native |
 
 ### Column widths
 
@@ -343,6 +375,7 @@ sits inside a numbered list, so it is narrower (660 pixels).
 | `troubleshooting` T6 | 25/25/50 | 19/24/57 | 19/24/57 |
 | `uaa-concepts` T1 | 30/26/43 | 30/26/43 | 30/26/43 |
 | `uaa-concepts` T2 | 25/75 | 25/75 | 25/75 |
+| `_oss_roles_table` | 8 × 12 | 8 × 12 | 8 × 12 |
 
 Corrected 2026-10-12: four passthrough figures (`metadata` T1 and T2,
 `troubleshooting` T1 and T4) were remeasured on a fresh build, at a
@@ -427,6 +460,16 @@ differ (percent of the table, first body row):
   `<a id="#shadow">` (with the `#`), so the link is broken on the published
   page too. The `<a id>` heading anchors that Docusaurus reported as broken
   are recognized here, and they cause no browser errors.
+9. **The wide table gets twelve equal columns** (`_oss_roles_table`,
+   added 2026-10-12). The theme gives header cells `min-width: 5rem`; twelve
+   of them exceed the 688-pixel column, so every column is 100 pixels and
+   the table 1202 pixels, scrolling in the theme's wrapper (passthrough:
+   in `table.table` itself). The activity column wraps up to eight lines.
+   Note markers are `^N^` (`pymdownx.caret`); `^**N**^` next to text stays
+   literal, because the delimiter follows CommonMark's flanking rules, so
+   the markers are not bold outside passthrough. A pipe table cannot carry
+   the id, and the list-table's `attrs` put it on the wrapper `div`. The
+   sticky header is hidden for the screenshots.
 
 ### Text compared with the published page
 
@@ -458,6 +501,7 @@ the intent files' cleanup and the indent fix:
 | `credential-types` | class with typographic quotes | intent cleanup |
 | `metadata` | backslashes in `\[a-z0-9A-Z\]` (two checks) | decided fix |
 | `troubleshooting_slow_requests` | Experiment 2 table outside its list step | indent |
+| `_oss_roles_table` (added 2026-10-12) | the two empty note markers | intent cleanup |
 
 The unclosed `<td>` cells in `metadata` and the stray `</td>` in
 `uaa-concepts` build and render as on the published page: the browser repairs
@@ -506,7 +550,7 @@ wide.
   headers become an ordinary row).
 - **The extension adds the hints as attributes on that same tag.**
   [list-table.mjs](sites/starlight/list-table.mjs) declares them on Markdoc's
-  table node, 83 lines, the counterpart of the Docusaurus and Zensical
+  table node, 85 lines, the counterpart of the Docusaurus and Zensical
   extensions; what #1642 §5 says about plugins is quoted in the Docusaurus
   summary. Authors write Markdoc's table syntax; only the attributes are new.
 - **Variables need one translation.** `<%= vars.name %>` becomes
@@ -544,6 +588,10 @@ wide.
 | | extension | yes | preserved; `<br/><br/>` became two paragraphs (decided) | widths, row headers, no wrap | Markdoc table; paragraphs as in Markdown |
 | | native | yes | preserved; two paragraphs (decided) | widths through `width` on header cells | Markdoc table |
 | | native-plain | yes | preserved, `<br /><br />` kept | none (27/32/41, 25/75) | pipe table |
+| `_oss_roles_table` (added 2026-10-12) | passthrough | yes; `class="table"` and the two empty markers removed (intent cleanup); nothing forced by Markdoc | preserved; id kept; markers as superscripts | header row; scrolls in its own box (the table itself), laid out at its narrowest: 1087 pixels in 632, 5461 tall | HTML |
+| | extension | yes; `list-table.mjs` now passes the id through | preserved; id kept; markers as inline `<sup>` HTML | row headers, roles; the same narrowest layout (1092 pixels) | Markdoc table, 12 `*` lines per row, `<!-- -->` for empty cells |
+| | native | yes | preserved; id kept through `{% table #… %}` | header row only; the same narrowest layout | Markdoc table, long |
+| | native-plain | yes | preserved except the id: a pipe table cannot carry one | none; the same widths | pipe table, one line per row |
 
 ### Column widths
 
@@ -565,6 +613,7 @@ sits inside a numbered list, so it is narrower (592 pixels).
 | `troubleshooting` T6 | 25/25/50 | 16/27/56 | 16/27/56 | 16/27/56 |
 | `uaa-concepts` T1 | 30/31/39 | 30/31/39 | 30/31/39 | 27/32/41 |
 | `uaa-concepts` T2 | 25/75 | 25/75 | 25/75 | 25/75 |
+| `_oss_roles_table` | 9/7/7/8/9/8/9/6/9/10/8/9 | 9/7/7/8/9/8/9/6/9/10/8/9 | 9/7/7/8/9/8/9/6/9/10/8/9 | 9/7/7/8/9/8/9/6/9/10/8/9 |
 
 Corrected 2026-10-12: the native figure for `metadata` T1 (was
 16/21/31/33) were remeasured on a fresh build, at a
@@ -638,6 +687,14 @@ takes 27% in the extension.
   ones in prose, as the published site does, but also inside `<pre>` blocks
   (JSON, terminal output) and inside HTML `<code>`, where they change
   content. It stays off.
+10. **The wide table is laid out at its narrowest** (`_oss_roles_table`,
+   added 2026-10-12). The theme shows a table as a block that scrolls, so
+   it is drawn at min-content width: 1087 by 5461 pixels in a 632-pixel
+   column (2113 by 1961 at its natural width). Markdoc has no superscript
+   syntax; inline `<sup><strong>` works in table-tag cells, pipe cells and
+   paragraphs. The table tag needed a short change in `list-table.mjs`
+   to keep the id; a pipe table cannot carry one. The sticky "On this page"
+   sidebar is hidden for the full-table screenshot, which runs under it.
 
 ### Text compared with the published page
 
@@ -666,6 +723,7 @@ raw build leaves it out. 28 of 36 spot checks pass on the four raw pages:
 | `credential-types` | class with typographic quotes | intent cleanup |
 | `metadata` | the lone `-` code spans (finding 1) | `&#45;` (Markdoc cannot take the HTML as is) |
 | `troubleshooting_slow_requests` | does not parse (six checks) | `&#10;` (Markdoc cannot take the HTML as is) and the indent |
+| `_oss_roles_table` (added 2026-10-12) | the two empty note markers | intent cleanup |
 
 The raw pages also lose the spaces next to inline tags (finding 2); the spot
 checks do not cover that. The backslash checks pass raw, because Markdoc
@@ -738,6 +796,10 @@ table of contents beside it).
 | | extension | yes | preserved; `<br/><br/>` became two paragraphs (decided) | widths, row headers, no wrap | AsciiDoc table |
 | | native | yes | preserved; two paragraphs (decided) | widths, row headers | AsciiDoc table |
 | | native-plain | yes | preserved; two paragraphs | none; equal columns | AsciiDoc table |
+| `_oss_roles_table` (added 2026-10-12) | passthrough | yes; `class="table"` and the two empty markers removed (intent cleanup) | preserved; id kept; notes as AsciiDoc | header row; scrolls in its own box (882 pixels in 792), columns at their narrowest; cells centered vertically | 608 lines of HTML in a passthrough block |
+| | extension | yes | preserved; markers `^N^` (not bold) | header row, row headers, top alignment, id; the same layout; the column roles are classes with no CSS, so they change nothing | AsciiDoc table, one cell per line; `cols=".<~h,11*.<~"` |
+| | native | yes | preserved; markers `^N^` | header row, row headers, top alignment, id; the same layout | AsciiDoc table, as extension |
+| | native-plain | yes | preserved | header row; the equal widths (8.33%) are written but give way to the table's narrowest width, so the columns match native | AsciiDoc table, as extension |
 
 ### Column widths
 
@@ -759,6 +821,7 @@ sits inside a numbered list, so it is narrower (650 pixels).
 | `troubleshooting` T6 | 25/25/50 | 15/24/61 | 15/24/61 | 33/33/33 |
 | `uaa-concepts` T1 | 30/29/41 | 30/29/41 | 30/29/41 | 33/33/34 |
 | `uaa-concepts` T2 | 26/74 | 25/75 | 25/75 | 50/50 |
+| `_oss_roles_table` | 11/7/7/8/9/8/9/6/9/10/8/10 | 11/7/7/8/9/8/9/6/9/10/8/10 | 11/7/7/8/9/8/9/6/9/10/8/10 | 11/7/7/8/9/8/9/6/9/10/8/10 |
 
 The scale table's key column fits its 25% here: tables are wider than in the
 other tools, so "Cloud Controller Worker" stays on one line without the
@@ -836,6 +899,15 @@ passthrough included.
 10. **The default UI is not versioned.** Its bundle is a build artifact at a
   moving URL; the site pins one build by its job URL and checks the file's
   hash.
+11. **The wide table is drawn at its narrowest** (`_oss_roles_table`,
+   added 2026-10-12). The site's script puts it in a 792-pixel box; at
+   auto width the columns shrink to their longest words, 882 pixels in all,
+   so the box scrolls. The activity column is about 95 pixels and wraps on
+   every row; the table is 4851 pixels tall. native-plain writes equal
+   widths, but they give way to the table's narrowest width, unlike on the
+   other pages (finding 6). Passthrough cells are centered vertically, the
+   AsciiDoc modes top-aligned. Antora reports nothing for the notes' links
+   to pages not in the site (finding 8).
 
 ### Text compared with the published page
 
@@ -863,6 +935,7 @@ to AsciiDoc as in every mode). All five build without a message, and 32 of
 | `credential-types` | class with typographic quotes | intent cleanup |
 | `metadata` | two backslash checks | intent cleanup (decided fix) |
 | `troubleshooting_slow_requests` | the Experiment 2 table follows its list instead of sitting in step 4 | indenting it under the step |
+| `_oss_roles_table` (added 2026-10-12) | the two empty note markers | intent cleanup |
 
 ## Widths, alignment and font size
 

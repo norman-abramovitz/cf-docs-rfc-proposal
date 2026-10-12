@@ -40,6 +40,11 @@ PAGES = [
         ("Instances / Threads / Throughput",
          "The example of a second table style, <code>table-media</code>: no cell borders, a rule under the header, centered cells, images filling their cells. Passthrough names it as the class; extension names it in each tool’s own way (a directive class in Docusaurus, a <code>style</code> option in Zensical, Markdoc’s class shorthand in Starlight, a role in Antora). Native keeps the standard style (decided), although Starlight’s and Antora’s own table syntax could name it. The published page opens the charts in a lightbox script; the converted pages link to the image."),
     ]),
+    ("roles-table-host", "_oss_roles_table", "docs-cloudfoundry-concepts · partial included by roles; added 2026-10-12",
+     "https://docs.cloudfoundry.org/concepts/roles.html", [
+        ("Activity / eleven roles",
+         "Twelve columns, wider than the content column in every tool. Each tool scrolls it in a box of its own and lays it out at its narrowest, each column as wide as its longest word, so the activity column wraps on every row; Zensical gives every column the same 100 pixels. The published page has no box: the table spills 154 pixels into the margin. Choose <b>Full table</b> to see every column."),
+    ]),
 ]
 
 # Each table's nearest anchor on the published page: the id on the heading above it
@@ -51,6 +56,7 @@ ANCHORS = {
                                       "remove-the-load-balancer", "remove-the-gorouter", "test-internal-network"],
     "uaa-concepts": ["select-type", "additional-info"],
     "uaa-performance": ["client-credentials"],
+    "roles-table-host": ["activeroles"],
 }
 
 TOOLS = [("docusaurus", "Docusaurus 3.10.2"), ("zensical", "Zensical 0.0.69"), ("starlight", "Starlight 0.42.6"), ("antora", "Antora 3.2.1")]
@@ -96,7 +102,9 @@ tool_buttons = ''.join(f'<button type="button" data-tool="{t}" aria-pressed="tru
 nav = ''.join(f'<a href="#{p}">{esc(n)}</a>' for p, n, *_ in PAGES)
 desc = json.dumps({m: d for m, _, d in MODES})
 
+# Tables that scroll in their box also have a screenshot of the whole table
+full = json.dumps(sorted(f[:-len('-full.jpg')] for f in os.listdir(os.path.join(HERE, 'img')) if f.endswith('-full.jpg')))
 page = open(os.path.join(HERE, 'template.html')).read()
 page = (page.replace('{{MODE_BUTTONS}}', mode_buttons).replace('{{TOOL_BUTTONS}}', tool_buttons)
-        .replace('{{NAV}}', nav).replace('{{SECTIONS}}', '\n'.join(sections)).replace('{{DESC}}', desc))
+        .replace('{{NAV}}', nav).replace('{{SECTIONS}}', '\n'.join(sections)).replace('{{DESC}}', desc).replace('{{FULL}}', full))
 open(os.path.join(HERE, 'index.html'), 'w').write(page)

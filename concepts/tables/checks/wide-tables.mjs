@@ -11,7 +11,7 @@
 import { chromium } from 'playwright-core'
 
 const PAGES = ['scale-table-host', 'credential-types', 'metadata',
-  'troubleshooting_slow_requests', 'uaa-concepts', 'uaa-performance']
+  'troubleshooting_slow_requests', 'uaa-concepts', 'uaa-performance', 'roles-table-host']
 const [pattern, ...modes] = process.argv.slice(2)
 
 function probe () {
