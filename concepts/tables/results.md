@@ -1310,7 +1310,13 @@ Checked on case 15 of each tool's `pipe-attrs` page, a pipe table with
 B2's `env` and `additional_volumes` rows. Every tool builds the same cells,
 and in Chrome 155, Firefox 155 and WebKit 26.6 at 1280 and 390 pixels the
 key and `string => string` stay on one line. Spot checks and wide-table
-checks are unchanged for the pages the sites build. Antora and the Sphinx
-probe still turn their roles into layout with the listed `colN-nowrap`
-rules (Breaks inside identifiers); marking their cells in the build is
-the next step.
+checks are unchanged for the pages the sites build.
+
+The Sphinx probe marks its cells in the build too: a `doctree-read` hook
+in `conf.py` gives each cell of a hinted column its role class and
+`wrap-avoid`, and one rule replaces the list of 18 columns. It measures
+the same as the list in all three browsers at both widths, on the
+bpm-config tables and on a page with no-wrap on column 4. Antora still
+uses the list: Asciidoctor writes a cell's class from its alignment only
+(`tableblock halign-… valign-…`), so a tree processor has no clean way to
+add one.

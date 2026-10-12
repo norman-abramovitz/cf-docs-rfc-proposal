@@ -9,7 +9,7 @@ install: .venv
 	touch .venv
 
 build: .venv
-	$(SPHINX) -W -b html docs _build/html
+	$(SPHINX) -E -W -b html docs _build/html
 
 serve: build
 	uv run --project . python -m http.server $(PORT) -d _build/html

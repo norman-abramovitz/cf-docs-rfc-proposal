@@ -28,7 +28,9 @@ and runs the shared spot checks for this table; all five pass.
 ```
 ````
 
-**Answer:** mostly yes, with no code.
+**Answer:** mostly yes, with no code. Since 2026-10-12 a short hook in
+`conf.py` marks the cells of each hinted column (below), as the other sites'
+list tables do.
 
 | Hint | Directive option | Result |
 |------|------------------|--------|
@@ -46,6 +48,14 @@ and runs the shared spot checks for this table; all five pass.
   `--table-row-header-align` (checked in the browser: each changes only what
   it names). With the hints, "Cloud Controller Worker" stays on one line and
   the columns measure 37/22/41; without them, 25/25/50.
+- **The cells are marked in the build** (added 2026-10-12). A selector
+  cannot take the column number from `colN-nowrap`, so the stylesheet had to
+  list every column. A `doctree-read` hook in `conf.py` now gives each cell of
+  a hinted column `role-key` (or the column's role) and `wrap-avoid`, and one
+  rule serves any column. Measured the same as the listed rule in Chrome,
+  Firefox and WebKit at 1280 and 390 pixels. Sphinx keeps read doctrees
+  between builds, so `make build` starts fresh (`-E`) and a change to the
+  hook reaches every page.
 - **The theme styles every table through `table.docutils`**, so
   `class="table"` changes nothing in the default theme; it is a hook a
   template can format.
@@ -68,7 +78,7 @@ and runs the shared spot checks for this table; all five pass.
 ## Files
 
 - [`docs/conf.py`](docs/conf.py) — MyST, substitutions from the shared
-  variables, the hint stylesheet
+  variables, the hint stylesheet, the hook that marks hinted cells
 - [`docs/scale-table-host.md`](docs/scale-table-host.md) — host page
 - [`docs/_oss_scale_table.md`](docs/_oss_scale_table.md) — the table
 - [`docs/_static/hints.css`](docs/_static/hints.css) — what the roles mean
