@@ -1,8 +1,9 @@
 # Concept: Cross-repository links
 
-Status: **draft, incomplete — covers what is known as of 2026-10-11.** The
-survey, the conversions, the checks and the probes are done; the
-conventions are proposals for review. Results: [results.md](results.md).
+Status: **Done, with open items** (listed under
+[Not yet written](results.md#not-yet-written)). The survey, the conversions,
+the checks and the probes are done; the content repositories stay separate.
+Results: [results.md](results.md).
 
 This round asks whether links between pages that come from different
 content repositories keep working after conversion, in each hands-on tool,
@@ -72,10 +73,11 @@ Terms used below:
 - [x] **Probes**: broken links into another source, links held in
   variables and partials at two depths, and redirects for old URLs, in
   every tool.
-- [ ] **Conventions reviewed.** The nine proposals in
+- [x] **Conventions reviewed.** The nine proposals in
   [results.md](results.md#conventions-to-record). Accepted 2026-10-11:
-  conventions 1, 5, 6 and 7. Conventions 2 and 8 wait on whether the
-  single repository is settled.
+  conventions 1, 5, 6 and 7, then 2 and 8 once the content repositories
+  were kept separate
+  ([decision](results.md#separate-sources-or-one-repository)).
 
 ## Test pages
 

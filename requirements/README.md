@@ -260,7 +260,11 @@ restated as a hosting benefit.
   ([R-12](#r-12) one-command local preview).
 - **One repository and the URL mapping.** [L69] puts all content in "ONE
   single documentation repository". That is compatible with [R-15](#r-15) URL identifies the source only if
-  its directories map to today's URL directories.
+  its directories map to today's URL directories. Decision (Docs WG lead,
+  2026-10-11): keep separate content repositories, so that each Working
+  Group area keeps its own write and merge rights; this differs from
+  [L69] and is to be raised on the RFC
+  ([decision](../concepts/cross-repo-links/results.md#separate-sources-or-one-repository)).
 - **Plain Markdown and HTML.** [L31] says the docs "SHOULD be rewritten in
   plain Markdown", while [L42] requires the "Ability to handle HTML". The
   position is [R-10](#r-10) simple text plus HTML where needed.

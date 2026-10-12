@@ -233,6 +233,25 @@ in every tool:
   right one**; separate repositories need per-source edit links, which
   Docusaurus and Antora give and Zensical cannot (Starlight only per page).
 
+Decision (Docs WG lead, 2026-10-11): **keep separate content
+repositories**, which differs from the RFC's [L69]. Access in the
+`cloudfoundry` organization is granted per repository: each Working
+Group area's approvers get "Write access for all repos in the area"
+([RFC-0014 L39](https://github.com/cloudfoundry/community/blob/9f189bfa613bb7a9c2da6616666661790d4410eb/toc/rfc/rfc-0014-github-teams-and-access.md#L39)).
+In one repository every team named in `CODEOWNERS` needs write access to
+all of it, so merge and push rights are no longer per area, and a
+`CODEOWNERS` line is satisfied by any one of its owners, so it cannot
+require both the area's Working Group and the Docs WG. Review by path
+does still work: the generated branch protection sets
+`require_code_owner_reviews: true`
+([orgs/readme.md L59](https://github.com/cloudfoundry/community/blob/9f189bfa613bb7a9c2da6616666661790d4410eb/orgs/readme.md#L59)).
+Today all 15 docs repositories are one area of the Docs WG
+([docs.md L38-L60](https://github.com/cloudfoundry/community/blob/9f189bfa613bb7a9c2da6616666661790d4410eb/toc/working-groups/docs.md#L38-L60)).
+How the site collects the repositories, Git submodules pinned by the
+site's repository or a checkout at build as Bookbinder does today, is
+decided later. Submodules are real folders, so each tool reads them as it
+reads one repository.
+
 ### URLs and old URLs
 
 - **Every tool can publish the book's `<path>.html` URLs**, so no page
@@ -349,7 +368,9 @@ For `cf-docs-migrate convert`. Decisions of this round, for review:
 2. **Each content repository keeps its URL directory as a top-level
    folder** (one repository) or as its component, instance or folder name
    (separate repositories), as the book's `config.yml` maps it
-   ([R-15](../../requirements/README.md#r-15)).
+   ([R-15](../../requirements/README.md#r-15) URL identifies the source).
+   **Accepted** (Docs WG lead, 2026-10-11), with separate repositories
+   ([decision](#separate-sources-or-one-repository)).
 3. **Internal links are converted to the tool's own form**: file paths
    (Docusaurus within one instance, Zensical), `xref:` (Antora), the
    root-relative URL the tool writes (Starlight, and Docusaurus across
@@ -382,6 +403,10 @@ For `cf-docs-migrate convert`. Decisions of this round, for review:
 8. **Each page's edit link names its own repository and file**: an
    `editUrl` function (Docusaurus), `edit_url` per content source
    (Antora), `editUrl` front matter written by the converter (Starlight).
+   **Accepted** (Docs WG lead, 2026-10-11), with separate repositories.
+   Zensical cannot meet it as tested: `repo_url` and `edit_uri` are site
+   settings, so every edit link points into one repository
+   ([Zensical conventions](sites/zensical/CONVENTIONS.md)).
 9. **The links check runs on every converted page**, beside the outline
    check: [checks/links.py](checks/links.py).
 
@@ -421,6 +446,9 @@ For `cf-docs-migrate convert`. Decisions of this round, for review:
 - **Images** (153 relative image links) were counted, not converted.
 - **bosh.io's links into the bpm-release submodule** (13) were not
   resolved; the submodule was not fetched.
+- **Git submodules and a checkout at build**, the two ways to collect
+  separate repositories ([decision](#separate-sources-or-one-repository)),
+  were not built; the split layout read local folders.
 - **Starlight's `starlight-links-validator`** and Docusaurus's file links
   to another instance by `@site/` path were not tried.
 - **A browser check** of the redirect pages (that a reader lands on the
