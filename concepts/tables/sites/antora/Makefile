@@ -1,4 +1,4 @@
-.PHONY: install build build-raw serve clean check check-wide
+.PHONY: screenshots install build build-raw serve clean check check-wide
 
 PORT ?= 8002
 ANTORA = npx antora --stacktrace
@@ -51,6 +51,20 @@ check: $(if $(filter passthrough-raw,$(MODES)),build-raw,build)
 # Wide tables scroll in their own box (run while make serve is running)
 check-wide: ../../checks/node_modules
 	node ../../checks/wide-tables.mjs 'http://localhost:$(PORT)/%m/%p/' $(MODES)
+
+# Screenshots of every table for the POC pages, as checks/screenshots.mjs takes
+# them (run while make serve is running). HIDE is the page furniture that would
+# cover a table's header row. A page that is not built is reported and skipped.
+# Images already copied to poc/img are refreshed too, and the two-pane page is
+# rebuilt, since it records a hash of each image.
+HIDE = 
+POC = ../../../../poc
+screenshots: ../../checks/node_modules
+	@for m in $(MODES); do for p in $(PAGES); do \
+	  node ../../checks/screenshots.mjs "http://localhost:$(PORT)/$$m/$$p/" $(POC)/compare/img/antora-$$m-$$p --hide '$(HIDE)' || echo "skipped $$m/$$p"; \
+	done; done
+	@for f in $(POC)/compare/img/antora-*; do [ ! -f $(POC)/img/$${f##*/} ] || cp $$f $(POC)/img/; done
+	python3 -I $(POC)/pair/build.py
 
 ../../checks/node_modules: ../../checks/package.json
 	npm --prefix ../../checks install --no-audit --no-fund

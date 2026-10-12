@@ -12,6 +12,8 @@
 //   Docusaurus: '.navbar, [class*="skipToContent"]', sticky bars that would cover the
 //   table's header row, and a skip link that shows in captures wider than the window)
 //   --margin is 4 by default; the published screenshots use 0
+// Each site's `make screenshots` runs this for every page and mode with that
+// site's --hide.
 // Needs Google Chrome installed.
 import { chromium } from 'playwright-core'
 
