@@ -164,3 +164,14 @@ would carry a role, but only cell by cell.
 `native-plain` is the same pages as pipe tables: lists in cells as inline
 HTML (`<ul><li>…</li></ul>` on one line), `<br /><br />` for the paragraph
 break, the title as a bold line above the table, and no widths.
+
+## Paths
+
+A path in inline code (`/var/vcap/jobs/JOB`, `/oauth/token`) is marked as
+one, in extension and native, with the `path` tag:
+`{% path %}/oauth/token{% /path %}` renders `<code class="path">`. An
+annotation such as `` `/oauth/token` {% .path %} `` would land on the
+paragraph or the cell, not the code, so a tag says it
+(`markdoc.config.mjs`). `hints.css` keeps `code.path` on one line: Firefox
+breaks a path after a `/`, and a split path reads as two words. Passthrough
+keeps the source as written.

@@ -191,7 +191,7 @@ To help you choose a grant type for your use case, see the following table:
   - Actions where a `client_credentials` grant type might be appropriate include creating or destroying user groups, managing user group membership, or creating or destroying other clients. The `client_credentials` grant can be likened to service accounts in legacy app ecosystems.
 - - `refresh_token`
   - Developers must use the `refresh_token` grant type with either the `authorization_code` or `password` grant type. `refresh_token` cannot be used by itself.
-  - Clients typically use the `refresh_token` to obtain a new access token without the need for the user to authenticate again. They do this by calling `/oauth/token` with `grant_type=refresh_token`. A refresh token is only issued to clients that have `refresh_token` in their list of `authorized_grant_types`.
+  - Clients typically use the `refresh_token` to obtain a new access token without the need for the user to authenticate again. They do this by calling <code className="path">/oauth/token</code> with `grant_type=refresh_token`. A refresh token is only issued to clients that have `refresh_token` in their list of `authorized_grant_types`.
 :::
 
 ### <a id="clientid"></a> client.client_id
@@ -265,11 +265,11 @@ The following table describes these custom attributes:
 
     You can limit UAA to only issue an app tokens if the users are from a certain provider. To do this, configure the app's client with `allowed providers="ldap"`. The value is a comma-separated string of `Identity Provider.origin` values.
 - - `created with`
-  - UAA stores the scope `zones.write` in this field if the client was created using the `/identity-zones` endpoint. UAA uses this field to allow clients to be deleted by the same endpoint. This is not a configurable field.
+  - UAA stores the scope `zones.write` in this field if the client was created using the <code className="path">/identity-zones</code> endpoint. UAA uses this field to allow clients to be deleted by the same endpoint. This is not a configurable field.
 - - `name`
   - Various tooling in the {vars.platform_name} ecosystem creates clients with generated `Client.client_id` values. These tools often store a human-readable name in this field. For more information, see [client.client_id](#clientid).
 - - `approvals_deleted`
   - Contains a boolean value if performing an operation on the client resulted in all the client's user approvals were deleted. For example, changing the `client.client_secret` value causes UAA to delete all the approvals. UAA then stores a value of `true` in this field.
 - - `token_salt`
-  - Tokens, even stateless JWT, can be revoked. Revoked tokens do not pass a UAA token validation when the token is passed to the `/introspect` endpoint. UAA revokes a token if the client's secret has changed. There may be occasions to revoke all tokens for a certain client without having to change the client secret. You can do this by changing the `token_salt`. `token_salt` is an arbitrary string value that is used to generate a hash.
+  - Tokens, even stateless JWT, can be revoked. Revoked tokens do not pass a UAA token validation when the token is passed to the <code className="path">/introspect</code> endpoint. UAA revokes a token if the client's secret has changed. There may be occasions to revoke all tokens for a certain client without having to change the client secret. You can do this by changing the `token_salt`. `token_salt` is an arbitrary string value that is used to generate a hash.
 :::

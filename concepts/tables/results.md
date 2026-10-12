@@ -1320,3 +1320,36 @@ bpm-config tables and on a page with no-wrap on column 4. Antora still
 uses the list: Asciidoctor writes a cell's class from its alignment only
 (`tableblock halign-… valign-…`), so a tree processor has no clean way to
 add one.
+
+## Paths in table cells
+
+Checked on 2026-10-12 (decision: mark paths with a class, and keep them
+on one line). Method and measurements:
+[paths-in-table-cells-2026-10-12.txt](results/paths-in-table-cells-2026-10-12.txt).
+
+- **Only Firefox splits a path.** On B2's `/var/vcap/...` paths, Chrome
+  and WebKit kept every path on one line in every tool at 1280 and 390.
+  Firefox broke them after a `/`: on 2 lines at 1280 in four tools, and on
+  2–3 at 390. Sphinx never splits inline code.
+- **The markup.** Each tool marks a path in its own syntax, and each gives
+  `<code class="path">`:
+  - Antora: `` [.path]`/oauth/token` ``
+  - Zensical: `` `/oauth/token`{.path} ``
+  - Docusaurus: `<code className="path">/oauth/token</code>`
+  - Sphinx/MyST: `` `/oauth/token`{.path} ``, with `attrs_inline` on
+  - Starlight: `{% path %}/oauth/token{% /path %}`. This needs a five-line
+    tag in `markdoc.config.mjs`, because a Markdoc annotation lands on
+    the paragraph or the cell, not the code.
+- **The rule**, in each site's `hints.css`:
+  `code.path { white-space: nowrap; }`. On uaa-concepts, which has three
+  endpoints marked in extension and native, every path stays on one line
+  in all three browsers at both widths, and no table width changes.
+  Without the rule, `/identity-zones` splits at its hyphen at 390, in
+  Chrome (Starlight, Antora), Firefox and WebKit (Antora). On the
+  bpm-config paths, Firefox at 390 grew B2 by 47–77 pixels inside boxes
+  that already scroll.
+- **Not used: a break after `/` with a mark.** A soft hyphen after each
+  `/`, with `hyphenate-character: "↵"`, shows the mark in Chrome and
+  WebKit only. Firefox keeps its own breaks and shows no mark. Copying the
+  path also copies the soft hyphens: three in `/var/vcap/store/JOB` on
+  Chrome's clipboard, so a pasted path is broken.

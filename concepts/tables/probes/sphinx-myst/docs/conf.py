@@ -9,7 +9,8 @@ import yaml
 project = "Tables round — Sphinx/MyST probe"
 root_doc = "scale-table-host"
 extensions = ["myst_parser"]
-myst_enable_extensions = ["substitution"]
+# attrs_inline: `/var/vcap/jobs/JOB`{.path} gives the code a class.
+myst_enable_extensions = ["substitution", "attrs_inline"]
 # Partials (_name.md) are included by a host page, not built as pages.
 exclude_patterns = ["_build", "_*.md"]
 

@@ -65,6 +65,10 @@ list tables do.
 - **Row headers in the header row.** `:stub-columns:` also makes the header
   row's first cell a stub (`class="head stub"`); it renders as a column
   header.
+- **A path takes a class** (added 2026-10-12): `` `/var/vcap/jobs/JOB`{.path} ``,
+  with MyST's `attrs_inline` on, gives `<code class="path docutils literal
+  notranslate">`. It needs no rule here: the theme already keeps every piece
+  of inline code on one line (`span.pre`), so paths never split.
 - **Inline code is rewritten.** Sphinx writes `` `0` `` as
   `<code class="docutils literal notranslate"><span class="pre">0</span></code>`
   (one `span` per word). The check puts back plain `<code>` before running

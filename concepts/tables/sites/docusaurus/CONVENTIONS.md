@@ -137,3 +137,11 @@ column's cells as the list table does (`role-key`, `wrap-avoid` and the
 
 A cell can hold a linked image, `[![alt](./images/x.png)](./images/x.png)`;
 the build copies both targets into its assets.
+
+## Paths
+
+A path in inline code (`/var/vcap/jobs/JOB`, `/oauth/token`) is marked as
+one, in extension and native: `<code className="path">/oauth/token</code>`,
+plain MDX with no plugin. `hints.css` keeps `code.path` on one line: Firefox
+breaks a path after a `/`, and a split path reads as two words. Passthrough
+keeps the source as written.

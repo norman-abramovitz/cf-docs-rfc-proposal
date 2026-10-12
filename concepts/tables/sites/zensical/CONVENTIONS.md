@@ -182,3 +182,11 @@ with no cell borders, a rule under the header, and centered cells.
   marks that column's cells as the list table does (`role-key`,
   `wrap-avoid` and the `wrap-avoid-box`), and the table gets
   `hinted-table`, so one rule in `hints.css` serves any column.
+
+## Paths
+
+A path in inline code (`/var/vcap/jobs/JOB`, `/oauth/token`) is marked as
+one, in extension and native, with the attribute lists extension:
+`` `/oauth/token`{.path} ``. `hints.css` keeps `code.path` on one line:
+Firefox breaks a path after a `/`, and a split path reads as two words.
+Passthrough keeps the source as written.

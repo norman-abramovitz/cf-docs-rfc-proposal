@@ -59,3 +59,7 @@
     var(--table-edge-bg);
 }
 [data-theme='dark'] .markdown table:not(.table-media) { --table-edge-bg: var(--ifm-background-color); }
+/* A path: inline code with class path stays on one line. Firefox breaks a path
+   after a `/` (Chrome and WebKit do not); a path split there reads as two words.
+   The class is also the hook for any other look a path gets. */
+code.path { white-space: nowrap; }

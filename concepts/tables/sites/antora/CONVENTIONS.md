@@ -181,3 +181,11 @@ The images link to themselves with `link=self` in the image macro
 (`image:client-creds-threads-1.png["Threads Level 1",link=self]`). Antora
 publishes module images to `_images/`, so a passthrough page links them as
 `../_images/<file>`.
+
+## Paths
+
+A path in inline code (`/var/vcap/jobs/JOB`, `/oauth/token`) is marked as
+one, in extension and native, with a role: `` [.path]`/oauth/token` ``
+renders `<code class="path">`. `hints.css` keeps `code.path` on one line:
+Firefox breaks a path after a `/`, and a split path reads as two words.
+Passthrough keeps the source as written.

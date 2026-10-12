@@ -1,0 +1,145 @@
+Paths in table cells, 2026-10-12
+
+Method
+- Browsers: Google Chrome 155.0.8059.39, Firefox 155.0 and WebKit 26.6
+  (Playwright builds 1543 and 2359) through playwright-core 1.63.0;
+  1280 x 900 and 390 x 900. macOS 27.
+- Lines: the distinct top edges of a code element's characters (Range
+  rects, one character at a time).
+- Markup, checked in each tool's renderer or build, each giving
+  <code class="path">: Antora [.path]`...`; Zensical `...`{.path}
+  (attr_list); Docusaurus <code className="path">...</code>; Starlight
+  {% path %}...{% /path %} (a Markdoc tag; an annotation lands on the
+  paragraph or cell); MyST `...`{.path} with attrs_inline (Sphinx adds
+  its own classes after path).
+
+1. Choosing a style: bpm-config native, B2's three /var/vcap/... paths,
+   class added by script to code that starts with `/`, in each tool's
+   step 6 build. Columns: B2 width, scroll box width, column 4 width,
+   lines per path.
+   chromium 1280 docusaurus today  B2 703px box 703 col4 316 pathLines 1,1,1 page ok
+   chromium 1280 docusaurus nowrap B2 703px box 703 col4 316 pathLines 1,1,1 page ok
+   chromium 1280 zensical   today  B2 686px box 686 col4 324 pathLines 1,1,1 page ok
+   chromium 1280 zensical   nowrap B2 686px box 686 col4 324 pathLines 1,1,1 page ok
+   chromium 1280 starlight  today  B2 632px box 632 col4 254 pathLines 1,1,1 page ok
+   chromium 1280 starlight  nowrap B2 632px box 632 col4 254 pathLines 1,1,1 page ok
+   chromium 1280 antora     today  B2 686px box 686 col4 334 pathLines 1,1,1 page ok
+   chromium 1280 antora     nowrap B2 686px box 686 col4 334 pathLines 1,1,1 page ok
+   chromium 1280 sphinx     today  B2 660px box 660 col4 256 pathLines 1,1,1 page ok
+   chromium 1280 sphinx     nowrap B2 660px box 660 col4 256 pathLines 1,1,1 page ok
+   chromium 390  docusaurus today  B2 579px box 358 scrolls col4 199 pathLines 1,1,1 page ok
+   chromium 390  docusaurus nowrap B2 579px box 358 scrolls col4 199 pathLines 1,1,1 page ok
+   chromium 390  zensical   today  B2 522px box 522 col4 166 pathLines 1,1,1 page ok
+   chromium 390  zensical   nowrap B2 522px box 522 col4 166 pathLines 1,1,1 page ok
+   chromium 390  starlight  today  B2 554px box 358 scrolls col4 181 pathLines 1,1,1 page ok
+   chromium 390  starlight  nowrap B2 554px box 358 scrolls col4 181 pathLines 1,1,1 page ok
+   chromium 390  antora     today  B2 505px box 356 scrolls col4 182 pathLines 1,1,1 page ok
+   chromium 390  antora     nowrap B2 505px box 356 scrolls col4 182 pathLines 1,1,1 page ok
+   chromium 390  sphinx     today  B2 604px box 605 col4 204 pathLines 1,1,1 page scrolls
+   chromium 390  sphinx     nowrap B2 604px box 605 col4 204 pathLines 1,1,1 page scrolls
+   firefox  1280 docusaurus today  B2 703px box 703 col4 312 pathLines 2,1,1 page ok
+   firefox  1280 docusaurus nowrap B2 703px box 703 col4 316 pathLines 1,1,1 page ok
+   firefox  1280 zensical   today  B2 686px box 686 col4 324 pathLines 1,2,2 page ok
+   firefox  1280 zensical   nowrap B2 686px box 686 col4 325 pathLines 1,1,1 page ok
+   firefox  1280 starlight  today  B2 632px box 632 col4 251 pathLines 1,2,2 page ok
+   firefox  1280 starlight  nowrap B2 632px box 632 col4 254 pathLines 1,1,1 page ok
+   firefox  1280 antora     today  B2 686px box 686 col4 330 pathLines 2,2,2 page ok
+   firefox  1280 antora     nowrap B2 686px box 686 col4 334 pathLines 1,1,1 page ok
+   firefox  1280 sphinx     today  B2 660px box 660 col4 256 pathLines 1,1,1 page ok
+   firefox  1280 sphinx     nowrap B2 660px box 660 col4 256 pathLines 1,1,1 page ok
+   firefox  390  docusaurus today  B2 500px box 358 scrolls col4 121 pathLines 3,2,2 page ok
+   firefox  390  docusaurus nowrap B2 576px box 358 scrolls col4 197 pathLines 1,1,1 page ok
+   firefox  390  zensical   today  B2 466px box 466 col4 110 pathLines 3,2,2 page ok
+   firefox  390  zensical   nowrap B2 513px box 513 col4 157 pathLines 1,1,1 page ok
+   firefox  390  starlight  today  B2 485px box 358 scrolls col4 112 pathLines 3,2,2 page ok
+   firefox  390  starlight  nowrap B2 555px box 358 scrolls col4 175 pathLines 1,1,1 OVERFLOW page ok
+   firefox  390  antora     today  B2 426px box 356 scrolls col4 102 pathLines 3,3,3 page ok
+   firefox  390  antora     nowrap B2 503px box 356 scrolls col4 179 pathLines 1,1,1 page ok
+   firefox  390  sphinx     today  B2 605px box 605 col4 205 pathLines 1,1,1 page scrolls
+   firefox  390  sphinx     nowrap B2 605px box 605 col4 205 pathLines 1,1,1 page scrolls
+   webkit   1280 docusaurus today  B2 703px box 703 col4 323 pathLines 1,1,1 page ok
+   webkit   1280 docusaurus nowrap B2 703px box 703 col4 323 pathLines 1,1,1 page ok
+   webkit   1280 zensical   today  B2 686px box 686 col4 330 pathLines 1,1,1 page ok
+   webkit   1280 zensical   nowrap B2 686px box 686 col4 330 pathLines 1,1,1 page ok
+   webkit   1280 starlight  today  B2 632px box 632 col4 255 pathLines 1,1,1 page ok
+   webkit   1280 starlight  nowrap B2 632px box 632 col4 255 pathLines 1,1,1 page ok
+   webkit   1280 antora     today  B2 685px box 686 col4 343 pathLines 1,1,1 page ok
+   webkit   1280 antora     nowrap B2 685px box 686 col4 343 pathLines 1,1,1 page ok
+   webkit   1280 sphinx     today  B2 659px box 660 col4 260 pathLines 1,1,1 page ok
+   webkit   1280 sphinx     nowrap B2 659px box 660 col4 260 pathLines 1,1,1 page ok
+   webkit   390  docusaurus today  B2 579px box 358 scrolls col4 199 pathLines 1,1,1 page ok
+   webkit   390  docusaurus nowrap B2 579px box 358 scrolls col4 199 pathLines 1,1,1 page ok
+   webkit   390  zensical   today  B2 522px box 522 col4 166 pathLines 1,1,1 page ok
+   webkit   390  zensical   nowrap B2 522px box 522 col4 166 pathLines 1,1,1 page ok
+   webkit   390  starlight  today  B2 562px box 358 scrolls col4 185 pathLines 1,1,1 page ok
+   webkit   390  starlight  nowrap B2 562px box 358 scrolls col4 185 pathLines 1,1,1 page ok
+   webkit   390  antora     today  B2 505px box 356 scrolls col4 182 pathLines 1,1,1 page ok
+   webkit   390  antora     nowrap B2 505px box 356 scrolls col4 182 pathLines 1,1,1 page ok
+   webkit   390  sphinx     today  B2 604px box 605 col4 204 pathLines 1,1,1 page scrolls
+   webkit   390  sphinx     nowrap B2 604px box 605 col4 204 pathLines 1,1,1 page scrolls
+
+2. Break after `/` with a mark: a plain page, a 150 px box, the path
+   /var/vcap/store/JOB with U+00AD after every `/` but the first,
+   code.path { hyphens: manual; hyphenate-character: "\21B5" }.
+   - Chrome, WebKit: break at a `/`, the mark shows.
+   - Firefox: breaks after the first `/` and after store/, its own break
+     opportunities, with no mark (the same as without the soft hyphens).
+   - Selecting the path gives the U+00AD in all three. Copying it in
+     Chrome (Cmd+C, clipboard read back): "/var/­vcap/­store/­JOB",
+     3 soft hyphens.
+
+3. The rule, code.path { white-space: nowrap }, in each site's hints.css,
+   on uaa-concepts (/oauth/token, /identity-zones, /introspect marked in
+   extension and native). "rule" = as built, "off" = the rule overridden
+   with white-space: normal. Lines per path, then table widths. PAGE = the
+   page is wider than the window, the same with the rule off.
+   chromium 1280 docusaurus extension rule 1,1,1 w703/703         off 1,1,1 w703/703
+   chromium 1280 docusaurus native    rule 1,1,1 w703/703         off 1,1,1 w703/703
+   chromium 1280 zensical   extension rule 1,1,1 w686/686         off 1,1,1 w686/686
+   chromium 1280 zensical   native    rule 1,1,1 w686/686         off 1,1,1 w686/686
+   chromium 1280 starlight  extension rule 1,1,1 w632/632         off 1,1,1 w632/632
+   chromium 1280 starlight  native    rule 1,1,1 w632/632         off 1,1,1 w632/632
+   chromium 1280 antora     extension rule 1,1,1 w686/686         off 1,1,1 w686/686
+   chromium 1280 antora     native    rule 1,1,1 w686/686         off 1,1,1 w686/686
+   chromium 390  docusaurus extension rule 1,1,1 w616/382         off 1,1,1 w616/382
+   chromium 390  docusaurus native    rule 1,1,1 w616/382         off 1,1,1 w616/382
+   chromium 390  zensical   extension rule 1,1,1 w510/356         off 1,1,1 w510/356
+   chromium 390  zensical   native    rule 1,1,1 w510/356         off 1,1,1 w510/356
+   chromium 390  starlight  extension rule 1,1,1 w574/358 PAGE    off 1,2,1 w574/358 PAGE
+   chromium 390  starlight  native    rule 1,1,1 w574/358 PAGE    off 1,2,1 w574/358 PAGE
+   chromium 390  antora     extension rule 1,1,1 w563/356         off 1,2,1 w563/356
+   chromium 390  antora     native    rule 1,1,1 w563/356         off 1,2,1 w563/356
+   firefox  1280 docusaurus extension rule 1,1,1 w703/703         off 1,1,2 w703/703
+   firefox  1280 docusaurus native    rule 1,1,1 w703/703         off 1,1,2 w703/703
+   firefox  1280 zensical   extension rule 1,1,1 w686/686         off 1,1,1 w686/686
+   firefox  1280 zensical   native    rule 1,1,1 w686/686         off 1,1,1 w686/686
+   firefox  1280 starlight  extension rule 1,1,1 w632/632         off 1,1,1 w632/632
+   firefox  1280 starlight  native    rule 1,1,1 w632/632         off 1,1,1 w632/632
+   firefox  1280 antora     extension rule 1,1,1 w686/686         off 1,1,1 w686/686
+   firefox  1280 antora     native    rule 1,1,1 w686/686         off 1,1,1 w686/686
+   firefox  390  docusaurus extension rule 1,1,1 w611/379         off 1,2,1 w611/379
+   firefox  390  docusaurus native    rule 1,1,1 w611/379         off 1,2,1 w611/379
+   firefox  390  zensical   extension rule 1,1,1 w492/356         off 2,1,2 w492/356
+   firefox  390  zensical   native    rule 1,1,1 w492/356         off 2,1,2 w492/356
+   firefox  390  starlight  extension rule 1,1,1 w562/358 PAGE    off 2,2,1 w562/358 PAGE
+   firefox  390  starlight  native    rule 1,1,1 w562/358 PAGE    off 2,2,1 w562/358 PAGE
+   firefox  390  antora     extension rule 1,1,1 w557/356         off 1,2,2 w557/356
+   firefox  390  antora     native    rule 1,1,1 w557/356         off 1,2,2 w557/356
+   webkit   1280 docusaurus extension rule 1,1,1 w703/703         off 1,1,1 w703/703
+   webkit   1280 docusaurus native    rule 1,1,1 w703/703         off 1,1,1 w703/703
+   webkit   1280 zensical   extension rule 1,1,1 w686/686         off 1,1,1 w686/686
+   webkit   1280 zensical   native    rule 1,1,1 w686/686         off 1,1,1 w686/686
+   webkit   1280 starlight  extension rule 1,1,1 w632/632         off 1,1,1 w632/632
+   webkit   1280 starlight  native    rule 1,1,1 w632/632         off 1,1,1 w632/632
+   webkit   1280 antora     extension rule 1,1,1 w685/685         off 1,1,1 w685/685
+   webkit   1280 antora     native    rule 1,1,1 w685/685         off 1,1,1 w685/685
+   webkit   390  docusaurus extension rule 1,1,1 w616/382         off 1,1,1 w616/382
+   webkit   390  docusaurus native    rule 1,1,1 w616/382         off 1,1,1 w616/382
+   webkit   390  zensical   extension rule 1,1,1 w510/356         off 1,1,1 w510/356
+   webkit   390  zensical   native    rule 1,1,1 w510/356         off 1,1,1 w510/356
+   webkit   390  starlight  extension rule 1,1,1 w587/358 PAGE    off 1,1,1 w587/358 PAGE
+   webkit   390  starlight  native    rule 1,1,1 w587/358 PAGE    off 1,1,1 w587/358 PAGE
+   webkit   390  antora     extension rule 1,1,1 w562/355         off 1,2,1 w562/355
+   webkit   390  antora     native    rule 1,1,1 w562/355         off 1,2,1 w562/355
+   Spot checks and wide-table checks give the same results as before in
+   every tool.
