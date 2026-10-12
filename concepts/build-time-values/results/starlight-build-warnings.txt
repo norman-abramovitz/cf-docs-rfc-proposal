@@ -1,0 +1,19 @@
+# Warnings and errors in the build logs of make check and make history (2026-10-11)
+build-build.log: 17:13:07 [WARN] [content] The collection "i18n" does not exist or is empty. Please check your content config file for errors.
+build-build.log: 17:13:07   ├─ /404.html17:13:07 [WARN] [content] Entry docs → 404 was not found.
+build-build.log: 17:13:08 [WARN] [@astrojs/sitemap] The Sitemap integration requires the `site` astro.config option. Skipping.
+build-page.log: 17:13:14 [WARN] [content] The collection "i18n" does not exist or is empty. Please check your content config file for errors.
+build-page.log: 17:13:14   ├─ /404.html17:13:14 [WARN] [content] Entry docs → 404 was not found.
+build-page.log: 17:13:14 [WARN] [@astrojs/sitemap] The Sitemap integration requires the `site` astro.config option. Skipping.
+build-site.log: 17:13:11 [WARN] [content] The collection "i18n" does not exist or is empty. Please check your content config file for errors.
+build-site.log: 17:13:11   ├─ /404.html17:13:11 [WARN] [content] Entry docs → 404 was not found.
+build-site.log: 17:13:12 [WARN] [@astrojs/sitemap] The Sitemap integration requires the `site` astro.config option. Skipping.
+helper/build.log: 17:13:22 [WARN] [content] The collection "i18n" does not exist or is empty. Please check your content config file for errors.
+helper/build.log: 17:13:22   ├─ /404.html17:13:22 [WARN] [content] Entry docs → 404 was not found.
+helper/build.log: 17:13:22 [WARN] [@astrojs/sitemap] The Sitemap integration requires the `site` astro.config option. Skipping.
+native/build.log: 17:13:19 [WARN] [content] The collection "i18n" does not exist or is empty. Please check your content config file for errors.
+native/build.log: 17:13:19   ├─ /404.html17:13:19 [WARN] [content] Entry docs → 404 was not found.
+native/build.log: 17:13:19 [WARN] [@astrojs/sitemap] The Sitemap integration requires the `site` astro.config option. Skipping.
+shallow/build.log: 17:13:24 [WARN] [content] The collection "i18n" does not exist or is empty. Please check your content config file for errors.
+shallow/build.log: 17:13:24   ├─ /404.html17:13:24 [WARN] [content] Entry docs → 404 was not found.
+shallow/build.log: 17:13:24 [WARN] [@astrojs/sitemap] The Sitemap integration requires the `site` astro.config option. Skipping.

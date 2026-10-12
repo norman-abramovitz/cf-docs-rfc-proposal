@@ -1,0 +1,6 @@
+# The sitemap each build-mode site writes (make check, 2026-10-11): URLs listed and the lastmod values
+sites/docusaurus/build-build/sitemap.xml: 5 URLs; lastmod: none
+sites/zensical/site-build/sitemap.xml: 0 URLs; lastmod: none
+sites/starlight/dist-build: no sitemap
+sites/antora/site-build/sitemap.xml: 5 URLs; lastmod: 2026-10-12T00:13:28.410Z 
+published: https://docs.cloudfoundry.org/sitemap.xml answers 404 (fetched 2026-10-11)

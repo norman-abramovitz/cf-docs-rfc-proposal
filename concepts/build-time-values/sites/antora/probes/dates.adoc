@@ -1,0 +1,6 @@
+= Dates Asciidoctor sets
+
+* docdate: {docdate}
+* docyear: {docyear}
+* localdate: {localdate}
+* localyear: {localyear}

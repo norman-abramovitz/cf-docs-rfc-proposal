@@ -1,0 +1,8 @@
+{
+  "name": "build-time-values-antora",
+  "private": true,
+  "description": "Build-time values round: the test pages built with Antora",
+  "devDependencies": {
+    "antora": "3.2.1"
+  }
+}

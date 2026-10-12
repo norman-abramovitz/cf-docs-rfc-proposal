@@ -1,0 +1,2 @@
+# Warnings and errors in the build logs of make check and make history (2026-10-11)
+

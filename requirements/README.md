@@ -145,7 +145,7 @@ Terms used in the table:
 |---|---|---|---|---|
 | <a id="r-23"></a>R-23 | one central conversion | One central team converts all content the same way, with one set of rules, not each working group on its own. | [L131] | proposed |
 | <a id="r-24"></a>R-24 | markup cleanup before conversion | Markup that browsers accept but strict parsers reject is fixed before, or as the first step of, conversion, and each fix is recorded. | [Markup that only browsers tolerate](../concepts/tables/README.md#markup-that-only-browsers-tolerate) | proposed |
-| <a id="r-25"></a>R-25 | build-time values are expected differences | When a converted page is compared with the published page, values set at build time (the copyright year in the footer, "Page last updated") count as expected differences. | [Copyright concept](../concepts/README.md#concepts) | proposed |
+| <a id="r-25"></a>R-25 | build-time values are expected differences | When a converted page is compared with the published page, values set at build or serve time (the copyright year in the footer, the "Page last updated" date, a sitemap's `lastmod`, response headers) count as expected differences and are listed apart. | [Copyright concept](../concepts/README.md#concepts); [build-time values results](../concepts/build-time-values/results.md#summary) | proposed |
 | <a id="r-26"></a>R-26 | owner review of migrated pages | The owning working group reviews every migrated section before cutover. | [L131] | proposed |
 
 IDs added after the first 26 so far:
@@ -288,7 +288,10 @@ markup cleanup before conversion
 and partials rounds bear on [R-04](#r-04) variables everywhere and
 [R-05](#r-05) partials and reuse
 ([variables results](../concepts/variables/results.md#requirements),
-[partials results](../concepts/partials/results.md#requirements)). They will sharpen
+[partials results](../concepts/partials/results.md#requirements)). The
+build-time values round bears on [R-25](#r-25) build-time values are
+expected differences
+([build-time values results](../concepts/build-time-values/results.md#requirements)). They will sharpen
 the requirements from [R-04](#r-04) variables everywhere to [R-08](#r-08)
 cross-repository links.
 

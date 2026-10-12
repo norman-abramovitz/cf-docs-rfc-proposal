@@ -1,0 +1,26 @@
+# Build-time values round: the copyright year and "last updated" date.
+# The theme's copyright partial is overridden (overrides/partials/). It
+# reads [project.extra] year_mode and year, which `make` appends to a copy
+# of this file (build.toml) before each build: Zensical's templates have no
+# build date, and its configuration reads no environment variables.
+[project]
+site_name = "Build-time values round — Zensical"
+docs_dir = "docs"
+site_dir = "site"
+
+[project.theme]
+custom_dir = "overrides"
+
+# Defaults from a new project, plus `tables` for pipe tables (earlier rounds).
+[project.markdown_extensions]
+abbr = {}
+admonition = {}
+attr_list = {}
+def_list = {}
+footnotes = {}
+md_in_html = {}
+tables = {}
+toc.permalink = true
+pymdownx.betterem = {}
+pymdownx.highlight = { anchor_linenums = true, line_spans = "__span", pygments_lang_class = true }
+pymdownx.superfences = {}

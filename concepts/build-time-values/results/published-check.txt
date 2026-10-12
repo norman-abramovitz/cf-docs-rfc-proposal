@@ -1,0 +1,17 @@
+# checks/check-site.sh published published, run 2026-10-11 from concepts/build-time-values
+== published (published): access-control
+ok    copyright year ['2026'], expected 2026
+ok    holder ['Cloud Foundry Foundation'], expected 'Cloud Foundry Foundation'
+ok    updated ['2026-07-09'], expected 2026-07-09
+== published (published): architecture
+ok    copyright year ['2026'], expected 2026
+ok    holder ['Cloud Foundry Foundation'], expected 'Cloud Foundry Foundation'
+ok    updated ['2024-12-05'], expected 2024-12-05
+== published (published): using-vol-services
+ok    copyright year ['2026'], expected 2026
+ok    holder ['Cloud Foundry Foundation'], expected 'Cloud Foundry Foundation'
+ok    updated ['2026-07-21'], expected 2026-07-21
+== published (published): high-availability
+ok    copyright year ['2026'], expected 2026
+ok    holder ['Cloud Foundry Foundation'], expected 'Cloud Foundry Foundation'
+ok    updated ['2026-07-22'], expected 2026-07-22

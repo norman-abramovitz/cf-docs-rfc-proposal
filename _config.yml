@@ -52,6 +52,14 @@ exclude:
   - concepts/partials/survey/*.csv
   - concepts/partials/survey/*.py
   - concepts/partials/survey/*.txt
+  - concepts/build-time-values/sites
+  - concepts/build-time-values/checks
+  - concepts/build-time-values/helpers
+  - concepts/build-time-values/source
+  - concepts/build-time-values/published
+  - concepts/build-time-values/survey/*.csv
+  - concepts/build-time-values/survey/*.py
+  - concepts/build-time-values/survey/*.txt
   - Gemfile
   - Gemfile.lock
   - vendor

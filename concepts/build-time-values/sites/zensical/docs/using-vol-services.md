@@ -1,0 +1,6 @@
+---
+title: "Using an external file system (volume services)"
+revision_date: 2023-05-31
+---
+
+Here are instructions to help you read and write to a mounted file system from your apps. In Cloud Foundry, a volume service provides a volume so your app can read or write to a reliable, persistent file system.

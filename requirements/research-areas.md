@@ -173,8 +173,10 @@ it link to their line, as in [L112] ([glossary](../glossary.md#rfc)).
   ([notes results](../concepts/notes/results.md#summary)). Variables and
   partials are converted in all four, with their conventions under review
   ([variables results](../concepts/variables/results.md#summary),
-  [partials results](../concepts/partials/results.md#summary)). Code blocks,
-  cross-repository links, and copyright and build-time values are proposed
+  [partials results](../concepts/partials/results.md#summary)). Copyright and
+  build-time values are built in all four, with the year rule open
+  ([build-time values results](../concepts/build-time-values/results.md#summary)).
+  Code blocks and cross-repository links are proposed
   ([concepts](../concepts/README.md#concepts)). The tables round already
   found problems outside tables: heading anchors written as `<a id>`, terminal
   blocks, the `*` lost in `Accept: */*`, and HTML-valued variables
@@ -188,6 +190,12 @@ it link to their line, as in [L112] ([glossary](../glossary.md#rfc)).
   ([`<%= Time.now.year %>`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/master_middleman/source/layouts/_book-footer.erb#L3)), so
   the year changes on every build. A conversion that only changes the format
   may not warrant a new year.
+- **Found by the build-time values round (2026-10-11):** five answers,
+  from the build's year to no year, with what was observed for each.
+  Every year rule gives 2026 site-wide this year. A content year needs a
+  list of commits that do not count as content, and the conversion
+  commit would be one of them
+  ([build-time values results](../concepts/build-time-values/results.md#should-the-copyright-year-follow-content-changes)).
 - **What answers it:** a Docs WG decision, with the Cloud Foundry
   Foundation if it holds a view on copyright notices.
 

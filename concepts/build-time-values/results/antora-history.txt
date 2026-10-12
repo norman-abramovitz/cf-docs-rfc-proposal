@@ -1,0 +1,47 @@
+# make history: the repository helpers/make-history.py makes (commit ids first), the tool's own date (native), the content-date helper (helper). Run 2026-10-11 in a copy outside the repository.
+python3 -I helpers/make-history.py . .history/native pages/modules/ROOT/pages .adoc native
+C1 147ad7316a900758458274f839c9b9c2f538e03e
+C2 68958cfdabb28462933adbd40e93142425fc4c72
+C3 d4c2682ba11971a44c6e56e7e6cd10d249d7d8b8
+C4 e21ec2bd0341027052f61ed80be50f5f579dc3f6
+C5 16cd31ecdd14be44b8019c0feed8347c710994c1
+C6 bc2aa67e5bdd39fa8f7afbe17e0efa96718de650
+python3 -I helpers/make-history.py . .history/helper pages/modules/ROOT/pages .adoc helper
+C1 147ad7316a900758458274f839c9b9c2f538e03e
+C2 68958cfdabb28462933adbd40e93142425fc4c72
+C3 d4c2682ba11971a44c6e56e7e6cd10d249d7d8b8
+C4 e21ec2bd0341027052f61ed80be50f5f579dc3f6
+C5 1c287d79ccf0131bfe479fe019f56919c492be61
+C6 35c8ec2155355f5817044f19dd45aa94277419d0
+pages/modules/ROOT/pages/access-control.adoc	2026-10-05	git 35c8ec2155
+pages/modules/ROOT/pages/architecture.adoc	2024-12-05	page
+pages/modules/ROOT/pages/high-availability.adoc	2025-06-02	page
+pages/modules/ROOT/pages/using-vol-services.adoc	2019-03-01	page
+SITE_YEAR=2026
+## native: what the tool shows without a date in the page; expected to differ from the intent
+== .history/native/site/cf (history): access-control
+ok    copyright year ['2026'], expected 2026 (build year)
+FAIL  updated none, expected 2026-10-05
+== .history/native/site/cf (history): architecture
+ok    copyright year ['2026'], expected 2026 (build year)
+FAIL  updated none, expected 2024-12-05
+== .history/native/site/cf (history): using-vol-services
+ok    copyright year ['2026'], expected 2026 (build year)
+FAIL  updated none, expected 2019-03-01
+== .history/native/site/cf (history): high-availability
+ok    copyright year ['2026'], expected 2026 (build year)
+FAIL  updated none, expected 2025-06-02
+## helper
+== .history/helper/site/cf (history): access-control
+ok    copyright year ['2026'], expected 2026 (build year)
+ok    updated ['2026-10-05'], expected 2026-10-05
+== .history/helper/site/cf (history): architecture
+ok    copyright year ['2026'], expected 2026 (build year)
+ok    updated ['2024-12-05'], expected 2024-12-05
+== .history/helper/site/cf (history): using-vol-services
+ok    copyright year ['2026'], expected 2026 (build year)
+ok    updated ['2019-03-01'], expected 2019-03-01
+== .history/helper/site/cf (history): high-availability
+ok    copyright year ['2026'], expected 2026 (build year)
+ok    updated ['2025-06-02'], expected 2025-06-02
+exit status 0

@@ -1,0 +1,107 @@
+# checks/buildtime.py --compare published/access-control.html BUILT, with and without --no-mask; BUILT is each tool's build-mode page (make check, 2026-10-11)
+
+## sites/docusaurus/build-build/access-control/index.html, build-time values masked
+build-time values (expected differences):
+  copyright  published 2026         built 2026         same
+  updated    published 2026-07-09   built 2026-06-26   differs
+content (build-time values masked): published 836 words, built 806 words, matching 0.979
+  delete   published: 'access to Service Plans Prerequisites Service Plan access Enabling access to Service Plans Deactivating'
+           built:     ''
+  replace  published: 'broker’s'
+           built:     "broker's"
+  replace  published: 'broker’s'
+           built:     "broker's"
+  delete   published: 'Create a pull request or raise an issue on the source for this page in GitHub'
+           built:     ''
+
+## sites/docusaurus/build-build/access-control/index.html, --no-mask
+build-time values (expected differences):
+  copyright  published 2026         built 2026         same
+  updated    published 2026-07-09   built 2026-06-26   differs
+content: published 839 words, built 812 words, matching 0.975
+  delete   published: 'Prerequisites Service Plan access Enabling access to Service Plans Deactivating access to Service Plans Page last updated:'
+           built:     ''
+  replace  published: 'broker’s'
+           built:     "broker's"
+  replace  published: 'broker’s'
+           built:     "broker's"
+  replace  published: 'Create a pull request or raise an issue'
+           built:     'Last updated'
+  replace  published: 'the source for this page in GitHub'
+           built:     'Jun 26, 2026'
+
+## sites/zensical/site-build/access-control/index.html, build-time values masked
+build-time values (expected differences):
+  copyright  published 2026         built 2026         same
+  updated    published 2026-07-09   built 2026-06-26   differs
+content (build-time values masked): published 836 words, built 806 words, matching 0.979
+  delete   published: 'access to Service Plans Prerequisites Service Plan access Enabling access to Service Plans Deactivating'
+           built:     ''
+  replace  published: 'broker’s'
+           built:     "broker's"
+  replace  published: 'broker’s'
+           built:     "broker's"
+  delete   published: 'Create a pull request or raise an issue on the source for this page in GitHub'
+           built:     ''
+
+## sites/zensical/site-build/access-control/index.html, --no-mask
+build-time values (expected differences):
+  copyright  published 2026         built 2026         same
+  updated    published 2026-07-09   built 2026-06-26   differs
+content: published 839 words, built 807 words, matching 0.977
+  delete   published: 'Prerequisites Service Plan access Enabling access to Service Plans Deactivating access to Service Plans Page last updated:'
+           built:     ''
+  replace  published: 'broker’s'
+           built:     "broker's"
+  replace  published: 'broker’s'
+           built:     "broker's"
+  replace  published: 'Create a pull request or raise an issue on the source for this page in GitHub'
+           built:     '2026-06-26'
+
+## sites/starlight/dist-build/access-control/index.html, build-time values masked
+build-time values (expected differences):
+  copyright  published 2026         built 2026         same
+  updated    published 2026-07-09   built 2026-06-26   differs
+content (build-time values masked): published 836 words, built 801 words, matching 0.976
+  delete   published: 'Managing access to Service Plans Prerequisites Service Plan access Enabling access to Service Plans Deactivating access to Service Plans'
+           built:     ''
+  replace  published: 'broker’s'
+           built:     "broker's"
+  replace  published: 'broker’s'
+           built:     "broker's"
+  delete   published: 'Create a pull request or raise an issue on the source for this page in GitHub'
+           built:     ''
+
+## sites/starlight/dist-build/access-control/index.html, --no-mask
+build-time values (expected differences):
+  copyright  published 2026         built 2026         same
+  updated    published 2026-07-09   built 2026-06-26   differs
+content: published 839 words, built 801 words, matching 0.974
+  delete   published: 'Managing access to Service Plans Prerequisites Service Plan access Enabling access to Service Plans Deactivating access to Service Plans Page last upd'
+           built:     ''
+  replace  published: 'broker’s'
+           built:     "broker's"
+  replace  published: 'broker’s'
+           built:     "broker's"
+  delete   published: 'Create a pull request or raise an issue on the source for this page in GitHub'
+           built:     ''
+
+## sites/antora/site-build/cf/access-control/index.html, build-time values masked
+build-time values (expected differences):
+  copyright  published 2026         built 2026         same
+  updated    published 2026-07-09   built 2026-06-26   differs
+content (build-time values masked): published 836 words, built 806 words, matching 0.982
+  delete   published: 'access to Service Plans Prerequisites Service Plan access Enabling access to Service Plans Deactivating'
+           built:     ''
+  delete   published: 'Create a pull request or raise an issue on the source for this page in GitHub'
+           built:     ''
+
+## sites/antora/site-build/cf/access-control/index.html, --no-mask
+build-time values (expected differences):
+  copyright  published 2026         built 2026         same
+  updated    published 2026-07-09   built 2026-06-26   differs
+content: published 839 words, built 806 words, matching 0.980
+  delete   published: 'Prerequisites Service Plan access Enabling access to Service Plans Deactivating access to Service Plans Page last updated:'
+           built:     ''
+  delete   published: 'Create a pull request or raise an issue on the source for this page in GitHub'
+           built:     ''

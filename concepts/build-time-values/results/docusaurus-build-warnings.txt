@@ -1,0 +1,15 @@
+# Warnings and errors in the build logs of make check and make history (2026-10-11)
+build-build.log: (node:72912) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+build-build.log: (Use `node --trace-warnings ...` to show where the warning was created)
+build-page.log: (node:73179) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+build-page.log: (Use `node --trace-warnings ...` to show where the warning was created)
+build-site.log: (node:73109) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+build-site.log: (Use `node --trace-warnings ...` to show where the warning was created)
+helper/build.log: (node:73693) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+helper/build.log: (Use `node --trace-warnings ...` to show where the warning was created)
+native/build-vcs.log: (node:74114) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+native/build-vcs.log: (Use `node --trace-warnings ...` to show where the warning was created)
+native/build.log: (node:73513) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+native/build.log: (Use `node --trace-warnings ...` to show where the warning was created)
+shallow/build.log: (node:73928) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+shallow/build.log: (Use `node --trace-warnings ...` to show where the warning was created)

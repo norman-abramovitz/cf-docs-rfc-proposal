@@ -1,0 +1,23 @@
+# git log --follow on each converted page of the Docusaurus history repository (native variant, 2026-10-11): which pages Git connects to their book-format file across the conversion commit C5. Rename detection is Git's default (50% similar).
+## docs/access-control.mdx
+03d301b 2026-10-05 Update access control
+ed8de77 2026-10-01 Convert pages
+7696418 2026-07-21 Remove platform-conditional ERB blocks, keep OSS content
+4acc9b6 2019-03-01 Add pages
+## docs/architecture.mdx
+ed8de77 2026-10-01 Convert pages
+## docs/using-vol-services.mdx
+ed8de77 2026-10-01 Convert pages
+## docs/high-availability.mdx
+ed8de77 2026-10-01 Convert pages
+## C5, as Git's rename detection sees it
+ed8de77 Convert pages
+
+ ...cess-control.html.md.erb => access-control.mdx} |  72 +-------
+ docs/architecture.html.md.erb                      | 189 ---------------------
+ docs/architecture.mdx                              |   5 +
+ docs/high-availability.html.md.erb                 | 136 ---------------
+ docs/high-availability.mdx                         |   5 +
+ docs/using-vol-services.html.md.erb                |   8 -
+ docs/using-vol-services.mdx                        |   5 +
+ 7 files changed, 24 insertions(+), 396 deletions(-)

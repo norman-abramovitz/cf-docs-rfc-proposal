@@ -1,0 +1,22 @@
+---
+// Starlight's footer (edit link, "Last updated", pagination), followed by
+// the copyright notice. Its year, from YEAR_MODE: the year of the build
+// (this code runs when the page is built), SITE_YEAR, or this page's own
+// "last updated" year. A component override: Astro code.
+import Default from '@astrojs/starlight/components/Footer.astro';
+
+const mode = process.env.YEAR_MODE || 'build';
+const {lastUpdated} = Astro.locals.starlightRoute;
+const year =
+  mode === 'page' ? lastUpdated?.getUTCFullYear() :
+  mode === 'site' ? process.env.SITE_YEAR :
+  new Date().getFullYear();
+---
+
+<Default />
+{year && (
+  <p class="site-copyright">
+    <a href="/">Cloud Foundry Documentation</a> &copy; {year}{' '}
+    <a href="https://cloudfoundry.org">Cloud Foundry Foundation</a>. All Rights Reserved.
+  </p>
+)}

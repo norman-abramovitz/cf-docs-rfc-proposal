@@ -1,0 +1,32 @@
+# Antora playbook for the build-time values round. The footer and the
+# "last updated" line come from supplemental-ui/ (over the default UI):
+# YEAR_MODE (build, site or page) and SITE_YEAR choose the copyright year,
+# read from the environment by the UI template ({{env.YEAR_MODE}}).
+site:
+  title: Build-time values round — Antora
+  # With a URL, Antora writes sitemap.xml
+  url: http://localhost:4304
+  start_page: cf::index.adoc
+content:
+  sources:
+  # This repository, read from its worktree, so pages need not be committed
+  - url: ./../../../..
+    branches: HEAD
+    start_paths:
+    - concepts/build-time-values/sites/antora/pages
+ui:
+  bundle:
+    # The default UI, pinned: `make` downloads one build and checks its hash
+    url: ./.cache/ui-bundle.zip
+  supplemental_files: ./supplemental-ui
+urls:
+  html_extension_style: indexify
+asciidoc:
+  attributes:
+    idprefix: ''
+    idseparator: '-'
+output:
+  dir: ./site
+runtime:
+  cache_dir: ./.cache/antora
+  fetch: false

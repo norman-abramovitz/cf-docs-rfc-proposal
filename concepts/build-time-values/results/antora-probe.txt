@@ -1,0 +1,23 @@
+# make probe-dates (Antora): Asciidoctor's date attributes and the sitemap lastmod, without and with SOURCE_DATE_EPOCH
+mkdir -p .check
+cp probes/dates.adoc pages/modules/ROOT/pages/probe-dates.adoc
+sites/antora/node_modules/.bin/antora --stacktrace antora-playbook.yml --to-dir .check/probe-site > /dev/null 2>&1; \
+	  grep -o '<p>[a-z]*: [^<]*</p>' .check/probe-site/cf/probe-dates/index.html > .check/probe-dates.log; \
+	  echo "sitemap lastmod: $(grep -o '<lastmod>[^<]*' .check/probe-site/sitemap.xml | sort -u | tr '\n' ' ')" >> .check/probe-dates.log
+echo '## SOURCE_DATE_EPOCH=1733437108 (2024-12-05T22:18:28Z)' >> .check/probe-dates.log
+SOURCE_DATE_EPOCH=1733437108 sites/antora/node_modules/.bin/antora --stacktrace antora-playbook.yml --to-dir .check/probe-site > /dev/null 2>&1; \
+	  grep -o '<p>[a-z]*: [^<]*</p>' .check/probe-site/cf/probe-dates/index.html >> .check/probe-dates.log; \
+	  echo "sitemap lastmod: $(grep -o '<lastmod>[^<]*' .check/probe-site/sitemap.xml | sort -u | tr '\n' ' ')" >> .check/probe-dates.log
+rm -f pages/modules/ROOT/pages/probe-dates.adoc
+cat .check/probe-dates.log
+<p>docdate: 2026-10-11</p>
+<p>docyear: 2026</p>
+<p>localdate: 2026-10-11</p>
+<p>localyear: 2026</p>
+sitemap lastmod: <lastmod>2026-10-12T00:13:34.752Z 
+## SOURCE_DATE_EPOCH=1733437108 (2024-12-05T22:18:28Z)
+<p>docdate: 2024-12-05</p>
+<p>docyear: 2024</p>
+<p>localdate: 2024-12-05</p>
+<p>localyear: 2024</p>
+sitemap lastmod: <lastmod>2026-10-12T00:13:35.102Z 

@@ -1,0 +1,90 @@
+# make check: the three builds (footer year from the build, the site, the page), each test page against intent/expectations.txt, and access-control compared with its published page. Run 2026-10-11 in a copy outside the repository.
+SITE_YEAR=$(python3 -I helpers/content-date.py --key last_update.date --year docs/*.mdx) \
+== build-build (build): access-control
+ok    copyright year ['2026'], expected 2026 (build year)
+ok    holder ['Cloud Foundry Foundation'], expected 'Cloud Foundry Foundation'
+ok    updated ['2026-06-26'], expected 2026-06-26
+== build-build (build): architecture
+ok    copyright year ['2026'], expected 2026 (build year)
+ok    holder ['Cloud Foundry Foundation'], expected 'Cloud Foundry Foundation'
+ok    updated ['2024-12-05'], expected 2024-12-05
+== build-build (build): using-vol-services
+ok    copyright year ['2026'], expected 2026 (build year)
+ok    holder ['Cloud Foundry Foundation'], expected 'Cloud Foundry Foundation'
+ok    updated ['2023-05-31'], expected 2023-05-31
+== build-build (build): high-availability
+ok    copyright year ['2026'], expected 2026 (build year)
+ok    holder ['Cloud Foundry Foundation'], expected 'Cloud Foundry Foundation'
+ok    updated ['2026-06-29'], expected 2026-06-29
+== build/access-control against the published page
+build-time values (expected differences):
+  copyright  published 2026         built 2026         same
+  updated    published 2026-07-09   built 2026-06-26   differs
+content (build-time values masked): published 836 words, built 806 words, matching 0.979
+  delete   published: 'access to Service Plans Prerequisites Service Plan access Enabling access to Service Plans Deactivating'
+           built:     ''
+  replace  published: 'broker’s'
+           built:     "broker's"
+  replace  published: 'broker’s'
+           built:     "broker's"
+  delete   published: 'Create a pull request or raise an issue on the source for this page in GitHub'
+           built:     ''
+== build-site (site): access-control
+ok    copyright year ['2026'], expected 2026
+ok    holder ['Cloud Foundry Foundation'], expected 'Cloud Foundry Foundation'
+ok    updated ['2026-06-26'], expected 2026-06-26
+== build-site (site): architecture
+ok    copyright year ['2026'], expected 2026
+ok    holder ['Cloud Foundry Foundation'], expected 'Cloud Foundry Foundation'
+ok    updated ['2024-12-05'], expected 2024-12-05
+== build-site (site): using-vol-services
+ok    copyright year ['2026'], expected 2026
+ok    holder ['Cloud Foundry Foundation'], expected 'Cloud Foundry Foundation'
+ok    updated ['2023-05-31'], expected 2023-05-31
+== build-site (site): high-availability
+ok    copyright year ['2026'], expected 2026
+ok    holder ['Cloud Foundry Foundation'], expected 'Cloud Foundry Foundation'
+ok    updated ['2026-06-29'], expected 2026-06-29
+== site/access-control against the published page
+build-time values (expected differences):
+  copyright  published 2026         built 2026         same
+  updated    published 2026-07-09   built 2026-06-26   differs
+content (build-time values masked): published 836 words, built 806 words, matching 0.979
+  delete   published: 'access to Service Plans Prerequisites Service Plan access Enabling access to Service Plans Deactivating'
+           built:     ''
+  replace  published: 'broker’s'
+           built:     "broker's"
+  replace  published: 'broker’s'
+           built:     "broker's"
+  delete   published: 'Create a pull request or raise an issue on the source for this page in GitHub'
+           built:     ''
+== build-page (page): access-control
+ok    copyright year ['2026'], expected 2026
+ok    holder ['Cloud Foundry Foundation'], expected 'Cloud Foundry Foundation'
+ok    updated ['2026-06-26'], expected 2026-06-26
+== build-page (page): architecture
+ok    copyright year ['2024'], expected 2024
+ok    holder ['Cloud Foundry Foundation'], expected 'Cloud Foundry Foundation'
+ok    updated ['2024-12-05'], expected 2024-12-05
+== build-page (page): using-vol-services
+ok    copyright year ['2023'], expected 2023
+ok    holder ['Cloud Foundry Foundation'], expected 'Cloud Foundry Foundation'
+ok    updated ['2023-05-31'], expected 2023-05-31
+== build-page (page): high-availability
+ok    copyright year ['2026'], expected 2026
+ok    holder ['Cloud Foundry Foundation'], expected 'Cloud Foundry Foundation'
+ok    updated ['2026-06-29'], expected 2026-06-29
+== page/access-control against the published page
+build-time values (expected differences):
+  copyright  published 2026         built 2026         same
+  updated    published 2026-07-09   built 2026-06-26   differs
+content (build-time values masked): published 836 words, built 810 words, matching 0.977
+  delete   published: 'access to Service Plans Prerequisites Service Plan access Enabling access to Service Plans Deactivating'
+           built:     ''
+  replace  published: 'broker’s'
+           built:     "broker's"
+  replace  published: 'broker’s'
+           built:     "broker's"
+  replace  published: 'Create a pull request or raise an issue on the source for this page in GitHub'
+           built:     'Cloud Foundry Documentation .'
+exit status 0

@@ -1,0 +1,18 @@
+{{!-- The default UI's footer, replaced: the page's "last updated" date
+      (the page attribute page-last-updated) and the copyright notice. Its
+      year, from YEAR_MODE: the year of the build (the default UI's own
+      `year` helper), SITE_YEAR, or the year of this page's date. --}}
+<footer class="footer">
+  {{#if page.attributes.last-updated}}
+  <p class="page-last-updated">Last updated: <time datetime="{{page.attributes.last-updated}}">{{page.attributes.last-updated}}</time></p>
+  {{/if}}
+  {{#if (eq env.YEAR_MODE 'page')}}
+    {{#if page.attributes.last-updated}}
+  <p class="site-copyright"><a href="{{{or site.homeUrl '/'}}}">Cloud Foundry Documentation</a> &copy; {{yearOf page.attributes.last-updated}} <a href="https://cloudfoundry.org">Cloud Foundry Foundation</a>. All Rights Reserved.</p>
+    {{/if}}
+  {{else if (eq env.YEAR_MODE 'site')}}
+  <p class="site-copyright"><a href="{{{or site.homeUrl '/'}}}">Cloud Foundry Documentation</a> &copy; {{env.SITE_YEAR}} <a href="https://cloudfoundry.org">Cloud Foundry Foundation</a>. All Rights Reserved.</p>
+  {{else}}
+  <p class="site-copyright"><a href="{{{or site.homeUrl '/'}}}">Cloud Foundry Documentation</a> &copy; {{year}} <a href="https://cloudfoundry.org">Cloud Foundry Foundation</a>. All Rights Reserved.</p>
+  {{/if}}
+</footer>

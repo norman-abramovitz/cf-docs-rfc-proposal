@@ -1,0 +1,18 @@
+{#- The theme's copyright partial, with the year chosen at build:
+    config.extra sets year_mode (build, site or page) and year. In page
+    mode the year is the page's own revision_date, the date the theme
+    shows as "Last update". -#}
+{%- set b = config.extra -%}
+{%- if b.year_mode == "page" -%}
+  {%- set y = (page.meta.revision_date | string)[:4] if page and page.meta and page.meta.revision_date else "" -%}
+{%- else -%}
+  {%- set y = b.year | string -%}
+{%- endif -%}
+<div class="md-copyright">
+  {% if y %}
+    <div class="md-copyright__highlight">
+      <a href="/">Cloud Foundry Documentation</a> &copy; {{ y }}
+      <a href="https://cloudfoundry.org">Cloud Foundry Foundation</a>. All Rights Reserved.
+    </div>
+  {% endif %}
+</div>

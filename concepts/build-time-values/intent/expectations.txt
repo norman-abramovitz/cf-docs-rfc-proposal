@@ -1,0 +1,81 @@
+# Build-time values each test page must show, read by checks/buildtime.py.
+# Format: page  mode  field  value   (see the docstring of buildtime.py)
+#
+# Modes:
+#   published  the page on docs.cloudfoundry.org, saved 2026-10-11
+#              (copyright year: the year that site was built; date:
+#              Bookbinder's rule, survey/pages.csv column author_date)
+#   build      a converted site whose footer prints the build's year
+#   site       a converted site whose footer prints the newest content
+#              year on the site (2026: high-availability, 2026-06-29)
+#   page       a converted site that prints each page's own content year
+#   history    the repository helpers/make-history.py makes, with known
+#              dates; footer: the build's year
+# The content date in build, site and page is the page's date with the
+# candidate commits of survey/candidates.txt skipped (survey/pages.csv,
+# author_date_skipping_candidates). Decision (this round): see
+# intent/<page>.md for why each date is what it is.
+
+access-control      published  copyright-year  2026
+access-control      published  holder          Cloud Foundry Foundation
+access-control      published  updated         2026-07-09
+architecture        published  copyright-year  2026
+architecture        published  holder          Cloud Foundry Foundation
+architecture        published  updated         2024-12-05
+using-vol-services  published  copyright-year  2026
+using-vol-services  published  holder          Cloud Foundry Foundation
+using-vol-services  published  updated         2026-07-21
+high-availability   published  copyright-year  2026
+high-availability   published  holder          Cloud Foundry Foundation
+high-availability   published  updated         2026-07-22
+
+access-control      build      copyright-year  build
+access-control      build      holder          Cloud Foundry Foundation
+access-control      build      updated         2026-06-26
+architecture        build      copyright-year  build
+architecture        build      holder          Cloud Foundry Foundation
+architecture        build      updated         2024-12-05
+using-vol-services  build      copyright-year  build
+using-vol-services  build      holder          Cloud Foundry Foundation
+using-vol-services  build      updated         2023-05-31
+high-availability   build      copyright-year  build
+high-availability   build      holder          Cloud Foundry Foundation
+high-availability   build      updated         2026-06-29
+
+access-control      site       copyright-year  2026
+access-control      site       holder          Cloud Foundry Foundation
+access-control      site       updated         2026-06-26
+architecture        site       copyright-year  2026
+architecture        site       holder          Cloud Foundry Foundation
+architecture        site       updated         2024-12-05
+using-vol-services  site       copyright-year  2026
+using-vol-services  site       holder          Cloud Foundry Foundation
+using-vol-services  site       updated         2023-05-31
+high-availability   site       copyright-year  2026
+high-availability   site       holder          Cloud Foundry Foundation
+high-availability   site       updated         2026-06-29
+
+access-control      page       copyright-year  2026
+access-control      page       holder          Cloud Foundry Foundation
+access-control      page       updated         2026-06-26
+architecture        page       copyright-year  2024
+architecture        page       holder          Cloud Foundry Foundation
+architecture        page       updated         2024-12-05
+using-vol-services  page       copyright-year  2023
+using-vol-services  page       holder          Cloud Foundry Foundation
+using-vol-services  page       updated         2023-05-31
+high-availability   page       copyright-year  2026
+high-availability   page       holder          Cloud Foundry Foundation
+high-availability   page       updated         2026-06-29
+
+# history: the content date skips C4 (source-only) and C5 (conversion);
+# access-control's C6 counts by its author date (2026-10-05), not its
+# committer date (2026-10-07), as Bookbinder counts.
+access-control      history    copyright-year  build
+access-control      history    updated         2026-10-05
+architecture        history    copyright-year  build
+architecture        history    updated         2024-12-05
+using-vol-services  history    copyright-year  build
+using-vol-services  history    updated         2019-03-01
+high-availability   history    copyright-year  build
+high-availability   history    updated         2025-06-02

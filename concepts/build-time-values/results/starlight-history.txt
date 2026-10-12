@@ -1,0 +1,59 @@
+# make history: the repository helpers/make-history.py makes (commit ids first), the tool's own date (native), the content-date helper (helper) and a shallow clone (shallow). Run 2026-10-11 in a copy outside the repository.
+python3 -I helpers/make-history.py . .history/native src/content/docs .mdoc native
+C1 ded3e40775f166c2a920f6f1d8318a1f6df79845
+C2 ba6790162181466cf1f231753fa85a7d29fe8947
+C3 456adcf712c0465327c6ce6f65c101bbff57f43c
+C4 6ed3242283a94be91c1cebdcbf2d74511f39a275
+C5 2fb4a50311227ca5316c89ad90c4e7834d2092dc
+C6 1509297828a8050f20852a31ae2f3339ba98ddb0
+python3 -I helpers/make-history.py . .history/helper src/content/docs .mdoc helper
+C1 ded3e40775f166c2a920f6f1d8318a1f6df79845
+C2 ba6790162181466cf1f231753fa85a7d29fe8947
+C3 456adcf712c0465327c6ce6f65c101bbff57f43c
+C4 6ed3242283a94be91c1cebdcbf2d74511f39a275
+C5 c5e33c7c3a7f601f936414496410019f1c2c1b12
+C6 b29e93441c4ace57ea52d676e9b7adb32400d351
+src/content/docs/access-control.mdoc	2026-10-05	git b29e93441c
+src/content/docs/architecture.mdoc	2024-12-05	page
+src/content/docs/high-availability.mdoc	2025-06-02	page
+src/content/docs/using-vol-services.mdoc	2019-03-01	page
+SITE_YEAR=2026
+## native and shallow show what the tool reads from Git; they are expected to differ from the intent
+== .history/native/out (history): access-control
+ok    copyright year ['2026'], expected 2026 (build year)
+FAIL  updated ['2026-10-07'], expected 2026-10-05
+== .history/native/out (history): architecture
+ok    copyright year ['2026'], expected 2026 (build year)
+FAIL  updated ['2026-10-01'], expected 2024-12-05
+== .history/native/out (history): using-vol-services
+ok    copyright year ['2026'], expected 2026 (build year)
+FAIL  updated ['2026-10-01'], expected 2019-03-01
+== .history/native/out (history): high-availability
+ok    copyright year ['2026'], expected 2026 (build year)
+FAIL  updated ['2026-10-01'], expected 2025-06-02
+== .history/shallow/out (history): access-control
+ok    copyright year ['2026'], expected 2026 (build year)
+FAIL  updated ['2026-10-07'], expected 2026-10-05
+== .history/shallow/out (history): architecture
+ok    copyright year ['2026'], expected 2026 (build year)
+FAIL  updated ['2026-10-07'], expected 2024-12-05
+== .history/shallow/out (history): using-vol-services
+ok    copyright year ['2026'], expected 2026 (build year)
+FAIL  updated ['2026-10-07'], expected 2019-03-01
+== .history/shallow/out (history): high-availability
+ok    copyright year ['2026'], expected 2026 (build year)
+FAIL  updated ['2026-10-07'], expected 2025-06-02
+## helper: the dates the converter wrote, updated from Git by helpers/content-date.py
+== .history/helper/out (history): access-control
+ok    copyright year ['2026'], expected 2026 (build year)
+ok    updated ['2026-10-05'], expected 2026-10-05
+== .history/helper/out (history): architecture
+ok    copyright year ['2026'], expected 2026 (build year)
+ok    updated ['2024-12-05'], expected 2024-12-05
+== .history/helper/out (history): using-vol-services
+ok    copyright year ['2026'], expected 2026 (build year)
+ok    updated ['2019-03-01'], expected 2019-03-01
+== .history/helper/out (history): high-availability
+ok    copyright year ['2026'], expected 2026 (build year)
+ok    updated ['2025-06-02'], expected 2025-06-02
+exit status 0

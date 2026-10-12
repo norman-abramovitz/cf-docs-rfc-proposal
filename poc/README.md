@@ -177,10 +177,21 @@ list item, as the book places four, breaks in every tool; on its own line
 below the text it works. No page today picks its partial through
 a variable ([partials results](../concepts/partials/results.md#summary)).
 
+### Copyright and build-time values
+
+The book computes two values at build: the footer's copyright year and
+the "Page last updated" date, a Git date. Four pages were built in the
+four hands-on tools with three year rules (build, site, page); every tool
+prints each rule and shows a date written in the page. After conversion,
+each tool's own Git-based date shows the conversion commit, or nothing.
+A date written by the converter and updated from Git, skipping listed
+commits, is right in all four. A comparison helper masks these values.
+Whether the year should follow content is open
+([build-time values results](../concepts/build-time-values/results.md#summary)).
+
 ### Other concepts
 
-**Not yet written:** code blocks, cross-repository links, and build-time values such as the
-copyright year. Each is listed in [Concepts](../concepts/README.md); none
+**Not yet written:** code blocks and cross-repository links. Each is listed in [Concepts](../concepts/README.md); none
 of them has been converted yet.
 
 ## Other comparisons

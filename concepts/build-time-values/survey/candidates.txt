@@ -1,0 +1,147 @@
+# Commits whose subject says they change markup only, or remove content
+# the open-source book did not render. Candidates for review, not decisions.
+# Format of git blame.ignoreRevsFile: one full commit id per line.
+# docs-bbr 2026-07-09 Remove p tags that interfere with Markdown rendering
+51465950ce3a2196d66a9339086b94feed280c3e
+# docs-bbr 2026-07-02 Move </p> closing tags for note blocks onto their own lines
+74bd79f1fd0a60623cf53c6db2728af31684c9bb
+# docs-buildpacks 2026-07-10 Fix page TOC: replace a-name with a-id in staticfile headings, fix duplicate anchor slug
+51c575e270533789c916cb73dad6101789986179
+# docs-buildpacks 2026-07-10 add blank line after heading
+2960d388df4c528b69f22c575baf5b8fd9e3da11
+# docs-buildpacks 2026-07-10 Fix inline closing </p> tags in note blocks
+16d81f39d5fc364e9aaf4f293318b3007f6cc0fe
+# docs-buildpacks 2026-07-10 Add note__title spans to all note blocks
+d5ed5ef3333bbb0dc3cd41d96b27d0096e8f0af1
+# docs-buildpacks 2026-07-02 Move </p> closing tags for note blocks onto their own lines
+008f18379cf555ace7612d619a96d212c119dbab
+# docs-buildpacks 2026-06-29 Fix Redcarpet HTML block closing tags to prevent naked Markdown on site
+dd6078b7e069addbd91c243717e5458c749ab13c
+# docs-cf-admin 2026-07-21 Remove platform-conditional ERB blocks, keep OSS content
+19b0c9c5fabd93b33ba184c6eb541f3cafd3a1b9
+# docs-cf-admin 2026-07-10 Fix inline closing </p> tags in note blocks
+203debed3af560b293455e145d5316b0a2c6b2a8
+# docs-cf-admin 2026-07-10 Add note__title spans to all note blocks
+0655a2e5c29bd89831a445076a4b91e52013e3ee
+# docs-cf-admin 2026-07-09 Remove p tags that interfere with Markdown rendering
+d1f8d65a823b6a9f80fac1d39e5d3909a3ceb92b
+# docs-cf-admin 2026-07-09 Fix naked markdown in notifications.html.md.erb
+78d778fabc5d8923a25eb7fe82791d1d887e3ced
+# docs-cf-admin 2026-07-02 Move </p> closing tags for note blocks onto their own lines
+8b63efbcb002ead94531934bd3f7e2d11311e448
+# docs-cf-admin 2026-06-29 Fix Redcarpet HTML block closing tags to prevent naked Markdown on site
+68dc19dac125d652929419b104e1ecff7dcad652
+# docs-cf-cli 2026-07-21 Remove platform-conditional ERB block, keep OSS content
+287a6277425d9a0905feba82b065fff596515c85
+# docs-cf-cli 2026-07-10 Fix inline closing </p> tags in note blocks
+64a0e699e3ce3a89dd02899f26b35ebe03e11572
+# docs-cf-cli 2026-07-10 Add note__title spans to all note blocks
+4aaa8ec3804aa643a6bf1f598602c6cadcf5f8ff
+# docs-cf-cli 2026-07-02 Move </p> closing tags for note blocks onto their own lines
+3e3164544dd24916104c9c7266140ed4708e263c
+# docs-cloudfoundry-concepts 2026-07-22 Remove platform-conditional ERB blocks, keep OSS content
+5362f104d6d911d783f0cb2de8420688f8b916c5
+# docs-cloudfoundry-concepts 2026-07-10 Fix inline closing </p> tags in note blocks
+f9077a256ee3940663127e2706a60145396d928d
+# docs-cloudfoundry-concepts 2026-07-10 Add note__title spans to all note blocks
+bd334937894da9b7693089a7eae820d34fbb3bd3
+# docs-cloudfoundry-concepts 2026-07-09 Remove p tags that interfere with Markdown rendering
+9370409ca51d9c40119bb92c8d19cd1df4eb816f
+# docs-cloudfoundry-concepts 2026-07-09 Remove unused PCF/PCF-or-CF conditionals from roles table sections
+a912c03acf60c504c0964205b6248eac9b60ece5
+# docs-cloudfoundry-concepts 2026-07-09 Fix naked markdown in HTTP headers for instance routing sections
+0ef68d36fcc71ce233d2c63d5b9db12f39d2a112
+# docs-cloudfoundry-concepts 2026-07-09 Fix note closing tag formatting in roles.html.md.erb
+799f626097395d06f086edbd04f600af39b3c02b
+# docs-cloudfoundry-concepts 2026-07-08 change note to html
+cb8a8cafaea21728dd01565b279beb802e6e5478
+# docs-cloudfoundry-concepts 2026-06-29 standard note class (caution)
+8488a2839c279b4427b1a9292467944bb615ec69
+# docs-cloudfoundry-concepts 2026-06-29 Fix Redcarpet HTML block closing tags to prevent naked Markdown on site
+e4b3d99236f93af9a41f9d6293a3f754ffd627d8
+# docs-credhub 2026-07-22 Remove platform-conditional ERB blocks, keep OSS content (#2)
+e074f74717422c0082ca24a2a6da7fbbf8114999
+# docs-credhub 2026-07-14 Restore missing trailing newline in hsm-config.html.md.erb
+2d4e43d535f8fc2704a05a418817302ae0a07717
+# docs-credhub 2026-07-10 Fix page TOC: replace deprecated a-name with a-id in heading anchors
+ff677f6b9d404f14f661a14b3947c6e7187a58bd
+# docs-credhub 2026-07-10 Fix inline closing </p> tags in note blocks
+039d6521729599ec08b0dca0786c3196fb8ec9c7
+# docs-credhub 2026-07-10 Add note__title spans to all note blocks
+ec1a2276aad0503b6b57e33cc78fb9e8b17d1afe
+# docs-credhub 2026-07-09 Remove p tags that interfere with Markdown rendering
+6132dd6eace173a7b84b91c8d7f38fb52e85924e
+# docs-deploying-cf 2026-07-10 Fix inline closing </p> tags in note blocks
+7f7d101822cf42cd41a5f56fff4dc46fc5ac8038
+# docs-deploying-cf 2026-07-10 Add note__title spans to all note blocks
+734a2ae1feddf6ed0815dd8d3687eb5f451c5ab9
+# docs-deploying-cf 2026-07-09 Remove p tags that interfere with Markdown rendering
+4ae7235b36f4d3be58618a2242d63d246cea995d
+# docs-deploying-cf 2026-07-02 Move </p> closing tags for note blocks onto their own lines
+9d39cee9ca9d92a893dc277cc11cc470c3906cf8
+# docs-deploying-cf 2026-07-02 fix naked markdown in output by moveing closing p tag to newline
+227ce069d216657cc359035bcb31924690798d0f
+# docs-dev-guide 2026-07-21 Remove platform-conditional ERB blocks, keep OSS content
+689faba303969899f0a18aa56f499c2956c70dc0
+# docs-dev-guide 2026-07-10 Fix page TOC: replace deprecated a-name with a-id in cf-networking headings
+6803f7bd289923a2b0ed4170ed274bb623bc2c65
+# docs-dev-guide 2026-07-10 Remove duplicate closing </p> tag in environment-variable note
+4391ae11140883e0d37c8d21de18b30df816862f
+# docs-dev-guide 2026-07-10 Fix inline closing </p> tags in note blocks
+0c891586ccdaebdad95af4f3204a06a8fbb18823
+# docs-dev-guide 2026-07-10 Add note__title spans to all note blocks
+8af50207dc6086fa61f72c5260b8571aeb6abb0a
+# docs-dev-guide 2026-07-09 Remove p tags that interfere with Markdown rendering
+62e24910b4eb2a974447be2104e5ddb6020c40a3
+# docs-dev-guide 2026-07-08 Move closing </p> to new line in note
+6940de0a0376fb5974b7af9b91e896f6d64a2bb2
+# docs-dev-guide 2026-07-08 move closing <p> tag to new line
+eddeae54ea22171ada1983f5b43b7a814392e785
+# docs-dev-guide 2026-07-08 Convert markdown blockquote notes to HTML note paragraphs
+35ea8ae7e163063437084e1a9c2124bb06a670dc
+# docs-dev-guide 2026-06-29 Fix Redcarpet HTML block closing tags to prevent naked Markdown on site
+7845ea3fb1628f35ba3c703d47702f29f7866e7b
+# docs-dev-guide 2026-06-29 Fix Redcarpet HTML block parsing; remove commercial-only ERB blocks
+cccf31cd61a0ff8d03c9a5f06903c07a4272bfae
+# docs-dev-guide 2026-06-29 Fix typos and exposed Markdown in rolling-deploy; remove stale links
+2dbf192c1339ed1982f6c72a2a45654b0b49087e
+# docs-loggregator 2026-07-21 Remove platform-conditional ERB blocks, keep OSS content
+471a543bd71d077bfb390a5e66788dece090eec4
+# docs-loggregator 2026-07-10 Add note__title spans to all note blocks
+bda618fc693aee9db41624bf03dcdb295ec09d5c
+# docs-loggregator 2026-07-09 Remove p tags that interfere with Markdown rendering
+02ac37e6b6dca81c00655e8d5df42bf2993ea3cf
+# docs-loggregator 2026-07-02 Move </p> closing tags for note blocks onto their own lines
+bb84a0b3b63cec885375037a73998e2155ed8126
+# docs-loggregator 2026-06-29 Fix Redcarpet HTML block closing tags to prevent naked Markdown on site
+4fc61dc8cadb1e30570a8b1528b36f326daf4338
+# docs-running-cf 2026-07-21 Remove platform-conditional ERB blocks, keep OSS content
+24401375477d88bd4ee35c38eedcb4a2ad8a0887
+# docs-running-cf 2026-07-10 Fix page TOC: replace deprecated a-name with a-id in archived deploy-vol-services headings
+0403fc81a7aae6bf566580095d34bdc5b19dde3a
+# docs-running-cf 2026-07-10 Fix closing </p> tags to be on their own line in note blocks
+694d5563f67accda8d3c850fa0e70958c9b8a111
+# docs-running-cf 2026-07-10 Add note__title spans to all note blocks
+fcb2bdb1f5802ec53f269eb4ac11bddc5720aede
+# docs-running-cf 2026-06-29 Fix Redcarpet HTML block closing tags to prevent naked Markdown on site
+a3f4e209f8f2cc36125f7068f351520afae32a44
+# docs-services 2026-07-21 Remove platform-conditional ERB blocks, keep OSS content
+de4caf414805575ccc35174f0c5dc8bb3db9563f
+# docs-services 2026-07-10 Fix page TOC: replace deprecated a-name with a-id in route-services and app-log-streaming headings
+aaa933ddf34e92dcf8cd1680994967fde216e084
+# docs-services 2026-07-10 Convert markdown blockquote note to HTML note format in route-services
+ffe90f7f108e20a278ec9c9a5c2c66c31e7ecda8
+# docs-services 2026-07-10 add blank line before <ul> to fix display problem
+2ff21afd1b56566245fcbc53f36335f88d25ac4b
+# docs-services 2026-07-10 Add note__title spans to all note blocks
+2fe3575a1f25d7a9aeb69bf77eb938d296e5f27c
+# docs-services 2026-07-09 Remove p tags that interfere with Markdown rendering
+e7d9f46989d76834664b819ee2d6694e9db525c4
+# docs-services 2026-06-29 Fix Redcarpet HTML block closing tag to prevent naked Markdown on site
+8979e0370b16054b6cd731b3b1841291c2ede4d8
+# docs-services 2026-06-29 Remove commercial-only ERB conditionals; keep OSS content
+943212e643e52bfc59fd8a0e713d87fcb27ebafe
+# docs-uaa 2026-07-10 Fix page TOC: replace deprecated a-name with a-id in uaa-concepts heading
+0f43fb93af5aa378f940dd19fec7ee54c2c01ccd
+# docs-uaa 2026-07-09 Remove p tags that interfere with Markdown rendering
+f82a26b8e8f26d9b9d3baa44987e5ed4099cbbe1

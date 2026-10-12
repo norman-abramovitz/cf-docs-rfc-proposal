@@ -753,6 +753,31 @@ Cleaning this up before conversion is [R-24](requirements/README.md#r-24) markup
 
 Learn more: [HTML standard](https://html.spec.whatwg.org/).
 
+### Build-time value
+
+A value on a published page that the build computes instead of reading
+it from the page's source. The book has two: the footer's copyright year,
+`<%= Time.now.year %>`, and the "Page last updated" date, taken from Git
+([build-time values survey](concepts/build-time-values/survey/README.md#how-the-book-sets-build-time-values)).
+A comparison of converted and published pages treats them as expected
+differences ([R-25](requirements/README.md#r-25) build-time values are
+expected differences).
+
+Learn more: [concepts/build-time-values/README.md](concepts/build-time-values/README.md).
+
+### Content date
+
+The date a page's content last changed: the author date of the newest
+commit to the page that is not listed as a non-content commit. The list
+uses the format of Git's `.git-blame-ignore-revs` file, which `git blame`
+and [GitHub's blame view](https://docs.github.com/en/repositories/working-with-files/using-files/viewing-and-understanding-files#ignore-commits-in-the-blame-view)
+also read. The build-time values round proposes it
+so that a conversion, which touches every page, does not reset every
+page's date
+([build-time values results](concepts/build-time-values/results.md#conversion-resets-every-git-date)).
+
+Learn more: [git blame `--ignore-revs-file`](https://git-scm.com/docs/git-blame).
+
 ## Project and process
 
 ### Docs WG
