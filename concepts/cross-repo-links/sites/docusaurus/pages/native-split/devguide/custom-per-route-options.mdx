@@ -1,0 +1,6 @@
+---
+title: "Configuring per-route options"
+---
+
+
+Stub for `devguide/custom-per-route-options.html`: the source file is custom-per-route-options.html.md.erb in cloudfoundry/docs-dev-guide. It holds only the ids that the test pages link to.

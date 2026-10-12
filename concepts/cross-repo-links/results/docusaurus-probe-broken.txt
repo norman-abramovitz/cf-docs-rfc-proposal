@@ -1,0 +1,151 @@
+## split-native, ON_BROKEN=throw
+[INFO] [en] Creating an optimized production build...
+[webpackbar] ℹ Compiling Client
+[webpackbar] ℹ Compiling Server
+[webpackbar] ✔ Server: Compiled successfully in 2.19s
+[webpackbar] ✔ Client: Compiled successfully in 4.99s
+(node:25640) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[ERROR] Error: Unable to build website for locale en.
+    at tryToBuildLocale (node_modules/@docusaurus/core/lib/commands/build/build.js:76:15)
+    at async node_modules/@docusaurus/core/lib/commands/build/build.js:34:9
+    ... 4 lines matching cause stack trace ...
+    at async file://node_modules/@docusaurus/core/bin/docusaurus.mjs:44:3 {
+  [cause]: Error: Docusaurus found broken links!
+  
+  Please check the pages of your site in the list below, and make sure you don't reference any path that does not exist.
+  Note: it's possible to ignore broken links with the 'onBrokenLinks' Docusaurus configuration, and let the build pass.
+  
+  Exhaustive list of all broken links found:
+  - Broken link on source page path = /concepts/probe-broken:
+     -> linking to /adminguide/no-such-page
+     -> linking to ../adminguide/no-such-page.html (resolved as: /adminguide/no-such-page.html)
+     -> linking to ../adminguide/securing-traffic.html#no-such-anchor (resolved as: /adminguide/securing-traffic.html#no-such-anchor)
+  
+      at throwError (node_modules/@docusaurus/logger/lib/logger.js:80:11)
+      at reportBrokenLinks (node_modules/@docusaurus/core/lib/server/brokenLinks.js:250:47)
+      at handleBrokenLinks (node_modules/@docusaurus/core/lib/server/brokenLinks.js:282:5)
+      at executeBrokenLinksCheck (node_modules/@docusaurus/core/lib/commands/build/buildLocale.js:123:47)
+      at node_modules/@docusaurus/core/lib/commands/build/buildLocale.js:98:67
+      at Object.async (node_modules/@docusaurus/logger/lib/perfLogger.js:42:47)
+      at buildLocale (node_modules/@docusaurus/core/lib/commands/build/buildLocale.js:98:31)
+      at async runBuildLocaleTask (node_modules/@docusaurus/core/lib/commands/build/build.js:91:5)
+      at async node_modules/@docusaurus/core/lib/commands/build/build.js:72:13
+      at async tryToBuildLocale (node_modules/@docusaurus/core/lib/commands/build/build.js:68:9)
+      at async node_modules/@docusaurus/core/lib/commands/build/build.js:34:9
+      at async mapAsyncSequential (node_modules/@docusaurus/utils/lib/jsUtils.js:21:24)
+      at async Command.build (node_modules/@docusaurus/core/lib/commands/build/build.js:33:5)
+      at async Promise.all (index 0)
+      at async runCLI (node_modules/@docusaurus/core/lib/commands/cli.js:56:5)
+      at async file://node_modules/@docusaurus/core/bin/docusaurus.mjs:44:3
+}
+[INFO] Docusaurus version: 3.10.2
+Node version: v26.2.0
+exit status 1
+## split-native, ON_BROKEN=warn
+[INFO] [en] Creating an optimized production build...
+[webpackbar] ℹ Compiling Client
+[webpackbar] ℹ Compiling Server
+[webpackbar] ✔ Server: Compiled successfully in 2.17s
+[webpackbar] ✔ Client: Compiled successfully in 4.93s
+(node:25759) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WARNING] Docusaurus found broken links!
+
+Please check the pages of your site in the list below, and make sure you don't reference any path that does not exist.
+Note: it's possible to ignore broken links with the 'onBrokenLinks' Docusaurus configuration, and let the build pass.
+
+Exhaustive list of all broken links found:
+- Broken link on source page path = /concepts/probe-broken:
+   -> linking to /adminguide/no-such-page
+   -> linking to ../adminguide/no-such-page.html (resolved as: /adminguide/no-such-page.html)
+   -> linking to ../adminguide/securing-traffic.html#no-such-anchor (resolved as: /adminguide/securing-traffic.html#no-such-anchor)
+
+[WARNING] Docusaurus found broken anchors!
+
+Please check the pages of your site in the list below, and make sure you don't reference any anchor that does not exist.
+Note: it's possible to ignore broken anchors with the 'onBrokenAnchors' Docusaurus configuration, and let the build pass.
+
+Exhaustive list of all broken anchors found:
+- Broken anchor on source page path = /adminguide/troubleshooting-router-error-responses:
+   -> linking to #gorouter-errors (resolved as: /adminguide/troubleshooting-router-error-responses#gorouter-errors)
+   -> linking to #tls-to-back-end (resolved as: /adminguide/troubleshooting-router-error-responses#tls-to-back-end)
+   -> linking to /concepts/http-routing#with-tls
+- Broken anchor on source page path = /concepts/probe-broken:
+   -> linking to /adminguide/securing-traffic#no-such-anchor
+- Broken anchor on source page path = /devguide/deploy-apps/routes-domains:
+   -> linking to #http-vs-tcp-shared-domains (resolved as: /devguide/deploy-apps/routes-domains#http-vs-tcp-shared-domains)
+   -> linking to /devguide/deploy-apps/manifest#routes
+
+[SUCCESS] Generated static files in ".check/probe-split-native".
+[INFO] Use `npm run serve` command to test your build locally.
+exit status 0
+link  no page  ->  /adminguide/no-such-page  [root-relative, no extension]  adminguide/no-such-page  no page
+link  no anchor  ->  /adminguide/securing-traffic#no-such-anchor  [root-relative, no extension]  adminguide/securing-traffic#no-such-anchor  no anchor (served from PATH.html)
+link  no page as written  ->  /adminguide/no-such-page.html  [root-relative, .html]  adminguide/no-such-page  no page
+link  no anchor as written  ->  /adminguide/securing-traffic.html#no-such-anchor  [root-relative, .html]  adminguide/securing-traffic#no-such-anchor  no anchor
+forms: root-relative, .html 2, root-relative, no extension 2
+## mono-native, ON_BROKEN=throw
+[INFO] [en] Creating an optimized production build...
+[webpackbar] ℹ Compiling Client
+[webpackbar] ℹ Compiling Server
+[webpackbar] ✔ Server: Compiled with some errors in 2.22s
+[webpackbar] ✔ Client: Compiled with some errors in 4.84s
+[ERROR] Client bundle compiled with errors therefore further build is impossible.
+Error: MDX compilation failed for file "pages/native-mono/concepts/probe-broken.mdx"
+Cause: Markdown link with URL `../adminguide/no-such-page.mdx` in source file "pages/native-mono/concepts/probe-broken.mdx" (5:23) couldn't be resolved.
+Make sure it references a local Markdown file that exists within the current plugin.
+To ignore this error, use the `siteConfig.markdown.hooks.onBrokenMarkdownLinks` option, or apply the `pathname://` protocol to the broken link URLs.
+Details:
+Error: Markdown link with URL `../adminguide/no-such-page.mdx` in source file "pages/native-mono/concepts/probe-broken.mdx" (5:23) couldn't be resolved.
+Make sure it references a local Markdown file that exists within the current plugin.
+To ignore this error, use the `siteConfig.markdown.hooks.onBrokenMarkdownLinks` option, or apply the `pathname://` protocol to the broken link URLs.
+exit status 1
+## mono-native, ON_BROKEN=warn
+[INFO] [en] Creating an optimized production build...
+[webpackbar] ℹ Compiling Client
+[webpackbar] ℹ Compiling Server
+[WARNING] Markdown link with URL `../adminguide/no-such-page.mdx` in source file "pages/native-mono/concepts/probe-broken.mdx" (5:23) couldn't be resolved.
+Make sure it references a local Markdown file that exists within the current plugin.
+[WARNING] Markdown link with URL `../adminguide/no-such-page.mdx` in source file "pages/native-mono/concepts/probe-broken.mdx" (5:23) couldn't be resolved.
+Make sure it references a local Markdown file that exists within the current plugin.
+[webpackbar] ✔ Server: Compiled successfully in 2.39s
+[webpackbar] ✔ Client: Compiled successfully in 5.29s
+(node:25918) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WARNING] Docusaurus found broken links!
+
+Please check the pages of your site in the list below, and make sure you don't reference any path that does not exist.
+Note: it's possible to ignore broken links with the 'onBrokenLinks' Docusaurus configuration, and let the build pass.
+
+Exhaustive list of all broken links found:
+- Broken link on source page path = /concepts/probe-broken:
+   -> linking to ../adminguide/no-such-page.mdx (resolved as: /adminguide/no-such-page.mdx)
+   -> linking to ../adminguide/no-such-page.html (resolved as: /adminguide/no-such-page.html)
+   -> linking to ../adminguide/securing-traffic.html#no-such-anchor (resolved as: /adminguide/securing-traffic.html#no-such-anchor)
+
+[WARNING] Docusaurus found broken anchors!
+
+Please check the pages of your site in the list below, and make sure you don't reference any anchor that does not exist.
+Note: it's possible to ignore broken anchors with the 'onBrokenAnchors' Docusaurus configuration, and let the build pass.
+
+Exhaustive list of all broken anchors found:
+- Broken anchor on source page path = /adminguide/troubleshooting-router-error-responses:
+   -> linking to #gorouter-errors (resolved as: /adminguide/troubleshooting-router-error-responses#gorouter-errors)
+   -> linking to #tls-to-back-end (resolved as: /adminguide/troubleshooting-router-error-responses#tls-to-back-end)
+   -> linking to /concepts/http-routing#with-tls
+- Broken anchor on source page path = /concepts/probe-broken:
+   -> linking to /adminguide/securing-traffic#no-such-anchor
+- Broken anchor on source page path = /devguide/deploy-apps/routes-domains:
+   -> linking to #http-vs-tcp-shared-domains (resolved as: /devguide/deploy-apps/routes-domains#http-vs-tcp-shared-domains)
+   -> linking to /devguide/deploy-apps/manifest#routes
+
+[SUCCESS] Generated static files in ".check/probe-mono-native".
+[INFO] Use `npm run serve` command to test your build locally.
+exit status 0
+link  no page  ->  /adminguide/no-such-page.mdx  [root-relative, other]  adminguide/no-such-page.mdx  no page
+link  no anchor  ->  /adminguide/securing-traffic#no-such-anchor  [root-relative, no extension]  adminguide/securing-traffic#no-such-anchor  no anchor (served from PATH.html)
+link  no page as written  ->  /adminguide/no-such-page.html  [root-relative, .html]  adminguide/no-such-page  no page
+link  no anchor as written  ->  /adminguide/securing-traffic.html#no-such-anchor  [root-relative, .html]  adminguide/securing-traffic#no-such-anchor  no anchor
+forms: root-relative, .html 2, root-relative, no extension 1, root-relative, other 1

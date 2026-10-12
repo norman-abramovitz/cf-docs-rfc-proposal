@@ -1,0 +1,7 @@
+# Ids on http-routing that links in the test pages point to
+zipkin-headers
+tls-to-back-end
+round-robin
+least-connection
+balancing-algorithm-az-preference
+keepalive

@@ -1,0 +1,23 @@
+# Site for the cross-repository links round: the earlier rounds' settings
+# without the extensions no page here uses. `make build` writes one copy of
+# this file per variant (.zensical-<variant>.toml), changing docs_dir,
+# site_dir and use_directory_urls.
+[project]
+site_name = "Cross-repository links round — Zensical"
+docs_dir = "pages/passthrough"
+site_dir = "site/mono-passthrough"
+# Pages are written as <path>.html, the book's URLs; Zensical's default is
+# <path>/index.html
+use_directory_urls = false
+# One repository and one edit path for the whole site; the theme shows the
+# edit link with the content.action.edit feature
+repo_url = "https://github.com/cloudfoundry/docs-dev-guide"
+edit_uri = "blob/master/"
+
+[project.theme]
+features = ["content.action.edit"]
+
+[project.markdown_extensions]
+attr_list = {}
+md_in_html = {}
+toc.permalink = true

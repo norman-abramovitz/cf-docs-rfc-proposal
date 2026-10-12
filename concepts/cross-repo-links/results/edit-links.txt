@@ -1,0 +1,31 @@
+# The edit link each built page carries (R-15), for three test pages from three repositories,
+# in each native variant, built 2026-10-11 with make build. Antora builds run with CI=true, so the
+# default UI uses each content source's edit_url instead of a file:// link to the worktree.
+## docusaurus split-native
+concepts/http-routing  href="https://github.com/cloudfoundry/docs-cloudfoundry-concepts/blob/master/http-routing.html.md.erb"
+adminguide/enabling-tcp-routing  href="https://github.com/cloudfoundry/docs-cf-admin/blob/master/enabling-tcp-routing.html.md.erb"
+devguide/deploy-apps/routes-domains  href="https://github.com/cloudfoundry/docs-dev-guide/blob/master/deploy-apps/routes-domains.html.md.erb"
+## docusaurus mono-native
+concepts/http-routing  href="https://github.com/cloudfoundry/docs-cloudfoundry-concepts/blob/master/http-routing.html.md.erb"
+adminguide/enabling-tcp-routing  href="https://github.com/cloudfoundry/docs-cf-admin/blob/master/enabling-tcp-routing.html.md.erb"
+devguide/deploy-apps/routes-domains  href="https://github.com/cloudfoundry/docs-dev-guide/blob/master/deploy-apps/routes-domains.html.md.erb"
+## zensical mono-native
+concepts/http-routing  href="https://github.com/cloudfoundry/docs-dev-guide/blob/master/concepts/http-routing.md"
+adminguide/enabling-tcp-routing  href="https://github.com/cloudfoundry/docs-dev-guide/blob/master/adminguide/enabling-tcp-routing.md"
+devguide/deploy-apps/routes-domains  href="https://github.com/cloudfoundry/docs-dev-guide/blob/master/devguide/deploy-apps/routes-domains.md"
+## starlight mono-native
+concepts/http-routing  href="https://github.com/cloudfoundry/docs-dev-guide/blob/master/pages/native/concepts/http-routing.mdoc"
+adminguide/enabling-tcp-routing  href="https://github.com/cloudfoundry/docs-dev-guide/blob/master/pages/native/adminguide/enabling-tcp-routing.mdoc"
+devguide/deploy-apps/routes-domains  href="https://github.com/cloudfoundry/docs-dev-guide/blob/master/pages/native/devguide/deploy-apps/routes-domains.mdoc"
+## starlight linked-native
+concepts/http-routing  href="https://github.com/cloudfoundry/docs-dev-guide/blob/master/linked/native/concepts/http-routing.mdoc"
+adminguide/enabling-tcp-routing  href="https://github.com/cloudfoundry/docs-dev-guide/blob/master/linked/native/adminguide/enabling-tcp-routing.mdoc"
+devguide/deploy-apps/routes-domains  href="https://github.com/cloudfoundry/docs-dev-guide/blob/master/linked/native/devguide/deploy-apps/routes-domains.mdoc"
+## antora split-native
+concepts/http-routing  href="https://github.com/cloudfoundry/docs-cloudfoundry-concepts/blob/master/concepts/cross-repo-links/sites/antora/native/split/concepts/modules/ROOT/pages/http-routing.adoc"
+adminguide/enabling-tcp-routing  href="https://github.com/cloudfoundry/docs-cf-admin/blob/master/concepts/cross-repo-links/sites/antora/native/split/adminguide/modules/ROOT/pages/enabling-tcp-routing.adoc"
+devguide/deploy-apps/routes-domains  href="https://github.com/cloudfoundry/docs-dev-guide/blob/master/concepts/cross-repo-links/sites/antora/native/split/devguide/modules/ROOT/pages/deploy-apps/routes-domains.adoc"
+## antora mono-native
+concepts/http-routing  (none)
+adminguide/enabling-tcp-routing  (none)
+devguide/deploy-apps/routes-domains  (none)

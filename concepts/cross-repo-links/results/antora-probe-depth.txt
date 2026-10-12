@@ -1,0 +1,17 @@
+exit status 0
+## concepts/probe-depth
+link  variable relative  ->  ../adminguide/supporting-websockets.html  [page-relative, .html]  adminguide/supporting-websockets  ok
+link  variable root  ->  /adminguide/supporting-websockets.html  [root-relative, .html]  adminguide/supporting-websockets  ok
+link  variable native  ->  ../adminguide/supporting-websockets.html  [page-relative, .html]  adminguide/supporting-websockets  ok
+link  partial relative  ->  ../adminguide/supporting-websockets.html  [page-relative, .html]  adminguide/supporting-websockets  ok
+link  partial root  ->  /adminguide/supporting-websockets.html  [root-relative, .html]  adminguide/supporting-websockets  ok
+link  partial native  ->  ../adminguide/supporting-websockets.html  [page-relative, .html]  adminguide/supporting-websockets  ok
+forms: page-relative, .html 4, root-relative, .html 2
+## devguide/deploy-apps/probe-depth
+link  variable relative  ->  ../adminguide/supporting-websockets.html  [page-relative, .html]  devguide/adminguide/supporting-websockets  no page
+link  variable root  ->  /adminguide/supporting-websockets.html  [root-relative, .html]  adminguide/supporting-websockets  ok
+link  variable native  ->  ../../adminguide/supporting-websockets.html  [page-relative, .html]  adminguide/supporting-websockets  ok
+link  partial relative  ->  ../adminguide/supporting-websockets.html  [page-relative, .html]  devguide/adminguide/supporting-websockets  no page
+link  partial root  ->  /adminguide/supporting-websockets.html  [root-relative, .html]  adminguide/supporting-websockets  ok
+link  partial native  ->  ../../adminguide/supporting-websockets.html  [page-relative, .html]  adminguide/supporting-websockets  ok
+forms: page-relative, .html 4, root-relative, .html 2

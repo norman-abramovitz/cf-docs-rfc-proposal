@@ -1,0 +1,48 @@
+## split-native 
+[17:56:35.038] ERROR (asciidoctor): target of xref not found: adminguide::no-such-page.adoc
+    file: native/split/concepts/modules/ROOT/pages/probe-broken.adoc
+    source: <work>/work (branch: main <worktree> | start path: concepts/cross-repo-links/sites/antora/native/split/concepts)
+exit status 0
+## split-native --log-failure-level=error --log-level=info
+[17:56:35.657] ERROR (asciidoctor): target of xref not found: adminguide::no-such-page.adoc
+    file: native/split/concepts/modules/ROOT/pages/probe-broken.adoc
+    source: <work>/work (branch: main <worktree> | start path: concepts/cross-repo-links/sites/antora/native/split/concepts)
+[17:56:35.669] INFO (asciidoctor): possible invalid reference: gorouter-errors
+    file: native/split/adminguide/modules/ROOT/pages/troubleshooting-router-error-responses.adoc
+    source: <work>/work (branch: main <worktree> | start path: concepts/cross-repo-links/sites/antora/native/split/adminguide)
+[17:56:35.670] INFO (asciidoctor): possible invalid reference: tls-to-back-end
+    file: native/split/adminguide/modules/ROOT/pages/troubleshooting-router-error-responses.adoc
+    source: <work>/work (branch: main <worktree> | start path: concepts/cross-repo-links/sites/antora/native/split/adminguide)
+[17:56:35.679] INFO (asciidoctor): possible invalid reference: http-vs-tcp-shared-domains
+    file: native/split/devguide/modules/ROOT/pages/deploy-apps/routes-domains.adoc
+    source: <work>/work (branch: main <worktree> | start path: concepts/cross-repo-links/sites/antora/native/split/devguide)
+exit status 2
+link  no page  ->  #adminguide::no-such-page.adoc  [in-page]  concepts/probe-broken#adminguide::no-such-page.adoc  no anchor
+link  no anchor  ->  ../adminguide/securing-traffic.html#no-such-anchor  [page-relative, .html]  adminguide/securing-traffic#no-such-anchor  no anchor
+link  no page as written  ->  ../adminguide/no-such-page.html  [page-relative, .html]  adminguide/no-such-page  no page
+link  no anchor as written  ->  ../adminguide/securing-traffic.html#no-such-anchor  [page-relative, .html]  adminguide/securing-traffic#no-such-anchor  no anchor
+forms: in-page 1, page-relative, .html 3
+## mono-native 
+[17:56:36.456] ERROR (asciidoctor): target of xref not found: adminguide:no-such-page.adoc
+    file: native/mono/modules/concepts/pages/probe-broken.adoc
+    source: <work>/work (branch: main <worktree> | start path: concepts/cross-repo-links/sites/antora/native/mono)
+exit status 0
+## mono-native --log-failure-level=error --log-level=info
+[17:56:37.061] INFO (asciidoctor): possible invalid reference: gorouter-errors
+    file: native/mono/modules/adminguide/pages/troubleshooting-router-error-responses.adoc
+    source: <work>/work (branch: main <worktree> | start path: concepts/cross-repo-links/sites/antora/native/mono)
+[17:56:37.063] INFO (asciidoctor): possible invalid reference: tls-to-back-end
+    file: native/mono/modules/adminguide/pages/troubleshooting-router-error-responses.adoc
+    source: <work>/work (branch: main <worktree> | start path: concepts/cross-repo-links/sites/antora/native/mono)
+[17:56:37.070] ERROR (asciidoctor): target of xref not found: adminguide:no-such-page.adoc
+    file: native/mono/modules/concepts/pages/probe-broken.adoc
+    source: <work>/work (branch: main <worktree> | start path: concepts/cross-repo-links/sites/antora/native/mono)
+[17:56:37.079] INFO (asciidoctor): possible invalid reference: http-vs-tcp-shared-domains
+    file: native/mono/modules/devguide/pages/deploy-apps/routes-domains.adoc
+    source: <work>/work (branch: main <worktree> | start path: concepts/cross-repo-links/sites/antora/native/mono)
+exit status 2
+link  no page  ->  #adminguide:no-such-page.adoc  [in-page]  concepts/probe-broken#adminguide:no-such-page.adoc  no anchor
+link  no anchor  ->  ../adminguide/securing-traffic.html#no-such-anchor  [page-relative, .html]  adminguide/securing-traffic#no-such-anchor  no anchor
+link  no page as written  ->  ../adminguide/no-such-page.html  [page-relative, .html]  adminguide/no-such-page  no page
+link  no anchor as written  ->  ../adminguide/securing-traffic.html#no-such-anchor  [page-relative, .html]  adminguide/securing-traffic#no-such-anchor  no anchor
+forms: in-page 1, page-relative, .html 3

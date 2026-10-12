@@ -1,0 +1,208 @@
+## default-passthrough
+[WARNING] Docusaurus found broken links!
+- Broken link on source page path = /adminguide/enabling-tcp-routing:
+   -> linking to ../devguide/deploy-apps/routes-domains.html#create-route (resolved as: /devguide/deploy-apps/routes-domains.html#create-route)
+   -> linking to ../devguide/custom-ports.html (resolved as: /devguide/custom-ports.html)
+   -> linking to ../devguide/deploy-apps/routes-domains.html#domains (resolved as: /devguide/deploy-apps/routes-domains.html#domains)
+   -> linking to ../cf-cli/index.html (resolved as: /cf-cli/index.html)
+   -> linking to quota-plans.html (resolved as: /adminguide/quota-plans.html)
+   -> linking to ../devguide/deploy-apps/routes-domains.html#create-route-with-port (resolved as: /devguide/deploy-apps/routes-domains.html#create-route-with-port)
+- Broken link on source page path = /adminguide/troubleshooting-router-error-responses:
+   -> linking to ../concepts/http-routing.html#zipkin-headers (resolved as: /concepts/http-routing.html#zipkin-headers)
+   -> linking to ../running/all_metrics.html#routing (resolved as: /running/all_metrics.html#routing)
+   -> linking to ../concepts/identity-aware-routing.html (resolved as: /concepts/identity-aware-routing.html)
+   -> linking to ../concepts/http-routing.html#tls-to-back-end (resolved as: /concepts/http-routing.html#tls-to-back-end)
+   -> linking to ../concepts/http-routing.html#with-tls (resolved as: /concepts/http-routing.html#with-tls)
+- Broken link on source page path = /concepts/http-routing:
+   -> linking to architecture/index.html#routing (resolved as: /concepts/architecture/index.html#routing)
+   -> linking to ../adminguide/securing-traffic.html (resolved as: /adminguide/securing-traffic.html)
+   -> linking to ../adminguide/zipkin_tracing.html (resolved as: /adminguide/zipkin_tracing.html)
+   -> linking to ../adminguide/distributed-tracing.html#unique-trace-id (resolved as: /adminguide/distributed-tracing.html#unique-trace-id)
+   -> linking to ../devguide/custom-per-route-options.html (resolved as: /devguide/custom-per-route-options.html)
+   -> linking to ../adminguide/supporting-websockets.html (resolved as: /adminguide/supporting-websockets.html)
+   -> linking to /concepts/http-routing.html#keepalive
+   -> linking to ../adminguide/troubleshooting-router-error-responses.html (resolved as: /adminguide/troubleshooting-router-error-responses.html)
+- Broken link on source page path = /devguide/deploy-apps/routes-domains:
+   -> linking to ../../concepts/http-routing.html (resolved as: /concepts/http-routing.html)
+   -> linking to ../../concepts/http-routing.html#round-robin (resolved as: /concepts/http-routing.html#round-robin)
+   -> linking to ../deploy-apps/manifest.html#routes (resolved as: /devguide/deploy-apps/manifest.html#routes)
+   -> linking to ./blue-green.html (resolved as: /devguide/deploy-apps/blue-green.html)
+   -> linking to troubleshoot-app-health.html#routing-conflict (resolved as: /devguide/deploy-apps/troubleshoot-app-health.html#routing-conflict)
+[WARNING] Docusaurus found broken anchors!
+- Broken anchor on source page path = /adminguide/troubleshooting-router-error-responses:
+   -> linking to #gorouter-errors (resolved as: /adminguide/troubleshooting-router-error-responses#gorouter-errors)
+   -> linking to #tls-to-back-end (resolved as: /adminguide/troubleshooting-router-error-responses#tls-to-back-end)
+- Broken anchor on source page path = /devguide/deploy-apps/routes-domains:
+   -> linking to #http-vs-tcp-shared-domains (resolved as: /devguide/deploy-apps/routes-domains#http-vs-tcp-shared-domains)
+[SUCCESS] Generated static files in "build/default-passthrough".
+
+## mono-native
+[WARNING] Docusaurus found broken anchors!
+- Broken anchor on source page path = /adminguide/troubleshooting-router-error-responses:
+   -> linking to #gorouter-errors (resolved as: /adminguide/troubleshooting-router-error-responses#gorouter-errors)
+   -> linking to #tls-to-back-end (resolved as: /adminguide/troubleshooting-router-error-responses#tls-to-back-end)
+   -> linking to /concepts/http-routing#with-tls
+- Broken anchor on source page path = /devguide/deploy-apps/routes-domains:
+   -> linking to #http-vs-tcp-shared-domains (resolved as: /devguide/deploy-apps/routes-domains#http-vs-tcp-shared-domains)
+   -> linking to /devguide/deploy-apps/manifest#routes
+[SUCCESS] Generated static files in "build/mono-native".
+
+## mono-passthrough
+[WARNING] Docusaurus found broken links!
+- Broken link on source page path = /adminguide/enabling-tcp-routing:
+   -> linking to ../devguide/deploy-apps/routes-domains.html#create-route (resolved as: /devguide/deploy-apps/routes-domains.html#create-route)
+   -> linking to ../devguide/custom-ports.html (resolved as: /devguide/custom-ports.html)
+   -> linking to ../devguide/deploy-apps/routes-domains.html#domains (resolved as: /devguide/deploy-apps/routes-domains.html#domains)
+   -> linking to ../cf-cli/index.html (resolved as: /cf-cli/index.html)
+   -> linking to quota-plans.html (resolved as: /adminguide/quota-plans.html)
+   -> linking to ../devguide/deploy-apps/routes-domains.html#create-route-with-port (resolved as: /devguide/deploy-apps/routes-domains.html#create-route-with-port)
+- Broken link on source page path = /adminguide/troubleshooting-router-error-responses:
+   -> linking to ../concepts/http-routing.html#zipkin-headers (resolved as: /concepts/http-routing.html#zipkin-headers)
+   -> linking to ../running/all_metrics.html#routing (resolved as: /running/all_metrics.html#routing)
+   -> linking to ../concepts/identity-aware-routing.html (resolved as: /concepts/identity-aware-routing.html)
+   -> linking to ../concepts/http-routing.html#tls-to-back-end (resolved as: /concepts/http-routing.html#tls-to-back-end)
+   -> linking to ../concepts/http-routing.html#with-tls (resolved as: /concepts/http-routing.html#with-tls)
+- Broken link on source page path = /concepts/http-routing:
+   -> linking to architecture/index.html#routing (resolved as: /concepts/architecture/index.html#routing)
+   -> linking to ../adminguide/securing-traffic.html (resolved as: /adminguide/securing-traffic.html)
+   -> linking to ../adminguide/zipkin_tracing.html (resolved as: /adminguide/zipkin_tracing.html)
+   -> linking to ../adminguide/distributed-tracing.html#unique-trace-id (resolved as: /adminguide/distributed-tracing.html#unique-trace-id)
+   -> linking to ../devguide/custom-per-route-options.html (resolved as: /devguide/custom-per-route-options.html)
+   -> linking to ../adminguide/supporting-websockets.html (resolved as: /adminguide/supporting-websockets.html)
+   -> linking to /concepts/http-routing.html#keepalive
+   -> linking to ../adminguide/troubleshooting-router-error-responses.html (resolved as: /adminguide/troubleshooting-router-error-responses.html)
+- Broken link on source page path = /devguide/deploy-apps/routes-domains:
+   -> linking to ../../concepts/http-routing.html (resolved as: /concepts/http-routing.html)
+   -> linking to ../../concepts/http-routing.html#round-robin (resolved as: /concepts/http-routing.html#round-robin)
+   -> linking to ../deploy-apps/manifest.html#routes (resolved as: /devguide/deploy-apps/manifest.html#routes)
+   -> linking to ./blue-green.html (resolved as: /devguide/deploy-apps/blue-green.html)
+   -> linking to troubleshoot-app-health.html#routing-conflict (resolved as: /devguide/deploy-apps/troubleshoot-app-health.html#routing-conflict)
+[WARNING] Docusaurus found broken anchors!
+- Broken anchor on source page path = /adminguide/troubleshooting-router-error-responses:
+   -> linking to #gorouter-errors (resolved as: /adminguide/troubleshooting-router-error-responses#gorouter-errors)
+   -> linking to #tls-to-back-end (resolved as: /adminguide/troubleshooting-router-error-responses#tls-to-back-end)
+- Broken anchor on source page path = /devguide/deploy-apps/routes-domains:
+   -> linking to #http-vs-tcp-shared-domains (resolved as: /devguide/deploy-apps/routes-domains#http-vs-tcp-shared-domains)
+[SUCCESS] Generated static files in "build/mono-passthrough".
+
+## split-filelinks
+[WARNING] Markdown link with URL `../concepts/http-routing.mdx#zipkin-headers` in source file "pages/native-mono/adminguide/troubleshooting-router-error-responses.mdx" (34:136) couldn't be resolved.
+[WARNING] Markdown link with URL `../running/all_metrics.mdx#routing` in source file "pages/native-mono/adminguide/troubleshooting-router-error-responses.mdx" (39:31) couldn't be resolved.
+[WARNING] Markdown link with URL `../concepts/identity-aware-routing.mdx` in source file "pages/native-mono/adminguide/troubleshooting-router-error-responses.mdx" (49:104) couldn't be resolved.
+[WARNING] Markdown link with URL `../concepts/http-routing.mdx#tls-to-back-end` in source file "pages/native-mono/adminguide/troubleshooting-router-error-responses.mdx" (63:87) couldn't be resolved.
+[WARNING] Markdown link with URL `../concepts/http-routing.mdx#with-tls` in source file "pages/native-mono/adminguide/troubleshooting-router-error-responses.mdx" (74:27) couldn't be resolved.
+[WARNING] Markdown link with URL `../devguide/deploy-apps/routes-domains.mdx#create-route` in source file "pages/native-mono/adminguide/enabling-tcp-routing.mdx" (15:41) couldn't be resolved.
+[WARNING] Markdown link with URL `../devguide/custom-ports.mdx` in source file "pages/native-mono/adminguide/enabling-tcp-routing.mdx" (22:18) couldn't be resolved.
+[WARNING] Markdown link with URL `../devguide/deploy-apps/routes-domains.mdx#domains` in source file "pages/native-mono/adminguide/enabling-tcp-routing.mdx" (35:5) couldn't be resolved.
+[WARNING] Markdown link with URL `../cf-cli/index.mdx` in source file "pages/native-mono/adminguide/enabling-tcp-routing.mdx" (50:44) couldn't be resolved.
+[WARNING] Markdown link with URL `../devguide/deploy-apps/routes-domains.mdx#create-route-with-port` in source file "pages/native-mono/adminguide/enabling-tcp-routing.mdx" (65:49) couldn't be resolved.
+[WARNING] Markdown link with URL `../../concepts/http-routing.mdx` in source file "pages/native-mono/devguide/deploy-apps/routes-domains.mdx" (8:71) couldn't be resolved.
+[WARNING] Markdown link with URL `../../concepts/http-routing.mdx#round-robin` in source file "pages/native-mono/devguide/deploy-apps/routes-domains.mdx" (12:252) couldn't be resolved.
+[WARNING] Markdown link with URL `../adminguide/securing-traffic.mdx` in source file "pages/native-mono/concepts/http-routing.mdx" (20:27) couldn't be resolved.
+[WARNING] Markdown link with URL `../adminguide/zipkin_tracing.mdx` in source file "pages/native-mono/concepts/http-routing.mdx" (24:48) couldn't be resolved.
+[WARNING] Markdown link with URL `../adminguide/distributed-tracing.mdx#unique-trace-id` in source file "pages/native-mono/concepts/http-routing.mdx" (29:32) couldn't be resolved.
+[WARNING] Markdown link with URL `../devguide/multiple-processes.mdx` in source file "pages/native-mono/concepts/http-routing.mdx" (35:16) couldn't be resolved.
+[WARNING] Markdown link with URL `../devguide/custom-per-route-options.mdx` in source file "pages/native-mono/concepts/http-routing.mdx" (57:100) couldn't be resolved.
+[WARNING] Markdown link with URL `../adminguide/supporting-websockets.mdx` in source file "pages/native-mono/concepts/http-routing.mdx" (75:254) couldn't be resolved.
+[WARNING] Markdown link with URL `../adminguide/troubleshooting-router-error-responses.mdx` in source file "pages/native-mono/concepts/http-routing.mdx" (90:18) couldn't be resolved.
+[WARNING] Markdown link with URL `../concepts/http-routing.mdx#zipkin-headers` in source file "pages/native-mono/adminguide/troubleshooting-router-error-responses.mdx" (34:136) couldn't be resolved.
+[WARNING] Markdown link with URL `../running/all_metrics.mdx#routing` in source file "pages/native-mono/adminguide/troubleshooting-router-error-responses.mdx" (39:31) couldn't be resolved.
+[WARNING] Markdown link with URL `../concepts/identity-aware-routing.mdx` in source file "pages/native-mono/adminguide/troubleshooting-router-error-responses.mdx" (49:104) couldn't be resolved.
+[WARNING] Markdown link with URL `../concepts/http-routing.mdx#tls-to-back-end` in source file "pages/native-mono/adminguide/troubleshooting-router-error-responses.mdx" (63:87) couldn't be resolved.
+[WARNING] Markdown link with URL `../concepts/http-routing.mdx#with-tls` in source file "pages/native-mono/adminguide/troubleshooting-router-error-responses.mdx" (74:27) couldn't be resolved.
+[WARNING] Markdown link with URL `../devguide/deploy-apps/routes-domains.mdx#create-route` in source file "pages/native-mono/adminguide/enabling-tcp-routing.mdx" (15:41) couldn't be resolved.
+[WARNING] Markdown link with URL `../devguide/custom-ports.mdx` in source file "pages/native-mono/adminguide/enabling-tcp-routing.mdx" (22:18) couldn't be resolved.
+[WARNING] Markdown link with URL `../devguide/deploy-apps/routes-domains.mdx#domains` in source file "pages/native-mono/adminguide/enabling-tcp-routing.mdx" (35:5) couldn't be resolved.
+[WARNING] Markdown link with URL `../cf-cli/index.mdx` in source file "pages/native-mono/adminguide/enabling-tcp-routing.mdx" (50:44) couldn't be resolved.
+[WARNING] Markdown link with URL `../devguide/deploy-apps/routes-domains.mdx#create-route-with-port` in source file "pages/native-mono/adminguide/enabling-tcp-routing.mdx" (65:49) couldn't be resolved.
+[WARNING] Markdown link with URL `../../concepts/http-routing.mdx` in source file "pages/native-mono/devguide/deploy-apps/routes-domains.mdx" (8:71) couldn't be resolved.
+[WARNING] Markdown link with URL `../../concepts/http-routing.mdx#round-robin` in source file "pages/native-mono/devguide/deploy-apps/routes-domains.mdx" (12:252) couldn't be resolved.
+[WARNING] Markdown link with URL `../adminguide/securing-traffic.mdx` in source file "pages/native-mono/concepts/http-routing.mdx" (20:27) couldn't be resolved.
+[WARNING] Markdown link with URL `../adminguide/zipkin_tracing.mdx` in source file "pages/native-mono/concepts/http-routing.mdx" (24:48) couldn't be resolved.
+[WARNING] Markdown link with URL `../adminguide/distributed-tracing.mdx#unique-trace-id` in source file "pages/native-mono/concepts/http-routing.mdx" (29:32) couldn't be resolved.
+[WARNING] Markdown link with URL `../devguide/multiple-processes.mdx` in source file "pages/native-mono/concepts/http-routing.mdx" (35:16) couldn't be resolved.
+[WARNING] Markdown link with URL `../devguide/custom-per-route-options.mdx` in source file "pages/native-mono/concepts/http-routing.mdx" (57:100) couldn't be resolved.
+[WARNING] Markdown link with URL `../adminguide/supporting-websockets.mdx` in source file "pages/native-mono/concepts/http-routing.mdx" (75:254) couldn't be resolved.
+[WARNING] Markdown link with URL `../adminguide/troubleshooting-router-error-responses.mdx` in source file "pages/native-mono/concepts/http-routing.mdx" (90:18) couldn't be resolved.
+[WARNING] Docusaurus found broken links!
+- Broken link on source page path = /adminguide/enabling-tcp-routing:
+   -> linking to ../devguide/deploy-apps/routes-domains.mdx#create-route (resolved as: /devguide/deploy-apps/routes-domains.mdx#create-route)
+   -> linking to ../devguide/custom-ports.mdx (resolved as: /devguide/custom-ports.mdx)
+   -> linking to ../devguide/deploy-apps/routes-domains.mdx#domains (resolved as: /devguide/deploy-apps/routes-domains.mdx#domains)
+   -> linking to ../cf-cli/index.mdx (resolved as: /cf-cli/index.mdx)
+   -> linking to ../devguide/deploy-apps/routes-domains.mdx#create-route-with-port (resolved as: /devguide/deploy-apps/routes-domains.mdx#create-route-with-port)
+- Broken link on source page path = /adminguide/troubleshooting-router-error-responses:
+   -> linking to ../concepts/http-routing.mdx#zipkin-headers (resolved as: /concepts/http-routing.mdx#zipkin-headers)
+   -> linking to ../running/all_metrics.mdx#routing (resolved as: /running/all_metrics.mdx#routing)
+   -> linking to ../concepts/identity-aware-routing.mdx (resolved as: /concepts/identity-aware-routing.mdx)
+   -> linking to ../concepts/http-routing.mdx#tls-to-back-end (resolved as: /concepts/http-routing.mdx#tls-to-back-end)
+   -> linking to ../concepts/http-routing.mdx#with-tls (resolved as: /concepts/http-routing.mdx#with-tls)
+- Broken link on source page path = /concepts/http-routing:
+   -> linking to ../adminguide/securing-traffic.mdx (resolved as: /adminguide/securing-traffic.mdx)
+   -> linking to ../adminguide/zipkin_tracing.mdx (resolved as: /adminguide/zipkin_tracing.mdx)
+   -> linking to ../adminguide/distributed-tracing.mdx#unique-trace-id (resolved as: /adminguide/distributed-tracing.mdx#unique-trace-id)
+   -> linking to ../devguide/multiple-processes.mdx (resolved as: /devguide/multiple-processes.mdx)
+   -> linking to ../devguide/custom-per-route-options.mdx (resolved as: /devguide/custom-per-route-options.mdx)
+   -> linking to ../adminguide/supporting-websockets.mdx (resolved as: /adminguide/supporting-websockets.mdx)
+   -> linking to ../adminguide/troubleshooting-router-error-responses.mdx (resolved as: /adminguide/troubleshooting-router-error-responses.mdx)
+- Broken link on source page path = /devguide/deploy-apps/routes-domains:
+   -> linking to ../../concepts/http-routing.mdx (resolved as: /concepts/http-routing.mdx)
+   -> linking to ../../concepts/http-routing.mdx#round-robin (resolved as: /concepts/http-routing.mdx#round-robin)
+[WARNING] Docusaurus found broken anchors!
+- Broken anchor on source page path = /adminguide/troubleshooting-router-error-responses:
+   -> linking to #gorouter-errors (resolved as: /adminguide/troubleshooting-router-error-responses#gorouter-errors)
+   -> linking to #tls-to-back-end (resolved as: /adminguide/troubleshooting-router-error-responses#tls-to-back-end)
+- Broken anchor on source page path = /devguide/deploy-apps/routes-domains:
+   -> linking to #http-vs-tcp-shared-domains (resolved as: /devguide/deploy-apps/routes-domains#http-vs-tcp-shared-domains)
+   -> linking to /devguide/deploy-apps/manifest#routes
+[SUCCESS] Generated static files in "build/split-filelinks".
+
+## split-native
+[WARNING] Docusaurus found broken anchors!
+- Broken anchor on source page path = /adminguide/troubleshooting-router-error-responses:
+   -> linking to #gorouter-errors (resolved as: /adminguide/troubleshooting-router-error-responses#gorouter-errors)
+   -> linking to #tls-to-back-end (resolved as: /adminguide/troubleshooting-router-error-responses#tls-to-back-end)
+   -> linking to /concepts/http-routing#with-tls
+- Broken anchor on source page path = /devguide/deploy-apps/routes-domains:
+   -> linking to #http-vs-tcp-shared-domains (resolved as: /devguide/deploy-apps/routes-domains#http-vs-tcp-shared-domains)
+   -> linking to /devguide/deploy-apps/manifest#routes
+[SUCCESS] Generated static files in "build/split-native".
+
+## split-passthrough
+[WARNING] Docusaurus found broken links!
+- Broken link on source page path = /adminguide/enabling-tcp-routing:
+   -> linking to ../devguide/deploy-apps/routes-domains.html#create-route (resolved as: /devguide/deploy-apps/routes-domains.html#create-route)
+   -> linking to ../devguide/custom-ports.html (resolved as: /devguide/custom-ports.html)
+   -> linking to ../devguide/deploy-apps/routes-domains.html#domains (resolved as: /devguide/deploy-apps/routes-domains.html#domains)
+   -> linking to ../cf-cli/index.html (resolved as: /cf-cli/index.html)
+   -> linking to quota-plans.html (resolved as: /adminguide/quota-plans.html)
+   -> linking to ../devguide/deploy-apps/routes-domains.html#create-route-with-port (resolved as: /devguide/deploy-apps/routes-domains.html#create-route-with-port)
+- Broken link on source page path = /adminguide/troubleshooting-router-error-responses:
+   -> linking to ../concepts/http-routing.html#zipkin-headers (resolved as: /concepts/http-routing.html#zipkin-headers)
+   -> linking to ../running/all_metrics.html#routing (resolved as: /running/all_metrics.html#routing)
+   -> linking to ../concepts/identity-aware-routing.html (resolved as: /concepts/identity-aware-routing.html)
+   -> linking to ../concepts/http-routing.html#tls-to-back-end (resolved as: /concepts/http-routing.html#tls-to-back-end)
+   -> linking to ../concepts/http-routing.html#with-tls (resolved as: /concepts/http-routing.html#with-tls)
+- Broken link on source page path = /concepts/http-routing:
+   -> linking to architecture/index.html#routing (resolved as: /concepts/architecture/index.html#routing)
+   -> linking to ../adminguide/securing-traffic.html (resolved as: /adminguide/securing-traffic.html)
+   -> linking to ../adminguide/zipkin_tracing.html (resolved as: /adminguide/zipkin_tracing.html)
+   -> linking to ../adminguide/distributed-tracing.html#unique-trace-id (resolved as: /adminguide/distributed-tracing.html#unique-trace-id)
+   -> linking to ../devguide/custom-per-route-options.html (resolved as: /devguide/custom-per-route-options.html)
+   -> linking to ../adminguide/supporting-websockets.html (resolved as: /adminguide/supporting-websockets.html)
+   -> linking to /concepts/http-routing.html#keepalive
+   -> linking to ../adminguide/troubleshooting-router-error-responses.html (resolved as: /adminguide/troubleshooting-router-error-responses.html)
+- Broken link on source page path = /devguide/deploy-apps/routes-domains:
+   -> linking to ../../concepts/http-routing.html (resolved as: /concepts/http-routing.html)
+   -> linking to ../../concepts/http-routing.html#round-robin (resolved as: /concepts/http-routing.html#round-robin)
+   -> linking to ../deploy-apps/manifest.html#routes (resolved as: /devguide/deploy-apps/manifest.html#routes)
+   -> linking to ./blue-green.html (resolved as: /devguide/deploy-apps/blue-green.html)
+   -> linking to troubleshoot-app-health.html#routing-conflict (resolved as: /devguide/deploy-apps/troubleshoot-app-health.html#routing-conflict)
+[WARNING] Docusaurus found broken anchors!
+- Broken anchor on source page path = /adminguide/troubleshooting-router-error-responses:
+   -> linking to #gorouter-errors (resolved as: /adminguide/troubleshooting-router-error-responses#gorouter-errors)
+   -> linking to #tls-to-back-end (resolved as: /adminguide/troubleshooting-router-error-responses#tls-to-back-end)
+- Broken anchor on source page path = /devguide/deploy-apps/routes-domains:
+   -> linking to #http-vs-tcp-shared-domains (resolved as: /devguide/deploy-apps/routes-domains#http-vs-tcp-shared-domains)
+[SUCCESS] Generated static files in "build/split-passthrough".
+

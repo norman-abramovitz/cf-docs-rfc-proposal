@@ -1,0 +1,6 @@
+.venv/
+site/
+linked/
+.zensical-*.toml
+.cache/
+.check/

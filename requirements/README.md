@@ -104,7 +104,7 @@ Terms used in the table:
 | <a id="r-05"></a>R-05 | partials and reuse | A page can include a partial, and the partial renders inside it. The book can also hold a partial's name in a variable (`scale_table: "oss_scale_table"`), but no page uses that form; it is [not needed](research-areas.md#are-partial-names-in-variables-still-needed), and the converter resolves any such name. | [L179]; [`_oss_scale_table`](../concepts/tables/source/SOURCES.md) | proposed |
 | <a id="r-06"></a>R-06 | typed code blocks | Code blocks show their type (shell, console, JSON, YAML) with matching highlighting, keep their text exactly, and have a copy button. | [L44]; [tables findings](../concepts/tables/README.md#what-we-learned) | proposed |
 | <a id="r-07"></a>R-07 | notes and admonitions | A note, today `<p class="note">` with a `note__title` span, becomes an admonition (a boxed callout headed Note, Warning, and so on; [glossary](../glossary.md#admonition)) with the same text, including notes held in a variable. | [Concepts list](../concepts/README.md#concepts); [L100] | proposed |
-| <a id="r-08"></a>R-08 | cross-repository links | Links between pages that come from different content repositories keep working after conversion, whatever the new repository layout. | [L131] | proposed |
+| <a id="r-08"></a>R-08 | cross-repository links | Links between pages that come from different content repositories keep working after conversion, whatever the new repository layout, and the build reports a link whose page or anchor is missing. | [L131]; [cross-repository links results](../concepts/cross-repo-links/results.md#summary) | proposed |
 | <a id="r-09"></a>R-09 | table styles by class | Each table names its look with a style class (a name the site's stylesheet gives a look to; [glossary](../glossary.md#style-class)). `table` is the standard style. A further style is one more class and a few stylesheet rules, maintained by the Docs WG. Which further styles to offer is open. | [Template conventions](../concepts/tables/README.md#template-conventions) | proposed |
 
 ### Authoring
@@ -132,7 +132,7 @@ Terms used in the table:
 | ID | Phrase | Statement | Source | Status |
 |---|---|---|---|---|
 | <a id="r-15"></a>R-15 | URL identifies the source | From a page's URL a contributor can tell which repository and file to edit. Today `docs.cloudfoundry.org/<dir>/<file>.html` maps to `<file>.html.md.erb` in the repository that the book's `config.yml` assigns to `<dir>`. If the content moves into one repository, its directories keep that mapping. | Docs WG lead's [comment on the RFC pull request](https://github.com/cloudfoundry/community/pull/1642#issuecomment-6068605821); [`config.yml`](https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/30dfa57692253a6ae1b3df0726444b1e32852c91/config.yml#L33-L37) | proposed |
-| <a id="r-16"></a>R-16 | old URLs keep working | Every published URL still resolves after cutover, directly or by redirect. Heading anchors keep their ids where the conversion can keep them. | [L46]; [L58]; [L61]; [L137] | proposed |
+| <a id="r-16"></a>R-16 | old URLs keep working | Every published URL, including those the book's `redirects.rb` serves today, still resolves after cutover, directly or by redirect. Heading anchors keep their ids where the conversion can keep them. | [L46]; [L58]; [L61]; [L137] | proposed |
 | <a id="r-18"></a>R-18 | full-text search | The site has working full-text search across all its pages. | [L21]; [L36] | proposed |
 | <a id="r-20"></a>R-20 | search-engine and AI-friendly output | The site is plain, crawlable HTML with page titles, descriptions, canonical URLs (the one address search engines should use for a page) and a sitemap, so search engines and AI-based developer tools can read it. Whether to publish an `llms.txt` file (a plain-text index of the site's pages for such tools; [glossary](../glossary.md#llmstxt)) is open. | [L22]; [L40]; [L41] | proposed |
 | <a id="r-21"></a>R-21 | versioning | Version 1 publishes one version of the docs. How versions follow CF releases is decided later, from experience with Version 1. | [L37]; [L92]; [L94] | open |
@@ -277,7 +277,7 @@ restated as a hosting benefit.
   [table survey, bosh.io](../concepts/tables/survey/README.md#boshio)); see [Research areas](research-areas.md#is-boshio-in-scope).
 
 **Not yet written:** requirements that come out of the concepts not yet
-worked (code blocks, cross-repository links;
+worked (code blocks;
 [concepts](../concepts/README.md#concepts)). The headings round bears on
 [R-01](#r-01) content and outline survive and [R-16](#r-16) old URLs keep
 working; its conventions are under review
@@ -291,7 +291,11 @@ and partials rounds bear on [R-04](#r-04) variables everywhere and
 [partials results](../concepts/partials/results.md#requirements)). The
 build-time values round bears on [R-25](#r-25) build-time values are
 expected differences
-([build-time values results](../concepts/build-time-values/results.md#requirements)). They will sharpen
+([build-time values results](../concepts/build-time-values/results.md#requirements)).
+The cross-repository links round bears on [R-08](#r-08) cross-repository
+links, [R-15](#r-15) URL identifies the source and [R-16](#r-16) old URLs
+keep working
+([cross-repository links results](../concepts/cross-repo-links/results.md#requirements)). They will sharpen
 the requirements from [R-04](#r-04) variables everywhere to [R-08](#r-08)
 cross-repository links.
 

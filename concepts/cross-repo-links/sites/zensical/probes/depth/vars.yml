@@ -1,0 +1,6 @@
+# Three values that hold a link: the book's relative URL, a root-relative
+# URL, and a file path as Zensical resolves links in a page.
+vars:
+  relative: "For more information, see [variable relative](../adminguide/supporting-websockets.html)."
+  root: "For more information, see [variable root](/adminguide/supporting-websockets.html)."
+  native: "For more information, see [variable native](../adminguide/supporting-websockets.md)."

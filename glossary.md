@@ -765,6 +765,29 @@ expected differences).
 
 Learn more: [concepts/build-time-values/README.md](concepts/build-time-values/README.md).
 
+### Root-relative link
+
+A link whose URL starts with `/`, such as `/devguide/deploy-apps/routes-domains.html`,
+resolved from the site's root rather than from the linking page's folder.
+A *page-relative* link, such as `../routes-domains.html`, depends on where
+the linking page sits, so in a variable or a partial it works at one folder
+depth only
+([cross-repository links results](concepts/cross-repo-links/results.md#summary);
+[R-08](requirements/README.md#r-08) cross-repository links).
+
+Learn more: [URL standard, path-absolute URLs](https://url.spec.whatwg.org/#path-absolute-url-string).
+
+### Content source
+
+A folder or repository a tool reads pages from: a Docusaurus docs plugin
+instance, a Zensical docs folder, a Starlight content collection, or an
+Antora content source. Whether each content repository stays its own
+content source or moves into one repository changes edit links and how a
+tool takes in the other repositories, not the published URLs
+([cross-repository links results](concepts/cross-repo-links/results.md#summary)).
+
+Learn more: [Antora content sources](https://docs.antora.org/antora/latest/playbook/configure-content-sources/).
+
 ### Content date
 
 The date a page's content last changed: the author date of the newest

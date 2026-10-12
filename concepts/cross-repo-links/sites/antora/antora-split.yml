@@ -1,0 +1,52 @@
+# Separate content sources: one Antora component per content repository,
+# named as its URL directory (concepts, adminguide, …), plus the ROOT
+# component for the book repository's start page. Each source names its own
+# repository for the edit link. `make` writes one copy per mode, with MODE
+# replaced (.playbook-split-<mode>.yml).
+site:
+  title: Cross-repository links round — Antora
+content:
+  sources:
+  # This repository, read from its worktree; each start path stands for one
+  # repository
+  - url: ./../../../..
+    branches: HEAD
+    start_path: concepts/cross-repo-links/sites/antora/MODE/split/home
+    edit_url: 'https://github.com/cloudfoundry/docs-book-cloudfoundry/blob/master/{path}'
+  - url: ./../../../..
+    branches: HEAD
+    start_path: concepts/cross-repo-links/sites/antora/MODE/split/concepts
+    edit_url: 'https://github.com/cloudfoundry/docs-cloudfoundry-concepts/blob/master/{path}'
+  - url: ./../../../..
+    branches: HEAD
+    start_path: concepts/cross-repo-links/sites/antora/MODE/split/adminguide
+    edit_url: 'https://github.com/cloudfoundry/docs-cf-admin/blob/master/{path}'
+  - url: ./../../../..
+    branches: HEAD
+    start_path: concepts/cross-repo-links/sites/antora/MODE/split/devguide
+    edit_url: 'https://github.com/cloudfoundry/docs-dev-guide/blob/master/{path}'
+  - url: ./../../../..
+    branches: HEAD
+    start_path: concepts/cross-repo-links/sites/antora/MODE/split/running
+    edit_url: 'https://github.com/cloudfoundry/docs-running-cf/blob/master/{path}'
+  - url: ./../../../..
+    branches: HEAD
+    start_path: concepts/cross-repo-links/sites/antora/MODE/split/cf-cli
+    edit_url: 'https://github.com/cloudfoundry/docs-cf-cli/blob/master/{path}'
+ui:
+  bundle:
+    # The default UI, pinned: `make` downloads one build and checks its hash
+    url: ./.cache/ui-bundle.zip
+urls:
+  # Pages are written as <path>.html, the book's URLs
+  html_extension_style: default
+asciidoc:
+  attributes:
+    # Generated heading ids as on the published page (headings round)
+    idprefix: ''
+    idseparator: '-'
+output:
+  dir: ./site/split-MODE
+runtime:
+  cache_dir: ./.cache/antora
+  fetch: false

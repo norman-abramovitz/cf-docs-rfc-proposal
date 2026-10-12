@@ -1,0 +1,76 @@
+= Enabling and configuring TCP routing in Cloud Foundry
+
+
+You can enable TCP routing in Cloud Foundry. Learn about TCP routing and go through the steps of enabling and configuring it.
+
+[#overview]
+== TCP routing overview
+
+[#architecture]
+== TCP routing architecture
+
+The following example workflow ships with route ports, back end ports, and app ports:
+
+. You create a TCP route for your app based on a TCP domain and a route port, and
+map this route to one or more apps. See xref:devguide::deploy-apps/routes-domains.adoc#create-route[Create a Route] in _Configuring Routes and Domains_.
+
+. By default, the Diego Cell only routes requests to port `8080`, the app port, on the app
+container internal interface. The app port is the port on which apps must listen. Developers
+can use the Cloud Controller API to update the ports an app can receive requests on.
++
+For more
+information, see xref:devguide::custom-ports.adoc[Configuring Apps to Listen on Custom Ports (Beta)].
+
+[#prerequisites]
+== Prerequisites for activating TCP routing
+
+To set up networking
+requirements:
+
+. Choose a domain from which you can create TCP routes for your apps. For
+example, create a domain which is similar to your app domain but prefixed by the TCP subdomain,
+such as `tcp.APP-DOMAIN.com`, where `APP-DOMAIN` is the name of your app domain.
+
+. Configure DNS to resolve this domain name to the IP address of a highly available load
+balancer that can forward traffic for the domain to the TCP routers. For more information,
+see xref:devguide::deploy-apps/routes-domains.adoc#domains[Domains] in _Configuring Routes
+and Domains_. If you are operating an environment that does not require high availability,
+configure DNS to resolve the TCP domain name you have chosen directly to a single instance
+of the TCP router.
+
+[#tls-tcp-routes]
+=== TLS for TCP Routing
+
+[#disabling-tls-for-tcp-routing]
+==== Disabling TLS for TCP Routing
+
+[#post-deploy]
+== Configure TCP routing after deploying Cloud Foundry
+
+After you activate TCP routing and deploy Cloud Foundry, you must add the TCP
+shared domain and configure org quotas that allow you to create TCP routes. To do this,
+you must use the Cloud Foundry Command Line Interface (cf CLI) and have an admin user account.
+
+For more information about the cf CLI, see xref:cf-cli::index.adoc[Using the Cloud Foundry Command Line Interface
+(cf CLI)].
+
+[#configure-domain]
+=== Configure Cloud Foundry with your TCP Domain
+
+After you deploy Cloud Foundry, you must configure Cloud Foundry
+with the domain that you configured in <<prerequisites,Prerequisites for Enabling TCP Routing>>.
+
+[#configure-quota]
+=== Configure a quota for TCP routes
+
+For more information, see
+xref:quota-plans.adoc[Creating and Modifying Quota Plans].
+
+[#create-tcp-route]
+== Create a TCP route
+
+For information about creating a TCP route, see xref:devguide::deploy-apps/routes-domains.adoc#create-route-with-port[Create a TCP Route with a Port] in _Configuring Routes
+and Domains_.
+
+[#modify-ports]
+== Modify TCP port reservations

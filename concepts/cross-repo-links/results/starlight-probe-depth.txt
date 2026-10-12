@@ -1,0 +1,65 @@
+17:56:22 [content] Syncing content
+17:56:22 [content] Synced content
+17:56:22 [types] Generated 328ms
+17:56:22 [build] output: "static"
+17:56:22 [build] mode: "static"
+17:56:22 [build] directory: .check/probe-depth/
+17:56:22 [build] Collecting build info...
+17:56:22 [build] ✓ Completed in 416ms.
+17:56:22 [build] Building static entrypoints...
+17:56:22 [vite] ✓ built in 177ms
+17:56:22 [vite] ✓ built in 32ms
+17:56:22 [build] Rearranging server assets...
+
+ generating static routes 
+17:56:22 [WARN] [content] The collection "i18n" does not exist or is empty. Please check your content config file for errors.
+17:56:22   ├─ /404.html17:56:23 [WARN] [content] Entry docs → 404 was not found.
+ (+14ms) 
+17:56:23   ├─ /adminguide/distributed-tracing.html (+17ms) 
+17:56:23   ├─ /adminguide/enabling-tcp-routing.html (+10ms) 
+17:56:23   ├─ /adminguide/quota-plans.html (+6ms) 
+17:56:23   ├─ /adminguide/securing-traffic.html (+11ms) 
+17:56:23   ├─ /adminguide/supporting-websockets.html (+10ms) 
+17:56:23   ├─ /adminguide/troubleshooting-router-error-responses.html (+12ms) 
+17:56:23   ├─ /adminguide/zipkin_tracing.html (+7ms) 
+17:56:23   ├─ /cf-cli.html (+8ms) 
+17:56:23   ├─ /concepts/architecture.html (+8ms) 
+17:56:23   ├─ /concepts/http-routing.html (+13ms) 
+17:56:23   ├─ /concepts/identity-aware-routing.html (+6ms) 
+17:56:23   ├─ /concepts/probe-depth.html (+7ms) 
+17:56:23   ├─ /devguide/custom-per-route-options.html (+7ms) 
+17:56:23   ├─ /devguide/custom-ports.html (+6ms) 
+17:56:23   ├─ /devguide/deploy-apps/blue-green.html (+6ms) 
+17:56:23   ├─ /devguide/deploy-apps/manifest.html (+6ms) 
+17:56:23   ├─ /devguide/deploy-apps/probe-depth.html (+7ms) 
+17:56:23   ├─ /devguide/deploy-apps/routes-domains.html (+12ms) 
+17:56:23   ├─ /devguide/deploy-apps/troubleshoot-app-health.html (+6ms) 
+17:56:23   ├─ /devguide/multiple-processes.html (+18ms) 
+17:56:23   ├─ /index.html (+6ms) 
+17:56:23   ├─ /running/all_metrics.html (+6ms) 
+17:56:23 ✓ Completed in 324ms.
+
+17:56:23 [build] ✓ Completed in 561ms.
+17:56:23 [starlight:pagefind] Building search index with Pagefind...
+17:56:23 [starlight:pagefind] Found 23 HTML files.
+17:56:23 [starlight:pagefind] Finished building search index in 39ms.
+17:56:23 [@astrojs/sitemap] `sitemap-index.xml` created at `.check/probe-depth`
+17:56:23 [build] 23 page(s) built in 1.02s
+17:56:23 [build] Complete!
+exit status 0
+## concepts/probe-depth
+link  variable relative  ->  ../adminguide/supporting-websockets.html  [page-relative, .html]  adminguide/supporting-websockets  ok
+link  variable root  ->  /adminguide/supporting-websockets.html  [root-relative, .html]  adminguide/supporting-websockets  ok
+link  variable native  ->  /adminguide/supporting-websockets.html  [root-relative, .html]  adminguide/supporting-websockets  ok
+link  partial relative  ->  ../adminguide/supporting-websockets.html  [page-relative, .html]  adminguide/supporting-websockets  ok
+link  partial root  ->  /adminguide/supporting-websockets.html  [root-relative, .html]  adminguide/supporting-websockets  ok
+link  partial native  ->  /adminguide/supporting-websockets.html  [root-relative, .html]  adminguide/supporting-websockets  ok
+forms: page-relative, .html 2, root-relative, .html 4
+## devguide/deploy-apps/probe-depth
+link  variable relative  ->  ../adminguide/supporting-websockets.html  [page-relative, .html]  devguide/adminguide/supporting-websockets  no page
+link  variable root  ->  /adminguide/supporting-websockets.html  [root-relative, .html]  adminguide/supporting-websockets  ok
+link  variable native  ->  /adminguide/supporting-websockets.html  [root-relative, .html]  adminguide/supporting-websockets  ok
+link  partial relative  ->  ../adminguide/supporting-websockets.html  [page-relative, .html]  devguide/adminguide/supporting-websockets  no page
+link  partial root  ->  /adminguide/supporting-websockets.html  [root-relative, .html]  adminguide/supporting-websockets  ok
+link  partial native  ->  /adminguide/supporting-websockets.html  [root-relative, .html]  adminguide/supporting-websockets  ok
+forms: page-relative, .html 2, root-relative, .html 4

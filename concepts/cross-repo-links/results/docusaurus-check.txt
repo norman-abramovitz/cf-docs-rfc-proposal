@@ -1,0 +1,424 @@
+mkdir -p .check
+rm -rf .docusaurus node_modules/.cache
+env LAYOUT=split PAGES=passthrough npx docusaurus build --out-dir build/split-passthrough 2>&1 | tee .check/build-split-passthrough.log
+[INFO] [en] Creating an optimized production build...
+[webpackbar] ℹ Compiling Client
+[webpackbar] ℹ Compiling Server
+[webpackbar] ✔ Server: Compiled successfully in 2.83s
+[webpackbar] ✔ Client: Compiled successfully in 8.02s
+(node:24942) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WARNING] Docusaurus found broken links!
+
+Please check the pages of your site in the list below, and make sure you don't reference any path that does not exist.
+Note: it's possible to ignore broken links with the 'onBrokenLinks' Docusaurus configuration, and let the build pass.
+
+Exhaustive list of all broken links found:
+- Broken link on source page path = /adminguide/enabling-tcp-routing:
+   -> linking to ../devguide/deploy-apps/routes-domains.html#create-route (resolved as: /devguide/deploy-apps/routes-domains.html#create-route)
+   -> linking to ../devguide/custom-ports.html (resolved as: /devguide/custom-ports.html)
+   -> linking to ../devguide/deploy-apps/routes-domains.html#domains (resolved as: /devguide/deploy-apps/routes-domains.html#domains)
+   -> linking to ../cf-cli/index.html (resolved as: /cf-cli/index.html)
+   -> linking to quota-plans.html (resolved as: /adminguide/quota-plans.html)
+   -> linking to ../devguide/deploy-apps/routes-domains.html#create-route-with-port (resolved as: /devguide/deploy-apps/routes-domains.html#create-route-with-port)
+- Broken link on source page path = /adminguide/troubleshooting-router-error-responses:
+   -> linking to ../concepts/http-routing.html#zipkin-headers (resolved as: /concepts/http-routing.html#zipkin-headers)
+   -> linking to ../running/all_metrics.html#routing (resolved as: /running/all_metrics.html#routing)
+   -> linking to ../concepts/identity-aware-routing.html (resolved as: /concepts/identity-aware-routing.html)
+   -> linking to ../concepts/http-routing.html#tls-to-back-end (resolved as: /concepts/http-routing.html#tls-to-back-end)
+   -> linking to ../concepts/http-routing.html#with-tls (resolved as: /concepts/http-routing.html#with-tls)
+- Broken link on source page path = /concepts/http-routing:
+   -> linking to architecture/index.html#routing (resolved as: /concepts/architecture/index.html#routing)
+   -> linking to ../adminguide/securing-traffic.html (resolved as: /adminguide/securing-traffic.html)
+   -> linking to ../adminguide/zipkin_tracing.html (resolved as: /adminguide/zipkin_tracing.html)
+   -> linking to ../adminguide/distributed-tracing.html#unique-trace-id (resolved as: /adminguide/distributed-tracing.html#unique-trace-id)
+   -> linking to ../devguide/custom-per-route-options.html (resolved as: /devguide/custom-per-route-options.html)
+   -> linking to ../adminguide/supporting-websockets.html (resolved as: /adminguide/supporting-websockets.html)
+   -> linking to /concepts/http-routing.html#keepalive
+   -> linking to ../adminguide/troubleshooting-router-error-responses.html (resolved as: /adminguide/troubleshooting-router-error-responses.html)
+- Broken link on source page path = /devguide/deploy-apps/routes-domains:
+   -> linking to ../../concepts/http-routing.html (resolved as: /concepts/http-routing.html)
+   -> linking to ../../concepts/http-routing.html#round-robin (resolved as: /concepts/http-routing.html#round-robin)
+   -> linking to ../deploy-apps/manifest.html#routes (resolved as: /devguide/deploy-apps/manifest.html#routes)
+   -> linking to ./blue-green.html (resolved as: /devguide/deploy-apps/blue-green.html)
+   -> linking to troubleshoot-app-health.html#routing-conflict (resolved as: /devguide/deploy-apps/troubleshoot-app-health.html#routing-conflict)
+
+[WARNING] Docusaurus found broken anchors!
+
+Please check the pages of your site in the list below, and make sure you don't reference any anchor that does not exist.
+Note: it's possible to ignore broken anchors with the 'onBrokenAnchors' Docusaurus configuration, and let the build pass.
+
+Exhaustive list of all broken anchors found:
+- Broken anchor on source page path = /adminguide/troubleshooting-router-error-responses:
+   -> linking to #gorouter-errors (resolved as: /adminguide/troubleshooting-router-error-responses#gorouter-errors)
+   -> linking to #tls-to-back-end (resolved as: /adminguide/troubleshooting-router-error-responses#tls-to-back-end)
+- Broken anchor on source page path = /devguide/deploy-apps/routes-domains:
+   -> linking to #http-vs-tcp-shared-domains (resolved as: /devguide/deploy-apps/routes-domains#http-vs-tcp-shared-domains)
+
+[SUCCESS] Generated static files in "build/split-passthrough".
+[INFO] Use `npm run serve` command to test your build locally.
+mkdir -p .check
+rm -rf .docusaurus node_modules/.cache
+env LAYOUT=split PAGES=native-split npx docusaurus build --out-dir build/split-native 2>&1 | tee .check/build-split-native.log
+[INFO] [en] Creating an optimized production build...
+[webpackbar] ℹ Compiling Client
+[webpackbar] ℹ Compiling Server
+[webpackbar] ✔ Server: Compiled successfully in 2.15s
+[webpackbar] ✔ Client: Compiled successfully in 5.01s
+(node:25098) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WARNING] Docusaurus found broken anchors!
+
+Please check the pages of your site in the list below, and make sure you don't reference any anchor that does not exist.
+Note: it's possible to ignore broken anchors with the 'onBrokenAnchors' Docusaurus configuration, and let the build pass.
+
+Exhaustive list of all broken anchors found:
+- Broken anchor on source page path = /adminguide/troubleshooting-router-error-responses:
+   -> linking to #gorouter-errors (resolved as: /adminguide/troubleshooting-router-error-responses#gorouter-errors)
+   -> linking to #tls-to-back-end (resolved as: /adminguide/troubleshooting-router-error-responses#tls-to-back-end)
+   -> linking to /concepts/http-routing#with-tls
+- Broken anchor on source page path = /devguide/deploy-apps/routes-domains:
+   -> linking to #http-vs-tcp-shared-domains (resolved as: /devguide/deploy-apps/routes-domains#http-vs-tcp-shared-domains)
+   -> linking to /devguide/deploy-apps/manifest#routes
+
+[SUCCESS] Generated static files in "build/split-native".
+[INFO] Use `npm run serve` command to test your build locally.
+mkdir -p .check
+rm -rf .docusaurus node_modules/.cache
+env LAYOUT=mono PAGES=passthrough npx docusaurus build --out-dir build/mono-passthrough 2>&1 | tee .check/build-mono-passthrough.log
+[INFO] [en] Creating an optimized production build...
+[webpackbar] ℹ Compiling Client
+[webpackbar] ℹ Compiling Server
+[webpackbar] ✔ Server: Compiled successfully in 2.14s
+[webpackbar] ✔ Client: Compiled successfully in 4.84s
+(node:25180) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WARNING] Docusaurus found broken links!
+
+Please check the pages of your site in the list below, and make sure you don't reference any path that does not exist.
+Note: it's possible to ignore broken links with the 'onBrokenLinks' Docusaurus configuration, and let the build pass.
+
+Exhaustive list of all broken links found:
+- Broken link on source page path = /adminguide/enabling-tcp-routing:
+   -> linking to ../devguide/deploy-apps/routes-domains.html#create-route (resolved as: /devguide/deploy-apps/routes-domains.html#create-route)
+   -> linking to ../devguide/custom-ports.html (resolved as: /devguide/custom-ports.html)
+   -> linking to ../devguide/deploy-apps/routes-domains.html#domains (resolved as: /devguide/deploy-apps/routes-domains.html#domains)
+   -> linking to ../cf-cli/index.html (resolved as: /cf-cli/index.html)
+   -> linking to quota-plans.html (resolved as: /adminguide/quota-plans.html)
+   -> linking to ../devguide/deploy-apps/routes-domains.html#create-route-with-port (resolved as: /devguide/deploy-apps/routes-domains.html#create-route-with-port)
+- Broken link on source page path = /adminguide/troubleshooting-router-error-responses:
+   -> linking to ../concepts/http-routing.html#zipkin-headers (resolved as: /concepts/http-routing.html#zipkin-headers)
+   -> linking to ../running/all_metrics.html#routing (resolved as: /running/all_metrics.html#routing)
+   -> linking to ../concepts/identity-aware-routing.html (resolved as: /concepts/identity-aware-routing.html)
+   -> linking to ../concepts/http-routing.html#tls-to-back-end (resolved as: /concepts/http-routing.html#tls-to-back-end)
+   -> linking to ../concepts/http-routing.html#with-tls (resolved as: /concepts/http-routing.html#with-tls)
+- Broken link on source page path = /concepts/http-routing:
+   -> linking to architecture/index.html#routing (resolved as: /concepts/architecture/index.html#routing)
+   -> linking to ../adminguide/securing-traffic.html (resolved as: /adminguide/securing-traffic.html)
+   -> linking to ../adminguide/zipkin_tracing.html (resolved as: /adminguide/zipkin_tracing.html)
+   -> linking to ../adminguide/distributed-tracing.html#unique-trace-id (resolved as: /adminguide/distributed-tracing.html#unique-trace-id)
+   -> linking to ../devguide/custom-per-route-options.html (resolved as: /devguide/custom-per-route-options.html)
+   -> linking to ../adminguide/supporting-websockets.html (resolved as: /adminguide/supporting-websockets.html)
+   -> linking to /concepts/http-routing.html#keepalive
+   -> linking to ../adminguide/troubleshooting-router-error-responses.html (resolved as: /adminguide/troubleshooting-router-error-responses.html)
+- Broken link on source page path = /devguide/deploy-apps/routes-domains:
+   -> linking to ../../concepts/http-routing.html (resolved as: /concepts/http-routing.html)
+   -> linking to ../../concepts/http-routing.html#round-robin (resolved as: /concepts/http-routing.html#round-robin)
+   -> linking to ../deploy-apps/manifest.html#routes (resolved as: /devguide/deploy-apps/manifest.html#routes)
+   -> linking to ./blue-green.html (resolved as: /devguide/deploy-apps/blue-green.html)
+   -> linking to troubleshoot-app-health.html#routing-conflict (resolved as: /devguide/deploy-apps/troubleshoot-app-health.html#routing-conflict)
+
+[WARNING] Docusaurus found broken anchors!
+
+Please check the pages of your site in the list below, and make sure you don't reference any anchor that does not exist.
+Note: it's possible to ignore broken anchors with the 'onBrokenAnchors' Docusaurus configuration, and let the build pass.
+
+Exhaustive list of all broken anchors found:
+- Broken anchor on source page path = /adminguide/troubleshooting-router-error-responses:
+   -> linking to #gorouter-errors (resolved as: /adminguide/troubleshooting-router-error-responses#gorouter-errors)
+   -> linking to #tls-to-back-end (resolved as: /adminguide/troubleshooting-router-error-responses#tls-to-back-end)
+- Broken anchor on source page path = /devguide/deploy-apps/routes-domains:
+   -> linking to #http-vs-tcp-shared-domains (resolved as: /devguide/deploy-apps/routes-domains#http-vs-tcp-shared-domains)
+
+[SUCCESS] Generated static files in "build/mono-passthrough".
+[INFO] Use `npm run serve` command to test your build locally.
+mkdir -p .check
+rm -rf .docusaurus node_modules/.cache
+env LAYOUT=mono PAGES=native-mono npx docusaurus build --out-dir build/mono-native 2>&1 | tee .check/build-mono-native.log
+[INFO] [en] Creating an optimized production build...
+[webpackbar] ℹ Compiling Client
+[webpackbar] ℹ Compiling Server
+[webpackbar] ✔ Server: Compiled successfully in 2.16s
+[webpackbar] ✔ Client: Compiled successfully in 4.85s
+(node:25245) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WARNING] Docusaurus found broken anchors!
+
+Please check the pages of your site in the list below, and make sure you don't reference any anchor that does not exist.
+Note: it's possible to ignore broken anchors with the 'onBrokenAnchors' Docusaurus configuration, and let the build pass.
+
+Exhaustive list of all broken anchors found:
+- Broken anchor on source page path = /adminguide/troubleshooting-router-error-responses:
+   -> linking to #gorouter-errors (resolved as: /adminguide/troubleshooting-router-error-responses#gorouter-errors)
+   -> linking to #tls-to-back-end (resolved as: /adminguide/troubleshooting-router-error-responses#tls-to-back-end)
+   -> linking to /concepts/http-routing#with-tls
+- Broken anchor on source page path = /devguide/deploy-apps/routes-domains:
+   -> linking to #http-vs-tcp-shared-domains (resolved as: /devguide/deploy-apps/routes-domains#http-vs-tcp-shared-domains)
+   -> linking to /devguide/deploy-apps/manifest#routes
+
+[SUCCESS] Generated static files in "build/mono-native".
+[INFO] Use `npm run serve` command to test your build locally.
+../../checks/check-site.sh build split-passthrough split-native mono-passthrough mono-native
+== split-passthrough/concepts/http-routing
+link  Routing  ->  /concepts/architecture/index.html#routing  [root-relative, .html]  concepts/architecture#routing  ok
+link  Securing Traffic into Cloud Foundry  ->  /adminguide/securing-traffic.html  [root-relative, .html]  adminguide/securing-traffic  ok
+link  Enabling Zipkin Tracing  ->  /adminguide/zipkin_tracing.html  [root-relative, .html]  adminguide/zipkin_tracing  ok
+link  Unique trace identification  ->  /adminguide/distributed-tracing.html#unique-trace-id  [root-relative, .html]  adminguide/distributed-tracing#unique-trace-id  ok
+link  multiple processes  ->  https://docs.cloudfoundry.org/devguide/multiple-processes.html  [absolute, .html]  devguide/multiple-processes  ok
+link  Configuring per-route options  ->  /devguide/custom-per-route-options.html  [root-relative, .html]  devguide/custom-per-route-options  ok
+link  Round-Robin Load Balancing  ->  #round-robin  [in-page]  concepts/http-routing#round-robin  ok
+link  Least-Connection Load Balancing  ->  #least-connection  [in-page]  concepts/http-routing#least-connection  ok
+link  Load Balancing AZ Preference  ->  #balancing-algorithm-az-preference  [in-page]  concepts/http-routing#balancing-algorithm-az-preference  ok
+link  Supporting WebSockets  ->  /adminguide/supporting-websockets.html  [root-relative, .html]  adminguide/supporting-websockets  ok
+link  Keep alive connections  ->  /concepts/http-routing.html#keepalive  [root-relative, .html]  concepts/http-routing#keepalive  ok
+link  Troubleshooting Router Error Responses  ->  /adminguide/troubleshooting-router-error-responses.html  [root-relative, .html]  adminguide/troubleshooting-router-error-responses  ok
+forms: absolute, .html 1, in-page 3, root-relative, .html 8
+PASS  build/split-passthrough/concepts/http-routing.html: 12 links expected
+ok    outline: 28 headings, same levels and text
+ok    anchors: all 6 exist
+info  published heading ids not on the built page (27): #-http-headers #-header-size-limit #-x-forwarded-proto #-x-forwarded-for #-http-headers-for-zipkin-tracing #-http-headers-for-w3c-tracing #-http-headers-for-app-instance-routing #-http-headers-for-process-instance-routing #-forwarding-client-certificate-to-apps #-terminating-tls-for-the-first-time-at-the-load-balancer and 17 more
+== split-passthrough/adminguide/troubleshooting-router-error-responses
+link  Diagnose Gorouter Errors  ->  #gorouter-errors  [in-page]  adminguide/troubleshooting-router-error-responses#gorouter-errors  no anchor
+link  Diagnose Stale Routes in Gorouter  ->  #diagnose-stale-routes  [in-page]  adminguide/troubleshooting-router-error-responses#diagnose-stale-routes  ok
+link  Gorouter Error Classification Table  ->  #gorouter-error-classification  [in-page]  adminguide/troubleshooting-router-error-responses#gorouter-error-classification  ok
+link  Diagnose App Errors  ->  #app-errors  [in-page]  adminguide/troubleshooting-router-error-responses#app-errors  ok
+link  General Debugging Steps  ->  #debugging-steps  [in-page]  adminguide/troubleshooting-router-error-responses#debugging-steps  ok
+link  Dynamic Routing Table  ->  https://github.com/cloudfoundry/gorouter#dynamic-routing-table  [external]    external
+link  HTTP Headers for Zipkin Tracing  ->  /concepts/http-routing.html#zipkin-headers  [root-relative, .html]  concepts/http-routing#zipkin-headers  ok
+link  metrics  ->  /running/all_metrics.html#routing  [root-relative, .html]  running/all_metrics#routing  ok
+link  Identity-aware routing  ->  /concepts/identity-aware-routing.html  [root-relative, .html]  concepts/identity-aware-routing  ok
+link  route-integrity  ->  #tls-to-back-end  [in-page]  adminguide/troubleshooting-router-error-responses#tls-to-back-end  no anchor
+link  TLS to apps and other back end services  ->  /concepts/http-routing.html#tls-to-back-end  [root-relative, .html]  concepts/http-routing#tls-to-back-end  ok
+link  With TLS Enabled  ->  /concepts/http-routing.html#with-tls  [root-relative, .html]  concepts/http-routing#with-tls  no anchor
+forms: external 1, in-page 6, root-relative, .html 5
+PASS  build/split-passthrough/adminguide/troubleshooting-router-error-responses.html: 12 links expected
+ok    outline: 17 headings, same levels and text
+ok    anchors: all 4 exist
+info  published heading ids not on the built page (14): #-outer-error-responses-overview #-general-debugging-steps #-levels #-message-contents #-access-logs #diagnose-gorouter-errors #gorouter-cannot-connect-to-the-app-container #gorouter-errors-after-connecting #-diagnose-stale-routes-in-gorouter #-causes-of-stale-routes and 4 more
+== split-passthrough/adminguide/enabling-tcp-routing
+link  Create a Route  ->  /devguide/deploy-apps/routes-domains.html#create-route  [root-relative, .html]  devguide/deploy-apps/routes-domains#create-route  ok
+link  Configuring Apps to Listen on Custom Ports (Beta)  ->  /devguide/custom-ports.html  [root-relative, .html]  devguide/custom-ports  ok
+link  Domains  ->  /devguide/deploy-apps/routes-domains.html#domains  [root-relative, .html]  devguide/deploy-apps/routes-domains#domains  ok
+link  Using the Cloud Foundry Command Line Interface (cf CLI)  ->  /cf-cli/index.html  [root-relative, .html]  cf-cli  ok
+link  Prerequisites for Enabling TCP Routing  ->  #prerequisites  [in-page]  adminguide/enabling-tcp-routing#prerequisites  ok
+link  Creating and Modifying Quota Plans  ->  /adminguide/quota-plans.html  [root-relative, .html]  adminguide/quota-plans  ok
+link  Create a TCP Route with a Port  ->  /devguide/deploy-apps/routes-domains.html#create-route-with-port  [root-relative, .html]  devguide/deploy-apps/routes-domains#create-route-with-port  ok
+forms: in-page 1, root-relative, .html 6
+PASS  build/split-passthrough/adminguide/enabling-tcp-routing.html: 7 links expected
+ok    outline: 11 headings, same levels and text
+ok    anchors: all 1 exist
+info  published heading ids not on the built page (9): #-tcp-routing-overview #-tcp-routing-architecture #-prerequisites-for-activating-tcp-routing #-tls-for-tcp-routing #-configure-tcp-routing-after-deploying-cloud-foundry #-configure-cloud-foundry-with-your-tcp-domain #-configure-a-quota-for-tcp-routes #-create-a-tcp-route #-modify-tcp-port-reservations
+== split-passthrough/devguide/deploy-apps/routes-domains
+link  HTTP routing  ->  /concepts/http-routing.html  [root-relative, .html]  concepts/http-routing  ok
+link  round-robin  ->  /concepts/http-routing.html#round-robin  [root-relative, .html]  concepts/http-routing#round-robin  ok
+link  Share a route with another space  ->  #share-route  [in-page]  devguide/deploy-apps/routes-domains#share-route  ok
+link  HTTP versus TCP shared domains  ->  #http-vs-tcp-shared-domains  [in-page]  devguide/deploy-apps/routes-domains#http-vs-tcp-shared-domains  no anchor
+link  Configuring apps to listen on custom ports (Beta)  ->  ../custom-ports.html  [page-relative, .html]  devguide/custom-ports  ok
+link  Deploying with app manifests  ->  /devguide/deploy-apps/manifest.html#routes  [root-relative, .html]  devguide/deploy-apps/manifest#routes  no anchor
+link  Using blue-green deployment to reduce downtime and risk  ->  /devguide/deploy-apps/blue-green.html  [root-relative, .html]  devguide/deploy-apps/blue-green  ok
+link  Routing conflict  ->  /devguide/deploy-apps/troubleshoot-app-health.html#routing-conflict  [root-relative, .html]  devguide/deploy-apps/troubleshoot-app-health#routing-conflict  ok
+forms: in-page 2, page-relative, .html 1, root-relative, .html 5
+PASS  build/split-passthrough/devguide/deploy-apps/routes-domains.html: 8 links expected
+ok    outline: 43 headings, same levels and text
+ok    anchors: all 4 exist
+info  published heading ids not on the built page (27): #-routes #-http-versus-tcp-routes #-internal-container-to-container-routes #-create-a-route #-create-an-http-route-with-host-name #-list-routes #-view-a-route #-check-routes #-map-a-route-to-your-app #-unmap-a-route and 17 more
+== split-native/concepts/http-routing
+link  Routing  ->  /concepts/architecture/index#routing  [root-relative, no extension]  concepts/architecture#routing  ok (served from PATH.html)
+link  Securing Traffic into Cloud Foundry  ->  /adminguide/securing-traffic  [root-relative, no extension]  adminguide/securing-traffic  ok (served from PATH.html)
+link  Enabling Zipkin Tracing  ->  /adminguide/zipkin_tracing  [root-relative, no extension]  adminguide/zipkin_tracing  ok (served from PATH.html)
+link  Unique trace identification  ->  /adminguide/distributed-tracing#unique-trace-id  [root-relative, no extension]  adminguide/distributed-tracing#unique-trace-id  ok (served from PATH.html)
+link  multiple processes  ->  /devguide/multiple-processes  [root-relative, no extension]  devguide/multiple-processes  ok (served from PATH.html)
+link  Configuring per-route options  ->  /devguide/custom-per-route-options  [root-relative, no extension]  devguide/custom-per-route-options  ok (served from PATH.html)
+link  Round-Robin Load Balancing  ->  #round-robin  [in-page]  concepts/http-routing#round-robin  ok
+link  Least-Connection Load Balancing  ->  #least-connection  [in-page]  concepts/http-routing#least-connection  ok
+link  Load Balancing AZ Preference  ->  #balancing-algorithm-az-preference  [in-page]  concepts/http-routing#balancing-algorithm-az-preference  ok
+link  Supporting WebSockets  ->  /adminguide/supporting-websockets  [root-relative, no extension]  adminguide/supporting-websockets  ok (served from PATH.html)
+link  Keep alive connections  ->  #keepalive  [in-page]  concepts/http-routing#keepalive  ok
+link  Troubleshooting Router Error Responses  ->  /adminguide/troubleshooting-router-error-responses  [root-relative, no extension]  adminguide/troubleshooting-router-error-responses  ok (served from PATH.html)
+forms: in-page 4, root-relative, no extension 8
+PASS  build/split-native/concepts/http-routing.html: 12 links expected
+ok    outline: 28 headings, same levels and text
+ok    anchors: all 6 exist
+info  published heading ids not on the built page (27): #-http-headers #-header-size-limit #-x-forwarded-proto #-x-forwarded-for #-http-headers-for-zipkin-tracing #-http-headers-for-w3c-tracing #-http-headers-for-app-instance-routing #-http-headers-for-process-instance-routing #-forwarding-client-certificate-to-apps #-terminating-tls-for-the-first-time-at-the-load-balancer and 17 more
+== split-native/adminguide/troubleshooting-router-error-responses
+link  Diagnose Gorouter Errors  ->  #gorouter-errors  [in-page]  adminguide/troubleshooting-router-error-responses#gorouter-errors  no anchor
+link  Diagnose Stale Routes in Gorouter  ->  #diagnose-stale-routes  [in-page]  adminguide/troubleshooting-router-error-responses#diagnose-stale-routes  ok
+link  Gorouter Error Classification Table  ->  #gorouter-error-classification  [in-page]  adminguide/troubleshooting-router-error-responses#gorouter-error-classification  ok
+link  Diagnose App Errors  ->  #app-errors  [in-page]  adminguide/troubleshooting-router-error-responses#app-errors  ok
+link  General Debugging Steps  ->  #debugging-steps  [in-page]  adminguide/troubleshooting-router-error-responses#debugging-steps  ok
+link  Dynamic Routing Table  ->  https://github.com/cloudfoundry/gorouter#dynamic-routing-table  [external]    external
+link  HTTP Headers for Zipkin Tracing  ->  /concepts/http-routing#zipkin-headers  [root-relative, no extension]  concepts/http-routing#zipkin-headers  ok (served from PATH.html)
+link  metrics  ->  /running/all_metrics#routing  [root-relative, no extension]  running/all_metrics#routing  ok (served from PATH.html)
+link  Identity-aware routing  ->  /concepts/identity-aware-routing  [root-relative, no extension]  concepts/identity-aware-routing  ok (served from PATH.html)
+link  route-integrity  ->  #tls-to-back-end  [in-page]  adminguide/troubleshooting-router-error-responses#tls-to-back-end  no anchor
+link  TLS to apps and other back end services  ->  /concepts/http-routing#tls-to-back-end  [root-relative, no extension]  concepts/http-routing#tls-to-back-end  ok (served from PATH.html)
+link  With TLS Enabled  ->  /concepts/http-routing#with-tls  [root-relative, no extension]  concepts/http-routing#with-tls  no anchor (served from PATH.html)
+forms: external 1, in-page 6, root-relative, no extension 5
+PASS  build/split-native/adminguide/troubleshooting-router-error-responses.html: 12 links expected
+ok    outline: 17 headings, same levels and text
+ok    anchors: all 4 exist
+info  published heading ids not on the built page (14): #-outer-error-responses-overview #-general-debugging-steps #-levels #-message-contents #-access-logs #diagnose-gorouter-errors #gorouter-cannot-connect-to-the-app-container #gorouter-errors-after-connecting #-diagnose-stale-routes-in-gorouter #-causes-of-stale-routes and 4 more
+== split-native/adminguide/enabling-tcp-routing
+link  Create a Route  ->  /devguide/deploy-apps/routes-domains#create-route  [root-relative, no extension]  devguide/deploy-apps/routes-domains#create-route  ok (served from PATH.html)
+link  Configuring Apps to Listen on Custom Ports (Beta)  ->  /devguide/custom-ports  [root-relative, no extension]  devguide/custom-ports  ok (served from PATH.html)
+link  Domains  ->  /devguide/deploy-apps/routes-domains#domains  [root-relative, no extension]  devguide/deploy-apps/routes-domains#domains  ok (served from PATH.html)
+link  Using the Cloud Foundry Command Line Interface (cf CLI)  ->  /cf-cli/index  [root-relative, no extension]  cf-cli  ok (served from PATH.html)
+link  Prerequisites for Enabling TCP Routing  ->  #prerequisites  [in-page]  adminguide/enabling-tcp-routing#prerequisites  ok
+link  Creating and Modifying Quota Plans  ->  /adminguide/quota-plans  [root-relative, no extension]  adminguide/quota-plans  ok (served from PATH.html)
+link  Create a TCP Route with a Port  ->  /devguide/deploy-apps/routes-domains#create-route-with-port  [root-relative, no extension]  devguide/deploy-apps/routes-domains#create-route-with-port  ok (served from PATH.html)
+forms: in-page 1, root-relative, no extension 6
+PASS  build/split-native/adminguide/enabling-tcp-routing.html: 7 links expected
+ok    outline: 11 headings, same levels and text
+ok    anchors: all 1 exist
+info  published heading ids not on the built page (9): #-tcp-routing-overview #-tcp-routing-architecture #-prerequisites-for-activating-tcp-routing #-tls-for-tcp-routing #-configure-tcp-routing-after-deploying-cloud-foundry #-configure-cloud-foundry-with-your-tcp-domain #-configure-a-quota-for-tcp-routes #-create-a-tcp-route #-modify-tcp-port-reservations
+== split-native/devguide/deploy-apps/routes-domains
+link  HTTP routing  ->  /concepts/http-routing  [root-relative, no extension]  concepts/http-routing  ok (served from PATH.html)
+link  round-robin  ->  /concepts/http-routing#round-robin  [root-relative, no extension]  concepts/http-routing#round-robin  ok (served from PATH.html)
+link  Share a route with another space  ->  #share-route  [in-page]  devguide/deploy-apps/routes-domains#share-route  ok
+link  HTTP versus TCP shared domains  ->  #http-vs-tcp-shared-domains  [in-page]  devguide/deploy-apps/routes-domains#http-vs-tcp-shared-domains  no anchor
+link  Configuring apps to listen on custom ports (Beta)  ->  /devguide/custom-ports  [root-relative, no extension]  devguide/custom-ports  ok (served from PATH.html)
+link  Deploying with app manifests  ->  /devguide/deploy-apps/manifest#routes  [root-relative, no extension]  devguide/deploy-apps/manifest#routes  no anchor (served from PATH.html)
+link  Using blue-green deployment to reduce downtime and risk  ->  /devguide/deploy-apps/blue-green  [root-relative, no extension]  devguide/deploy-apps/blue-green  ok (served from PATH.html)
+link  Routing conflict  ->  /devguide/deploy-apps/troubleshoot-app-health#routing-conflict  [root-relative, no extension]  devguide/deploy-apps/troubleshoot-app-health#routing-conflict  ok (served from PATH.html)
+forms: in-page 2, root-relative, no extension 6
+PASS  build/split-native/devguide/deploy-apps/routes-domains.html: 8 links expected
+ok    outline: 43 headings, same levels and text
+ok    anchors: all 4 exist
+info  published heading ids not on the built page (27): #-routes #-http-versus-tcp-routes #-internal-container-to-container-routes #-create-a-route #-create-an-http-route-with-host-name #-list-routes #-view-a-route #-check-routes #-map-a-route-to-your-app #-unmap-a-route and 17 more
+== mono-passthrough/concepts/http-routing
+link  Routing  ->  /concepts/architecture/index.html#routing  [root-relative, .html]  concepts/architecture#routing  ok
+link  Securing Traffic into Cloud Foundry  ->  /adminguide/securing-traffic.html  [root-relative, .html]  adminguide/securing-traffic  ok
+link  Enabling Zipkin Tracing  ->  /adminguide/zipkin_tracing.html  [root-relative, .html]  adminguide/zipkin_tracing  ok
+link  Unique trace identification  ->  /adminguide/distributed-tracing.html#unique-trace-id  [root-relative, .html]  adminguide/distributed-tracing#unique-trace-id  ok
+link  multiple processes  ->  https://docs.cloudfoundry.org/devguide/multiple-processes.html  [absolute, .html]  devguide/multiple-processes  ok
+link  Configuring per-route options  ->  /devguide/custom-per-route-options.html  [root-relative, .html]  devguide/custom-per-route-options  ok
+link  Round-Robin Load Balancing  ->  #round-robin  [in-page]  concepts/http-routing#round-robin  ok
+link  Least-Connection Load Balancing  ->  #least-connection  [in-page]  concepts/http-routing#least-connection  ok
+link  Load Balancing AZ Preference  ->  #balancing-algorithm-az-preference  [in-page]  concepts/http-routing#balancing-algorithm-az-preference  ok
+link  Supporting WebSockets  ->  /adminguide/supporting-websockets.html  [root-relative, .html]  adminguide/supporting-websockets  ok
+link  Keep alive connections  ->  /concepts/http-routing.html#keepalive  [root-relative, .html]  concepts/http-routing#keepalive  ok
+link  Troubleshooting Router Error Responses  ->  /adminguide/troubleshooting-router-error-responses.html  [root-relative, .html]  adminguide/troubleshooting-router-error-responses  ok
+forms: absolute, .html 1, in-page 3, root-relative, .html 8
+PASS  build/mono-passthrough/concepts/http-routing.html: 12 links expected
+ok    outline: 28 headings, same levels and text
+ok    anchors: all 6 exist
+info  published heading ids not on the built page (27): #-http-headers #-header-size-limit #-x-forwarded-proto #-x-forwarded-for #-http-headers-for-zipkin-tracing #-http-headers-for-w3c-tracing #-http-headers-for-app-instance-routing #-http-headers-for-process-instance-routing #-forwarding-client-certificate-to-apps #-terminating-tls-for-the-first-time-at-the-load-balancer and 17 more
+== mono-passthrough/adminguide/troubleshooting-router-error-responses
+link  Diagnose Gorouter Errors  ->  #gorouter-errors  [in-page]  adminguide/troubleshooting-router-error-responses#gorouter-errors  no anchor
+link  Diagnose Stale Routes in Gorouter  ->  #diagnose-stale-routes  [in-page]  adminguide/troubleshooting-router-error-responses#diagnose-stale-routes  ok
+link  Gorouter Error Classification Table  ->  #gorouter-error-classification  [in-page]  adminguide/troubleshooting-router-error-responses#gorouter-error-classification  ok
+link  Diagnose App Errors  ->  #app-errors  [in-page]  adminguide/troubleshooting-router-error-responses#app-errors  ok
+link  General Debugging Steps  ->  #debugging-steps  [in-page]  adminguide/troubleshooting-router-error-responses#debugging-steps  ok
+link  Dynamic Routing Table  ->  https://github.com/cloudfoundry/gorouter#dynamic-routing-table  [external]    external
+link  HTTP Headers for Zipkin Tracing  ->  /concepts/http-routing.html#zipkin-headers  [root-relative, .html]  concepts/http-routing#zipkin-headers  ok
+link  metrics  ->  /running/all_metrics.html#routing  [root-relative, .html]  running/all_metrics#routing  ok
+link  Identity-aware routing  ->  /concepts/identity-aware-routing.html  [root-relative, .html]  concepts/identity-aware-routing  ok
+link  route-integrity  ->  #tls-to-back-end  [in-page]  adminguide/troubleshooting-router-error-responses#tls-to-back-end  no anchor
+link  TLS to apps and other back end services  ->  /concepts/http-routing.html#tls-to-back-end  [root-relative, .html]  concepts/http-routing#tls-to-back-end  ok
+link  With TLS Enabled  ->  /concepts/http-routing.html#with-tls  [root-relative, .html]  concepts/http-routing#with-tls  no anchor
+forms: external 1, in-page 6, root-relative, .html 5
+PASS  build/mono-passthrough/adminguide/troubleshooting-router-error-responses.html: 12 links expected
+ok    outline: 17 headings, same levels and text
+ok    anchors: all 4 exist
+info  published heading ids not on the built page (14): #-outer-error-responses-overview #-general-debugging-steps #-levels #-message-contents #-access-logs #diagnose-gorouter-errors #gorouter-cannot-connect-to-the-app-container #gorouter-errors-after-connecting #-diagnose-stale-routes-in-gorouter #-causes-of-stale-routes and 4 more
+== mono-passthrough/adminguide/enabling-tcp-routing
+link  Create a Route  ->  /devguide/deploy-apps/routes-domains.html#create-route  [root-relative, .html]  devguide/deploy-apps/routes-domains#create-route  ok
+link  Configuring Apps to Listen on Custom Ports (Beta)  ->  /devguide/custom-ports.html  [root-relative, .html]  devguide/custom-ports  ok
+link  Domains  ->  /devguide/deploy-apps/routes-domains.html#domains  [root-relative, .html]  devguide/deploy-apps/routes-domains#domains  ok
+link  Using the Cloud Foundry Command Line Interface (cf CLI)  ->  /cf-cli/index.html  [root-relative, .html]  cf-cli  ok
+link  Prerequisites for Enabling TCP Routing  ->  #prerequisites  [in-page]  adminguide/enabling-tcp-routing#prerequisites  ok
+link  Creating and Modifying Quota Plans  ->  /adminguide/quota-plans.html  [root-relative, .html]  adminguide/quota-plans  ok
+link  Create a TCP Route with a Port  ->  /devguide/deploy-apps/routes-domains.html#create-route-with-port  [root-relative, .html]  devguide/deploy-apps/routes-domains#create-route-with-port  ok
+forms: in-page 1, root-relative, .html 6
+PASS  build/mono-passthrough/adminguide/enabling-tcp-routing.html: 7 links expected
+ok    outline: 11 headings, same levels and text
+ok    anchors: all 1 exist
+info  published heading ids not on the built page (9): #-tcp-routing-overview #-tcp-routing-architecture #-prerequisites-for-activating-tcp-routing #-tls-for-tcp-routing #-configure-tcp-routing-after-deploying-cloud-foundry #-configure-cloud-foundry-with-your-tcp-domain #-configure-a-quota-for-tcp-routes #-create-a-tcp-route #-modify-tcp-port-reservations
+== mono-passthrough/devguide/deploy-apps/routes-domains
+link  HTTP routing  ->  /concepts/http-routing.html  [root-relative, .html]  concepts/http-routing  ok
+link  round-robin  ->  /concepts/http-routing.html#round-robin  [root-relative, .html]  concepts/http-routing#round-robin  ok
+link  Share a route with another space  ->  #share-route  [in-page]  devguide/deploy-apps/routes-domains#share-route  ok
+link  HTTP versus TCP shared domains  ->  #http-vs-tcp-shared-domains  [in-page]  devguide/deploy-apps/routes-domains#http-vs-tcp-shared-domains  no anchor
+link  Configuring apps to listen on custom ports (Beta)  ->  ../custom-ports.html  [page-relative, .html]  devguide/custom-ports  ok
+link  Deploying with app manifests  ->  /devguide/deploy-apps/manifest.html#routes  [root-relative, .html]  devguide/deploy-apps/manifest#routes  no anchor
+link  Using blue-green deployment to reduce downtime and risk  ->  /devguide/deploy-apps/blue-green.html  [root-relative, .html]  devguide/deploy-apps/blue-green  ok
+link  Routing conflict  ->  /devguide/deploy-apps/troubleshoot-app-health.html#routing-conflict  [root-relative, .html]  devguide/deploy-apps/troubleshoot-app-health#routing-conflict  ok
+forms: in-page 2, page-relative, .html 1, root-relative, .html 5
+PASS  build/mono-passthrough/devguide/deploy-apps/routes-domains.html: 8 links expected
+ok    outline: 43 headings, same levels and text
+ok    anchors: all 4 exist
+info  published heading ids not on the built page (27): #-routes #-http-versus-tcp-routes #-internal-container-to-container-routes #-create-a-route #-create-an-http-route-with-host-name #-list-routes #-view-a-route #-check-routes #-map-a-route-to-your-app #-unmap-a-route and 17 more
+== mono-native/concepts/http-routing
+link  Routing  ->  /concepts/architecture/index#routing  [root-relative, no extension]  concepts/architecture#routing  ok (served from PATH.html)
+link  Securing Traffic into Cloud Foundry  ->  /adminguide/securing-traffic  [root-relative, no extension]  adminguide/securing-traffic  ok (served from PATH.html)
+link  Enabling Zipkin Tracing  ->  /adminguide/zipkin_tracing  [root-relative, no extension]  adminguide/zipkin_tracing  ok (served from PATH.html)
+link  Unique trace identification  ->  /adminguide/distributed-tracing#unique-trace-id  [root-relative, no extension]  adminguide/distributed-tracing#unique-trace-id  ok (served from PATH.html)
+link  multiple processes  ->  /devguide/multiple-processes  [root-relative, no extension]  devguide/multiple-processes  ok (served from PATH.html)
+link  Configuring per-route options  ->  /devguide/custom-per-route-options  [root-relative, no extension]  devguide/custom-per-route-options  ok (served from PATH.html)
+link  Round-Robin Load Balancing  ->  #round-robin  [in-page]  concepts/http-routing#round-robin  ok
+link  Least-Connection Load Balancing  ->  #least-connection  [in-page]  concepts/http-routing#least-connection  ok
+link  Load Balancing AZ Preference  ->  #balancing-algorithm-az-preference  [in-page]  concepts/http-routing#balancing-algorithm-az-preference  ok
+link  Supporting WebSockets  ->  /adminguide/supporting-websockets  [root-relative, no extension]  adminguide/supporting-websockets  ok (served from PATH.html)
+link  Keep alive connections  ->  #keepalive  [in-page]  concepts/http-routing#keepalive  ok
+link  Troubleshooting Router Error Responses  ->  /adminguide/troubleshooting-router-error-responses  [root-relative, no extension]  adminguide/troubleshooting-router-error-responses  ok (served from PATH.html)
+forms: in-page 4, root-relative, no extension 8
+PASS  build/mono-native/concepts/http-routing.html: 12 links expected
+ok    outline: 28 headings, same levels and text
+ok    anchors: all 6 exist
+info  published heading ids not on the built page (27): #-http-headers #-header-size-limit #-x-forwarded-proto #-x-forwarded-for #-http-headers-for-zipkin-tracing #-http-headers-for-w3c-tracing #-http-headers-for-app-instance-routing #-http-headers-for-process-instance-routing #-forwarding-client-certificate-to-apps #-terminating-tls-for-the-first-time-at-the-load-balancer and 17 more
+== mono-native/adminguide/troubleshooting-router-error-responses
+link  Diagnose Gorouter Errors  ->  #gorouter-errors  [in-page]  adminguide/troubleshooting-router-error-responses#gorouter-errors  no anchor
+link  Diagnose Stale Routes in Gorouter  ->  #diagnose-stale-routes  [in-page]  adminguide/troubleshooting-router-error-responses#diagnose-stale-routes  ok
+link  Gorouter Error Classification Table  ->  #gorouter-error-classification  [in-page]  adminguide/troubleshooting-router-error-responses#gorouter-error-classification  ok
+link  Diagnose App Errors  ->  #app-errors  [in-page]  adminguide/troubleshooting-router-error-responses#app-errors  ok
+link  General Debugging Steps  ->  #debugging-steps  [in-page]  adminguide/troubleshooting-router-error-responses#debugging-steps  ok
+link  Dynamic Routing Table  ->  https://github.com/cloudfoundry/gorouter#dynamic-routing-table  [external]    external
+link  HTTP Headers for Zipkin Tracing  ->  /concepts/http-routing#zipkin-headers  [root-relative, no extension]  concepts/http-routing#zipkin-headers  ok (served from PATH.html)
+link  metrics  ->  /running/all_metrics#routing  [root-relative, no extension]  running/all_metrics#routing  ok (served from PATH.html)
+link  Identity-aware routing  ->  /concepts/identity-aware-routing  [root-relative, no extension]  concepts/identity-aware-routing  ok (served from PATH.html)
+link  route-integrity  ->  #tls-to-back-end  [in-page]  adminguide/troubleshooting-router-error-responses#tls-to-back-end  no anchor
+link  TLS to apps and other back end services  ->  /concepts/http-routing#tls-to-back-end  [root-relative, no extension]  concepts/http-routing#tls-to-back-end  ok (served from PATH.html)
+link  With TLS Enabled  ->  /concepts/http-routing#with-tls  [root-relative, no extension]  concepts/http-routing#with-tls  no anchor (served from PATH.html)
+forms: external 1, in-page 6, root-relative, no extension 5
+PASS  build/mono-native/adminguide/troubleshooting-router-error-responses.html: 12 links expected
+ok    outline: 17 headings, same levels and text
+ok    anchors: all 4 exist
+info  published heading ids not on the built page (14): #-outer-error-responses-overview #-general-debugging-steps #-levels #-message-contents #-access-logs #diagnose-gorouter-errors #gorouter-cannot-connect-to-the-app-container #gorouter-errors-after-connecting #-diagnose-stale-routes-in-gorouter #-causes-of-stale-routes and 4 more
+== mono-native/adminguide/enabling-tcp-routing
+link  Create a Route  ->  /devguide/deploy-apps/routes-domains#create-route  [root-relative, no extension]  devguide/deploy-apps/routes-domains#create-route  ok (served from PATH.html)
+link  Configuring Apps to Listen on Custom Ports (Beta)  ->  /devguide/custom-ports  [root-relative, no extension]  devguide/custom-ports  ok (served from PATH.html)
+link  Domains  ->  /devguide/deploy-apps/routes-domains#domains  [root-relative, no extension]  devguide/deploy-apps/routes-domains#domains  ok (served from PATH.html)
+link  Using the Cloud Foundry Command Line Interface (cf CLI)  ->  /cf-cli/index  [root-relative, no extension]  cf-cli  ok (served from PATH.html)
+link  Prerequisites for Enabling TCP Routing  ->  #prerequisites  [in-page]  adminguide/enabling-tcp-routing#prerequisites  ok
+link  Creating and Modifying Quota Plans  ->  /adminguide/quota-plans  [root-relative, no extension]  adminguide/quota-plans  ok (served from PATH.html)
+link  Create a TCP Route with a Port  ->  /devguide/deploy-apps/routes-domains#create-route-with-port  [root-relative, no extension]  devguide/deploy-apps/routes-domains#create-route-with-port  ok (served from PATH.html)
+forms: in-page 1, root-relative, no extension 6
+PASS  build/mono-native/adminguide/enabling-tcp-routing.html: 7 links expected
+ok    outline: 11 headings, same levels and text
+ok    anchors: all 1 exist
+info  published heading ids not on the built page (9): #-tcp-routing-overview #-tcp-routing-architecture #-prerequisites-for-activating-tcp-routing #-tls-for-tcp-routing #-configure-tcp-routing-after-deploying-cloud-foundry #-configure-cloud-foundry-with-your-tcp-domain #-configure-a-quota-for-tcp-routes #-create-a-tcp-route #-modify-tcp-port-reservations
+== mono-native/devguide/deploy-apps/routes-domains
+link  HTTP routing  ->  /concepts/http-routing  [root-relative, no extension]  concepts/http-routing  ok (served from PATH.html)
+link  round-robin  ->  /concepts/http-routing#round-robin  [root-relative, no extension]  concepts/http-routing#round-robin  ok (served from PATH.html)
+link  Share a route with another space  ->  #share-route  [in-page]  devguide/deploy-apps/routes-domains#share-route  ok
+link  HTTP versus TCP shared domains  ->  #http-vs-tcp-shared-domains  [in-page]  devguide/deploy-apps/routes-domains#http-vs-tcp-shared-domains  no anchor
+link  Configuring apps to listen on custom ports (Beta)  ->  /devguide/custom-ports  [root-relative, no extension]  devguide/custom-ports  ok (served from PATH.html)
+link  Deploying with app manifests  ->  /devguide/deploy-apps/manifest#routes  [root-relative, no extension]  devguide/deploy-apps/manifest#routes  no anchor (served from PATH.html)
+link  Using blue-green deployment to reduce downtime and risk  ->  /devguide/deploy-apps/blue-green  [root-relative, no extension]  devguide/deploy-apps/blue-green  ok (served from PATH.html)
+link  Routing conflict  ->  /devguide/deploy-apps/troubleshoot-app-health#routing-conflict  [root-relative, no extension]  devguide/deploy-apps/troubleshoot-app-health#routing-conflict  ok (served from PATH.html)
+forms: in-page 2, root-relative, no extension 6
+PASS  build/mono-native/devguide/deploy-apps/routes-domains.html: 8 links expected
+ok    outline: 43 headings, same levels and text
+ok    anchors: all 4 exist
+info  published heading ids not on the built page (27): #-routes #-http-versus-tcp-routes #-internal-container-to-container-routes #-create-a-route #-create-an-http-route-with-host-name #-list-routes #-view-a-route #-check-routes #-map-a-route-to-your-app #-unmap-a-route and 17 more
+docusaurus check exit 0

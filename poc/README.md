@@ -189,9 +189,22 @@ commits, is right in all four. A comparison helper masks these values.
 Whether the year should follow content is open
 ([build-time values results](../concepts/build-time-values/results.md#summary)).
 
+### Cross-repository links
+
+Four pages from three repositories, which link to each other, were
+converted in the four hands-on tools. The repositories were laid out as
+separate content sources and as one repository with directories. With
+pages published at the book's `<path>.html` URLs, every link reaches its
+page and anchor in every tool and layout. The book's own relative links
+also work in three tools. With each tool's default folder URLs, about two
+thirds break. Docusaurus, Zensical and Antora report some broken links at
+build time; Starlight does not. A survey found 55 links already broken in
+the book
+([cross-repository links results](../concepts/cross-repo-links/results.md#summary)).
+
 ### Other concepts
 
-**Not yet written:** code blocks and cross-repository links. Each is listed in [Concepts](../concepts/README.md); none
+**Not yet written:** code blocks. Each is listed in [Concepts](../concepts/README.md); none
 of them has been converted yet.
 
 ## Other comparisons

@@ -1,0 +1,4 @@
+A partial with three links to the same page:
+link:../adminguide/supporting-websockets.html[partial relative],
+link:/adminguide/supporting-websockets.html[partial root] and
+xref:adminguide:supporting-websockets.adoc[partial native], an xref.

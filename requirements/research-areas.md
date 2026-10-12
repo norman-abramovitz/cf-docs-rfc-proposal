@@ -176,7 +176,10 @@ it link to their line, as in [L112] ([glossary](../glossary.md#rfc)).
   [partials results](../concepts/partials/results.md#summary)). Copyright and
   build-time values are built in all four, with the year rule open
   ([build-time values results](../concepts/build-time-values/results.md#summary)).
-  Code blocks and cross-repository links are proposed
+  Cross-repository links are converted in all four, with every link
+  reaching its page and anchor when pages keep the book's `.html` URLs
+  ([cross-repository links results](../concepts/cross-repo-links/results.md#summary)).
+  Code blocks are proposed
   ([concepts](../concepts/README.md#concepts)). The tables round already
   found problems outside tables: heading anchors written as `<a id>`, terminal
   blocks, the `*` lost in `Accept: */*`, and HTML-valued variables
@@ -260,6 +263,18 @@ it link to their line, as in [L112] ([glossary](../glossary.md#rfc)).
   ([L178]).
 - **What answers it:** the Cloud Foundry Foundation and the current hosting
   owner.
+
+### Which old redirects carry over?
+
+- **Why it matters:** [R-16](README.md#r-16) old URLs keep working.
+- **Known:** the book's `redirects.rb` has 85 rules: 40 lead to a page, 30
+  to a page that no longer exists, 3 to another redirect, 12 off the site,
+  and one can never match, because browsers do not send the `#` part of a
+  URL to the server. On a static host each tool writes a redirect as an
+  HTML page
+  ([cross-repository links results](../concepts/cross-repo-links/results.md#across-tools);
+  [survey](../concepts/cross-repo-links/survey/README.md#findings)).
+- **What answers it:** each area's owner, with the Docs WG.
 
 ## Governance
 

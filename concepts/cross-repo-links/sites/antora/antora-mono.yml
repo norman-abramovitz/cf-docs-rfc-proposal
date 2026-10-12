@@ -1,0 +1,28 @@
+# One repository with directories: one component named ROOT, published at
+# the root of the site, with one module per URL directory (concepts,
+# adminguide, …) and the ROOT module for the start page. `make` writes one
+# copy per mode, with MODE replaced (.playbook-mono-<mode>.yml).
+site:
+  title: Cross-repository links round — Antora
+content:
+  sources:
+  - url: ./../../../..
+    branches: HEAD
+    start_path: concepts/cross-repo-links/sites/antora/MODE/mono
+ui:
+  bundle:
+    # The default UI, pinned: `make` downloads one build and checks its hash
+    url: ./.cache/ui-bundle.zip
+urls:
+  # Pages are written as <path>.html, the book's URLs
+  html_extension_style: default
+asciidoc:
+  attributes:
+    # Generated heading ids as on the published page (headings round)
+    idprefix: ''
+    idseparator: '-'
+output:
+  dir: ./site/mono-MODE
+runtime:
+  cache_dir: ./.cache/antora
+  fetch: false

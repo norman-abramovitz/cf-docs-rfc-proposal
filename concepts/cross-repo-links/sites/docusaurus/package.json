@@ -1,0 +1,13 @@
+{
+  "name": "cross-repo-links-docusaurus",
+  "private": true,
+  "scripts": {"build": "docusaurus build"},
+  "dependencies": {
+    "@docusaurus/core": "3.10.2",
+    "@docusaurus/preset-classic": "3.10.2",
+    "@docusaurus/plugin-client-redirects": "3.10.2",
+    "@mdx-js/react": "3.1.1",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  }
+}

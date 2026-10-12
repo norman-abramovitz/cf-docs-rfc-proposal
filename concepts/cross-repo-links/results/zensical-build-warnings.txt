@@ -1,0 +1,45 @@
+## default-passthrough
+Warning: anchor does not exist
+    ╭─[ adminguide/troubleshooting-router-error-responses.md:16:33 ]
+ 16 │   - [Diagnose Gorouter Errors](#gorouter-errors)
+Warning: anchor does not exist
+    ╭─[ adminguide/troubleshooting-router-error-responses.md:59:60 ]
+ 59 │   - Only for idempotent requests and if [route-integrity](#tls-to-back-end) is enabled:
+Warning: anchor does not exist
+    ╭─[ devguide/deploy-apps/routes-domains.md:18:173 ]
+ 18 │ Routes are considered HTTP if they are created from HTTP domains, and TCP if they are created from TCP domains. For more information, see [HTTP versus TCP shared domains](#http-vs-tcp-shared-domains).
+3 issues found
+
+## linked-native
+No issues found
+
+## mono-native
+Warning: anchor does not exist
+    ╭─[ adminguide/troubleshooting-router-error-responses.md:16:33 ]
+ 16 │   - [Diagnose Gorouter Errors](#gorouter-errors)
+Warning: anchor does not exist
+    ╭─[ adminguide/troubleshooting-router-error-responses.md:59:60 ]
+ 59 │   - Only for idempotent requests and if [route-integrity](#tls-to-back-end) is enabled:
+Warning: anchor does not exist
+    ╭─[ adminguide/troubleshooting-router-error-responses.md:74:74 ]
+ 74 │ For more information, see [With TLS Enabled](../concepts/http-routing.md#with-tls) in _HTTP Routing_.
+Warning: anchor does not exist
+    ╭─[ devguide/deploy-apps/routes-domains.md:18:173 ]
+ 18 │ Routes are considered HTTP if they are created from HTTP domains, and TCP if they are created from TCP domains. For more information, see [HTTP versus TCP shared domains](#http-vs-tcp-shared-domains).
+Warning: anchor does not exist
+    ╭─[ devguide/deploy-apps/routes-domains.md:50:230 ]
+ 50 │ Developers can map a route to their app with a manifest by editing the `route` attribute to specify the host, domain, port, and path components of the route. For more information, see [Deploying with app manifests](./manifest.md#routes).
+5 issues found
+
+## mono-passthrough
+Warning: anchor does not exist
+    ╭─[ adminguide/troubleshooting-router-error-responses.md:16:33 ]
+ 16 │   - [Diagnose Gorouter Errors](#gorouter-errors)
+Warning: anchor does not exist
+    ╭─[ adminguide/troubleshooting-router-error-responses.md:59:60 ]
+ 59 │   - Only for idempotent requests and if [route-integrity](#tls-to-back-end) is enabled:
+Warning: anchor does not exist
+    ╭─[ devguide/deploy-apps/routes-domains.md:18:173 ]
+ 18 │ Routes are considered HTTP if they are created from HTTP domains, and TCP if they are created from TCP domains. For more information, see [HTTP versus TCP shared domains](#http-vs-tcp-shared-domains).
+3 issues found
+

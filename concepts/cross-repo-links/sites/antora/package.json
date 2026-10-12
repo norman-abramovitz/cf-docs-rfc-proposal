@@ -1,0 +1,8 @@
+{
+  "name": "cross-repo-links-antora",
+  "private": true,
+  "description": "Cross-repository links round: the test pages built with Antora",
+  "devDependencies": {
+    "antora": "3.2.1"
+  }
+}

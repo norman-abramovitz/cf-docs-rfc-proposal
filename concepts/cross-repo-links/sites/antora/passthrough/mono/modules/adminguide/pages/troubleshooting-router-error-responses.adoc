@@ -1,0 +1,94 @@
+= Troubleshooting router error responses in Cloud Foundry
+
+
+Are your 502 errors the result of your infrastructure, Cloud Foundry, or an app? This topic helps you understand and
+debug these errors.
+
+[#overview]
+== Outer error responses overview
+
+In your deployment, 502 errors can come from any of the following:
+
+* *Infrastructure*: issues with your load balancer or network can cause 502 errors.
+* *Platform*: issues with Gorouter or Diego Cells can cause 502 errors.
+See the following sections:
+** link:#gorouter-errors[Diagnose Gorouter Errors]
+** link:#diagnose-stale-routes[Diagnose Stale Routes in Gorouter]
+** link:#gorouter-error-classification[Gorouter Error Classification Table]
+* *App*: issues with an app's load or configuration can cause 502 errors.
+See link:#app-errors[Diagnose App Errors].
+
+If you are unsure of the source of 502 errors, see link:#debugging-steps[General Debugging Steps].
+
+[#debugging-steps]
+== General debugging steps
+
+Some general debugging steps for any issue resulting in 502 errors are as follows:
+
+. Gather the Gorouter logs and Diego Cell logs at the time of the incident.
+
+. Review the logs and consider the following:
+.. Which errors are the Gorouters returning?
+.. Is Gorouter's routing table accurate? Are the endpoints for the route as expected? For more information, see link:https://github.com/cloudfoundry/gorouter#dynamic-routing-table[Dynamic Routing Table] in the Gorouter documentation on GitHub.
+.. Do the Diego Cell logs have anything interesting about unexpected app crashes or restarts?
+.. Is the app healthy and handling requests successfully? You can use request tracing headers to verify. For more information, see link:../concepts/http-routing.html#zipkin-headers[HTTP Headers for Zipkin Tracing] in _HTTP Routing_.
+
+. Consider the following:
+** Does your load balancer log 502 errors, but Gorouter does not? This means that traffic is not reaching Gorouter.
+** Was there a recent platform change or upgrade that caused an increase in 502 errors?
+** Are there any suspicious link:../running/all_metrics.html#routing[metrics] spiking? How is the CPU and memory utilization?
+
+[#log-formatting]
+== Log formatting
+
+[#levels]
+=== Levels
+
+[#message-contents]
+=== Message contents
+
+[#access-logs]
+=== Access logs
+
+For more information about identity-aware routing and how these fields are used for observability, see link:../concepts/identity-aware-routing.html[Identity-aware routing].
+
+[#gorouter]
+== Diagnose Gorouter errors
+
+[#cannot-connect]
+=== Gorouter cannot connect to the app container
+
+[#connect-error]
+=== Gorouter errors after connecting
+
+* `read: connection reset by peer` errors.
+When these errors occur, the Gorouter returns error to the client, marks backend ineligible, and does not retry another back end.
+** Only for idempotent requests and if link:#tls-to-back-end[route-integrity] is enabled:
+
+[#diagnose-stale-routes]
+== Diagnose stale routes in Gorouter
+
+To disable this behavior, set `router.backends.enable_tls` to `false` as described in link:../concepts/http-routing.html#tls-to-back-end[TLS to apps and other back end services] in _HTTP Routing_.
+
+[#stale-routes]
+=== Causes of stale routes
+
+[#stale-route-triage]
+=== How to locate stale routes
+
+[#stale-routes-fix]
+=== How to fix stale routes
+
+The following procedure helps you fix stale routes:
+
+. Ensure that SSL verification is activated.
+For more information, see link:../concepts/http-routing.html#with-tls[With TLS Enabled] in _HTTP Routing_.
+
+[#gorouter-error-classification]
+== Gorouter error classification table
+
+[#app-errors]
+== Diagnose app errors
+
+[#gorouter-specific-response-headers]
+=== Gorouter specific response headers

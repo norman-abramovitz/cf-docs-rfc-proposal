@@ -1,0 +1,5 @@
+    # Appended for the depth probe: three attributes that hold a link, the
+    # book's relative URL, a root-relative URL, and an xref
+    relative: 'For more information, see link:../adminguide/supporting-websockets.html[variable relative].'
+    root: 'For more information, see link:/adminguide/supporting-websockets.html[variable root].'
+    native: 'For more information, see xref:adminguide:supporting-websockets.adoc[variable native].'

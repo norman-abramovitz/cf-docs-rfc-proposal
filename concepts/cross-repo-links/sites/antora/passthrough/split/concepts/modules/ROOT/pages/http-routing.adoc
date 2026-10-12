@@ -1,0 +1,115 @@
+= HTTP routing
+
+
+This topic tells you how the Gorouter, the main component in the Cloud Foundry routing tier, routes HTTP traffic within
+Cloud Foundry.
+
+For more information about routing, see link:architecture/index.html#routing[Routing] in _Cloud Foundry Components_.
+
+[#http-headers]
+== HTTP headers
+
+[#header-size-limit]
+=== Header size limit
+
+[#X-Forwarded-Proto]
+=== X-Forwarded Proto
+
+[#X-Forwarded-For]
+=== X-Forwarded-For
+
+If your load balancer terminates TLS on the client side of the Gorouter, it must append these headers to requests forwarded to the Gorouter.
+For more information, see link:../adminguide/securing-traffic.html[Securing Traffic into Cloud Foundry].
+
+[#zipkin-headers]
+=== HTTP headers for Zipkin tracing
+
+For more information about Zipkin tracing, see link:../adminguide/zipkin_tracing.html[Enabling Zipkin Tracing].
+
+[#w3c-headers]
+=== HTTP headers for W3C tracing
+
+When W3C tracing is enabled in Cloud Foundry, the Gorouter generates W3C HTTP headers unless they are provided
+by the client, as described in link:../adminguide/distributed-tracing.html#unique-trace-id[Unique trace identification].
+
+[#app-instance-routing]
+=== HTTP headers for app instance routing
+
+[#process-instance-routing]
+=== HTTP headers for process instance routing
+
+Apps that have link:https://docs.cloudfoundry.org/devguide/multiple-processes.html[multiple processes] or apps that have been pushed with the rolling or canary deployment strategies cannot be reliably routed to using the `X-Cf-App-Instance` header. Users who wish to route to a specific instance of these apps should use the `X-Cf-Process-Instance` header.
+
+[#forward-client-cert]
+=== Forwarding client certificate to apps
+
+[#forward-mtls]
+==== Terminating TLS for the First Time at the Load Balancer
+
+[#xfcc_router_tls]
+==== Terminating TLS for the First Time at the Gorouter
+
+[#client-side-tls]
+== Client-Side TLS
+
+[#tls-to-back-end]
+== TLS to apps and other back end services
+
+[#consistency]
+== Preventing mis-routes
+
+[#without-tls]
+=== Without TLS to back ends enabled
+
+[#config-by-instance-group]
+=== Consistency mode can differ by instance group
+
+[#app-valid-tls-config]
+=== Configuring validation of app instance identity with TLS
+
+[#balancing-algorithm]
+== Router balancing algorithm
+
+As an application developer, you can configure the load balancing algorithm by following the guide link:../devguide/custom-per-route-options.html[Configuring per-route options] which describes how to specify load balancing algorithms scoped at the application level.
+
+The possible options:
+
+* `round-robin`. For more information, see link:#round-robin[Round-Robin Load Balancing].
+
+* `least-connection`. For more information, see link:#least-connection[Least-Connection Load Balancing].
+
+By default, the Gorouter's balancing algorithm availability zone preference is None. We do not recommend changing this value. For more information about these values, see link:#balancing-algorithm-az-preference[Load Balancing AZ Preference].
+
+[#round-robin]
+=== Round robin load balancing
+
+[#least-connection]
+=== Least connection load balancing
+
+[#balancing-algorithm-az-preference]
+=== Load balancing availability zone preference
+
+[#sockets]
+== WebSockets
+
+To support WebSockets, the operator must configure the load balancer correctly. Depending on the configuration, clients may have to use a different port for WebSocket connections, such as port 4443, or a different domain name. For more information, see link:../adminguide/supporting-websockets.html[Supporting WebSockets].
+
+[#sessions]
+== Session affinity
+
+[#keepalive]
+== Keep alive connections
+
+[#front-end]
+=== Front end clients
+
+[#back-end]
+=== Back end servers
+
+For more information, see link:/concepts/http-routing.html#keepalive[Keep alive connections] in _HTTP Routing_.
+
+[#retry]
+== Transparent retries
+
+In all cases, if the app still does not respond to the request, the Gorouter returns a `502` error. For more
+information, see link:../adminguide/troubleshooting-router-error-responses.html[Troubleshooting Router Error Responses].

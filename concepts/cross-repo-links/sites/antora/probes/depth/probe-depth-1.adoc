@@ -1,0 +1,9 @@
+= Probe: links in attributes and a partial, one folder deep
+
+{relative}
+
+{root}
+
+{native}
+
+include::concepts:partial$probe-partial.adoc[]

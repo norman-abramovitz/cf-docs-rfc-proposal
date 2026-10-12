@@ -1,0 +1,53 @@
+[INFO] [en] Creating an optimized production build...
+[webpackbar] ℹ Compiling Client
+[webpackbar] ℹ Compiling Server
+[webpackbar] ✔ Server: Compiled successfully in 2.42s
+[webpackbar] ✔ Client: Compiled successfully in 5.23s
+(node:26152) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WARNING] Docusaurus found broken links!
+
+Please check the pages of your site in the list below, and make sure you don't reference any path that does not exist.
+Note: it's possible to ignore broken links with the 'onBrokenLinks' Docusaurus configuration, and let the build pass.
+
+Exhaustive list of all broken links found:
+- Broken link on source page path = /concepts/probe-depth:
+   -> linking to ../adminguide/supporting-websockets.html (resolved as: /adminguide/supporting-websockets.html)
+   -> linking to /adminguide/supporting-websockets.html
+- Broken link on source page path = /devguide/deploy-apps/probe-depth:
+   -> linking to ../adminguide/supporting-websockets.html (resolved as: /devguide/adminguide/supporting-websockets.html)
+   -> linking to /adminguide/supporting-websockets.html
+
+[WARNING] Docusaurus found broken anchors!
+
+Please check the pages of your site in the list below, and make sure you don't reference any anchor that does not exist.
+Note: it's possible to ignore broken anchors with the 'onBrokenAnchors' Docusaurus configuration, and let the build pass.
+
+Exhaustive list of all broken anchors found:
+- Broken anchor on source page path = /adminguide/troubleshooting-router-error-responses:
+   -> linking to #gorouter-errors (resolved as: /adminguide/troubleshooting-router-error-responses#gorouter-errors)
+   -> linking to #tls-to-back-end (resolved as: /adminguide/troubleshooting-router-error-responses#tls-to-back-end)
+   -> linking to /concepts/http-routing#with-tls
+- Broken anchor on source page path = /devguide/deploy-apps/routes-domains:
+   -> linking to #http-vs-tcp-shared-domains (resolved as: /devguide/deploy-apps/routes-domains#http-vs-tcp-shared-domains)
+   -> linking to /devguide/deploy-apps/manifest#routes
+
+[SUCCESS] Generated static files in ".check/probe-depth".
+[INFO] Use `npm run serve` command to test your build locally.
+exit status 0
+## concepts/probe-depth
+link  variable relative  ->  ../adminguide/supporting-websockets.html  [page-relative, .html]  adminguide/supporting-websockets  ok
+link  variable root  ->  /adminguide/supporting-websockets.html  [root-relative, .html]  adminguide/supporting-websockets  ok
+link  variable native  ->  /adminguide/supporting-websockets  [root-relative, no extension]  adminguide/supporting-websockets  ok (served from PATH.html)
+link  partial relative  ->  /adminguide/supporting-websockets.html  [root-relative, .html]  adminguide/supporting-websockets  ok
+link  partial root  ->  /adminguide/supporting-websockets.html  [root-relative, .html]  adminguide/supporting-websockets  ok
+link  partial native  ->  /adminguide/supporting-websockets  [root-relative, no extension]  adminguide/supporting-websockets  ok (served from PATH.html)
+forms: page-relative, .html 1, root-relative, .html 3, root-relative, no extension 2
+## devguide/deploy-apps/probe-depth
+link  variable relative  ->  ../adminguide/supporting-websockets.html  [page-relative, .html]  devguide/adminguide/supporting-websockets  no page
+link  variable root  ->  /adminguide/supporting-websockets.html  [root-relative, .html]  adminguide/supporting-websockets  ok
+link  variable native  ->  /adminguide/supporting-websockets  [root-relative, no extension]  adminguide/supporting-websockets  ok (served from PATH.html)
+link  partial relative  ->  /devguide/adminguide/supporting-websockets.html  [root-relative, .html]  devguide/adminguide/supporting-websockets  no page
+link  partial root  ->  /adminguide/supporting-websockets.html  [root-relative, .html]  adminguide/supporting-websockets  ok
+link  partial native  ->  /adminguide/supporting-websockets  [root-relative, no extension]  adminguide/supporting-websockets  ok (served from PATH.html)
+forms: page-relative, .html 1, root-relative, .html 3, root-relative, no extension 2

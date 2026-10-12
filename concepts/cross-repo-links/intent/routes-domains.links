@@ -1,0 +1,10 @@
+# Links on devguide/deploy-apps/routes-domains (excerpt), in page order. Fields, separated by tabs:
+# TEXT, TARGET (page key), ANCHOR, EXPECT (resolves, no anchor, external); see ../checks/links.py
+HTTP routing	concepts/http-routing		resolves
+round-robin	concepts/http-routing	round-robin	resolves
+Share a route with another space	devguide/deploy-apps/routes-domains	share-route	resolves
+HTTP versus TCP shared domains	devguide/deploy-apps/routes-domains	http-vs-tcp-shared-domains	no anchor
+Configuring apps to listen on custom ports (Beta)	devguide/custom-ports		resolves
+Deploying with app manifests	devguide/deploy-apps/manifest	routes	no anchor
+Using blue-green deployment to reduce downtime and risk	devguide/deploy-apps/blue-green		resolves
+Routing conflict	devguide/deploy-apps/troubleshoot-app-health	routing-conflict	resolves

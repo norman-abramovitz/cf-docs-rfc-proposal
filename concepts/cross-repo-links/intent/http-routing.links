@@ -1,0 +1,14 @@
+# Links on concepts/http-routing (excerpt), in page order. Fields, separated by tabs:
+# TEXT, TARGET (page key), ANCHOR, EXPECT (resolves, no anchor, external); see ../checks/links.py
+Routing	concepts/architecture	routing	resolves
+Securing Traffic into Cloud Foundry	adminguide/securing-traffic		resolves
+Enabling Zipkin Tracing	adminguide/zipkin_tracing		resolves
+Unique trace identification	adminguide/distributed-tracing	unique-trace-id	resolves
+multiple processes	devguide/multiple-processes		resolves
+Configuring per-route options	devguide/custom-per-route-options		resolves
+Round-Robin Load Balancing	concepts/http-routing	round-robin	resolves
+Least-Connection Load Balancing	concepts/http-routing	least-connection	resolves
+Load Balancing AZ Preference	concepts/http-routing	balancing-algorithm-az-preference	resolves
+Supporting WebSockets	adminguide/supporting-websockets		resolves
+Keep alive connections	concepts/http-routing	keepalive	resolves
+Troubleshooting Router Error Responses	adminguide/troubleshooting-router-error-responses		resolves

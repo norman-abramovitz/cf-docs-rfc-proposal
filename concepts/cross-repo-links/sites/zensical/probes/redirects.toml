@@ -1,0 +1,7 @@
+
+# Appended for the redirect probe: two old URLs that the book's redirects.rb
+# sends to routes-domains (L38, L115), one in the same repository's folder
+# and one in another's
+[project.plugins.redirects.redirect_maps]
+"devguide/deploy-apps/domains-routes.md" = "devguide/deploy-apps/routes-domains.md"
+"adminguide/manage-domains-routes.md" = "devguide/deploy-apps/routes-domains.md"

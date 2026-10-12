@@ -1,0 +1,5 @@
+exit status 0
+/devguide/deploy-apps/domains-routes.html  ->  devguide/deploy-apps/domains-routes.html  redirect page  /devguide/deploy-apps/routes-domains.html  target exists  passes #fragment
+/adminguide/manage-domains-routes.html  ->  adminguide/manage-domains-routes.html  redirect page  /devguide/deploy-apps/routes-domains.html  target exists  passes #fragment
+/devguide/deploy-apps/domains-routes  ->  devguide/deploy-apps/domains-routes.html  redirect page  /devguide/deploy-apps/routes-domains.html  target exists  passes #fragment
+/adminguide/manage-domains-routes  ->  adminguide/manage-domains-routes.html  redirect page  /devguide/deploy-apps/routes-domains.html  target exists  passes #fragment

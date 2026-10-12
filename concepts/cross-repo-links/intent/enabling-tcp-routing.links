@@ -1,0 +1,9 @@
+# Links on adminguide/enabling-tcp-routing (excerpt), in page order. Fields, separated by tabs:
+# TEXT, TARGET (page key), ANCHOR, EXPECT (resolves, no anchor, external); see ../checks/links.py
+Create a Route	devguide/deploy-apps/routes-domains	create-route	resolves
+Configuring Apps to Listen on Custom Ports (Beta)	devguide/custom-ports		resolves
+Domains	devguide/deploy-apps/routes-domains	domains	resolves
+Using the Cloud Foundry Command Line Interface (cf CLI)	cf-cli		resolves
+Prerequisites for Enabling TCP Routing	adminguide/enabling-tcp-routing	prerequisites	resolves
+Creating and Modifying Quota Plans	adminguide/quota-plans		resolves
+Create a TCP Route with a Port	devguide/deploy-apps/routes-domains	create-route-with-port	resolves

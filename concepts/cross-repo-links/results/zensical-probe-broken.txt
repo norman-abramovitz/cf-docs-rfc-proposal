@@ -1,0 +1,133 @@
+## mono-native 
+Build started
+Warning: anchor does not exist
+    ╭─[ adminguide/troubleshooting-router-error-responses.md:16:33 ]
+    │
+ 16 │   - [Diagnose Gorouter Errors](#gorouter-errors)
+    │                                 ───────┬───────  
+    │                                        ╰───────── anchor does not exist
+────╯
+Warning: anchor does not exist
+    ╭─[ adminguide/troubleshooting-router-error-responses.md:59:60 ]
+    │
+ 59 │   - Only for idempotent requests and if [route-integrity](#tls-to-back-end) is enabled:
+    │                                                            ───────┬───────  
+    │                                                                   ╰───────── anchor does not exist
+────╯
+Warning: anchor does not exist
+    ╭─[ adminguide/troubleshooting-router-error-responses.md:74:74 ]
+    │
+ 74 │ For more information, see [With TLS Enabled](../concepts/http-routing.md#with-tls) in _HTTP Routing_.
+    │                                                                          ────┬───  
+    │                                                                              ╰───── anchor does not exist
+────╯
+Warning: page does not exist
+   ╭─[ concepts/probe-broken.md:5:33 ]
+   │
+ 5 │ Native, missing page: [no page](../adminguide/no-such-page.md).
+   │                                 ──────────────┬──────────────  
+   │                                               ╰──────────────── page does not exist
+───╯
+Warning: anchor does not exist
+   ╭─[ concepts/probe-broken.md:7:71 ]
+   │
+ 7 │ Native, missing anchor: [no anchor](../adminguide/securing-traffic.md#no-such-anchor).
+   │                                                                       ───────┬──────  
+   │                                                                              ╰──────── anchor does not exist
+───╯
+Warning: anchor does not exist
+    ╭─[ devguide/deploy-apps/routes-domains.md:18:173 ]
+    │
+ 18 │ Routes are considered HTTP if they are created from HTTP domains, and TCP if they are created from TCP domains. For more information, see [HTTP versus TCP shared domains](#http-vs-tcp-shared-domains).
+    │                                                                                                                                                                             ─────────────┬────────────  
+    │                                                                                                                                                                                          ╰────────────── anchor does not exist
+────╯
+Warning: anchor does not exist
+    ╭─[ devguide/deploy-apps/routes-domains.md:50:230 ]
+    │
+ 50 │ Developers can map a route to their app with a manifest by editing the `route` attribute to specify the host, domain, port, and path components of the route. For more information, see [Deploying with app manifests](./manifest.md#routes).
+    │                                                                                                                                                                                                                                      ───┬──  
+    │                                                                                                                                                                                                                                         ╰──── anchor does not exist
+────╯
+7 issues found
+Build finished in 0.26s
+exit status 0
+## mono-native --strict
+Build started
+Warning: anchor does not exist
+    ╭─[ adminguide/troubleshooting-router-error-responses.md:16:33 ]
+    │
+ 16 │   - [Diagnose Gorouter Errors](#gorouter-errors)
+    │                                 ───────┬───────  
+    │                                        ╰───────── anchor does not exist
+────╯
+Warning: anchor does not exist
+    ╭─[ adminguide/troubleshooting-router-error-responses.md:59:60 ]
+    │
+ 59 │   - Only for idempotent requests and if [route-integrity](#tls-to-back-end) is enabled:
+    │                                                            ───────┬───────  
+    │                                                                   ╰───────── anchor does not exist
+────╯
+Warning: anchor does not exist
+    ╭─[ adminguide/troubleshooting-router-error-responses.md:74:74 ]
+    │
+ 74 │ For more information, see [With TLS Enabled](../concepts/http-routing.md#with-tls) in _HTTP Routing_.
+    │                                                                          ────┬───  
+    │                                                                              ╰───── anchor does not exist
+────╯
+Warning: page does not exist
+   ╭─[ concepts/probe-broken.md:5:33 ]
+   │
+ 5 │ Native, missing page: [no page](../adminguide/no-such-page.md).
+   │                                 ──────────────┬──────────────  
+   │                                               ╰──────────────── page does not exist
+───╯
+Warning: anchor does not exist
+   ╭─[ concepts/probe-broken.md:7:71 ]
+   │
+ 7 │ Native, missing anchor: [no anchor](../adminguide/securing-traffic.md#no-such-anchor).
+   │                                                                       ───────┬──────  
+   │                                                                              ╰──────── anchor does not exist
+───╯
+Warning: anchor does not exist
+    ╭─[ devguide/deploy-apps/routes-domains.md:18:173 ]
+    │
+ 18 │ Routes are considered HTTP if they are created from HTTP domains, and TCP if they are created from TCP domains. For more information, see [HTTP versus TCP shared domains](#http-vs-tcp-shared-domains).
+    │                                                                                                                                                                             ─────────────┬────────────  
+    │                                                                                                                                                                                          ╰────────────── anchor does not exist
+────╯
+Warning: anchor does not exist
+    ╭─[ devguide/deploy-apps/routes-domains.md:50:230 ]
+    │
+ 50 │ Developers can map a route to their app with a manifest by editing the `route` attribute to specify the host, domain, port, and path components of the route. For more information, see [Deploying with app manifests](./manifest.md#routes).
+    │                                                                                                                                                                                                                                      ───┬──  
+    │                                                                                                                                                                                                                                         ╰──── anchor does not exist
+────╯
+7 issues found
+Traceback (most recent call last):
+  File ".venv/bin/zensical", line 12, in <module>
+    sys.exit(cli())
+             ~~~^^
+  File ".venv/lib/python3.14/site-packages/click/core.py", line 1631, in __call__
+    return self.main(*args, **kwargs)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File ".venv/lib/python3.14/site-packages/click/core.py", line 1552, in main
+    rv = self.invoke(ctx)
+  File ".venv/lib/python3.14/site-packages/click/core.py", line 2032, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+                           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File ".venv/lib/python3.14/site-packages/click/core.py", line 1415, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ".venv/lib/python3.14/site-packages/click/core.py", line 910, in invoke
+    return callback(*args, **kwargs)
+  File ".venv/lib/python3.14/site-packages/zensical/main.py", line 81, in execute_build
+    build(os.path.abspath(config_file), kwargs)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Aborted because --strict flag is set
+exit status 1
+link  no page  ->  ../adminguide/no-such-page.html  [page-relative, .html]  adminguide/no-such-page  no page
+link  no anchor  ->  ../adminguide/securing-traffic.html#no-such-anchor  [page-relative, .html]  adminguide/securing-traffic#no-such-anchor  no anchor
+link  no page as written  ->  ../adminguide/no-such-page.html  [page-relative, .html]  adminguide/no-such-page  no page
+link  no anchor as written  ->  ../adminguide/securing-traffic.html#no-such-anchor  [page-relative, .html]  adminguide/securing-traffic#no-such-anchor  no anchor
+forms: page-relative, .html 4

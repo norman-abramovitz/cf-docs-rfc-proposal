@@ -1,0 +1,4 @@
+= Supporting WebSockets in Cloud Foundry
+
+
+Stub for `adminguide/supporting-websockets.html`: the source file is supporting-websockets.html.md.erb in cloudfoundry/docs-cf-admin. It holds only the ids that the test pages link to.

@@ -1,0 +1,31 @@
+# Spot checks of the survey's model against the live sites, 2026-10-11
+# Each line: URL, HTTP status, redirect target (curl -s -o /dev/null -w '%{http_code} %{redirect_url}')
+https://docs.cloudfoundry.org/api/uaa/index.html 200 
+https://docs.cloudfoundry.org/api/credhub/ 200 
+https://docs.cloudfoundry.org/api/uaa/version/73.7.0/index.html 200 
+https://docs.cloudfoundry.org/adminguide/trusted-system-certificates.html 301 https://docs.cloudfoundry.org/running/trusted-system-certificates.html
+https://docs.cloudfoundry.org/running/trusted-system-certificates.html 404 
+https://docs.cloudfoundry.org/services/api-v1.html 301 https://docs.cloudfoundry.org/services/api.html
+https://docs.cloudfoundry.org/services/api.html 301 https://github.com/openservicebrokerapi/servicebroker/blob/v2.12/spec.md
+https://docs.cloudfoundry.org/devguide/deploy-apps/domains-routes.html 301 https://docs.cloudfoundry.org/devguide/deploy-apps/routes-domains.html
+https://docs.cloudfoundry.org/adminguide/manage-domains-routes.html 301 https://docs.cloudfoundry.org/devguide/deploy-apps/routes-domains.html
+https://docs.cloudfoundry.org/devguide/deploy-apps/routes-domains 301 https://docs.cloudfoundry.org/devguide/deploy-apps/routes-domains/
+https://docs.cloudfoundry.org/devguide/deploy-apps/routes-domains/ 404 
+https://docs.cloudfoundry.org/devguide/deploy-apps/manifest.html 200 
+https://docs.cloudfoundry.org/deploying/ec2/index.html 301 https://docs.cloudfoundry.org/deploying/aws/index.html
+https://docs.cloudfoundry.org/deploying/aws/index.html 404 
+https://bosh.io/docs/cli-v2.html 301 https://bosh.io/docs/cli-v2/
+https://bosh.io/docs/cli-v2/ 200 
+https://norman-abramovitz.github.io/cf-docs-rfc-proposal/glossary 200 
+https://norman-abramovitz.github.io/cf-docs-rfc-proposal/concepts 301 https://norman-abramovitz.github.io/cf-docs-rfc-proposal/concepts/
+
+# Ids on live pages, fetched with curl: is the id an id= or name= attribute of the page as served?
+https://docs.cloudfoundry.org/devguide/deploy-apps/manifest.html #env-block absent
+https://docs.cloudfoundry.org/devguide/deploy-apps/manifest-attributes.html #env-block present
+https://docs.cloudfoundry.org/concepts/http-routing.html #with-tls absent
+https://docs.cloudfoundry.org/concepts/http-routing.html #tls-to-back-end present
+https://docs.cloudfoundry.org/adminguide/troubleshooting-router-error-responses.html #gorouter-errors absent
+https://docs.cloudfoundry.org/adminguide/troubleshooting-router-error-responses.html #gorouter present
+https://docs.cloudfoundry.org/devguide/deploy-apps/routes-domains.html #create-route-w-port absent
+https://docs.cloudfoundry.org/devguide/deploy-apps/routes-domains.html #create-route-with-port present
+https://bosh.io/docs/cli-v2/ #install absent

@@ -1,0 +1,6 @@
+---
+title: "Using the Cloud Foundry Command Line Interface (cf CLI)"
+---
+
+
+Stub for `cf-cli/index.html`: the source file is index.html.md.erb in cloudfoundry/docs-cf-cli. It holds only the ids that the test pages link to.

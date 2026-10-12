@@ -60,6 +60,13 @@ exclude:
   - concepts/build-time-values/survey/*.csv
   - concepts/build-time-values/survey/*.py
   - concepts/build-time-values/survey/*.txt
+  - concepts/cross-repo-links/sites
+  - concepts/cross-repo-links/checks
+  - concepts/cross-repo-links/source
+  - concepts/cross-repo-links/published
+  - concepts/cross-repo-links/survey/*.csv
+  - concepts/cross-repo-links/survey/*.py
+  - concepts/cross-repo-links/survey/*.txt
   - Gemfile
   - Gemfile.lock
   - vendor

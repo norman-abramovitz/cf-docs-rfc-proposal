@@ -1,0 +1,14 @@
+# Links on adminguide/troubleshooting-router-error-responses (excerpt), in page order. Fields, separated by tabs:
+# TEXT, TARGET (page key), ANCHOR, EXPECT (resolves, no anchor, external); see ../checks/links.py
+Diagnose Gorouter Errors	adminguide/troubleshooting-router-error-responses	gorouter-errors	no anchor
+Diagnose Stale Routes in Gorouter	adminguide/troubleshooting-router-error-responses	diagnose-stale-routes	resolves
+Gorouter Error Classification Table	adminguide/troubleshooting-router-error-responses	gorouter-error-classification	resolves
+Diagnose App Errors	adminguide/troubleshooting-router-error-responses	app-errors	resolves
+General Debugging Steps	adminguide/troubleshooting-router-error-responses	debugging-steps	resolves
+Dynamic Routing Table	-	-	external
+HTTP Headers for Zipkin Tracing	concepts/http-routing	zipkin-headers	resolves
+metrics	running/all_metrics	routing	resolves
+Identity-aware routing	concepts/identity-aware-routing		resolves
+route-integrity	adminguide/troubleshooting-router-error-responses	tls-to-back-end	no anchor
+TLS to apps and other back end services	concepts/http-routing	tls-to-back-end	resolves
+With TLS Enabled	concepts/http-routing	with-tls	no anchor

@@ -1,0 +1,9 @@
+= Probe: broken links into another content source
+
+Native, missing page: xref:adminguide::no-such-page.adoc[no page].
+
+Native, missing anchor: xref:adminguide::securing-traffic.adoc#no-such-anchor[no anchor].
+
+Passthrough, missing page: link:../adminguide/no-such-page.html[no page as written].
+
+Passthrough, missing anchor: link:../adminguide/securing-traffic.html#no-such-anchor[no anchor as written].

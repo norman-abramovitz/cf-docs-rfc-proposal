@@ -1,0 +1,14 @@
+
+# Appended for the depth probe: variables and includes with ERB delimiters,
+# as in the variables and partials rounds
+[project.plugins.macros]
+include_yaml = ["probes/depth/vars.yml"]
+include_dir = "probes/depth"
+on_undefined = "strict"
+on_error_fail = true
+j2_variable_start_string = "<%="
+j2_variable_end_string = "%>"
+j2_block_start_string = "<%"
+j2_block_end_string = "%>"
+j2_comment_start_string = "<%#"
+j2_comment_end_string = "%>"

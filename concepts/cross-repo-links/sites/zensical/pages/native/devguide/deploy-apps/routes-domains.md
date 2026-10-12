@@ -1,0 +1,108 @@
+---
+title: "Configuring routes and domains"
+---
+
+
+Developers and administrators can configure routes and domains for their apps using the Cloud Foundry Command Line Interface (cf CLI).
+This topic describes how routes and domains work in Cloud Foundry (Cloud Foundry).
+For more information about routing capabilities in Cloud Foundry, see [HTTP routing](../../concepts/http-routing.md).
+
+## Routes {#routes}
+
+The routing tier knows the location of instances for apps mapped to routes. After the routing tier calculates a route as the best match for a request, it makes a load-balancing calculation using the configured balancing algorithm (by default, this is [round-robin](../../concepts/http-routing.md#round-robin)), and forwards the request to an instance of the mapped app.
+
+Routes belong to a space, and developers can only map apps to a route created in or shared with the same space. For more information about sharing routes across spaces, see [Share a route with another space](#share-route) .
+
+### HTTP versus TCP routes {#http-vs-tcp-routes}
+
+Routes are considered HTTP if they are created from HTTP domains, and TCP if they are created from TCP domains. For more information, see [HTTP versus TCP shared domains](#http-vs-tcp-shared-domains).
+
+Requests to HTTP routes must be sent to ports `80` or `443`. Ports cannot be reserved for HTTP routes. You can update the ports on which an app can receive requests through the Cloud Controller API. For more information, see [Configuring apps to listen on custom ports (Beta)](../custom-ports.md).
+
+### Internal container-to-container routes {#internal-routes}
+
+### Create a route {#create-route}
+
+#### Create an HTTP route with host name {#create-route-w-hostname}
+
+#### Create an HTTP route without host name {#create-route-wo-hostname}
+
+#### Create an HTTP route with wildcard host name {#create-route-w-wildcard-hostname}
+
+#### Create an HTTP route with a path {#create-route-w-path}
+
+#### Create a TCP route with a port {#create-route-with-port}
+
+### List routes {#list-routes}
+
+### View a route {#view-route}
+
+### Check routes {#check-routes}
+
+### Map a route to your app {#map-route}
+
+#### Manually map a route {#map-route-manually}
+
+#### Map a route with app push {#map-route-on-push}
+
+#### Map a route using app manifest {#map-route-w-manifest}
+
+Developers can map a route to their app with a manifest by editing the `route` attribute to specify the host, domain, port, and path components of the route. For more information, see [Deploying with app manifests](./manifest.md#routes).
+
+#### Map a route to multiple apps {#map-route-to-mult-apps}
+
+Cloud Foundry allows multiple apps, or versions of the same app, to be mapped to the same route. This feature activates blue-green deployment. For more information see [Using blue-green deployment to reduce downtime and risk](./blue-green.md).
+
+Routing multiple apps to the same route might cause undesirable behavior in some situations by routing incoming requests randomly to one of the apps on the shared route.
+
+For more information about troubleshooting this problem, see [Routing conflict](./troubleshoot-app-health.md#routing-conflict) in _Troubleshooting app deployment and health_.
+
+#### Map multiple routes to one app {#map-multiple-routes}
+
+#### Map an internal route to an app {#map-internal-route}
+
+### Unmap a route {#unmap-route}
+
+### Share a route with another space {#share-route}
+
+### Transfer ownership of a route to another space {#move-route}
+
+### Delete a route {#delete-route}
+
+### Routing requests to a specific app instance {#surgical-routing}
+
+### Routing requests to a specific process instance {#surgical-routing-process}
+
+## Domains {#domains}
+
+### List domains for an org {#list-domains}
+
+### HTTP versus TCP domains {#http-vs-tcp-domains}
+
+### Shared domains {#shared-domains}
+
+#### Create a shared domain {#create-shared-domain}
+
+#### Delete a shared domain {#delete-shared-domain}
+
+#### Internal domain {#internal-domains}
+
+### Private domains {#private-domains}
+
+#### Create a private domain {#create-private-domain}
+
+#### Sharing a private domain with one or more orgs {#sharing-private-domains}
+
+#### Delete a private domain {#delete-private-domain}
+
+### Requirements for parent and child domains {#parent-child-domains}
+
+### DNS for domains {#domains-dns}
+
+#### Mapping Domains to your custom domain {#subdomain-dns}
+
+##### Mapping a single domain to your custom domain {#single-mapping}
+
+##### Mapping multiple subdomains to your custom domain {#wildcard-mapping}
+
+#### Configuring DNS for your registered root domain {#root-domain-dns}

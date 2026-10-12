@@ -1,0 +1,104 @@
+## mono-passthrough, URLS=html
+exit status 0
+/devguide/deploy-apps/domains-routes.html  ->  -  missing
+/adminguide/manage-domains-routes.html  ->  -  missing
+/devguide/deploy-apps/domains-routes  ->  devguide/deploy-apps/domains-routes/index.html  redirect page  /devguide/deploy-apps/routes-domains  target exists  passes #fragment
+/adminguide/manage-domains-routes  ->  adminguide/manage-domains-routes/index.html  redirect page  /devguide/deploy-apps/routes-domains  target exists  passes #fragment
+/concepts/http-routing.html  ->  concepts/http-routing.html  page
+## mono-passthrough, URLS=default
+exit status 0
+/devguide/deploy-apps/domains-routes.html  ->  -  missing
+/adminguide/manage-domains-routes.html  ->  -  missing
+/devguide/deploy-apps/domains-routes  ->  devguide/deploy-apps/domains-routes/index.html  redirect page  /devguide/deploy-apps/routes-domains  target exists  passes #fragment
+/adminguide/manage-domains-routes  ->  adminguide/manage-domains-routes/index.html  redirect page  /devguide/deploy-apps/routes-domains  target exists  passes #fragment
+/concepts/http-routing.html  ->  concepts/http-routing.html/index.html  redirect page  /concepts/http-routing  target exists  passes #fragment
+## links on the passthrough pages, URLS=default with redirects
+== probe-redirects-default/concepts/http-routing
+link  Routing  ->  /concepts/architecture/index.html#routing  [root-relative, .html]  concepts/architecture/index#routing  redirect page (refresh to /concepts/architecture/index)
+link  Securing Traffic into Cloud Foundry  ->  /adminguide/securing-traffic.html  [root-relative, .html]  adminguide/securing-traffic  redirect page (refresh to /adminguide/securing-traffic)
+link  Enabling Zipkin Tracing  ->  /adminguide/zipkin_tracing.html  [root-relative, .html]  adminguide/zipkin_tracing  redirect page (refresh to /adminguide/zipkin_tracing)
+link  Unique trace identification  ->  /adminguide/distributed-tracing.html#unique-trace-id  [root-relative, .html]  adminguide/distributed-tracing#unique-trace-id  redirect page (refresh to /adminguide/distributed-tracing)
+link  multiple processes  ->  https://docs.cloudfoundry.org/devguide/multiple-processes.html  [absolute, .html]  devguide/multiple-processes  redirect page (refresh to /devguide/multiple-processes)
+link  Configuring per-route options  ->  /devguide/custom-per-route-options.html  [root-relative, .html]  devguide/custom-per-route-options  redirect page (refresh to /devguide/custom-per-route-options)
+link  Round-Robin Load Balancing  ->  #round-robin  [in-page]  concepts/http-routing#round-robin  ok
+link  Least-Connection Load Balancing  ->  #least-connection  [in-page]  concepts/http-routing#least-connection  ok
+link  Load Balancing AZ Preference  ->  #balancing-algorithm-az-preference  [in-page]  concepts/http-routing#balancing-algorithm-az-preference  ok
+link  Supporting WebSockets  ->  /adminguide/supporting-websockets.html  [root-relative, .html]  adminguide/supporting-websockets  redirect page (refresh to /adminguide/supporting-websockets)
+link  Keep alive connections  ->  /concepts/http-routing.html#keepalive  [root-relative, .html]  concepts/http-routing#keepalive  redirect page (refresh to /concepts/http-routing)
+link  Troubleshooting Router Error Responses  ->  /adminguide/troubleshooting-router-error-responses.html  [root-relative, .html]  adminguide/troubleshooting-router-error-responses  redirect page (refresh to /adminguide/troubleshooting-router-error-responses)
+forms: absolute, .html 1, in-page 3, root-relative, .html 8
+FAIL  'Routing': expected resolves concepts/architecture#routing, got redirect page concepts/architecture/index#routing (/concepts/architecture/index.html#routing)
+FAIL  'Securing Traffic into Cloud Foundry': expected resolves adminguide/securing-traffic, got redirect page adminguide/securing-traffic (/adminguide/securing-traffic.html)
+FAIL  'Enabling Zipkin Tracing': expected resolves adminguide/zipkin_tracing, got redirect page adminguide/zipkin_tracing (/adminguide/zipkin_tracing.html)
+FAIL  'Unique trace identification': expected resolves adminguide/distributed-tracing#unique-trace-id, got redirect page adminguide/distributed-tracing#unique-trace-id (/adminguide/distributed-tracing.html#unique-trace-id)
+FAIL  'multiple processes': expected resolves devguide/multiple-processes, got redirect page devguide/multiple-processes (https://docs.cloudfoundry.org/devguide/multiple-processes.html)
+FAIL  'Configuring per-route options': expected resolves devguide/custom-per-route-options, got redirect page devguide/custom-per-route-options (/devguide/custom-per-route-options.html)
+FAIL  'Supporting WebSockets': expected resolves adminguide/supporting-websockets, got redirect page adminguide/supporting-websockets (/adminguide/supporting-websockets.html)
+FAIL  'Keep alive connections': expected resolves concepts/http-routing#keepalive, got redirect page concepts/http-routing#keepalive (/concepts/http-routing.html#keepalive)
+FAIL  'Troubleshooting Router Error Responses': expected resolves adminguide/troubleshooting-router-error-responses, got redirect page adminguide/troubleshooting-router-error-responses (/adminguide/troubleshooting-router-error-responses.html)
+FAIL  .check/probe-redirects-default/concepts/http-routing/index.html: 12 links expected
+ok    outline: 28 headings, same levels and text
+ok    anchors: all 6 exist
+info  published heading ids not on the built page (27): #-http-headers #-header-size-limit #-x-forwarded-proto #-x-forwarded-for #-http-headers-for-zipkin-tracing #-http-headers-for-w3c-tracing #-http-headers-for-app-instance-routing #-http-headers-for-process-instance-routing #-forwarding-client-certificate-to-apps #-terminating-tls-for-the-first-time-at-the-load-balancer and 17 more
+== probe-redirects-default/adminguide/troubleshooting-router-error-responses
+link  Diagnose Gorouter Errors  ->  #gorouter-errors  [in-page]  adminguide/troubleshooting-router-error-responses#gorouter-errors  no anchor
+link  Diagnose Stale Routes in Gorouter  ->  #diagnose-stale-routes  [in-page]  adminguide/troubleshooting-router-error-responses#diagnose-stale-routes  ok
+link  Gorouter Error Classification Table  ->  #gorouter-error-classification  [in-page]  adminguide/troubleshooting-router-error-responses#gorouter-error-classification  ok
+link  Diagnose App Errors  ->  #app-errors  [in-page]  adminguide/troubleshooting-router-error-responses#app-errors  ok
+link  General Debugging Steps  ->  #debugging-steps  [in-page]  adminguide/troubleshooting-router-error-responses#debugging-steps  ok
+link  Dynamic Routing Table  ->  https://github.com/cloudfoundry/gorouter#dynamic-routing-table  [external]    external
+link  HTTP Headers for Zipkin Tracing  ->  /concepts/http-routing.html#zipkin-headers  [root-relative, .html]  concepts/http-routing#zipkin-headers  redirect page (refresh to /concepts/http-routing)
+link  metrics  ->  /running/all_metrics.html#routing  [root-relative, .html]  running/all_metrics#routing  redirect page (refresh to /running/all_metrics)
+link  Identity-aware routing  ->  /concepts/identity-aware-routing.html  [root-relative, .html]  concepts/identity-aware-routing  redirect page (refresh to /concepts/identity-aware-routing)
+link  route-integrity  ->  #tls-to-back-end  [in-page]  adminguide/troubleshooting-router-error-responses#tls-to-back-end  no anchor
+link  TLS to apps and other back end services  ->  /concepts/http-routing.html#tls-to-back-end  [root-relative, .html]  concepts/http-routing#tls-to-back-end  redirect page (refresh to /concepts/http-routing)
+link  With TLS Enabled  ->  /concepts/http-routing.html#with-tls  [root-relative, .html]  concepts/http-routing#with-tls  redirect page (refresh to /concepts/http-routing)
+forms: external 1, in-page 6, root-relative, .html 5
+FAIL  'HTTP Headers for Zipkin Tracing': expected resolves concepts/http-routing#zipkin-headers, got redirect page concepts/http-routing#zipkin-headers (/concepts/http-routing.html#zipkin-headers)
+FAIL  'metrics': expected resolves running/all_metrics#routing, got redirect page running/all_metrics#routing (/running/all_metrics.html#routing)
+FAIL  'Identity-aware routing': expected resolves concepts/identity-aware-routing, got redirect page concepts/identity-aware-routing (/concepts/identity-aware-routing.html)
+FAIL  'TLS to apps and other back end services': expected resolves concepts/http-routing#tls-to-back-end, got redirect page concepts/http-routing#tls-to-back-end (/concepts/http-routing.html#tls-to-back-end)
+FAIL  'With TLS Enabled': expected no anchor concepts/http-routing#with-tls, got redirect page concepts/http-routing#with-tls (/concepts/http-routing.html#with-tls)
+FAIL  .check/probe-redirects-default/adminguide/troubleshooting-router-error-responses/index.html: 12 links expected
+ok    outline: 17 headings, same levels and text
+ok    anchors: all 4 exist
+info  published heading ids not on the built page (14): #-outer-error-responses-overview #-general-debugging-steps #-levels #-message-contents #-access-logs #diagnose-gorouter-errors #gorouter-cannot-connect-to-the-app-container #gorouter-errors-after-connecting #-diagnose-stale-routes-in-gorouter #-causes-of-stale-routes and 4 more
+== probe-redirects-default/adminguide/enabling-tcp-routing
+link  Create a Route  ->  /devguide/deploy-apps/routes-domains.html#create-route  [root-relative, .html]  devguide/deploy-apps/routes-domains#create-route  redirect page (refresh to /devguide/deploy-apps/routes-domains)
+link  Configuring Apps to Listen on Custom Ports (Beta)  ->  /devguide/custom-ports.html  [root-relative, .html]  devguide/custom-ports  redirect page (refresh to /devguide/custom-ports)
+link  Domains  ->  /devguide/deploy-apps/routes-domains.html#domains  [root-relative, .html]  devguide/deploy-apps/routes-domains#domains  redirect page (refresh to /devguide/deploy-apps/routes-domains)
+link  Using the Cloud Foundry Command Line Interface (cf CLI)  ->  /cf-cli/index.html  [root-relative, .html]  cf-cli/index  redirect page (refresh to /cf-cli/index)
+link  Prerequisites for Enabling TCP Routing  ->  #prerequisites  [in-page]  adminguide/enabling-tcp-routing#prerequisites  ok
+link  Creating and Modifying Quota Plans  ->  /adminguide/quota-plans.html  [root-relative, .html]  adminguide/quota-plans  redirect page (refresh to /adminguide/quota-plans)
+link  Create a TCP Route with a Port  ->  /devguide/deploy-apps/routes-domains.html#create-route-with-port  [root-relative, .html]  devguide/deploy-apps/routes-domains#create-route-with-port  redirect page (refresh to /devguide/deploy-apps/routes-domains)
+forms: in-page 1, root-relative, .html 6
+FAIL  'Create a Route': expected resolves devguide/deploy-apps/routes-domains#create-route, got redirect page devguide/deploy-apps/routes-domains#create-route (/devguide/deploy-apps/routes-domains.html#create-route)
+FAIL  'Configuring Apps to Listen on Custom Ports (Beta)': expected resolves devguide/custom-ports, got redirect page devguide/custom-ports (/devguide/custom-ports.html)
+FAIL  'Domains': expected resolves devguide/deploy-apps/routes-domains#domains, got redirect page devguide/deploy-apps/routes-domains#domains (/devguide/deploy-apps/routes-domains.html#domains)
+FAIL  'Using the Cloud Foundry Command Line Interface (cf CLI)': expected resolves cf-cli, got redirect page cf-cli/index (/cf-cli/index.html)
+FAIL  'Creating and Modifying Quota Plans': expected resolves adminguide/quota-plans, got redirect page adminguide/quota-plans (/adminguide/quota-plans.html)
+FAIL  'Create a TCP Route with a Port': expected resolves devguide/deploy-apps/routes-domains#create-route-with-port, got redirect page devguide/deploy-apps/routes-domains#create-route-with-port (/devguide/deploy-apps/routes-domains.html#create-route-with-port)
+FAIL  .check/probe-redirects-default/adminguide/enabling-tcp-routing/index.html: 7 links expected
+ok    outline: 11 headings, same levels and text
+ok    anchors: all 1 exist
+info  published heading ids not on the built page (9): #-tcp-routing-overview #-tcp-routing-architecture #-prerequisites-for-activating-tcp-routing #-tls-for-tcp-routing #-configure-tcp-routing-after-deploying-cloud-foundry #-configure-cloud-foundry-with-your-tcp-domain #-configure-a-quota-for-tcp-routes #-create-a-tcp-route #-modify-tcp-port-reservations
+== probe-redirects-default/devguide/deploy-apps/routes-domains
+link  HTTP routing  ->  /concepts/http-routing.html  [root-relative, .html]  concepts/http-routing  redirect page (refresh to /concepts/http-routing)
+link  round-robin  ->  /concepts/http-routing.html#round-robin  [root-relative, .html]  concepts/http-routing#round-robin  redirect page (refresh to /concepts/http-routing)
+link  Share a route with another space  ->  #share-route  [in-page]  devguide/deploy-apps/routes-domains#share-route  ok
+link  HTTP versus TCP shared domains  ->  #http-vs-tcp-shared-domains  [in-page]  devguide/deploy-apps/routes-domains#http-vs-tcp-shared-domains  no anchor
+link  Configuring apps to listen on custom ports (Beta)  ->  ../custom-ports.html  [page-relative, .html]  devguide/deploy-apps/custom-ports  no page
+link  Deploying with app manifests  ->  /devguide/deploy-apps/manifest.html#routes  [root-relative, .html]  devguide/deploy-apps/manifest#routes  redirect page (refresh to /devguide/deploy-apps/manifest)
+link  Using blue-green deployment to reduce downtime and risk  ->  /devguide/deploy-apps/blue-green.html  [root-relative, .html]  devguide/deploy-apps/blue-green  redirect page (refresh to /devguide/deploy-apps/blue-green)
+link  Routing conflict  ->  /devguide/deploy-apps/troubleshoot-app-health.html#routing-conflict  [root-relative, .html]  devguide/deploy-apps/troubleshoot-app-health#routing-conflict  redirect page (refresh to /devguide/deploy-apps/troubleshoot-app-health)
+forms: in-page 2, page-relative, .html 1, root-relative, .html 5
+FAIL  'HTTP routing': expected resolves concepts/http-routing, got redirect page concepts/http-routing (/concepts/http-routing.html)
+FAIL  'round-robin': expected resolves concepts/http-routing#round-robin, got redirect page concepts/http-routing#round-robin (/concepts/http-routing.html#round-robin)
+FAIL  'Configuring apps to listen on custom ports (Beta)': expected resolves devguide/custom-ports, got no page devguide/deploy-apps/custom-ports (../custom-ports.html)
+FAIL  'Deploying with app manifests': expected no anchor devguide/deploy-apps/manifest#routes, got redirect page devguide/deploy-apps/manifest#routes (/devguide/deploy-apps/manifest.html#routes)
+FAIL  'Using blue-green deployment to reduce downtime and risk': expected resolves devguide/deploy-apps/blue-green, got redirect page devguide/deploy-apps/blue-green (/devguide/deploy-apps/blue-green.html)
+FAIL  'Routing conflict': expected resolves devguide/deploy-apps/troubleshoot-app-health#routing-conflict, got redirect page devguide/deploy-apps/troubleshoot-app-health#routing-conflict (/devguide/deploy-apps/troubleshoot-app-health.html#routing-conflict)
+FAIL  .check/probe-redirects-default/devguide/deploy-apps/routes-domains/index.html: 8 links expected
+ok    outline: 43 headings, same levels and text
+ok    anchors: all 4 exist
+info  published heading ids not on the built page (27): #-routes #-http-versus-tcp-routes #-internal-container-to-container-routes #-create-a-route #-create-an-http-route-with-host-name #-list-routes #-view-a-route #-check-routes #-map-a-route-to-your-app #-unmap-a-route and 17 more

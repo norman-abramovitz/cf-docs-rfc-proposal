@@ -1,0 +1,54 @@
+## mono-native
+17:56:20 [content] Syncing content
+17:56:20 [content] Synced content
+17:56:20 [types] Generated 326ms
+17:56:20 [build] output: "static"
+17:56:20 [build] mode: "static"
+17:56:20 [build] directory: .check/probe-mono-native/
+17:56:20 [build] Collecting build info...
+17:56:20 [build] ✓ Completed in 413ms.
+17:56:20 [build] Building static entrypoints...
+17:56:20 [vite] ✓ built in 179ms
+17:56:20 [vite] ✓ built in 29ms
+17:56:20 [build] Rearranging server assets...
+
+ generating static routes 
+17:56:20 [WARN] [content] The collection "i18n" does not exist or is empty. Please check your content config file for errors.
+17:56:20   ├─ /404.html17:56:20 [WARN] [content] Entry docs → 404 was not found.
+ (+15ms) 
+17:56:20   ├─ /adminguide/distributed-tracing.html (+20ms) 
+17:56:20   ├─ /adminguide/enabling-tcp-routing.html (+14ms) 
+17:56:20   ├─ /adminguide/quota-plans.html (+6ms) 
+17:56:20   ├─ /adminguide/securing-traffic.html (+8ms) 
+17:56:20   ├─ /adminguide/supporting-websockets.html (+6ms) 
+17:56:20   ├─ /adminguide/troubleshooting-router-error-responses.html (+16ms) 
+17:56:20   ├─ /adminguide/zipkin_tracing.html (+7ms) 
+17:56:20   ├─ /cf-cli.html (+5ms) 
+17:56:20   ├─ /concepts/architecture.html (+6ms) 
+17:56:20   ├─ /concepts/http-routing.html (+10ms) 
+17:56:20   ├─ /concepts/identity-aware-routing.html (+8ms) 
+17:56:20   ├─ /concepts/probe-broken.html (+6ms) 
+17:56:20   ├─ /devguide/custom-per-route-options.html (+9ms) 
+17:56:20   ├─ /devguide/custom-ports.html (+8ms) 
+17:56:20   ├─ /devguide/deploy-apps/blue-green.html (+7ms) 
+17:56:21   ├─ /devguide/deploy-apps/manifest.html (+5ms) 
+17:56:21   ├─ /devguide/deploy-apps/routes-domains.html (+12ms) 
+17:56:21   ├─ /devguide/deploy-apps/troubleshoot-app-health.html (+8ms) 
+17:56:21   ├─ /devguide/multiple-processes.html (+9ms) 
+17:56:21   ├─ /index.html (+22ms) 
+17:56:21   ├─ /running/all_metrics.html (+7ms) 
+17:56:21 ✓ Completed in 337ms.
+
+17:56:21 [build] ✓ Completed in 577ms.
+17:56:21 [starlight:pagefind] Building search index with Pagefind...
+17:56:21 [starlight:pagefind] Found 22 HTML files.
+17:56:21 [starlight:pagefind] Finished building search index in 35ms.
+17:56:21 [@astrojs/sitemap] `sitemap-index.xml` created at `.check/probe-mono-native`
+17:56:21 [build] 22 page(s) built in 1.03s
+17:56:21 [build] Complete!
+exit status 0
+link  no page  ->  /adminguide/no-such-page.html  [root-relative, .html]  adminguide/no-such-page  no page
+link  no anchor  ->  /adminguide/securing-traffic.html#no-such-anchor  [root-relative, .html]  adminguide/securing-traffic#no-such-anchor  no anchor
+link  no page as written  ->  ../adminguide/no-such-page.html  [page-relative, .html]  adminguide/no-such-page  no page
+link  no anchor as written  ->  ../adminguide/securing-traffic.html#no-such-anchor  [page-relative, .html]  adminguide/securing-traffic#no-such-anchor  no anchor
+forms: page-relative, .html 2, root-relative, .html 2

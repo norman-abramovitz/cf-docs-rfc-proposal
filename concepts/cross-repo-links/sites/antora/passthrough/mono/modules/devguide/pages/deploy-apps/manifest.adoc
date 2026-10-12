@@ -1,0 +1,4 @@
+= Deploying with app manifests
+
+
+Stub for `devguide/deploy-apps/manifest.html`: the source file is deploy-apps/manifest.html.md.erb in cloudfoundry/docs-dev-guide. It holds only the ids that the test pages link to.

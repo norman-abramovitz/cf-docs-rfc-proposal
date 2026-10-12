@@ -1,0 +1,6 @@
+---
+title: "Using blue-green deployment to reduce downtime"
+---
+
+
+Stub for `devguide/deploy-apps/blue-green.html`: the source file is deploy-apps/blue-green.html.md.erb in cloudfoundry/docs-dev-guide. It holds only the ids that the test pages link to.

@@ -1,0 +1,106 @@
+== published/concepts/http-routing
+link    ->  #top  [in-page]  concepts/http-routing#top  ok
+link  Routing  ->  /concepts/architecture/#routing  [root-relative, folder]  concepts/architecture/#routing  no page
+link  Securing Traffic into Cloud Foundry  ->  /adminguide/securing-traffic.html  [root-relative, .html]  adminguide/securing-traffic  no page
+link  Zipkin.io  ->  http://zipkin.io/  [external]    external
+link  Enabling Zipkin Tracing  ->  /adminguide/zipkin_tracing.html  [root-relative, .html]  adminguide/zipkin_tracing  no page
+link  Unique trace identification  ->  /adminguide/distributed-tracing.html#unique-trace-id  [root-relative, .html]  adminguide/distributed-tracing#unique-trace-id  no page
+link  Trace Context  ->  https://www.w3.org/TR/trace-context/  [external]    external
+link  rolling or canary deployment  ->  https://docs.cloudfoundry.org/devguide/deploy-apps/rolling-deploy.html#rolling  [absolute, .html]  devguide/deploy-apps/rolling-deploy#rolling  no page
+link  multiple processes  ->  https://docs.cloudfoundry.org/devguide/multiple-processes.html  [absolute, .html]  devguide/multiple-processes  no page
+link  Identity-aware routing  ->  identity-aware-routing.html  [page-relative, .html]  concepts/identity-aware-routing  no page
+link  Securing Traffic into Cloud Foundry  ->  /adminguide/securing-traffic.html  [root-relative, .html]  adminguide/securing-traffic  no page
+link  Envoyproxy.io  ->  https://www.envoyproxy.io/  [external]    external
+link  Consistency  ->  #consistency  [in-page]  concepts/http-routing#consistency  ok
+link  route-registrar  ->  https://github.com/cloudfoundry/route-registrar  [external]    external
+link  Envoyproxy.io  ->  https://www.envoyproxy.io/  [external]    external
+link  TLS to apps and other back-end services  ->  #tls-to-back-end  [in-page]  concepts/http-routing#tls-to-back-end  ok
+link  enable-nginx-routing-integrity-windows2019.yml  ->  https://github.com/cloudfoundry/cf-deployment/blob/09456fce97dbeec8f374a789d0d3d0e1c166aa91/operations/experimental/enable-nginx-routing-integrity-windows2019.yml  [external]    external
+link  Configuring per-route options  ->  /devguide/custom-per-route-options.html  [root-relative, .html]  devguide/custom-per-route-options  no page
+link  Round-Robin Load Balancing  ->  #round-robin  [in-page]  concepts/http-routing#round-robin  ok
+link  Least-Connection Load Balancing  ->  #least-connection  [in-page]  concepts/http-routing#least-connection  ok
+link  Load Balancing AZ Preference  ->  #balancing-algorithm-az-preference  [in-page]  concepts/http-routing#balancing-algorithm-az-preference  ok
+link  Supporting WebSockets  ->  /adminguide/supporting-websockets.html  [root-relative, .html]  adminguide/supporting-websockets  no page
+link  Session Affinity  ->  https://github.com/cloudfoundry/routing-release/blob/develop/docs/03-how-to-use-session-affinity.md  [external]    external
+link  Keep alive connections  ->  /concepts/http-routing.html#keepalive  [root-relative, .html]  concepts/http-routing#keepalive  ok
+link  Troubleshooting Router Error Responses  ->  /adminguide/troubleshooting-router-error-responses.html  [root-relative, .html]  adminguide/troubleshooting-router-error-responses  ok
+forms: absolute, .html 2, external 7, in-page 6, page-relative, .html 1, root-relative, .html 8, root-relative, folder 1
+== published/adminguide/troubleshooting-router-error-responses
+link    ->  #top  [in-page]  adminguide/troubleshooting-router-error-responses#top  ok
+link  Diagnose Gorouter Errors  ->  #gorouter-errors  [in-page]  adminguide/troubleshooting-router-error-responses#gorouter-errors  no anchor
+link  Diagnose Stale Routes in Gorouter  ->  #diagnose-stale-routes  [in-page]  adminguide/troubleshooting-router-error-responses#diagnose-stale-routes  ok
+link  Gorouter Error Classification Table  ->  #gorouter-error-classification  [in-page]  adminguide/troubleshooting-router-error-responses#gorouter-error-classification  ok
+link  Diagnose App Errors  ->  #app-errors  [in-page]  adminguide/troubleshooting-router-error-responses#app-errors  ok
+link  General Debugging Steps  ->  #debugging-steps  [in-page]  adminguide/troubleshooting-router-error-responses#debugging-steps  ok
+link  Dynamic Routing Table  ->  https://github.com/cloudfoundry/gorouter#dynamic-routing-table  [external]    external
+link  HTTP Headers for Zipkin Tracing  ->  /concepts/http-routing.html#zipkin-headers  [root-relative, .html]  concepts/http-routing#zipkin-headers  ok
+link  metrics  ->  /running/all_metrics.html#routing  [root-relative, .html]  running/all_metrics#routing  no page
+link  Diagnose App Errors  ->  #app-errors  [in-page]  adminguide/troubleshooting-router-error-responses#app-errors  ok
+link  Identity-aware routing  ->  /concepts/identity-aware-routing.html  [root-relative, .html]  concepts/identity-aware-routing  no page
+link  max_attemps  ->  https://github.com/cloudfoundry/gorouter#dynamic-routing-table  [external]    external
+link  Diagnose Stale Routes  ->  #diagnose-stale-routes  [in-page]  adminguide/troubleshooting-router-error-responses#diagnose-stale-routes  ok
+link  route-integrity  ->  #tls-to-back-end  [in-page]  adminguide/troubleshooting-router-error-responses#tls-to-back-end  no anchor
+link  Gorouter source code  ->  https://github.com/golang/go/blob/5c489514bc5e61ad9b5b07bd7d8ec65d66a0512a/src/net/http/request.go#L1413-L1427  [external]    external
+link  max_attemps  ->  https://github.com/cloudfoundry/gorouter#dynamic-routing-table  [external]    external
+link  TLS to apps and other back end services  ->  /concepts/http-routing.html#tls-to-back-end  [root-relative, .html]  concepts/http-routing#tls-to-back-end  ok
+link  With TLS Enabled  ->  /concepts/http-routing.html#with-tls  [root-relative, .html]  concepts/http-routing#with-tls  no anchor
+link  Gorouter documentation  ->  https://github.com/cloudfoundry/gorouter#logs  [external]    external
+link  max_attemps  ->  https://github.com/cloudfoundry/gorouter#dynamic-routing-table  [external]    external
+link  Router Error: 502 Bad Gateway  ->  ../running/all_metrics.html#routing  [page-relative, .html]  running/all_metrics#routing  no page
+forms: external 6, in-page 9, page-relative, .html 1, root-relative, .html 5
+== published/adminguide/enabling-tcp-routing
+link    ->  #top  [in-page]  adminguide/enabling-tcp-routing#top  ok
+link  Create a Route  ->  /devguide/deploy-apps/routes-domains.html#create-route  [root-relative, .html]  devguide/deploy-apps/routes-domains#create-route  ok
+link  Configuring Apps to Listen on Custom Ports (Beta)  ->  /devguide/custom-ports.html  [root-relative, .html]  devguide/custom-ports  no page
+link  Domains  ->  /devguide/deploy-apps/routes-domains.html#domains  [root-relative, .html]  devguide/deploy-apps/routes-domains#domains  ok
+link  Modify TCP Port Reservations  ->  #modify-ports  [in-page]  adminguide/enabling-tcp-routing#modify-ports  ok
+link  Routing Release  ->  https://github.com/cloudfoundry-incubator/routing-release  [external]    external
+link  Modify TCP Port Reservations  ->  #modify-ports  [in-page]  adminguide/enabling-tcp-routing#modify-ports  ok
+link  cf-deployment v43.0.0  ->  https://github.com/cloudfoundry/cf-deployment  [external]    external
+link  operations/disable-tls-tcp-routing-stage-1-unproxied-ports.yml  ->  https://github.com/cloudfoundry/cf-deployment/tree/main/operations/disable-tls-tcp-routing-stage-1-unproxied-ports.yml  [external]    external
+link  operations/disable-tls-tcp-routing-isolation-segment-stage-1-unproxied-ports.yml  ->  https://github.com/cloudfoundry/cf-deployment/tree/main/operations/disable-tls-tcp-routing-isolation-segment-stage-1-unproxied-ports.yml  [external]    external
+link  operations/experimental/disable-tls-tcp-routing-windows-stage-1-unproxied-ports.yml  ->  https://github.com/cloudfoundry/cf-deployment/tree/main/operations/experimental/disable-tls-tcp-routing-windows-stage-1-unproxied-ports.yml  [external]    external
+link  operations/disable-tls-tcp-routing-stage-2-tcp-router-and-route-emitter.yml  ->  https://github.com/cloudfoundry/cf-deployment/tree/main/operations/disable-tls-tcp-routing-stage-2-tcp-router-and-route-emitter.yml  [external]    external
+link  operations/disable-tls-tcp-routing-isolation-segment-stage-2-route-emitter.yml  ->  https://github.com/cloudfoundry/cf-deployment/tree/main/operations/disable-tls-tcp-routing-isolation-segment-stage-2-route-emitter.yml  [external]    external
+link  operations/experimental/disable-tls-tcp-routing-windows-stage-2-route-emitter.yml  ->  https://github.com/cloudfoundry/cf-deployment/tree/main/operations/experimental/disable-tls-tcp-routing-windows-stage-2-route-emitter.yml  [external]    external
+link  Using the Cloud Foundry Command Line Interface (cf CLI)  ->  /cf-cli/  [root-relative, folder]  cf-cli/  no page
+link  Prerequisites for Enabling TCP Routing  ->  #prerequisites  [in-page]  adminguide/enabling-tcp-routing#prerequisites  ok
+link  Creating and Modifying Quota Plans  ->  /adminguide/quota-plans.html  [root-relative, .html]  adminguide/quota-plans  no page
+link  Create a TCP Route with a Port  ->  /devguide/deploy-apps/routes-domains.html#create-route-with-port  [root-relative, .html]  devguide/deploy-apps/routes-domains#create-route-with-port  ok
+link  TCP router fails to configure routes when there is a port conflict with a local process  ->  https://github.com/cloudfoundry/routing-release/issues/184  [external]    external
+forms: external 9, in-page 4, root-relative, .html 5, root-relative, folder 1
+== published/devguide/deploy-apps/routes-domains
+link    ->  #top  [in-page]  devguide/deploy-apps/routes-domains#top  ok
+link  HTTP routing  ->  /concepts/http-routing.html  [root-relative, .html]  concepts/http-routing  ok
+link  round-robin  ->  /concepts/http-routing.html#round-robin  [root-relative, .html]  concepts/http-routing#round-robin  ok
+link  Share a route with another space  ->  #share-route  [in-page]  devguide/deploy-apps/routes-domains#share-route  ok
+link  HTTP versus TCP shared domains  ->  #http-vs-tcp-shared-domains  [in-page]  devguide/deploy-apps/routes-domains#http-vs-tcp-shared-domains  no anchor
+link  Configuring apps to listen on custom ports (Beta)  ->  ../custom-ports.html  [page-relative, .html]  devguide/custom-ports  no page
+link  cf map-route  ->  #map-internal-route  [in-page]  devguide/deploy-apps/routes-domains#map-internal-route  ok
+link  internal domain  ->  #internal-domains  [in-page]  devguide/deploy-apps/routes-domains#internal-domains  ok
+link  Configuring container-to-container networking  ->  /devguide/deploy-apps/cf-networking.html  [root-relative, .html]  devguide/deploy-apps/cf-networking  no page
+link  Domains  ->  #domains  [in-page]  devguide/deploy-apps/routes-domains#domains  ok
+link  Private Domains  ->  #private-domains  [in-page]  devguide/deploy-apps/routes-domains#private-domains  ok
+link  Map a route to your app  ->  #map-route  [in-page]  devguide/deploy-apps/routes-domains#map-route  ok
+link  [email protected]  ->  /cdn-cgi/l/email-protection  [root-relative, no extension]  cdn-cgi/l/email-protection  no page
+link  [email protected]  ->  /cdn-cgi/l/email-protection  [root-relative, no extension]  cdn-cgi/l/email-protection  no page
+link  [email protected]  ->  /cdn-cgi/l/email-protection  [root-relative, no extension]  cdn-cgi/l/email-protection  no page
+link  Manually map a route  ->  #map-route-manually  [in-page]  devguide/deploy-apps/routes-domains#map-route-manually  ok
+link  Map a route with app push  ->  #map-route-on-push  [in-page]  devguide/deploy-apps/routes-domains#map-route-on-push  ok
+link  Create a TCP route with a port  ->  #create-route-w-port  [in-page]  devguide/deploy-apps/routes-domains#create-route-w-port  no anchor
+link  Deploying with app manifests  ->  /devguide/deploy-apps/manifest.html#routes  [root-relative, .html]  devguide/deploy-apps/manifest#routes  no page
+link  Using blue-green deployment to reduce downtime and risk  ->  /devguide/deploy-apps/blue-green.html  [root-relative, .html]  devguide/deploy-apps/blue-green  no page
+link  Routing conflict  ->  /devguide/deploy-apps/troubleshoot-app-health.html#routing-conflict  [root-relative, .html]  devguide/deploy-apps/troubleshoot-app-health#routing-conflict  no page
+link  Cloud Foundry CLI repository  ->  https://github.com/cloudfoundry/cli/releases/tag/v8.5.0  [external]    external
+link  Cloud Foundry CLI repository  ->  https://github.com/cloudfoundry/cli/releases/tag/v8.5.0  [external]    external
+link  Share a route with another space  ->  #share-route  [in-page]  devguide/deploy-apps/routes-domains#share-route  ok
+link  DNS for domains  ->  #domains-dns  [in-page]  devguide/deploy-apps/routes-domains#domains-dns  ok
+link  [email protected]  ->  /cdn-cgi/l/email-protection  [root-relative, no extension]  cdn-cgi/l/email-protection  no page
+link  Shared domains  ->  #shared-domains  [in-page]  devguide/deploy-apps/routes-domains#shared-domains  ok
+link  Private domains  ->  #private-domains  [in-page]  devguide/deploy-apps/routes-domains#private-domains  ok
+link  Routes  ->  #routes  [in-page]  devguide/deploy-apps/routes-domains#routes  ok
+link  Configuring identity-aware routing  ->  identity-aware-routing.html  [page-relative, .html]  devguide/deploy-apps/identity-aware-routing  no page
+link  Shared domains  ->  #shared-domains  [in-page]  devguide/deploy-apps/routes-domains#shared-domains  ok
+link  Configuring identity-aware routing  ->  identity-aware-routing.html  [page-relative, .html]  devguide/deploy-apps/identity-aware-routing  no page
+link  Cloud Foundry documentation  ->  https://docs.cloudfoundry.org/devguide/deploy-apps/trusted-system-certificates.html  [absolute, .html]  devguide/deploy-apps/trusted-system-certificates  no page
+forms: absolute, .html 1, external 2, in-page 17, page-relative, .html 3, root-relative, .html 6, root-relative, no extension 4

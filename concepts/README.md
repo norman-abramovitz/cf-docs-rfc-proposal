@@ -46,4 +46,4 @@ written.
 | [Partials](partials/) | Done, with open items: [results](partials/results.md#not-yet-written) | `<%= partial '...' %>`; some partial names are themselves stored in variables |
 | [Notes and admonitions](notes/) | Done, with open items: [results](notes/results.md#not-yet-written) | `<p class="note">` with `note__title` spans |
 | Code blocks | Proposed | Shell, console, JSON, YAML; copy button |
-| Cross-repository links | Proposed | Links between content repositories must survive conversion |
+| [Cross-repository links](cross-repo-links/) | Conventions for review: [results](cross-repo-links/results.md#summary) | Links between content repositories must survive conversion |

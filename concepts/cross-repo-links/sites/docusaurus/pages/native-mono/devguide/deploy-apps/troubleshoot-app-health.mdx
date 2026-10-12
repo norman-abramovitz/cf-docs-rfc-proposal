@@ -1,0 +1,8 @@
+---
+title: "Troubleshooting app deployment and health"
+---
+
+
+Stub for `devguide/deploy-apps/troubleshoot-app-health.html`: the source file is deploy-apps/troubleshoot-app-health.html.md.erb in cloudfoundry/docs-dev-guide. It holds only the ids that the test pages link to.
+
+## Routing conflict {#routing-conflict}
