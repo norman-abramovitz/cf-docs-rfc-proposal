@@ -169,6 +169,8 @@ with no cell borders, a rule under the header, and centered cells.
       style: table-media
   ```
 
-- **Native cannot name a style.** A pipe table takes no class: the attribute
-  lists extension works on single cells, and `{: .class }` after a table
-  becomes an extra row. A native table gets the standard style.
+- **Native names a style in a comment.** The tool's own syntax gives a pipe
+  table no class: the attribute lists extension works on single cells, and
+  `{: .class }` after a table becomes an extra row. `table_attrs.py` reads
+  `<!-- table: .name #id -->` on the line above the table or above its bold
+  title, and adds `table` with any class so the theme's look stays.

@@ -133,7 +133,8 @@ column instead.
 
 Markdoc's own table tag, with only the attributes Markdoc defines: `width`
 on header cells, `colspan` and `align` on any cell, and `class` and `id` on
-anything.
+anything. A pipe table (native-plain) takes them from `<!-- table: .name #id -->`
+on the line above it, or above its bold title line (`table-attrs.mjs`).
 
 ```markdown
 {% table %}

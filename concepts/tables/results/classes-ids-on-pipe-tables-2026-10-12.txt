@@ -1,0 +1,338 @@
+Classes and ids on pipe tables: probe, 2026-10-12
+
+Question
+  Can each tool give a Markdown pipe table (| a | b |) a class (for
+  example table-compact) and an id, without rewriting it as a list-table?
+
+Method
+- A copy of concepts/tables made outside the repository (APFS clone of
+  the working tree at 05:33; the repository was not changed). All builds,
+  servers and checks ran in the copy.
+- Native syntax first: each candidate written next to a 3 x 3 pipe table
+  and compiled with the tool's own Markdown library as installed in the
+  sites (Markdoc and Python-Markdown directly; MDX with remark-gfm through
+  @mdx-js/mdx evaluate; GitHub through its Markdown API, mode gfm):
+    attribute line after the table        {.table-compact #t1}
+    the same after a blank line
+    attribute line before the table
+    attribute on the first header cell     | A {: .table-compact #t1 } |
+                                           | A {% .table-compact #t1 %} |
+    HTML comment before the table          <!-- table: .table-compact #t1 -->
+  Then an HTML wrapper around the table, built in each site.
+- Extension: one small change per site that reads the HTML comment
+  in the block just above a pipe table and puts its classes and id on
+  the <table>. Built with each site's `make check`.
+- Test pages (one per site, native mode; Starlight native-plain, where
+  its pipe tables are):
+    pipe-attrs   case 1  comment on the line above, .table-compact #probe-one
+                 case 2  two classes, blank line between comment and table
+                 case 3  an unrelated comment above the table
+                 case 4  table inside a numbered list item, comment above it
+                 case 5  no comment
+                 case 6  the comment syntax inside a fenced code block
+    pipe-wrapper the table inside an HTML <div> carrying class and id
+  The roles table's native pipe form got `<!-- table: #oss-roles-permissions -->`
+  on its first line (Docusaurus native, Zensical native and native-plain,
+  Starlight native-plain): the id the source has and native mode lost.
+- Wide-table check (checks/wide-tables.mjs) run against each site served
+  on ports 4610-4612, for the roles pages, and a copy limited to the
+  probe pages.
+
+Versions (read from node_modules and uv.lock)
+  Docusaurus 3.10.2 (@docusaurus/mdx-loader 3.10.2), @mdx-js/mdx 3.1.1,
+    remark-gfm 4.0.1, mdast-util-to-hast 13.2.1,
+    @slorber/remark-comment 1.0.0
+  Zensical 0.0.69, Python-Markdown 3.11, pymdown-extensions 12.1
+  Starlight 0.42.6, Astro 7.3.8, @astrojs/markdoc 2.0.11,
+    @markdoc/markdoc 0.5.10
+  Antora 3.2.1, Asciidoctor.js 2.2.9 (Asciidoctor 2.0.23)
+  Upstream files fetched at the commits below were byte-identical to the
+  installed copies (diff -q), except Docusaurus and Astro, which ship
+  compiled code; their line numbers are from the TypeScript source at the
+  release tag.
+
+Native syntax, 3 x 3 table
+  candidate                     MDX+gfm        Python-Markdown     Markdoc            GitHub
+  {...} line after table        parse error    extra body row      error: "Can't      extra body row
+                                (acorn)        (cell text)         apply inline
+                                                                   annotations to
+                                                                   'document'"
+  {...} line, blank line before parse error    paragraph           same error         paragraph
+  {...} line before table       not tried      table lost: one     same error         visible paragraph
+                                               paragraph
+  attribute in 1st header cell  -              class, id on <th>   class, id on <th>  text in the cell
+  <!-- table: ... --> above     table, no      table, no attrs,    table, no attrs,   table, comment
+                                attrs, comment comment kept in     comment dropped    hidden
+                                dropped        output
+  {/* ... */} after (MDX only)  table, no      -                   -                  text
+                                attrs
+  No tool attaches a class or id to a pipe table natively.
+
+HTML wrapper (built), class and id land on a <div> around the table
+  Docusaurus  <div className="table-compact" id="probe-wrap"> + blank line
+              + table + blank line + </div>   -> <div class="table-compact" id="probe-wrap"><table>
+  Zensical    <div markdown class="table-compact" id="probe-wrap"> ...
+              (md_in_html)                    -> <div class="table-compact" id="probe-wrap"><table>
+  Starlight   <div class="table-compact" id="probe-wrap"> ...
+                                              -> <div class="table-compact" id="probe-wrap"><table>
+  The spelling differs per tool (className in MDX; the markdown
+  attribute in Python-Markdown).
+
+Extension: one comment syntax, three small changes
+  Syntax: an HTML comment in the block just above the table, a blank
+  line between them allowed:
+      <!-- table: .table-compact #oss-roles-permissions -->
+      | Activity | Admin | ...
+  `.name` adds a class (several allowed), `#name` sets the id.
+  Docusaurus  plugins/table-attrs.js (new, 30 lines, 20 of code) and one
+              changed line in docusaurus.config.js. The parser drops
+              comments, so the plugin reads the source line above the
+              table's position and sets the mdast table's hProperties.
+  Zensical    table_attrs.py (new, 58 lines, 46 of code) and one line in
+              zensical.toml. A preprocessor adds a blank line after the
+              comment (a table in a list item must follow one); a
+              treeprocessor finds the comment's paragraph (or its raw
+              HTML placeholder) just before a <table> and sets class and id.
+  Starlight   table-attrs.mjs (new, 37 lines, 24 of code) and two changed
+              lines in markdoc.config.mjs. A document transform finds a
+              comment node just before a table node and sets its class and
+              id attributes; the existing table transform (list-table.mjs)
+              renders them.
+
+Commands (in the copy, per site)
+  make check                       spot checks, all modes
+  grep -o '<table[^>]*>' <built page>
+  node ../../checks/wide-tables.mjs 'http://localhost:461N/%m/%p/' <modes>
+  node ../../checks/wide-probe.mjs  (the same, pages = pipe-attrs)
+  python3 cmp-tables.py <repo build> <copy build>   (every <table> on
+                                                     every page compared)
+
+Rendered <table> start tags, pipe-attrs page
+  case  Docusaurus                            Zensical                              Starlight
+  1     class="table-compact" id="probe-one"  class="table-compact" id="probe-one"  id="probe-one" class="table-compact"
+  2     class="table-compact table-striped"   the same                              the same
+        id="probe-two"
+  3     (none)                                (none)                                (none)
+  4     class="table-compact" id="probe-four" the same                              the same
+  5     (none)                                (none)                                (none)
+  6     code block shows the comment as written in all three; no table
+  Comment in the HTML output: dropped (Docusaurus, Starlight), kept as an
+  HTML comment (Zensical).
+  GitHub (Markdown API, gfm): all five tables render; the comments are
+  hidden; case 6 shows the comment as code.
+
+Roles table (native pipe form), <table> start tag
+  Docusaurus native          <table id="oss-roles-permissions">
+  Zensical native            <table id="oss-roles-permissions">
+  Zensical native-plain      <table id="oss-roles-permissions">
+  Starlight native-plain     <table id="oss-roles-permissions">
+  Antora native, native-plain <table id="oss-roles-permissions" class="tableblock frame-all grid-all stretch">
+                             (already; AsciiDoc's [#id] on the table)
+  Every <table> on every built page compared with the repository's own
+  builds: the only differences are these roles tables, and each is
+  identical apart from the id.
+
+Spot checks after the change
+  Docusaurus  passthrough 49, extension 49, native 49 (of 51; the two
+              misses are the known page descriptions, as before)
+  Zensical    passthrough, extension, native, native-plain: 51/51 each
+  Starlight   passthrough, extension, native, native-plain: 51/51 each
+
+Wide tables (1280 and 390 px)
+  roles pages and all others, after the change:
+    Docusaurus 3 modes 90 passed; Zensical native + native-plain 60
+    passed; Starlight native-plain 30 passed; 0 failed
+  pipe-attrs page:
+    Docusaurus 10 passed; Starlight 10 passed
+    Zensical 4 passed, 6 failed: tables 1, 2 and 4 (the classed ones)
+      widen the page. The theme styles and wraps only tables without a
+      class, so a classed table loses its look and its scroll box, as
+      an HTML table does.
+    Zensical with `.table .table-compact` (the standard class first):
+      10 passed. The site's table.table rules restore look and scrolling.
+
+Antora (no pipe tables)
+  A GFM pipe table given to Asciidoctor renders as one paragraph of text.
+  AsciiDoc's own table takes id and role in its block attributes:
+      [.table-compact#probe-one%header]   ->  <table id="probe-one"
+      |===                                     class="tableblock frame-all
+                                               grid-all stretch table-compact">
+  Converted with the installed Asciidoctor.js; not built as an Antora page.
+
+Side finding (Docusaurus, headings)
+  Docusaurus's heading code reads an id from a trailing <!-- #id -->
+  comment, but in an .mdx page the comment is dropped before that code
+  runs: `## A heading <!-- #probe-heading -->` built as id="a-heading-".
+
+Code references (pinned)
+  Markdoc 0.5.10 (16e1840c)
+    annotation outside inline content is an error; inside, it goes to the
+    inline's parent (the cell):
+      https://github.com/markdoc/markdoc/blob/16e1840c687e17c57d2b3664eac4edfbd01e7283/src/parser.ts#L118-L125
+      https://github.com/markdoc/markdoc/blob/16e1840c687e17c57d2b3664eac4edfbd01e7283/src/parser.ts#L186
+    table node has no attributes of its own; class and id are global:
+      https://github.com/markdoc/markdoc/blob/16e1840c687e17c57d2b3664eac4edfbd01e7283/src/schema.ts#L120-L122
+      https://github.com/markdoc/markdoc/blob/16e1840c687e17c57d2b3664eac4edfbd01e7283/src/transformer.ts#L17-L19
+    comments become comment nodes when allowComments is on:
+      https://github.com/markdoc/markdoc/blob/16e1840c687e17c57d2b3664eac4edfbd01e7283/src/tokenizer/index.ts#L31
+      https://github.com/markdoc/markdoc/blob/16e1840c687e17c57d2b3664eac4edfbd01e7283/src/tokenizer/plugins/comments.ts#L48-L51
+      https://github.com/markdoc/markdoc/blob/16e1840c687e17c57d2b3664eac4edfbd01e7283/src/schema.ts#L246-L250
+  @astrojs/markdoc 2.0.11 (3571e2d2) turns allowComments on:
+      https://github.com/withastro/astro/blob/3571e2d2e80a66764254fa9b7750704a150ca3f6/packages/integrations/markdoc/src/tokenizer.ts#L11-L15
+  Python-Markdown 3.11 (0ffbf00c)
+    every line of the table block after the delimiter row is a row; the
+    <table> is created with no attributes:
+      https://github.com/Python-Markdown/markdown/blob/0ffbf00cf667971d46f43aafba825e8d25098bc5/markdown/extensions/tables.py#L87-L107
+    attr_list reads a list from an element's own text; cells (td, th)
+    take it at the end of their text, a table has no text of its own:
+      https://github.com/Python-Markdown/markdown/blob/0ffbf00cf667971d46f43aafba825e8d25098bc5/markdown/extensions/attr_list.py#L103-L154
+    raw HTML blocks are set aside at priority 20, as placeholders:
+      https://github.com/Python-Markdown/markdown/blob/0ffbf00cf667971d46f43aafba825e8d25098bc5/markdown/preprocessors.py#L41
+      https://github.com/Python-Markdown/markdown/blob/0ffbf00cf667971d46f43aafba825e8d25098bc5/markdown/util.py#L79-L81
+  pymdown-extensions 12.1 (9b896a8a): fenced code set aside at priority 25:
+      https://github.com/facelessuser/pymdown-extensions/blob/9b896a8ae4ae2c9bbf42aa525925b245432fb3d2/pymdownx/superfences.py#L325
+  Docusaurus 3.10.2 (f37f9035)
+    HTML comments in MDX handled by a fork of remark-comment, on by
+    default (mdx1Compat.comments):
+      https://github.com/facebook/docusaurus/blob/f37f9035584917a97a260b91fc2842cba4f8b94f/packages/docusaurus-mdx-loader/src/processor.ts#L86-L87
+      https://github.com/facebook/docusaurus/blob/f37f9035584917a97a260b91fc2842cba4f8b94f/packages/docusaurus-mdx-loader/src/processor.ts#L152
+      https://github.com/facebook/docusaurus/blob/f37f9035584917a97a260b91fc2842cba4f8b94f/packages/docusaurus/src/server/configValidation.ts#L130-L131
+    heading id from <!-- #id -->:
+      https://github.com/facebook/docusaurus/blob/f37f9035584917a97a260b91fc2842cba4f8b94f/packages/docusaurus-mdx-loader/src/remark/headings/index.ts#L51-L60
+  @slorber/remark-comment 1.0.0 (installed index.js identical to
+  slorber/remark-comment 426dde74): a comment leaves a node in the tree
+  only with the `ast` option, which Docusaurus does not pass:
+      https://github.com/slorber/remark-comment/blob/426dde74a26d9d9adfe1a649d602366c46027350/index.js#L35-L60
+  mdast-util-to-hast 13.2.1 (174795b2): data.hProperties on an mdast node
+  is copied onto the element, tables included:
+      https://github.com/syntax-tree/mdast-util-to-hast/blob/174795b21f7757fffb54dd8d5fb4012f4751f791/lib/handlers/table.js#L60
+      https://github.com/syntax-tree/mdast-util-to-hast/blob/174795b21f7757fffb54dd8d5fb4012f4751f791/lib/state.js#L352-L382
+  Asciidoctor 2.0.23 (2c03d22e): table id and role on <table>:
+      https://github.com/asciidoctor/asciidoctor/blob/2c03d22eb9fe83d04ee452939581d1b842f6d8b4/lib/asciidoctor/converter/html5.rb#L856-L878
+  GFM spec: an HTML comment is an HTML block (type 2) that ends at -->;
+  a table ends at a blank line or another block:
+      https://github.github.com/gfm/#html-blocks
+      https://github.github.com/gfm/#tables-extension-
+
+Not verified
+- The MDX wrapper spelling with `class` instead of `className` was not
+  tried.
+- The Zensical preprocessor that adds a blank line after the comment
+  runs after fenced code is set aside at the top level (case 6); a
+  fenced block inside a list item that holds such a comment line was not
+  tried.
+- No CSS for table-compact was written; the probe shows only that the
+  class and id reach the <table>.
+
+Follow-up, same day: titles, and Zensical adds `table`
+(supersedes the extension line counts and the Zensical wide-table
+result above; everything else above still holds)
+
+Changes
+- Title: a table's title is a bold line above it (Template conventions).
+  The comment may sit above the title instead of directly above the
+  table, with or without a blank line between comment and title:
+      <!-- table: .table-compact #label-requirements -->
+      **Label requirements**
+
+      | Part of Label | Length in characters | ...
+  Each extension first looks at the block directly above the table; if
+  that is not the comment but a paragraph whose whole content is one bold
+  run, it looks at the block above that. Only one title is skipped; any
+  other block in between stops the search. Class and id go on the table,
+  never on the title.
+- Zensical: a table given a class by the comment also gets `table`
+  (unless named already), so the site's `table.table` rules give back
+  the theme's look and scroll box. The source names `.table-compact`
+  alone, the same in every tool.
+
+Method
+- A new copy of concepts/tables, made from the repository at 40da120
+  (with a45d898 and 94771c6 since: Makefile screenshot targets only), the
+  earlier patches applied, then the two changes. Baseline: a second,
+  unpatched copy at 94771c6, built and checked the same way.
+- Test page pipe-attrs gained cases 7-14:
+    7   comment, blank line, title, table            -> applies
+    8   comment directly above the title, table      -> applies
+    9   comment, normal paragraph, table             -> no change
+    10  title, table, no comment                     -> no change
+    11  comment, two titles, table                   -> no change
+    12  title, comment directly above the table      -> applies to the table
+    13  comment, title with more than bold text      -> no change
+    14  .table .table-compact (standard class named) -> no duplicate
+- metadata (Docusaurus native, Zensical native and native-plain,
+  Starlight native-plain): `<!-- table: #label-requirements -->` above
+  `**Label requirements**`.
+
+Extension size now
+  Docusaurus  plugins/table-attrs.js 44 lines (29 of code) + 1 config line
+              The parser drops comments, so the title is found in the tree
+              (paragraph with one strong child, ending on the line just
+              above the table) and the comment in the source above it.
+  Zensical    table_attrs.py 79 lines (46 of code) + 1 config line
+              The treeprocessor now runs after inline processing (priority
+              15, after `inline` at 20), when bold text is a <strong>
+              element and the comment is a raw-HTML placeholder at every
+              level (a block placeholder at the top level, an inline one
+              in a list item).
+  Starlight   table-attrs.mjs 45 lines (28 of code) + 2 config lines
+              Markdoc keeps the comment and the title as sibling nodes
+              of the table.
+
+Rendered <table> start tags, pipe-attrs (class and id order as emitted)
+  case  Docusaurus                       Zensical                               Starlight
+  1     table-compact / probe-one        table table-compact / probe-one        table-compact / probe-one
+  2     table-compact table-striped      table table-compact table-striped      as Docusaurus
+  3     (none)                           (none)                                 (none)
+  4     table-compact / probe-four       table table-compact / probe-four       table-compact / probe-four
+  5     (none)                           (none)                                 (none)
+  7     table-compact / probe-seven      table table-compact / probe-seven      table-compact / probe-seven
+  8     table-compact / probe-eight      table table-compact / probe-eight      table-compact / probe-eight
+  9     (none)                           (none)                                 (none)
+  10    (none)                           (none)                                 (none)
+  11    (none)                           (none)                                 (none)
+  12    table-compact / probe-twelve     table table-compact / probe-twelve     table-compact / probe-twelve
+  13    (none)                           (none)                                 (none)
+  14    table table-compact / fourteen   table table-compact / fourteen         table table-compact / fourteen
+  In all three: no element other than a <table> carries a probe id; the
+  six bold-only titles render unchanged as <p><strong>…</strong></p>.
+  GitHub (Markdown API, gfm): 13 tables, comments hidden, titles bold.
+
+metadata, Label requirements
+  Docusaurus native, Zensical native and native-plain, Starlight
+  native-plain: <table id="label-requirements">; the bold title line is
+  kept (spot check "title shown" passes); the other two tables unchanged.
+
+Spot checks, all modes (Docusaurus passthrough, extension, native;
+Zensical and Starlight passthrough-raw, passthrough, extension, native,
+native-plain)
+  Docusaurus  49 / 49 / 49
+  Zensical    46 / 51 / 51 / 51 / 51
+  Starlight   41 / 51 / 51 / 51 / 51
+  The checks now also list the four bosh.io pages (5de50e2), which the
+  sites do not have yet, so many FAIL lines print. The ok counts and
+  every FAIL line are identical to the unpatched copy's (Docusaurus 129,
+  Zensical 206, Starlight 211 FAIL lines in both).
+
+Wide tables (1280 and 390 px; checks/wide-tables.mjs with its page list
+taken from the environment)
+  roles-table-host and metadata, all modes:
+    Docusaurus 24, Zensical 32, Starlight 32 passed; 0 failed
+  pipe-attrs: Docusaurus 26, Zensical 26, Starlight 26 passed; 0 failed
+    (Zensical was 4 passed, 6 failed before `table` was added)
+  roles table in Zensical native given `.table-compact` alone (tried,
+  then reverted): <table class="table table-compact"
+    id="oss-roles-permissions">, 2 passed, 0 failed
+
+Code references added (pinned)
+  Python-Markdown 3.11 (0ffbf00c)
+    inline HTML (a comment inside a list item) goes to the same stash:
+      https://github.com/Python-Markdown/markdown/blob/0ffbf00cf667971d46f43aafba825e8d25098bc5/markdown/inlinepatterns.py#L555-L561
+    inline processing runs at treeprocessor priority 20:
+      https://github.com/Python-Markdown/markdown/blob/0ffbf00cf667971d46f43aafba825e8d25098bc5/markdown/treeprocessors.py#L42
+
+Other pages
+  Every <table> on every page built in both copies compared (cmp-tables.py):
+  the only differences are the roles tables and the Label requirements
+  tables named above (Docusaurus 2, Zensical 4, Starlight 2 pages), and
+  each is identical to the unpatched build apart from its id.

@@ -11,7 +11,7 @@ module.exports = {
     ['classic', {
       docs: {
         routeBasePath: '/',
-        beforeDefaultRemarkPlugins: [require('./plugins/list-table')],
+        beforeDefaultRemarkPlugins: [require('./plugins/list-table'), require('./plugins/table-attrs')],
         // Raw passthrough pages are kept as evidence; build them with RAW=1.
         exclude: [
           '**/_*.{js,jsx,ts,tsx,md,mdx}', '**/_*/**', '**/*.test.{js,jsx,ts,tsx}', '**/__tests__/**',

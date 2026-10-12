@@ -1,3 +1,4 @@
+<!-- table: #oss-roles-permissions -->
 | Activity | Admin | Admin Read-Only | Global Auditor | Org Manager | Org Auditor | Org Billing Manager | Org User | Space Manager | Space Developer | Space Auditor | Space Supporter |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Scope of operation | Org | Org | Org | Org | Org | Org | Org | Space | Space | Space | Space |

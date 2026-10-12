@@ -122,5 +122,9 @@ other than left/center/right per column, row headers, captions, ids, or spanning
 rows. A title row becomes a bold line above the table. A pipe table needs a blank
 line before it.
 
+A pipe table takes a class and an id from `<!-- table: .name #id -->` on the
+line above it, or above its bold title line; `plugins/table-attrs.js` reads it
+from the page source, since MDX drops comments.
+
 A cell can hold a linked image, `[![alt](./images/x.png)](./images/x.png)`;
 the build copies both targets into its assets.

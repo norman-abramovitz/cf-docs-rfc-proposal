@@ -54,6 +54,7 @@ The following tables describe requirements for creating metadata.
 The following table describes the requirements for creating labels:
 
 
+<!-- table: #label-requirements -->
 **Label requirements**
 
 | Part of Label | Length in characters | Allowed characters | Other Requirements |

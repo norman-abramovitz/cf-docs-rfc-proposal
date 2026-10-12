@@ -267,8 +267,11 @@ Conversions drop that markup and rely on the template instead:
   apart from column headers and body cells.
 - **Every HTML table names its style with a class.** `class="table"` is the
   standard style, the one most tables use; a conversion adds it to a table
-  that has no class. A Markdown table cannot carry a class, so it gets the
-  standard style; another style needs the extension. `table-media`, an
+  that has no class. A Markdown pipe table names a class, and an id, in an
+  HTML comment on the line above it or above its title,
+  `<!-- table: .table-compact #id -->`, which a small extension reads in
+  each tool (results, "Classes and ids on pipe tables"); without it, it
+  gets the standard style. `table-media`, an
   image grid, is the example of a second style; each site's
   `CONVENTIONS.md` shows how it is added. Which further styles to
   support (candidates: compact, boxed, plain, striped) is decided from the

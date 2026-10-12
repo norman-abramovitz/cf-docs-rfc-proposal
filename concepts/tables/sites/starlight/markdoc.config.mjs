@@ -1,10 +1,11 @@
 import {defineMarkdocConfig, component} from '@astrojs/markdoc/config';
 import vars from './vars.json' with {type: 'json'};
 import {table} from './list-table.mjs';
+import {document} from './table-attrs.mjs';
 
 export default defineMarkdocConfig({
   variables: {vars},
-  nodes: {table},
+  nodes: {table, document},
   tags: {
     // {% rawhtml value=$vars.route_services /%}
     rawhtml: {render: component('./src/components/RawHtml.astro'), attributes: {value: {type: String}}, selfClosing: true},

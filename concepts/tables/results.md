@@ -29,7 +29,7 @@ table syntax carries, and how much the rest of the page has to change.
 | **Spot checks after cleanup** (seven pages; 36 before `uaa-performance`, 42 before `_oss_roles_table`) | 49/51 in every mode (the two misses are page descriptions, not tables) | 51/51 in every mode | 51/51 in every mode | 51/51 in every mode |
 | **Own table syntax carries** | a header row and each column's horizontal alignment (pipe tables) | widths on header cells, horizontal alignment | widths, horizontal alignment, lists and paragraphs in cells, spanning cells | widths, row headers, horizontal and vertical alignment, lists and paragraphs in cells, spanning cells |
 | **Extension for the rest** | remark plugin | Python-Markdown block | attributes on Markdoc's table tag (85 lines) | none: roles on the table plus CSS |
-| **A second style** (`table-media`) | a class on the list-table directive, `{.table-media}`; a pipe table cannot take one | the list-table block's `style` option; a pipe table cannot take one | Markdoc's class shorthand, `{% table .table-media %}`, which the native table tag takes too | a role, `[.table-media]`: plain AsciiDoc |
+| **A second style** (`table-media`) | a class on the list-table directive, `{.table-media}`; a pipe table takes one only through the table comment (2026-10-12) | the list-table block's `style` option; a pipe table takes one only through the table comment (2026-10-12) | Markdoc's class shorthand, `{% table .table-media %}`, which the native table tag takes too | a role, `[.table-media]`: plain AsciiDoc |
 | **Wide tables** (wider than the column) | scroll in their own box: the theme shows every table as a block that scrolls | scroll in their own box: the theme's wrapper around Markdown tables; the site's `table.table` rule copies the theme's scrolling | scroll in their own box: the theme shows every table as a block that scrolls | the page widened; a short script in the site's UI files now puts each table in a box that scrolls |
 | **Variables** | one import per page; HTML values escaped | ERB form kept as written | `{% $vars.name %}`; HTML values escaped | `{name}` attributes |
 
@@ -160,7 +160,7 @@ Site: [sites/docusaurus/](sites/docusaurus/) — conventions:
 | | native | yes | preserved, `<br /><br />` kept | none (27/30/43, 25/74) | pipe table |
 | `_oss_roles_table` (added 2026-10-12) | passthrough | yes; the source compiles unchanged; only the intent cleanup (two empty markers) and `class="table"` | preserved; id kept | header row; scrolls in its own box (the theme's block table), laid out at its narrowest: 1053 pixels in 703, every activity wrapping to its longest word | HTML, one cell per line |
 | | extension | yes; the list-table plugin now passes `{#id}` to the table | preserved; id kept | header row, row headers, roles, top alignment; the same narrowest layout (1060 pixels) | list-table, 12 lines per row |
-| | native | yes | preserved except the id: a pipe table cannot carry one | header row; the same narrowest layout | pipe table, rows up to 377 characters; markers as inline `<sup><strong>` |
+| | native | yes | preserved except the id: a pipe table cannot carry one (since 2026-10-12 the table comment keeps it: [classes and ids](#classes-and-ids-on-pipe-tables)) | header row; the same narrowest layout | pipe table, rows up to 377 characters; markers as inline `<sup><strong>` |
 
 ### Width variants for `troubleshooting_slow_requests`
 
@@ -354,7 +354,7 @@ Site: [sites/zensical/](sites/zensical/) — conventions:
 | | native | yes | preserved, `<br /><br />` kept | widths through header-cell attributes | pipe table |
 | `_oss_roles_table` (added 2026-10-12) | passthrough | yes; `class="table"` and the two empty markers removed (intent cleanup) | preserved; id kept | header row; scrolls in its own box (`table.table` itself); 12 equal columns of 100 pixels | HTML |
 | | extension | yes | preserved; markers `^N^`, not bold (finding 9); the id lands on the wrapper `div` | header row, row headers, roles as classes; scrolls in the theme's wrapper; equal columns | list-table, one item per cell (a 565-line block) |
-| | native | yes | preserved; markers `^N^`; no id (a pipe table cannot carry one) | header row; scrolls in the theme's wrapper; equal columns | pipe table, about 140-character rows of mostly empty cells |
+| | native | yes | preserved; markers `^N^`; no id (a pipe table cannot carry one (since 2026-10-12 the table comment keeps it: [classes and ids](#classes-and-ids-on-pipe-tables))) | header row; scrolls in the theme's wrapper; equal columns | pipe table, about 140-character rows of mostly empty cells |
 | | native-plain | yes (the same file as native: the source sets no widths) | as native | as native | as native |
 
 ### Column widths
@@ -593,7 +593,7 @@ wide.
 | `_oss_roles_table` (added 2026-10-12) | passthrough | yes; `class="table"` and the two empty markers removed (intent cleanup); nothing forced by Markdoc | preserved; id kept; markers as superscripts | header row; scrolls in its own box (the table itself), laid out at its narrowest: 1087 pixels in 632, 5461 tall | HTML |
 | | extension | yes; `list-table.mjs` now passes the id through | preserved; id kept; markers as inline `<sup>` HTML | row headers, roles; the same narrowest layout (1092 pixels) | Markdoc table, 12 `*` lines per row, `<!-- -->` for empty cells |
 | | native | yes | preserved; id kept through `{% table #… %}` | header row only; the same narrowest layout | Markdoc table, long |
-| | native-plain | yes | preserved except the id: a pipe table cannot carry one | none; the same widths | pipe table, one line per row |
+| | native-plain | yes | preserved except the id: a pipe table cannot carry one (since 2026-10-12 the table comment keeps it: [classes and ids](#classes-and-ids-on-pipe-tables)) | none; the same widths | pipe table, one line per row |
 
 ### Column widths
 
@@ -1157,3 +1157,81 @@ The change is one rule for the floor and one for the shadow in each site's
 `hints.css` (Docusaurus, Zensical, Starlight, Antora); no page changes and
 no script. Screenshots before and after, extension and native mode:
 `results/<tool>-roles-<mode>-before.png` and `-after.png`.
+
+## Classes and ids on pipe tables
+
+Checked on 2026-10-12. Method and measurements:
+[classes-ids-on-pipe-tables-2026-10-12.txt](results/classes-ids-on-pipe-tables-2026-10-12.txt).
+
+No tool attaches a class or an id to a Markdown pipe table natively. One
+HTML comment, written the same way in every tool, does it with a small
+extension:
+
+```markdown
+<!-- table: .table-compact #label-requirements -->
+**Label requirements**
+
+| Part of Label | Length in characters | Allowed characters | Other Requirements |
+| --- | --- | --- | --- |
+```
+
+`.name` adds a class (several allowed) and `#name` sets the id. The
+comment sits in the block just above the table, or just above the
+table's title (a paragraph that is one bold run); a blank line in
+between is optional. Only one title is skipped, and any other block in
+between stops it. Class and id go on the `<table>`, never on the title.
+On GitHub the comment is hidden and the table renders as before; an
+attribute line such as `{.table-compact}` would show as an extra row
+after the table or as text before it.
+
+- **Docusaurus** (MDX 3.1.1, remark-gfm 4.0.1). `{...}` next to a table
+  is a JavaScript expression and fails to parse. HTML comments are
+  accepted but dropped from the tree: Docusaurus parses them with a fork
+  of remark-comment
+  ([processor.ts L86-L87, L152](https://github.com/facebook/docusaurus/blob/f37f9035584917a97a260b91fc2842cba4f8b94f/packages/docusaurus-mdx-loader/src/processor.ts#L86-L87),
+  on by default:
+  [configValidation.ts L130-L131](https://github.com/facebook/docusaurus/blob/f37f9035584917a97a260b91fc2842cba4f8b94f/packages/docusaurus/src/server/configValidation.ts#L130-L131)),
+  which keeps a node only with an `ast` option Docusaurus does not pass
+  ([index.js L35-L60](https://github.com/slorber/remark-comment/blob/426dde74a26d9d9adfe1a649d602366c46027350/index.js#L35-L60)).
+  The extension, a remark plugin of 44 lines, finds the title in the tree
+  and reads the comment from the page source, then sets the table's
+  `hProperties`, which reach the `<table>`
+  ([state.js L352-L382](https://github.com/syntax-tree/mdast-util-to-hast/blob/174795b21f7757fffb54dd8d5fb4012f4751f791/lib/state.js#L352-L382)).
+- **Zensical** (Python-Markdown 3.11). A `{: }` line after a table
+  becomes a row, since every line of the block is one
+  ([tables.py L87-L107](https://github.com/Python-Markdown/markdown/blob/0ffbf00cf667971d46f43aafba825e8d25098bc5/markdown/extensions/tables.py#L87-L107));
+  attribute lists reach cells, not the table
+  ([attr_list.py L103-L154](https://github.com/Python-Markdown/markdown/blob/0ffbf00cf667971d46f43aafba825e8d25098bc5/markdown/extensions/attr_list.py#L103-L154)).
+  The extension (79 lines) reads the comment from the raw-HTML stash
+  after inline processing. A table given a class also gets `table`: the
+  theme styles and wraps only tables without a class
+  ([`_typeset.scss` L486-L490](https://github.com/zensical/ui/blob/5d58e34f4240394d78ab89d149fdb3437151bac1/src/assets/stylesheets/modern/main/_typeset.scss#L486-L490)),
+  and the site's `table.table` rules give the look and the scroll box
+  back. Without it, classed tables lost both (the page widened); with it,
+  every wide-table check passes. The comment stays in the HTML output as
+  a comment.
+- **Starlight** (Markdoc 0.5.10). An annotation line beside a pipe table
+  is an error, "Can't apply inline annotations to 'document'"
+  ([parser.ts L118-L125](https://github.com/markdoc/markdoc/blob/16e1840c687e17c57d2b3664eac4edfbd01e7283/src/parser.ts#L118-L125));
+  in a header cell it lands on that cell. Astro turns comments into
+  nodes
+  ([tokenizer.ts L11-L15](https://github.com/withastro/astro/blob/3571e2d2e80a66764254fa9b7750704a150ca3f6/packages/integrations/markdoc/src/tokenizer.ts#L11-L15)),
+  so the comment and the title are sibling nodes of the table. The
+  extension, a document transform of 45 lines, copies class and id to
+  the table node, which renders the global `class` and `id`
+  ([transformer.ts L17-L19](https://github.com/markdoc/markdoc/blob/16e1840c687e17c57d2b3664eac4edfbd01e7283/src/transformer.ts#L17-L19)).
+- **Antora.** AsciiDoc has no pipe tables; a GFM pipe table renders as a
+  paragraph. Its own table takes both in the block attributes,
+  `[.table-compact#label-requirements]`
+  ([html5.rb L856-L878](https://github.com/asciidoctor/asciidoctor/blob/2c03d22eb9fe83d04ee452939581d1b842f6d8b4/lib/asciidoctor/converter/html5.rb#L856-L878)),
+  and the roles table already keeps its id.
+- **Without an extension**, an HTML `<div>` around the pipe table can
+  carry the class and id in all three tools, but on the wrapper, and
+  spelled differently in each (`className` in MDX, a `markdown`
+  attribute in Zensical).
+
+With the extensions, the native roles table keeps
+`id="oss-roles-permissions"` and the `metadata` Label requirements
+table gets `id="label-requirements"` in Docusaurus, Zensical and
+Starlight; nothing else on any page changes. Spot checks and wide-table
+checks give the same results as before.
