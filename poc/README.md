@@ -119,9 +119,12 @@ conversion tool to apply later
 
 ### Tables
 
-The tables concept is done, with open items. Input and output side by
-side, page by page:
-[tables.md](tables.md). Full grids, measurements and findings:
+The tables concept is done, with open items. Input and output, page by
+page: [tables.md](tables.md). Each table as published next to the four
+tools' output, side by side, in the mode you pick:
+[comparison](compare/index.html). The table families from the survey,
+with candidate styles: [table families](examples/index.html). Full
+grids, measurements and findings:
 [results.md](../concepts/tables/results.md#summary).
 
 What the round found:

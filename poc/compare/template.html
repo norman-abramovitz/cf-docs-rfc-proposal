@@ -1,0 +1,147 @@
+<title>Table Conversion Comparison</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a sticky control bar, then one section per test page; each table is a row of screenshots, published first, then one per tool. */
+:root {
+  --bg: #f6f8f9; --surface: #ffffff; --fg: #18232b; --muted: #5b6b76; --line: #d7dfe4;
+  --accent: #0b6e8a; --accent-soft: #e2f0f4; --pub: #6a5a12; --pub-soft: #f6efcf; --loss: #9a3412; --loss-soft: #fbe6dc;
+  --sans: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #11181d; --surface: #182229; --fg: #e3eaee; --muted: #93a4ae; --line: #2b3a44;
+  --accent: #5cc0dc; --accent-soft: #163541; --pub: #e3cb6a; --pub-soft: #3a3418; --loss: #f4a07a; --loss-soft: #3d2216; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #11181d; --surface: #182229; --fg: #e3eaee; --muted: #93a4ae; --line: #2b3a44;
+  --accent: #5cc0dc; --accent-soft: #163541; --pub: #e3cb6a; --pub-soft: #3a3418; --loss: #f4a07a; --loss-soft: #3d2216; color-scheme: dark }
+* { box-sizing: border-box }
+body { background: var(--bg); color: var(--fg); font: 15px/1.55 var(--sans); padding-inline: 16px; padding-block: 0 48px; margin: 0 }
+.wrap { max-width: 1840px; margin: 0 auto }
+a { color: var(--accent) }
+code { font-family: var(--mono); font-size: .88em; background: var(--accent-soft); padding: 0 .3em; border-radius: 3px }
+.intro { padding-block: 28px 8px; display: grid; gap: 10px; max-width: 80ch }
+.intro h1 { font-size: 1.75rem; line-height: 1.2; margin: 0; font-weight: 600; text-wrap: balance }
+.intro p { margin: 0; color: var(--muted) }
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line);
+  padding-block: 10px; display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center }
+.ctl { display: flex; align-items: center; gap: 8px; flex-wrap: wrap }
+.ctl-label { font: 500 .72rem var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted) }
+.seg { display: inline-flex; flex-wrap: wrap; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: var(--surface) }
+.seg button { font: 500 .88rem var(--sans); color: var(--fg); background: none; border: 0; padding: 7px 12px; cursor: pointer; min-height: 36px }
+.seg button + button { border-left: 1px solid var(--line) }
+.seg button[aria-pressed="true"] { background: var(--accent); color: var(--surface) }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px }
+.mode-desc { color: var(--muted); font-size: .88rem; flex: 1 1 100%; margin: 0; max-width: 120ch }
+html { scroll-padding-top: var(--bar-h, 12rem) }
+.nav { display: flex; flex-wrap: wrap; gap: 4px 14px; font-family: var(--mono); font-size: .82rem; flex: 1 1 100% }
+.page { padding-block: 34px 6px; display: grid; gap: 22px }
+.page-head h2 { font: 600 1.3rem var(--mono); margin: 0; overflow-wrap: anywhere }
+.meta { margin: 2px 0 0; color: var(--muted); font-size: .9rem }
+.pair { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 16px; display: grid; gap: 14px; min-width: 0 }
+.pair-head { display: grid; gap: 6px }
+.pair-head h3 { margin: 0; font-size: 1.02rem; font-weight: 600 }
+.tno { font: 500 .78rem var(--mono); color: var(--muted); letter-spacing: .04em; text-transform: uppercase; margin-right: .4em }
+.note { margin: 0; color: var(--muted); font-size: .92rem; max-width: 110ch }
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; align-items: start }
+figure { margin: 0; display: grid; gap: 6px; min-width: 0 }
+figure[hidden] { display: none }
+figcaption { font-size: .82rem; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px; align-items: center }
+.tag { font: 500 .7rem var(--mono); text-transform: uppercase; letter-spacing: .05em; padding: 2px 7px; border-radius: 4px }
+.tag.pub { background: var(--pub-soft); color: var(--pub) }
+.tag.conv { background: var(--accent-soft); color: var(--accent) }
+.mode-name { font-family: var(--mono) }
+.shot { display: block; border: 1px solid var(--line); border-radius: 4px; overflow: auto; background: #fff; max-height: 80vh }
+/* Fit: a screenshot shrinks to its column. Actual size: it keeps its pixels and the box scrolls both ways. */
+.shot img { display: block; width: 100%; height: auto }
+.size-actual .shot img { width: auto; max-width: none }
+.hint { color: var(--muted); font-size: .85rem; margin: 0 }
+.gaps { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 16px 18px; margin-block: 18px 6px; display: grid; gap: 10px }
+.gaps h2 { font-size: 1.05rem; margin: 0; font-weight: 600 }
+.gaps p { margin: 0; color: var(--muted); font-size: .92rem; max-width: 100ch }
+.tbl { overflow-x: auto }
+.gaps table { border-collapse: collapse; font-size: .88rem; min-width: 760px; width: 100% }
+.gaps th, .gaps td { border-top: 1px solid var(--line); padding: 7px 10px; text-align: left; vertical-align: top }
+.gaps thead th { font: 500 .74rem var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--muted); border-top: 0 }
+.gaps tbody th { font-weight: 500; width: 22% }
+.loss { color: var(--loss); background: var(--loss-soft); border-radius: 3px; padding: 0 .3em }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth } }
+</style>
+
+<div class="wrap">
+  <header class="intro">
+    <h1>Published tables next to four converted versions</h1>
+    <p>The five test pages from the Docs WG lead, table by table. First: the page as published on docs.cloudfoundry.org today. Then the same table built with Docusaurus, Zensical, Starlight, and Antora in the mode you pick. All are screenshots at a 1280-pixel browser window with each tool’s default theme; colors and fonts belong to the theme and are not compared. Under Size, Fit shrinks each screenshot to its column and Actual size shows it pixel for pixel in a box that scrolls sideways and down. Click a screenshot to open it full size, or hide tools under Show to make the rest larger.</p>
+  </header>
+
+  <section class="gaps" aria-labelledby="gaps-h">
+    <h2 id="gaps-h">What the converted pages leave out or change, outside the tables</h2>
+    <p>A word-by-word comparison of each page’s main text against the published page, in every mode. The tables themselves match apart from the decided fixes (backslashes removed, title moved above the table).</p>
+    <div class="tbl"><table>
+      <thead><tr><th scope="col">Difference</th><th scope="col">Docusaurus</th><th scope="col">Zensical</th><th scope="col">Starlight</th><th scope="col">Antora</th></tr></thead>
+      <tbody>
+        <tr><th scope="row"><code>Accept: */*</code> in terminal output (troubleshooting)</th><td><span class="loss">shows as <code>Accept: /</code></span>: MDX reads <code>*/*</code> as emphasis</td><td>kept</td><td><span class="loss">shows as <code>Accept: /</code></span>, as in Docusaurus</td><td>kept (the block stays raw HTML)</td></tr>
+        <tr><th scope="row">Terminal blocks (<code>&lt;pre class="terminal"&gt;</code>)</th><td>split into paragraphs inside the block</td><td>one block inside a list item split into paragraphs; no characters lost</td><td>one block loses a blank line and its indentation</td><td>unchanged</td></tr>
+        <tr><th scope="row">Other prose</th><td>matches</td><td><span class="loss">three literal <code>*</code></span>: a list right after a text line, with no blank line, stays text</td><td>matches, after the passthrough rewrites (without them spaces are lost: “passwordrefers”)</td><td>matches, after the page is rewritten as AsciiDoc</td></tr>
+        <tr><th scope="row">Quotes</th><td>straight (published: curly)</td><td>straight</td><td>straight</td><td>curly in AsciiDoc text, straight inside HTML blocks</td></tr>
+        <tr><th scope="row">“Page last updated” line and GitHub link</th><td colspan="4">not reproduced by any site; each tool has options for them, these test sites leave them off</td></tr>
+        <tr><th scope="row">Section links at the top of the page</th><td colspan="4">moved to each theme’s own “On this page” list</td></tr>
+        <tr><th scope="row">Scale table</th><td colspan="4">shown in a small host page, not in the rest of <code>high-availability</code> (by design)</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <div class="bar">
+    <div class="ctl"><span class="ctl-label" id="mode-l">Mode</span>
+      <div class="seg" role="group" aria-labelledby="mode-l" id="modes">{{MODE_BUTTONS}}</div></div>
+    <div class="ctl"><span class="ctl-label" id="tool-l">Show</span>
+      <div class="seg" role="group" aria-labelledby="tool-l" id="tools">{{TOOL_BUTTONS}}</div></div>
+    <div class="ctl"><span class="ctl-label" id="size-l">Size</span>
+      <div class="seg" role="group" aria-labelledby="size-l" id="sizes"><button type="button" data-size="fit">Fit</button><button type="button" data-size="actual">Actual size</button></div></div>
+    <p class="mode-desc" id="mode-desc"></p>
+    <nav class="nav" aria-label="Pages">{{NAV}}</nav>
+  </div>
+
+{{SECTIONS}}
+</div>
+
+<script>
+(() => {
+  const desc = {{DESC}};
+  const store = { get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+                  set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} } };
+  let mode = store.get('tcc-mode') || 'passthrough';
+  if (!desc[mode]) mode = 'passthrough';
+  let hidden = new Set((store.get('tcc-hidden') || '').split(',').filter(Boolean));
+  let size = store.get('tcc-size') === 'actual' ? 'actual' : 'fit';
+  function render() {
+    document.querySelectorAll('#modes button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.mode === mode)));
+    document.querySelectorAll('#tools button').forEach(b => b.setAttribute('aria-pressed', String(!hidden.has(b.dataset.tool))));
+    document.querySelectorAll('#sizes button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.size === size)));
+    document.body.classList.toggle('size-actual', size === 'actual');
+    document.getElementById('mode-desc').innerHTML = desc[mode];
+    document.querySelectorAll('figure[data-tool]').forEach(f => {
+      const tool = f.dataset.tool, pair = f.closest('.pair');
+      // Docusaurus native is already plain pipe tables.
+      const m = tool === 'docusaurus' && mode === 'native-plain' ? 'native' : mode;
+      const file = `img/${tool}-${m}-${pair.dataset.page}-t${pair.dataset.table}.jpg`;
+      const img = f.querySelector('img'), link = f.querySelector('a');
+      if (!img.src.endsWith(file)) { img.src = file; link.href = file; }
+      f.querySelector('.mode-name').textContent = m === mode ? mode : `${m} (pipe tables)`;
+      f.hidden = hidden.has(tool);
+    });
+  }
+  document.querySelectorAll('#modes button').forEach(b => b.addEventListener('click', () => { mode = b.dataset.mode; store.set('tcc-mode', mode); render(); }));
+  document.querySelectorAll('#sizes button').forEach(b => b.addEventListener('click', () => { size = b.dataset.size; store.set('tcc-size', size); render(); }));
+  document.querySelectorAll('#tools button').forEach(b => b.addEventListener('click', () => {
+    const t = b.dataset.tool; hidden.has(t) ? hidden.delete(t) : hidden.add(t);
+    store.set('tcc-hidden', [...hidden].join(',')); render();
+  }));
+  // Jump links land below the sticky bar, so each page and table title stays visible.
+  const bar = document.querySelector('.bar');
+  const pad = () => document.documentElement.style.setProperty('--bar-h', bar.offsetHeight + 12 + 'px');
+  new ResizeObserver(pad).observe(bar); pad();
+  render();
+})();
+</script>

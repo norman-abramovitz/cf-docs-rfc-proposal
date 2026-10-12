@@ -1,0 +1,164 @@
+<title>CF Docs Table Families</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: an intro, a family index, one section per family with published screenshots, then candidate styles side by side on four tables. */
+:root {
+  --bg: #f6f8f9; --surface: #ffffff; --fg: #18232b; --muted: #5b6b76; --line: #d7dfe4;
+  --accent: #0b6e8a; --accent-soft: #e2f0f4; --pub: #6a5a12; --pub-soft: #f6efcf;
+  --sans: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #11181d; --surface: #182229; --fg: #e3eaee; --muted: #93a4ae; --line: #2b3a44;
+  --accent: #5cc0dc; --accent-soft: #163541; --pub: #e3cb6a; --pub-soft: #3a3418; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #11181d; --surface: #182229; --fg: #e3eaee; --muted: #93a4ae; --line: #2b3a44;
+  --accent: #5cc0dc; --accent-soft: #163541; --pub: #e3cb6a; --pub-soft: #3a3418; color-scheme: dark }
+* { box-sizing: border-box }
+body { background: var(--bg); color: var(--fg); font: 15px/1.55 var(--sans); padding-inline: 16px; padding-block: 0 48px; margin: 0 }
+.wrap { max-width: 1840px; margin: 0 auto; display: grid; gap: 26px }
+a { color: var(--accent) }
+code { font-family: var(--mono); font-size: .88em; background: var(--accent-soft); padding: 0 .3em; border-radius: 3px }
+.intro { padding-block: 28px 0; display: grid; gap: 10px; max-width: 80ch }
+.intro h1 { font-size: 1.75rem; line-height: 1.2; margin: 0; font-weight: 600; text-wrap: balance }
+.intro p { margin: 0; color: var(--muted) }
+.box { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 16px 18px; display: grid; gap: 12px; min-width: 0 }
+h2 { font-size: 1.3rem; margin: 0; font-weight: 600; text-wrap: balance }
+h3 { font-size: 1.02rem; margin: 0; font-weight: 600 }
+.box > p, .lead { margin: 0; color: var(--muted); max-width: 100ch }
+.tbl { overflow-x: auto }
+.idx { border-collapse: collapse; font-size: .9rem; width: 100%; min-width: 640px }
+.idx th, .idx td { border-top: 1px solid var(--line); padding: 7px 10px; text-align: left; vertical-align: top }
+.idx thead th { font: 500 .74rem var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--muted); border-top: 0 }
+.idx td.n { font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap }
+.fam { display: grid; gap: 14px; scroll-margin-top: 12px }
+.fam-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px }
+.count { font: 500 .8rem var(--mono); color: var(--muted) }
+.shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; align-items: start }
+figure { margin: 0; display: grid; gap: 6px; min-width: 0 }
+figcaption { font-size: .85rem; color: var(--muted); display: grid; gap: 2px }
+figcaption b { color: var(--fg); font-weight: 500 }
+.links { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: .82rem }
+.shot { display: block; border: 1px solid var(--line); border-radius: 4px; overflow: auto; background: #fff; max-height: 70vh }
+/* Screenshots show at actual size; a box scrolls both ways when the table is wider or taller than it. */
+.shot img { display: block; width: auto; max-width: none; height: auto }
+.tag { font: 500 .7rem var(--mono); text-transform: uppercase; letter-spacing: .05em; padding: 2px 7px; border-radius: 4px; background: var(--accent-soft); color: var(--accent); justify-self: start }
+.tag.pub { background: var(--pub-soft); color: var(--pub) }
+ul.notes { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; max-width: 110ch }
+pre { margin: 0; font: .82rem/1.5 var(--mono); background: var(--accent-soft); padding: 10px 12px; border-radius: 6px; overflow-x: auto }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth } }
+</style>
+
+<div class="wrap">
+  <header class="intro">
+    <h1>Every kind of table in the Cloud Foundry docs, as published</h1>
+    <p>The survey counted 241 tables in the docs and tutorial repos and sorted them into families by what they hold. Below are real examples of each family, screenshotted from docs.cloudfoundry.org at a 1280-pixel window. The last section shows four of them in each candidate style (standard, compact, striped, plain), so the styles can be judged on real content.</p>
+    <p>All 198 book tables look the same today: full width, cell borders, a shaded header, a row highlight on hover, no stripes. bosh.io (40 pipe tables) uses its own theme and is analyzed separately.</p>
+  </header>
+
+  <section class="box" aria-labelledby="idx-h">
+    <h2 id="idx-h">Families</h2>
+    <div class="tbl"><table class="idx">
+      <thead><tr><th scope="col">Family</th><th scope="col">Tables</th><th scope="col">HTML / pipe</th><th scope="col">What they hold</th></tr></thead>
+      <tbody id="idx"></tbody>
+    </table></div>
+    <p>Long reference tables cut across the first two families: 14 tables have 15 or more body rows, up to 59. The counts include bosh.io's 40 tables; every example is from docs.cloudfoundry.org.</p>
+  </section>
+
+  <div id="fams" class="wrap"></div>
+
+  <section class="box" id="styles" aria-labelledby="styles-h">
+    <h2 id="styles-h">Candidate styles on real tables</h2>
+    <p>Each candidate is a few lines of CSS added to the published page for the screenshot. They are mock-ups to compare looks, not the final rules, and they sit on the published site's theme, not on any of the four tools' themes.</p>
+    <pre>compact  td, th { padding: 2px 6px; font-size: .85em; line-height: 1.3 }
+striped  tbody tr:nth-child(even) td { background: #e9eef2 }   (borders kept)
+plain    no cell borders; a rule under the header and a hairline between rows; header not shaded</pre>
+    <div id="cands" style="display:grid;gap:22px"></div>
+  </section>
+
+  <section class="box" aria-labelledby="obs-h">
+    <h2 id="obs-h">What the screenshots show</h2>
+    <ul class="notes">
+      <li><b>Compact</b> pays off on long tables: the 59-row metrics table goes from 7,639 to 4,781 pixels tall (−37%), the 21-row key-value table from 987 to 751 (−24%).</li>
+      <li>On the 12-column roles matrix, compact cuts the height by 27% but the table also narrows to fit its content (875 → 727 pixels), so the <b>Activity</b> column wraps to as many as seven lines. This table needs the key column kept wide (the existing <code>key</code> role and <code>wrap: avoid</code> hints) more than it needs less padding.</li>
+      <li><b>Striped</b> adds little on top of cell borders, which already separate rows. It helps most on the wide matrix, where the eye follows a row across 12 columns.</li>
+      <li><b>Plain</b> suits the media grid: the charts read as a grid of figures rather than as data cells. Compact makes no difference there, since the images set the size.</li>
+      <li>The two titled tables are the <code>metadata</code> tables already in the test pages; the title becomes a bold line above the table.</li>
+    </ul>
+  </section>
+</div>
+
+<script>
+(() => {
+  const PUB = 'https://docs.cloudfoundry.org/';
+  const GH = 'https://github.com/cloudfoundry/';
+  const fams = [
+    { id: 'key-value', name: 'Key-value reference', count: 127, split: '51 / 76',
+      holds: 'Two columns: a name, value or command, and its description. Code in the first column in 73 of them.',
+      ex: [
+        ['kv1', 'CredHub credential types', 'credhub/credential-types.html', 'docs-credhub/blob/21b0448736435cec0f5a1491e0b40bda9c4307eb/credential-types.html.md.erb#L17', '7 rows; one of the test pages'],
+        ['kv2', 'Environment variable attributes', 'devguide/deploy-apps/environment-variable.html', 'docs-dev-guide/blob/9c8df63eb3823011e4e3aff9958c36e25d5190b7/deploy-apps/environment-variable.html.md.erb#L255', '21 rows; pipe table'],
+      ] },
+    { id: 'reference', name: 'Reference, 3–4 columns', count: 79, split: '49 / 30',
+      holds: 'A name and two or three columns of description, values or examples.',
+      ex: [
+        ['ref1', 'Quota plan settings', 'adminguide/quota-plans.html', 'docs-cf-admin/blob/13826fa7d93eee66902c4a2187a96b884137b58a/quota-plans.html.md.erb#L28', '14 rows, 4 columns'],
+      ] },
+    { id: 'long', name: 'Long reference (cross-cutting)', count: 14, split: '—',
+      holds: 'Key-value or reference tables with 15 or more body rows: metrics lists, CLI changes, UAA settings.',
+      ex: [
+        ['long1', 'Cloud Controller metrics', 'running/all_metrics.html', 'docs-running-cf/blob/956acc86445d2f3cb29f031294f86f37f515b471/metrics/_cloud_controller.html.md.erb#L10', '59 rows, 3 columns; a partial'],
+        ['long2', 'Diego metrics', 'running/all_metrics.html', 'docs-running-cf/blob/956acc86445d2f3cb29f031294f86f37f515b471/metrics/_diego.html.md.erb#L35', '47 rows, 2 columns; a partial'],
+        ['long3', 'cf CLI v8 command changes', 'cf-cli/v8.html', 'docs-cf-cli/blob/ee9aad56524157ae2316c00149b75737439235dc/v8.html.md.erb#L74', '30 rows'],
+      ] },
+    { id: 'matrix', name: 'Matrix / comparison grid', count: 11, split: '5 / 6',
+      holds: 'Rows against 4 to 12 columns of short values: Yes or blank, numbers, states.',
+      ex: [
+        ['mx1', 'Roles and what they can do', 'concepts/roles.html', 'docs-cloudfoundry-concepts/blob/97e0d0b25f059c06edd25e30355d26eb93dc560a/_oss_roles_table.html.md.erb#L1', '42 rows × 12 columns; a partial'],
+        ['mx2', 'Environment variables by phase', 'devguide/deploy-apps/environment-variable.html', 'docs-dev-guide/blob/9c8df63eb3823011e4e3aff9958c36e25d5190b7/deploy-apps/environment-variable.html.md.erb#L86', '25 rows; Running / Staging / Task'],
+        ['mx3', 'Stack states and operations', 'adminguide/managing-stacks.html', 'docs-cf-admin/blob/13826fa7d93eee66902c4a2187a96b884137b58a/managing-stacks.html.md.erb#L28', '4 rows × 5 columns'],
+      ] },
+    { id: 'wide', name: 'Wide reference', count: 10, split: '4 / 6',
+      holds: 'Five or six columns of text.',
+      ex: [
+        ['wide1', 'UAA metrics', 'uaa/uaa-metrics.html', 'docs-uaa/blob/216c797cfa1a971cf0f9e53eb3e4803aaf914a94/uaa-metrics.html.md.erb#L37', '13 rows × 6 columns'],
+        ['wide2', 'Router error types', 'adminguide/troubleshooting-router-error-responses.html', 'docs-cf-admin/blob/13826fa7d93eee66902c4a2187a96b884137b58a/troubleshooting-router-error-responses.html.md.erb#L314', '9 rows × 5 columns'],
+      ] },
+    { id: 'media', name: 'Media grid', count: 12, split: '12 / 0',
+      holds: 'Chart thumbnails in a grid, linked to the full images. All on one page, uaa-performance.',
+      ex: [
+        ['media1', 'Throughput charts', 'running/uaa-performance.html', 'docs-running-cf/blob/956acc86445d2f3cb29f031294f86f37f515b471/uaa-performance.html.md.erb#L88', '3 columns'],
+        ['media2', 'Resource charts', 'running/uaa-performance.html', 'docs-running-cf/blob/956acc86445d2f3cb29f031294f86f37f515b471/uaa-performance.html.md.erb#L138', '5 columns'],
+      ] },
+    { id: 'titled', name: 'Titled (spanning title row)', count: 2, split: '2 / 0',
+      holds: 'A title in a first row that spans every column.',
+      ex: [
+        ['titled', 'Label requirements', 'adminguide/metadata.html', 'docs-cf-admin/blob/13826fa7d93eee66902c4a2187a96b884137b58a/metadata.html.md.erb#L56', 'one of the test pages'],
+      ] },
+  ];
+  const cands = [
+    ['kv2', 'Key-value, 21 rows'], ['media1', 'Media grid'], ['long1', 'Long reference, 59 rows'], ['mx1', 'Matrix, 42 × 12'],
+  ];
+  const esc = s => s.replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
+  const fig = (img, label, cls, caption, links) =>
+    `<figure><span class="tag${cls}">${esc(label)}</span>
+      <a class="shot" href="${img}" target="_blank" rel="noopener"><img src="${img}" alt="${esc(caption)}" loading="lazy"></a>
+      <figcaption>${links || ''}</figcaption></figure>`;
+  document.getElementById('idx').innerHTML = fams.map(f =>
+    `<tr><th scope="row"><a href="#${f.id}">${esc(f.name)}</a></th><td class="n">${f.count}</td><td class="n">${f.split}</td><td>${esc(f.holds)}</td></tr>`).join('');
+  document.getElementById('fams').innerHTML = fams.map(f => `
+    <section class="box fam" id="${f.id}" aria-labelledby="${f.id}-h">
+      <div class="fam-head"><h2 id="${f.id}-h">${esc(f.name)}</h2><span class="count">${f.count} tables</span></div>
+      <p class="lead">${esc(f.holds)}</p>
+      <div class="shots">${f.ex.map(([id, title, pub, src, note]) => fig(`img/${id}-standard.jpg`, 'published', ' pub', title,
+        `<b>${esc(title)}</b><span>${esc(note)}</span><span class="links"><a href="${PUB + pub}" target="_blank" rel="noopener">published page</a><a href="${GH + src}" target="_blank" rel="noopener">source</a></span>`)).join('')}</div>
+    </section>`).join('');
+  document.getElementById('cands').innerHTML = cands.map(([id, title]) => `
+    <div style="display:grid;gap:10px"><h3>${esc(title)}</h3>
+      <div class="shots">${['standard', 'compact', 'striped', 'plain'].map(s =>
+        fig(`img/${id}-${s}.jpg`, s === 'standard' ? 'standard (published)' : s, s === 'standard' ? ' pub' : '', `${title}, ${s}`)).join('')}</div></div>`).join('');
+})();
+</script>
