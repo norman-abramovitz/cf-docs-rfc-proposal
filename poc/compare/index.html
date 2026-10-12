@@ -26,6 +26,7 @@ a { color: var(--accent) }
 code { font-family: var(--mono); font-size: .88em; background: var(--accent-soft); padding: 0 .3em; border-radius: 3px }
 .intro { padding-block: 28px 8px; display: grid; gap: 10px; max-width: 80ch }
 .intro h1 { font-size: 1.75rem; line-height: 1.2; margin: 0; font-weight: 600; text-wrap: balance }
+.crumbs { font-size: .8rem; color: var(--muted) }
 .intro p { margin: 0; color: var(--muted) }
 .bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line);
   padding-block: 10px; display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center }
@@ -75,6 +76,7 @@ figcaption { font-size: .82rem; color: var(--muted); display: flex; flex-wrap: w
 
 <div class="wrap">
   <header class="intro">
+    <nav aria-label="Breadcrumb" class="crumbs"><a href="../../">Home</a><span aria-hidden="true"> › </span><a href="../">Proof-of-concept results</a><span aria-hidden="true"> › </span><span aria-current="page">Published tables next to four converted versions</span></nav>
     <h1>Published tables next to four converted versions</h1>
     <p>The five test pages from the Docs WG lead, table by table. First: the page as published on docs.cloudfoundry.org today. Then the same table built with Docusaurus, Zensical, Starlight, and Antora in the mode you pick. All are screenshots at a 1280-pixel browser window with each tool’s default theme; colors and fonts belong to the theme and are not compared. Under Size, Fit shrinks each screenshot to its column and Actual size shows it pixel for pixel in a box that scrolls sideways and down. Click a screenshot to open it full size, or hide tools under Show to make the rest larger.</p>
   </header>

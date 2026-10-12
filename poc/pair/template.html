@@ -28,6 +28,7 @@ a { color: var(--accent) }
 code { font-family: var(--mono); font-size: .88em }
 .intro { padding-block: 28px 8px; display: grid; gap: 10px; max-width: 80ch }
 .intro h1 { font-size: 1.75rem; line-height: 1.2; margin: 0; font-weight: 600 }
+.crumbs { font-size: .8rem; color: var(--muted) }
 .intro p { margin: 0; color: var(--muted) }
 .bar { position: sticky; top: 0; z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line);
   padding-block: 10px; display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center }
@@ -71,6 +72,7 @@ pre { margin: 0; background: var(--code); border: 1px solid var(--line); border-
 <body>
 <div class="wrap">
   <header class="intro">
+    <nav aria-label="Breadcrumb" class="crumbs"><a href="../../">Home</a><span aria-hidden="true"> › </span><a href="../">Proof-of-concept results</a><span aria-hidden="true"> › </span><span aria-current="page">Two outputs side by side</span></nav>
     <h1>Two outputs side by side</h1>
     <p>One table from a <a href="../../glossary.html#test-pages">test page</a>, in two outputs: the published page, or a tool in one of its <a href="../../glossary.html#mode">modes</a>. The inputs follow below. Every tool at once: <a href="../compare/index.html">comparison page</a>. Each page written out: <a href="../tables.html">tables, page by page</a>.</p>
   </header>

@@ -26,6 +26,7 @@ a { color: var(--accent) }
 code { font-family: var(--mono); font-size: .88em; background: var(--accent-soft); padding: 0 .3em; border-radius: 3px }
 .intro { padding-block: 28px 0; display: grid; gap: 10px; max-width: 80ch }
 .intro h1 { font-size: 1.75rem; line-height: 1.2; margin: 0; font-weight: 600; text-wrap: balance }
+.crumbs { font-size: .8rem; color: var(--muted) }
 .intro p { margin: 0; color: var(--muted) }
 .box { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 16px 18px; display: grid; gap: 12px; min-width: 0 }
 h2 { font-size: 1.3rem; margin: 0; font-weight: 600; text-wrap: balance }
@@ -57,6 +58,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outlin
 
 <div class="wrap">
   <header class="intro">
+    <nav aria-label="Breadcrumb" class="crumbs"><a href="../../">Home</a><span aria-hidden="true"> › </span><a href="../">Proof-of-concept results</a><span aria-hidden="true"> › </span><span aria-current="page">Every kind of table in the Cloud Foundry docs, as published</span></nav>
     <h1>Every kind of table in the Cloud Foundry docs, as published</h1>
     <p>The survey counted 241 tables in the docs and tutorial repos and sorted them into families by what they hold. Below are real examples of each family, screenshotted from docs.cloudfoundry.org at a 1280-pixel window. The last section shows four of them in each candidate style (standard, compact, striped, plain), so the styles can be judged on real content.</p>
     <p>All 198 book tables look the same today: full width, cell borders, a shaded header, a row highlight on hover, no stripes. bosh.io (40 pipe tables) uses its own theme and is analyzed separately.</p>
