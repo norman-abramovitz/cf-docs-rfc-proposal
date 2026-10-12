@@ -24,6 +24,9 @@ Source: lines 174–220, under "Selecting the client grant type". Five rows.
 **Deviations:** the table has no class; it gets `class="table"`, the
 standard style, as every HTML table names its style (see
 [Template conventions](../README.md#template-conventions)).
+In extension and native, the endpoint `/oauth/token` is marked as a path
+(`class="path"`), which keeps it on one line (results, "Paths in table
+cells", 2026-10-12); passthrough keeps it as written.
 
 ### Spot checks
 
@@ -56,7 +59,9 @@ comparing renderings: the double break is the end of a paragraph, with
 paragraph spacing below it, so the cell holds two paragraphs. Passthrough
 keeps the `<br/><br/>` (it applies cleanup only). Native pipe tables cannot
 hold paragraphs, so native keeps `<br /><br />`.
-The table also gets `class="table"`, as the first one does.
+The table also gets `class="table"`, as the first one does. In extension
+and native, the endpoints `/identity-zones` and `/introspect` are marked
+as paths, as in the first table.
 
 ### Spot checks
 
