@@ -233,6 +233,8 @@ centered vertically and horizontally.
 
 ### Hints after the round
 
+*Superseded* by the [Specification](#specification); kept as the record.
+
 | Level | Hint | Values | Change from the first draft |
 |-------|------|--------|-----------------------------|
 | Table | title | text | Shown as a bold line above the table, not a row or caption: Markdown tables have one header row |
@@ -281,6 +283,102 @@ Conversions drop that markup and rely on the template instead:
   sideways because of a table. A `table-media` grid shrinks its images to
   fit instead. Each site's `make check-wide` checks this in a browser
   ([results](results.md)).
+
+## Specification
+
+Status: **draft.**
+
+What a table can ask for, and what each request means, independent of any
+tool. A site that follows it gives every style and hint below the meaning
+written here; how a tool lets an author write them, and the markup it
+produces, are in each site's `CONVENTIONS.md`. The page layout rules that
+apply to every table (a wide table scrolls in its own box, header cells are
+bold, and the rest) are the [Template conventions](#template-conventions)
+above.
+
+### General rules
+
+- **A hint states one thing.** No hint sets another: a `key` column does
+  not also avoid wrapping, and a hinted table is not also top-aligned. A
+  table that wants both writes both.
+- **A hint left out means the theme's default.** Hints are intent, not
+  exact values (see [Concepts](../README.md)); where a table states no
+  intent, the theme decides.
+- **A style sets the look; a hint can replace part of it.** A hint
+  replaces what the table's style sets for the columns the hint names:
+  padding, alignment and wrap.
+
+### Styles
+
+A table has one **look** and any number of **modifiers**. With none named,
+it has the look `table`. The set is open: these are the styles defined so
+far, and a style is added when the tables show a need for one.
+
+| Style | Kind | In words |
+|-------|------|----------|
+| `table` | look | The theme's default table look, whatever that is. The standard style. |
+| `table-boxed` | look | A border around every cell, a shaded header row, no stripes. The look the published docs have today. |
+| `table-plain` | look | No cell borders. A rule under the header row and a thin line between body rows; the header is not shaded. |
+| `table-output` | look | Command output shown as a table: text in the code font, as the terminal prints it; cells never wrap, so each output row stays one line and the table scrolls sideways in its own box when it does not fit; tight padding; a rule under the header row and no other borders; no shading. |
+| `table-media` | look | A grid of images: no cell borders, a rule under the header row and a thin line between body rows, no header shading, cells centred both ways, an image fills its cell. It shrinks to fit the content column instead of scrolling. |
+| `table-compact` | modifier | Tight padding and smaller text, for long tables and comparison grids. |
+| `table-striped` | modifier | Every other body row shaded. |
+
+Which style a converted table gets comes from its survey family: see
+[The style each table gets](survey/README.md#the-style-each-table-gets). `table-plain` and
+`table-striped` are in the set for authors to choose; no surveyed table
+gets either from the rule.
+
+### Hints
+
+| Level | Hint | Values | Meaning | Left out |
+|-------|------|--------|---------|----------|
+| Table | title | text | A line that names the table, shown in bold above it. Not a row and not a caption: a Markdown table has one header row, which stays for the column headers. | no title |
+| Table | header row | yes / no | The first row holds the column headers. | no header row |
+| Table | row-header column | number of leading columns | The cells in those columns label their rows, and are styled apart from column headers and body cells. | none |
+| Table | style | one look, any modifiers | See [Styles](#styles). | `table` |
+| Table | id | name | An anchor, so a link can point at the table. | none |
+| Column | role | `key`, `value`, `prose` | What the column holds. `key`: the short label or identifier each row is about. `value`: a short value. `prose`: sentences or paragraphs. The template may style a role; a role sets no other hint. | no role |
+| Column | width | relative weight | The column's share of the table width, relative to the other columns that have one. A `wrap: avoid` column can grow past it. | the browser's automatic layout |
+| Column | wrap | `avoid`, `normal` | `avoid`: each cell stays on one line, growing the column, up to a cap the template sets; past the cap the text wraps between words. `normal`: text wraps as the column width allows. | theme default |
+| Column | align | `left`, `center`, `right` | Horizontal alignment of the cell content. | theme default |
+| Column | valign | `top`, `middle`, `bottom` | Vertical alignment of the cell content. | theme default |
+| Column | padding | `none`, `tight`, `normal`, `loose` | Space inside each cell. The theme sets the size of each step; `tight` is what `table-compact` uses. | the style's padding |
+| Row | group | label text | A row across the whole table that labels the rows under it, up to the next group row or the end of the table. A column that only repeated the label, or left it blank for "same as above", goes, as do spacer rows between groups. | no groups |
+| Row | emphasis | the row | This row is the one the table is about. The template styles it as a row; bold text in each of its cells is replaced by this hint. | no emphasis |
+| Cell | note marker | marker text | Links to a note. Usually the note is under the same table, in marker order; it may be anywhere in the document. | the marker stays plain text |
+| Cell | block content | lists, paragraphs | A cell may hold more than one line of text. `<br/><br/>` between two blocks of text is a paragraph break. | inline content only |
+| Inline | path | — | This code is a file or URL path. It stays on one line, and the template can give it a look that shows it is one value. | ordinary inline code |
+
+**Column hints name a set of columns.** A column hint applies to one
+column, a range, a list, or every column, written once for the set. It
+covers the whole column, header cell included, unless the hint says to
+leave the header cell out. Two hints of the same kind may cover the same
+column; the one written later wins for that column. For example, "every
+column `valign: top`" then "column 4 `valign: middle`" leaves column 4 in
+the middle and the rest at the top.
+
+### Theme variables
+
+A theme adjusts the styles and hints through these CSS custom properties.
+Where every site uses the same value, it is the template's value; the
+others follow the theme.
+
+| Variable | Adjusts | Value |
+|----------|---------|-------|
+| `--table-nowrap-max` | the cap for a `wrap: avoid` column | 16em |
+| `--table-prose-min` | the narrowest the first column of a wide table (eight or more columns) gets | 24ch |
+| `--table-row-header-weight` | font weight of row headers | theme |
+| `--table-row-header-align` | horizontal alignment of row headers | theme |
+| `--table-font-size` | text size in every table | theme |
+| `--table-line-height` | line height in every table | theme |
+| `--table-edge-bg` | the background behind the scroll shadow | theme |
+| `--table-edge-shadow` | the colour of the shadow on a side that has more columns | theme |
+| `--table-padding-tight`, `--table-padding-normal`, `--table-padding-loose` | the padding steps (`none` is no padding) | theme |
+| `--table-compact-font-size` | text size in `table-compact` | theme |
+| `--table-stripe-bg` | the shading of every other row in `table-striped` | theme |
+| `--table-group-bg`, `--table-group-weight` | the look of a group row | theme |
+| `--table-emphasis-bg`, `--table-emphasis-weight` | the look of an emphasized row | theme |
 
 ## Method
 
