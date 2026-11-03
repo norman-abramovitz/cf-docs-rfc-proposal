@@ -35,6 +35,9 @@ pull request adds. Read it at:
 
 ## Start here
 
+Looking for one document? The [cf-docs index](cf-docs/README.md) lists
+everything published here.
+
 There are three draft documents, and each can be read on its own. They
 cover what is known as of 2026-10-10 and mark what is not yet written.
 
